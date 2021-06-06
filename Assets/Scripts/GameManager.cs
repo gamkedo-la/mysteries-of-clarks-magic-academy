@@ -104,7 +104,6 @@ public class GameManager : MonoBehaviour
 
     public static void CalculateTimeOfDay()
     {
-        print("i am here ");
         if (timeOfDay == 0)
         {
             displayTimeOfDay.text = "Morning";

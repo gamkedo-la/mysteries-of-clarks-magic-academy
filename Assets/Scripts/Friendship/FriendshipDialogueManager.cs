@@ -1,45 +1,47 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class FriendIntro : MonoBehaviour
+public class FriendshipDialogueManager : MonoBehaviour
 {
     public Text nameText;
     public Text dialogueText;
 
     public Animator animator;
 
+    private Queue<string> names;
     private Queue<string> sentences;
+  //  private Queue<GameObject> cameras;
+    //private Queue<Animator> animations;
 
     public float WaitTimeSec;
-    public ClassroomDialogue dialogue;
+    public FriendshipDialogue dialogue;
 
-    public bool toBeContinued;
-    public bool isChoice;
-    public bool isFinished;
+    bool conversationStarted;
+
+    Animator datePlay;
 
     public GameObject thisConversation, nextConversation;
     public GameObject choicesMenu;
 
     public string RoomToGoTo;
 
-    Animator datePlay;
+    //need experience/friendship leveling up menu
 
-    bool isInRange, dialogueHasStarted;
-    public GameObject dialogueOption;
+    public bool toBeContinued;
+    public bool isChoice;
+    public bool isFinished;
 
     private void Start()
     {
         sentences = new Queue<string>();
+        names = new Queue<string>();
+
+        StartCoroutine(InitialWaiting());
 
         datePlay = GameObject.Find("CanvasForDate").GetComponent<Animator>();
-
-        if (isFinished)
-        {
-            StartCoroutine(InitialWaiting());
-        }
     }
 
     IEnumerator InitialWaiting()
@@ -48,33 +50,11 @@ public class FriendIntro : MonoBehaviour
         StartDialogue(dialogue);
     }
 
-
     private void Update()
     {
-        if (isInRange)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                if (isFinished)
-                {
-                    DisplayNextSentence();
-                    dialogueHasStarted = true;
-                }
-                else
-                {
-                    if (!dialogueHasStarted)
-                    {
-                        StartDialogue(dialogue);
-                        dialogueOption.SetActive(false);
-                        dialogueHasStarted = true;
-                    }
-
-                    else
-                    {
-                        DisplayNextSentence();
-                    }
-                }
-            }
+            DisplayNextSentence();
         }
     }
 
@@ -82,44 +62,55 @@ public class FriendIntro : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            isInRange = true;
-            dialogueOption.SetActive(true);
+            StartDialogue(dialogue);
+            conversationStarted = true;
         }
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.tag == "Player")
-        {
-            isInRange = false;
-        }
-    }
-
-    public void StartDialogue(ClassroomDialogue dialogue)
+    public void StartDialogue(FriendshipDialogue dialogue)
     {
         animator.SetBool("isOpen", true);
 
-        nameText.text = dialogue.name;
-
         sentences.Clear();
+        names.Clear();
 
         foreach (string sentence in dialogue.sentences)
         {
             sentences.Enqueue(sentence);
         }
 
+        foreach (string name in dialogue.names)
+        {
+            names.Enqueue(name);
+        }
+
+      /*  foreach (GameObject cam in dialogue.cameras)
+        {
+            cameras.Enqueue(cam);
+        }
+      */
         DisplayNextSentence();
     }
 
+
     public void DisplayNextSentence()
     {
-        if (sentences.Count == 0)
+        if (sentences.Count == 0 && names.Count == 0 /*&& cameras.Count == 0*/)
         {
             EndDialogue();
             return;
         }
 
         string sentence = sentences.Dequeue();
+        string name = names.Dequeue();
+
+     //   GameObject camera = cameras.Dequeue();
+
+        dialogueText.text = sentence;
+        nameText.text = name;
+
+     //   camera.SetActive(true);
+
         StopAllCoroutines();
         StartCoroutine(TypeSentence(sentence));
     }
@@ -137,6 +128,7 @@ public class FriendIntro : MonoBehaviour
     void EndDialogue()
     {
         animator.SetBool("isOpen", false);
+        conversationStarted = false;
 
         if (toBeContinued)
         {
@@ -150,28 +142,23 @@ public class FriendIntro : MonoBehaviour
         }
         if (isFinished)
         {
-            if (GameManager.isInFriendConversation)
-            {
-                StartCoroutine(Waiting());
-                GameManager.isInFriendConversation = false;
-            }
-            else if (!GameManager.isInFriendConversation)
-            {
-                nextConversation.SetActive(true);
-                thisConversation.SetActive(false);
-            }
-
             Debug.Log("endOfConversation");
-          //  datePlay.SetBool("ToPlay", true);
+            datePlay.SetBool("ToPlay", true);
+            Debug.Log("This is where you'd level up the relationship.");
             // GameManager.ProgressDay();
-
+            StartCoroutine(Waiting());
         }
     }
-
     IEnumerator Waiting()
     {
-        yield return new WaitForSeconds(WaitTimeSec);
-      //  datePlay.SetBool("ToPlay", false);
+        yield return new WaitForSeconds(2.1f);
+        datePlay.SetBool("ToPlay", false);
+        StartCoroutine(LoadRoomWait());
+    }
+
+    IEnumerator LoadRoomWait()
+    {
+        yield return new WaitForSeconds(.1f);
         SceneManager.LoadScene(RoomToGoTo);
     }
 }
