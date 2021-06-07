@@ -23,6 +23,30 @@ public class GameManager : MonoBehaviour
 
     public static bool isInFriendConversation;
 
+    //Determining if the Party Member is available (story timeline wise)
+    public static bool RhysAvailable, JameelAvailable, GracieMayAvailable, HarperAvailable, SkyeAvailable, SullivanAvailable;
+    //
+
+    //This is determining party count size
+    public static bool RhysInParty, JameelInParty, HarperInParty, SkyeInParty, SullivanInParty;
+    public static int PartyCount;
+    //
+
+    //Health and Magic of Party
+    public static int MCHealth, RhysHealth, JameelHealth, HarperHealth, SkyeHealth, SullivanHealth;
+    public static int MCMagic, RhysMagic, JameelMagic, HarperMagic, SkyeMagic, SullivanMagic;
+
+    public static int MCMaxHealth, RhysMaxHealth, JameelMaxHealth, HarperMaxHealth, SkyeMaxHealth, SullivanMaxHealth;
+    public static int MCMaxMagic, RhysMaxMagic, JameelMaxMagic, HarperMaxMagic, SkyeMaxMagic, SullivanMaxMagic;
+    //
+
+    //ToDetermine the Current Floor of the Dungeon you are in
+    public static int CurrentFloor;
+    //
+
+    //To determine if the Enemy Attacked the player in the Dungeon
+    public static bool enemyAttackedPlayer;
+    //
     private void Awake()
     {
         if (instance == null)
@@ -52,6 +76,22 @@ public class GameManager : MonoBehaviour
         CalculateDayOfWeek();
         CalculateCalendarDay();
         CalculateTimeOfDay();
+
+        //This is for testing for multiple battle system - please turn this off when you can identify the party count
+        //MC is always in the party
+        PartyCount++;
+        RhysInParty = true;
+        PartyCount++;
+        JameelInParty = true;
+        PartyCount++;
+        HarperInParty = true;
+        PartyCount++;
+        if (PartyCount > 4)
+        {
+            Debug.LogError("The party contains more than 4 people");
+        }
+        //
+
     }
 
     public static void CalculateDayOfWeek()

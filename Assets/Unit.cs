@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour
 {
+    public BattleSystem.CharacterIdentifier myEnumValue;
+
     public string unitName;
     public int unitLevel;
 
@@ -15,6 +17,14 @@ public class Unit : MonoBehaviour
 
     public int agilityPercent;
     public int critialChance;
+
+    public int ExperienceToDistribute;
+    public int minExperience;
+    public int maxExperience;
+
+    public int MoneyToDistribute;
+    public int minMoney;
+    public int maxMoney;
 
     public bool TakeDamage(int dmg)
     {
