@@ -26,6 +26,9 @@ public class GameManager : MonoBehaviour
     //Determining if the Party Member is available (story timeline wise)
     public static bool RhysAvailable, JameelAvailable, GracieMayAvailable, HarperAvailable, SkyeAvailable, SullivanAvailable;
     //
+    //Party Agility Stats
+    public static int MCAgility, RhysAgility, JameelAgility, HarperAgility, SkyeAgility, SullivanAgility;
+    //
 
     //This is determining party count size
     public static bool RhysInParty, JameelInParty, HarperInParty, SkyeInParty, SullivanInParty;
@@ -46,6 +49,14 @@ public class GameManager : MonoBehaviour
 
     //To determine if the Enemy Attacked the player in the Dungeon
     public static bool enemyAttackedPlayer;
+    //
+
+    //If the main character dies in battle
+    public static bool isGameOver;
+    //
+
+    //Money that the player has collected and can spend
+    public static int Money;
     //
     private void Awake()
     {
