@@ -27,7 +27,7 @@ public class RoomTemplates : MonoBehaviour
     public GameObject treasure;
 
     private bool playerPlaced;
-    Vector3 spawnHeight = new Vector3(0, 1.5f, 0);
+    Vector3 spawnHeight = new Vector3(0, 2f, 0);
     GameObject loadScreen;
 
     public GameObject enemy;

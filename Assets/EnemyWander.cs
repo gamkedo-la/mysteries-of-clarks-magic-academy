@@ -12,6 +12,12 @@ public class EnemyWander : MonoBehaviour
     float angle;
     bool collided;
 
+    bool movingToward;
+
+    public Animator genericMonsterAnimator;
+
+    GameObject player;
+
 
     Rigidbody rb;
 
@@ -19,38 +25,63 @@ public class EnemyWander : MonoBehaviour
     {
         PickTimes();
         rb = GetComponent<Rigidbody>();
+
+        StartCoroutine(InitialWait());
     }
 
     private void Update()
     {
-        if (isNavigating)
+        if (!movingToward)
         {
-            currentTime -= Time.deltaTime;
-
-            rb.velocity = transform.forward * speed; 
-
-            if (currentTime <= 0)
+            if (isNavigating)
             {
-                isNavigating = false;
-                PickTimes();
-                isRotating = false;
+                currentTime -= Time.deltaTime;
+
+                rb.velocity = transform.forward * speed;
+
+                if (currentTime <= 0)
+                {
+                    isNavigating = false;
+                    PickTimes();
+                    isRotating = false;
+                }
+            }
+
+            if (!isNavigating && !isRotating)
+            {
+                rb.velocity = transform.forward * 0;
+                PickRotation();
+                // transform.rotation = Quaternion.Euler(0, angle, 0);
+                if (!collided)
+                {
+                    this.transform.eulerAngles = new Vector3(0, Random.Range(0, 360), 0);
+                }
+                if (collided)
+                {
+                    this.transform.Rotate(0, transform.rotation.y + 180, 0);
+                    collided = false;
+                }
             }
         }
-
-        if (!isNavigating && !isRotating)
+        if (movingToward)
         {
-            rb.velocity = transform.forward * 0;
-            PickRotation();
-            // transform.rotation = Quaternion.Euler(0, angle, 0);
-            if (!collided)
+            float dist = Vector3.Distance(player.transform.position, transform.position);
+            Vector3 lookDir = player.transform.position - transform.position;
+
+            if (dist < 10 && dist >= 3)
             {
-                this.transform.eulerAngles = new Vector3(0, Random.Range(0, 360), 0);
+                transform.rotation = Quaternion.Slerp(transform.rotation,
+                Quaternion.LookRotation(lookDir), 50 * Time.deltaTime);
+                genericMonsterAnimator.SetBool("inRange", false);
+
+                if (dist < 3)
+                {
+                    genericMonsterAnimator.SetBool("inRange", false);
+                    transform.position += transform.forward * speed * Time.deltaTime * 2;
+                }
             }
-            if (collided)
-            {
-                this.transform.Rotate(0,transform.rotation.y + 180, 0);
-                collided = false;
-            }
+
+            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, Time.deltaTime * speed * 1.5f);
         }
     }
 
@@ -73,6 +104,13 @@ public class EnemyWander : MonoBehaviour
             currentTime = 0;
             collided = true;
         }
+
+        if (other.tag == "Player")
+        {
+            movingToward = true;
+            genericMonsterAnimator.SetBool("isFollowing", true);
+            transform.LookAt(player.transform);
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -81,11 +119,23 @@ public class EnemyWander : MonoBehaviour
         {
             collided = false;
         }
+        if (other.tag == "Player")
+        {
+            movingToward = false;
+            genericMonsterAnimator.SetBool("isFollowing", false);
+           // transform.LookAt(player.transform);
+        }
     }
 
     IEnumerator Waiting()
     {
         yield return new WaitForSeconds(currentWaitTime);
         isNavigating = true;
+    }
+
+    IEnumerator InitialWait()
+    {
+        yield return new WaitForSeconds(3);
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 }
