@@ -1255,7 +1255,7 @@ public class BattleSystem : MonoBehaviour
                     MCMagic.value = GameManager.MCMagic / GameManager.MCMaxMagic;
                     //    StarterAnim.Play("StarterWindup");
                     yield return new WaitForSeconds(2f);
-                    isDead = enemyUnit[enemyUnitSelected].TakeDamage(MC.Spell1Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+                    isDead = enemyUnit[enemyUnitSelected].TakeDamageSpell1(MC.Spell1Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
                     fastball = false;
                     slider = false;
@@ -1295,7 +1295,7 @@ public class BattleSystem : MonoBehaviour
                     MCMagic.value = GameManager.MCMagic / GameManager.MCMaxMagic;
                     //    StarterAnim.Play("StarterWindup");
                     yield return new WaitForSeconds(2f);
-                    isDead = enemyUnit[enemyUnitSelected].TakeDamage(MC.Spell1Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+                    isDead = enemyUnit[enemyUnitSelected].TakeDamageSpell1(MC.Spell1Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
                     fastball = false;
                     slider = false;
@@ -1335,7 +1335,7 @@ public class BattleSystem : MonoBehaviour
                     MCMagic.value = GameManager.MCMagic / GameManager.MCMaxMagic;
                     //    StarterAnim.Play("StarterWindup");
                     yield return new WaitForSeconds(2f);
-                    isDead = enemyUnit[enemyUnitSelected].TakeDamage(MC.Spell1Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+                    isDead = enemyUnit[enemyUnitSelected].TakeDamageSpell1(MC.Spell1Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
                     fastball = false;
                     slider = false;
@@ -1375,7 +1375,7 @@ public class BattleSystem : MonoBehaviour
                     MCMagic.value = GameManager.MCMagic / GameManager.MCMaxMagic;
                     //    StarterAnim.Play("StarterWindup");
                     yield return new WaitForSeconds(2f);
-                    isDead = enemyUnit[enemyUnitSelected].TakeDamage(MC.Spell1Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+                    isDead = enemyUnit[enemyUnitSelected].TakeDamageSpell1(MC.Spell1Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
                     fastball = false;
                     slider = false;
@@ -2043,7 +2043,7 @@ public class BattleSystem : MonoBehaviour
         if (!MCDead)
         {
             MCMenu.SetActive(true);
-            dialogueText.text = "Starter: Choose an Action.";
+            dialogueText.text = "[Player Name]: Choose an Action.";
 
             fastball = false;
             slider = false;
@@ -2054,7 +2054,8 @@ public class BattleSystem : MonoBehaviour
 
     void RhysTurn()
     {
-    //    Camera.transform.position = .transform.position;
+        //    Camera.transform.position = .transform.position;
+        Camera.transform.position = player2Cam.transform.position;
         Camera.transform.LookAt(enemyCamTarget);
         //    GameManager.Instance.DebugBall.transform.position = MiddleReliever.transform.position + Vector3.up * GameManager.Instance.DebugBallHeight;
         if (RhysDead || !GameManager.RhysInParty)
@@ -2077,7 +2078,16 @@ public class BattleSystem : MonoBehaviour
     void JameelTurn()
     {
         //    Camera.transform.position = .transform.position;
-        Camera.transform.LookAt(enemyCamTarget);
+        if (!GameManager.RhysInParty && GameManager.JameelInParty)
+        {
+            Camera.transform.position = player2Cam.transform.position;
+            Camera.transform.LookAt(enemyCamTarget);
+        }
+        if (GameManager.RhysInParty && GameManager.JameelInParty)
+        {
+            Camera.transform.position = player3Cam.transform.position;
+            Camera.transform.LookAt(enemyCamTarget);
+        }
         //    GameManager.Instance.DebugBall.transform.position = MiddleReliever.transform.position + Vector3.up * GameManager.Instance.DebugBallHeight;
         if (RhysDead || !GameManager.RhysInParty)
         {
@@ -2099,7 +2109,23 @@ public class BattleSystem : MonoBehaviour
     void HarperTurn()
     {
         //    Camera.transform.position = .transform.position;
-        Camera.transform.LookAt(enemyCamTarget);
+        if (!GameManager.RhysInParty && !GameManager.JameelInParty && GameManager.HarperInParty)
+        {
+            Camera.transform.position = player2Cam.transform.position;
+            Camera.transform.LookAt(enemyCamTarget);
+        }
+
+        if (GameManager.RhysInParty || GameManager.JameelInParty && GameManager.HarperInParty)
+        {
+            Camera.transform.position = player3Cam.transform.position;
+            Camera.transform.LookAt(enemyCamTarget);
+        }
+
+        if (GameManager.RhysInParty && GameManager.JameelInParty && GameManager.HarperInParty)
+        {
+            Camera.transform.position = player4Cam.transform.position;
+            Camera.transform.LookAt(enemyCamTarget);
+        }
         //    GameManager.Instance.DebugBall.transform.position = MiddleReliever.transform.position + Vector3.up * GameManager.Instance.DebugBallHeight;
         if (HarperDead || !GameManager.HarperInParty)
         {
@@ -2121,7 +2147,29 @@ public class BattleSystem : MonoBehaviour
     void SkyeTurn()
     {
         //    Camera.transform.position = .transform.position;
-        Camera.transform.LookAt(enemyCamTarget);
+        if (GameManager.PartyCount == 2 && GameManager.SkyeInParty)
+        {
+            Camera.transform.position = player2Cam.transform.position;
+            Camera.transform.LookAt(enemyCamTarget);
+        }
+
+        if (GameManager.PartyCount == 3 && GameManager.SkyeInParty && !GameManager.SullivanInParty)
+        {
+            Camera.transform.position = player3Cam.transform.position;
+            Camera.transform.LookAt(enemyCamTarget);
+        }
+
+        if (GameManager.PartyCount == 4 && GameManager.SkyeInParty && GameManager.SullivanInParty)
+        {
+            Camera.transform.position = player3Cam.transform.position;
+            Camera.transform.LookAt(enemyCamTarget);
+        }
+
+        if (GameManager.PartyCount == 4 && GameManager.SkyeInParty && !GameManager.SullivanInParty)
+        {
+            Camera.transform.position = player4Cam.transform.position;
+            Camera.transform.LookAt(enemyCamTarget);
+        }
         //    GameManager.Instance.DebugBall.transform.position = MiddleReliever.transform.position + Vector3.up * GameManager.Instance.DebugBallHeight;
         if (SkyeDead || !GameManager.SkyeInParty)
         {
@@ -2143,7 +2191,23 @@ public class BattleSystem : MonoBehaviour
     void SullivanTurn()
     {
         //    Camera.transform.position = .transform.position;
-        Camera.transform.LookAt(enemyCamTarget);
+        if (GameManager.PartyCount == 2 && GameManager.SullivanInParty)
+        {
+            Camera.transform.position = player2Cam.transform.position;
+            Camera.transform.LookAt(enemyCamTarget);
+        }
+
+        if (GameManager.PartyCount == 3 && GameManager.SullivanInParty)
+        {
+            Camera.transform.position = player3Cam.transform.position;
+            Camera.transform.LookAt(enemyCamTarget);
+        }
+
+        if (GameManager.PartyCount == 4 && GameManager.SullivanInParty)
+        {
+            Camera.transform.position = player4Cam.transform.position;
+            Camera.transform.LookAt(enemyCamTarget);
+        }
         //    GameManager.Instance.DebugBall.transform.position = MiddleReliever.transform.position + Vector3.up * GameManager.Instance.DebugBallHeight;
         if (SullivanDead || !GameManager.SullivanInParty)
         {

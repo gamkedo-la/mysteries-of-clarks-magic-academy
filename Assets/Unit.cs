@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Unit : MonoBehaviour
 {
@@ -37,6 +38,14 @@ public class Unit : MonoBehaviour
     public int enemyDamage;
     public string attackName;
 
+    public Text DamageUI;
+    public Slider Health;
+
+    private void Start()
+    {
+        DamageUI.text = "";
+    }
+
     public bool TakeDamage(int dmg)
     {
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
@@ -48,6 +57,31 @@ public class Unit : MonoBehaviour
         }
         else
             return false;
+    }
+
+    public bool TakeDamageSpell1(int dmg)
+    {
+        currentHP -= dmg ;
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+
+        DamageUI.text = "-" + dmg.ToString();
+        if (currentHP <= 0)
+        {
+            //  anim.Play("Armature|Downed");
+            Health.value = currentHP / maxHP;
+            StartCoroutine(ClearText());
+            return true;
+        }
+
+        else
+        {
+            //  anim.Play("Armature|Downed");
+            Health.value = currentHP / maxHP;
+            StartCoroutine(ClearText());
+            return false;
+        }
+
+
     }
 
     public void Heal(int amount)
@@ -160,5 +194,11 @@ public class Unit : MonoBehaviour
         enemyDamage = Random.Range(minDamage, maxDamage);
         //  DamageUI.text = "-" + enemyDamage.ToString();
         attackName = "Soft Punch".ToString();
+    }
+
+    IEnumerator ClearText()
+    {
+        yield return new WaitForSeconds(2f);
+        DamageUI.text = "".ToString();
     }
 }
