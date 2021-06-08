@@ -91,9 +91,9 @@ public class GameManager : MonoBehaviour
         //This is for testing for multiple battle system - please turn this off when you can identify the party count
         //MC is always in the party
         PartyCount++;
-        RhysInParty = true;
+        SullivanInParty = true;
         PartyCount++;
-        JameelInParty = true;
+        SkyeInParty = true;
         PartyCount++;
         HarperInParty = true;
         PartyCount++;
@@ -103,6 +103,33 @@ public class GameManager : MonoBehaviour
         }
         //
 
+        MCMaxHealth = 20;
+        RhysMaxHealth = 20;
+        JameelMaxHealth = 20;
+        HarperMaxHealth = 20;
+        SkyeMaxHealth = 20;
+        SullivanMaxHealth = 20;
+
+        MCHealth = 20;
+        RhysHealth = 20;
+        JameelHealth = 20;
+        HarperHealth = 20;
+        SkyeHealth = 20;
+        SullivanHealth = 20;
+
+        MCMaxMagic = 20;
+        RhysMaxMagic = 20;
+        JameelMaxMagic = 20;
+        HarperMaxMagic = 20;
+        SkyeMaxMagic = 20;
+        SullivanMaxMagic = 20;
+
+        MCMagic = 20;
+        RhysMagic = 20;
+        JameelMagic = 20;
+        HarperMagic = 20;
+        SkyeMagic = 20;
+        SullivanMagic = 20;
     }
 
     public static void CalculateDayOfWeek()

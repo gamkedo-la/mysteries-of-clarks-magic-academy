@@ -235,7 +235,7 @@ public class BattleSystem : MonoBehaviour
 
         state = BattleState.START;
 
-        print(enemyBattleStationLocations.Count);
+      //  print(enemyBattleStationLocations.Count);
 
         if (GameManager.RhysHealth <= 0)
         {
@@ -417,6 +417,12 @@ public class BattleSystem : MonoBehaviour
             Harper = playerGO4.GetComponent<Unit>();
             //   Harper = playerGO4.GetComponent<Animator>();
         }
+        else if (GameManager.PartyCount == 4 && GameManager.SkyeInParty && GameManager.SullivanInParty)
+        {
+            playerGO3 = Instantiate(SkyePrefab, ThirdBattleStation);
+            Skye = playerGO3.GetComponent<Unit>();
+            //   Skye = playerGO4.GetComponent<Animator>();
+        }
         else if (GameManager.PartyCount == 4 && GameManager.SkyeInParty && !GameManager.SullivanInParty)
         {
             playerGO4 = Instantiate(SkyePrefab, FourthBattleStation);
@@ -456,10 +462,8 @@ public class BattleSystem : MonoBehaviour
             enemyUnit[4].GetComponent<Unit>().myEnumValue = CharacterIdentifier.Enemy5;
         }
 
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(3f);
         cutsceneCam.SetActive(false);
-
-
 
         if (GameManager.enemyAttackedPlayer)
         {
@@ -1033,42 +1037,81 @@ public class BattleSystem : MonoBehaviour
 
         if (state == BattleState.MCTURN)
         {
+            MCConfirmMenu.SetActive(false);
             StartCoroutine(MCAttack());
         }
 
         if (state == BattleState.RHYSTURN)
         {
+            RhysConfirmMenu.SetActive(false);
             StartCoroutine(RhysAttack());
         }
 
         if (state == BattleState.JAMEELTURN)
         {
+            JameelConfirmMenu.SetActive(false);
             StartCoroutine(JameelAttack());
         }
 
         if (state == BattleState.HARPERTURN)
         {
+            HarperConfirmMenu.SetActive(false);
             StartCoroutine(HarperAttack());
         }
 
         if (state == BattleState.SKYETURN)
         {
+            SkyeConfirmMenu.SetActive(false);
             StartCoroutine(SkyeAttack());
         }
 
         if (state == BattleState.SULLIVANTURN)
         {
+            SullivanConfirmMenu.SetActive(false);
             StartCoroutine(SullivanAttack());
         }
-        MCConfirmMenu.SetActive(false);
+
         enemySelectionParticle.SetActive(false);
         enemySelect = false;
     }
 
     public void CancelAttack()
     {
-        MCMenu.SetActive(true);
-        MCConfirmMenu.SetActive(false);
+        if (state == BattleState.MCTURN)
+        {
+            MCMenu.SetActive(true);
+            MCConfirmMenu.SetActive(false);
+        }
+
+        if (state == BattleState.RHYSTURN)
+        {
+            RhysMenu.SetActive(true);
+            RhysConfirmMenu.SetActive(false);
+        }
+
+        if (state == BattleState.JAMEELTURN)
+        {
+            JameelMenu.SetActive(true);
+            JameelConfirmMenu.SetActive(false);
+        }
+
+        if (state == BattleState.HARPERTURN)
+        {
+            HarperMenu.SetActive(true);
+            HarperConfirmMenu.SetActive(false);
+        }
+
+        if (state == BattleState.SKYETURN)
+        {
+            SkyeMenu.SetActive(true);
+            SkyeConfirmMenu.SetActive(false);
+        }
+
+        if (state == BattleState.SULLIVANTURN)
+        {
+            SullivanMenu.SetActive(true);
+            SullivanConfirmMenu.SetActive(false);
+        }
         enemySelectionParticle.SetActive(false);
         enemySelect = false;
     }
@@ -1989,7 +2032,8 @@ public class BattleSystem : MonoBehaviour
     #region Player Turns (button select)
     void MCTurn()
     {
-       // Camera.transform.position = starterCam.transform.position;
+        // Camera.transform.position = starterCam.transform.position;
+        Camera.transform.position = player1Cam.transform.position;
         Camera.transform.LookAt(enemyCamTarget);
         //  GameManager.Instance.DebugBall.transform.position = Starter.transform.position + Vector3.up * GameManager.Instance.DebugBallHeight;
         if (MCDead)
@@ -2020,7 +2064,7 @@ public class BattleSystem : MonoBehaviour
         }
         if (!RhysDead)
         {
-            MCMenu.SetActive(true);
+            RhysMenu.SetActive(true);
             dialogueText.text = "Rhys: Choose an Action.";
 
             fastball = false;
@@ -2042,7 +2086,7 @@ public class BattleSystem : MonoBehaviour
         }
         if (!RhysDead)
         {
-            MCMenu.SetActive(true);
+            JameelMenu.SetActive(true);
             dialogueText.text = "Rhys: Choose an Action.";
 
             fastball = false;
@@ -2064,7 +2108,7 @@ public class BattleSystem : MonoBehaviour
         }
         if (!HarperDead)
         {
-            MCMenu.SetActive(true);
+            HarperMenu.SetActive(true);
             dialogueText.text = "Harper: Choose an Action.";
 
             fastball = false;
@@ -2086,7 +2130,7 @@ public class BattleSystem : MonoBehaviour
         }
         if (!SkyeDead)
         {
-            MCMenu.SetActive(true);
+            SkyeMenu.SetActive(true);
             dialogueText.text = "Skye: Choose an Action.";
 
             fastball = false;
@@ -2108,7 +2152,7 @@ public class BattleSystem : MonoBehaviour
         }
         if (!SullivanDead)
         {
-            MCMenu.SetActive(true);
+            SullivanMenu.SetActive(true);
             dialogueText.text = "Sullivan: Choose an Action.";
 
             fastball = false;
@@ -2123,9 +2167,41 @@ public class BattleSystem : MonoBehaviour
     {
         // if (state != BattleStateMultiple.PLAYERTURN)
         //     return;
+        if (state == BattleState.MCTURN)
+        {
+            MCSpells.SetActive(true);
+            MCMenu.SetActive(false);
+        }
 
-        MCSpells.SetActive(true);
-        MCMenu.SetActive(false);
+        if (state == BattleState.RHYSTURN)
+        {
+            RhysSpells.SetActive(true);
+            RhysMenu.SetActive(false);
+        }
+
+        if (state == BattleState.JAMEELTURN)
+        {
+            JameelSpells.SetActive(true);
+            JameelMenu.SetActive(false);
+        }
+
+        if (state == BattleState.HARPERTURN)
+        {
+            HarperSpells.SetActive(true);
+            HarperMenu.SetActive(false);
+        }
+
+        if (state == BattleState.SKYETURN)
+        {
+            SkyeSpells.SetActive(true);
+            SkyeMenu.SetActive(false);
+        }
+
+        if (state == BattleState.SULLIVANTURN)
+        {
+            SullivanSpells.SetActive(true);
+            SullivanMenu.SetActive(false);
+        }
     }
 
     #region Player Pitch Selection (opens up confirm menu)
@@ -2150,35 +2226,18 @@ public class BattleSystem : MonoBehaviour
                 dialogueText.text = "Not enough energy!";
         }
 
-        if (state == BattleState.MCTURN)
-        {
-            if (MC.Spell1MagicConsumed <= GameManager.MCMagic)
-            {
-                fastball = true;
-
-                MCMenu.SetActive(true);
-                MCSpells.SetActive(false);
-                enemySelect = true;
-                MCConfirmMenu.SetActive(true);
-                MCSpells.SetActive(false);
-                MCMenu.SetActive(false);
-            }
-            else
-                dialogueText.text = "Not enough energy!";
-        }
-
         if (state == BattleState.RHYSTURN)
         {
             if (Rhys.Spell1MagicConsumed <= GameManager.RhysMagic)
             {
                 fastball = true;
 
-                MCMenu.SetActive(true);
-                MCSpells.SetActive(false);
+                RhysMenu.SetActive(true);
+                RhysSpells.SetActive(false);
                 enemySelect = true;
-                MCConfirmMenu.SetActive(true);
-                MCSpells.SetActive(false);
-                MCMenu.SetActive(false);
+                RhysConfirmMenu.SetActive(true);
+                RhysSpells.SetActive(false);
+                RhysMenu.SetActive(false);
             }
             else
                 dialogueText.text = "Not enough energy!";
@@ -2190,12 +2249,12 @@ public class BattleSystem : MonoBehaviour
             {
                 fastball = true;
 
-                MCMenu.SetActive(true);
-                MCSpells.SetActive(false);
+                JameelMenu.SetActive(true);
+                JameelSpells.SetActive(false);
                 enemySelect = true;
-                MCConfirmMenu.SetActive(true);
-                MCSpells.SetActive(false);
-                MCMenu.SetActive(false);
+                JameelConfirmMenu.SetActive(true);
+                JameelSpells.SetActive(false);
+                JameelMenu.SetActive(false);
             }
             else
                 dialogueText.text = "Not enough energy!";
@@ -2207,12 +2266,12 @@ public class BattleSystem : MonoBehaviour
             {
                 fastball = true;
 
-                MCMenu.SetActive(true);
-                MCSpells.SetActive(false);
+                HarperMenu.SetActive(true);
+                HarperSpells.SetActive(false);
                 enemySelect = true;
-                MCConfirmMenu.SetActive(true);
-                MCSpells.SetActive(false);
-                MCMenu.SetActive(false);
+                HarperConfirmMenu.SetActive(true);
+                HarperSpells.SetActive(false);
+                HarperMenu.SetActive(false);
             }
             else
                 dialogueText.text = "Not enough energy!";
@@ -2224,12 +2283,12 @@ public class BattleSystem : MonoBehaviour
             {
                 fastball = true;
 
-                MCMenu.SetActive(true);
-                MCSpells.SetActive(false);
+                SkyeMenu.SetActive(true);
+                SkyeSpells.SetActive(false);
                 enemySelect = true;
-                MCConfirmMenu.SetActive(true);
-                MCSpells.SetActive(false);
-                MCMenu.SetActive(false);
+                SkyeConfirmMenu.SetActive(true);
+                SkyeSpells.SetActive(false);
+                SkyeMenu.SetActive(false);
             }
             else
                 dialogueText.text = "Not enough energy!";
@@ -2240,12 +2299,12 @@ public class BattleSystem : MonoBehaviour
             {
                 fastball = true;
 
-                MCMenu.SetActive(true);
-                MCSpells.SetActive(false);
+                SullivanMenu.SetActive(true);
+                SullivanSpells.SetActive(false);
                 enemySelect = true;
-                MCConfirmMenu.SetActive(true);
-                MCSpells.SetActive(false);
-                MCMenu.SetActive(false);
+                SullivanConfirmMenu.SetActive(true);
+                SullivanSpells.SetActive(false);
+                SullivanMenu.SetActive(false);
             }
             else
                 dialogueText.text = "Not enough energy!";
