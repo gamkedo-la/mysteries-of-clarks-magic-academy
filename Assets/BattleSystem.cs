@@ -33,32 +33,28 @@ public class BattleSystem : MonoBehaviour
     public GameObject MCMenu;
     public GameObject MCSpells;
     public GameObject MCConfirmMenu;
-    public GameObject MCEndingMenu;
 
     public GameObject RhysMenu;
     public GameObject RhysSpells;
     public GameObject RhysConfirmMenu;
-    public GameObject RhysEndingMenu;
 
     public GameObject JameelMenu;
     public GameObject JameelSpells;
     public GameObject JameelConfirmMenu;
-    public GameObject JameelEndingMenu;
 
     public GameObject HarperMenu;
     public GameObject HarperSpells;
     public GameObject HarperConfirmMenu;
-    public GameObject HarperEndingMenu;
 
     public GameObject SkyeMenu;
     public GameObject SkyeSpells;
     public GameObject SkyeConfirmMenu;
-    public GameObject SkyeEndingMenu;
 
     public GameObject SullivanMenu;
     public GameObject SullivanSpells;
     public GameObject SullivanConfirmMenu;
-    public GameObject SullivanEndingMenu;
+
+    public GameObject EndingMenu;
     #endregion
 
     //The Player's Party
@@ -2323,7 +2319,7 @@ public class BattleSystem : MonoBehaviour
             }
         */
             dialogueText.text = "You won the Battle!";
-            MCEndingMenu.SetActive(true);
+            EndingMenu.SetActive(true);
             MCSpells.SetActive(false);
             MCMenu.SetActive(false);
 
