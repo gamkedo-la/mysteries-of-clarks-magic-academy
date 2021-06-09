@@ -58,6 +58,10 @@ public class GameManager : MonoBehaviour
     //Money that the player has collected and can spend
     public static int Money;
     //
+
+    //Player Stats
+    public static int Intelligence, Charm, Courage, Proficiency;
+    //
     private void Awake()
     {
         if (instance == null)

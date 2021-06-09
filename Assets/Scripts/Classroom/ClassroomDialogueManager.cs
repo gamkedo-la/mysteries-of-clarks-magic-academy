@@ -27,6 +27,11 @@ public class ClassroomDialogueManager : MonoBehaviour
 
     Animator datePlay;
 
+    public int EndOfLessonLearning;
+
+    public bool isTransfigurationDemonstration;
+    public GameObject TransfiguredDemonstration;
+
     private void Start()
     {
         sentences = new Queue<string>();
@@ -97,6 +102,11 @@ public class ClassroomDialogueManager : MonoBehaviour
         {
             nextConversation.SetActive(true);
             thisConversation.SetActive(false);
+
+            if (isTransfigurationDemonstration)
+            {
+                TransfiguredDemonstration.SetActive(true);
+            }
         }
         if (isChoice)
         {
@@ -106,6 +116,8 @@ public class ClassroomDialogueManager : MonoBehaviour
         if (isFinished)
         {
             Debug.Log("endOfConversation");
+            EndOfLessonLearning += GameManager.Intelligence;
+            Debug.Log("Play Quick Animation to show learning");
             datePlay.SetBool("ToPlay", true);
            // GameManager.ProgressDay();
             StartCoroutine(Waiting());
