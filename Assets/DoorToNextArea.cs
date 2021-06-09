@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class DoorToNextArea : MonoBehaviour
 {
     bool inRange;
     public string RoomToGoTo;
+    public string RoomName;
+    public Text RoomText;
 
     public GameObject UIForRoomChange;
 
@@ -15,6 +18,7 @@ public class DoorToNextArea : MonoBehaviour
         if (inRange)
         {
             UIForRoomChange.SetActive(true);
+            RoomText.text = RoomName;
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 SceneManager.LoadScene(RoomToGoTo);
@@ -23,6 +27,8 @@ public class DoorToNextArea : MonoBehaviour
         else
         {
             UIForRoomChange.SetActive(false);
+            RoomText.text = "";
+
         }
     }
 
@@ -39,6 +45,7 @@ public class DoorToNextArea : MonoBehaviour
         if (other.tag == "Player")
         {
             inRange = false;
+            RoomText.text = "";
         }
     }
 }
