@@ -115,10 +115,31 @@ public class BattleSystem : MonoBehaviour
     //PlayerSpellChoice
 
     //This needs to be determined later - right now, it is a placeholder from Strike Out
-    bool fastball;
-    bool curveball;
-    bool slider;
-    bool changeup;
+    #region MCAttacks
+    bool throwRock;
+    bool flippendo;
+    bool pulsateSunt;
+    bool stupefaciunt;
+    bool incendio;
+    bool incendioMaxima;
+    bool avis;
+    bool avisMaxima;
+    bool glacies;
+    bool minorCura;
+    bool impetumSubsisto;
+    bool augamenti;
+    bool mothsDeorsum;
+    bool mothsInteriore;
+    bool internaCombustione;
+    bool bombarda;
+    bool bombardaMaxima;
+    bool bombardaUltima;
+    bool minusSanaCoetus;
+    bool chorusPedes;
+    bool criticaFocus;
+    bool diffindo;
+    bool diffindoMaxima;
+    #endregion
 
     //Enemy
     bool isDead;
@@ -736,28 +757,28 @@ public class BattleSystem : MonoBehaviour
                 break;
             case CharacterIdentifier.Rhys:
                 //       print("Middle");
-                RhysTurn();
+           //     RhysTurn();
                 state = BattleState.RHYSTURN;
                 break;
             case CharacterIdentifier.Jameel:
                 //       print("SetUp");
-                JameelTurn();
+            //    JameelTurn();
                 state = BattleState.JAMEELTURN;
                 break;
             case CharacterIdentifier.Harper:
                 //       print("Closer");
-                HarperTurn();
+            //    HarperTurn();
                 state = BattleState.HARPERTURN;
                 break;
 
             case CharacterIdentifier.Skye:
                 //       print("Closer");
-                SkyeTurn();
+           //     SkyeTurn();
                 state = BattleState.SKYETURN;
                 break;
             case CharacterIdentifier.Sullivan:
                 //       print("Closer");
-                SullivanTurn();
+            //    SullivanTurn();
                 state = BattleState.SULLIVANTURN;
                 break;
             case CharacterIdentifier.Enemy1:
@@ -1246,6 +1267,8 @@ public class BattleSystem : MonoBehaviour
 
         AdvanceTurn();
     }
+    #endregion
+    #region MCAttacks
 
     IEnumerator MCAttack()
     {
@@ -1254,11 +1277,11 @@ public class BattleSystem : MonoBehaviour
         //Modify the Spell1Damage and Spell1Magic used based on the player, the spell, and their level 
         if (state == BattleState.MCTURN)
         {
-            if (fastball)
+            if (flippendo)
             {
                 if (enemyUnit[enemyUnitSelected].currentHP <= 0)
                 {
-                    fastball = false;
+                    flippendo = false;
                     dialogueText.text = "Enemy is knocked out, select another target.";
                     yield return new WaitForSeconds(1f);
                     dialogueText.text = "Select someone to attack!";
@@ -1267,16 +1290,36 @@ public class BattleSystem : MonoBehaviour
                 }
                 else
                 {
-                    GameManager.MCMagic -= MC.Spell1MagicConsumed;
+                    GameManager.MCMagic -= MC.MCSpell2MagicConsumed;
                     MCMagic.value = GameManager.MCMagic ;
                     //    StarterAnim.Play("StarterWindup");
                     yield return new WaitForSeconds(2f);
-                    isDead = enemyUnit[enemyUnitSelected].TakeDamageSpell1(MC.Spell1Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+                    isDead = enemyUnit[enemyUnitSelected].Flippendo(MC.MCSpell2Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
-                    fastball = false;
-                    slider = false;
-                    curveball = false;
-                    changeup = false;
+
+                    throwRock = false;
+                    flippendo = false;
+                    pulsateSunt = false;
+                    stupefaciunt = false;
+                    incendio = false;
+                    incendioMaxima = false;
+                    avis = false;
+                    avisMaxima = false;
+                    glacies = false;
+                    minorCura = false;
+                    impetumSubsisto = false;
+                    augamenti = false;
+                    mothsDeorsum = false;
+                    mothsInteriore = false;
+                    internaCombustione = false;
+                    bombarda = false;
+                    bombardaMaxima = false;
+                    bombardaUltima = false;
+                    minusSanaCoetus = false;
+                    chorusPedes = false;
+                    criticaFocus = false;
+                    diffindo = false;
+                    diffindoMaxima = false;
                     dialogueText.text = "The attack is successful!";
                     yield return new WaitForSeconds(2f);
 
@@ -1294,11 +1337,12 @@ public class BattleSystem : MonoBehaviour
 
                 }
             }
-            if (slider)
+
+            if (pulsateSunt)
             {
                 if (enemyUnit[enemyUnitSelected].currentHP <= 0)
                 {
-                    fastball = false;
+                    pulsateSunt = false;
                     dialogueText.text = "Enemy is knocked out, select another target.";
                     yield return new WaitForSeconds(1f);
                     dialogueText.text = "Select someone to attack!";
@@ -1307,16 +1351,36 @@ public class BattleSystem : MonoBehaviour
                 }
                 else
                 {
-                    GameManager.MCMagic -= MC.Spell1MagicConsumed;
+                    GameManager.MCMagic -= MC.MCSpell3MagicConsumed;
                     MCMagic.value = GameManager.MCMagic;
                     //    StarterAnim.Play("StarterWindup");
                     yield return new WaitForSeconds(2f);
-                    isDead = enemyUnit[enemyUnitSelected].TakeDamageSpell1(MC.Spell1Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+                    isDead = enemyUnit[enemyUnitSelected].PulsateSunt(MC.MCSpell3Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
-                    fastball = false;
-                    slider = false;
-                    curveball = false;
-                    changeup = false;
+
+                    throwRock = false;
+                    flippendo = false;
+                    pulsateSunt = false;
+                    stupefaciunt = false;
+                    incendio = false;
+                    incendioMaxima = false;
+                    avis = false;
+                    avisMaxima = false;
+                    glacies = false;
+                    minorCura = false;
+                    impetumSubsisto = false;
+                    augamenti = false;
+                    mothsDeorsum = false;
+                    mothsInteriore = false;
+                    internaCombustione = false;
+                    bombarda = false;
+                    bombardaMaxima = false;
+                    bombardaUltima = false;
+                    minusSanaCoetus = false;
+                    chorusPedes = false;
+                    criticaFocus = false;
+                    diffindo = false;
+                    diffindoMaxima = false;
                     dialogueText.text = "The attack is successful!";
                     yield return new WaitForSeconds(2f);
 
@@ -1334,11 +1398,12 @@ public class BattleSystem : MonoBehaviour
 
                 }
             }
-            if (curveball)
+
+            if (stupefaciunt)
             {
                 if (enemyUnit[enemyUnitSelected].currentHP <= 0)
                 {
-                    fastball = false;
+                    stupefaciunt = false;
                     dialogueText.text = "Enemy is knocked out, select another target.";
                     yield return new WaitForSeconds(1f);
                     dialogueText.text = "Select someone to attack!";
@@ -1347,16 +1412,36 @@ public class BattleSystem : MonoBehaviour
                 }
                 else
                 {
-                    GameManager.MCMagic -= MC.Spell1MagicConsumed;
-                    MCMagic.value = GameManager.MCMagic ;
+                    GameManager.MCMagic -= MC.MCSpell4MagicConsumed;
+                    MCMagic.value = GameManager.MCMagic;
                     //    StarterAnim.Play("StarterWindup");
                     yield return new WaitForSeconds(2f);
-                    isDead = enemyUnit[enemyUnitSelected].TakeDamageSpell1(MC.Spell1Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+                    isDead = enemyUnit[enemyUnitSelected].Stupefaciunt(MC.MCSpell4Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
-                    fastball = false;
-                    slider = false;
-                    curveball = false;
-                    changeup = false;
+
+                    throwRock = false;
+                    flippendo = false;
+                    pulsateSunt = false;
+                    stupefaciunt = false;
+                    incendio = false;
+                    incendioMaxima = false;
+                    avis = false;
+                    avisMaxima = false;
+                    glacies = false;
+                    minorCura = false;
+                    impetumSubsisto = false;
+                    augamenti = false;
+                    mothsDeorsum = false;
+                    mothsInteriore = false;
+                    internaCombustione = false;
+                    bombarda = false;
+                    bombardaMaxima = false;
+                    bombardaUltima = false;
+                    minusSanaCoetus = false;
+                    chorusPedes = false;
+                    criticaFocus = false;
+                    diffindo = false;
+                    diffindoMaxima = false;
                     dialogueText.text = "The attack is successful!";
                     yield return new WaitForSeconds(2f);
 
@@ -1374,11 +1459,13 @@ public class BattleSystem : MonoBehaviour
 
                 }
             }
-            if (changeup)
+
+
+            if (incendio)
             {
                 if (enemyUnit[enemyUnitSelected].currentHP <= 0)
                 {
-                    fastball = false;
+                    incendio = false;
                     dialogueText.text = "Enemy is knocked out, select another target.";
                     yield return new WaitForSeconds(1f);
                     dialogueText.text = "Select someone to attack!";
@@ -1387,16 +1474,36 @@ public class BattleSystem : MonoBehaviour
                 }
                 else
                 {
-                    GameManager.MCMagic -= MC.Spell1MagicConsumed;
-                    MCMagic.value = GameManager.MCMagic / GameManager.MCMaxMagic;
+                    GameManager.MCMagic -= MC.MCSpell5MagicConsumed;
+                    MCMagic.value = GameManager.MCMagic;
                     //    StarterAnim.Play("StarterWindup");
                     yield return new WaitForSeconds(2f);
-                    isDead = enemyUnit[enemyUnitSelected].TakeDamageSpell1(MC.Spell1Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+                    isDead = enemyUnit[enemyUnitSelected].Incendio(MC.MCSpell5Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
-                    fastball = false;
-                    slider = false;
-                    curveball = false;
-                    changeup = false;
+
+                    throwRock = false;
+                    flippendo = false;
+                    pulsateSunt = false;
+                    stupefaciunt = false;
+                    incendio = false;
+                    incendioMaxima = false;
+                    avis = false;
+                    avisMaxima = false;
+                    glacies = false;
+                    minorCura = false;
+                    impetumSubsisto = false;
+                    augamenti = false;
+                    mothsDeorsum = false;
+                    mothsInteriore = false;
+                    internaCombustione = false;
+                    bombarda = false;
+                    bombardaMaxima = false;
+                    bombardaUltima = false;
+                    minusSanaCoetus = false;
+                    chorusPedes = false;
+                    criticaFocus = false;
+                    diffindo = false;
+                    diffindoMaxima = false;
                     dialogueText.text = "The attack is successful!";
                     yield return new WaitForSeconds(2f);
 
@@ -1411,10 +1518,1129 @@ public class BattleSystem : MonoBehaviour
                         enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                     }
                     NextTurn();
+
                 }
             }
+
+
+
+            if (incendioMaxima)
+            {
+                if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+                {
+                    incendioMaxima = false;
+                    dialogueText.text = "Enemy is knocked out, select another target.";
+                    yield return new WaitForSeconds(1f);
+                    dialogueText.text = "Select someone to attack!";
+                    MCMenu.SetActive(true);
+                    MCSpells.SetActive(false);
+                }
+                else
+                {
+                    GameManager.MCMagic -= MC.MCSpell6MagicConsumed;
+                    MCMagic.value = GameManager.MCMagic;
+                    //    StarterAnim.Play("StarterWindup");
+                    yield return new WaitForSeconds(2f);
+                    isDead = enemyUnit[enemyUnitSelected].IncendioMaxima(MC.MCSpell6Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+
+                    throwRock = false;
+                    flippendo = false;
+                    pulsateSunt = false;
+                    stupefaciunt = false;
+                    incendio = false;
+                    incendioMaxima = false;
+                    avis = false;
+                    avisMaxima = false;
+                    glacies = false;
+                    minorCura = false;
+                    impetumSubsisto = false;
+                    augamenti = false;
+                    mothsDeorsum = false;
+                    mothsInteriore = false;
+                    internaCombustione = false;
+                    bombarda = false;
+                    bombardaMaxima = false;
+                    bombardaUltima = false;
+                    minusSanaCoetus = false;
+                    chorusPedes = false;
+                    criticaFocus = false;
+                    diffindo = false;
+                    diffindoMaxima = false;
+                    dialogueText.text = "The attack is successful!";
+                    yield return new WaitForSeconds(2f);
+
+                    //This checks to see if the Enemy is Dead or has HP remaining
+                    if (isDead)
+                    {
+                        RemoveCurrentEnemy();
+
+                        //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                        enemyCount--;
+
+                        enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                    }
+                    NextTurn();
+
+                }
+            }
+
+
+            if (avis)
+            {
+                if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+                {
+                    avis = false;
+                    dialogueText.text = "Enemy is knocked out, select another target.";
+                    yield return new WaitForSeconds(1f);
+                    dialogueText.text = "Select someone to attack!";
+                    MCMenu.SetActive(true);
+                    MCSpells.SetActive(false);
+                }
+                else
+                {
+                    GameManager.MCMagic -= MC.MCSpell7MagicConsumed;
+                    MCMagic.value = GameManager.MCMagic;
+                    //    StarterAnim.Play("StarterWindup");
+                    yield return new WaitForSeconds(2f);
+                    isDead = enemyUnit[enemyUnitSelected].Avis(MC.MCSpell7Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+
+                    throwRock = false;
+                    flippendo = false;
+                    pulsateSunt = false;
+                    stupefaciunt = false;
+                    incendio = false;
+                    incendioMaxima = false;
+                    avis = false;
+                    avisMaxima = false;
+                    glacies = false;
+                    minorCura = false;
+                    impetumSubsisto = false;
+                    augamenti = false;
+                    mothsDeorsum = false;
+                    mothsInteriore = false;
+                    internaCombustione = false;
+                    bombarda = false;
+                    bombardaMaxima = false;
+                    bombardaUltima = false;
+                    minusSanaCoetus = false;
+                    chorusPedes = false;
+                    criticaFocus = false;
+                    diffindo = false;
+                    diffindoMaxima = false;
+                    dialogueText.text = "The attack is successful!";
+                    yield return new WaitForSeconds(2f);
+
+                    //This checks to see if the Enemy is Dead or has HP remaining
+                    if (isDead)
+                    {
+                        RemoveCurrentEnemy();
+
+                        //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                        enemyCount--;
+
+                        enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                    }
+                    NextTurn();
+
+                }
+            }
+
+
+            if (avisMaxima)
+            {
+                if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+                {
+                    avisMaxima = false;
+                    dialogueText.text = "Enemy is knocked out, select another target.";
+                    yield return new WaitForSeconds(1f);
+                    dialogueText.text = "Select someone to attack!";
+                    MCMenu.SetActive(true);
+                    MCSpells.SetActive(false);
+                }
+                else
+                {
+                    GameManager.MCMagic -= MC.MCSpell8MagicConsumed;
+                    MCMagic.value = GameManager.MCMagic;
+                    //    StarterAnim.Play("StarterWindup");
+                    yield return new WaitForSeconds(2f);
+                    isDead = enemyUnit[enemyUnitSelected].AvisMaxima(MC.MCSpell8Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+
+                    throwRock = false;
+                    flippendo = false;
+                    pulsateSunt = false;
+                    stupefaciunt = false;
+                    incendio = false;
+                    incendioMaxima = false;
+                    avis = false;
+                    avisMaxima = false;
+                    glacies = false;
+                    minorCura = false;
+                    impetumSubsisto = false;
+                    augamenti = false;
+                    mothsDeorsum = false;
+                    mothsInteriore = false;
+                    internaCombustione = false;
+                    bombarda = false;
+                    bombardaMaxima = false;
+                    bombardaUltima = false;
+                    minusSanaCoetus = false;
+                    chorusPedes = false;
+                    criticaFocus = false;
+                    diffindo = false;
+                    diffindoMaxima = false;
+                    dialogueText.text = "The attack is successful!";
+                    yield return new WaitForSeconds(2f);
+
+                    //This checks to see if the Enemy is Dead or has HP remaining
+                    if (isDead)
+                    {
+                        RemoveCurrentEnemy();
+
+                        //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                        enemyCount--;
+
+                        enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                    }
+                    NextTurn();
+
+                }
+            }
+
+
+            if (glacies)
+            {
+                if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+                {
+                    glacies = false;
+                    dialogueText.text = "Enemy is knocked out, select another target.";
+                    yield return new WaitForSeconds(1f);
+                    dialogueText.text = "Select someone to attack!";
+                    MCMenu.SetActive(true);
+                    MCSpells.SetActive(false);
+                }
+                else
+                {
+                    GameManager.MCMagic -= MC.MCSpell9MagicConsumed;
+                    MCMagic.value = GameManager.MCMagic;
+                    //    StarterAnim.Play("StarterWindup");
+                    yield return new WaitForSeconds(2f);
+                    isDead = enemyUnit[enemyUnitSelected].Glacius(MC.MCSpell9Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+
+                    throwRock = false;
+                    flippendo = false;
+                    pulsateSunt = false;
+                    stupefaciunt = false;
+                    incendio = false;
+                    incendioMaxima = false;
+                    avis = false;
+                    avisMaxima = false;
+                    glacies = false;
+                    minorCura = false;
+                    impetumSubsisto = false;
+                    augamenti = false;
+                    mothsDeorsum = false;
+                    mothsInteriore = false;
+                    internaCombustione = false;
+                    bombarda = false;
+                    bombardaMaxima = false;
+                    bombardaUltima = false;
+                    minusSanaCoetus = false;
+                    chorusPedes = false;
+                    criticaFocus = false;
+                    diffindo = false;
+                    diffindoMaxima = false;
+                    dialogueText.text = "The attack is successful!";
+                    yield return new WaitForSeconds(2f);
+
+                    //This checks to see if the Enemy is Dead or has HP remaining
+                    if (isDead)
+                    {
+                        RemoveCurrentEnemy();
+
+                        //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                        enemyCount--;
+
+                        enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                    }
+                    NextTurn();
+
+                }
+            }
+
+
+            if (minorCura)
+            {
+                if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+                {
+                    minorCura = false;
+                    dialogueText.text = "Enemy is knocked out, select another target.";
+                    yield return new WaitForSeconds(1f);
+                    dialogueText.text = "Select someone to attack!";
+                    MCMenu.SetActive(true);
+                    MCSpells.SetActive(false);
+                }
+                else
+                {
+                    GameManager.MCMagic -= MC.MCSpell10MagicConsumed;
+                    MCMagic.value = GameManager.MCMagic;
+                    //    StarterAnim.Play("StarterWindup");
+                    yield return new WaitForSeconds(2f);
+                    isDead = enemyUnit[enemyUnitSelected].MinorCura(MC.MCSpell10Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+
+                    throwRock = false;
+                    flippendo = false;
+                    pulsateSunt = false;
+                    stupefaciunt = false;
+                    incendio = false;
+                    incendioMaxima = false;
+                    avis = false;
+                    avisMaxima = false;
+                    glacies = false;
+                    minorCura = false;
+                    impetumSubsisto = false;
+                    augamenti = false;
+                    mothsDeorsum = false;
+                    mothsInteriore = false;
+                    internaCombustione = false;
+                    bombarda = false;
+                    bombardaMaxima = false;
+                    bombardaUltima = false;
+                    minusSanaCoetus = false;
+                    chorusPedes = false;
+                    criticaFocus = false;
+                    diffindo = false;
+                    diffindoMaxima = false;
+                    dialogueText.text = "The attack is successful!";
+                    yield return new WaitForSeconds(2f);
+
+                    //This checks to see if the Enemy is Dead or has HP remaining
+                    if (isDead)
+                    {
+                        RemoveCurrentEnemy();
+
+                        //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                        enemyCount--;
+
+                        enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                    }
+                    NextTurn();
+
+                }
+            }
+
+            if (impetumSubsisto)
+            {
+                if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+                {
+                    impetumSubsisto = false;
+                    dialogueText.text = "Enemy is knocked out, select another target.";
+                    yield return new WaitForSeconds(1f);
+                    dialogueText.text = "Select someone to attack!";
+                    MCMenu.SetActive(true);
+                    MCSpells.SetActive(false);
+                }
+                else
+                {
+                    GameManager.MCMagic -= MC.MCSpell11MagicConsumed;
+                    MCMagic.value = GameManager.MCMagic;
+                    //    StarterAnim.Play("StarterWindup");
+                    yield return new WaitForSeconds(2f);
+                    isDead = enemyUnit[enemyUnitSelected].ImpetumSubsisto(MC.MCSpell11Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+
+                    throwRock = false;
+                    flippendo = false;
+                    pulsateSunt = false;
+                    stupefaciunt = false;
+                    incendio = false;
+                    incendioMaxima = false;
+                    avis = false;
+                    avisMaxima = false;
+                    glacies = false;
+                    minorCura = false;
+                    impetumSubsisto = false;
+                    augamenti = false;
+                    mothsDeorsum = false;
+                    mothsInteriore = false;
+                    internaCombustione = false;
+                    bombarda = false;
+                    bombardaMaxima = false;
+                    bombardaUltima = false;
+                    minusSanaCoetus = false;
+                    chorusPedes = false;
+                    criticaFocus = false;
+                    diffindo = false;
+                    diffindoMaxima = false;
+                    dialogueText.text = "The attack is successful!";
+                    yield return new WaitForSeconds(2f);
+
+                    //This checks to see if the Enemy is Dead or has HP remaining
+                    if (isDead)
+                    {
+                        RemoveCurrentEnemy();
+
+                        //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                        enemyCount--;
+
+                        enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                    }
+                    NextTurn();
+
+                }
+            }
+
+            if (augamenti)
+            {
+                if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+                {
+                    augamenti = false;
+                    dialogueText.text = "Enemy is knocked out, select another target.";
+                    yield return new WaitForSeconds(1f);
+                    dialogueText.text = "Select someone to attack!";
+                    MCMenu.SetActive(true);
+                    MCSpells.SetActive(false);
+                }
+                else
+                {
+                    GameManager.MCMagic -= MC.MCSpell12MagicConsumed;
+                    MCMagic.value = GameManager.MCMagic;
+                    //    StarterAnim.Play("StarterWindup");
+                    yield return new WaitForSeconds(2f);
+                    isDead = enemyUnit[enemyUnitSelected].Augamenti(MC.MCSpell12Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+
+                    throwRock = false;
+                    flippendo = false;
+                    pulsateSunt = false;
+                    stupefaciunt = false;
+                    incendio = false;
+                    incendioMaxima = false;
+                    avis = false;
+                    avisMaxima = false;
+                    glacies = false;
+                    minorCura = false;
+                    impetumSubsisto = false;
+                    augamenti = false;
+                    mothsDeorsum = false;
+                    mothsInteriore = false;
+                    internaCombustione = false;
+                    bombarda = false;
+                    bombardaMaxima = false;
+                    bombardaUltima = false;
+                    minusSanaCoetus = false;
+                    chorusPedes = false;
+                    criticaFocus = false;
+                    diffindo = false;
+                    diffindoMaxima = false;
+                    dialogueText.text = "The attack is successful!";
+                    yield return new WaitForSeconds(2f);
+
+                    //This checks to see if the Enemy is Dead or has HP remaining
+                    if (isDead)
+                    {
+                        RemoveCurrentEnemy();
+
+                        //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                        enemyCount--;
+
+                        enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                    }
+                    NextTurn();
+
+                }
+            }
+
+            if (mothsDeorsum)
+            {
+                if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+                {
+                    mothsDeorsum = false;
+                    dialogueText.text = "Enemy is knocked out, select another target.";
+                    yield return new WaitForSeconds(1f);
+                    dialogueText.text = "Select someone to attack!";
+                    MCMenu.SetActive(true);
+                    MCSpells.SetActive(false);
+                }
+                else
+                {
+                    GameManager.MCMagic -= MC.MCSpell13MagicConsumed;
+                    MCMagic.value = GameManager.MCMagic;
+                    //    StarterAnim.Play("StarterWindup");
+                    yield return new WaitForSeconds(2f);
+                    isDead = enemyUnit[enemyUnitSelected].MothsDeorsum(MC.MCSpell13Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+
+                    throwRock = false;
+                    flippendo = false;
+                    pulsateSunt = false;
+                    stupefaciunt = false;
+                    incendio = false;
+                    incendioMaxima = false;
+                    avis = false;
+                    avisMaxima = false;
+                    glacies = false;
+                    minorCura = false;
+                    impetumSubsisto = false;
+                    augamenti = false;
+                    mothsDeorsum = false;
+                    mothsInteriore = false;
+                    internaCombustione = false;
+                    bombarda = false;
+                    bombardaMaxima = false;
+                    bombardaUltima = false;
+                    minusSanaCoetus = false;
+                    chorusPedes = false;
+                    criticaFocus = false;
+                    diffindo = false;
+                    diffindoMaxima = false;
+                    dialogueText.text = "The attack is successful!";
+                    yield return new WaitForSeconds(2f);
+
+                    //This checks to see if the Enemy is Dead or has HP remaining
+                    if (isDead)
+                    {
+                        RemoveCurrentEnemy();
+
+                        //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                        enemyCount--;
+
+                        enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                    }
+                    NextTurn();
+
+                }
+            }
+
+
+            if (mothsInteriore)
+            {
+                if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+                {
+                    mothsInteriore = false;
+                    dialogueText.text = "Enemy is knocked out, select another target.";
+                    yield return new WaitForSeconds(1f);
+                    dialogueText.text = "Select someone to attack!";
+                    MCMenu.SetActive(true);
+                    MCSpells.SetActive(false);
+                }
+                else
+                {
+                    GameManager.MCMagic -= MC.MCSpell14MagicConsumed;
+                    MCMagic.value = GameManager.MCMagic;
+                    //    StarterAnim.Play("StarterWindup");
+                    yield return new WaitForSeconds(2f);
+                    isDead = enemyUnit[enemyUnitSelected].MothsInteriore(MC.MCSpell14Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+
+                    throwRock = false;
+                    flippendo = false;
+                    pulsateSunt = false;
+                    stupefaciunt = false;
+                    incendio = false;
+                    incendioMaxima = false;
+                    avis = false;
+                    avisMaxima = false;
+                    glacies = false;
+                    minorCura = false;
+                    impetumSubsisto = false;
+                    augamenti = false;
+                    mothsDeorsum = false;
+                    mothsInteriore = false;
+                    internaCombustione = false;
+                    bombarda = false;
+                    bombardaMaxima = false;
+                    bombardaUltima = false;
+                    minusSanaCoetus = false;
+                    chorusPedes = false;
+                    criticaFocus = false;
+                    diffindo = false;
+                    diffindoMaxima = false;
+                    dialogueText.text = "The attack is successful!";
+                    yield return new WaitForSeconds(2f);
+
+                    //This checks to see if the Enemy is Dead or has HP remaining
+                    if (isDead)
+                    {
+                        RemoveCurrentEnemy();
+
+                        //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                        enemyCount--;
+
+                        enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                    }
+                    NextTurn();
+
+                }
+            }
+
+            if (internaCombustione)
+            {
+                if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+                {
+                    internaCombustione = false;
+                    dialogueText.text = "Enemy is knocked out, select another target.";
+                    yield return new WaitForSeconds(1f);
+                    dialogueText.text = "Select someone to attack!";
+                    MCMenu.SetActive(true);
+                    MCSpells.SetActive(false);
+                }
+                else
+                {
+                    GameManager.MCMagic -= MC.MCSpell15MagicConsumed;
+                    MCMagic.value = GameManager.MCMagic;
+                    //    StarterAnim.Play("StarterWindup");
+                    yield return new WaitForSeconds(2f);
+                    isDead = enemyUnit[enemyUnitSelected].InternaCombustione(MC.MCSpell15Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+
+                    throwRock = false;
+                    flippendo = false;
+                    pulsateSunt = false;
+                    stupefaciunt = false;
+                    incendio = false;
+                    incendioMaxima = false;
+                    avis = false;
+                    avisMaxima = false;
+                    glacies = false;
+                    minorCura = false;
+                    impetumSubsisto = false;
+                    augamenti = false;
+                    mothsDeorsum = false;
+                    mothsInteriore = false;
+                    internaCombustione = false;
+                    bombarda = false;
+                    bombardaMaxima = false;
+                    bombardaUltima = false;
+                    minusSanaCoetus = false;
+                    chorusPedes = false;
+                    criticaFocus = false;
+                    diffindo = false;
+                    diffindoMaxima = false;
+                    dialogueText.text = "The attack is successful!";
+                    yield return new WaitForSeconds(2f);
+
+                    //This checks to see if the Enemy is Dead or has HP remaining
+                    if (isDead)
+                    {
+                        RemoveCurrentEnemy();
+
+                        //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                        enemyCount--;
+
+                        enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                    }
+                    NextTurn();
+
+                }
+            }
+
+
+
+            if (bombarda)
+            {
+                if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+                {
+                    bombarda = false;
+                    dialogueText.text = "Enemy is knocked out, select another target.";
+                    yield return new WaitForSeconds(1f);
+                    dialogueText.text = "Select someone to attack!";
+                    MCMenu.SetActive(true);
+                    MCSpells.SetActive(false);
+                }
+                else
+                {
+                    GameManager.MCMagic -= MC.MCSpell16MagicConsumed;
+                    MCMagic.value = GameManager.MCMagic;
+                    //    StarterAnim.Play("StarterWindup");
+                    yield return new WaitForSeconds(2f);
+                    isDead = enemyUnit[enemyUnitSelected].Bombarda(MC.MCSpell16Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+
+                    throwRock = false;
+                    flippendo = false;
+                    pulsateSunt = false;
+                    stupefaciunt = false;
+                    incendio = false;
+                    incendioMaxima = false;
+                    avis = false;
+                    avisMaxima = false;
+                    glacies = false;
+                    minorCura = false;
+                    impetumSubsisto = false;
+                    augamenti = false;
+                    mothsDeorsum = false;
+                    mothsInteriore = false;
+                    internaCombustione = false;
+                    bombarda = false;
+                    bombardaMaxima = false;
+                    bombardaUltima = false;
+                    minusSanaCoetus = false;
+                    chorusPedes = false;
+                    criticaFocus = false;
+                    diffindo = false;
+                    diffindoMaxima = false;
+                    dialogueText.text = "The attack is successful!";
+                    yield return new WaitForSeconds(2f);
+
+                    //This checks to see if the Enemy is Dead or has HP remaining
+                    if (isDead)
+                    {
+                        RemoveCurrentEnemy();
+
+                        //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                        enemyCount--;
+
+                        enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                    }
+                    NextTurn();
+
+                }
+            }
+
+
+
+            if (bombardaMaxima)
+            {
+                if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+                {
+                    bombardaMaxima = false;
+                    dialogueText.text = "Enemy is knocked out, select another target.";
+                    yield return new WaitForSeconds(1f);
+                    dialogueText.text = "Select someone to attack!";
+                    MCMenu.SetActive(true);
+                    MCSpells.SetActive(false);
+                }
+                else
+                {
+                    GameManager.MCMagic -= MC.MCSpell17MagicConsumed;
+                    MCMagic.value = GameManager.MCMagic;
+                    //    StarterAnim.Play("StarterWindup");
+                    yield return new WaitForSeconds(2f);
+                    isDead = enemyUnit[enemyUnitSelected].BombardaMaxima(MC.MCSpell17Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+
+                    throwRock = false;
+                    flippendo = false;
+                    pulsateSunt = false;
+                    stupefaciunt = false;
+                    incendio = false;
+                    incendioMaxima = false;
+                    avis = false;
+                    avisMaxima = false;
+                    glacies = false;
+                    minorCura = false;
+                    impetumSubsisto = false;
+                    augamenti = false;
+                    mothsDeorsum = false;
+                    mothsInteriore = false;
+                    internaCombustione = false;
+                    bombarda = false;
+                    bombardaMaxima = false;
+                    bombardaUltima = false;
+                    minusSanaCoetus = false;
+                    chorusPedes = false;
+                    criticaFocus = false;
+                    diffindo = false;
+                    diffindoMaxima = false;
+                    dialogueText.text = "The attack is successful!";
+                    yield return new WaitForSeconds(2f);
+
+                    //This checks to see if the Enemy is Dead or has HP remaining
+                    if (isDead)
+                    {
+                        RemoveCurrentEnemy();
+
+                        //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                        enemyCount--;
+
+                        enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                    }
+                    NextTurn();
+
+                }
+            }
+
+
+            if (bombardaUltima)
+            {
+                if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+                {
+                    bombardaUltima = false;
+                    dialogueText.text = "Enemy is knocked out, select another target.";
+                    yield return new WaitForSeconds(1f);
+                    dialogueText.text = "Select someone to attack!";
+                    MCMenu.SetActive(true);
+                    MCSpells.SetActive(false);
+                }
+                else
+                {
+                    GameManager.MCMagic -= MC.MCSpell18MagicConsumed;
+                    MCMagic.value = GameManager.MCMagic;
+                    //    StarterAnim.Play("StarterWindup");
+                    yield return new WaitForSeconds(2f);
+                    isDead = enemyUnit[enemyUnitSelected].BombardaUltima(MC.MCSpell18Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+
+                    throwRock = false;
+                    flippendo = false;
+                    pulsateSunt = false;
+                    stupefaciunt = false;
+                    incendio = false;
+                    incendioMaxima = false;
+                    avis = false;
+                    avisMaxima = false;
+                    glacies = false;
+                    minorCura = false;
+                    impetumSubsisto = false;
+                    augamenti = false;
+                    mothsDeorsum = false;
+                    mothsInteriore = false;
+                    internaCombustione = false;
+                    bombarda = false;
+                    bombardaMaxima = false;
+                    bombardaUltima = false;
+                    minusSanaCoetus = false;
+                    chorusPedes = false;
+                    criticaFocus = false;
+                    diffindo = false;
+                    diffindoMaxima = false;
+                    dialogueText.text = "The attack is successful!";
+                    yield return new WaitForSeconds(2f);
+
+                    //This checks to see if the Enemy is Dead or has HP remaining
+                    if (isDead)
+                    {
+                        RemoveCurrentEnemy();
+
+                        //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                        enemyCount--;
+
+                        enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                    }
+                    NextTurn();
+
+                }
+            }
+
+
+            if (minusSanaCoetus)
+            {
+                if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+                {
+                    minusSanaCoetus = false;
+                    dialogueText.text = "Enemy is knocked out, select another target.";
+                    yield return new WaitForSeconds(1f);
+                    dialogueText.text = "Select someone to attack!";
+                    MCMenu.SetActive(true);
+                    MCSpells.SetActive(false);
+                }
+                else
+                {
+                    GameManager.MCMagic -= MC.MCSpell19MagicConsumed;
+                    MCMagic.value = GameManager.MCMagic;
+                    //    StarterAnim.Play("StarterWindup");
+                    yield return new WaitForSeconds(2f);
+                    isDead = enemyUnit[enemyUnitSelected].MinusSanaCoetus(MC.MCSpell19Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+
+                    throwRock = false;
+                    flippendo = false;
+                    pulsateSunt = false;
+                    stupefaciunt = false;
+                    incendio = false;
+                    incendioMaxima = false;
+                    avis = false;
+                    avisMaxima = false;
+                    glacies = false;
+                    minorCura = false;
+                    impetumSubsisto = false;
+                    augamenti = false;
+                    mothsDeorsum = false;
+                    mothsInteriore = false;
+                    internaCombustione = false;
+                    bombarda = false;
+                    bombardaMaxima = false;
+                    bombardaUltima = false;
+                    minusSanaCoetus = false;
+                    chorusPedes = false;
+                    criticaFocus = false;
+                    diffindo = false;
+                    diffindoMaxima = false;
+                    dialogueText.text = "The attack is successful!";
+                    yield return new WaitForSeconds(2f);
+
+                    //This checks to see if the Enemy is Dead or has HP remaining
+                    if (isDead)
+                    {
+                        RemoveCurrentEnemy();
+
+                        //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                        enemyCount--;
+
+                        enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                    }
+                    NextTurn();
+
+                }
+            }
+
+
+            if (chorusPedes)
+            {
+                if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+                {
+                    chorusPedes = false;
+                    dialogueText.text = "Enemy is knocked out, select another target.";
+                    yield return new WaitForSeconds(1f);
+                    dialogueText.text = "Select someone to attack!";
+                    MCMenu.SetActive(true);
+                    MCSpells.SetActive(false);
+                }
+                else
+                {
+                    GameManager.MCMagic -= MC.MCSpell20MagicConsumed;
+                    MCMagic.value = GameManager.MCMagic;
+                    //    StarterAnim.Play("StarterWindup");
+                    yield return new WaitForSeconds(2f);
+                    isDead = enemyUnit[enemyUnitSelected].ChorusPedes(MC.MCSpell20Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+
+                    throwRock = false;
+                    flippendo = false;
+                    pulsateSunt = false;
+                    stupefaciunt = false;
+                    incendio = false;
+                    incendioMaxima = false;
+                    avis = false;
+                    avisMaxima = false;
+                    glacies = false;
+                    minorCura = false;
+                    impetumSubsisto = false;
+                    augamenti = false;
+                    mothsDeorsum = false;
+                    mothsInteriore = false;
+                    internaCombustione = false;
+                    bombarda = false;
+                    bombardaMaxima = false;
+                    bombardaUltima = false;
+                    minusSanaCoetus = false;
+                    chorusPedes = false;
+                    criticaFocus = false;
+                    diffindo = false;
+                    diffindoMaxima = false;
+                    dialogueText.text = "The attack is successful!";
+                    yield return new WaitForSeconds(2f);
+
+                    //This checks to see if the Enemy is Dead or has HP remaining
+                    if (isDead)
+                    {
+                        RemoveCurrentEnemy();
+
+                        //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                        enemyCount--;
+
+                        enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                    }
+                    NextTurn();
+
+                }
+            }
+
+
+            if (criticaFocus)
+            {
+                if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+                {
+                    criticaFocus = false;
+                    dialogueText.text = "Enemy is knocked out, select another target.";
+                    yield return new WaitForSeconds(1f);
+                    dialogueText.text = "Select someone to attack!";
+                    MCMenu.SetActive(true);
+                    MCSpells.SetActive(false);
+                }
+                else
+                {
+                    GameManager.MCMagic -= MC.MCSpell21MagicConsumed;
+                    MCMagic.value = GameManager.MCMagic;
+                    //    StarterAnim.Play("StarterWindup");
+                    yield return new WaitForSeconds(2f);
+                    isDead = enemyUnit[enemyUnitSelected].CriticaFocus(MC.MCSpell21Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+
+                    throwRock = false;
+                    flippendo = false;
+                    pulsateSunt = false;
+                    stupefaciunt = false;
+                    incendio = false;
+                    incendioMaxima = false;
+                    avis = false;
+                    avisMaxima = false;
+                    glacies = false;
+                    minorCura = false;
+                    impetumSubsisto = false;
+                    augamenti = false;
+                    mothsDeorsum = false;
+                    mothsInteriore = false;
+                    internaCombustione = false;
+                    bombarda = false;
+                    bombardaMaxima = false;
+                    bombardaUltima = false;
+                    minusSanaCoetus = false;
+                    chorusPedes = false;
+                    criticaFocus = false;
+                    diffindo = false;
+                    diffindoMaxima = false;
+                    dialogueText.text = "The attack is successful!";
+                    yield return new WaitForSeconds(2f);
+
+                    //This checks to see if the Enemy is Dead or has HP remaining
+                    if (isDead)
+                    {
+                        RemoveCurrentEnemy();
+
+                        //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                        enemyCount--;
+
+                        enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                    }
+                    NextTurn();
+
+                }
+            }
+
+
+            if (diffindo)
+            {
+                if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+                {
+                    diffindo = false;
+                    dialogueText.text = "Enemy is knocked out, select another target.";
+                    yield return new WaitForSeconds(1f);
+                    dialogueText.text = "Select someone to attack!";
+                    MCMenu.SetActive(true);
+                    MCSpells.SetActive(false);
+                }
+                else
+                {
+                    GameManager.MCMagic -= MC.MCSpell22MagicConsumed;
+                    MCMagic.value = GameManager.MCMagic;
+                    //    StarterAnim.Play("StarterWindup");
+                    yield return new WaitForSeconds(2f);
+                    isDead = enemyUnit[enemyUnitSelected].Diffindo(MC.MCSpell22Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+
+                    throwRock = false;
+                    flippendo = false;
+                    pulsateSunt = false;
+                    stupefaciunt = false;
+                    incendio = false;
+                    incendioMaxima = false;
+                    avis = false;
+                    avisMaxima = false;
+                    glacies = false;
+                    minorCura = false;
+                    impetumSubsisto = false;
+                    augamenti = false;
+                    mothsDeorsum = false;
+                    mothsInteriore = false;
+                    internaCombustione = false;
+                    bombarda = false;
+                    bombardaMaxima = false;
+                    bombardaUltima = false;
+                    minusSanaCoetus = false;
+                    chorusPedes = false;
+                    criticaFocus = false;
+                    diffindo = false;
+                    diffindoMaxima = false;
+                    dialogueText.text = "The attack is successful!";
+                    yield return new WaitForSeconds(2f);
+
+                    //This checks to see if the Enemy is Dead or has HP remaining
+                    if (isDead)
+                    {
+                        RemoveCurrentEnemy();
+
+                        //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                        enemyCount--;
+
+                        enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                    }
+                    NextTurn();
+
+                }
+            }
+
+
+            if (diffindoMaxima)
+            {
+                if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+                {
+                    flippendo = false;
+                    dialogueText.text = "Enemy is knocked out, select another target.";
+                    yield return new WaitForSeconds(1f);
+                    dialogueText.text = "Select someone to attack!";
+                    MCMenu.SetActive(true);
+                    MCSpells.SetActive(false);
+                }
+                else
+                {
+                    GameManager.MCMagic -= MC.MCSpell23MagicConsumed;
+                    MCMagic.value = GameManager.MCMagic;
+                    //    StarterAnim.Play("StarterWindup");
+                    yield return new WaitForSeconds(2f);
+                    isDead = enemyUnit[enemyUnitSelected].DiffindoMaxima(MC.MCSpell23Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+
+                    throwRock = false;
+                    flippendo = false;
+                    pulsateSunt = false;
+                    stupefaciunt = false;
+                    incendio = false;
+                    incendioMaxima = false;
+                    avis = false;
+                    avisMaxima = false;
+                    glacies = false;
+                    minorCura = false;
+                    impetumSubsisto = false;
+                    augamenti = false;
+                    mothsDeorsum = false;
+                    mothsInteriore = false;
+                    internaCombustione = false;
+                    bombarda = false;
+                    bombardaMaxima = false;
+                    bombardaUltima = false;
+                    minusSanaCoetus = false;
+                    chorusPedes = false;
+                    criticaFocus = false;
+                    diffindo = false;
+                    diffindoMaxima = false;
+                    dialogueText.text = "The attack is successful!";
+                    yield return new WaitForSeconds(2f);
+
+                    //This checks to see if the Enemy is Dead or has HP remaining
+                    if (isDead)
+                    {
+                        RemoveCurrentEnemy();
+
+                        //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                        enemyCount--;
+
+                        enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                    }
+                    NextTurn();
+
+                }
+            }
+
         }
     }
+
+    #endregion 
     IEnumerator RhysAttack()
     {
         //To Do Damage Enemy
@@ -1455,7 +2681,6 @@ public class BattleSystem : MonoBehaviour
         //Paste in MCAttack here once the modifications have been made. 
         Debug.Log("I'm here");
     }
-        #endregion
 
     #region Enemy Attack
         IEnumerator EnemyTurn(int enemyIndex)
@@ -2062,13 +3287,32 @@ public class BattleSystem : MonoBehaviour
             MCMenu.SetActive(true);
             dialogueText.text = "[Player Name]: Choose an Action.";
 
-            fastball = false;
-            slider = false;
-            changeup = false;
-            curveball = false;
+            throwRock = false;
+            flippendo = false;
+            pulsateSunt = false;
+            stupefaciunt = false;
+            incendio = false;
+            incendioMaxima = false;
+            avis = false;
+            avisMaxima = false;
+            glacies = false;
+            minorCura = false;
+            impetumSubsisto = false;
+            augamenti = false;
+            mothsDeorsum = false;
+            mothsInteriore = false;
+            internaCombustione = false;
+            bombarda = false;
+            bombardaMaxima = false;
+            bombardaUltima = false;
+            minusSanaCoetus = false;
+            chorusPedes = false;
+            criticaFocus = false;
+            diffindo = false;
+            diffindoMaxima = false;
         }
     }
-
+/*
     void RhysTurn()
     {
         //    Camera.transform.position = .transform.position;
@@ -2242,6 +3486,7 @@ public class BattleSystem : MonoBehaviour
             curveball = false;
         }
     }
+*/
     #endregion
 
     public void OnPlayerTurnButton()
@@ -2286,8 +3531,453 @@ public class BattleSystem : MonoBehaviour
     }
 
     #region Player Pitch Selection (opens up confirm menu)
-    
+
     //Clean this up when you know what spells and who is casting what
+    #region MC Attack UI Buttons
+
+    public void MCFlippendo()
+    {
+        if (state == BattleState.MCTURN)
+        {
+            if (MC.MCSpell2MagicConsumed <= GameManager.MCMagic)
+            {
+                flippendo = true;
+
+                MCMenu.SetActive(true);
+                MCSpells.SetActive(false);
+                enemySelect = true;
+                MCConfirmMenu.SetActive(true);
+                MCSpells.SetActive(false);
+                MCMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
+    public void MCPulsateSunt()
+    {
+        if (state == BattleState.MCTURN)
+        {
+            if (MC.MCSpell3MagicConsumed <= GameManager.MCMagic)
+            {
+                pulsateSunt = true;
+
+                MCMenu.SetActive(true);
+                MCSpells.SetActive(false);
+                enemySelect = true;
+                MCConfirmMenu.SetActive(true);
+                MCSpells.SetActive(false);
+                MCMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
+    public void MCStupefaciunt()
+    {
+        if (state == BattleState.MCTURN)
+        {
+            if (MC.MCSpell3MagicConsumed <= GameManager.MCMagic)
+            {
+                stupefaciunt = true;
+
+                MCMenu.SetActive(true);
+                MCSpells.SetActive(false);
+                enemySelect = true;
+                MCConfirmMenu.SetActive(true);
+                MCSpells.SetActive(false);
+                MCMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
+    public void MCIncendio()
+    {
+        if (state == BattleState.MCTURN)
+        {
+            if (MC.MCSpell5MagicConsumed <= GameManager.MCMagic)
+            {
+                incendio = true;
+
+                MCMenu.SetActive(true);
+                MCSpells.SetActive(false);
+                enemySelect = true;
+                MCConfirmMenu.SetActive(true);
+                MCSpells.SetActive(false);
+                MCMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
+    public void MCIncendioMaxima()
+    {
+        if (state == BattleState.MCTURN)
+        {
+            if (MC.MCSpell6MagicConsumed <= GameManager.MCMagic)
+            {
+                incendioMaxima = true;
+
+                MCMenu.SetActive(true);
+                MCSpells.SetActive(false);
+                enemySelect = true;
+                MCConfirmMenu.SetActive(true);
+                MCSpells.SetActive(false);
+                MCMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
+    public void MCAvis()
+    {
+        if (state == BattleState.MCTURN)
+        {
+            if (MC.MCSpell7MagicConsumed <= GameManager.MCMagic)
+            {
+                avis = true;
+
+                MCMenu.SetActive(true);
+                MCSpells.SetActive(false);
+                enemySelect = true;
+                MCConfirmMenu.SetActive(true);
+                MCSpells.SetActive(false);
+                MCMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
+    public void MCAvisMaxima()
+    {
+        if (state == BattleState.MCTURN)
+        {
+            if (MC.MCSpell8MagicConsumed <= GameManager.MCMagic)
+            {
+                avisMaxima = true;
+
+                MCMenu.SetActive(true);
+                MCSpells.SetActive(false);
+                enemySelect = true;
+                MCConfirmMenu.SetActive(true);
+                MCSpells.SetActive(false);
+                MCMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
+    public void MCGlacies()
+    {
+        if (state == BattleState.MCTURN)
+        {
+            if (MC.MCSpell9MagicConsumed <= GameManager.MCMagic)
+            {
+                glacies = true;
+
+                MCMenu.SetActive(true);
+                MCSpells.SetActive(false);
+                enemySelect = true;
+                MCConfirmMenu.SetActive(true);
+                MCSpells.SetActive(false);
+                MCMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
+    public void MCMinorCura()
+    {
+        if (state == BattleState.MCTURN)
+        {
+            if (MC.MCSpell10MagicConsumed <= GameManager.MCMagic)
+            {
+                minorCura = true;
+
+                MCMenu.SetActive(true);
+                MCSpells.SetActive(false);
+                enemySelect = true;
+                MCConfirmMenu.SetActive(true);
+                MCSpells.SetActive(false);
+                MCMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
+    public void MCImpetumSubsisto()
+    {
+        if (state == BattleState.MCTURN)
+        {
+            if (MC.MCSpell11MagicConsumed <= GameManager.MCMagic)
+            {
+                impetumSubsisto = true;
+
+                MCMenu.SetActive(true);
+                MCSpells.SetActive(false);
+                enemySelect = true;
+                MCConfirmMenu.SetActive(true);
+                MCSpells.SetActive(false);
+                MCMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
+    public void MCAugamenti()
+    {
+        if (state == BattleState.MCTURN)
+        {
+            if (MC.MCSpell12MagicConsumed <= GameManager.MCMagic)
+            {
+                augamenti = true;
+
+                MCMenu.SetActive(true);
+                MCSpells.SetActive(false);
+                enemySelect = true;
+                MCConfirmMenu.SetActive(true);
+                MCSpells.SetActive(false);
+                MCMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
+    public void MCMothsDeorsum()
+    {
+        if (state == BattleState.MCTURN)
+        {
+            if (MC.MCSpell13MagicConsumed <= GameManager.MCMagic)
+            {
+                mothsDeorsum = true;
+
+                MCMenu.SetActive(true);
+                MCSpells.SetActive(false);
+                enemySelect = true;
+                MCConfirmMenu.SetActive(true);
+                MCSpells.SetActive(false);
+                MCMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
+    public void MCMothsInteriore()
+    {
+        if (state == BattleState.MCTURN)
+        {
+            if (MC.MCSpell14MagicConsumed <= GameManager.MCMagic)
+            {
+                mothsInteriore = true;
+
+                MCMenu.SetActive(true);
+                MCSpells.SetActive(false);
+                enemySelect = true;
+                MCConfirmMenu.SetActive(true);
+                MCSpells.SetActive(false);
+                MCMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
+    public void MCInternaCombustione()
+    {
+        if (state == BattleState.MCTURN)
+        {
+            if (MC.MCSpell15MagicConsumed <= GameManager.MCMagic)
+            {
+                internaCombustione = true;
+
+                MCMenu.SetActive(true);
+                MCSpells.SetActive(false);
+                enemySelect = true;
+                MCConfirmMenu.SetActive(true);
+                MCSpells.SetActive(false);
+                MCMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
+    public void MCBombarda()
+    {
+        if (state == BattleState.MCTURN)
+        {
+            if (MC.MCSpell16MagicConsumed <= GameManager.MCMagic)
+            {
+                bombarda = true;
+
+                MCMenu.SetActive(true);
+                MCSpells.SetActive(false);
+                enemySelect = true;
+                MCConfirmMenu.SetActive(true);
+                MCSpells.SetActive(false);
+                MCMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
+    public void MCBombardaMaxima()
+    {
+        if (state == BattleState.MCTURN)
+        {
+            if (MC.MCSpell17MagicConsumed <= GameManager.MCMagic)
+            {
+                bombardaMaxima = true;
+
+                MCMenu.SetActive(true);
+                MCSpells.SetActive(false);
+                enemySelect = true;
+                MCConfirmMenu.SetActive(true);
+                MCSpells.SetActive(false);
+                MCMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
+    public void MCBombardaUltima()
+    {
+        if (state == BattleState.MCTURN)
+        {
+            if (MC.MCSpell18MagicConsumed <= GameManager.MCMagic)
+            {
+                bombardaUltima = true;
+
+                MCMenu.SetActive(true);
+                MCSpells.SetActive(false);
+                enemySelect = true;
+                MCConfirmMenu.SetActive(true);
+                MCSpells.SetActive(false);
+                MCMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
+    public void MCMinusSanaCoetus()
+    {
+        if (state == BattleState.MCTURN)
+        {
+            if (MC.MCSpell19MagicConsumed <= GameManager.MCMagic)
+            {
+                minusSanaCoetus = true;
+
+                MCMenu.SetActive(true);
+                MCSpells.SetActive(false);
+                enemySelect = true;
+                MCConfirmMenu.SetActive(true);
+                MCSpells.SetActive(false);
+                MCMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
+    public void MCChorusPedes()
+    {
+        if (state == BattleState.MCTURN)
+        {
+            if (MC.MCSpell20MagicConsumed <= GameManager.MCMagic)
+            {
+                chorusPedes = true;
+
+                MCMenu.SetActive(true);
+                MCSpells.SetActive(false);
+                enemySelect = true;
+                MCConfirmMenu.SetActive(true);
+                MCSpells.SetActive(false);
+                MCMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
+    public void MCCriticaFocus()
+    {
+        if (state == BattleState.MCTURN)
+        {
+            if (MC.MCSpell21MagicConsumed <= GameManager.MCMagic)
+            {
+                criticaFocus = true;
+
+                MCMenu.SetActive(true);
+                MCSpells.SetActive(false);
+                enemySelect = true;
+                MCConfirmMenu.SetActive(true);
+                MCSpells.SetActive(false);
+                MCMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
+    public void MCDiffindo()
+    {
+        if (state == BattleState.MCTURN)
+        {
+            if (MC.MCSpell22MagicConsumed <= GameManager.MCMagic)
+            {
+                diffindo = true;
+
+                MCMenu.SetActive(true);
+                MCSpells.SetActive(false);
+                enemySelect = true;
+                MCConfirmMenu.SetActive(true);
+                MCSpells.SetActive(false);
+                MCMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
+    public void MCDiffindoMaxima()
+    {
+        if (state == BattleState.MCTURN)
+        {
+            if (MC.MCSpell2MagicConsumed <= GameManager.MCMagic)
+            {
+                flippendo = true;
+
+                MCMenu.SetActive(true);
+                MCSpells.SetActive(false);
+                enemySelect = true;
+                MCConfirmMenu.SetActive(true);
+                MCSpells.SetActive(false);
+                MCMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
+    #endregion
+    /*
+
     public void OnSpell1Button()
     {
         if (state == BattleState.MCTURN)
@@ -2408,11 +4098,44 @@ public class BattleSystem : MonoBehaviour
         
 
     }
-
+    */
     public void OnCancelButton()
     {
-        MCMenu.SetActive(true);
-        MCSpells.SetActive(false);
+        if (state == BattleState.MCTURN)
+        {
+            MCMenu.SetActive(true);
+            MCSpells.SetActive(false);
+        }
+
+        if (state == BattleState.RHYSTURN)
+        {
+            RhysMenu.SetActive(true);
+            RhysSpells.SetActive(false);
+        }
+
+        if (state == BattleState.JAMEELTURN)
+        {
+            JameelMenu.SetActive(true);
+            JameelSpells.SetActive(false);
+        }
+
+        if (state == BattleState.HARPERTURN)
+        {
+            HarperMenu.SetActive(true);
+            HarperSpells.SetActive(false);
+        }
+
+        if (state == BattleState.SKYETURN)
+        {
+            SkyeMenu.SetActive(true);
+            SkyeSpells.SetActive(false);
+        }
+
+        if (state == BattleState.SULLIVANTURN)
+        {
+            SullivanMenu.SetActive(true);
+            SullivanSpells.SetActive(false);
+        }
     }
     #endregion
 

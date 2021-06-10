@@ -28,9 +28,55 @@ public class Unit : MonoBehaviour
     public int maxMoney;
 
     //Build these and rename these later based on the player
-    public int Spell1Damage;
-    public int Spell1MagicConsumed;
+    #region MC Attacks
+    public int MCSpell1Damage;
+    public int MCSpell1MagicConsumed;
+    public int MCSpell2Damage;
+    public int MCSpell2MagicConsumed;
+    public int MCSpell3Damage;
+    public int MCSpell3MagicConsumed;
+    public int MCSpell4Damage;
+    public int MCSpell4MagicConsumed;
+    public int MCSpell5Damage;
+    public int MCSpell5MagicConsumed;
+    public int MCSpell6Damage;
+    public int MCSpell6MagicConsumed;
+    public int MCSpell7Damage;
+    public int MCSpell7MagicConsumed;
+    public int MCSpell8Damage;
+    public int MCSpell8MagicConsumed;
+    public int MCSpell9Damage;
+    public int MCSpell9MagicConsumed;
+    public int MCSpell10Damage;
+    public int MCSpell10MagicConsumed;
+    public int MCSpell11Damage;
+    public int MCSpell11MagicConsumed;
+    public int MCSpell12Damage;
+    public int MCSpell12MagicConsumed;
+    public int MCSpell13Damage;
+    public int MCSpell13MagicConsumed;
+    public int MCSpell14Damage;
+    public int MCSpell14MagicConsumed;
+    public int MCSpell15Damage;
+    public int MCSpell15MagicConsumed;
+    public int MCSpell16Damage;
+    public int MCSpell16MagicConsumed;
+    public int MCSpell17Damage;
+    public int MCSpell17MagicConsumed;
+    public int MCSpell18Damage;
+    public int MCSpell18MagicConsumed;
+    public int MCSpell19Damage;
+    public int MCSpell19MagicConsumed;
+    public int MCSpell20Damage;
+    public int MCSpell20MagicConsumed;
+    public int MCSpell21Damage;
+    public int MCSpell21MagicConsumed;
+    public int MCSpell22Damage;
+    public int MCSpell22MagicConsumed;
+    public int MCSpell23Damage;
+    public int MCSpell23MagicConsumed;
 
+    #endregion
     //enemyAttack
     public int minAttackAvil, maxAttackAvil;
     int attackToDo;
@@ -97,9 +143,569 @@ public class Unit : MonoBehaviour
             //  anim.Play("Armature|Damage");
             return false;
         }
-
-
     }
+
+    #region MC Attacks
+    public bool ThrowRock(int dmg)
+    {
+        Health.value = currentHP / maxHP;
+
+        currentHP -= dmg;
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        Health.value = (currentHP / maxHP);
+        DamageUI.text = "-" + dmg.ToString();
+
+        Health.value = (currentHP / maxHP);
+        Debug.Log(Health.value);
+        Debug.Log(currentHP + "/" + maxHP);
+        StartCoroutine(ClearText());
+
+        if (currentHP <= 0)
+        {
+            //  anim.Play("Armature|Downed");
+            return true;
+        }
+
+        else
+        {
+            //  anim.Play("Armature|Damage");
+            return false;
+        }
+    }
+
+    public bool Flippendo(int dmg)
+    {
+        Health.value = currentHP / maxHP;
+
+        currentHP -= dmg;
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        Health.value = (currentHP / maxHP);
+        DamageUI.text = "-" + dmg.ToString();
+
+        Health.value = (currentHP / maxHP);
+        StartCoroutine(ClearText());
+
+        if (currentHP <= 0)
+        {
+            //  anim.Play("Armature|Downed");
+            return true;
+        }
+
+        else
+        {
+            //  anim.Play("Armature|Damage");
+            return false;
+        }
+    }
+    public bool PulsateSunt(int dmg)
+    {
+        Health.value = currentHP / maxHP;
+
+        currentHP -= dmg;
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        Health.value = (currentHP / maxHP);
+        DamageUI.text = "-" + dmg.ToString();
+
+        Health.value = (currentHP / maxHP);
+        StartCoroutine(ClearText());
+
+        if (currentHP <= 0)
+        {
+            //  anim.Play("Armature|Downed");
+            return true;
+        }
+
+        else
+        {
+            //  anim.Play("Armature|Damage");
+            return false;
+        }
+    }
+    public bool Stupefaciunt(int dmg)
+    {
+        Health.value = currentHP / maxHP;
+
+        currentHP -= dmg;
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        Health.value = (currentHP / maxHP);
+        DamageUI.text = "-" + dmg.ToString();
+
+        Health.value = (currentHP / maxHP);
+        StartCoroutine(ClearText());
+
+        if (currentHP <= 0)
+        {
+            //  anim.Play("Armature|Downed");
+            return true;
+        }
+
+        else
+        {
+            //  anim.Play("Armature|Damage");
+            return false;
+        }
+    }
+    public bool Incendio(int dmg)
+    {
+        Health.value = currentHP / maxHP;
+
+        currentHP -= dmg;
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        Health.value = (currentHP / maxHP);
+        DamageUI.text = "-" + dmg.ToString();
+
+        Health.value = (currentHP / maxHP);
+        StartCoroutine(ClearText());
+
+        if (currentHP <= 0)
+        {
+            //  anim.Play("Armature|Downed");
+            return true;
+        }
+
+        else
+        {
+            //  anim.Play("Armature|Damage");
+            return false;
+        }
+    }
+    public bool IncendioMaxima(int dmg)
+    {
+        Health.value = currentHP / maxHP;
+
+        currentHP -= dmg;
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        Health.value = (currentHP / maxHP);
+        DamageUI.text = "-" + dmg.ToString();
+
+        Health.value = (currentHP / maxHP);
+        StartCoroutine(ClearText());
+
+        if (currentHP <= 0)
+        {
+            //  anim.Play("Armature|Downed");
+            return true;
+        }
+
+        else
+        {
+            //  anim.Play("Armature|Damage");
+            return false;
+        }
+    }
+    public bool Avis(int dmg)
+    {
+        Health.value = currentHP / maxHP;
+
+        currentHP -= dmg;
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        Health.value = (currentHP / maxHP);
+        DamageUI.text = "-" + dmg.ToString();
+
+        Health.value = (currentHP / maxHP);
+        StartCoroutine(ClearText());
+
+        if (currentHP <= 0)
+        {
+            //  anim.Play("Armature|Downed");
+            return true;
+        }
+
+        else
+        {
+            //  anim.Play("Armature|Damage");
+            return false;
+        }
+    }
+    public bool AvisMaxima(int dmg)
+    {
+        Health.value = currentHP / maxHP;
+
+        currentHP -= dmg;
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        Health.value = (currentHP / maxHP);
+        DamageUI.text = "-" + dmg.ToString();
+
+        Health.value = (currentHP / maxHP);
+        StartCoroutine(ClearText());
+
+        if (currentHP <= 0)
+        {
+            //  anim.Play("Armature|Downed");
+            return true;
+        }
+
+        else
+        {
+            //  anim.Play("Armature|Damage");
+            return false;
+        }
+    }
+    public bool Glacius(int dmg)
+    {
+        Health.value = currentHP / maxHP;
+
+        currentHP -= dmg;
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        Health.value = (currentHP / maxHP);
+        DamageUI.text = "-" + dmg.ToString();
+
+        Health.value = (currentHP / maxHP);
+        StartCoroutine(ClearText());
+
+        if (currentHP <= 0)
+        {
+            //  anim.Play("Armature|Downed");
+            return true;
+        }
+
+        else
+        {
+            //  anim.Play("Armature|Damage");
+            return false;
+        }
+    }
+    public bool MinorCura(int dmg)
+    {
+        Health.value = currentHP / maxHP;
+
+        currentHP -= dmg;
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        Health.value = (currentHP / maxHP);
+        DamageUI.text = "-" + dmg.ToString();
+
+        Health.value = (currentHP / maxHP);
+        StartCoroutine(ClearText());
+
+        if (currentHP <= 0)
+        {
+            //  anim.Play("Armature|Downed");
+            return true;
+        }
+
+        else
+        {
+            //  anim.Play("Armature|Damage");
+            return false;
+        }
+    }
+    public bool ImpetumSubsisto(int dmg)
+    {
+        Health.value = currentHP / maxHP;
+
+        currentHP -= dmg;
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        Health.value = (currentHP / maxHP);
+        DamageUI.text = "-" + dmg.ToString();
+
+        Health.value = (currentHP / maxHP);
+        StartCoroutine(ClearText());
+
+        if (currentHP <= 0)
+        {
+            //  anim.Play("Armature|Downed");
+            return true;
+        }
+
+        else
+        {
+            //  anim.Play("Armature|Damage");
+            return false;
+        }
+    }
+    public bool Augamenti(int dmg)
+    {
+        Health.value = currentHP / maxHP;
+
+        currentHP -= dmg;
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        Health.value = (currentHP / maxHP);
+        DamageUI.text = "-" + dmg.ToString();
+
+        Health.value = (currentHP / maxHP);
+        StartCoroutine(ClearText());
+
+        if (currentHP <= 0)
+        {
+            //  anim.Play("Armature|Downed");
+            return true;
+        }
+
+        else
+        {
+            //  anim.Play("Armature|Damage");
+            return false;
+        }
+    }
+    public bool MothsDeorsum(int dmg)
+    {
+        Health.value = currentHP / maxHP;
+
+        currentHP -= dmg;
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        Health.value = (currentHP / maxHP);
+        DamageUI.text = "-" + dmg.ToString();
+
+        Health.value = (currentHP / maxHP);
+        StartCoroutine(ClearText());
+
+        if (currentHP <= 0)
+        {
+            //  anim.Play("Armature|Downed");
+            return true;
+        }
+
+        else
+        {
+            //  anim.Play("Armature|Damage");
+            return false;
+        }
+    }
+    public bool MothsInteriore(int dmg)
+    {
+        Health.value = currentHP / maxHP;
+
+        currentHP -= dmg;
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        Health.value = (currentHP / maxHP);
+        DamageUI.text = "-" + dmg.ToString();
+
+        Health.value = (currentHP / maxHP);
+        StartCoroutine(ClearText());
+
+        if (currentHP <= 0)
+        {
+            //  anim.Play("Armature|Downed");
+            return true;
+        }
+
+        else
+        {
+            //  anim.Play("Armature|Damage");
+            return false;
+        }
+    }
+    public bool InternaCombustione(int dmg)
+    {
+        Health.value = currentHP / maxHP;
+
+        currentHP -= dmg;
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        Health.value = (currentHP / maxHP);
+        DamageUI.text = "-" + dmg.ToString();
+
+        Health.value = (currentHP / maxHP);
+        StartCoroutine(ClearText());
+
+        if (currentHP <= 0)
+        {
+            //  anim.Play("Armature|Downed");
+            return true;
+        }
+
+        else
+        {
+            //  anim.Play("Armature|Damage");
+            return false;
+        }
+    }
+    public bool Bombarda(int dmg)
+    {
+        Health.value = currentHP / maxHP;
+
+        currentHP -= dmg;
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        Health.value = (currentHP / maxHP);
+        DamageUI.text = "-" + dmg.ToString();
+
+        Health.value = (currentHP / maxHP);
+        StartCoroutine(ClearText());
+
+        if (currentHP <= 0)
+        {
+            //  anim.Play("Armature|Downed");
+            return true;
+        }
+
+        else
+        {
+            //  anim.Play("Armature|Damage");
+            return false;
+        }
+    }
+    public bool BombardaMaxima(int dmg)
+    {
+        Health.value = currentHP / maxHP;
+
+        currentHP -= dmg;
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        Health.value = (currentHP / maxHP);
+        DamageUI.text = "-" + dmg.ToString();
+
+        Health.value = (currentHP / maxHP);
+        StartCoroutine(ClearText());
+
+        if (currentHP <= 0)
+        {
+            //  anim.Play("Armature|Downed");
+            return true;
+        }
+
+        else
+        {
+            //  anim.Play("Armature|Damage");
+            return false;
+        }
+    }
+    public bool BombardaUltima(int dmg)
+    {
+        Health.value = currentHP / maxHP;
+
+        currentHP -= dmg;
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        Health.value = (currentHP / maxHP);
+        DamageUI.text = "-" + dmg.ToString();
+
+        Health.value = (currentHP / maxHP);
+
+        StartCoroutine(ClearText());
+
+        if (currentHP <= 0)
+        {
+            //  anim.Play("Armature|Downed");
+            return true;
+        }
+
+        else
+        {
+            //  anim.Play("Armature|Damage");
+            return false;
+        }
+    }
+    public bool MinusSanaCoetus(int dmg)
+    {
+        Health.value = currentHP / maxHP;
+
+        currentHP -= dmg;
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        Health.value = (currentHP / maxHP);
+        DamageUI.text = "-" + dmg.ToString();
+
+        Health.value = (currentHP / maxHP);
+        StartCoroutine(ClearText());
+
+        if (currentHP <= 0)
+        {
+            //  anim.Play("Armature|Downed");
+            return true;
+        }
+
+        else
+        {
+            //  anim.Play("Armature|Damage");
+            return false;
+        }
+    }
+
+    public bool ChorusPedes(int dmg)
+    {
+        Health.value = currentHP / maxHP;
+
+        currentHP -= dmg;
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        Health.value = (currentHP / maxHP);
+        DamageUI.text = "-" + dmg.ToString();
+
+        Health.value = (currentHP / maxHP);
+        StartCoroutine(ClearText());
+
+        if (currentHP <= 0)
+        {
+            //  anim.Play("Armature|Downed");
+            return true;
+        }
+
+        else
+        {
+            //  anim.Play("Armature|Damage");
+            return false;
+        }
+    }
+    public bool CriticaFocus(int dmg)
+    {
+        Health.value = currentHP / maxHP;
+
+        currentHP -= dmg;
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        Health.value = (currentHP / maxHP);
+        DamageUI.text = "-" + dmg.ToString();
+
+        Health.value = (currentHP / maxHP);
+        StartCoroutine(ClearText());
+
+        if (currentHP <= 0)
+        {
+            //  anim.Play("Armature|Downed");
+            return true;
+        }
+
+        else
+        {
+            //  anim.Play("Armature|Damage");
+            return false;
+        }
+    }
+    public bool Diffindo(int dmg)
+    {
+        Health.value = currentHP / maxHP;
+
+        currentHP -= dmg;
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        Health.value = (currentHP / maxHP);
+        DamageUI.text = "-" + dmg.ToString();
+
+        Health.value = (currentHP / maxHP);
+        StartCoroutine(ClearText());
+
+        if (currentHP <= 0)
+        {
+            //  anim.Play("Armature|Downed");
+            return true;
+        }
+
+        else
+        {
+            //  anim.Play("Armature|Damage");
+            return false;
+        }
+    }
+    public bool DiffindoMaxima(int dmg)
+    {
+        Health.value = currentHP / maxHP;
+
+        currentHP -= dmg;
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        Health.value = (currentHP / maxHP);
+        DamageUI.text = "-" + dmg.ToString();
+
+        Health.value = (currentHP / maxHP);
+        StartCoroutine(ClearText());
+
+        if (currentHP <= 0)
+        {
+            //  anim.Play("Armature|Downed");
+            return true;
+        }
+
+        else
+        {
+            //  anim.Play("Armature|Damage");
+            return false;
+        }
+    }
+
+
+    #endregion
 
     public void Heal(int amount)
     {
