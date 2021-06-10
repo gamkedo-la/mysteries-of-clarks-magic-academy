@@ -95,12 +95,12 @@ public class GameManager : MonoBehaviour
         //This is for testing for multiple battle system - please turn this off when you can identify the party count
         //MC is always in the party
         PartyCount++;
-        SullivanInParty = true;
+       /* SullivanInParty = true;
         PartyCount++;
         SkyeInParty = true;
         PartyCount++;
         HarperInParty = true;
-        PartyCount++;
+        PartyCount++;*/
         if (PartyCount > 4)
         {
             Debug.LogError("The party contains more than 4 people");

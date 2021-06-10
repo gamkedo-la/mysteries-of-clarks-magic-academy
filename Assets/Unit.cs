@@ -41,9 +41,22 @@ public class Unit : MonoBehaviour
     public Text DamageUI;
     public Slider Health;
 
+    public bool isEnemy;
+
     private void Start()
     {
-        DamageUI.text = "";
+        if (isEnemy)
+        {
+            Health.maxValue = maxHP;
+        }
+    }
+
+    private void Update()
+    {
+        if (isEnemy)
+        {
+            Health.value = currentHP;
+        }
     }
 
     public bool TakeDamage(int dmg)
@@ -61,23 +74,27 @@ public class Unit : MonoBehaviour
 
     public bool TakeDamageSpell1(int dmg)
     {
+        Health.value = currentHP / maxHP;
+
         currentHP -= dmg ;
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-
+        Health.value = (currentHP / maxHP);
         DamageUI.text = "-" + dmg.ToString();
+
+        Health.value = (currentHP / maxHP);
+        Debug.Log(Health.value);
+        Debug.Log(currentHP + "/" + maxHP);
+        StartCoroutine(ClearText());
+
         if (currentHP <= 0)
         {
             //  anim.Play("Armature|Downed");
-            Health.value = currentHP / maxHP;
-            StartCoroutine(ClearText());
             return true;
         }
 
         else
         {
-            //  anim.Play("Armature|Downed");
-            Health.value = currentHP / maxHP;
-            StartCoroutine(ClearText());
+            //  anim.Play("Armature|Damage");
             return false;
         }
 
@@ -96,11 +113,13 @@ public class Unit : MonoBehaviour
     //This is for the Enemys to reference for their choice of attack (start of the AI system)
     public void DetermineAttack()
     {
+        SoftPunch();
+        /*
         attackToDo = Random.Range(minAttackAvil, maxAttackAvil);
 
         if (attackToDo == 0)
             //using this as an example
-        { SoftPunch(); }
+        { SoftPunch(); }*/
         #region Attacks from Strike Out - To Be Replaced
         /*
                 if (attackToDo == 1)

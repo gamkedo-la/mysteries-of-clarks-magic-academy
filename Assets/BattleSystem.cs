@@ -195,8 +195,10 @@ public class BattleSystem : MonoBehaviour
 
     private void Start()
     {
-        Debug.LogWarning("The GameManager needs to be in this scene for everything to work");
-
+        if (GameObject.Find("GameManager") == null)
+        {
+            Debug.LogWarning("The GameManager needs to be in this scene for everything to work");
+        }
         //   InventoryManage = GameObject.Find("Inventory");
 
         MCDamageUI.text = "".ToString();
@@ -325,19 +327,33 @@ public class BattleSystem : MonoBehaviour
         SkyeDead = false;
         SullivanDead = false;
 
-        MCHealth.value = (GameManager.MCHealth / GameManager.MCMaxHealth);
-        RhysHealth.value = (GameManager.RhysHealth / GameManager.RhysMaxHealth);
-        JameelHealth.value = (GameManager.JameelHealth / GameManager.JameelMaxHealth);
-        HarperHealth.value = (GameManager.HarperHealth / GameManager.HarperMaxHealth);
-        SkyeHealth.value = (GameManager.SkyeHealth / GameManager.SkyeMaxHealth);
-        SullivanHealth.value = (GameManager.SullivanHealth / GameManager.SullivanMaxHealth);
+        MCHealth.maxValue = GameManager.MCMaxHealth;
+        RhysHealth.maxValue = GameManager.RhysMaxHealth;
+        JameelHealth.maxValue = GameManager.JameelMaxHealth;
+        HarperHealth.maxValue = GameManager.HarperMaxHealth;
+        SkyeHealth.maxValue = GameManager.SkyeMaxHealth;
+        SullivanHealth.maxValue = GameManager.SullivanMaxHealth;
 
-        MCMagic.value = (GameManager.MCMagic / GameManager.MCMaxMagic);
-        RhysMagic.value = (GameManager.RhysMagic / GameManager.RhysMaxMagic);
-        JameelMagic.value = (GameManager.JameelMagic / GameManager.JameelMaxMagic);
-        HarperMagic.value = (GameManager.HarperMagic / GameManager.HarperMaxMagic);
-        SkyeMagic.value = (GameManager.SkyeMagic / GameManager.SkyeMaxMagic);
-        SullivanMagic.value = (GameManager.SullivanMagic / GameManager.SullivanMaxMagic);
+        MCMagic.maxValue = GameManager.MCMaxMagic;
+        RhysMagic.maxValue = GameManager.RhysMaxMagic;
+        JameelMagic.maxValue = GameManager.JameelMaxMagic;
+        HarperMagic.maxValue = GameManager.HarperMaxMagic;
+        SkyeMagic.maxValue =  GameManager.SkyeMaxMagic;
+        SullivanMagic.maxValue =  GameManager.SullivanMaxMagic;
+
+        MCHealth.value = GameManager.MCHealth ;
+        RhysHealth.value = GameManager.RhysHealth ;
+        JameelHealth.value = GameManager.JameelHealth ;
+        HarperHealth.value = GameManager.HarperHealth ;
+        SkyeHealth.value = GameManager.SkyeHealth ;
+        SullivanHealth.value = GameManager.SullivanHealth;
+
+        MCMagic.value = GameManager.MCMagic ;
+        RhysMagic.value = GameManager.RhysMagic ;
+        JameelMagic.value = GameManager.JameelMagic ;
+        HarperMagic.value = GameManager.HarperMagic;
+        SkyeMagic.value = GameManager.SkyeMagic ;
+        SullivanMagic.value = GameManager.SullivanMagic;
 
     //    ItemMenu = GameObject.Find("Inventory");
         GameManagerObject = GameObject.Find("GameManager");
@@ -953,19 +969,19 @@ public class BattleSystem : MonoBehaviour
         MCSpells.SetActive(false);
         ItemMenu.transform.localPosition = new Vector3(233, -900, 0);
 
-        MCHealth.value = (GameManager.MCHealth / GameManager.MCMaxHealth);
-        RhysHealth.value = (GameManager.RhysHealth / GameManager.RhysMaxHealth);
-        JameelHealth.value = (GameManager.JameelHealth / GameManager.JameelMaxHealth);
-        HarperHealth.value = (GameManager.HarperHealth / GameManager.HarperMaxHealth);
-        SkyeHealth.value = (GameManager.SkyeHealth / GameManager.SkyeMaxHealth);
-        SullivanHealth.value = (GameManager.SullivanHealth / GameManager.SullivanMaxHealth);
+        MCHealth.value = GameManager.MCHealth ;
+        RhysHealth.value = GameManager.RhysHealth ;
+        JameelHealth.value = GameManager.JameelHealth;
+        HarperHealth.value = GameManager.HarperHealth ;
+        SkyeHealth.value = GameManager.SkyeHealth;
+        SullivanHealth.value = GameManager.SullivanHealth ;
 
-        MCMagic.value = (GameManager.MCMagic / GameManager.MCMaxMagic);
-        RhysMagic.value = (GameManager.RhysMagic / GameManager.RhysMaxMagic);
-        JameelMagic.value = (GameManager.JameelMagic / GameManager.JameelMaxMagic);
-        HarperMagic.value = (GameManager.HarperMagic / GameManager.HarperMaxMagic);
-        SkyeMagic.value = (GameManager.SkyeMagic / GameManager.SkyeMaxMagic);
-        SullivanMagic.value = (GameManager.SullivanMagic / GameManager.SullivanMaxMagic);
+        MCMagic.value = GameManager.MCMagic ;
+        RhysMagic.value = GameManager.RhysMagic ;
+        JameelMagic.value = GameManager.JameelMagic ;
+        HarperMagic.value = GameManager.HarperMagic ;
+        SkyeMagic.value = GameManager.SkyeMagic ;
+        SullivanMagic.value = GameManager.SullivanMagic ;
 
         //If the player is below 20% health, they can play an animation to show they are injured. As is, it is a little buggy.
         /*
@@ -1252,7 +1268,7 @@ public class BattleSystem : MonoBehaviour
                 else
                 {
                     GameManager.MCMagic -= MC.Spell1MagicConsumed;
-                    MCMagic.value = GameManager.MCMagic / GameManager.MCMaxMagic;
+                    MCMagic.value = GameManager.MCMagic ;
                     //    StarterAnim.Play("StarterWindup");
                     yield return new WaitForSeconds(2f);
                     isDead = enemyUnit[enemyUnitSelected].TakeDamageSpell1(MC.Spell1Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
@@ -1292,7 +1308,7 @@ public class BattleSystem : MonoBehaviour
                 else
                 {
                     GameManager.MCMagic -= MC.Spell1MagicConsumed;
-                    MCMagic.value = GameManager.MCMagic / GameManager.MCMaxMagic;
+                    MCMagic.value = GameManager.MCMagic;
                     //    StarterAnim.Play("StarterWindup");
                     yield return new WaitForSeconds(2f);
                     isDead = enemyUnit[enemyUnitSelected].TakeDamageSpell1(MC.Spell1Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
@@ -1332,7 +1348,7 @@ public class BattleSystem : MonoBehaviour
                 else
                 {
                     GameManager.MCMagic -= MC.Spell1MagicConsumed;
-                    MCMagic.value = GameManager.MCMagic / GameManager.MCMaxMagic;
+                    MCMagic.value = GameManager.MCMagic ;
                     //    StarterAnim.Play("StarterWindup");
                     yield return new WaitForSeconds(2f);
                     isDead = enemyUnit[enemyUnitSelected].TakeDamageSpell1(MC.Spell1Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
@@ -1444,6 +1460,7 @@ public class BattleSystem : MonoBehaviour
     #region Enemy Attack
         IEnumerator EnemyTurn(int enemyIndex)
         {
+            
             Camera.transform.position = enemyCam.transform.position;
             Camera.transform.LookAt(MC.transform.position);
         // GameManager.Instance.DebugBall.transform.position = enemyUnit[enemyIndex].transform.position + Vector3.up * GameManager.Instance.DebugBallHeight;
@@ -1709,7 +1726,7 @@ public class BattleSystem : MonoBehaviour
                             if (isDead)
                             {
                             GameManager.MCHealth -= enemyUnit[enemyUnitSelected].enemyDamage;
-                            MCHealth.value = (GameManager.MCHealth / GameManager.MCMaxHealth);
+                            MCHealth.value = GameManager.MCHealth ;
                             MCDead = true;
                             //   MCAnim.SetBool("isDead", true);
                             Debug.Log("Game Over because Main Character died");
@@ -1722,7 +1739,7 @@ public class BattleSystem : MonoBehaviour
                              //   MCAnim.Play("Armature|Oof");
                                 MCDamageUI.text = "-" + enemyUnit[enemyUnitSelected].enemyDamage.ToString();
                                 GameManager.MCHealth -= enemyUnit[enemyUnitSelected].enemyDamage;
-                                MCHealth.value = (GameManager.MCHealth / GameManager.MCMaxHealth);
+                                MCHealth.value = GameManager.MCHealth ;
                                 yield return new WaitForSeconds(2f);
 
                             }
@@ -1753,7 +1770,7 @@ public class BattleSystem : MonoBehaviour
                             if (isDead)
                             {
                                 GameManager.RhysHealth -= enemyUnit[enemyUnitSelected].enemyDamage;
-                                RhysHealth.value = (GameManager.RhysHealth / GameManager.RhysMaxHealth);
+                                RhysHealth.value = GameManager.RhysHealth ;
                                 RhysDead = true;
 
                                 playerTurnOrder.Remove(CharacterIdentifier.Rhys);
@@ -1772,7 +1789,7 @@ public class BattleSystem : MonoBehaviour
                                  //RhysAnim.Play("Armature|Oof");
                                 RhysDamageUI.text = "-" + enemyUnit[enemyUnitSelected].enemyDamage.ToString();
                                 GameManager.RhysHealth -= enemyUnit[enemyUnitSelected].enemyDamage;
-                            RhysHealth.value = (GameManager.RhysHealth / GameManager.RhysMaxHealth);
+                            RhysHealth.value = GameManager.RhysHealth ;
                                 yield return new WaitForSeconds(2f);
 
                             }
@@ -1805,7 +1822,7 @@ public class BattleSystem : MonoBehaviour
                             if (isDead)
                             {
                                 GameManager.JameelHealth -= enemyUnit[enemyUnitSelected].enemyDamage;
-                                JameelHealth.value = (GameManager.JameelHealth / GameManager.JameelMaxHealth);
+                                JameelHealth.value = GameManager.JameelHealth;
                                 JameelDead = true;
 
                                 playerTurnOrder.Remove(CharacterIdentifier.Jameel);
@@ -1824,7 +1841,7 @@ public class BattleSystem : MonoBehaviour
                                 //HarperAnim.Play("Armature|Oof");
                                 JameelDamageUI.text = "-" + enemyUnit[enemyUnitSelected].enemyDamage.ToString();
                                 GameManager.JameelHealth -= enemyUnit[enemyUnitSelected].enemyDamage;
-                                JameelHealth.value = (GameManager.JameelHealth / GameManager.JameelMaxHealth);
+                                JameelHealth.value = GameManager.JameelHealth ;
                                 yield return new WaitForSeconds(2f);
 
                             }
@@ -1857,7 +1874,7 @@ public class BattleSystem : MonoBehaviour
                             if (isDead)
                             {
                                 GameManager.HarperHealth -= enemyUnit[enemyUnitSelected].enemyDamage;
-                                HarperHealth.value = (GameManager.HarperHealth / GameManager.HarperMaxHealth);
+                                HarperHealth.value = GameManager.HarperHealth ;
                                 HarperDead = true;
 
                                 playerTurnOrder.Remove(CharacterIdentifier.Harper);
@@ -1876,7 +1893,7 @@ public class BattleSystem : MonoBehaviour
                                 //HarperAnim.Play("Armature|Oof");
                                 HarperDamageUI.text = "-" + enemyUnit[enemyUnitSelected].enemyDamage.ToString();
                                 GameManager.HarperHealth -= enemyUnit[enemyUnitSelected].enemyDamage;
-                                HarperHealth.value = (GameManager.HarperHealth / GameManager.HarperMaxHealth);
+                                HarperHealth.value = GameManager.HarperHealth ;
                                 yield return new WaitForSeconds(2f);
 
                             }
@@ -1909,7 +1926,7 @@ public class BattleSystem : MonoBehaviour
                             if (isDead)
                             {
                                 GameManager.SkyeHealth -= enemyUnit[enemyUnitSelected].enemyDamage;
-                                SkyeHealth.value = (GameManager.SkyeHealth / GameManager.SkyeMaxHealth);
+                                SkyeHealth.value = GameManager.SkyeHealth ;
                                 SkyeDead = true;
 
                                 playerTurnOrder.Remove(CharacterIdentifier.Skye);
@@ -1928,7 +1945,7 @@ public class BattleSystem : MonoBehaviour
                                 //SkyeAnim.Play("Armature|Oof");
                                 SkyeDamageUI.text = "-" + enemyUnit[enemyUnitSelected].enemyDamage.ToString();
                                         GameManager.SkyeHealth -= enemyUnit[enemyUnitSelected].enemyDamage;
-                                SkyeHealth.value = (GameManager.SkyeHealth / GameManager.SkyeMaxHealth);
+                                SkyeHealth.value = GameManager.SkyeHealth ;
                                 yield return new WaitForSeconds(2f);
 
                             }
@@ -1961,7 +1978,7 @@ public class BattleSystem : MonoBehaviour
                             if (isDead)
                             {
                                 GameManager.SullivanHealth -= enemyUnit[enemyUnitSelected].enemyDamage;
-                                SullivanHealth.value = (GameManager.SullivanHealth / GameManager.SullivanMaxHealth);
+                                SullivanHealth.value = GameManager.SullivanHealth ;
                                 SullivanDead = true;
 
                                 playerTurnOrder.Remove(CharacterIdentifier.Sullivan);
@@ -1980,7 +1997,7 @@ public class BattleSystem : MonoBehaviour
                                 //SullivanAnim.Play("Armature|Oof");
                                 SullivanDamageUI.text = "-" + enemyUnit[enemyUnitSelected].enemyDamage.ToString();
                                 GameManager.SullivanHealth -= enemyUnit[enemyUnitSelected].enemyDamage;
-                                SullivanHealth.value = (GameManager.SullivanHealth / GameManager.SullivanMaxHealth);
+                                SullivanHealth.value = GameManager.SullivanHealth;
                                 yield return new WaitForSeconds(2f);
 
                             }
