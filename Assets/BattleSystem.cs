@@ -176,6 +176,54 @@ public class BattleSystem : MonoBehaviour
     bool jameelChorusPedes;
     #endregion
 
+    #region HarperAttacks
+    bool harperThrowRock;
+    bool harperFlippendo;
+    bool harperDeflectorImpetum;
+    bool harperMinorFortitudinem;
+    bool harperMoserateFortitudinem;
+    bool harperMaiorFortitudinem;
+    bool harperInternumCombustione;
+    bool harperLaedo;
+    bool harperLociPraesidium;
+    bool harperPerturbo;
+    bool harperPulsateSunt;
+    bool harperFumes;
+    bool harperDiminuendo;
+
+    #endregion
+
+    #region SkyeAttacks
+    bool skyeThrowRock;
+    bool skyeFlippendo;
+    bool skyeMinorCura;
+    bool skyeMaiorCura;
+    bool skyeSenaPlenaPotion;
+    bool skyeReanimatePotion;
+    bool skyeSanaCoetusPotion;
+    bool skyeAntidoteToCommonPoisons;
+    bool skyeStrengthPotion;
+    bool skyeConfundus;
+    bool skyeIraUolueris;
+
+    #endregion
+
+    #region SullivanAttacks
+    bool sullivanRockThrow;
+    bool sullivanFlippendo;
+    bool sullivanExiling;
+    bool sullivanProtego;
+    bool sullivanIgnusMagnum;
+    bool sullivanSagittaIecit;
+    bool sullivanMonstrumSella;
+    bool sullivanIncarcerous;
+    bool sullivanUltimumChao;
+    bool sullivanMutareStatum;
+    bool sullivanEngorgement;
+    bool sullivanStatuamLocomotion;
+    bool sullivanCriticaFocus;
+    #endregion
+
     //Enemy
     bool isDead;
     //determing player losing conditions - this is different from Strike Out - now only the MC needs to die
@@ -802,18 +850,18 @@ public class BattleSystem : MonoBehaviour
                 break;
             case CharacterIdentifier.Harper:
                 //       print("Closer");
-            //    HarperTurn();
+                HarperTurn();
                 state = BattleState.HARPERTURN;
                 break;
 
             case CharacterIdentifier.Skye:
                 //       print("Closer");
-           //     SkyeTurn();
+                SkyeTurn();
                 state = BattleState.SKYETURN;
                 break;
             case CharacterIdentifier.Sullivan:
                 //       print("Closer");
-            //    SullivanTurn();
+                SullivanTurn();
                 state = BattleState.SULLIVANTURN;
                 break;
             case CharacterIdentifier.Enemy1:
@@ -3284,6 +3332,7 @@ public class BattleSystem : MonoBehaviour
     }
     #endregion
 
+    #region Jameel Attacks
     IEnumerator JameelAttack()
     {
         //To Do Damage Enemy
@@ -3988,33 +4037,1646 @@ public class BattleSystem : MonoBehaviour
             }
         }
     }
+    #endregion
+    #region HarperAttacks
     IEnumerator HarperAttack()
     {
         //To Do Damage Enemy
         yield return new WaitForSeconds(1f);
-        //Modify the Spell1Damage and Spell1Magic used based on the player, the spell, and their level 
-        //Paste in MCAttack here once the modifications have been made. 
-        Debug.Log("I'm here");
+        if (harperFlippendo)
+        {
+            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            {
+                harperFlippendo = false;
+                dialogueText.text = "Enemy is knocked out, select another target.";
+                yield return new WaitForSeconds(1f);
+                dialogueText.text = "Select someone to attack!";
+                HarperMenu.SetActive(true);
+                HarperSpells.SetActive(false);
+            }
+            else
+            {
+                GameManager.HarperMagic -= Harper.HarperSpell2MagicConsumed;
+                HarperMagic.value = GameManager.HarperMagic;
+                //    StarterAnim.Play("StarterWindup");
+                yield return new WaitForSeconds(2f);
+                isDead = enemyUnit[enemyUnitSelected].HarperFlippendo(Harper.HarperSpell2Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+                harperThrowRock = false;
+                harperFlippendo = false;
+                harperDeflectorImpetum = false;
+                harperMinorFortitudinem = false;
+                harperMoserateFortitudinem = false;
+                harperMaiorFortitudinem = false;
+                harperInternumCombustione = false;
+                harperLaedo = false;
+                harperLociPraesidium = false;
+                harperPerturbo = false;
+                harperPulsateSunt = false;
+                harperFumes = false;
+                harperDiminuendo = false;
+                dialogueText.text = "The attack is successful!";
+                yield return new WaitForSeconds(2f);
+
+                //This checks to see if the Enemy is Dead or has HP remaining
+                if (isDead)
+                {
+                    RemoveCurrentEnemy();
+                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    enemyCount--;
+
+                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                }
+                NextTurn();
+            }
+        }
+
+        if (harperDeflectorImpetum)
+        {
+            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            {
+                harperDeflectorImpetum = false;
+                dialogueText.text = "Enemy is knocked out, select another target.";
+                yield return new WaitForSeconds(1f);
+                dialogueText.text = "Select someone to attack!";
+                HarperMenu.SetActive(true);
+                HarperSpells.SetActive(false);
+            }
+            else
+            {
+                GameManager.HarperMagic -= Harper.HarperSpell3MagicConsumed;
+                HarperMagic.value = GameManager.HarperMagic;
+                //    StarterAnim.Play("StarterWindup");
+                yield return new WaitForSeconds(2f);
+                isDead = enemyUnit[enemyUnitSelected].HarperDeflectorImpetum(Harper.HarperSpell3Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+                harperThrowRock = false;
+                harperFlippendo = false;
+                harperDeflectorImpetum = false;
+                harperMinorFortitudinem = false;
+                harperMoserateFortitudinem = false;
+                harperMaiorFortitudinem = false;
+                harperInternumCombustione = false;
+                harperLaedo = false;
+                harperLociPraesidium = false;
+                harperPerturbo = false;
+                harperPulsateSunt = false;
+                harperFumes = false;
+                harperDiminuendo = false;
+                dialogueText.text = "The attack is successful!";
+                yield return new WaitForSeconds(2f);
+
+                //This checks to see if the Enemy is Dead or has HP remaining
+                if (isDead)
+                {
+                    RemoveCurrentEnemy();
+                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    enemyCount--;
+
+                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                }
+                NextTurn();
+            }
+        }
+
+        
+        if (harperMinorFortitudinem)
+        {
+            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            {
+                harperMinorFortitudinem = false;
+                dialogueText.text = "Enemy is knocked out, select another target.";
+                yield return new WaitForSeconds(1f);
+                dialogueText.text = "Select someone to attack!";
+                HarperMenu.SetActive(true);
+                HarperSpells.SetActive(false);
+            }
+            else
+            {
+                GameManager.HarperMagic -= Harper.HarperSpell4MagicConsumed;
+                HarperMagic.value = GameManager.HarperMagic;
+                //    StarterAnim.Play("StarterWindup");
+                yield return new WaitForSeconds(2f);
+                isDead = enemyUnit[enemyUnitSelected].HarperMinorFortitudinem(Harper.HarperSpell4Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+                harperThrowRock = false;
+                harperFlippendo = false;
+                harperDeflectorImpetum = false;
+                harperMinorFortitudinem = false;
+                harperMoserateFortitudinem = false;
+                harperMaiorFortitudinem = false;
+                harperInternumCombustione = false;
+                harperLaedo = false;
+                harperLociPraesidium = false;
+                harperPerturbo = false;
+                harperPulsateSunt = false;
+                harperFumes = false;
+                harperDiminuendo = false;
+                dialogueText.text = "The attack is successful!";
+                yield return new WaitForSeconds(2f);
+
+                //This checks to see if the Enemy is Dead or has HP remaining
+                if (isDead)
+                {
+                    RemoveCurrentEnemy();
+                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    enemyCount--;
+
+                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                }
+                NextTurn();
+            }
+        }
+
+        if (harperMoserateFortitudinem)
+        {
+            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            {
+                harperMoserateFortitudinem = false;
+                dialogueText.text = "Enemy is knocked out, select another target.";
+                yield return new WaitForSeconds(1f);
+                dialogueText.text = "Select someone to attack!";
+                HarperMenu.SetActive(true);
+                HarperSpells.SetActive(false);
+            }
+            else
+            {
+                GameManager.HarperMagic -= Harper.HarperSpell5MagicConsumed;
+                HarperMagic.value = GameManager.HarperMagic;
+                //    StarterAnim.Play("StarterWindup");
+                yield return new WaitForSeconds(2f);
+                isDead = enemyUnit[enemyUnitSelected].HarperMoserateFortitudinem(Harper.HarperSpell5Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+                harperThrowRock = false;
+                harperFlippendo = false;
+                harperDeflectorImpetum = false;
+                harperMinorFortitudinem = false;
+                harperMoserateFortitudinem = false;
+                harperMaiorFortitudinem = false;
+                harperInternumCombustione = false;
+                harperLaedo = false;
+                harperLociPraesidium = false;
+                harperPerturbo = false;
+                harperPulsateSunt = false;
+                harperFumes = false;
+                harperDiminuendo = false;
+                dialogueText.text = "The attack is successful!";
+                yield return new WaitForSeconds(2f);
+
+                //This checks to see if the Enemy is Dead or has HP remaining
+                if (isDead)
+                {
+                    RemoveCurrentEnemy();
+                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    enemyCount--;
+
+                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                }
+                NextTurn();
+            }
+        }
+
+        if (harperMaiorFortitudinem)
+        {
+            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            {
+                harperMaiorFortitudinem = false;
+                dialogueText.text = "Enemy is knocked out, select another target.";
+                yield return new WaitForSeconds(1f);
+                dialogueText.text = "Select someone to attack!";
+                HarperMenu.SetActive(true);
+                HarperSpells.SetActive(false);
+            }
+            else
+            {
+                GameManager.HarperMagic -= Harper.HarperSpell6MagicConsumed;
+                HarperMagic.value = GameManager.HarperMagic;
+                //    StarterAnim.Play("StarterWindup");
+                yield return new WaitForSeconds(2f);
+                isDead = enemyUnit[enemyUnitSelected].HarperMaiorFortitudinem(Harper.HarperSpell6Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+                harperThrowRock = false;
+                harperFlippendo = false;
+                harperDeflectorImpetum = false;
+                harperMinorFortitudinem = false;
+                harperMoserateFortitudinem = false;
+                harperMaiorFortitudinem = false;
+                harperInternumCombustione = false;
+                harperLaedo = false;
+                harperLociPraesidium = false;
+                harperPerturbo = false;
+                harperPulsateSunt = false;
+                harperFumes = false;
+                harperDiminuendo = false;
+                dialogueText.text = "The attack is successful!";
+                yield return new WaitForSeconds(2f);
+
+                //This checks to see if the Enemy is Dead or has HP remaining
+                if (isDead)
+                {
+                    RemoveCurrentEnemy();
+                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    enemyCount--;
+
+                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                }
+                NextTurn();
+            }
+        }
+
+        if (harperInternumCombustione)
+        {
+            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            {
+                harperInternumCombustione = false;
+                dialogueText.text = "Enemy is knocked out, select another target.";
+                yield return new WaitForSeconds(1f);
+                dialogueText.text = "Select someone to attack!";
+                HarperMenu.SetActive(true);
+                HarperSpells.SetActive(false);
+            }
+            else
+            {
+                GameManager.HarperMagic -= Harper.HarperSpell7MagicConsumed;
+                HarperMagic.value = GameManager.HarperMagic;
+                //    StarterAnim.Play("StarterWindup");
+                yield return new WaitForSeconds(2f);
+                isDead = enemyUnit[enemyUnitSelected].HarperInternumCombustione(Harper.HarperSpell7Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+                harperThrowRock = false;
+                harperFlippendo = false;
+                harperDeflectorImpetum = false;
+                harperMinorFortitudinem = false;
+                harperMoserateFortitudinem = false;
+                harperMaiorFortitudinem = false;
+                harperInternumCombustione = false;
+                harperLaedo = false;
+                harperLociPraesidium = false;
+                harperPerturbo = false;
+                harperPulsateSunt = false;
+                harperFumes = false;
+                harperDiminuendo = false;
+                dialogueText.text = "The attack is successful!";
+                yield return new WaitForSeconds(2f);
+
+                //This checks to see if the Enemy is Dead or has HP remaining
+                if (isDead)
+                {
+                    RemoveCurrentEnemy();
+                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    enemyCount--;
+
+                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                }
+                NextTurn();
+            }
+        }
+
+        if (harperLaedo)
+        {
+            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            {
+                harperLaedo = false;
+                dialogueText.text = "Enemy is knocked out, select another target.";
+                yield return new WaitForSeconds(1f);
+                dialogueText.text = "Select someone to attack!";
+                HarperMenu.SetActive(true);
+                HarperSpells.SetActive(false);
+            }
+            else
+            {
+                GameManager.HarperMagic -= Harper.HarperSpell8MagicConsumed;
+                HarperMagic.value = GameManager.HarperMagic;
+                //    StarterAnim.Play("StarterWindup");
+                yield return new WaitForSeconds(2f);
+                isDead = enemyUnit[enemyUnitSelected].HarperLaedo(Harper.HarperSpell8Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+                harperThrowRock = false;
+                harperFlippendo = false;
+                harperDeflectorImpetum = false;
+                harperMinorFortitudinem = false;
+                harperMoserateFortitudinem = false;
+                harperMaiorFortitudinem = false;
+                harperInternumCombustione = false;
+                harperLaedo = false;
+                harperLociPraesidium = false;
+                harperPerturbo = false;
+                harperPulsateSunt = false;
+                harperFumes = false;
+                harperDiminuendo = false;
+                dialogueText.text = "The attack is successful!";
+                yield return new WaitForSeconds(2f);
+
+                //This checks to see if the Enemy is Dead or has HP remaining
+                if (isDead)
+                {
+                    RemoveCurrentEnemy();
+                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    enemyCount--;
+
+                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                }
+                NextTurn();
+            }
+        }
+
+        if (harperLociPraesidium)
+        {
+            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            {
+                harperLociPraesidium = false;
+                dialogueText.text = "Enemy is knocked out, select another target.";
+                yield return new WaitForSeconds(1f);
+                dialogueText.text = "Select someone to attack!";
+                HarperMenu.SetActive(true);
+                HarperSpells.SetActive(false);
+            }
+            else
+            {
+                GameManager.HarperMagic -= Harper.HarperSpell9MagicConsumed;
+                HarperMagic.value = GameManager.HarperMagic;
+                //    StarterAnim.Play("StarterWindup");
+                yield return new WaitForSeconds(2f);
+                isDead = enemyUnit[enemyUnitSelected].HarperLociPraesidium(Harper.HarperSpell9Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+                harperThrowRock = false;
+                harperFlippendo = false;
+                harperDeflectorImpetum = false;
+                harperMinorFortitudinem = false;
+                harperMoserateFortitudinem = false;
+                harperMaiorFortitudinem = false;
+                harperInternumCombustione = false;
+                harperLaedo = false;
+                harperLociPraesidium = false;
+                harperPerturbo = false;
+                harperPulsateSunt = false;
+                harperFumes = false;
+                harperDiminuendo = false;
+                dialogueText.text = "The attack is successful!";
+                yield return new WaitForSeconds(2f);
+
+                //This checks to see if the Enemy is Dead or has HP remaining
+                if (isDead)
+                {
+                    RemoveCurrentEnemy();
+                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    enemyCount--;
+
+                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                }
+                NextTurn();
+            }
+        }
+
+        if (harperPerturbo)
+        {
+            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            {
+                harperPerturbo = false;
+                dialogueText.text = "Enemy is knocked out, select another target.";
+                yield return new WaitForSeconds(1f);
+                dialogueText.text = "Select someone to attack!";
+                HarperMenu.SetActive(true);
+                HarperSpells.SetActive(false);
+            }
+            else
+            {
+                GameManager.HarperMagic -= Harper.HarperSpell10MagicConsumed;
+                HarperMagic.value = GameManager.HarperMagic;
+                //    StarterAnim.Play("StarterWindup");
+                yield return new WaitForSeconds(2f);
+                isDead = enemyUnit[enemyUnitSelected].HarperPerturbo(Harper.HarperSpell10Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+                harperThrowRock = false;
+                harperFlippendo = false;
+                harperDeflectorImpetum = false;
+                harperMinorFortitudinem = false;
+                harperMoserateFortitudinem = false;
+                harperMaiorFortitudinem = false;
+                harperInternumCombustione = false;
+                harperLaedo = false;
+                harperLociPraesidium = false;
+                harperPerturbo = false;
+                harperPulsateSunt = false;
+                harperFumes = false;
+                harperDiminuendo = false;
+                dialogueText.text = "The attack is successful!";
+                yield return new WaitForSeconds(2f);
+
+                //This checks to see if the Enemy is Dead or has HP remaining
+                if (isDead)
+                {
+                    RemoveCurrentEnemy();
+                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    enemyCount--;
+
+                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                }
+                NextTurn();
+            }
+        }
+
+        if (harperPulsateSunt)
+        {
+            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            {
+                harperPulsateSunt = false;
+                dialogueText.text = "Enemy is knocked out, select another target.";
+                yield return new WaitForSeconds(1f);
+                dialogueText.text = "Select someone to attack!";
+                HarperMenu.SetActive(true);
+                HarperSpells.SetActive(false);
+            }
+            else
+            {
+                GameManager.HarperMagic -= Harper.HarperSpell11MagicConsumed;
+                HarperMagic.value = GameManager.HarperMagic;
+                //    StarterAnim.Play("StarterWindup");
+                yield return new WaitForSeconds(2f);
+                isDead = enemyUnit[enemyUnitSelected].HarperPulsateSunt(Harper.HarperSpell11Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+                harperThrowRock = false;
+                harperFlippendo = false;
+                harperDeflectorImpetum = false;
+                harperMinorFortitudinem = false;
+                harperMoserateFortitudinem = false;
+                harperMaiorFortitudinem = false;
+                harperInternumCombustione = false;
+                harperLaedo = false;
+                harperLociPraesidium = false;
+                harperPerturbo = false;
+                harperPulsateSunt = false;
+                harperFumes = false;
+                harperDiminuendo = false;
+                dialogueText.text = "The attack is successful!";
+                yield return new WaitForSeconds(2f);
+
+                //This checks to see if the Enemy is Dead or has HP remaining
+                if (isDead)
+                {
+                    RemoveCurrentEnemy();
+                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    enemyCount--;
+
+                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                }
+                NextTurn();
+            }
+        }
+
+        if (harperFumes)
+        {
+            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            {
+                harperFumes = false;
+                dialogueText.text = "Enemy is knocked out, select another target.";
+                yield return new WaitForSeconds(1f);
+                dialogueText.text = "Select someone to attack!";
+                HarperMenu.SetActive(true);
+                HarperSpells.SetActive(false);
+            }
+            else
+            {
+                GameManager.HarperMagic -= Harper.HarperSpell12MagicConsumed;
+                HarperMagic.value = GameManager.HarperMagic;
+                //    StarterAnim.Play("StarterWindup");
+                yield return new WaitForSeconds(2f);
+                isDead = enemyUnit[enemyUnitSelected].HarperFumes(Harper.HarperSpell12Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+                harperThrowRock = false;
+                harperFlippendo = false;
+                harperDeflectorImpetum = false;
+                harperMinorFortitudinem = false;
+                harperMoserateFortitudinem = false;
+                harperMaiorFortitudinem = false;
+                harperInternumCombustione = false;
+                harperLaedo = false;
+                harperLociPraesidium = false;
+                harperPerturbo = false;
+                harperPulsateSunt = false;
+                harperFumes = false;
+                harperDiminuendo = false;
+                dialogueText.text = "The attack is successful!";
+                yield return new WaitForSeconds(2f);
+
+                //This checks to see if the Enemy is Dead or has HP remaining
+                if (isDead)
+                {
+                    RemoveCurrentEnemy();
+                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    enemyCount--;
+
+                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                }
+                NextTurn();
+            }
+        }
+
+        if (harperDiminuendo)
+        {
+            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            {
+                harperDiminuendo = false;
+                dialogueText.text = "Enemy is knocked out, select another target.";
+                yield return new WaitForSeconds(1f);
+                dialogueText.text = "Select someone to attack!";
+                HarperMenu.SetActive(true);
+                HarperSpells.SetActive(false);
+            }
+            else
+            {
+                GameManager.HarperMagic -= Harper.HarperSpell13MagicConsumed;
+                HarperMagic.value = GameManager.HarperMagic;
+                //    StarterAnim.Play("StarterWindup");
+                yield return new WaitForSeconds(2f);
+                isDead = enemyUnit[enemyUnitSelected].HarperDiminuendo(Harper.HarperSpell13Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+                harperThrowRock = false;
+                harperFlippendo = false;
+                harperDeflectorImpetum = false;
+                harperMinorFortitudinem = false;
+                harperMoserateFortitudinem = false;
+                harperMaiorFortitudinem = false;
+                harperInternumCombustione = false;
+                harperLaedo = false;
+                harperLociPraesidium = false;
+                harperPerturbo = false;
+                harperPulsateSunt = false;
+                harperFumes = false;
+                harperDiminuendo = false;
+                dialogueText.text = "The attack is successful!";
+                yield return new WaitForSeconds(2f);
+
+                //This checks to see if the Enemy is Dead or has HP remaining
+                if (isDead)
+                {
+                    RemoveCurrentEnemy();
+                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    enemyCount--;
+
+                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                }
+                NextTurn();
+            }
+        }
     }
+
+    #endregion
+
+    #region SkyeAttacks
     IEnumerator SkyeAttack()
     {
         //To Do Damage Enemy
         yield return new WaitForSeconds(1f);
-        //Modify the Spell1Damage and Spell1Magic used based on the player, the spell, and their level 
-        //Paste in MCAttack here once the modifications have been made. 
-        Debug.Log("I'm here");
+        if (skyeFlippendo)
+        {
+            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            {
+                skyeFlippendo = false;
+                dialogueText.text = "Enemy is knocked out, select another target.";
+                yield return new WaitForSeconds(1f);
+                dialogueText.text = "Select someone to attack!";
+                SkyeMenu.SetActive(true);
+                SkyeSpells.SetActive(false);
+            }
+            else
+            {
+                GameManager.SkyeMagic -= Skye.SkyeSpell2MagicConsumed;
+                SkyeMagic.value = GameManager.SkyeMagic;
+                //    StarterAnim.Play("StarterWindup");
+                yield return new WaitForSeconds(2f);
+                isDead = enemyUnit[enemyUnitSelected].SkyeFlippendo(Skye.SkyeSpell2Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+                skyeThrowRock = false;
+                skyeFlippendo = false;
+                skyeMinorCura = false;
+                skyeMaiorCura = false;
+                skyeSenaPlenaPotion = false;
+                skyeReanimatePotion = false;
+                skyeSanaCoetusPotion = false;
+                skyeAntidoteToCommonPoisons = false;
+                skyeStrengthPotion = false;
+                skyeConfundus = false;
+                skyeIraUolueris = false;
+                dialogueText.text = "The attack is successful!";
+                yield return new WaitForSeconds(2f);
+
+                //This checks to see if the Enemy is Dead or has HP remaining
+                if (isDead)
+                {
+                    RemoveCurrentEnemy();
+                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    enemyCount--;
+
+                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                }
+                NextTurn();
+            }
+        }
+
+        if (skyeMinorCura)
+        {
+            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            {
+                skyeMinorCura = false;
+                dialogueText.text = "Enemy is knocked out, select another target.";
+                yield return new WaitForSeconds(1f);
+                dialogueText.text = "Select someone to attack!";
+                SkyeMenu.SetActive(true);
+                SkyeSpells.SetActive(false);
+            }
+            else
+            {
+                GameManager.SkyeMagic -= Skye.SkyeSpell3MagicConsumed;
+                SkyeMagic.value = GameManager.SkyeMagic;
+                //    StarterAnim.Play("StarterWindup");
+                yield return new WaitForSeconds(2f);
+                isDead = enemyUnit[enemyUnitSelected].SkyeMinorCura(Skye.SkyeSpell3Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+                skyeThrowRock = false;
+                skyeFlippendo = false;
+                skyeMinorCura = false;
+                skyeMaiorCura = false;
+                skyeSenaPlenaPotion = false;
+                skyeReanimatePotion = false;
+                skyeSanaCoetusPotion = false;
+                skyeAntidoteToCommonPoisons = false;
+                skyeStrengthPotion = false;
+                skyeConfundus = false;
+                skyeIraUolueris = false;
+                dialogueText.text = "The attack is successful!";
+                yield return new WaitForSeconds(2f);
+
+                //This checks to see if the Enemy is Dead or has HP remaining
+                if (isDead)
+                {
+                    RemoveCurrentEnemy();
+                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    enemyCount--;
+
+                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                }
+                NextTurn();
+            }
+        }
+
+        if (skyeMaiorCura)
+        {
+            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            {
+                skyeMaiorCura = false;
+                dialogueText.text = "Enemy is knocked out, select another target.";
+                yield return new WaitForSeconds(1f);
+                dialogueText.text = "Select someone to attack!";
+                SkyeMenu.SetActive(true);
+                SkyeSpells.SetActive(false);
+            }
+            else
+            {
+                GameManager.SkyeMagic -= Skye.SkyeSpell4MagicConsumed;
+                SkyeMagic.value = GameManager.SkyeMagic;
+                //    StarterAnim.Play("StarterWindup");
+                yield return new WaitForSeconds(2f);
+                isDead = enemyUnit[enemyUnitSelected].SkyeMaiorCura(Skye.SkyeSpell4Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+                skyeThrowRock = false;
+                skyeFlippendo = false;
+                skyeMinorCura = false;
+                skyeMaiorCura = false;
+                skyeSenaPlenaPotion = false;
+                skyeReanimatePotion = false;
+                skyeSanaCoetusPotion = false;
+                skyeAntidoteToCommonPoisons = false;
+                skyeStrengthPotion = false;
+                skyeConfundus = false;
+                skyeIraUolueris = false;
+                dialogueText.text = "The attack is successful!";
+                yield return new WaitForSeconds(2f);
+
+                //This checks to see if the Enemy is Dead or has HP remaining
+                if (isDead)
+                {
+                    RemoveCurrentEnemy();
+                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    enemyCount--;
+
+                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                }
+                NextTurn();
+            }
+        }
+
+        if (skyeSenaPlenaPotion)
+        {
+            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            {
+                skyeSenaPlenaPotion = false;
+                dialogueText.text = "Enemy is knocked out, select another target.";
+                yield return new WaitForSeconds(1f);
+                dialogueText.text = "Select someone to attack!";
+                SkyeMenu.SetActive(true);
+                SkyeSpells.SetActive(false);
+            }
+            else
+            {
+                GameManager.SkyeMagic -= Skye.SkyeSpell5MagicConsumed;
+                SkyeMagic.value = GameManager.SkyeMagic;
+                //    StarterAnim.Play("StarterWindup");
+                yield return new WaitForSeconds(2f);
+                isDead = enemyUnit[enemyUnitSelected].SkyeSenaPlenaPotion(Skye.SkyeSpell5Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+                skyeThrowRock = false;
+                skyeFlippendo = false;
+                skyeMinorCura = false;
+                skyeMaiorCura = false;
+                skyeSenaPlenaPotion = false;
+                skyeReanimatePotion = false;
+                skyeSanaCoetusPotion = false;
+                skyeAntidoteToCommonPoisons = false;
+                skyeStrengthPotion = false;
+                skyeConfundus = false;
+                skyeIraUolueris = false;
+                dialogueText.text = "The attack is successful!";
+                yield return new WaitForSeconds(2f);
+
+                //This checks to see if the Enemy is Dead or has HP remaining
+                if (isDead)
+                {
+                    RemoveCurrentEnemy();
+                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    enemyCount--;
+
+                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                }
+                NextTurn();
+            }
+        }
+
+        if (skyeReanimatePotion)
+        {
+            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            {
+                skyeReanimatePotion = false;
+                dialogueText.text = "Enemy is knocked out, select another target.";
+                yield return new WaitForSeconds(1f);
+                dialogueText.text = "Select someone to attack!";
+                SkyeMenu.SetActive(true);
+                SkyeSpells.SetActive(false);
+            }
+            else
+            {
+                GameManager.SkyeMagic -= Skye.SkyeSpell6MagicConsumed;
+                SkyeMagic.value = GameManager.SkyeMagic;
+                //    StarterAnim.Play("StarterWindup");
+                yield return new WaitForSeconds(2f);
+                isDead = enemyUnit[enemyUnitSelected].SkyeReanimatePotion(Skye.SkyeSpell6Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+                skyeThrowRock = false;
+                skyeFlippendo = false;
+                skyeMinorCura = false;
+                skyeMaiorCura = false;
+                skyeSenaPlenaPotion = false;
+                skyeReanimatePotion = false;
+                skyeSanaCoetusPotion = false;
+                skyeAntidoteToCommonPoisons = false;
+                skyeStrengthPotion = false;
+                skyeConfundus = false;
+                skyeIraUolueris = false;
+                dialogueText.text = "The attack is successful!";
+                yield return new WaitForSeconds(2f);
+
+                //This checks to see if the Enemy is Dead or has HP remaining
+                if (isDead)
+                {
+                    RemoveCurrentEnemy();
+                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    enemyCount--;
+
+                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                }
+                NextTurn();
+            }
+        }
+
+        if (skyeSanaCoetusPotion)
+        {
+            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            {
+                skyeSanaCoetusPotion = false;
+                dialogueText.text = "Enemy is knocked out, select another target.";
+                yield return new WaitForSeconds(1f);
+                dialogueText.text = "Select someone to attack!";
+                SkyeMenu.SetActive(true);
+                SkyeSpells.SetActive(false);
+            }
+            else
+            {
+                GameManager.SkyeMagic -= Skye.SkyeSpell7MagicConsumed;
+                SkyeMagic.value = GameManager.SkyeMagic;
+                //    StarterAnim.Play("StarterWindup");
+                yield return new WaitForSeconds(2f);
+                isDead = enemyUnit[enemyUnitSelected].SkyeSanaCoetusPotion(Skye.SkyeSpell7Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+                skyeThrowRock = false;
+                skyeFlippendo = false;
+                skyeMinorCura = false;
+                skyeMaiorCura = false;
+                skyeSenaPlenaPotion = false;
+                skyeReanimatePotion = false;
+                skyeSanaCoetusPotion = false;
+                skyeAntidoteToCommonPoisons = false;
+                skyeStrengthPotion = false;
+                skyeConfundus = false;
+                skyeIraUolueris = false;
+                dialogueText.text = "The attack is successful!";
+                yield return new WaitForSeconds(2f);
+
+                //This checks to see if the Enemy is Dead or has HP remaining
+                if (isDead)
+                {
+                    RemoveCurrentEnemy();
+                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    enemyCount--;
+
+                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                }
+                NextTurn();
+            }
+        }
+
+        if (skyeAntidoteToCommonPoisons)
+        {
+            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            {
+                skyeAntidoteToCommonPoisons = false;
+                dialogueText.text = "Enemy is knocked out, select another target.";
+                yield return new WaitForSeconds(1f);
+                dialogueText.text = "Select someone to attack!";
+                SkyeMenu.SetActive(true);
+                SkyeSpells.SetActive(false);
+            }
+            else
+            {
+                GameManager.SkyeMagic -= Skye.SkyeSpell8MagicConsumed;
+                SkyeMagic.value = GameManager.SkyeMagic;
+                //    StarterAnim.Play("StarterWindup");
+                yield return new WaitForSeconds(2f);
+                isDead = enemyUnit[enemyUnitSelected].SkyeAntidoteToCommonPoisons(Skye.SkyeSpell8Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+                skyeThrowRock = false;
+                skyeFlippendo = false;
+                skyeMinorCura = false;
+                skyeMaiorCura = false;
+                skyeSenaPlenaPotion = false;
+                skyeReanimatePotion = false;
+                skyeSanaCoetusPotion = false;
+                skyeAntidoteToCommonPoisons = false;
+                skyeStrengthPotion = false;
+                skyeConfundus = false;
+                skyeIraUolueris = false;
+                dialogueText.text = "The attack is successful!";
+                yield return new WaitForSeconds(2f);
+
+                //This checks to see if the Enemy is Dead or has HP remaining
+                if (isDead)
+                {
+                    RemoveCurrentEnemy();
+                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    enemyCount--;
+
+                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                }
+                NextTurn();
+            }
+        }
+
+        if (skyeStrengthPotion)
+        {
+            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            {
+                skyeStrengthPotion = false;
+                dialogueText.text = "Enemy is knocked out, select another target.";
+                yield return new WaitForSeconds(1f);
+                dialogueText.text = "Select someone to attack!";
+                SkyeMenu.SetActive(true);
+                SkyeSpells.SetActive(false);
+            }
+            else
+            {
+                GameManager.SkyeMagic -= Skye.SkyeSpell9MagicConsumed;
+                SkyeMagic.value = GameManager.SkyeMagic;
+                //    StarterAnim.Play("StarterWindup");
+                yield return new WaitForSeconds(2f);
+                isDead = enemyUnit[enemyUnitSelected].SkyeStrengthPotion(Skye.SkyeSpell9Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+                skyeThrowRock = false;
+                skyeFlippendo = false;
+                skyeMinorCura = false;
+                skyeMaiorCura = false;
+                skyeSenaPlenaPotion = false;
+                skyeReanimatePotion = false;
+                skyeSanaCoetusPotion = false;
+                skyeAntidoteToCommonPoisons = false;
+                skyeStrengthPotion = false;
+                skyeConfundus = false;
+                skyeIraUolueris = false;
+                dialogueText.text = "The attack is successful!";
+                yield return new WaitForSeconds(2f);
+
+                //This checks to see if the Enemy is Dead or has HP remaining
+                if (isDead)
+                {
+                    RemoveCurrentEnemy();
+                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    enemyCount--;
+
+                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                }
+                NextTurn();
+            }
+        }
+
+        if (skyeConfundus)
+        {
+            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            {
+                skyeConfundus = false;
+                dialogueText.text = "Enemy is knocked out, select another target.";
+                yield return new WaitForSeconds(1f);
+                dialogueText.text = "Select someone to attack!";
+                SkyeMenu.SetActive(true);
+                SkyeSpells.SetActive(false);
+            }
+            else
+            {
+                GameManager.SkyeMagic -= Skye.SkyeSpell10MagicConsumed;
+                SkyeMagic.value = GameManager.SkyeMagic;
+                //    StarterAnim.Play("StarterWindup");
+                yield return new WaitForSeconds(2f);
+                isDead = enemyUnit[enemyUnitSelected].SkyeConfundus(Skye.SkyeSpell10Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+                skyeThrowRock = false;
+                skyeFlippendo = false;
+                skyeMinorCura = false;
+                skyeMaiorCura = false;
+                skyeSenaPlenaPotion = false;
+                skyeReanimatePotion = false;
+                skyeSanaCoetusPotion = false;
+                skyeAntidoteToCommonPoisons = false;
+                skyeStrengthPotion = false;
+                skyeConfundus = false;
+                skyeIraUolueris = false;
+                dialogueText.text = "The attack is successful!";
+                yield return new WaitForSeconds(2f);
+
+                //This checks to see if the Enemy is Dead or has HP remaining
+                if (isDead)
+                {
+                    RemoveCurrentEnemy();
+                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    enemyCount--;
+
+                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                }
+                NextTurn();
+            }
+        }
+
+        if (skyeIraUolueris)
+        {
+            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            {
+                skyeIraUolueris = false;
+                dialogueText.text = "Enemy is knocked out, select another target.";
+                yield return new WaitForSeconds(1f);
+                dialogueText.text = "Select someone to attack!";
+                SkyeMenu.SetActive(true);
+                SkyeSpells.SetActive(false);
+            }
+            else
+            {
+                GameManager.SkyeMagic -= Skye.SkyeSpell11MagicConsumed;
+                SkyeMagic.value = GameManager.SkyeMagic;
+                //    StarterAnim.Play("StarterWindup");
+                yield return new WaitForSeconds(2f);
+                isDead = enemyUnit[enemyUnitSelected].SkyeIraUolueris(Skye.SkyeSpell11Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+                skyeThrowRock = false;
+                skyeFlippendo = false;
+                skyeMinorCura = false;
+                skyeMaiorCura = false;
+                skyeSenaPlenaPotion = false;
+                skyeReanimatePotion = false;
+                skyeSanaCoetusPotion = false;
+                skyeAntidoteToCommonPoisons = false;
+                skyeStrengthPotion = false;
+                skyeConfundus = false;
+                skyeIraUolueris = false;
+                dialogueText.text = "The attack is successful!";
+                yield return new WaitForSeconds(2f);
+
+                //This checks to see if the Enemy is Dead or has HP remaining
+                if (isDead)
+                {
+                    RemoveCurrentEnemy();
+                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    enemyCount--;
+
+                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                }
+                NextTurn();
+            }
+        }
     }
+
+    #endregion
+
+    #region Sullivan Attacks
     IEnumerator SullivanAttack()
     {
         //To Do Damage Enemy
         yield return new WaitForSeconds(1f);
-        //Modify the Spell1Damage and Spell1Magic used based on the player, the spell, and their level 
-        //Paste in MCAttack here once the modifications have been made. 
-        Debug.Log("I'm here");
+        if (sullivanFlippendo)
+        {
+            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            {
+                sullivanFlippendo = false;
+                dialogueText.text = "Enemy is knocked out, select another target.";
+                yield return new WaitForSeconds(1f);
+                dialogueText.text = "Select someone to attack!";
+                SullivanMenu.SetActive(true);
+                SullivanSpells.SetActive(false);
+            }
+            else
+            {
+                GameManager.SullivanMagic -= Sullivan.SullivanSpell2MagicConsumed;
+                SullivanMagic.value = GameManager.SullivanMagic;
+                //    StarterAnim.Play("StarterWindup");
+                yield return new WaitForSeconds(2f);
+                isDead = enemyUnit[enemyUnitSelected].SullivanFlippendo(Sullivan.SullivanSpell2Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+                sullivanRockThrow = false;
+                sullivanFlippendo = false;
+                sullivanExiling = false;
+                sullivanProtego = false;
+                sullivanIgnusMagnum = false;
+                sullivanSagittaIecit = false;
+                sullivanMonstrumSella = false;
+                sullivanIncarcerous = false;
+                sullivanUltimumChao = false;
+                sullivanMutareStatum = false;
+                sullivanEngorgement = false;
+                sullivanStatuamLocomotion = false;
+                sullivanCriticaFocus = false;
+                dialogueText.text = "The attack is successful!";
+                yield return new WaitForSeconds(2f);
+
+                //This checks to see if the Enemy is Dead or has HP remaining
+                if (isDead)
+                {
+                    RemoveCurrentEnemy();
+                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    enemyCount--;
+
+                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                }
+                NextTurn();
+            }
+        }
+
+        if (sullivanExiling)
+        {
+            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            {
+                sullivanExiling = false;
+                dialogueText.text = "Enemy is knocked out, select another target.";
+                yield return new WaitForSeconds(1f);
+                dialogueText.text = "Select someone to attack!";
+                SullivanMenu.SetActive(true);
+                SullivanSpells.SetActive(false);
+            }
+            else
+            {
+                GameManager.SullivanMagic -= Sullivan.SullivanSpell3MagicConsumed;
+                SullivanMagic.value = GameManager.SullivanMagic;
+                //    StarterAnim.Play("StarterWindup");
+                yield return new WaitForSeconds(2f);
+                isDead = enemyUnit[enemyUnitSelected].SullivanExiling(Sullivan.SullivanSpell3Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+                sullivanRockThrow = false;
+                sullivanFlippendo = false;
+                sullivanExiling = false;
+                sullivanProtego = false;
+                sullivanIgnusMagnum = false;
+                sullivanSagittaIecit = false;
+                sullivanMonstrumSella = false;
+                sullivanIncarcerous = false;
+                sullivanUltimumChao = false;
+                sullivanMutareStatum = false;
+                sullivanEngorgement = false;
+                sullivanStatuamLocomotion = false;
+                sullivanCriticaFocus = false;
+                dialogueText.text = "The attack is successful!";
+                yield return new WaitForSeconds(2f);
+
+                //This checks to see if the Enemy is Dead or has HP remaining
+                if (isDead)
+                {
+                    RemoveCurrentEnemy();
+                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    enemyCount--;
+
+                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                }
+                NextTurn();
+            }
+        }
+
+        if (sullivanProtego)
+        {
+            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            {
+                sullivanProtego = false;
+                dialogueText.text = "Enemy is knocked out, select another target.";
+                yield return new WaitForSeconds(1f);
+                dialogueText.text = "Select someone to attack!";
+                SullivanMenu.SetActive(true);
+                SullivanSpells.SetActive(false);
+            }
+            else
+            {
+                GameManager.SullivanMagic -= Sullivan.SullivanSpell4MagicConsumed;
+                SullivanMagic.value = GameManager.SullivanMagic;
+                //    StarterAnim.Play("StarterWindup");
+                yield return new WaitForSeconds(2f);
+                isDead = enemyUnit[enemyUnitSelected].SullivanProtego(Sullivan.SullivanSpell4Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+                sullivanRockThrow = false;
+                sullivanFlippendo = false;
+                sullivanExiling = false;
+                sullivanProtego = false;
+                sullivanIgnusMagnum = false;
+                sullivanSagittaIecit = false;
+                sullivanMonstrumSella = false;
+                sullivanIncarcerous = false;
+                sullivanUltimumChao = false;
+                sullivanMutareStatum = false;
+                sullivanEngorgement = false;
+                sullivanStatuamLocomotion = false;
+                sullivanCriticaFocus = false;
+                dialogueText.text = "The attack is successful!";
+                yield return new WaitForSeconds(2f);
+
+                //This checks to see if the Enemy is Dead or has HP remaining
+                if (isDead)
+                {
+                    RemoveCurrentEnemy();
+                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    enemyCount--;
+
+                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                }
+                NextTurn();
+            }
+        }
+
+        if (sullivanIgnusMagnum)
+        {
+            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            {
+                sullivanIgnusMagnum = false;
+                dialogueText.text = "Enemy is knocked out, select another target.";
+                yield return new WaitForSeconds(1f);
+                dialogueText.text = "Select someone to attack!";
+                SullivanMenu.SetActive(true);
+                SullivanSpells.SetActive(false);
+            }
+            else
+            {
+                GameManager.SullivanMagic -= Sullivan.SullivanSpell5MagicConsumed;
+                SullivanMagic.value = GameManager.SullivanMagic;
+                //    StarterAnim.Play("StarterWindup");
+                yield return new WaitForSeconds(2f);
+                isDead = enemyUnit[enemyUnitSelected].SullivanIgnusMagnum(Sullivan.SullivanSpell5Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+                sullivanRockThrow = false;
+                sullivanFlippendo = false;
+                sullivanExiling = false;
+                sullivanProtego = false;
+                sullivanIgnusMagnum = false;
+                sullivanSagittaIecit = false;
+                sullivanMonstrumSella = false;
+                sullivanIncarcerous = false;
+                sullivanUltimumChao = false;
+                sullivanMutareStatum = false;
+                sullivanEngorgement = false;
+                sullivanStatuamLocomotion = false;
+                sullivanCriticaFocus = false;
+                dialogueText.text = "The attack is successful!";
+                yield return new WaitForSeconds(2f);
+
+                //This checks to see if the Enemy is Dead or has HP remaining
+                if (isDead)
+                {
+                    RemoveCurrentEnemy();
+                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    enemyCount--;
+
+                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                }
+                NextTurn();
+            }
+        }
+
+        if (sullivanSagittaIecit)
+        {
+            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            {
+                sullivanSagittaIecit = false;
+                dialogueText.text = "Enemy is knocked out, select another target.";
+                yield return new WaitForSeconds(1f);
+                dialogueText.text = "Select someone to attack!";
+                SullivanMenu.SetActive(true);
+                SullivanSpells.SetActive(false);
+            }
+            else
+            {
+                GameManager.SullivanMagic -= Sullivan.SullivanSpell6MagicConsumed;
+                SullivanMagic.value = GameManager.SullivanMagic;
+                //    StarterAnim.Play("StarterWindup");
+                yield return new WaitForSeconds(2f);
+                isDead = enemyUnit[enemyUnitSelected].SullivanSagittaLecit(Sullivan.SullivanSpell6Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+                sullivanRockThrow = false;
+                sullivanFlippendo = false;
+                sullivanExiling = false;
+                sullivanProtego = false;
+                sullivanIgnusMagnum = false;
+                sullivanSagittaIecit = false;
+                sullivanMonstrumSella = false;
+                sullivanIncarcerous = false;
+                sullivanUltimumChao = false;
+                sullivanMutareStatum = false;
+                sullivanEngorgement = false;
+                sullivanStatuamLocomotion = false;
+                sullivanCriticaFocus = false;
+                dialogueText.text = "The attack is successful!";
+                yield return new WaitForSeconds(2f);
+
+                //This checks to see if the Enemy is Dead or has HP remaining
+                if (isDead)
+                {
+                    RemoveCurrentEnemy();
+                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    enemyCount--;
+
+                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                }
+                NextTurn();
+            }
+        }
+
+        if (sullivanMonstrumSella)
+        {
+            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            {
+                sullivanMonstrumSella = false;
+                dialogueText.text = "Enemy is knocked out, select another target.";
+                yield return new WaitForSeconds(1f);
+                dialogueText.text = "Select someone to attack!";
+                SullivanMenu.SetActive(true);
+                SullivanSpells.SetActive(false);
+            }
+            else
+            {
+                GameManager.SullivanMagic -= Sullivan.SullivanSpell7MagicConsumed;
+                SullivanMagic.value = GameManager.SullivanMagic;
+                //    StarterAnim.Play("StarterWindup");
+                yield return new WaitForSeconds(2f);
+                isDead = enemyUnit[enemyUnitSelected].SullivanMonstrumSella(Sullivan.SullivanSpell7Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+                sullivanRockThrow = false;
+                sullivanFlippendo = false;
+                sullivanExiling = false;
+                sullivanProtego = false;
+                sullivanIgnusMagnum = false;
+                sullivanSagittaIecit = false;
+                sullivanMonstrumSella = false;
+                sullivanIncarcerous = false;
+                sullivanUltimumChao = false;
+                sullivanMutareStatum = false;
+                sullivanEngorgement = false;
+                sullivanStatuamLocomotion = false;
+                sullivanCriticaFocus = false;
+                dialogueText.text = "The attack is successful!";
+                yield return new WaitForSeconds(2f);
+
+                //This checks to see if the Enemy is Dead or has HP remaining
+                if (isDead)
+                {
+                    RemoveCurrentEnemy();
+                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    enemyCount--;
+
+                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                }
+                NextTurn();
+            }
+        }
+
+        if (sullivanIncarcerous)
+        {
+            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            {
+                sullivanIncarcerous = false;
+                dialogueText.text = "Enemy is knocked out, select another target.";
+                yield return new WaitForSeconds(1f);
+                dialogueText.text = "Select someone to attack!";
+                SullivanMenu.SetActive(true);
+                SullivanSpells.SetActive(false);
+            }
+            else
+            {
+                GameManager.SullivanMagic -= Sullivan.SullivanSpell8MagicConsumed;
+                SullivanMagic.value = GameManager.SullivanMagic;
+                //    StarterAnim.Play("StarterWindup");
+                yield return new WaitForSeconds(2f);
+                isDead = enemyUnit[enemyUnitSelected].SullivanIncarcerous(Sullivan.SullivanSpell8Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+                sullivanRockThrow = false;
+                sullivanFlippendo = false;
+                sullivanExiling = false;
+                sullivanProtego = false;
+                sullivanIgnusMagnum = false;
+                sullivanSagittaIecit = false;
+                sullivanMonstrumSella = false;
+                sullivanIncarcerous = false;
+                sullivanUltimumChao = false;
+                sullivanMutareStatum = false;
+                sullivanEngorgement = false;
+                sullivanStatuamLocomotion = false;
+                sullivanCriticaFocus = false;
+                dialogueText.text = "The attack is successful!";
+                yield return new WaitForSeconds(2f);
+
+                //This checks to see if the Enemy is Dead or has HP remaining
+                if (isDead)
+                {
+                    RemoveCurrentEnemy();
+                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    enemyCount--;
+
+                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                }
+                NextTurn();
+            }
+        }
+
+        if (sullivanUltimumChao)
+        {
+            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            {
+                sullivanUltimumChao = false;
+                dialogueText.text = "Enemy is knocked out, select another target.";
+                yield return new WaitForSeconds(1f);
+                dialogueText.text = "Select someone to attack!";
+                SullivanMenu.SetActive(true);
+                SullivanSpells.SetActive(false);
+            }
+            else
+            {
+                GameManager.SullivanMagic -= Sullivan.SullivanSpell9MagicConsumed;
+                SullivanMagic.value = GameManager.SullivanMagic;
+                //    StarterAnim.Play("StarterWindup");
+                yield return new WaitForSeconds(2f);
+                isDead = enemyUnit[enemyUnitSelected].SullivanUltimumChao(Sullivan.SullivanSpell9Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+                sullivanRockThrow = false;
+                sullivanFlippendo = false;
+                sullivanExiling = false;
+                sullivanProtego = false;
+                sullivanIgnusMagnum = false;
+                sullivanSagittaIecit = false;
+                sullivanMonstrumSella = false;
+                sullivanIncarcerous = false;
+                sullivanUltimumChao = false;
+                sullivanMutareStatum = false;
+                sullivanEngorgement = false;
+                sullivanStatuamLocomotion = false;
+                sullivanCriticaFocus = false;
+                dialogueText.text = "The attack is successful!";
+                yield return new WaitForSeconds(2f);
+
+                //This checks to see if the Enemy is Dead or has HP remaining
+                if (isDead)
+                {
+                    RemoveCurrentEnemy();
+                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    enemyCount--;
+
+                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                }
+                NextTurn();
+            }
+        }
+
+        if (sullivanMutareStatum)
+        {
+            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            {
+                sullivanMutareStatum = false;
+                dialogueText.text = "Enemy is knocked out, select another target.";
+                yield return new WaitForSeconds(1f);
+                dialogueText.text = "Select someone to attack!";
+                SullivanMenu.SetActive(true);
+                SullivanSpells.SetActive(false);
+            }
+            else
+            {
+                GameManager.SullivanMagic -= Sullivan.SullivanSpell10MagicConsumed;
+                SullivanMagic.value = GameManager.SullivanMagic;
+                //    StarterAnim.Play("StarterWindup");
+                yield return new WaitForSeconds(2f);
+                isDead = enemyUnit[enemyUnitSelected].SullivanMutareStatum(Sullivan.SullivanSpell10Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+                sullivanRockThrow = false;
+                sullivanFlippendo = false;
+                sullivanExiling = false;
+                sullivanProtego = false;
+                sullivanIgnusMagnum = false;
+                sullivanSagittaIecit = false;
+                sullivanMonstrumSella = false;
+                sullivanIncarcerous = false;
+                sullivanUltimumChao = false;
+                sullivanMutareStatum = false;
+                sullivanEngorgement = false;
+                sullivanStatuamLocomotion = false;
+                sullivanCriticaFocus = false;
+                dialogueText.text = "The attack is successful!";
+                yield return new WaitForSeconds(2f);
+
+                //This checks to see if the Enemy is Dead or has HP remaining
+                if (isDead)
+                {
+                    RemoveCurrentEnemy();
+                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    enemyCount--;
+
+                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                }
+                NextTurn();
+            }
+        }
+
+        if (sullivanEngorgement)
+        {
+            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            {
+                sullivanEngorgement = false;
+                dialogueText.text = "Enemy is knocked out, select another target.";
+                yield return new WaitForSeconds(1f);
+                dialogueText.text = "Select someone to attack!";
+                SullivanMenu.SetActive(true);
+                SullivanSpells.SetActive(false);
+            }
+            else
+            {
+                GameManager.SullivanMagic -= Sullivan.SullivanSpell11MagicConsumed;
+                SullivanMagic.value = GameManager.SullivanMagic;
+                //    StarterAnim.Play("StarterWindup");
+                yield return new WaitForSeconds(2f);
+                isDead = enemyUnit[enemyUnitSelected].SullivanEngorgement(Sullivan.SullivanSpell11Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+                sullivanRockThrow = false;
+                sullivanFlippendo = false;
+                sullivanExiling = false;
+                sullivanProtego = false;
+                sullivanIgnusMagnum = false;
+                sullivanSagittaIecit = false;
+                sullivanMonstrumSella = false;
+                sullivanIncarcerous = false;
+                sullivanUltimumChao = false;
+                sullivanMutareStatum = false;
+                sullivanEngorgement = false;
+                sullivanStatuamLocomotion = false;
+                sullivanCriticaFocus = false;
+                dialogueText.text = "The attack is successful!";
+                yield return new WaitForSeconds(2f);
+
+                //This checks to see if the Enemy is Dead or has HP remaining
+                if (isDead)
+                {
+                    RemoveCurrentEnemy();
+                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    enemyCount--;
+
+                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                }
+                NextTurn();
+            }
+        }
+
+        if (sullivanStatuamLocomotion)
+        {
+            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            {
+                sullivanStatuamLocomotion = false;
+                dialogueText.text = "Enemy is knocked out, select another target.";
+                yield return new WaitForSeconds(1f);
+                dialogueText.text = "Select someone to attack!";
+                SullivanMenu.SetActive(true);
+                SullivanSpells.SetActive(false);
+            }
+            else
+            {
+                GameManager.SullivanMagic -= Sullivan.SullivanSpell12MagicConsumed;
+                SullivanMagic.value = GameManager.SullivanMagic;
+                //    StarterAnim.Play("StarterWindup");
+                yield return new WaitForSeconds(2f);
+                isDead = enemyUnit[enemyUnitSelected].SullivanStatuamLocomotion(Sullivan.SullivanSpell12Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+                sullivanRockThrow = false;
+                sullivanFlippendo = false;
+                sullivanExiling = false;
+                sullivanProtego = false;
+                sullivanIgnusMagnum = false;
+                sullivanSagittaIecit = false;
+                sullivanMonstrumSella = false;
+                sullivanIncarcerous = false;
+                sullivanUltimumChao = false;
+                sullivanMutareStatum = false;
+                sullivanEngorgement = false;
+                sullivanStatuamLocomotion = false;
+                sullivanCriticaFocus = false;
+                dialogueText.text = "The attack is successful!";
+                yield return new WaitForSeconds(2f);
+
+                //This checks to see if the Enemy is Dead or has HP remaining
+                if (isDead)
+                {
+                    RemoveCurrentEnemy();
+                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    enemyCount--;
+
+                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                }
+                NextTurn();
+            }
+        }
+
+        if (sullivanCriticaFocus)
+        {
+            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            {
+                sullivanCriticaFocus = false;
+                dialogueText.text = "Enemy is knocked out, select another target.";
+                yield return new WaitForSeconds(1f);
+                dialogueText.text = "Select someone to attack!";
+                SullivanMenu.SetActive(true);
+                SullivanSpells.SetActive(false);
+            }
+            else
+            {
+                GameManager.SullivanMagic -= Sullivan.SullivanSpell13MagicConsumed;
+                SullivanMagic.value = GameManager.SullivanMagic;
+                //    StarterAnim.Play("StarterWindup");
+                yield return new WaitForSeconds(2f);
+                isDead = enemyUnit[enemyUnitSelected].SullivanCriticaFocus(Sullivan.SullivanSpell13Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+                sullivanRockThrow = false;
+                sullivanFlippendo = false;
+                sullivanExiling = false;
+                sullivanProtego = false;
+                sullivanIgnusMagnum = false;
+                sullivanSagittaIecit = false;
+                sullivanMonstrumSella = false;
+                sullivanIncarcerous = false;
+                sullivanUltimumChao = false;
+                sullivanMutareStatum = false;
+                sullivanEngorgement = false;
+                sullivanStatuamLocomotion = false;
+                sullivanCriticaFocus = false;
+                dialogueText.text = "The attack is successful!";
+                yield return new WaitForSeconds(2f);
+
+                //This checks to see if the Enemy is Dead or has HP remaining
+                if (isDead)
+                {
+                    RemoveCurrentEnemy();
+                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    enemyCount--;
+
+                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                }
+                NextTurn();
+            }
+        }
     }
 
+    #endregion
+
     #region Enemy Attack
-        IEnumerator EnemyTurn(int enemyIndex)
+    IEnumerator EnemyTurn(int enemyIndex)
         {
             
             Camera.transform.position = enemyCam.transform.position;
@@ -4717,7 +6379,7 @@ public class BattleSystem : MonoBehaviour
             jameelChorusPedes = false;
         }
     }
-    /*
+    
     void HarperTurn()
     {
         //    Camera.transform.position = .transform.position;
@@ -4749,10 +6411,19 @@ public class BattleSystem : MonoBehaviour
             HarperMenu.SetActive(true);
             dialogueText.text = "Harper: Choose an Action.";
 
-            fastball = false;
-            slider = false;
-            changeup = false;
-            curveball = false;
+            harperThrowRock = false ;
+            harperFlippendo = false;
+            harperDeflectorImpetum = false;
+            harperMinorFortitudinem = false;
+            harperMoserateFortitudinem = false;
+            harperMaiorFortitudinem = false;
+            harperInternumCombustione = false;
+            harperLaedo = false;
+            harperLociPraesidium = false;
+            harperPerturbo = false;
+            harperPulsateSunt = false;
+            harperFumes = false;
+            harperDiminuendo = false;
         }
     }
 
@@ -4793,10 +6464,17 @@ public class BattleSystem : MonoBehaviour
             SkyeMenu.SetActive(true);
             dialogueText.text = "Skye: Choose an Action.";
 
-            fastball = false;
-            slider = false;
-            changeup = false;
-            curveball = false;
+            skyeThrowRock = false;
+            skyeFlippendo = false;
+            skyeMinorCura = false;
+            skyeMaiorCura = false;
+            skyeSenaPlenaPotion = false;
+            skyeReanimatePotion = false;
+            skyeSanaCoetusPotion = false;
+            skyeAntidoteToCommonPoisons = false;
+            skyeStrengthPotion = false;
+            skyeConfundus = false;
+            skyeIraUolueris = false;
         }
     }
 
@@ -4831,13 +6509,24 @@ public class BattleSystem : MonoBehaviour
             SullivanMenu.SetActive(true);
             dialogueText.text = "Sullivan: Choose an Action.";
 
-            fastball = false;
-            slider = false;
-            changeup = false;
-            curveball = false;
+            #region SullivanAttacks
+            sullivanRockThrow = false;
+            sullivanFlippendo = false;
+            sullivanExiling = false;
+            sullivanProtego = false;
+            sullivanIgnusMagnum = false;
+            sullivanSagittaIecit = false;
+            sullivanMonstrumSella = false;
+            sullivanIncarcerous = false;
+            sullivanUltimumChao = false;
+            sullivanMutareStatum = false;
+            sullivanEngorgement = false;
+            sullivanStatuamLocomotion = false;
+            sullivanCriticaFocus = false;
+            #endregion
         }
     }
-*/
+
     #endregion
 
     public void OnPlayerTurnButton()
@@ -5845,6 +7534,692 @@ public class BattleSystem : MonoBehaviour
     }
 
     #endregion
+
+    #region Harper Attack UI Buttons
+    public void HarperFlippendo()
+    {
+        if (state == BattleState.HARPERTURN)
+        {
+            if (Harper.HarperSpell2MagicConsumed <= GameManager.HarperMagic)
+            {
+                harperFlippendo = true;
+
+                HarperMenu.SetActive(true);
+                HarperSpells.SetActive(false);
+                enemySelect = true;
+                HarperConfirmMenu.SetActive(true);
+                HarperSpells.SetActive(false);
+                HarperMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
+    public void HarperDeflectorImpetum()
+    {
+        if (state == BattleState.HARPERTURN)
+        {
+            if (Harper.HarperSpell3MagicConsumed <= GameManager.HarperMagic)
+            {
+                harperDeflectorImpetum = true;
+
+                HarperMenu.SetActive(true);
+                HarperSpells.SetActive(false);
+                enemySelect = true;
+                HarperConfirmMenu.SetActive(true);
+                HarperSpells.SetActive(false);
+                HarperMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
+    public void HarperMinorFortitudinem()
+    {
+        if (state == BattleState.HARPERTURN)
+        {
+            if (Harper.HarperSpell4MagicConsumed <= GameManager.HarperMagic)
+            {
+                harperMinorFortitudinem = true;
+
+                HarperMenu.SetActive(true);
+                HarperSpells.SetActive(false);
+                enemySelect = true;
+                HarperConfirmMenu.SetActive(true);
+                HarperSpells.SetActive(false);
+                HarperMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
+    public void HarperMoserateFortitudinem()
+    {
+        if (state == BattleState.HARPERTURN)
+        {
+            if (Harper.HarperSpell5MagicConsumed <= GameManager.HarperMagic)
+            {
+                harperMoserateFortitudinem = true;
+
+                HarperMenu.SetActive(true);
+                HarperSpells.SetActive(false);
+                enemySelect = true;
+                HarperConfirmMenu.SetActive(true);
+                HarperSpells.SetActive(false);
+                HarperMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
+    public void HarperMaiorFortitudinem()
+    {
+        if (state == BattleState.HARPERTURN)
+        {
+            if (Harper.HarperSpell6MagicConsumed <= GameManager.HarperMagic)
+            {
+                harperMaiorFortitudinem = true;
+
+                HarperMenu.SetActive(true);
+                HarperSpells.SetActive(false);
+                enemySelect = true;
+                HarperConfirmMenu.SetActive(true);
+                HarperSpells.SetActive(false);
+                HarperMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
+    public void HarperInternumCombustione()
+    {
+        if (state == BattleState.HARPERTURN)
+        {
+            if (Harper.HarperSpell7MagicConsumed <= GameManager.HarperMagic)
+            {
+                harperInternumCombustione = true;
+
+                HarperMenu.SetActive(true);
+                HarperSpells.SetActive(false);
+                enemySelect = true;
+                HarperConfirmMenu.SetActive(true);
+                HarperSpells.SetActive(false);
+                HarperMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
+    public void HarperLaedo ()
+    {
+        if (state == BattleState.HARPERTURN)
+        {
+            if (Harper.HarperSpell8MagicConsumed <= GameManager.HarperMagic)
+            {
+                harperLaedo = true;
+
+                HarperMenu.SetActive(true);
+                HarperSpells.SetActive(false);
+                enemySelect = true;
+                HarperConfirmMenu.SetActive(true);
+                HarperSpells.SetActive(false);
+                HarperMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
+    public void HarperLociPraesidium()
+    {
+        if (state == BattleState.HARPERTURN)
+        {
+            if (Harper.HarperSpell9MagicConsumed <= GameManager.HarperMagic)
+            {
+                harperLociPraesidium = true;
+
+                HarperMenu.SetActive(true);
+                HarperSpells.SetActive(false);
+                enemySelect = true;
+                HarperConfirmMenu.SetActive(true);
+                HarperSpells.SetActive(false);
+                HarperMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
+    public void HarperPerturbo()
+    {
+        if (state == BattleState.HARPERTURN)
+        {
+            if (Harper.HarperSpell10MagicConsumed <= GameManager.HarperMagic)
+            {
+                harperPerturbo = true;
+
+                HarperMenu.SetActive(true);
+                HarperSpells.SetActive(false);
+                enemySelect = true;
+                HarperConfirmMenu.SetActive(true);
+                HarperSpells.SetActive(false);
+                HarperMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
+    public void HarperPulsateSunt()
+    {
+        if (state == BattleState.HARPERTURN)
+        {
+            if (Harper.HarperSpell11MagicConsumed <= GameManager.HarperMagic)
+            {
+                harperPulsateSunt = true;
+
+                HarperMenu.SetActive(true);
+                HarperSpells.SetActive(false);
+                enemySelect = true;
+                HarperConfirmMenu.SetActive(true);
+                HarperSpells.SetActive(false);
+                HarperMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
+    public void HarperFumes()
+    {
+        if (state == BattleState.HARPERTURN)
+        {
+            if (Harper.HarperSpell12MagicConsumed <= GameManager.HarperMagic)
+            {
+                harperFumes = true;
+
+                HarperMenu.SetActive(true);
+                HarperSpells.SetActive(false);
+                enemySelect = true;
+                HarperConfirmMenu.SetActive(true);
+                HarperSpells.SetActive(false);
+                HarperMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
+    public void HarperDiminuendo()
+    {
+        if (state == BattleState.HARPERTURN)
+        {
+            if (Harper.HarperSpell13MagicConsumed <= GameManager.HarperMagic)
+            {
+                harperDiminuendo = true;
+
+                HarperMenu.SetActive(true);
+                HarperSpells.SetActive(false);
+                enemySelect = true;
+                HarperConfirmMenu.SetActive(true);
+                HarperSpells.SetActive(false);
+                HarperMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+    #endregion
+
+    #region Skye Attack UI Buttons
+    public void SkyeFlippendo()
+    {
+        if (state == BattleState.SKYETURN)
+        {
+            if (Skye.SkyeSpell2MagicConsumed <= GameManager.SkyeMagic)
+            {
+                skyeFlippendo = true;
+
+                SkyeMenu.SetActive(true);
+                SkyeSpells.SetActive(false);
+                enemySelect = true;
+                SkyeConfirmMenu.SetActive(true);
+                SkyeSpells.SetActive(false);
+                SkyeMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
+    public void SkyeMinorCura()
+    {
+        if (state == BattleState.SKYETURN)
+        {
+            if (Skye.SkyeSpell3MagicConsumed <= GameManager.SkyeMagic)
+            {
+                skyeMinorCura = true;
+
+                SkyeMenu.SetActive(true);
+                SkyeSpells.SetActive(false);
+                enemySelect = true;
+                SkyeConfirmMenu.SetActive(true);
+                SkyeSpells.SetActive(false);
+                SkyeMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
+    public void SkyeMaiorCura()
+    {
+        if (state == BattleState.SKYETURN)
+        {
+            if (Skye.SkyeSpell4MagicConsumed <= GameManager.SkyeMagic)
+            {
+                skyeMaiorCura = true;
+
+                SkyeMenu.SetActive(true);
+                SkyeSpells.SetActive(false);
+                enemySelect = true;
+                SkyeConfirmMenu.SetActive(true);
+                SkyeSpells.SetActive(false);
+                SkyeMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
+    public void SkyeSenaPlenaPotion()
+    {
+        if (state == BattleState.SKYETURN)
+        {
+            if (Skye.SkyeSpell5MagicConsumed <= GameManager.SkyeMagic)
+            {
+                skyeSenaPlenaPotion = true;
+
+                SkyeMenu.SetActive(true);
+                SkyeSpells.SetActive(false);
+                enemySelect = true;
+                SkyeConfirmMenu.SetActive(true);
+                SkyeSpells.SetActive(false);
+                SkyeMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
+    public void SkyeReanimatePotion()
+    {
+        if (state == BattleState.SKYETURN)
+        {
+            if (Skye.SkyeSpell6MagicConsumed <= GameManager.SkyeMagic)
+            {
+                skyeReanimatePotion = true;
+
+                SkyeMenu.SetActive(true);
+                SkyeSpells.SetActive(false);
+                enemySelect = true;
+                SkyeConfirmMenu.SetActive(true);
+                SkyeSpells.SetActive(false);
+                SkyeMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
+    public void SkyeSanaCoetusPotion()
+    {
+        if (state == BattleState.SKYETURN)
+        {
+            if (Skye.SkyeSpell7MagicConsumed <= GameManager.SkyeMagic)
+            {
+                skyeSanaCoetusPotion = true;
+
+                SkyeMenu.SetActive(true);
+                SkyeSpells.SetActive(false);
+                enemySelect = true;
+                SkyeConfirmMenu.SetActive(true);
+                SkyeSpells.SetActive(false);
+                SkyeMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
+    public void SkyeAntidotetoCommonPoisons()
+    {
+        if (state == BattleState.SKYETURN)
+        {
+            if (Skye.SkyeSpell8MagicConsumed <= GameManager.SkyeMagic)
+            {
+                skyeAntidoteToCommonPoisons = true;
+
+                SkyeMenu.SetActive(true);
+                SkyeSpells.SetActive(false);
+                enemySelect = true;
+                SkyeConfirmMenu.SetActive(true);
+                SkyeSpells.SetActive(false);
+                SkyeMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
+    public void SkyeStrengthPotion()
+    {
+        if (state == BattleState.SKYETURN)
+        {
+            if (Skye.SkyeSpell9MagicConsumed <= GameManager.SkyeMagic)
+            {
+                skyeStrengthPotion = true;
+
+                SkyeMenu.SetActive(true);
+                SkyeSpells.SetActive(false);
+                enemySelect = true;
+                SkyeConfirmMenu.SetActive(true);
+                SkyeSpells.SetActive(false);
+                SkyeMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
+    public void SkyeConfundus()
+    {
+        if (state == BattleState.SKYETURN)
+        {
+            if (Skye.SkyeSpell10MagicConsumed <= GameManager.SkyeMagic)
+            {
+                skyeConfundus = true;
+
+                SkyeMenu.SetActive(true);
+                SkyeSpells.SetActive(false);
+                enemySelect = true;
+                SkyeConfirmMenu.SetActive(true);
+                SkyeSpells.SetActive(false);
+                SkyeMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+    public void SkyeIraUolueris()
+    {
+        if (state == BattleState.SKYETURN)
+        {
+            if (Skye.SkyeSpell11MagicConsumed <= GameManager.SkyeMagic)
+            {
+                skyeIraUolueris = true;
+
+                SkyeMenu.SetActive(true);
+                SkyeSpells.SetActive(false);
+                enemySelect = true;
+                SkyeConfirmMenu.SetActive(true);
+                SkyeSpells.SetActive(false);
+                SkyeMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+    #endregion
+
+    #region Sullivan Attack UI Buttons
+ 
+    public void SullivanFlippendo()
+    {
+        if (state == BattleState.SULLIVANTURN)
+        {
+            if (Sullivan.SullivanSpell2MagicConsumed <= GameManager.SullivanMagic)
+            {
+                sullivanFlippendo = true;
+
+                SullivanMenu.SetActive(true);
+                SullivanSpells.SetActive(false);
+                enemySelect = true;
+                SullivanConfirmMenu.SetActive(true);
+                SullivanSpells.SetActive(false);
+                SullivanMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
+    public void SullivanExiling()
+    {
+        if (state == BattleState.SULLIVANTURN)
+        {
+            if (Sullivan.SullivanSpell3MagicConsumed <= GameManager.SullivanMagic)
+            {
+                sullivanExiling = true;
+
+                SullivanMenu.SetActive(true);
+                SullivanSpells.SetActive(false);
+                enemySelect = true;
+                SullivanConfirmMenu.SetActive(true);
+                SullivanSpells.SetActive(false);
+                SullivanMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
+    public void SullivanProtego()
+    {
+        if (state == BattleState.SULLIVANTURN)
+        {
+            if (Sullivan.SullivanSpell4MagicConsumed <= GameManager.SullivanMagic)
+            {
+                sullivanProtego = true;
+
+                SullivanMenu.SetActive(true);
+                SullivanSpells.SetActive(false);
+                enemySelect = true;
+                SullivanConfirmMenu.SetActive(true);
+                SullivanSpells.SetActive(false);
+                SullivanMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
+    public void SullivanIgnusMagnum()
+    {
+        if (state == BattleState.SULLIVANTURN)
+        {
+            if (Sullivan.SullivanSpell5MagicConsumed <= GameManager.SullivanMagic)
+            {
+                sullivanIgnusMagnum = true;
+
+                SullivanMenu.SetActive(true);
+                SullivanSpells.SetActive(false);
+                enemySelect = true;
+                SullivanConfirmMenu.SetActive(true);
+                SullivanSpells.SetActive(false);
+                SullivanMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
+    public void SullivanSagittaIecit()
+    {
+        if (state == BattleState.SULLIVANTURN)
+        {
+            if (Sullivan.SullivanSpell6MagicConsumed <= GameManager.SullivanMagic)
+            {
+                sullivanSagittaIecit = true;
+
+                SullivanMenu.SetActive(true);
+                SullivanSpells.SetActive(false);
+                enemySelect = true;
+                SullivanConfirmMenu.SetActive(true);
+                SullivanSpells.SetActive(false);
+                SullivanMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
+    public void SullivanMonstrumSella()
+    {
+        if (state == BattleState.SULLIVANTURN)
+        {
+            if (Sullivan.SullivanSpell7MagicConsumed <= GameManager.SullivanMagic)
+            {
+                sullivanMonstrumSella = true;
+
+                SullivanMenu.SetActive(true);
+                SullivanSpells.SetActive(false);
+                enemySelect = true;
+                SullivanConfirmMenu.SetActive(true);
+                SullivanSpells.SetActive(false);
+                SullivanMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
+    public void SullivanIncarcerous()
+    {
+        if (state == BattleState.SULLIVANTURN)
+        {
+            if (Sullivan.SullivanSpell8MagicConsumed <= GameManager.SullivanMagic)
+            {
+                sullivanIncarcerous = true;
+
+                SullivanMenu.SetActive(true);
+                SullivanSpells.SetActive(false);
+                enemySelect = true;
+                SullivanConfirmMenu.SetActive(true);
+                SullivanSpells.SetActive(false);
+                SullivanMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
+    public void SullivanUltimumChao()
+    {
+        if (state == BattleState.SULLIVANTURN)
+        {
+            if (Sullivan.SullivanSpell9MagicConsumed <= GameManager.SullivanMagic)
+            {
+                sullivanUltimumChao = true;
+
+                SullivanMenu.SetActive(true);
+                SullivanSpells.SetActive(false);
+                enemySelect = true;
+                SullivanConfirmMenu.SetActive(true);
+                SullivanSpells.SetActive(false);
+                SullivanMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
+    public void SullivanMutareStatum()
+    {
+        if (state == BattleState.SULLIVANTURN)
+        {
+            if (Sullivan.SullivanSpell10MagicConsumed <= GameManager.SullivanMagic)
+            {
+                sullivanMutareStatum = true;
+
+                SullivanMenu.SetActive(true);
+                SullivanSpells.SetActive(false);
+                enemySelect = true;
+                SullivanConfirmMenu.SetActive(true);
+                SullivanSpells.SetActive(false);
+                SullivanMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
+    public void SullivanEngorgement()
+    {
+        if (state == BattleState.SULLIVANTURN)
+        {
+            if (Sullivan.SullivanSpell11MagicConsumed <= GameManager.SullivanMagic)
+            {
+                sullivanEngorgement = true;
+
+                SullivanMenu.SetActive(true);
+                SullivanSpells.SetActive(false);
+                enemySelect = true;
+                SullivanConfirmMenu.SetActive(true);
+                SullivanSpells.SetActive(false);
+                SullivanMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
+    public void SullivanStatuamLocomotion()
+    {
+        if (state == BattleState.SULLIVANTURN)
+        {
+            if (Sullivan.SullivanSpell12MagicConsumed <= GameManager.SullivanMagic)
+            {
+                sullivanStatuamLocomotion = true;
+
+                SullivanMenu.SetActive(true);
+                SullivanSpells.SetActive(false);
+                enemySelect = true;
+                SullivanConfirmMenu.SetActive(true);
+                SullivanSpells.SetActive(false);
+                SullivanMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
+    public void SullivanCriticaFocus()
+    {
+        if (state == BattleState.SULLIVANTURN)
+        {
+            if (Sullivan.SullivanSpell13MagicConsumed <= GameManager.SullivanMagic)
+            {
+                sullivanCriticaFocus = true;
+
+                SullivanMenu.SetActive(true);
+                SullivanSpells.SetActive(false);
+                enemySelect = true;
+                SullivanConfirmMenu.SetActive(true);
+                SullivanSpells.SetActive(false);
+                SullivanMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+    #endregion
     /*
 
     public void OnSpell1Button()
@@ -6090,7 +8465,7 @@ public class BattleSystem : MonoBehaviour
         for (int i = 0; i < enemyUnit.Count; i++)
         {
             GameManager.Money += enemyUnit[i].MoneyToDistribute;
-            MoneyText.text = GameManager.Money.ToString();
+          //  MoneyText.text = GameManager.Money.ToString();
         }
         /*
         if (!MCDead)
@@ -6563,6 +8938,11 @@ public class BattleSystem : MonoBehaviour
         }
     }
     */
+
+    public void WinningScreen()
+    {
+        SceneManager.LoadScene(DungeonRoomToLoad);
+    }
 
 
     IEnumerator WaitingAtEndOfBattle()
