@@ -158,6 +158,24 @@ public class BattleSystem : MonoBehaviour
 
     #endregion
 
+    #region JameelAttacks
+    bool jameelThrowRock;
+    bool jameelFlippendo;
+    bool jameelMinusSanaCoetus;
+    bool jameelMinorCura;
+    bool jameelMaiorCura;
+    bool jameelPartumNix;
+    bool jameelHiemsImpetus;
+    bool jameelBombarda;
+    bool jameelBombardaMaxima;
+    bool jameelBombardaUltima;
+    bool jameelRepellere;
+    bool jameelDiffindo;
+    bool jameelDiffindoMaxima;
+    bool jameelImpetumSubsisto;
+    bool jameelChorusPedes;
+    #endregion
+
     //Enemy
     bool isDead;
     //determing player losing conditions - this is different from Strike Out - now only the MC needs to die
@@ -774,12 +792,12 @@ public class BattleSystem : MonoBehaviour
                 break;
             case CharacterIdentifier.Rhys:
                 //       print("Middle");
-           //     RhysTurn();
+                RhysTurn();
                 state = BattleState.RHYSTURN;
                 break;
             case CharacterIdentifier.Jameel:
                 //       print("SetUp");
-            //    JameelTurn();
+                JameelTurn();
                 state = BattleState.JAMEELTURN;
                 break;
             case CharacterIdentifier.Harper:
@@ -2657,7 +2675,9 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
-    #endregion 
+    #endregion
+
+    #region RhysAttacks
     IEnumerator RhysAttack()
     {
         //To Do Damage Enemy
@@ -3262,13 +3282,711 @@ public class BattleSystem : MonoBehaviour
             }
         }
     }
+    #endregion
+
     IEnumerator JameelAttack()
     {
         //To Do Damage Enemy
         yield return new WaitForSeconds(1f);
-        //Modify the Spell1Damage and Spell1Magic used based on the player, the spell, and their level 
-        //Paste in MCAttack here once the modifications have been made. 
-        Debug.Log("I'm here");
+        if (jameelFlippendo)
+        {
+            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            {
+                jameelFlippendo = false;
+                dialogueText.text = "Enemy is knocked out, select another target.";
+                yield return new WaitForSeconds(1f);
+                dialogueText.text = "Select someone to attack!";
+                JameelMenu.SetActive(true);
+                JameelSpells.SetActive(false);
+            }
+            else
+            {
+                GameManager.JameelMagic -= Jameel.JameelSpell2MagicConsumed;
+                JameelMagic.value = GameManager.JameelMagic;
+                //    StarterAnim.Play("StarterWindup");
+                yield return new WaitForSeconds(2f);
+                isDead = enemyUnit[enemyUnitSelected].JameelFlippendo(Jameel.JameelSpell2Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+                jameelFlippendo = false;
+                jameelMinusSanaCoetus = false;
+                jameelMinorCura = false;
+                jameelMaiorCura = false;
+                jameelPartumNix = false;
+                jameelHiemsImpetus = false;
+                jameelBombarda = false;
+                jameelBombardaMaxima = false;
+                jameelBombardaUltima = false;
+                jameelRepellere = false;
+                jameelDiffindo = false;
+                jameelDiffindoMaxima = false;
+                jameelImpetumSubsisto = false;
+                jameelChorusPedes = false;
+                dialogueText.text = "The attack is successful!";
+                yield return new WaitForSeconds(2f);
+
+                //This checks to see if the Enemy is Dead or has HP remaining
+                if (isDead)
+                {
+                    RemoveCurrentEnemy();
+
+                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    enemyCount--;
+
+                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                }
+                NextTurn();
+            }
+        }
+
+        if (jameelMinusSanaCoetus)
+        {
+            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            {
+                jameelMinusSanaCoetus = false;
+                dialogueText.text = "Enemy is knocked out, select another target.";
+                yield return new WaitForSeconds(1f);
+                dialogueText.text = "Select someone to attack!";
+                JameelMenu.SetActive(true);
+                JameelSpells.SetActive(false);
+            }
+            else
+            {
+                GameManager.JameelMagic -= Jameel.JameelSpell3MagicConsumed;
+                JameelMagic.value = GameManager.JameelMagic;
+                //    StarterAnim.Play("StarterWindup");
+                yield return new WaitForSeconds(2f);
+                isDead = enemyUnit[enemyUnitSelected].JameelFlippendo(Jameel.JameelSpell3Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+                jameelFlippendo = false;
+                jameelMinusSanaCoetus = false;
+                jameelMinorCura = false;
+                jameelMaiorCura = false;
+                jameelPartumNix = false;
+                jameelHiemsImpetus = false;
+                jameelBombarda = false;
+                jameelBombardaMaxima = false;
+                jameelBombardaUltima = false;
+                jameelRepellere = false;
+                jameelDiffindo = false;
+                jameelDiffindoMaxima = false;
+                jameelImpetumSubsisto = false;
+                jameelChorusPedes = false;
+                dialogueText.text = "The attack is successful!";
+                yield return new WaitForSeconds(2f);
+
+                //This checks to see if the Enemy is Dead or has HP remaining
+                if (isDead)
+                {
+                    RemoveCurrentEnemy();
+
+                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    enemyCount--;
+
+                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                }
+                NextTurn();
+            }
+        }
+
+        if (jameelMinorCura)
+        {
+            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            {
+                jameelMinorCura = false;
+                dialogueText.text = "Enemy is knocked out, select another target.";
+                yield return new WaitForSeconds(1f);
+                dialogueText.text = "Select someone to attack!";
+                JameelMenu.SetActive(true);
+                JameelSpells.SetActive(false);
+            }
+            else
+            {
+                GameManager.JameelMagic -= Jameel.JameelSpell4MagicConsumed;
+                JameelMagic.value = GameManager.JameelMagic;
+                //    StarterAnim.Play("StarterWindup");
+                yield return new WaitForSeconds(2f);
+                isDead = enemyUnit[enemyUnitSelected].JameelFlippendo(Jameel.JameelSpell4Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+                jameelFlippendo = false;
+                jameelMinusSanaCoetus = false;
+                jameelMinorCura = false;
+                jameelMaiorCura = false;
+                jameelPartumNix = false;
+                jameelHiemsImpetus = false;
+                jameelBombarda = false;
+                jameelBombardaMaxima = false;
+                jameelBombardaUltima = false;
+                jameelRepellere = false;
+                jameelDiffindo = false;
+                jameelDiffindoMaxima = false;
+                jameelImpetumSubsisto = false;
+                jameelChorusPedes = false;
+                dialogueText.text = "The attack is successful!";
+                yield return new WaitForSeconds(2f);
+
+                //This checks to see if the Enemy is Dead or has HP remaining
+                if (isDead)
+                {
+                    RemoveCurrentEnemy();
+
+                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    enemyCount--;
+
+                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                }
+                NextTurn();
+            }
+        }
+
+        if (jameelMaiorCura)
+        {
+            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            {
+                jameelMaiorCura = false;
+                dialogueText.text = "Enemy is knocked out, select another target.";
+                yield return new WaitForSeconds(1f);
+                dialogueText.text = "Select someone to attack!";
+                JameelMenu.SetActive(true);
+                JameelSpells.SetActive(false);
+            }
+            else
+            {
+                GameManager.JameelMagic -= Jameel.JameelSpell5MagicConsumed;
+                JameelMagic.value = GameManager.JameelMagic;
+                //    StarterAnim.Play("StarterWindup");
+                yield return new WaitForSeconds(2f);
+                isDead = enemyUnit[enemyUnitSelected].JameelFlippendo(Jameel.JameelSpell5Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+                jameelFlippendo = false;
+                jameelMinusSanaCoetus = false;
+                jameelMinorCura = false;
+                jameelMaiorCura = false;
+                jameelPartumNix = false;
+                jameelHiemsImpetus = false;
+                jameelBombarda = false;
+                jameelBombardaMaxima = false;
+                jameelBombardaUltima = false;
+                jameelRepellere = false;
+                jameelDiffindo = false;
+                jameelDiffindoMaxima = false;
+                jameelImpetumSubsisto = false;
+                jameelChorusPedes = false;
+                dialogueText.text = "The attack is successful!";
+                yield return new WaitForSeconds(2f);
+
+                //This checks to see if the Enemy is Dead or has HP remaining
+                if (isDead)
+                {
+                    RemoveCurrentEnemy();
+
+                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    enemyCount--;
+
+                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                }
+                NextTurn();
+            }
+        }
+
+        if (jameelPartumNix)
+        {
+            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            {
+                jameelPartumNix = false;
+                dialogueText.text = "Enemy is knocked out, select another target.";
+                yield return new WaitForSeconds(1f);
+                dialogueText.text = "Select someone to attack!";
+                JameelMenu.SetActive(true);
+                JameelSpells.SetActive(false);
+            }
+            else
+            {
+                GameManager.JameelMagic -= Jameel.JameelSpell6MagicConsumed;
+                JameelMagic.value = GameManager.JameelMagic;
+                //    StarterAnim.Play("StarterWindup");
+                yield return new WaitForSeconds(2f);
+                isDead = enemyUnit[enemyUnitSelected].JameelFlippendo(Jameel.JameelSpell6Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+                jameelFlippendo = false;
+                jameelMinusSanaCoetus = false;
+                jameelMinorCura = false;
+                jameelMaiorCura = false;
+                jameelPartumNix = false;
+                jameelHiemsImpetus = false;
+                jameelBombarda = false;
+                jameelBombardaMaxima = false;
+                jameelBombardaUltima = false;
+                jameelRepellere = false;
+                jameelDiffindo = false;
+                jameelDiffindoMaxima = false;
+                jameelImpetumSubsisto = false;
+                jameelChorusPedes = false;
+                dialogueText.text = "The attack is successful!";
+                yield return new WaitForSeconds(2f);
+
+                //This checks to see if the Enemy is Dead or has HP remaining
+                if (isDead)
+                {
+                    RemoveCurrentEnemy();
+
+                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    enemyCount--;
+
+                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                }
+                NextTurn();
+            }
+        }
+
+        if (jameelHiemsImpetus)
+        {
+            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            {
+                jameelHiemsImpetus = false;
+                dialogueText.text = "Enemy is knocked out, select another target.";
+                yield return new WaitForSeconds(1f);
+                dialogueText.text = "Select someone to attack!";
+                JameelMenu.SetActive(true);
+                JameelSpells.SetActive(false);
+            }
+            else
+            {
+                GameManager.JameelMagic -= Jameel.JameelSpell7MagicConsumed;
+                JameelMagic.value = GameManager.JameelMagic;
+                //    StarterAnim.Play("StarterWindup");
+                yield return new WaitForSeconds(2f);
+                isDead = enemyUnit[enemyUnitSelected].JameelFlippendo(Jameel.JameelSpell7Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+                jameelFlippendo = false;
+                jameelMinusSanaCoetus = false;
+                jameelMinorCura = false;
+                jameelMaiorCura = false;
+                jameelPartumNix = false;
+                jameelHiemsImpetus = false;
+                jameelBombarda = false;
+                jameelBombardaMaxima = false;
+                jameelBombardaUltima = false;
+                jameelRepellere = false;
+                jameelDiffindo = false;
+                jameelDiffindoMaxima = false;
+                jameelImpetumSubsisto = false;
+                jameelChorusPedes = false;
+                dialogueText.text = "The attack is successful!";
+                yield return new WaitForSeconds(2f);
+
+                //This checks to see if the Enemy is Dead or has HP remaining
+                if (isDead)
+                {
+                    RemoveCurrentEnemy();
+
+                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    enemyCount--;
+
+                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                }
+                NextTurn();
+            }
+        }
+
+        if (jameelBombarda)
+        {
+            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            {
+                jameelBombarda = false;
+                dialogueText.text = "Enemy is knocked out, select another target.";
+                yield return new WaitForSeconds(1f);
+                dialogueText.text = "Select someone to attack!";
+                JameelMenu.SetActive(true);
+                JameelSpells.SetActive(false);
+            }
+            else
+            {
+                GameManager.JameelMagic -= Jameel.JameelSpell8MagicConsumed;
+                JameelMagic.value = GameManager.JameelMagic;
+                //    StarterAnim.Play("StarterWindup");
+                yield return new WaitForSeconds(2f);
+                isDead = enemyUnit[enemyUnitSelected].JameelFlippendo(Jameel.JameelSpell8Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+                jameelFlippendo = false;
+                jameelMinusSanaCoetus = false;
+                jameelMinorCura = false;
+                jameelMaiorCura = false;
+                jameelPartumNix = false;
+                jameelHiemsImpetus = false;
+                jameelBombarda = false;
+                jameelBombardaMaxima = false;
+                jameelBombardaUltima = false;
+                jameelRepellere = false;
+                jameelDiffindo = false;
+                jameelDiffindoMaxima = false;
+                jameelImpetumSubsisto = false;
+                jameelChorusPedes = false;
+                dialogueText.text = "The attack is successful!";
+                yield return new WaitForSeconds(2f);
+
+                //This checks to see if the Enemy is Dead or has HP remaining
+                if (isDead)
+                {
+                    RemoveCurrentEnemy();
+
+                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    enemyCount--;
+
+                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                }
+                NextTurn();
+            }
+        }
+
+        if (jameelBombardaMaxima)
+        {
+            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            {
+                jameelBombardaMaxima = false;
+                dialogueText.text = "Enemy is knocked out, select another target.";
+                yield return new WaitForSeconds(1f);
+                dialogueText.text = "Select someone to attack!";
+                JameelMenu.SetActive(true);
+                JameelSpells.SetActive(false);
+            }
+            else
+            {
+                GameManager.JameelMagic -= Jameel.JameelSpell9MagicConsumed;
+                JameelMagic.value = GameManager.JameelMagic;
+                //    StarterAnim.Play("StarterWindup");
+                yield return new WaitForSeconds(2f);
+                isDead = enemyUnit[enemyUnitSelected].JameelFlippendo(Jameel.JameelSpell9Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+                jameelFlippendo = false;
+                jameelMinusSanaCoetus = false;
+                jameelMinorCura = false;
+                jameelMaiorCura = false;
+                jameelPartumNix = false;
+                jameelHiemsImpetus = false;
+                jameelBombarda = false;
+                jameelBombardaMaxima = false;
+                jameelBombardaUltima = false;
+                jameelRepellere = false;
+                jameelDiffindo = false;
+                jameelDiffindoMaxima = false;
+                jameelImpetumSubsisto = false;
+                jameelChorusPedes = false;
+                dialogueText.text = "The attack is successful!";
+                yield return new WaitForSeconds(2f);
+
+                //This checks to see if the Enemy is Dead or has HP remaining
+                if (isDead)
+                {
+                    RemoveCurrentEnemy();
+
+                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    enemyCount--;
+
+                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                }
+                NextTurn();
+            }
+        }
+
+        if (jameelBombardaUltima)
+        {
+            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            {
+                jameelBombardaUltima = false;
+                dialogueText.text = "Enemy is knocked out, select another target.";
+                yield return new WaitForSeconds(1f);
+                dialogueText.text = "Select someone to attack!";
+                JameelMenu.SetActive(true);
+                JameelSpells.SetActive(false);
+            }
+            else
+            {
+                GameManager.JameelMagic -= Jameel.JameelSpell10MagicConsumed;
+                JameelMagic.value = GameManager.JameelMagic;
+                //    StarterAnim.Play("StarterWindup");
+                yield return new WaitForSeconds(2f);
+                isDead = enemyUnit[enemyUnitSelected].JameelFlippendo(Jameel.JameelSpell10Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+                jameelFlippendo = false;
+                jameelMinusSanaCoetus = false;
+                jameelMinorCura = false;
+                jameelMaiorCura = false;
+                jameelPartumNix = false;
+                jameelHiemsImpetus = false;
+                jameelBombarda = false;
+                jameelBombardaMaxima = false;
+                jameelBombardaUltima = false;
+                jameelRepellere = false;
+                jameelDiffindo = false;
+                jameelDiffindoMaxima = false;
+                jameelImpetumSubsisto = false;
+                jameelChorusPedes = false;
+                dialogueText.text = "The attack is successful!";
+                yield return new WaitForSeconds(2f);
+
+                //This checks to see if the Enemy is Dead or has HP remaining
+                if (isDead)
+                {
+                    RemoveCurrentEnemy();
+
+                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    enemyCount--;
+
+                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                }
+                NextTurn();
+            }
+        }
+
+        if (jameelRepellere)
+        {
+            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            {
+                jameelRepellere = false;
+                dialogueText.text = "Enemy is knocked out, select another target.";
+                yield return new WaitForSeconds(1f);
+                dialogueText.text = "Select someone to attack!";
+                JameelMenu.SetActive(true);
+                JameelSpells.SetActive(false);
+            }
+            else
+            {
+                GameManager.JameelMagic -= Jameel.JameelSpell11MagicConsumed;
+                JameelMagic.value = GameManager.JameelMagic;
+                //    StarterAnim.Play("StarterWindup");
+                yield return new WaitForSeconds(2f);
+                isDead = enemyUnit[enemyUnitSelected].JameelFlippendo(Jameel.JameelSpell11Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+                jameelFlippendo = false;
+                jameelMinusSanaCoetus = false;
+                jameelMinorCura = false;
+                jameelMaiorCura = false;
+                jameelPartumNix = false;
+                jameelHiemsImpetus = false;
+                jameelBombarda = false;
+                jameelBombardaMaxima = false;
+                jameelBombardaUltima = false;
+                jameelRepellere = false;
+                jameelDiffindo = false;
+                jameelDiffindoMaxima = false;
+                jameelImpetumSubsisto = false;
+                jameelChorusPedes = false;
+                dialogueText.text = "The attack is successful!";
+                yield return new WaitForSeconds(2f);
+
+                //This checks to see if the Enemy is Dead or has HP remaining
+                if (isDead)
+                {
+                    RemoveCurrentEnemy();
+
+                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    enemyCount--;
+
+                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                }
+                NextTurn();
+            }
+        }
+
+        if (jameelDiffindo)
+        {
+            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            {
+                jameelDiffindo = false;
+                dialogueText.text = "Enemy is knocked out, select another target.";
+                yield return new WaitForSeconds(1f);
+                dialogueText.text = "Select someone to attack!";
+                JameelMenu.SetActive(true);
+                JameelSpells.SetActive(false);
+            }
+            else
+            {
+                GameManager.JameelMagic -= Jameel.JameelSpell12MagicConsumed;
+                JameelMagic.value = GameManager.JameelMagic;
+                //    StarterAnim.Play("StarterWindup");
+                yield return new WaitForSeconds(2f);
+                isDead = enemyUnit[enemyUnitSelected].JameelFlippendo(Jameel.JameelSpell12Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+                jameelFlippendo = false;
+                jameelMinusSanaCoetus = false;
+                jameelMinorCura = false;
+                jameelMaiorCura = false;
+                jameelPartumNix = false;
+                jameelHiemsImpetus = false;
+                jameelBombarda = false;
+                jameelBombardaMaxima = false;
+                jameelBombardaUltima = false;
+                jameelRepellere = false;
+                jameelDiffindo = false;
+                jameelDiffindoMaxima = false;
+                jameelImpetumSubsisto = false;
+                jameelChorusPedes = false;
+                dialogueText.text = "The attack is successful!";
+                yield return new WaitForSeconds(2f);
+
+                //This checks to see if the Enemy is Dead or has HP remaining
+                if (isDead)
+                {
+                    RemoveCurrentEnemy();
+
+                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    enemyCount--;
+
+                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                }
+                NextTurn();
+            }
+        }
+
+        if (jameelDiffindoMaxima)
+        {
+            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            {
+                jameelDiffindoMaxima = false;
+                dialogueText.text = "Enemy is knocked out, select another target.";
+                yield return new WaitForSeconds(1f);
+                dialogueText.text = "Select someone to attack!";
+                JameelMenu.SetActive(true);
+                JameelSpells.SetActive(false);
+            }
+            else
+            {
+                GameManager.JameelMagic -= Jameel.JameelSpell13MagicConsumed;
+                JameelMagic.value = GameManager.JameelMagic;
+                //    StarterAnim.Play("StarterWindup");
+                yield return new WaitForSeconds(2f);
+                isDead = enemyUnit[enemyUnitSelected].JameelFlippendo(Jameel.JameelSpell13Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+                jameelFlippendo = false;
+                jameelMinusSanaCoetus = false;
+                jameelMinorCura = false;
+                jameelMaiorCura = false;
+                jameelPartumNix = false;
+                jameelHiemsImpetus = false;
+                jameelBombarda = false;
+                jameelBombardaMaxima = false;
+                jameelBombardaUltima = false;
+                jameelRepellere = false;
+                jameelDiffindo = false;
+                jameelDiffindoMaxima = false;
+                jameelImpetumSubsisto = false;
+                jameelChorusPedes = false;
+                dialogueText.text = "The attack is successful!";
+                yield return new WaitForSeconds(2f);
+
+                //This checks to see if the Enemy is Dead or has HP remaining
+                if (isDead)
+                {
+                    RemoveCurrentEnemy();
+
+                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    enemyCount--;
+
+                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                }
+                NextTurn();
+            }
+        }
+
+        if (jameelImpetumSubsisto)
+        {
+            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            {
+                jameelImpetumSubsisto = false;
+                dialogueText.text = "Enemy is knocked out, select another target.";
+                yield return new WaitForSeconds(1f);
+                dialogueText.text = "Select someone to attack!";
+                JameelMenu.SetActive(true);
+                JameelSpells.SetActive(false);
+            }
+            else
+            {
+                GameManager.JameelMagic -= Jameel.JameelSpell14MagicConsumed;
+                JameelMagic.value = GameManager.JameelMagic;
+                //    StarterAnim.Play("StarterWindup");
+                yield return new WaitForSeconds(2f);
+                isDead = enemyUnit[enemyUnitSelected].JameelFlippendo(Jameel.JameelSpell14Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+                jameelFlippendo = false;
+                jameelMinusSanaCoetus = false;
+                jameelMinorCura = false;
+                jameelMaiorCura = false;
+                jameelPartumNix = false;
+                jameelHiemsImpetus = false;
+                jameelBombarda = false;
+                jameelBombardaMaxima = false;
+                jameelBombardaUltima = false;
+                jameelRepellere = false;
+                jameelDiffindo = false;
+                jameelDiffindoMaxima = false;
+                jameelImpetumSubsisto = false;
+                jameelChorusPedes = false;
+                dialogueText.text = "The attack is successful!";
+                yield return new WaitForSeconds(2f);
+
+                //This checks to see if the Enemy is Dead or has HP remaining
+                if (isDead)
+                {
+                    RemoveCurrentEnemy();
+
+                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    enemyCount--;
+
+                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                }
+                NextTurn();
+            }
+        }
+
+        if (jameelChorusPedes)
+        {
+            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            {
+                jameelChorusPedes = false;
+                dialogueText.text = "Enemy is knocked out, select another target.";
+                yield return new WaitForSeconds(1f);
+                dialogueText.text = "Select someone to attack!";
+                JameelMenu.SetActive(true);
+                JameelSpells.SetActive(false);
+            }
+            else
+            {
+                GameManager.JameelMagic -= Jameel.JameelSpell15MagicConsumed;
+                JameelMagic.value = GameManager.JameelMagic;
+                //    StarterAnim.Play("StarterWindup");
+                yield return new WaitForSeconds(2f);
+                isDead = enemyUnit[enemyUnitSelected].JameelFlippendo(Jameel.JameelSpell15Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+                jameelFlippendo = false;
+                jameelMinusSanaCoetus = false;
+                jameelMinorCura = false;
+                jameelMaiorCura = false;
+                jameelPartumNix = false;
+                jameelHiemsImpetus = false;
+                jameelBombarda = false;
+                jameelBombardaMaxima = false;
+                jameelBombardaUltima = false;
+                jameelRepellere = false;
+                jameelDiffindo = false;
+                jameelDiffindoMaxima = false;
+                jameelImpetumSubsisto = false;
+                jameelChorusPedes = false;
+                dialogueText.text = "The attack is successful!";
+                yield return new WaitForSeconds(2f);
+
+                //This checks to see if the Enemy is Dead or has HP remaining
+                if (isDead)
+                {
+                    RemoveCurrentEnemy();
+
+                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    enemyCount--;
+
+                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                }
+                NextTurn();
+            }
+        }
     }
     IEnumerator HarperAttack()
     {
@@ -3925,7 +4643,7 @@ public class BattleSystem : MonoBehaviour
             diffindoMaxima = false;
         }
     }
-/*
+
     void RhysTurn()
     {
         //    Camera.transform.position = .transform.position;
@@ -3942,13 +4660,22 @@ public class BattleSystem : MonoBehaviour
             RhysMenu.SetActive(true);
             dialogueText.text = "Rhys: Choose an Action.";
 
-            fastball = false;
-            slider = false;
-            changeup = false;
-            curveball = false;
+            rhysThrowRock = false ;
+            rhysFlippendo = false;
+            rhysCorpusLiget = false;
+            rhysMothsDeorsum = false;
+            rhysMothInteriore = false;
+            rhysInternumCombustione = false;
+            rhysTenuiLabor = false;
+            rhysIncendio = false;
+            rhysFumos = false;
+            rhysWaddiwasi = false;
+            rhysConjurePugione = false;
+            rhysImpetumSubsisto = false;
+            rhysUolueris = false;
         }
     }
-
+    
     void JameelTurn()
     {
         //    Camera.transform.position = .transform.position;
@@ -3963,23 +4690,34 @@ public class BattleSystem : MonoBehaviour
             Camera.transform.LookAt(enemyCamTarget);
         }
         //    GameManager.Instance.DebugBall.transform.position = MiddleReliever.transform.position + Vector3.up * GameManager.Instance.DebugBallHeight;
-        if (RhysDead || !GameManager.RhysInParty)
+        if (JameelDead || !GameManager.JameelInParty)
         {
             NextTurn();
 
         }
-        if (!RhysDead)
+        if (!JameelDead)
         {
             JameelMenu.SetActive(true);
-            dialogueText.text = "Rhys: Choose an Action.";
+            dialogueText.text = "Jameel: Choose an Action.";
 
-            fastball = false;
-            slider = false;
-            changeup = false;
-            curveball = false;
+            jameelThrowRock = false;
+            jameelFlippendo = false;
+            jameelMinusSanaCoetus = false;
+            jameelMinorCura = false;
+            jameelMaiorCura = false;
+            jameelPartumNix = false;
+            jameelHiemsImpetus = false;
+            jameelBombarda = false;
+            jameelBombardaMaxima = false;
+            jameelBombardaUltima = false;
+            jameelRepellere = false;
+            jameelDiffindo = false;
+            jameelDiffindoMaxima = false;
+            jameelImpetumSubsisto = false;
+            jameelChorusPedes = false;
         }
     }
-
+    /*
     void HarperTurn()
     {
         //    Camera.transform.position = .transform.position;
@@ -4821,6 +5559,290 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
+
+    #endregion
+
+    #region Jameel Attack UI Buttons
+
+    public void JameelFlippendo()
+    {
+        if (state == BattleState.JAMEELTURN)
+        {
+            if (Jameel.JameelSpell2MagicConsumed <= GameManager.JameelMagic)
+            {
+                jameelFlippendo = true;
+
+                JameelMenu.SetActive(true);
+                JameelSpells.SetActive(false);
+                enemySelect = true;
+                JameelConfirmMenu.SetActive(true);
+                JameelSpells.SetActive(false);
+                JameelMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
+    public void JameelMinusSanaCoetus()
+    {
+        if (state == BattleState.JAMEELTURN)
+        {
+            if (Jameel.JameelSpell3MagicConsumed <= GameManager.JameelMagic)
+            {
+                jameelMinusSanaCoetus = true;
+
+                JameelMenu.SetActive(true);
+                JameelSpells.SetActive(false);
+                enemySelect = true;
+                JameelConfirmMenu.SetActive(true);
+                JameelSpells.SetActive(false);
+                JameelMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
+    public void JameelMinorCura()
+    {
+        if (state == BattleState.JAMEELTURN)
+        {
+            if (Jameel.JameelSpell4MagicConsumed <= GameManager.JameelMagic)
+            {
+                jameelMinorCura = true;
+
+                JameelMenu.SetActive(true);
+                JameelSpells.SetActive(false);
+                enemySelect = true;
+                JameelConfirmMenu.SetActive(true);
+                JameelSpells.SetActive(false);
+                JameelMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
+    public void JameelMaiorCura()
+    {
+        if (state == BattleState.JAMEELTURN)
+        {
+            if (Jameel.JameelSpell5MagicConsumed <= GameManager.JameelMagic)
+            {
+                jameelMaiorCura = true;
+
+                JameelMenu.SetActive(true);
+                JameelSpells.SetActive(false);
+                enemySelect = true;
+                JameelConfirmMenu.SetActive(true);
+                JameelSpells.SetActive(false);
+                JameelMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
+    public void JameelPartumNix()
+    {
+        if (state == BattleState.JAMEELTURN)
+        {
+            if (Jameel.JameelSpell6MagicConsumed <= GameManager.JameelMagic)
+            {
+                jameelPartumNix = true;
+
+                JameelMenu.SetActive(true);
+                JameelSpells.SetActive(false);
+                enemySelect = true;
+                JameelConfirmMenu.SetActive(true);
+                JameelSpells.SetActive(false);
+                JameelMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
+    public void JameelHiemsImpetus()
+    {
+        if (state == BattleState.JAMEELTURN)
+        {
+            if (Jameel.JameelSpell7MagicConsumed <= GameManager.JameelMagic)
+            {
+                jameelHiemsImpetus = true;
+
+                JameelMenu.SetActive(true);
+                JameelSpells.SetActive(false);
+                enemySelect = true;
+                JameelConfirmMenu.SetActive(true);
+                JameelSpells.SetActive(false);
+                JameelMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
+    public void JameelBombarda()
+    {
+        if (state == BattleState.JAMEELTURN)
+        {
+            if (Jameel.JameelSpell8MagicConsumed <= GameManager.JameelMagic)
+            {
+                jameelBombarda = true;
+
+                JameelMenu.SetActive(true);
+                JameelSpells.SetActive(false);
+                enemySelect = true;
+                JameelConfirmMenu.SetActive(true);
+                JameelSpells.SetActive(false);
+                JameelMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
+    public void JameelBombardaMaxima()
+    {
+        if (state == BattleState.JAMEELTURN)
+        {
+            if (Jameel.JameelSpell9MagicConsumed <= GameManager.JameelMagic)
+            {
+                jameelBombardaMaxima = true;
+
+                JameelMenu.SetActive(true);
+                JameelSpells.SetActive(false);
+                enemySelect = true;
+                JameelConfirmMenu.SetActive(true);
+                JameelSpells.SetActive(false);
+                JameelMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
+    public void JameelBombardaUltima()
+    {
+        if (state == BattleState.JAMEELTURN)
+        {
+            if (Jameel.JameelSpell10MagicConsumed <= GameManager.JameelMagic)
+            {
+                jameelBombardaUltima = true;
+
+                JameelMenu.SetActive(true);
+                JameelSpells.SetActive(false);
+                enemySelect = true;
+                JameelConfirmMenu.SetActive(true);
+                JameelSpells.SetActive(false);
+                JameelMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
+    public void JameelRepellere()
+    {
+        if (state == BattleState.JAMEELTURN)
+        {
+            if (Jameel.JameelSpell11MagicConsumed <= GameManager.JameelMagic)
+            {
+                jameelRepellere = true;
+
+                JameelMenu.SetActive(true);
+                JameelSpells.SetActive(false);
+                enemySelect = true;
+                JameelConfirmMenu.SetActive(true);
+                JameelSpells.SetActive(false);
+                JameelMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
+    public void JameelDiffindo()
+    {
+        if (state == BattleState.JAMEELTURN)
+        {
+            if (Jameel.JameelSpell12MagicConsumed <= GameManager.JameelMagic)
+            {
+                jameelDiffindo = true;
+
+                JameelMenu.SetActive(true);
+                JameelSpells.SetActive(false);
+                enemySelect = true;
+                JameelConfirmMenu.SetActive(true);
+                JameelSpells.SetActive(false);
+                JameelMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
+    public void JameelDiffindoMaxima()
+    {
+        if (state == BattleState.JAMEELTURN)
+        {
+            if (Jameel.JameelSpell13MagicConsumed <= GameManager.JameelMagic)
+            {
+                jameelDiffindoMaxima = true;
+
+                JameelMenu.SetActive(true);
+                JameelSpells.SetActive(false);
+                enemySelect = true;
+                JameelConfirmMenu.SetActive(true);
+                JameelSpells.SetActive(false);
+                JameelMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
+    public void JameelImpetumSubsisto()
+    {
+        if (state == BattleState.JAMEELTURN)
+        {
+            if (Jameel.JameelSpell14MagicConsumed <= GameManager.JameelMagic)
+            {
+                jameelImpetumSubsisto = true;
+
+                JameelMenu.SetActive(true);
+                JameelSpells.SetActive(false);
+                enemySelect = true;
+                JameelConfirmMenu.SetActive(true);
+                JameelSpells.SetActive(false);
+                JameelMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
+    public void JameelChorusPedes()
+    {
+        if (state == BattleState.JAMEELTURN)
+        {
+            if (Jameel.JameelSpell15MagicConsumed <= GameManager.JameelMagic)
+            {
+                jameelChorusPedes = true;
+
+                JameelMenu.SetActive(true);
+                JameelSpells.SetActive(false);
+                enemySelect = true;
+                JameelConfirmMenu.SetActive(true);
+                JameelSpells.SetActive(false);
+                JameelMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
 
     #endregion
     /*

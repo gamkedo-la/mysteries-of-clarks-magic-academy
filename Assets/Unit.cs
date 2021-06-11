@@ -106,6 +106,39 @@ public class Unit : MonoBehaviour
     public int RhysSpell13Damage;
     public int RhysSpell13MagicConsumed;
     #endregion
+
+    #region Jameel Attacks
+    public int JameelSpell1Damage;
+    public int JameelSpell1MagicConsumed;
+    public int JameelSpell2Damage;
+    public int JameelSpell2MagicConsumed;
+    public int JameelSpell3Damage;
+    public int JameelSpell3MagicConsumed;
+    public int JameelSpell4Damage;
+    public int JameelSpell4MagicConsumed;
+    public int JameelSpell5Damage;
+    public int JameelSpell5MagicConsumed;
+    public int JameelSpell6Damage;
+    public int JameelSpell6MagicConsumed;
+    public int JameelSpell7Damage;
+    public int JameelSpell7MagicConsumed;
+    public int JameelSpell8Damage;
+    public int JameelSpell8MagicConsumed;
+    public int JameelSpell9Damage;
+    public int JameelSpell9MagicConsumed;
+    public int JameelSpell10Damage;
+    public int JameelSpell10MagicConsumed;
+    public int JameelSpell11Damage;
+    public int JameelSpell11MagicConsumed;
+    public int JameelSpell12Damage;
+    public int JameelSpell12MagicConsumed;
+    public int JameelSpell13Damage;
+    public int JameelSpell13MagicConsumed;
+    public int JameelSpell14Damage;
+    public int JameelSpell14MagicConsumed;
+    public int JameelSpell15Damage;
+    public int JameelSpell15MagicConsumed;
+    #endregion
     //enemyAttack
     public int minAttackAvil, maxAttackAvil;
     int attackToDo;
@@ -1036,6 +1069,359 @@ public class Unit : MonoBehaviour
             return false;
         }
     }
+    #endregion
+
+    #region Jameel Attacks
+    public bool JameelFlippendo(int dmg)
+    {
+        Health.value = currentHP / maxHP;
+
+        currentHP -= dmg;
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        Health.value = (currentHP / maxHP);
+        DamageUI.text = "-" + dmg.ToString();
+
+        Health.value = (currentHP / maxHP);
+        StartCoroutine(ClearText());
+
+        if (currentHP <= 0)
+        {
+            //  anim.Play("Armature|Downed");
+            return true;
+        }
+
+        else
+        {
+            //  anim.Play("Armature|Damage");
+            return false;
+        }
+    }
+
+    public bool JameelMinusSanaCoetus(int dmg)
+    {
+        Health.value = currentHP / maxHP;
+
+        currentHP -= dmg;
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        Health.value = (currentHP / maxHP);
+        DamageUI.text = "-" + dmg.ToString();
+
+        Health.value = (currentHP / maxHP);
+        StartCoroutine(ClearText());
+
+        if (currentHP <= 0)
+        {
+            //  anim.Play("Armature|Downed");
+            return true;
+        }
+
+        else
+        {
+            //  anim.Play("Armature|Damage");
+            return false;
+        }
+    }
+
+    public bool JameelMinorCura(int dmg)
+    {
+        Health.value = currentHP / maxHP;
+
+        currentHP -= dmg;
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        Health.value = (currentHP / maxHP);
+        DamageUI.text = "-" + dmg.ToString();
+
+        Health.value = (currentHP / maxHP);
+        StartCoroutine(ClearText());
+
+        if (currentHP <= 0)
+        {
+            //  anim.Play("Armature|Downed");
+            return true;
+        }
+
+        else
+        {
+            //  anim.Play("Armature|Damage");
+            return false;
+        }
+    }
+
+    public bool JameelMaiorCura(int dmg)
+    {
+        Health.value = currentHP / maxHP;
+
+        currentHP -= dmg;
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        Health.value = (currentHP / maxHP);
+        DamageUI.text = "-" + dmg.ToString();
+
+        Health.value = (currentHP / maxHP);
+        StartCoroutine(ClearText());
+
+        if (currentHP <= 0)
+        {
+            //  anim.Play("Armature|Downed");
+            return true;
+        }
+
+        else
+        {
+            //  anim.Play("Armature|Damage");
+            return false;
+        }
+    }
+
+    public bool JameelPartumNix(int dmg)
+    {
+        Health.value = currentHP / maxHP;
+
+        currentHP -= dmg;
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        Health.value = (currentHP / maxHP);
+        DamageUI.text = "-" + dmg.ToString();
+
+        Health.value = (currentHP / maxHP);
+        StartCoroutine(ClearText());
+
+        if (currentHP <= 0)
+        {
+            //  anim.Play("Armature|Downed");
+            return true;
+        }
+
+        else
+        {
+            //  anim.Play("Armature|Damage");
+            return false;
+        }
+    }
+
+    public bool JameelHiemsImpetus(int dmg)
+    {
+        Health.value = currentHP / maxHP;
+
+        currentHP -= dmg;
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        Health.value = (currentHP / maxHP);
+        DamageUI.text = "-" + dmg.ToString();
+
+        Health.value = (currentHP / maxHP);
+        StartCoroutine(ClearText());
+
+        if (currentHP <= 0)
+        {
+            //  anim.Play("Armature|Downed");
+            return true;
+        }
+
+        else
+        {
+            //  anim.Play("Armature|Damage");
+            return false;
+        }
+    }
+
+    public bool JameelBombarda(int dmg)
+    {
+        Health.value = currentHP / maxHP;
+
+        currentHP -= dmg;
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        Health.value = (currentHP / maxHP);
+        DamageUI.text = "-" + dmg.ToString();
+
+        Health.value = (currentHP / maxHP);
+        StartCoroutine(ClearText());
+
+        if (currentHP <= 0)
+        {
+            //  anim.Play("Armature|Downed");
+            return true;
+        }
+
+        else
+        {
+            //  anim.Play("Armature|Damage");
+            return false;
+        }
+    }
+
+    public bool JameelBombardaMaxima(int dmg)
+    {
+        Health.value = currentHP / maxHP;
+
+        currentHP -= dmg;
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        Health.value = (currentHP / maxHP);
+        DamageUI.text = "-" + dmg.ToString();
+
+        Health.value = (currentHP / maxHP);
+        StartCoroutine(ClearText());
+
+        if (currentHP <= 0)
+        {
+            //  anim.Play("Armature|Downed");
+            return true;
+        }
+
+        else
+        {
+            //  anim.Play("Armature|Damage");
+            return false;
+        }
+    }
+
+    public bool JameelBombardaUltima(int dmg)
+    {
+        Health.value = currentHP / maxHP;
+
+        currentHP -= dmg;
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        Health.value = (currentHP / maxHP);
+        DamageUI.text = "-" + dmg.ToString();
+
+        Health.value = (currentHP / maxHP);
+        StartCoroutine(ClearText());
+
+        if (currentHP <= 0)
+        {
+            //  anim.Play("Armature|Downed");
+            return true;
+        }
+
+        else
+        {
+            //  anim.Play("Armature|Damage");
+            return false;
+        }
+    }
+
+    public bool JameelRepellere(int dmg)
+    {
+        Health.value = currentHP / maxHP;
+
+        currentHP -= dmg;
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        Health.value = (currentHP / maxHP);
+        DamageUI.text = "-" + dmg.ToString();
+
+        Health.value = (currentHP / maxHP);
+        StartCoroutine(ClearText());
+
+        if (currentHP <= 0)
+        {
+            //  anim.Play("Armature|Downed");
+            return true;
+        }
+
+        else
+        {
+            //  anim.Play("Armature|Damage");
+            return false;
+        }
+    }
+
+    public bool JameelDiffindo(int dmg)
+    {
+        Health.value = currentHP / maxHP;
+
+        currentHP -= dmg;
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        Health.value = (currentHP / maxHP);
+        DamageUI.text = "-" + dmg.ToString();
+
+        Health.value = (currentHP / maxHP);
+        StartCoroutine(ClearText());
+
+        if (currentHP <= 0)
+        {
+            //  anim.Play("Armature|Downed");
+            return true;
+        }
+
+        else
+        {
+            //  anim.Play("Armature|Damage");
+            return false;
+        }
+    }
+
+    public bool JameelDiffindoMaxima(int dmg)
+    {
+        Health.value = currentHP / maxHP;
+
+        currentHP -= dmg;
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        Health.value = (currentHP / maxHP);
+        DamageUI.text = "-" + dmg.ToString();
+
+        Health.value = (currentHP / maxHP);
+        StartCoroutine(ClearText());
+
+        if (currentHP <= 0)
+        {
+            //  anim.Play("Armature|Downed");
+            return true;
+        }
+
+        else
+        {
+            //  anim.Play("Armature|Damage");
+            return false;
+        }
+    }
+
+    public bool JameelImpetumSubsisto(int dmg)
+    {
+        Health.value = currentHP / maxHP;
+
+        currentHP -= dmg;
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        Health.value = (currentHP / maxHP);
+        DamageUI.text = "-" + dmg.ToString();
+
+        Health.value = (currentHP / maxHP);
+        StartCoroutine(ClearText());
+
+        if (currentHP <= 0)
+        {
+            //  anim.Play("Armature|Downed");
+            return true;
+        }
+
+        else
+        {
+            //  anim.Play("Armature|Damage");
+            return false;
+        }
+    }
+
+    public bool JameelChorusPedes(int dmg)
+    {
+        Health.value = currentHP / maxHP;
+
+        currentHP -= dmg;
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        Health.value = (currentHP / maxHP);
+        DamageUI.text = "-" + dmg.ToString();
+
+        Health.value = (currentHP / maxHP);
+        StartCoroutine(ClearText());
+
+        if (currentHP <= 0)
+        {
+            //  anim.Play("Armature|Downed");
+            return true;
+        }
+
+        else
+        {
+            //  anim.Play("Armature|Damage");
+            return false;
+        }
+    }
+
     #endregion
 
     public void Heal(int amount)
