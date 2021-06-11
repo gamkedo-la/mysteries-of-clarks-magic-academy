@@ -141,6 +141,23 @@ public class BattleSystem : MonoBehaviour
     bool diffindoMaxima;
     #endregion
 
+    #region RhysAttacks
+    bool rhysThrowRock;
+    bool rhysFlippendo;
+    bool rhysCorpusLiget;
+    bool rhysMothsDeorsum;
+    bool rhysMothInteriore;
+    bool rhysInternumCombustione;
+    bool rhysTenuiLabor;
+    bool rhysIncendio;
+    bool rhysFumos;
+    bool rhysWaddiwasi;
+    bool rhysConjurePugione;
+    bool rhysImpetumSubsisto;
+    bool rhysUolueris;
+
+    #endregion
+
     //Enemy
     bool isDead;
     //determing player losing conditions - this is different from Strike Out - now only the MC needs to die
@@ -2645,9 +2662,605 @@ public class BattleSystem : MonoBehaviour
     {
         //To Do Damage Enemy
         yield return new WaitForSeconds(1f);
-            //Modify the Spell1Damage and Spell1Magic used based on the player, the spell, and their level 
-            //Paste in MCAttack here once the modifications have been made. 
-            Debug.Log("I'm here");
+        if (rhysFlippendo)
+        {
+            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            {
+                rhysFlippendo = false;
+                dialogueText.text = "Enemy is knocked out, select another target.";
+                yield return new WaitForSeconds(1f);
+                dialogueText.text = "Select someone to attack!";
+                RhysMenu.SetActive(true);
+                RhysSpells.SetActive(false);
+            }
+            else
+            {
+                GameManager.RhysMagic -= Rhys.RhysSpell2MagicConsumed;
+                RhysMagic.value = GameManager.RhysMagic;
+                //    StarterAnim.Play("StarterWindup");
+                yield return new WaitForSeconds(2f);
+                isDead = enemyUnit[enemyUnitSelected].RhysFlippendo(Rhys.RhysSpell2Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+
+                rhysThrowRock = false;
+                rhysFlippendo = false;
+                rhysCorpusLiget = false;
+                rhysMothsDeorsum = false;
+                rhysMothInteriore = false;
+                rhysInternumCombustione = false;
+                rhysTenuiLabor = false;
+                rhysIncendio = false;
+                rhysFumos = false;
+                rhysWaddiwasi = false;
+                rhysConjurePugione = false;
+                rhysImpetumSubsisto = false;
+                rhysUolueris = false;
+                dialogueText.text = "The attack is successful!";
+                yield return new WaitForSeconds(2f);
+
+                //This checks to see if the Enemy is Dead or has HP remaining
+                if (isDead)
+                {
+                    RemoveCurrentEnemy();
+
+                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    enemyCount--;
+
+                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                }
+                NextTurn();
+            }
+        }
+
+        if (rhysCorpusLiget)
+        {
+            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            {
+                rhysCorpusLiget = false;
+                dialogueText.text = "Enemy is knocked out, select another target.";
+                yield return new WaitForSeconds(1f);
+                dialogueText.text = "Select someone to attack!";
+                RhysMenu.SetActive(true);
+                RhysSpells.SetActive(false);
+            }
+            else
+            {
+                GameManager.RhysMagic -= Rhys.RhysSpell3MagicConsumed;
+                RhysMagic.value = GameManager.RhysMagic;
+                //    StarterAnim.Play("StarterWindup");
+                yield return new WaitForSeconds(2f);
+                isDead = enemyUnit[enemyUnitSelected].RhysCorpusLiget(Rhys.RhysSpell3Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+
+                rhysThrowRock = false;
+                rhysFlippendo = false;
+                rhysCorpusLiget = false;
+                rhysMothsDeorsum = false;
+                rhysMothInteriore = false;
+                rhysInternumCombustione = false;
+                rhysTenuiLabor = false;
+                rhysIncendio = false;
+                rhysFumos = false;
+                rhysWaddiwasi = false;
+                rhysConjurePugione = false;
+                rhysImpetumSubsisto = false;
+                rhysUolueris = false;
+                dialogueText.text = "The attack is successful!";
+                yield return new WaitForSeconds(2f);
+
+                //This checks to see if the Enemy is Dead or has HP remaining
+                if (isDead)
+                {
+                    RemoveCurrentEnemy();
+
+                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    enemyCount--;
+
+                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                }
+                NextTurn();
+            }
+        }
+
+        if (rhysMothsDeorsum)
+        {
+            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            {
+                rhysMothsDeorsum = false;
+                dialogueText.text = "Enemy is knocked out, select another target.";
+                yield return new WaitForSeconds(1f);
+                dialogueText.text = "Select someone to attack!";
+                RhysMenu.SetActive(true);
+                RhysSpells.SetActive(false);
+            }
+            else
+            {
+                GameManager.RhysMagic -= Rhys.RhysSpell4MagicConsumed;
+                RhysMagic.value = GameManager.RhysMagic;
+                //    StarterAnim.Play("StarterWindup");
+                yield return new WaitForSeconds(2f);
+                isDead = enemyUnit[enemyUnitSelected].RhysMothsDeorsum(Rhys.RhysSpell4Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+
+                rhysThrowRock = false;
+                rhysFlippendo = false;
+                rhysCorpusLiget = false;
+                rhysMothsDeorsum = false;
+                rhysMothInteriore = false;
+                rhysInternumCombustione = false;
+                rhysTenuiLabor = false;
+                rhysIncendio = false;
+                rhysFumos = false;
+                rhysWaddiwasi = false;
+                rhysConjurePugione = false;
+                rhysImpetumSubsisto = false;
+                rhysUolueris = false;
+                dialogueText.text = "The attack is successful!";
+                yield return new WaitForSeconds(2f);
+
+                //This checks to see if the Enemy is Dead or has HP remaining
+                if (isDead)
+                {
+                    RemoveCurrentEnemy();
+
+                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    enemyCount--;
+
+                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                }
+                NextTurn();
+            }
+        }
+
+        if (rhysMothInteriore)
+        {
+            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            {
+                rhysMothInteriore = false;
+                dialogueText.text = "Enemy is knocked out, select another target.";
+                yield return new WaitForSeconds(1f);
+                dialogueText.text = "Select someone to attack!";
+                RhysMenu.SetActive(true);
+                RhysSpells.SetActive(false);
+            }
+            else
+            {
+                GameManager.RhysMagic -= Rhys.RhysSpell5MagicConsumed;
+                RhysMagic.value = GameManager.RhysMagic;
+                //    StarterAnim.Play("StarterWindup");
+                yield return new WaitForSeconds(2f);
+                isDead = enemyUnit[enemyUnitSelected].RhysMothsInteriore(Rhys.RhysSpell5Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+
+                rhysThrowRock = false;
+                rhysFlippendo = false;
+                rhysCorpusLiget = false;
+                rhysMothsDeorsum = false;
+                rhysMothInteriore = false;
+                rhysInternumCombustione = false;
+                rhysTenuiLabor = false;
+                rhysIncendio = false;
+                rhysFumos = false;
+                rhysWaddiwasi = false;
+                rhysConjurePugione = false;
+                rhysImpetumSubsisto = false;
+                rhysUolueris = false;
+                dialogueText.text = "The attack is successful!";
+                yield return new WaitForSeconds(2f);
+
+                //This checks to see if the Enemy is Dead or has HP remaining
+                if (isDead)
+                {
+                    RemoveCurrentEnemy();
+
+                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    enemyCount--;
+
+                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                }
+                NextTurn();
+            }
+        }
+
+        if (rhysInternumCombustione)
+        {
+            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            {
+                rhysInternumCombustione = false;
+                dialogueText.text = "Enemy is knocked out, select another target.";
+                yield return new WaitForSeconds(1f);
+                dialogueText.text = "Select someone to attack!";
+                RhysMenu.SetActive(true);
+                RhysSpells.SetActive(false);
+            }
+            else
+            {
+                GameManager.RhysMagic -= Rhys.RhysSpell6MagicConsumed;
+                RhysMagic.value = GameManager.RhysMagic;
+                //    StarterAnim.Play("StarterWindup");
+                yield return new WaitForSeconds(2f);
+                isDead = enemyUnit[enemyUnitSelected].RhysInternumCombustione(Rhys.RhysSpell6Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+
+                rhysThrowRock = false;
+                rhysFlippendo = false;
+                rhysCorpusLiget = false;
+                rhysMothsDeorsum = false;
+                rhysMothInteriore = false;
+                rhysInternumCombustione = false;
+                rhysTenuiLabor = false;
+                rhysIncendio = false;
+                rhysFumos = false;
+                rhysWaddiwasi = false;
+                rhysConjurePugione = false;
+                rhysImpetumSubsisto = false;
+                rhysUolueris = false;
+                dialogueText.text = "The attack is successful!";
+                yield return new WaitForSeconds(2f);
+
+                //This checks to see if the Enemy is Dead or has HP remaining
+                if (isDead)
+                {
+                    RemoveCurrentEnemy();
+
+                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    enemyCount--;
+
+                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                }
+                NextTurn();
+            }
+        }
+
+        if (rhysTenuiLabor)
+        {
+            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            {
+                rhysTenuiLabor = false;
+                dialogueText.text = "Enemy is knocked out, select another target.";
+                yield return new WaitForSeconds(1f);
+                dialogueText.text = "Select someone to attack!";
+                RhysMenu.SetActive(true);
+                RhysSpells.SetActive(false);
+            }
+            else
+            {
+                GameManager.RhysMagic -= Rhys.RhysSpell7MagicConsumed;
+                RhysMagic.value = GameManager.RhysMagic;
+                //    StarterAnim.Play("StarterWindup");
+                yield return new WaitForSeconds(2f);
+                isDead = enemyUnit[enemyUnitSelected].RhysTenuiLabor(Rhys.RhysSpell7Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+
+                rhysThrowRock = false;
+                rhysFlippendo = false;
+                rhysCorpusLiget = false;
+                rhysMothsDeorsum = false;
+                rhysMothInteriore = false;
+                rhysInternumCombustione = false;
+                rhysTenuiLabor = false;
+                rhysIncendio = false;
+                rhysFumos = false;
+                rhysWaddiwasi = false;
+                rhysConjurePugione = false;
+                rhysImpetumSubsisto = false;
+                rhysUolueris = false;
+                dialogueText.text = "The attack is successful!";
+                yield return new WaitForSeconds(2f);
+
+                //This checks to see if the Enemy is Dead or has HP remaining
+                if (isDead)
+                {
+                    RemoveCurrentEnemy();
+
+                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    enemyCount--;
+
+                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                }
+                NextTurn();
+            }
+        }
+
+        if (rhysIncendio)
+        {
+            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            {
+                rhysIncendio = false;
+                dialogueText.text = "Enemy is knocked out, select another target.";
+                yield return new WaitForSeconds(1f);
+                dialogueText.text = "Select someone to attack!";
+                RhysMenu.SetActive(true);
+                RhysSpells.SetActive(false);
+            }
+            else
+            {
+                GameManager.RhysMagic -= Rhys.RhysSpell8MagicConsumed;
+                RhysMagic.value = GameManager.RhysMagic;
+                //    StarterAnim.Play("StarterWindup");
+                yield return new WaitForSeconds(2f);
+                isDead = enemyUnit[enemyUnitSelected].RhysFlippendo(Rhys.RhysSpell8Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+
+                rhysThrowRock = false;
+                rhysFlippendo = false;
+                rhysCorpusLiget = false;
+                rhysMothsDeorsum = false;
+                rhysMothInteriore = false;
+                rhysInternumCombustione = false;
+                rhysTenuiLabor = false;
+                rhysIncendio = false;
+                rhysFumos = false;
+                rhysWaddiwasi = false;
+                rhysConjurePugione = false;
+                rhysImpetumSubsisto = false;
+                rhysUolueris = false;
+                dialogueText.text = "The attack is successful!";
+                yield return new WaitForSeconds(2f);
+
+                //This checks to see if the Enemy is Dead or has HP remaining
+                if (isDead)
+                {
+                    RemoveCurrentEnemy();
+
+                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    enemyCount--;
+
+                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                }
+                NextTurn();
+            }
+        }
+
+        if (rhysFumos)
+        {
+            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            {
+                rhysFumos = false;
+                dialogueText.text = "Enemy is knocked out, select another target.";
+                yield return new WaitForSeconds(1f);
+                dialogueText.text = "Select someone to attack!";
+                RhysMenu.SetActive(true);
+                RhysSpells.SetActive(false);
+            }
+            else
+            {
+                GameManager.RhysMagic -= Rhys.RhysSpell9MagicConsumed;
+                RhysMagic.value = GameManager.RhysMagic;
+                //    StarterAnim.Play("StarterWindup");
+                yield return new WaitForSeconds(2f);
+                isDead = enemyUnit[enemyUnitSelected].RhysFumos(Rhys.RhysSpell9Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+
+                rhysThrowRock = false;
+                rhysFlippendo = false;
+                rhysCorpusLiget = false;
+                rhysMothsDeorsum = false;
+                rhysMothInteriore = false;
+                rhysInternumCombustione = false;
+                rhysTenuiLabor = false;
+                rhysIncendio = false;
+                rhysFumos = false;
+                rhysWaddiwasi = false;
+                rhysConjurePugione = false;
+                rhysImpetumSubsisto = false;
+                rhysUolueris = false;
+                dialogueText.text = "The attack is successful!";
+                yield return new WaitForSeconds(2f);
+
+                //This checks to see if the Enemy is Dead or has HP remaining
+                if (isDead)
+                {
+                    RemoveCurrentEnemy();
+
+                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    enemyCount--;
+
+                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                }
+                NextTurn();
+            }
+        }
+
+        if (rhysWaddiwasi)
+        {
+            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            {
+                rhysWaddiwasi = false;
+                dialogueText.text = "Enemy is knocked out, select another target.";
+                yield return new WaitForSeconds(1f);
+                dialogueText.text = "Select someone to attack!";
+                RhysMenu.SetActive(true);
+                RhysSpells.SetActive(false);
+            }
+            else
+            {
+                GameManager.RhysMagic -= Rhys.RhysSpell10MagicConsumed;
+                RhysMagic.value = GameManager.RhysMagic;
+                //    StarterAnim.Play("StarterWindup");
+                yield return new WaitForSeconds(2f);
+                isDead = enemyUnit[enemyUnitSelected].RhysWaddiwasi(Rhys.RhysSpell10Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+
+                rhysThrowRock = false;
+                rhysFlippendo = false;
+                rhysCorpusLiget = false;
+                rhysMothsDeorsum = false;
+                rhysMothInteriore = false;
+                rhysInternumCombustione = false;
+                rhysTenuiLabor = false;
+                rhysIncendio = false;
+                rhysFumos = false;
+                rhysWaddiwasi = false;
+                rhysConjurePugione = false;
+                rhysImpetumSubsisto = false;
+                rhysUolueris = false;
+                dialogueText.text = "The attack is successful!";
+                yield return new WaitForSeconds(2f);
+
+                //This checks to see if the Enemy is Dead or has HP remaining
+                if (isDead)
+                {
+                    RemoveCurrentEnemy();
+
+                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    enemyCount--;
+
+                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                }
+                NextTurn();
+            }
+        }
+
+        if (rhysConjurePugione)
+        {
+            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            {
+                rhysConjurePugione = false;
+                dialogueText.text = "Enemy is knocked out, select another target.";
+                yield return new WaitForSeconds(1f);
+                dialogueText.text = "Select someone to attack!";
+                RhysMenu.SetActive(true);
+                RhysSpells.SetActive(false);
+            }
+            else
+            {
+                GameManager.RhysMagic -= Rhys.RhysSpell11MagicConsumed;
+                RhysMagic.value = GameManager.RhysMagic;
+                //    StarterAnim.Play("StarterWindup");
+                yield return new WaitForSeconds(2f);
+                isDead = enemyUnit[enemyUnitSelected].RhysConjurePugione(Rhys.RhysSpell11Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+
+                rhysThrowRock = false;
+                rhysFlippendo = false;
+                rhysCorpusLiget = false;
+                rhysMothsDeorsum = false;
+                rhysMothInteriore = false;
+                rhysInternumCombustione = false;
+                rhysTenuiLabor = false;
+                rhysIncendio = false;
+                rhysFumos = false;
+                rhysWaddiwasi = false;
+                rhysConjurePugione = false;
+                rhysImpetumSubsisto = false;
+                rhysUolueris = false;
+                dialogueText.text = "The attack is successful!";
+                yield return new WaitForSeconds(2f);
+
+                //This checks to see if the Enemy is Dead or has HP remaining
+                if (isDead)
+                {
+                    RemoveCurrentEnemy();
+
+                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    enemyCount--;
+
+                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                }
+                NextTurn();
+            }
+        }
+
+        if (rhysImpetumSubsisto)
+        {
+            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            {
+                rhysImpetumSubsisto = false;
+                dialogueText.text = "Enemy is knocked out, select another target.";
+                yield return new WaitForSeconds(1f);
+                dialogueText.text = "Select someone to attack!";
+                RhysMenu.SetActive(true);
+                RhysSpells.SetActive(false);
+            }
+            else
+            {
+                GameManager.RhysMagic -= Rhys.RhysSpell12MagicConsumed;
+                RhysMagic.value = GameManager.RhysMagic;
+                //    StarterAnim.Play("StarterWindup");
+                yield return new WaitForSeconds(2f);
+                isDead = enemyUnit[enemyUnitSelected].RhysImpetumSubsisto(Rhys.RhysSpell12Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+
+                rhysThrowRock = false;
+                rhysFlippendo = false;
+                rhysCorpusLiget = false;
+                rhysMothsDeorsum = false;
+                rhysMothInteriore = false;
+                rhysInternumCombustione = false;
+                rhysTenuiLabor = false;
+                rhysIncendio = false;
+                rhysFumos = false;
+                rhysWaddiwasi = false;
+                rhysConjurePugione = false;
+                rhysImpetumSubsisto = false;
+                rhysUolueris = false;
+                dialogueText.text = "The attack is successful!";
+                yield return new WaitForSeconds(2f);
+
+                //This checks to see if the Enemy is Dead or has HP remaining
+                if (isDead)
+                {
+                    RemoveCurrentEnemy();
+
+                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    enemyCount--;
+
+                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                }
+                NextTurn();
+            }
+        }
+
+        if (rhysUolueris)
+        {
+            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            {
+                rhysUolueris = false;
+                dialogueText.text = "Enemy is knocked out, select another target.";
+                yield return new WaitForSeconds(1f);
+                dialogueText.text = "Select someone to attack!";
+                RhysMenu.SetActive(true);
+                RhysSpells.SetActive(false);
+            }
+            else
+            {
+                GameManager.RhysMagic -= Rhys.RhysSpell13MagicConsumed;
+                RhysMagic.value = GameManager.RhysMagic;
+                //    StarterAnim.Play("StarterWindup");
+                yield return new WaitForSeconds(2f);
+                isDead = enemyUnit[enemyUnitSelected].RhysIraUolueris(Rhys.RhysSpell13Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+
+                rhysThrowRock = false;
+                rhysFlippendo = false;
+                rhysCorpusLiget = false;
+                rhysMothsDeorsum = false;
+                rhysMothInteriore = false;
+                rhysInternumCombustione = false;
+                rhysTenuiLabor = false;
+                rhysIncendio = false;
+                rhysFumos = false;
+                rhysWaddiwasi = false;
+                rhysConjurePugione = false;
+                rhysImpetumSubsisto = false;
+                rhysUolueris = false;
+                dialogueText.text = "The attack is successful!";
+                yield return new WaitForSeconds(2f);
+
+                //This checks to see if the Enemy is Dead or has HP remaining
+                if (isDead)
+                {
+                    RemoveCurrentEnemy();
+
+                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    enemyCount--;
+
+                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                }
+                NextTurn();
+            }
+        }
     }
     IEnumerator JameelAttack()
     {
@@ -3959,7 +4572,7 @@ public class BattleSystem : MonoBehaviour
     {
         if (state == BattleState.MCTURN)
         {
-            if (MC.MCSpell2MagicConsumed <= GameManager.MCMagic)
+            if (MC.MCSpell23MagicConsumed <= GameManager.MCMagic)
             {
                 flippendo = true;
 
@@ -3974,6 +4587,240 @@ public class BattleSystem : MonoBehaviour
                 dialogueText.text = "Not enough energy!";
         }
     }
+
+    #endregion
+
+    #region Rhys Attack UI Buttons
+    public void RhysFlippendo()
+    {
+        if (state == BattleState.RHYSTURN)
+        {
+            if (Rhys.RhysSpell2MagicConsumed <= GameManager.RhysMagic)
+            {
+                rhysFlippendo = true;
+
+                RhysMenu.SetActive(true);
+                RhysSpells.SetActive(false);
+                enemySelect = true;
+                RhysConfirmMenu.SetActive(true);
+                RhysSpells.SetActive(false);
+                RhysMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+    public void RhysCorpusLiget()
+    {
+        if (state == BattleState.RHYSTURN)
+        {
+            if (Rhys.RhysSpell3MagicConsumed <= GameManager.RhysMagic)
+            {
+                rhysCorpusLiget = true;
+
+                RhysMenu.SetActive(true);
+                RhysSpells.SetActive(false);
+                enemySelect = true;
+                RhysConfirmMenu.SetActive(true);
+                RhysSpells.SetActive(false);
+                RhysMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+    public void RhysMothsDeorsum()
+    {
+        if (state == BattleState.RHYSTURN)
+        {
+            if (Rhys.RhysSpell4MagicConsumed <= GameManager.RhysMagic)
+            {
+                rhysMothsDeorsum = true;
+
+                RhysMenu.SetActive(true);
+                RhysSpells.SetActive(false);
+                enemySelect = true;
+                RhysConfirmMenu.SetActive(true);
+                RhysSpells.SetActive(false);
+                RhysMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+    public void RhysMothIntiore()
+    {
+        if (state == BattleState.RHYSTURN)
+        {
+            if (Rhys.RhysSpell5MagicConsumed <= GameManager.RhysMagic)
+            {
+                rhysMothInteriore = true;
+
+                RhysMenu.SetActive(true);
+                RhysSpells.SetActive(false);
+                enemySelect = true;
+                RhysConfirmMenu.SetActive(true);
+                RhysSpells.SetActive(false);
+                RhysMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
+    public void RhysInternumCombustione()
+    {
+        if (state == BattleState.RHYSTURN)
+        {
+            if (Rhys.RhysSpell6MagicConsumed <= GameManager.RhysMagic)
+            {
+                rhysInternumCombustione = true;
+
+                RhysMenu.SetActive(true);
+                RhysSpells.SetActive(false);
+                enemySelect = true;
+                RhysConfirmMenu.SetActive(true);
+                RhysSpells.SetActive(false);
+                RhysMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+    public void RhysTenuiLabor()
+    {
+        if (state == BattleState.RHYSTURN)
+        {
+            if (Rhys.RhysSpell7MagicConsumed <= GameManager.RhysMagic)
+            {
+                rhysTenuiLabor = true;
+
+                RhysMenu.SetActive(true);
+                RhysSpells.SetActive(false);
+                enemySelect = true;
+                RhysConfirmMenu.SetActive(true);
+                RhysSpells.SetActive(false);
+                RhysMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+    public void RhysIncendio()
+    {
+        if (state == BattleState.RHYSTURN)
+        {
+            if (Rhys.RhysSpell8MagicConsumed <= GameManager.RhysMagic)
+            {
+                rhysIncendio = true;
+
+                RhysMenu.SetActive(true);
+                RhysSpells.SetActive(false);
+                enemySelect = true;
+                RhysConfirmMenu.SetActive(true);
+                RhysSpells.SetActive(false);
+                RhysMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+    public void RhysFumos()
+    {
+        if (state == BattleState.RHYSTURN)
+        {
+            if (Rhys.RhysSpell9MagicConsumed <= GameManager.RhysMagic)
+            {
+                rhysFumos = true;
+
+                RhysMenu.SetActive(true);
+                RhysSpells.SetActive(false);
+                enemySelect = true;
+                RhysConfirmMenu.SetActive(true);
+                RhysSpells.SetActive(false);
+                RhysMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+    public void RhysWaddiwasi()
+    {
+        if (state == BattleState.RHYSTURN)
+        {
+            if (Rhys.RhysSpell10MagicConsumed <= GameManager.RhysMagic)
+            {
+                rhysWaddiwasi = true;
+
+                RhysMenu.SetActive(true);
+                RhysSpells.SetActive(false);
+                enemySelect = true;
+                RhysConfirmMenu.SetActive(true);
+                RhysSpells.SetActive(false);
+                RhysMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+    public void RhysConjurePugione()
+    {
+        if (state == BattleState.RHYSTURN)
+        {
+            if (Rhys.RhysSpell11MagicConsumed <= GameManager.RhysMagic)
+            {
+                rhysConjurePugione = true;
+
+                RhysMenu.SetActive(true);
+                RhysSpells.SetActive(false);
+                enemySelect = true;
+                RhysConfirmMenu.SetActive(true);
+                RhysSpells.SetActive(false);
+                RhysMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+    public void RhysImpetumSubsisto()
+    {
+        if (state == BattleState.RHYSTURN)
+        {
+            if (Rhys.RhysSpell12MagicConsumed <= GameManager.RhysMagic)
+            {
+                rhysImpetumSubsisto = true;
+
+                RhysMenu.SetActive(true);
+                RhysSpells.SetActive(false);
+                enemySelect = true;
+                RhysConfirmMenu.SetActive(true);
+                RhysSpells.SetActive(false);
+                RhysMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+    public void RhysIraUolueris()
+    {
+        if (state == BattleState.RHYSTURN)
+        {
+            if (Rhys.RhysSpell13MagicConsumed <= GameManager.RhysMagic)
+            {
+                rhysUolueris = true;
+
+                RhysMenu.SetActive(true);
+                RhysSpells.SetActive(false);
+                enemySelect = true;
+                RhysConfirmMenu.SetActive(true);
+                RhysSpells.SetActive(false);
+                RhysMenu.SetActive(false);
+            }
+            else
+                dialogueText.text = "Not enough energy!";
+        }
+    }
+
 
     #endregion
     /*

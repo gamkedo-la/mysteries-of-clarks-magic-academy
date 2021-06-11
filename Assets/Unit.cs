@@ -77,6 +77,35 @@ public class Unit : MonoBehaviour
     public int MCSpell23MagicConsumed;
 
     #endregion
+
+    #region RhysAttacks
+    public int RhysSpell1Damage;
+    public int RhysSpell1MagicConsumed;
+    public int RhysSpell2Damage;
+    public int RhysSpell2MagicConsumed;
+    public int RhysSpell3Damage;
+    public int RhysSpell3MagicConsumed;
+    public int RhysSpell4Damage;
+    public int RhysSpell4MagicConsumed;
+    public int RhysSpell5Damage;
+    public int RhysSpell5MagicConsumed;
+    public int RhysSpell6Damage;
+    public int RhysSpell6MagicConsumed;
+    public int RhysSpell7Damage;
+    public int RhysSpell7MagicConsumed;
+    public int RhysSpell8Damage;
+    public int RhysSpell8MagicConsumed;
+    public int RhysSpell9Damage;
+    public int RhysSpell9MagicConsumed;
+    public int RhysSpell10Damage;
+    public int RhysSpell10MagicConsumed;
+    public int RhysSpell11Damage;
+    public int RhysSpell11MagicConsumed;
+    public int RhysSpell12Damage;
+    public int RhysSpell12MagicConsumed;
+    public int RhysSpell13Damage;
+    public int RhysSpell13MagicConsumed;
+    #endregion
     //enemyAttack
     public int minAttackAvil, maxAttackAvil;
     int attackToDo;
@@ -705,6 +734,308 @@ public class Unit : MonoBehaviour
     }
 
 
+    #endregion
+
+    #region RhysAttacks
+    public bool RhysFlippendo(int dmg)
+    {
+        Health.value = currentHP / maxHP;
+
+        currentHP -= dmg;
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        Health.value = (currentHP / maxHP);
+        DamageUI.text = "-" + dmg.ToString();
+
+        Health.value = (currentHP / maxHP);
+        StartCoroutine(ClearText());
+
+        if (currentHP <= 0)
+        {
+            //  anim.Play("Armature|Downed");
+            return true;
+        }
+
+        else
+        {
+            //  anim.Play("Armature|Damage");
+            return false;
+        }
+    }
+
+    public bool RhysCorpusLiget(int dmg)
+    {
+        Health.value = currentHP / maxHP;
+
+        currentHP -= dmg;
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        Health.value = (currentHP / maxHP);
+        DamageUI.text = "-" + dmg.ToString();
+
+        Health.value = (currentHP / maxHP);
+        StartCoroutine(ClearText());
+
+        if (currentHP <= 0)
+        {
+            //  anim.Play("Armature|Downed");
+            return true;
+        }
+
+        else
+        {
+            //  anim.Play("Armature|Damage");
+            return false;
+        }
+    }
+
+    public bool RhysMothsDeorsum(int dmg)
+    {
+        Health.value = currentHP / maxHP;
+
+        currentHP -= dmg;
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        Health.value = (currentHP / maxHP);
+        DamageUI.text = "-" + dmg.ToString();
+
+        Health.value = (currentHP / maxHP);
+        StartCoroutine(ClearText());
+
+        if (currentHP <= 0)
+        {
+            //  anim.Play("Armature|Downed");
+            return true;
+        }
+
+        else
+        {
+            //  anim.Play("Armature|Damage");
+            return false;
+        }
+    }
+
+    public bool RhysMothsInteriore(int dmg)
+    {
+        Health.value = currentHP / maxHP;
+
+        currentHP -= dmg;
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        Health.value = (currentHP / maxHP);
+        DamageUI.text = "-" + dmg.ToString();
+
+        Health.value = (currentHP / maxHP);
+        StartCoroutine(ClearText());
+
+        if (currentHP <= 0)
+        {
+            //  anim.Play("Armature|Downed");
+            return true;
+        }
+
+        else
+        {
+            //  anim.Play("Armature|Damage");
+            return false;
+        }
+    }
+
+    public bool RhysInternumCombustione(int dmg)
+    {
+        Health.value = currentHP / maxHP;
+
+        currentHP -= dmg;
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        Health.value = (currentHP / maxHP);
+        DamageUI.text = "-" + dmg.ToString();
+
+        Health.value = (currentHP / maxHP);
+        StartCoroutine(ClearText());
+
+        if (currentHP <= 0)
+        {
+            //  anim.Play("Armature|Downed");
+            return true;
+        }
+
+        else
+        {
+            //  anim.Play("Armature|Damage");
+            return false;
+        }
+    }
+
+    public bool RhysTenuiLabor(int dmg)
+    {
+        Health.value = currentHP / maxHP;
+
+        currentHP -= dmg;
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        Health.value = (currentHP / maxHP);
+        DamageUI.text = "-" + dmg.ToString();
+
+        Health.value = (currentHP / maxHP);
+        StartCoroutine(ClearText());
+
+        if (currentHP <= 0)
+        {
+            //  anim.Play("Armature|Downed");
+            return true;
+        }
+
+        else
+        {
+            //  anim.Play("Armature|Damage");
+            return false;
+        }
+    }
+
+    public bool RhysIncendio(int dmg)
+    {
+        Health.value = currentHP / maxHP;
+
+        currentHP -= dmg;
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        Health.value = (currentHP / maxHP);
+        DamageUI.text = "-" + dmg.ToString();
+
+        Health.value = (currentHP / maxHP);
+        StartCoroutine(ClearText());
+
+        if (currentHP <= 0)
+        {
+            //  anim.Play("Armature|Downed");
+            return true;
+        }
+
+        else
+        {
+            //  anim.Play("Armature|Damage");
+            return false;
+        }
+    }
+
+    public bool RhysFumos(int dmg)
+    {
+        Health.value = currentHP / maxHP;
+
+        currentHP -= dmg;
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        Health.value = (currentHP / maxHP);
+        DamageUI.text = "-" + dmg.ToString();
+
+        Health.value = (currentHP / maxHP);
+        StartCoroutine(ClearText());
+
+        if (currentHP <= 0)
+        {
+            //  anim.Play("Armature|Downed");
+            return true;
+        }
+
+        else
+        {
+            //  anim.Play("Armature|Damage");
+            return false;
+        }
+    }
+
+    public bool RhysWaddiwasi(int dmg)
+    {
+        Health.value = currentHP / maxHP;
+
+        currentHP -= dmg;
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        Health.value = (currentHP / maxHP);
+        DamageUI.text = "-" + dmg.ToString();
+
+        Health.value = (currentHP / maxHP);
+        StartCoroutine(ClearText());
+
+        if (currentHP <= 0)
+        {
+            //  anim.Play("Armature|Downed");
+            return true;
+        }
+
+        else
+        {
+            //  anim.Play("Armature|Damage");
+            return false;
+        }
+    }
+
+    public bool RhysConjurePugione(int dmg)
+    {
+        Health.value = currentHP / maxHP;
+
+        currentHP -= dmg;
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        Health.value = (currentHP / maxHP);
+        DamageUI.text = "-" + dmg.ToString();
+
+        Health.value = (currentHP / maxHP);
+        StartCoroutine(ClearText());
+
+        if (currentHP <= 0)
+        {
+            //  anim.Play("Armature|Downed");
+            return true;
+        }
+
+        else
+        {
+            //  anim.Play("Armature|Damage");
+            return false;
+        }
+    }
+
+    public bool RhysImpetumSubsisto(int dmg)
+    {
+        Health.value = currentHP / maxHP;
+
+        currentHP -= dmg;
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        Health.value = (currentHP / maxHP);
+        DamageUI.text = "-" + dmg.ToString();
+
+        Health.value = (currentHP / maxHP);
+        StartCoroutine(ClearText());
+
+        if (currentHP <= 0)
+        {
+            //  anim.Play("Armature|Downed");
+            return true;
+        }
+
+        else
+        {
+            //  anim.Play("Armature|Damage");
+            return false;
+        }
+    }
+
+    public bool RhysIraUolueris(int dmg)
+    {
+        Health.value = currentHP / maxHP;
+
+        currentHP -= dmg;
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        Health.value = (currentHP / maxHP);
+        DamageUI.text = "-" + dmg.ToString();
+
+        Health.value = (currentHP / maxHP);
+        StartCoroutine(ClearText());
+
+        if (currentHP <= 0)
+        {
+            //  anim.Play("Armature|Downed");
+            return true;
+        }
+
+        else
+        {
+            //  anim.Play("Armature|Damage");
+            return false;
+        }
+    }
     #endregion
 
     public void Heal(int amount)
