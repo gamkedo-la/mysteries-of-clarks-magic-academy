@@ -213,7 +213,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.M))
+        if (Input.GetKeyDown(KeyCode.C))
         {
             SceneManager.LoadScene("ClassroomDialogueTest");
         }
