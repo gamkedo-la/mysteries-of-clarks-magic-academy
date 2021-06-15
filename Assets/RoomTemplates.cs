@@ -44,6 +44,9 @@ public class RoomTemplates : MonoBehaviour
     GameObject turnOffMenu;
     public string LevelName;
 
+    public GameObject miniBossFloorLayout;
+    public GameObject finalBossFloorLayout;
+
     private void Start()
     {
         if (Instance != null)
@@ -59,12 +62,26 @@ public class RoomTemplates : MonoBehaviour
         turnOffMenu.SetActive(false);
         parented = GameObject.FindGameObjectWithTag("Rooms");
 
-        startingP = Instantiate(StartingPointRoom, transform.position, Quaternion.identity) as GameObject;
-        startingP.transform.parent = parented.transform;
-        StartCoroutine(Waiting());
-        TreasureSpawnPercent = Random.Range(0, 100);
-        //  print(TreasureSpawnPercent + " " + percentChanceToSpawnTreasure);
+        if (GameManager.Dungeon1FloorCount == GameManager.Dungeon1MiniBossFloor || GameManager.Dungeon1FloorCount == GameManager.Dungeon1FinalBossFloor)
+        {
+            if (GameManager.Dungeon1FloorCount == GameManager.Dungeon1MiniBossFloor)
+            {
+                miniBossFloorLayout.SetActive(true);
+            }
+            if (GameManager.Dungeon1FloorCount == GameManager.Dungeon1FinalBossFloor)
+            {
+                finalBossFloorLayout.SetActive(true);
+            }
+        }
 
+        else
+        {
+            startingP = Instantiate(StartingPointRoom, transform.position, Quaternion.identity) as GameObject;
+            startingP.transform.parent = parented.transform;
+            StartCoroutine(Waiting());
+            TreasureSpawnPercent = Random.Range(0, 100);
+            //  print(TreasureSpawnPercent + " " + percentChanceToSpawnTreasure);
+        }
         GameObject.DontDestroyOnLoad(this.gameObject);
     }
 
@@ -151,6 +168,7 @@ public class RoomTemplates : MonoBehaviour
 
     public void AdvanceFloor()
     {
+        GameManager.Dungeon1FloorCount++;
         SceneManager.LoadScene("DungeonTest");
         Destroy(this.gameObject);
 

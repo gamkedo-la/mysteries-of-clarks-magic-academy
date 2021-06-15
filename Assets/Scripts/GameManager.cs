@@ -23,6 +23,10 @@ public class GameManager : MonoBehaviour
 
     public static bool isInFriendConversation;
 
+    public static int Dungeon1FloorCount;
+    public static int Dungeon1MiniBossFloor;
+    public static int Dungeon1FinalBossFloor;
+
     //Determining if the Party Member is available (story timeline wise)
     public static bool RhysAvailable, JameelAvailable, GracieMayAvailable, HarperAvailable, SkyeAvailable, SullivanAvailable;
     //
@@ -128,6 +132,10 @@ public class GameManager : MonoBehaviour
         HarperMagic = 20;
         SkyeMagic = 20;
         SullivanMagic = 20;
+
+        //Dungeon Floor Counts
+        Dungeon1MiniBossFloor = 2;
+        Dungeon1FinalBossFloor = 4;
     }
 
     public static void CalculateDayOfWeek()
