@@ -53,7 +53,7 @@ public class ProcgenProps : MonoBehaviour
 
     }
 
-    void Generate() {
+    public void Generate() {
         Debug.Log("generating a "+cols+"x"+rows+" bookshelf that's "+
             fullness + "% full and " + messiness + "% messy.");
 
@@ -75,7 +75,7 @@ public class ProcgenProps : MonoBehaviour
                     // choose one randomly
                     int prefabIndex = Random.Range(0,prefabList.Count);
                     // create new prefab
-                    GameObject clone = Instantiate(prefabList[prefabIndex], new Vector3(0f,0f,0f), Quaternion.identity);
+                    GameObject clone = Instantiate(prefabList[prefabIndex], new Vector3(0f,0f,0f), transform.rotation);
                     
                     // be a child of this object for less runtime mess
                     // unity bug: can't do this anymore! wtf unity
