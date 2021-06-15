@@ -62,8 +62,15 @@ public class RoomTemplates : MonoBehaviour
         turnOffMenu.SetActive(false);
         parented = GameObject.FindGameObjectWithTag("Rooms");
 
+
+        //Dungeon Floor Counts
+   //     GameManager.Dungeon1MiniBossFloor = 2;
+   //     GameManager.Dungeon1FinalBossFloor = 4;
+
+
         if (GameManager.Dungeon1FloorCount == GameManager.Dungeon1MiniBossFloor || GameManager.Dungeon1FloorCount == GameManager.Dungeon1FinalBossFloor)
         {
+            Debug.Log(GameManager.Dungeon1FloorCount + "   " + GameManager.Dungeon1MiniBossFloor);
             loadScreen.SetActive(false);
             if (GameManager.Dungeon1FloorCount == GameManager.Dungeon1MiniBossFloor)
             {
