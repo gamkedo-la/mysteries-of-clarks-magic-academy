@@ -64,6 +64,7 @@ public class RoomTemplates : MonoBehaviour
 
         if (GameManager.Dungeon1FloorCount == GameManager.Dungeon1MiniBossFloor || GameManager.Dungeon1FloorCount == GameManager.Dungeon1FinalBossFloor)
         {
+            loadScreen.SetActive(false);
             if (GameManager.Dungeon1FloorCount == GameManager.Dungeon1MiniBossFloor)
             {
                 miniBossFloorLayout.SetActive(true);
