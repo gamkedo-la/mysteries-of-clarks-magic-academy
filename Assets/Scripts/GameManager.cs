@@ -98,6 +98,10 @@ public class GameManager : MonoBehaviour
 
         //MC is always in the party
         PartyCount++;
+        SkyeInParty = true;
+        RhysInParty = true;
+        PartyCount++;
+        PartyCount++;
 
         if (PartyCount > 4)
         {

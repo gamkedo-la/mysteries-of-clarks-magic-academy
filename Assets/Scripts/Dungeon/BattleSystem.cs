@@ -470,38 +470,38 @@ public class BattleSystem : MonoBehaviour
         #region This places all the UI and assigns the player and enemy values from the Unit Script
         playerGO1 = Instantiate(MCPrefab, MCBattleStation);
         MC = playerGO1.GetComponent<Unit>();
-
+        MCAnim = playerGO1.GetComponentInChildren<Animator>();
         //I don't think this is structured correctly. Come back to this later.
         #region Determining Second Player Battle Station
         if (GameManager.RhysInParty)
         {
             playerGO2 = Instantiate(RhysPrefab, SecondBattleStation);
             Rhys = playerGO2.GetComponent<Unit>();
-            //   Rhys = playerGO2.GetComponent<Animator>();
+            RhysAnim = playerGO2.GetComponentInChildren<Animator>();
         }
-        else if (!GameManager.RhysInParty && GameManager.JameelInParty)
+        if (!GameManager.RhysInParty && GameManager.JameelInParty)
         {
             playerGO2 = Instantiate(JameelPrefab, SecondBattleStation);
             Jameel = playerGO2.GetComponent<Unit>();
-            //   Jameel = playerGO2.GetComponent<Animator>();
+            JameelAnim = playerGO2.GetComponentInChildren<Animator>();
         }
-        else if (!GameManager.RhysInParty && !GameManager.JameelInParty && GameManager.HarperInParty)
+        if (!GameManager.RhysInParty && !GameManager.JameelInParty && GameManager.HarperInParty)
         {
             playerGO2 = Instantiate(HarperPrefab, SecondBattleStation);
             Harper = playerGO2.GetComponent<Unit>();
-            //   Harper = playerGO2.GetComponent<Animator>();
+            HarperAnim = playerGO2.GetComponentInChildren<Animator>();
         }
-        else if (GameManager.PartyCount == 2 && GameManager.SkyeInParty)
+        if (GameManager.PartyCount == 2 && GameManager.SkyeInParty)
         {
             playerGO2 = Instantiate(SkyePrefab, SecondBattleStation);
             Skye = playerGO2.GetComponent<Unit>();
-            //   Skye = playerGO2.GetComponent<Animator>();
+            SkyeAnim = playerGO2.GetComponentInChildren<Animator>();
         }
-        else if (GameManager.PartyCount == 2 && GameManager.SullivanInParty)
+        if (GameManager.PartyCount == 2 && GameManager.SullivanInParty)
         {
             playerGO2 = Instantiate(SullivanPrefab, SecondBattleStation);
             Sullivan = playerGO2.GetComponent<Unit>();
-            //   Sullivan = playerGO2.GetComponent<Animator>();
+            SullivanAnim = playerGO2.GetComponentInChildren<Animator>();
         }
         #endregion
         # region Determining Third Player Battle Station
@@ -509,53 +509,53 @@ public class BattleSystem : MonoBehaviour
         {
             playerGO3 = Instantiate(JameelPrefab, ThirdBattleStation);
             Jameel = playerGO3.GetComponent<Unit>();
-            //   Jameel = playerGO3.GetComponent<Animator>();
+            JameelAnim = playerGO3.GetComponentInChildren<Animator>();
         }
-        else if (GameManager.RhysInParty || GameManager.JameelInParty && GameManager.HarperInParty)
+        if (GameManager.PartyCount == 3 && (GameManager.RhysInParty || GameManager.JameelInParty) && GameManager.HarperInParty)
         {
             playerGO3 = Instantiate(HarperPrefab, ThirdBattleStation);
             Harper = playerGO3.GetComponent<Unit>();
-            //   Harper = playerGO3.GetComponent<Animator>();
+            HarperAnim = playerGO3.GetComponentInChildren<Animator>();
         }
-        else if (GameManager.SkyeInParty && !GameManager.SullivanInParty)
+        if (GameManager.SkyeInParty && !GameManager.SullivanInParty)
         {
             playerGO3 = Instantiate(SkyePrefab, ThirdBattleStation);
             Skye = playerGO3.GetComponent<Unit>();
-            //   Skye = playerGO3.GetComponent<Animator>();
+            SkyeAnim = playerGO3.GetComponentInChildren<Animator>();
         }
-        else if (GameManager.PartyCount == 3 && GameManager.SullivanInParty)
+        if (GameManager.PartyCount == 3 && GameManager.SullivanInParty)
         {
             playerGO3 = Instantiate(SullivanPrefab, ThirdBattleStation);
             Sullivan = playerGO3.GetComponent<Unit>();
-            //   Sullivan = playerGO3.GetComponent<Animator>();
+            SullivanAnim = playerGO3.GetComponentInChildren<Animator>();
         }
         #endregion
-        #region
+        #region Determining Fourth Player Battle Station
         if (GameManager.RhysInParty && GameManager.JameelInParty && GameManager.HarperInParty)
         {
             playerGO4 = Instantiate(HarperPrefab, FourthBattleStation);
             Harper = playerGO4.GetComponent<Unit>();
-            //   Harper = playerGO4.GetComponent<Animator>();
+            HarperAnim = playerGO4.GetComponentInChildren<Animator>();
         }
-        else if (GameManager.PartyCount == 4 && GameManager.SkyeInParty && GameManager.SullivanInParty)
+        if (GameManager.PartyCount == 4 && GameManager.SkyeInParty && GameManager.SullivanInParty)
         {
             playerGO3 = Instantiate(SkyePrefab, ThirdBattleStation);
             Skye = playerGO3.GetComponent<Unit>();
-            //   Skye = playerGO4.GetComponent<Animator>();
+            SkyeAnim = playerGO3.GetComponentInChildren<Animator>();
         }
-        else if (GameManager.PartyCount == 4 && GameManager.SkyeInParty && !GameManager.SullivanInParty)
+        if (GameManager.PartyCount == 4 && GameManager.SkyeInParty && !GameManager.SullivanInParty)
         {
             playerGO4 = Instantiate(SkyePrefab, FourthBattleStation);
             Skye = playerGO4.GetComponent<Unit>();
-            //   Skye = playerGO4.GetComponent<Animator>();
+            SkyeAnim = playerGO4.GetComponentInChildren<Animator>();
         }
         if (GameManager.PartyCount == 4 && GameManager.SullivanInParty)
         {
             playerGO4 = Instantiate(SullivanPrefab, FourthBattleStation);
             Sullivan = playerGO4.GetComponent<Unit>();
-         //   Sullivan = playerGO4.GetComponent<Animator>();
+            SullivanAnim = playerGO4.GetComponentInChildren<Animator>();
         }
-        #endregion
+        #endregion Enemies
 
         for (int i = 0; i < enemyStartCount; i++)
         {
@@ -636,31 +636,31 @@ public class BattleSystem : MonoBehaviour
         //Adding back into party after knockout
         if (GameManager.RhysHealth >= 0 && RhysDead)
         {
-         //   RhysAnim.SetBool("isDead", false);
+            RhysAnim.SetBool("isDead", false);
             RhysDead = false;
             playerTurnOrder.Add(CharacterIdentifier.Rhys);
         }
         if (GameManager.JameelHealth >= 0 && JameelDead)
         {
-          //  JameelAnim.SetBool("isDead", false);
+            JameelAnim.SetBool("isDead", false);
             JameelDead = false;
             playerTurnOrder.Add(CharacterIdentifier.Jameel);
         }
         if (GameManager.HarperHealth >= 0 && HarperDead)
         {
-         //  HarperAnim.SetBool("isDead", false);
+           HarperAnim.SetBool("isDead", false);
             HarperDead = false;
             playerTurnOrder.Add(CharacterIdentifier.Harper);
         }
         if (GameManager.SkyeHealth >= 0 && SkyeDead)
         {
-          //  SkyeAnim.SetBool("isDead", false);
+            SkyeAnim.SetBool("isDead", false);
             SkyeDead = false;
             playerTurnOrder.Add(CharacterIdentifier.Skye);
         }
         if (GameManager.SullivanHealth >= 0 && SullivanDead)
         {
-         //   SullivanAnim.SetBool("isDead", false);
+            SullivanAnim.SetBool("isDead", false);
             SullivanDead = false;
             playerTurnOrder.Add(CharacterIdentifier.Sullivan);
         }
@@ -737,66 +737,6 @@ public class BattleSystem : MonoBehaviour
         }
 
         #endregion
-        #region Animations based on Health
-        /*
-        //Starter
-        if (GameManager.StarterMorale > (GameManager.StarterMoraleMax * .2))
-        {
-            StarterAnim.SetBool("isInjured", false);
-        }
-        if (GameManager.StarterMorale <= (GameManager.StarterMoraleMax * .2) && GameManager.StarterMorale > 0)
-        {
-            StarterAnim.SetBool("isInjured", true);
-        }
-        if (GameManager.StarterMorale <= 0)
-        {
-            starterDead = true;
-            StarterAnim.SetBool("isDead", true);
-        }
-        //MR
-        if (GameManager.MidRelivMorale > (GameManager.MidRelivMoraleMax * .2))
-        {
-            MidRelAnim.SetBool("isInjured", false);
-        }
-        if (GameManager.MidRelivMorale <= (GameManager.MidRelivMoraleMax * .2) && GameManager.MidRelivMorale > 0)
-        {
-            MidRelAnim.SetBool("isInjured", true);
-        }
-        if (GameManager.MidRelivMorale <= 0)
-        {
-            middleDead = true;
-            MidRelAnim.SetBool("isDead", true);
-        }
-        //SetUp
-        if (GameManager.SetUpMorale > (GameManager.SetUpMoraleMax * .2))
-        {
-            SetUpAnim.SetBool("isInjured", false);
-        }
-        if (GameManager.SetUpMorale <= (GameManager.SetUpMoraleMax * .2) && GameManager.SetUpMorale > 0)
-        {
-            SetUpAnim.SetBool("isInjured", true);
-        }
-        if (GameManager.SetUpMorale <= 0)
-        {
-            setupDead = true;
-            SetUpAnim.SetBool("isDead", true);
-        }
-        //Closer
-        if (GameManager.CloserMorale > (GameManager.CloserMoraleMax * .2))
-        {
-            CloserAnim.SetBool("isInjured", false);
-        }
-        if (GameManager.CloserMorale <= (GameManager.CloserMoraleMax * .2) && GameManager.CloserMorale > 0)
-        {
-            CloserAnim.SetBool("isInjured", true);
-        }
-        if (GameManager.CloserMorale <= 0)
-        {
-            closerDead = true;
-            CloserAnim.SetBool("isDead", true);
-        }
-        */
-        #endregion
     }
 
     void NextTurn()
@@ -834,58 +774,47 @@ public class BattleSystem : MonoBehaviour
         switch (upRightNow)
         {
             case CharacterIdentifier.MC:
-                //       print("Starter");
                 MCTurn();
                 state = BattleState.MCTURN;
                 break;
             case CharacterIdentifier.Rhys:
-                //       print("Middle");
                 RhysTurn();
                 state = BattleState.RHYSTURN;
                 break;
             case CharacterIdentifier.Jameel:
-                //       print("SetUp");
                 JameelTurn();
                 state = BattleState.JAMEELTURN;
                 break;
             case CharacterIdentifier.Harper:
-                //       print("Closer");
                 HarperTurn();
                 state = BattleState.HARPERTURN;
                 break;
 
             case CharacterIdentifier.Skye:
-                //       print("Closer");
                 SkyeTurn();
                 state = BattleState.SKYETURN;
                 break;
             case CharacterIdentifier.Sullivan:
-                //       print("Closer");
                 SullivanTurn();
                 state = BattleState.SULLIVANTURN;
                 break;
             case CharacterIdentifier.Enemy1:
-                //      print("Enemy1");
                 state = BattleState.ENEMYTURN;
                 StartCoroutine("EnemyTurn", 0);
                 break;
             case CharacterIdentifier.Enemy2:
-                //       print("Enemy2");
                 state = BattleState.ENEMYTURN;
                 StartCoroutine("EnemyTurn", 1);
                 break;
             case CharacterIdentifier.Enemy3:
-                //     print("Enemy3");
                 state = BattleState.ENEMYTURN;
                 StartCoroutine("EnemyTurn", 2);
                 break;
             case CharacterIdentifier.Enemy4:
-                //      print("Enemy4");
                 state = BattleState.ENEMYTURN;
                 StartCoroutine("EnemyTurn", 3);
                 break;
             case CharacterIdentifier.Enemy5:
-                //    print("Enemy5");
                 state = BattleState.ENEMYTURN;
                 StartCoroutine("EnemyTurn", 4);
                 break;
@@ -1087,28 +1016,6 @@ public class BattleSystem : MonoBehaviour
         SkyeMagic.value = GameManager.SkyeMagic ;
         SullivanMagic.value = GameManager.SullivanMagic ;
 
-        //If the player is below 20% health, they can play an animation to show they are injured. As is, it is a little buggy.
-        /*
-                if (GameManager.StarterMorale > (GameManager.StarterMoraleMax * .2))
-                {
-                    StarterAnim.SetBool("isInjured", false);
-                }
-                //MR
-                if (GameManager.MidRelivMorale > (GameManager.MidRelivMoraleMax * .2))
-                {
-                    MidRelAnim.SetBool("isInjured", false);
-                }
-                //SetUp
-                if (GameManager.SetUpMorale > (GameManager.SetUpMoraleMax * .2))
-                {
-                    SetUpAnim.SetBool("isInjured", false);
-                }
-                //Closer
-                if (GameManager.CloserMorale > (GameManager.CloserMoraleMax * .2))
-                {
-                    CloserAnim.SetBool("isInjured", false);
-                }
-        */
         NextTurn();
     }
 
@@ -1142,12 +1049,56 @@ public class BattleSystem : MonoBehaviour
                 if (GameManager.GracieMayAvailable)
                 {
                     dialogueText.text = "Gracie May: I found an opening! You can run!";
-                }
+                    MCAnim.Play("Armature|Run");
+                    if (GameManager.RhysInParty && !RhysDead)
+                    {
+                        RhysAnim.Play("Armature|Run");
+                    }
+                    if (GameManager.JameelInParty && !JameelDead)
+                    {
+                        JameelAnim.Play("Armature|Run");
+                    }
+                    if (GameManager.HarperInParty && !HarperDead)
+                    {
+                        HarperAnim.Play("Armature|Run");
+                    }
+                    if (GameManager.SkyeInParty && !SkyeDead)
+                    {
+                        SkyeAnim.Play("Armature|Run");
+                    }
+                    if (GameManager.SullivanInParty && !SullivanDead)
+                    {
+                        SullivanAnim.Play("Armature|Run");
+                    }
+            }
                 else
                 {
                     dialogueText.text = "You think you can get away";
-                }
-                StartCoroutine(WaitingAtEndOfBattle());
+
+                    MCAnim.Play("Armature|Run");
+                    if (GameManager.RhysInParty && !RhysDead)
+                    {
+                        RhysAnim.Play("Armature|Run");
+                    }
+                    if (GameManager.JameelInParty && !JameelDead)
+                    {
+                        JameelAnim.Play("Armature|Run");
+                    }
+                    if (GameManager.HarperInParty && !HarperDead)
+                    {
+                        HarperAnim.Play("Armature|Run");
+                    }
+                    if (GameManager.SkyeInParty && !SkyeDead)
+                    {
+                        SkyeAnim.Play("Armature|Run");
+                    }
+                    if (GameManager.SullivanInParty && !SullivanDead)
+                    {
+                        SullivanAnim.Play("Armature|Run");
+                    }
+
+            }
+            StartCoroutine(WaitingAtEndOfBattle());
         }
       //  }
     }
@@ -1375,7 +1326,7 @@ public class BattleSystem : MonoBehaviour
                 {
                     GameManager.MCMagic -= MC.MCSpell2MagicConsumed;
                     MCMagic.value = GameManager.MCMagic ;
-                    //    StarterAnim.Play("StarterWindup");
+                    MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
                     isDead = enemyUnit[enemyUnitSelected].Flippendo(MC.MCSpell2Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -1436,7 +1387,7 @@ public class BattleSystem : MonoBehaviour
                 {
                     GameManager.MCMagic -= MC.MCSpell3MagicConsumed;
                     MCMagic.value = GameManager.MCMagic;
-                    //    StarterAnim.Play("StarterWindup");
+                    MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
                     isDead = enemyUnit[enemyUnitSelected].PulsateSunt(MC.MCSpell3Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -1497,7 +1448,7 @@ public class BattleSystem : MonoBehaviour
                 {
                     GameManager.MCMagic -= MC.MCSpell4MagicConsumed;
                     MCMagic.value = GameManager.MCMagic;
-                    //    StarterAnim.Play("StarterWindup");
+                    MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
                     isDead = enemyUnit[enemyUnitSelected].Stupefaciunt(MC.MCSpell4Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -1559,7 +1510,7 @@ public class BattleSystem : MonoBehaviour
                 {
                     GameManager.MCMagic -= MC.MCSpell5MagicConsumed;
                     MCMagic.value = GameManager.MCMagic;
-                    //    StarterAnim.Play("StarterWindup");
+                    MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
                     isDead = enemyUnit[enemyUnitSelected].Incendio(MC.MCSpell5Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -1622,7 +1573,7 @@ public class BattleSystem : MonoBehaviour
                 {
                     GameManager.MCMagic -= MC.MCSpell6MagicConsumed;
                     MCMagic.value = GameManager.MCMagic;
-                    //    StarterAnim.Play("StarterWindup");
+                    MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
                     isDead = enemyUnit[enemyUnitSelected].IncendioMaxima(MC.MCSpell6Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -1684,7 +1635,7 @@ public class BattleSystem : MonoBehaviour
                 {
                     GameManager.MCMagic -= MC.MCSpell7MagicConsumed;
                     MCMagic.value = GameManager.MCMagic;
-                    //    StarterAnim.Play("StarterWindup");
+                    MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
                     isDead = enemyUnit[enemyUnitSelected].Avis(MC.MCSpell7Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -1746,7 +1697,7 @@ public class BattleSystem : MonoBehaviour
                 {
                     GameManager.MCMagic -= MC.MCSpell8MagicConsumed;
                     MCMagic.value = GameManager.MCMagic;
-                    //    StarterAnim.Play("StarterWindup");
+                    MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
                     isDead = enemyUnit[enemyUnitSelected].AvisMaxima(MC.MCSpell8Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -1808,7 +1759,7 @@ public class BattleSystem : MonoBehaviour
                 {
                     GameManager.MCMagic -= MC.MCSpell9MagicConsumed;
                     MCMagic.value = GameManager.MCMagic;
-                    //    StarterAnim.Play("StarterWindup");
+                    MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
                     isDead = enemyUnit[enemyUnitSelected].Glacius(MC.MCSpell9Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -1870,7 +1821,7 @@ public class BattleSystem : MonoBehaviour
                 {
                     GameManager.MCMagic -= MC.MCSpell10MagicConsumed;
                     MCMagic.value = GameManager.MCMagic;
-                    //    StarterAnim.Play("StarterWindup");
+                    MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
                     isDead = enemyUnit[enemyUnitSelected].MinorCura(MC.MCSpell10Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -1931,7 +1882,7 @@ public class BattleSystem : MonoBehaviour
                 {
                     GameManager.MCMagic -= MC.MCSpell11MagicConsumed;
                     MCMagic.value = GameManager.MCMagic;
-                    //    StarterAnim.Play("StarterWindup");
+                    MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
                     isDead = enemyUnit[enemyUnitSelected].ImpetumSubsisto(MC.MCSpell11Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -1992,7 +1943,7 @@ public class BattleSystem : MonoBehaviour
                 {
                     GameManager.MCMagic -= MC.MCSpell12MagicConsumed;
                     MCMagic.value = GameManager.MCMagic;
-                    //    StarterAnim.Play("StarterWindup");
+                    MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
                     isDead = enemyUnit[enemyUnitSelected].Augamenti(MC.MCSpell12Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -2053,7 +2004,7 @@ public class BattleSystem : MonoBehaviour
                 {
                     GameManager.MCMagic -= MC.MCSpell13MagicConsumed;
                     MCMagic.value = GameManager.MCMagic;
-                    //    StarterAnim.Play("StarterWindup");
+                    MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
                     isDead = enemyUnit[enemyUnitSelected].MothsDeorsum(MC.MCSpell13Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -2115,7 +2066,7 @@ public class BattleSystem : MonoBehaviour
                 {
                     GameManager.MCMagic -= MC.MCSpell14MagicConsumed;
                     MCMagic.value = GameManager.MCMagic;
-                    //    StarterAnim.Play("StarterWindup");
+                    MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
                     isDead = enemyUnit[enemyUnitSelected].MothsInteriore(MC.MCSpell14Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -2176,7 +2127,7 @@ public class BattleSystem : MonoBehaviour
                 {
                     GameManager.MCMagic -= MC.MCSpell15MagicConsumed;
                     MCMagic.value = GameManager.MCMagic;
-                    //    StarterAnim.Play("StarterWindup");
+                    MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
                     isDead = enemyUnit[enemyUnitSelected].InternaCombustione(MC.MCSpell15Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -2239,7 +2190,7 @@ public class BattleSystem : MonoBehaviour
                 {
                     GameManager.MCMagic -= MC.MCSpell16MagicConsumed;
                     MCMagic.value = GameManager.MCMagic;
-                    //    StarterAnim.Play("StarterWindup");
+                    MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
                     isDead = enemyUnit[enemyUnitSelected].Bombarda(MC.MCSpell16Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -2302,7 +2253,7 @@ public class BattleSystem : MonoBehaviour
                 {
                     GameManager.MCMagic -= MC.MCSpell17MagicConsumed;
                     MCMagic.value = GameManager.MCMagic;
-                    //    StarterAnim.Play("StarterWindup");
+                    MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
                     isDead = enemyUnit[enemyUnitSelected].BombardaMaxima(MC.MCSpell17Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -2364,7 +2315,7 @@ public class BattleSystem : MonoBehaviour
                 {
                     GameManager.MCMagic -= MC.MCSpell18MagicConsumed;
                     MCMagic.value = GameManager.MCMagic;
-                    //    StarterAnim.Play("StarterWindup");
+                    MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
                     isDead = enemyUnit[enemyUnitSelected].BombardaUltima(MC.MCSpell18Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -2426,7 +2377,7 @@ public class BattleSystem : MonoBehaviour
                 {
                     GameManager.MCMagic -= MC.MCSpell19MagicConsumed;
                     MCMagic.value = GameManager.MCMagic;
-                    //    StarterAnim.Play("StarterWindup");
+                    MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
                     isDead = enemyUnit[enemyUnitSelected].MinusSanaCoetus(MC.MCSpell19Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -2488,7 +2439,7 @@ public class BattleSystem : MonoBehaviour
                 {
                     GameManager.MCMagic -= MC.MCSpell20MagicConsumed;
                     MCMagic.value = GameManager.MCMagic;
-                    //    StarterAnim.Play("StarterWindup");
+                    MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
                     isDead = enemyUnit[enemyUnitSelected].ChorusPedes(MC.MCSpell20Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -2550,7 +2501,7 @@ public class BattleSystem : MonoBehaviour
                 {
                     GameManager.MCMagic -= MC.MCSpell21MagicConsumed;
                     MCMagic.value = GameManager.MCMagic;
-                    //    StarterAnim.Play("StarterWindup");
+                    MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
                     isDead = enemyUnit[enemyUnitSelected].CriticaFocus(MC.MCSpell21Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -2612,7 +2563,7 @@ public class BattleSystem : MonoBehaviour
                 {
                     GameManager.MCMagic -= MC.MCSpell22MagicConsumed;
                     MCMagic.value = GameManager.MCMagic;
-                    //    StarterAnim.Play("StarterWindup");
+                    MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
                     isDead = enemyUnit[enemyUnitSelected].Diffindo(MC.MCSpell22Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -2674,7 +2625,7 @@ public class BattleSystem : MonoBehaviour
                 {
                     GameManager.MCMagic -= MC.MCSpell23MagicConsumed;
                     MCMagic.value = GameManager.MCMagic;
-                    //    StarterAnim.Play("StarterWindup");
+                    MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
                     isDead = enemyUnit[enemyUnitSelected].DiffindoMaxima(MC.MCSpell23Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -2745,7 +2696,7 @@ public class BattleSystem : MonoBehaviour
             {
                 GameManager.RhysMagic -= Rhys.RhysSpell2MagicConsumed;
                 RhysMagic.value = GameManager.RhysMagic;
-                //    StarterAnim.Play("StarterWindup");
+                RhysAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
                 isDead = enemyUnit[enemyUnitSelected].RhysFlippendo(Rhys.RhysSpell2Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -2795,7 +2746,7 @@ public class BattleSystem : MonoBehaviour
             {
                 GameManager.RhysMagic -= Rhys.RhysSpell3MagicConsumed;
                 RhysMagic.value = GameManager.RhysMagic;
-                //    StarterAnim.Play("StarterWindup");
+                RhysAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
                 isDead = enemyUnit[enemyUnitSelected].RhysCorpusLiget(Rhys.RhysSpell3Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -2845,7 +2796,7 @@ public class BattleSystem : MonoBehaviour
             {
                 GameManager.RhysMagic -= Rhys.RhysSpell4MagicConsumed;
                 RhysMagic.value = GameManager.RhysMagic;
-                //    StarterAnim.Play("StarterWindup");
+                RhysAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
                 isDead = enemyUnit[enemyUnitSelected].RhysMothsDeorsum(Rhys.RhysSpell4Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -2895,7 +2846,7 @@ public class BattleSystem : MonoBehaviour
             {
                 GameManager.RhysMagic -= Rhys.RhysSpell5MagicConsumed;
                 RhysMagic.value = GameManager.RhysMagic;
-                //    StarterAnim.Play("StarterWindup");
+                RhysAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
                 isDead = enemyUnit[enemyUnitSelected].RhysMothsInteriore(Rhys.RhysSpell5Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -2945,7 +2896,7 @@ public class BattleSystem : MonoBehaviour
             {
                 GameManager.RhysMagic -= Rhys.RhysSpell6MagicConsumed;
                 RhysMagic.value = GameManager.RhysMagic;
-                //    StarterAnim.Play("StarterWindup");
+                RhysAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
                 isDead = enemyUnit[enemyUnitSelected].RhysInternumCombustione(Rhys.RhysSpell6Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -2995,7 +2946,7 @@ public class BattleSystem : MonoBehaviour
             {
                 GameManager.RhysMagic -= Rhys.RhysSpell7MagicConsumed;
                 RhysMagic.value = GameManager.RhysMagic;
-                //    StarterAnim.Play("StarterWindup");
+                RhysAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
                 isDead = enemyUnit[enemyUnitSelected].RhysTenuiLabor(Rhys.RhysSpell7Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -3045,7 +2996,7 @@ public class BattleSystem : MonoBehaviour
             {
                 GameManager.RhysMagic -= Rhys.RhysSpell8MagicConsumed;
                 RhysMagic.value = GameManager.RhysMagic;
-                //    StarterAnim.Play("StarterWindup");
+                RhysAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
                 isDead = enemyUnit[enemyUnitSelected].RhysFlippendo(Rhys.RhysSpell8Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -3095,7 +3046,7 @@ public class BattleSystem : MonoBehaviour
             {
                 GameManager.RhysMagic -= Rhys.RhysSpell9MagicConsumed;
                 RhysMagic.value = GameManager.RhysMagic;
-                //    StarterAnim.Play("StarterWindup");
+                RhysAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
                 isDead = enemyUnit[enemyUnitSelected].RhysFumos(Rhys.RhysSpell9Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -3145,7 +3096,7 @@ public class BattleSystem : MonoBehaviour
             {
                 GameManager.RhysMagic -= Rhys.RhysSpell10MagicConsumed;
                 RhysMagic.value = GameManager.RhysMagic;
-                //    StarterAnim.Play("StarterWindup");
+                RhysAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
                 isDead = enemyUnit[enemyUnitSelected].RhysWaddiwasi(Rhys.RhysSpell10Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -3195,7 +3146,7 @@ public class BattleSystem : MonoBehaviour
             {
                 GameManager.RhysMagic -= Rhys.RhysSpell11MagicConsumed;
                 RhysMagic.value = GameManager.RhysMagic;
-                //    StarterAnim.Play("StarterWindup");
+                RhysAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
                 isDead = enemyUnit[enemyUnitSelected].RhysConjurePugione(Rhys.RhysSpell11Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -3245,7 +3196,7 @@ public class BattleSystem : MonoBehaviour
             {
                 GameManager.RhysMagic -= Rhys.RhysSpell12MagicConsumed;
                 RhysMagic.value = GameManager.RhysMagic;
-                //    StarterAnim.Play("StarterWindup");
+                RhysAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
                 isDead = enemyUnit[enemyUnitSelected].RhysImpetumSubsisto(Rhys.RhysSpell12Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -3295,7 +3246,7 @@ public class BattleSystem : MonoBehaviour
             {
                 GameManager.RhysMagic -= Rhys.RhysSpell13MagicConsumed;
                 RhysMagic.value = GameManager.RhysMagic;
-                //    StarterAnim.Play("StarterWindup");
+                RhysAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
                 isDead = enemyUnit[enemyUnitSelected].RhysIraUolueris(Rhys.RhysSpell13Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -3352,7 +3303,7 @@ public class BattleSystem : MonoBehaviour
             {
                 GameManager.JameelMagic -= Jameel.JameelSpell2MagicConsumed;
                 JameelMagic.value = GameManager.JameelMagic;
-                //    StarterAnim.Play("StarterWindup");
+                JameelAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
                 isDead = enemyUnit[enemyUnitSelected].JameelFlippendo(Jameel.JameelSpell2Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -3402,7 +3353,7 @@ public class BattleSystem : MonoBehaviour
             {
                 GameManager.JameelMagic -= Jameel.JameelSpell3MagicConsumed;
                 JameelMagic.value = GameManager.JameelMagic;
-                //    StarterAnim.Play("StarterWindup");
+                JameelAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
                 isDead = enemyUnit[enemyUnitSelected].JameelFlippendo(Jameel.JameelSpell3Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -3452,7 +3403,7 @@ public class BattleSystem : MonoBehaviour
             {
                 GameManager.JameelMagic -= Jameel.JameelSpell4MagicConsumed;
                 JameelMagic.value = GameManager.JameelMagic;
-                //    StarterAnim.Play("StarterWindup");
+                JameelAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
                 isDead = enemyUnit[enemyUnitSelected].JameelFlippendo(Jameel.JameelSpell4Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -3502,7 +3453,7 @@ public class BattleSystem : MonoBehaviour
             {
                 GameManager.JameelMagic -= Jameel.JameelSpell5MagicConsumed;
                 JameelMagic.value = GameManager.JameelMagic;
-                //    StarterAnim.Play("StarterWindup");
+                JameelAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
                 isDead = enemyUnit[enemyUnitSelected].JameelFlippendo(Jameel.JameelSpell5Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -3552,7 +3503,7 @@ public class BattleSystem : MonoBehaviour
             {
                 GameManager.JameelMagic -= Jameel.JameelSpell6MagicConsumed;
                 JameelMagic.value = GameManager.JameelMagic;
-                //    StarterAnim.Play("StarterWindup");
+                JameelAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
                 isDead = enemyUnit[enemyUnitSelected].JameelFlippendo(Jameel.JameelSpell6Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -3602,7 +3553,7 @@ public class BattleSystem : MonoBehaviour
             {
                 GameManager.JameelMagic -= Jameel.JameelSpell7MagicConsumed;
                 JameelMagic.value = GameManager.JameelMagic;
-                //    StarterAnim.Play("StarterWindup");
+                JameelAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
                 isDead = enemyUnit[enemyUnitSelected].JameelFlippendo(Jameel.JameelSpell7Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -3652,7 +3603,7 @@ public class BattleSystem : MonoBehaviour
             {
                 GameManager.JameelMagic -= Jameel.JameelSpell8MagicConsumed;
                 JameelMagic.value = GameManager.JameelMagic;
-                //    StarterAnim.Play("StarterWindup");
+                JameelAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
                 isDead = enemyUnit[enemyUnitSelected].JameelFlippendo(Jameel.JameelSpell8Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -3702,7 +3653,7 @@ public class BattleSystem : MonoBehaviour
             {
                 GameManager.JameelMagic -= Jameel.JameelSpell9MagicConsumed;
                 JameelMagic.value = GameManager.JameelMagic;
-                //    StarterAnim.Play("StarterWindup");
+                JameelAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
                 isDead = enemyUnit[enemyUnitSelected].JameelFlippendo(Jameel.JameelSpell9Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -3752,7 +3703,7 @@ public class BattleSystem : MonoBehaviour
             {
                 GameManager.JameelMagic -= Jameel.JameelSpell10MagicConsumed;
                 JameelMagic.value = GameManager.JameelMagic;
-                //    StarterAnim.Play("StarterWindup");
+                JameelAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
                 isDead = enemyUnit[enemyUnitSelected].JameelFlippendo(Jameel.JameelSpell10Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -3802,7 +3753,7 @@ public class BattleSystem : MonoBehaviour
             {
                 GameManager.JameelMagic -= Jameel.JameelSpell11MagicConsumed;
                 JameelMagic.value = GameManager.JameelMagic;
-                //    StarterAnim.Play("StarterWindup");
+                JameelAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
                 isDead = enemyUnit[enemyUnitSelected].JameelFlippendo(Jameel.JameelSpell11Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -3852,7 +3803,7 @@ public class BattleSystem : MonoBehaviour
             {
                 GameManager.JameelMagic -= Jameel.JameelSpell12MagicConsumed;
                 JameelMagic.value = GameManager.JameelMagic;
-                //    StarterAnim.Play("StarterWindup");
+                JameelAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
                 isDead = enemyUnit[enemyUnitSelected].JameelFlippendo(Jameel.JameelSpell12Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -3902,7 +3853,7 @@ public class BattleSystem : MonoBehaviour
             {
                 GameManager.JameelMagic -= Jameel.JameelSpell13MagicConsumed;
                 JameelMagic.value = GameManager.JameelMagic;
-                //    StarterAnim.Play("StarterWindup");
+                JameelAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
                 isDead = enemyUnit[enemyUnitSelected].JameelFlippendo(Jameel.JameelSpell13Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -3952,7 +3903,7 @@ public class BattleSystem : MonoBehaviour
             {
                 GameManager.JameelMagic -= Jameel.JameelSpell14MagicConsumed;
                 JameelMagic.value = GameManager.JameelMagic;
-                //    StarterAnim.Play("StarterWindup");
+                JameelAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
                 isDead = enemyUnit[enemyUnitSelected].JameelFlippendo(Jameel.JameelSpell14Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -4002,7 +3953,7 @@ public class BattleSystem : MonoBehaviour
             {
                 GameManager.JameelMagic -= Jameel.JameelSpell15MagicConsumed;
                 JameelMagic.value = GameManager.JameelMagic;
-                //    StarterAnim.Play("StarterWindup");
+                JameelAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
                 isDead = enemyUnit[enemyUnitSelected].JameelFlippendo(Jameel.JameelSpell15Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -4058,7 +4009,7 @@ public class BattleSystem : MonoBehaviour
             {
                 GameManager.HarperMagic -= Harper.HarperSpell2MagicConsumed;
                 HarperMagic.value = GameManager.HarperMagic;
-                //    StarterAnim.Play("StarterWindup");
+                HarperAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
                 isDead = enemyUnit[enemyUnitSelected].HarperFlippendo(Harper.HarperSpell2Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -4106,7 +4057,7 @@ public class BattleSystem : MonoBehaviour
             {
                 GameManager.HarperMagic -= Harper.HarperSpell3MagicConsumed;
                 HarperMagic.value = GameManager.HarperMagic;
-                //    StarterAnim.Play("StarterWindup");
+                HarperAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
                 isDead = enemyUnit[enemyUnitSelected].HarperDeflectorImpetum(Harper.HarperSpell3Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -4155,7 +4106,7 @@ public class BattleSystem : MonoBehaviour
             {
                 GameManager.HarperMagic -= Harper.HarperSpell4MagicConsumed;
                 HarperMagic.value = GameManager.HarperMagic;
-                //    StarterAnim.Play("StarterWindup");
+                HarperAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
                 isDead = enemyUnit[enemyUnitSelected].HarperMinorFortitudinem(Harper.HarperSpell4Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -4203,7 +4154,7 @@ public class BattleSystem : MonoBehaviour
             {
                 GameManager.HarperMagic -= Harper.HarperSpell5MagicConsumed;
                 HarperMagic.value = GameManager.HarperMagic;
-                //    StarterAnim.Play("StarterWindup");
+                HarperAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
                 isDead = enemyUnit[enemyUnitSelected].HarperMoserateFortitudinem(Harper.HarperSpell5Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -4251,7 +4202,7 @@ public class BattleSystem : MonoBehaviour
             {
                 GameManager.HarperMagic -= Harper.HarperSpell6MagicConsumed;
                 HarperMagic.value = GameManager.HarperMagic;
-                //    StarterAnim.Play("StarterWindup");
+                HarperAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
                 isDead = enemyUnit[enemyUnitSelected].HarperMaiorFortitudinem(Harper.HarperSpell6Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -4299,7 +4250,7 @@ public class BattleSystem : MonoBehaviour
             {
                 GameManager.HarperMagic -= Harper.HarperSpell7MagicConsumed;
                 HarperMagic.value = GameManager.HarperMagic;
-                //    StarterAnim.Play("StarterWindup");
+                HarperAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
                 isDead = enemyUnit[enemyUnitSelected].HarperInternumCombustione(Harper.HarperSpell7Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -4347,7 +4298,7 @@ public class BattleSystem : MonoBehaviour
             {
                 GameManager.HarperMagic -= Harper.HarperSpell8MagicConsumed;
                 HarperMagic.value = GameManager.HarperMagic;
-                //    StarterAnim.Play("StarterWindup");
+                HarperAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
                 isDead = enemyUnit[enemyUnitSelected].HarperLaedo(Harper.HarperSpell8Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -4395,7 +4346,7 @@ public class BattleSystem : MonoBehaviour
             {
                 GameManager.HarperMagic -= Harper.HarperSpell9MagicConsumed;
                 HarperMagic.value = GameManager.HarperMagic;
-                //    StarterAnim.Play("StarterWindup");
+                HarperAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
                 isDead = enemyUnit[enemyUnitSelected].HarperLociPraesidium(Harper.HarperSpell9Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -4443,7 +4394,7 @@ public class BattleSystem : MonoBehaviour
             {
                 GameManager.HarperMagic -= Harper.HarperSpell10MagicConsumed;
                 HarperMagic.value = GameManager.HarperMagic;
-                //    StarterAnim.Play("StarterWindup");
+                HarperAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
                 isDead = enemyUnit[enemyUnitSelected].HarperPerturbo(Harper.HarperSpell10Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -4491,7 +4442,7 @@ public class BattleSystem : MonoBehaviour
             {
                 GameManager.HarperMagic -= Harper.HarperSpell11MagicConsumed;
                 HarperMagic.value = GameManager.HarperMagic;
-                //    StarterAnim.Play("StarterWindup");
+                HarperAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
                 isDead = enemyUnit[enemyUnitSelected].HarperPulsateSunt(Harper.HarperSpell11Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -4539,7 +4490,7 @@ public class BattleSystem : MonoBehaviour
             {
                 GameManager.HarperMagic -= Harper.HarperSpell12MagicConsumed;
                 HarperMagic.value = GameManager.HarperMagic;
-                //    StarterAnim.Play("StarterWindup");
+                HarperAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
                 isDead = enemyUnit[enemyUnitSelected].HarperFumes(Harper.HarperSpell12Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -4587,7 +4538,7 @@ public class BattleSystem : MonoBehaviour
             {
                 GameManager.HarperMagic -= Harper.HarperSpell13MagicConsumed;
                 HarperMagic.value = GameManager.HarperMagic;
-                //    StarterAnim.Play("StarterWindup");
+                HarperAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
                 isDead = enemyUnit[enemyUnitSelected].HarperDiminuendo(Harper.HarperSpell13Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -4643,7 +4594,7 @@ public class BattleSystem : MonoBehaviour
             {
                 GameManager.SkyeMagic -= Skye.SkyeSpell2MagicConsumed;
                 SkyeMagic.value = GameManager.SkyeMagic;
-                //    StarterAnim.Play("StarterWindup");
+                SkyeAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
                 isDead = enemyUnit[enemyUnitSelected].SkyeFlippendo(Skye.SkyeSpell2Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -4689,7 +4640,7 @@ public class BattleSystem : MonoBehaviour
             {
                 GameManager.SkyeMagic -= Skye.SkyeSpell3MagicConsumed;
                 SkyeMagic.value = GameManager.SkyeMagic;
-                //    StarterAnim.Play("StarterWindup");
+                SkyeAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
                 isDead = enemyUnit[enemyUnitSelected].SkyeMinorCura(Skye.SkyeSpell3Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -4735,7 +4686,7 @@ public class BattleSystem : MonoBehaviour
             {
                 GameManager.SkyeMagic -= Skye.SkyeSpell4MagicConsumed;
                 SkyeMagic.value = GameManager.SkyeMagic;
-                //    StarterAnim.Play("StarterWindup");
+                SkyeAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
                 isDead = enemyUnit[enemyUnitSelected].SkyeMaiorCura(Skye.SkyeSpell4Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -4781,7 +4732,7 @@ public class BattleSystem : MonoBehaviour
             {
                 GameManager.SkyeMagic -= Skye.SkyeSpell5MagicConsumed;
                 SkyeMagic.value = GameManager.SkyeMagic;
-                //    StarterAnim.Play("StarterWindup");
+                SkyeAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
                 isDead = enemyUnit[enemyUnitSelected].SkyeSenaPlenaPotion(Skye.SkyeSpell5Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -4827,7 +4778,7 @@ public class BattleSystem : MonoBehaviour
             {
                 GameManager.SkyeMagic -= Skye.SkyeSpell6MagicConsumed;
                 SkyeMagic.value = GameManager.SkyeMagic;
-                //    StarterAnim.Play("StarterWindup");
+                SkyeAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
                 isDead = enemyUnit[enemyUnitSelected].SkyeReanimatePotion(Skye.SkyeSpell6Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -4873,7 +4824,7 @@ public class BattleSystem : MonoBehaviour
             {
                 GameManager.SkyeMagic -= Skye.SkyeSpell7MagicConsumed;
                 SkyeMagic.value = GameManager.SkyeMagic;
-                //    StarterAnim.Play("StarterWindup");
+                SkyeAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
                 isDead = enemyUnit[enemyUnitSelected].SkyeSanaCoetusPotion(Skye.SkyeSpell7Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -4919,7 +4870,7 @@ public class BattleSystem : MonoBehaviour
             {
                 GameManager.SkyeMagic -= Skye.SkyeSpell8MagicConsumed;
                 SkyeMagic.value = GameManager.SkyeMagic;
-                //    StarterAnim.Play("StarterWindup");
+                SkyeAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
                 isDead = enemyUnit[enemyUnitSelected].SkyeAntidoteToCommonPoisons(Skye.SkyeSpell8Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -4965,7 +4916,7 @@ public class BattleSystem : MonoBehaviour
             {
                 GameManager.SkyeMagic -= Skye.SkyeSpell9MagicConsumed;
                 SkyeMagic.value = GameManager.SkyeMagic;
-                //    StarterAnim.Play("StarterWindup");
+                SkyeAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
                 isDead = enemyUnit[enemyUnitSelected].SkyeStrengthPotion(Skye.SkyeSpell9Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -5011,7 +4962,7 @@ public class BattleSystem : MonoBehaviour
             {
                 GameManager.SkyeMagic -= Skye.SkyeSpell10MagicConsumed;
                 SkyeMagic.value = GameManager.SkyeMagic;
-                //    StarterAnim.Play("StarterWindup");
+                SkyeAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
                 isDead = enemyUnit[enemyUnitSelected].SkyeConfundus(Skye.SkyeSpell10Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -5057,7 +5008,7 @@ public class BattleSystem : MonoBehaviour
             {
                 GameManager.SkyeMagic -= Skye.SkyeSpell11MagicConsumed;
                 SkyeMagic.value = GameManager.SkyeMagic;
-                //    StarterAnim.Play("StarterWindup");
+                SkyeAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
                 isDead = enemyUnit[enemyUnitSelected].SkyeIraUolueris(Skye.SkyeSpell11Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -5111,7 +5062,7 @@ public class BattleSystem : MonoBehaviour
             {
                 GameManager.SullivanMagic -= Sullivan.SullivanSpell2MagicConsumed;
                 SullivanMagic.value = GameManager.SullivanMagic;
-                //    StarterAnim.Play("StarterWindup");
+                SullivanAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
                 isDead = enemyUnit[enemyUnitSelected].SullivanFlippendo(Sullivan.SullivanSpell2Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -5159,7 +5110,7 @@ public class BattleSystem : MonoBehaviour
             {
                 GameManager.SullivanMagic -= Sullivan.SullivanSpell3MagicConsumed;
                 SullivanMagic.value = GameManager.SullivanMagic;
-                //    StarterAnim.Play("StarterWindup");
+                SullivanAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
                 isDead = enemyUnit[enemyUnitSelected].SullivanExiling(Sullivan.SullivanSpell3Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -5207,7 +5158,7 @@ public class BattleSystem : MonoBehaviour
             {
                 GameManager.SullivanMagic -= Sullivan.SullivanSpell4MagicConsumed;
                 SullivanMagic.value = GameManager.SullivanMagic;
-                //    StarterAnim.Play("StarterWindup");
+                SullivanAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
                 isDead = enemyUnit[enemyUnitSelected].SullivanProtego(Sullivan.SullivanSpell4Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -5255,7 +5206,7 @@ public class BattleSystem : MonoBehaviour
             {
                 GameManager.SullivanMagic -= Sullivan.SullivanSpell5MagicConsumed;
                 SullivanMagic.value = GameManager.SullivanMagic;
-                //    StarterAnim.Play("StarterWindup");
+                SullivanAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
                 isDead = enemyUnit[enemyUnitSelected].SullivanIgnusMagnum(Sullivan.SullivanSpell5Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -5303,7 +5254,7 @@ public class BattleSystem : MonoBehaviour
             {
                 GameManager.SullivanMagic -= Sullivan.SullivanSpell6MagicConsumed;
                 SullivanMagic.value = GameManager.SullivanMagic;
-                //    StarterAnim.Play("StarterWindup");
+                SullivanAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
                 isDead = enemyUnit[enemyUnitSelected].SullivanSagittaLecit(Sullivan.SullivanSpell6Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -5351,7 +5302,7 @@ public class BattleSystem : MonoBehaviour
             {
                 GameManager.SullivanMagic -= Sullivan.SullivanSpell7MagicConsumed;
                 SullivanMagic.value = GameManager.SullivanMagic;
-                //    StarterAnim.Play("StarterWindup");
+                SullivanAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
                 isDead = enemyUnit[enemyUnitSelected].SullivanMonstrumSella(Sullivan.SullivanSpell7Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -5399,7 +5350,7 @@ public class BattleSystem : MonoBehaviour
             {
                 GameManager.SullivanMagic -= Sullivan.SullivanSpell8MagicConsumed;
                 SullivanMagic.value = GameManager.SullivanMagic;
-                //    StarterAnim.Play("StarterWindup");
+                SullivanAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
                 isDead = enemyUnit[enemyUnitSelected].SullivanIncarcerous(Sullivan.SullivanSpell8Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -5447,7 +5398,7 @@ public class BattleSystem : MonoBehaviour
             {
                 GameManager.SullivanMagic -= Sullivan.SullivanSpell9MagicConsumed;
                 SullivanMagic.value = GameManager.SullivanMagic;
-                //    StarterAnim.Play("StarterWindup");
+                SullivanAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
                 isDead = enemyUnit[enemyUnitSelected].SullivanUltimumChao(Sullivan.SullivanSpell9Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -5495,7 +5446,7 @@ public class BattleSystem : MonoBehaviour
             {
                 GameManager.SullivanMagic -= Sullivan.SullivanSpell10MagicConsumed;
                 SullivanMagic.value = GameManager.SullivanMagic;
-                //    StarterAnim.Play("StarterWindup");
+                SullivanAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
                 isDead = enemyUnit[enemyUnitSelected].SullivanMutareStatum(Sullivan.SullivanSpell10Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -5543,7 +5494,7 @@ public class BattleSystem : MonoBehaviour
             {
                 GameManager.SullivanMagic -= Sullivan.SullivanSpell11MagicConsumed;
                 SullivanMagic.value = GameManager.SullivanMagic;
-                //    StarterAnim.Play("StarterWindup");
+                SullivanAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
                 isDead = enemyUnit[enemyUnitSelected].SullivanEngorgement(Sullivan.SullivanSpell11Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -5591,7 +5542,7 @@ public class BattleSystem : MonoBehaviour
             {
                 GameManager.SullivanMagic -= Sullivan.SullivanSpell12MagicConsumed;
                 SullivanMagic.value = GameManager.SullivanMagic;
-                //    StarterAnim.Play("StarterWindup");
+                SullivanAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
                 isDead = enemyUnit[enemyUnitSelected].SullivanStatuamLocomotion(Sullivan.SullivanSpell12Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -5639,7 +5590,7 @@ public class BattleSystem : MonoBehaviour
             {
                 GameManager.SullivanMagic -= Sullivan.SullivanSpell13MagicConsumed;
                 SullivanMagic.value = GameManager.SullivanMagic;
-                //    StarterAnim.Play("StarterWindup");
+                SullivanAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
                 isDead = enemyUnit[enemyUnitSelected].SullivanCriticaFocus(Sullivan.SullivanSpell13Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
@@ -5915,6 +5866,7 @@ public class BattleSystem : MonoBehaviour
             //enemyAnim[enemyIndex].Play("Armature|Swing");
         
             yield return new WaitForSeconds(.5f);
+
         print("im here." + WhoToAttack);
 
             if (WhoToAttack == 0 && !MCDead)
@@ -5928,6 +5880,7 @@ public class BattleSystem : MonoBehaviour
                     dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks [PLAYER NAME] with " + enemyUnit[enemyUnitSelected].attackName + "!";
                     yield return new WaitForSeconds(.5f);
                     dialogueText.text = "[PLAYER NAME] Dodges!";
+                    MCAnim.Play("Armature|Dodge");
                     yield return new WaitForSeconds(1f);
 
                 }
@@ -5947,7 +5900,7 @@ public class BattleSystem : MonoBehaviour
                         GameManager.MCHealth -= enemyUnit[enemyUnitSelected].enemyDamage;
                         MCHealth.value = GameManager.MCHealth;
                         MCDead = true;
-                        //   MCAnim.SetBool("isDead", true);
+                        MCAnim.SetBool("isDead", true);
                         Debug.Log("Game Over because Main Character died");
                         yield return new WaitForSeconds(3f);
                     }
@@ -5955,7 +5908,7 @@ public class BattleSystem : MonoBehaviour
                     else
                     {
                         yield return new WaitForSeconds(.5f);
-                        //   MCAnim.Play("Armature|Oof");
+                        MCAnim.Play("Armature|TakeDamage");
                         MCDamageUI.text = "-" + enemyUnit[enemyUnitSelected].enemyDamage.ToString();
                         GameManager.MCHealth -= enemyUnit[enemyUnitSelected].enemyDamage;
                         MCHealth.value = GameManager.MCHealth;
@@ -5969,22 +5922,27 @@ public class BattleSystem : MonoBehaviour
             //This is broken and will make it look like it is the player's turn when the enemy is just choosing a new target
             else if (WhoToAttack == 1 && !GameManager.RhysInParty || RhysDead)
             {
+              //  StartCoroutine(EnemyDamageStep(enemyIndex));
                 StartCoroutine(EnemyTurn(enemyIndex));
             }
             else if (WhoToAttack == 2 && !GameManager.JameelInParty || JameelDead)
             {
+              //  StartCoroutine(EnemyDamageStep(enemyIndex));
                 StartCoroutine(EnemyTurn(enemyIndex));
             }
             else if (WhoToAttack == 3 && !GameManager.HarperInParty || HarperDead)
             {
+               // StartCoroutine(EnemyDamageStep(enemyIndex));
                 StartCoroutine(EnemyTurn(enemyIndex));
             }
             else if (WhoToAttack == 4 && !GameManager.SkyeInParty || SkyeDead)
             {
+               // StartCoroutine(EnemyDamageStep(enemyIndex));
                 StartCoroutine(EnemyTurn(enemyIndex));
             }
             else if (WhoToAttack == 5 && !GameManager.SullivanInParty || SullivanDead)
             {
+               // StartCoroutine(EnemyDamageStep(enemyIndex));
                 StartCoroutine(EnemyTurn(enemyIndex));
             }
 
@@ -5999,6 +5957,7 @@ public class BattleSystem : MonoBehaviour
                 {
                     dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks Rhys with " + enemyUnit[enemyUnitSelected].attackName + "!";
                     yield return new WaitForSeconds(.5f);
+                    RhysAnim.Play("Armature|Dodge");
                     dialogueText.text = "Rhys Dodges!";
                     yield return new WaitForSeconds(1f);
 
@@ -6021,7 +5980,7 @@ public class BattleSystem : MonoBehaviour
                         //   Debug.Log("Removing Middle");
                         //   DebugPrintList(playerTurnOrder);
 
-                        //    RhysAnim.SetBool("isDead", true);
+                        RhysAnim.SetBool("isDead", true);
                         yield return new WaitForSeconds(3f);
 
                     }
@@ -6029,7 +5988,7 @@ public class BattleSystem : MonoBehaviour
                     else
                     {
                         yield return new WaitForSeconds(.5f);
-                        //RhysAnim.Play("Armature|Oof");
+                        RhysAnim.Play("Armature|TakeDamage");
                         RhysDamageUI.text = "-" + enemyUnit[enemyUnitSelected].enemyDamage.ToString();
                         GameManager.RhysHealth -= enemyUnit[enemyUnitSelected].enemyDamage;
                         RhysHealth.value = GameManager.RhysHealth;
@@ -6051,6 +6010,7 @@ public class BattleSystem : MonoBehaviour
                 {
                     dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks Jameel with " + enemyUnit[enemyUnitSelected].attackName + "!";
                     yield return new WaitForSeconds(.5f);
+                    JameelAnim.Play("Armature|Dodge");
                     dialogueText.text = "Jameel Dodges!";
                     yield return new WaitForSeconds(1f);
 
@@ -6073,7 +6033,7 @@ public class BattleSystem : MonoBehaviour
                         //   Debug.Log("Removing Middle");
                         //   DebugPrintList(playerTurnOrder);
 
-                        //    HarperAnim.SetBool("isDead", true);
+                        JameelAnim.SetBool("isDead", true);
                         yield return new WaitForSeconds(3f);
 
                     }
@@ -6081,7 +6041,7 @@ public class BattleSystem : MonoBehaviour
                     else
                     {
                         yield return new WaitForSeconds(.5f);
-                        //HarperAnim.Play("Armature|Oof");
+                        JameelAnim.Play("Armature|TakeDamage");
                         JameelDamageUI.text = "-" + enemyUnit[enemyUnitSelected].enemyDamage.ToString();
                         GameManager.JameelHealth -= enemyUnit[enemyUnitSelected].enemyDamage;
                         JameelHealth.value = GameManager.JameelHealth;
@@ -6103,6 +6063,7 @@ public class BattleSystem : MonoBehaviour
                 {
                     dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks Harper with " + enemyUnit[enemyUnitSelected].attackName + "!";
                     yield return new WaitForSeconds(.5f);
+                    HarperAnim.Play("Armature|Dodge");
                     dialogueText.text = "Harper Dodges!";
                     yield return new WaitForSeconds(1f);
 
@@ -6125,7 +6086,7 @@ public class BattleSystem : MonoBehaviour
                         //   Debug.Log("Removing Middle");
                         //   DebugPrintList(playerTurnOrder);
 
-                        //    HarperAnim.SetBool("isDead", true);
+                        HarperAnim.SetBool("isDead", true);
                         yield return new WaitForSeconds(3f);
 
                     }
@@ -6133,7 +6094,7 @@ public class BattleSystem : MonoBehaviour
                     else
                     {
                         yield return new WaitForSeconds(.5f);
-                        //HarperAnim.Play("Armature|Oof");
+                        HarperAnim.Play("Armature|TakeDamage");
                         HarperDamageUI.text = "-" + enemyUnit[enemyUnitSelected].enemyDamage.ToString();
                         GameManager.HarperHealth -= enemyUnit[enemyUnitSelected].enemyDamage;
                         HarperHealth.value = GameManager.HarperHealth;
@@ -6155,6 +6116,7 @@ public class BattleSystem : MonoBehaviour
                 {
                     dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks Skye with " + enemyUnit[enemyUnitSelected].attackName + "!";
                     yield return new WaitForSeconds(.5f);
+                    SkyeAnim.Play("Armature|Dodge");
                     dialogueText.text = "Skye Dodges!";
                     yield return new WaitForSeconds(1f);
 
@@ -6177,7 +6139,7 @@ public class BattleSystem : MonoBehaviour
                         //   Debug.Log("Removing Middle");
                         //   DebugPrintList(playerTurnOrder);
 
-                        //    SkyeAnim.SetBool("isDead", true);
+                        SkyeAnim.SetBool("isDead", true);
                         yield return new WaitForSeconds(3f);
 
                     }
@@ -6185,7 +6147,7 @@ public class BattleSystem : MonoBehaviour
                     else
                     {
                         yield return new WaitForSeconds(.5f);
-                        //SkyeAnim.Play("Armature|Oof");
+                        SkyeAnim.Play("Armature|TakeDamage");
                         SkyeDamageUI.text = "-" + enemyUnit[enemyUnitSelected].enemyDamage.ToString();
                         GameManager.SkyeHealth -= enemyUnit[enemyUnitSelected].enemyDamage;
                         SkyeHealth.value = GameManager.SkyeHealth;
@@ -6207,6 +6169,7 @@ public class BattleSystem : MonoBehaviour
                 {
                     dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks Sullivan with " + enemyUnit[enemyUnitSelected].attackName + "!";
                     yield return new WaitForSeconds(.5f);
+                    SullivanAnim.Play("Armature|Dodge");
                     dialogueText.text = "Sullivan Dodges!";
                     yield return new WaitForSeconds(1f);
 
@@ -6229,7 +6192,7 @@ public class BattleSystem : MonoBehaviour
                         //   Debug.Log("Removing Middle");
                         //   DebugPrintList(playerTurnOrder);
 
-                        //    RhysAnim.SetBool("isDead", true);
+                        SullivanAnim.SetBool("isDead", true);
                         yield return new WaitForSeconds(3f);
 
                     }
@@ -6237,7 +6200,7 @@ public class BattleSystem : MonoBehaviour
                     else
                     {
                         yield return new WaitForSeconds(.5f);
-                        //SullivanAnim.Play("Armature|Oof");
+                        SullivanAnim.Play("Armature|TakeDamage");
                         SullivanDamageUI.text = "-" + enemyUnit[enemyUnitSelected].enemyDamage.ToString();
                         GameManager.SullivanHealth -= enemyUnit[enemyUnitSelected].enemyDamage;
                         SullivanHealth.value = GameManager.SullivanHealth;
@@ -6255,6 +6218,18 @@ public class BattleSystem : MonoBehaviour
         NextTurn();
         }
 
+  /*  IEnumerator EnemyDamageStep(int enemyIndex)
+    {
+        yield return new WaitForSeconds(.1f);
+    
+    
+    
+    
+    
+    
+    
+    }
+  */
     bool isPlayerIndexDead(int playerID)
     {
         switch (playerID)
