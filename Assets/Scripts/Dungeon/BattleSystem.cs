@@ -635,6 +635,7 @@ public class BattleSystem : MonoBehaviour
 
         if (MCDead)
         {
+            state = BattleState.LOST;
             EndBattle();
         }
 
@@ -5646,6 +5647,7 @@ public class BattleSystem : MonoBehaviour
         //           {
         if (MCDead)
         {
+            state = BattleState.LOST;
             EndBattle();
         }
         else
@@ -5932,6 +5934,7 @@ public class BattleSystem : MonoBehaviour
                         MCDead = true;
                         MCAnim.SetBool("isDead", true);
                         Debug.Log("Game Over because Main Character died");
+                        state = BattleState.LOST;
                         yield return new WaitForSeconds(3f);
                         EndBattle();
                     }
@@ -6276,7 +6279,8 @@ public class BattleSystem : MonoBehaviour
         //  GameManager.Instance.DebugBall.transform.position = Starter.transform.position + Vector3.up * GameManager.Instance.DebugBallHeight;
         if (MCDead)
         {
-            NextTurn();
+            state = BattleState.LOST;
+            EndBattle();
         }
         if (!MCDead)
         {
@@ -8442,7 +8446,7 @@ public class BattleSystem : MonoBehaviour
             isOver = true;
 
         }
-        else if (state == BattleState.LOST)
+        if (state == BattleState.LOST)
         {
             if (!gameOverToPreventDuplicates)
             {
