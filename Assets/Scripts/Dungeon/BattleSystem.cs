@@ -633,6 +633,11 @@ public class BattleSystem : MonoBehaviour
             playerTurnOrder.Remove(CharacterIdentifier.Sullivan);
         }
 
+        if (MCDead)
+        {
+            EndBattle();
+        }
+
         //Adding back into party after knockout
         if (GameManager.RhysHealth >= 0 && RhysDead)
         {
@@ -5861,13 +5866,38 @@ public class BattleSystem : MonoBehaviour
 
             } while (isPlayerIndexDead(WhoToAttack));
 
+            //This is broken and will make it look like it is the player's turn when the enemy is just choosing a new target
+            if (WhoToAttack == 1 && !GameManager.RhysInParty || RhysDead)
+            {
+                //  StartCoroutine(EnemyDamageStep(enemyIndex));
+                StartCoroutine(EnemyTurn(enemyIndex));
+            }
+            else if (WhoToAttack == 2 && !GameManager.JameelInParty || JameelDead)
+            {
+                //  StartCoroutine(EnemyDamageStep(enemyIndex));
+                StartCoroutine(EnemyTurn(enemyIndex));
+            }
+            else if (WhoToAttack == 3 && !GameManager.HarperInParty || HarperDead)
+            {
+                // StartCoroutine(EnemyDamageStep(enemyIndex));
+                StartCoroutine(EnemyTurn(enemyIndex));
+            }
+            else if (WhoToAttack == 4 && !GameManager.SkyeInParty || SkyeDead)
+            {
+                // StartCoroutine(EnemyDamageStep(enemyIndex));
+                StartCoroutine(EnemyTurn(enemyIndex));
+            }
+            else if (WhoToAttack == 5 && !GameManager.SullivanInParty || SullivanDead)
+            {
+                // StartCoroutine(EnemyDamageStep(enemyIndex));
+                StartCoroutine(EnemyTurn(enemyIndex));
+            }
+
             yield return new WaitForSeconds(1.5f);
 
             //enemyAnim[enemyIndex].Play("Armature|Swing");
         
             yield return new WaitForSeconds(.5f);
-
-        print("im here." + WhoToAttack);
 
             if (WhoToAttack == 0 && !MCDead)
             {
@@ -5903,6 +5933,7 @@ public class BattleSystem : MonoBehaviour
                         MCAnim.SetBool("isDead", true);
                         Debug.Log("Game Over because Main Character died");
                         yield return new WaitForSeconds(3f);
+                        EndBattle();
                     }
 
                     else
@@ -5918,34 +5949,6 @@ public class BattleSystem : MonoBehaviour
                 }
                 StartCoroutine(TurnOffDamageUI());
             }
-
-            //This is broken and will make it look like it is the player's turn when the enemy is just choosing a new target
-            else if (WhoToAttack == 1 && !GameManager.RhysInParty || RhysDead)
-            {
-              //  StartCoroutine(EnemyDamageStep(enemyIndex));
-                StartCoroutine(EnemyTurn(enemyIndex));
-            }
-            else if (WhoToAttack == 2 && !GameManager.JameelInParty || JameelDead)
-            {
-              //  StartCoroutine(EnemyDamageStep(enemyIndex));
-                StartCoroutine(EnemyTurn(enemyIndex));
-            }
-            else if (WhoToAttack == 3 && !GameManager.HarperInParty || HarperDead)
-            {
-               // StartCoroutine(EnemyDamageStep(enemyIndex));
-                StartCoroutine(EnemyTurn(enemyIndex));
-            }
-            else if (WhoToAttack == 4 && !GameManager.SkyeInParty || SkyeDead)
-            {
-               // StartCoroutine(EnemyDamageStep(enemyIndex));
-                StartCoroutine(EnemyTurn(enemyIndex));
-            }
-            else if (WhoToAttack == 5 && !GameManager.SullivanInParty || SullivanDead)
-            {
-               // StartCoroutine(EnemyDamageStep(enemyIndex));
-                StartCoroutine(EnemyTurn(enemyIndex));
-            }
-
 
             else if (WhoToAttack == 1 && !RhysDead && GameManager.RhysInParty)
             {
@@ -5973,14 +5976,14 @@ public class BattleSystem : MonoBehaviour
                     {
                         GameManager.RhysHealth -= enemyUnit[enemyUnitSelected].enemyDamage;
                         RhysHealth.value = GameManager.RhysHealth;
-                        RhysDead = true;
-
                         playerTurnOrder.Remove(CharacterIdentifier.Rhys);
 
                         //   Debug.Log("Removing Middle");
                         //   DebugPrintList(playerTurnOrder);
 
                         RhysAnim.SetBool("isDead", true);
+                        print("Rhys Dead" + GameManager.RhysHealth + "/" + GameManager.RhysMaxHealth);
+                        RhysDead = true;
                         yield return new WaitForSeconds(3f);
 
                     }

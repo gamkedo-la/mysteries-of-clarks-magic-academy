@@ -100,6 +100,8 @@ public class GameManager : MonoBehaviour
         PartyCount++;
         SkyeInParty = true;
         RhysInParty = true;
+        SullivanInParty = true;
+        PartyCount++;
         PartyCount++;
         PartyCount++;
 
