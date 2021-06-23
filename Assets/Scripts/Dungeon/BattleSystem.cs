@@ -5635,7 +5635,6 @@ public class BattleSystem : MonoBehaviour
     #region Enemy Attack
     IEnumerator EnemyTurn(int enemyIndex)
         {
-            
             Camera.transform.position = enemyCam.transform.position;
             Camera.transform.LookAt(MC.transform.position);
         // GameManager.Instance.DebugBall.transform.position = enemyUnit[enemyIndex].transform.position + Vector3.up * GameManager.Instance.DebugBallHeight;

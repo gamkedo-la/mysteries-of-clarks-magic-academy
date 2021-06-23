@@ -2471,8 +2471,8 @@ public class Unit : MonoBehaviour
 
     void SoftPunch()
     {
-        minDamage = 100;
-        maxDamage = 500;
+        minDamage = 1;
+        maxDamage = 5;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
         //  DamageUI.text = "-" + enemyDamage.ToString();
