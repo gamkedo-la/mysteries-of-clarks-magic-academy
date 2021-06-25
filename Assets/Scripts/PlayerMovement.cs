@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public CharacterController controller;
     public Transform cam;
+    public Animator anim;
 
     public float speed = 5f;
     public float smoothingForTurn;
@@ -23,6 +24,16 @@ public class PlayerMovement : MonoBehaviour
         #region PlayerMovement
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
+
+        if (Input.GetAxisRaw("Vertical") > -.05f && Input.GetAxisRaw("Vertical") < .05f && Input.GetAxisRaw("Horizontal") > -.05f && Input.GetAxisRaw("Horizontal") < .05f)
+        {
+            anim.SetBool("isWalking", false);
+        }
+
+        else
+        {
+            anim.SetBool("isWalking", true);
+        }
 
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
 
