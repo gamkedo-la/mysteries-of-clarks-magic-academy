@@ -61,6 +61,7 @@ public class GameManager : MonoBehaviour
 
     //Money that the player has collected and can spend
     public static int Money;
+    public InventoryObject inventory;
     //
 
     //Player Stats
