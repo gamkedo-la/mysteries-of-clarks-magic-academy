@@ -93,7 +93,7 @@ public class GameManager : MonoBehaviour
         displayDayOfWeek = GameObject.Find("DayOfWeek").GetComponent<Text>();
         displayTimeOfDay = GameObject.Find("TimeOfDay").GetComponent<Text>();
         monthAndDay = GameObject.Find("CalendarDay").GetComponent<Text>();
-
+/*
         CanvasAnimator = GameObject.Find("CanvasForDate").GetComponent<Animator>();
         print("here5");
         IntelligenceUI = GameObject.Find("IntelligenceSlider").GetComponent<Slider>();
@@ -108,7 +108,7 @@ public class GameManager : MonoBehaviour
         print("here4");
         IncreaseStatLevel();
         print("here2");
-
+*/
         CalculateDayOfWeek();
         CalculateCalendarDay();
         CalculateTimeOfDay();
