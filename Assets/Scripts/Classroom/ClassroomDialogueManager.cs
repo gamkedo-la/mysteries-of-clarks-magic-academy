@@ -32,6 +32,8 @@ public class ClassroomDialogueManager : MonoBehaviour
     public bool isTransfigurationDemonstration;
     public GameObject TransfiguredDemonstration;
 
+    GameObject GameManagerStats;
+
     private void Start()
     {
         sentences = new Queue<string>();
@@ -39,6 +41,8 @@ public class ClassroomDialogueManager : MonoBehaviour
         StartCoroutine(InitialWaiting());
 
         datePlay = GameObject.Find("CanvasForDate").GetComponent<Animator>();
+
+        GameManagerStats = GameObject.Find("CanvasForStats");
     }
 
     IEnumerator InitialWaiting()
@@ -118,10 +122,18 @@ public class ClassroomDialogueManager : MonoBehaviour
             Debug.Log("endOfConversation");
             EndOfLessonLearning += GameManager.Intelligence;
             Debug.Log("Play Quick Animation to show learning");
-            datePlay.SetBool("ToPlay", true);
+       //     GameManager.IncreaseStatLevel();
+       //     GameManagerStats.SetActive(true);
+            StartCoroutine(StatsWaiting());
            // GameManager.ProgressDay();
-            StartCoroutine(Waiting());
         }
+    }
+    IEnumerator StatsWaiting()
+    {
+        yield return new WaitForSeconds(3f);
+        //   GameManagerStats.SetActive(false);
+        datePlay.SetBool("ToPlay", true);
+        StartCoroutine(Waiting());
     }
 
     IEnumerator Waiting()

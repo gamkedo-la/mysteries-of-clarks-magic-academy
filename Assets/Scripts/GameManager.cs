@@ -65,7 +65,9 @@ public class GameManager : MonoBehaviour
     //
 
     //Player Stats
-    public static int Intelligence, Charm, Courage, Proficiency;
+    public static int Intelligence, Charisma, Courage, Proficiency;
+    public static int IntelligenceLevel, CharismaLevel, CourageLevel, ProficiencyLevel;
+    public static Slider IntelligenceUI, CharismaUI, CourageUI, ProficiencyUI;
     //
     private void Awake()
     {
@@ -81,17 +83,31 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
+        print("here7");
         dayOfWeek = 1;
         month = 4;
         day = 15;
 
         timeOfDay = 2;
-
+        print("here6");
         displayDayOfWeek = GameObject.Find("DayOfWeek").GetComponent<Text>();
         displayTimeOfDay = GameObject.Find("TimeOfDay").GetComponent<Text>();
         monthAndDay = GameObject.Find("CalendarDay").GetComponent<Text>();
 
         CanvasAnimator = GameObject.Find("CanvasForDate").GetComponent<Animator>();
+        print("here5");
+        IntelligenceUI = GameObject.Find("IntelligenceSlider").GetComponent<Slider>();
+        CharismaUI = GameObject.Find("CharismaSlider").GetComponent<Slider>();
+        CourageUI = GameObject.Find("CourageSlider").GetComponent<Slider>();
+        ProficiencyUI = GameObject.Find("ProficiencySlider").GetComponent<Slider>();
+        print("here3");
+        Intelligence = 15;
+        Charisma = 15;
+        Courage = 15;
+        Proficiency = 15;
+        print("here4");
+        IncreaseStatLevel();
+        print("here2");
 
         CalculateDayOfWeek();
         CalculateCalendarDay();
@@ -238,4 +254,99 @@ public class GameManager : MonoBehaviour
             CalculateCalendarDay();
         }
     }
+
+    public static void IncreaseStatLevel()
+    {
+        if (Intelligence < 5)
+        {
+            IntelligenceLevel = 1;
+        }
+        else if (Intelligence >= 5 && Intelligence < 10)
+        {
+            IntelligenceLevel = 2;
+        }
+        else if (Intelligence >= 10 && Intelligence < 15)
+        {
+            IntelligenceLevel = 3;
+        }
+        else if (Intelligence >= 15 && Intelligence < 20)
+        {
+            IntelligenceLevel = 4;
+        }
+        else if (Intelligence >= 20)
+        {
+            IntelligenceLevel = 5;
+        }
+
+        if (Charisma < 5)
+        {
+            CharismaLevel = 1;
+        }
+        else if (Charisma >= 5 && Charisma < 10)
+        {
+            CharismaLevel = 2;
+        }
+        else if (Charisma >= 10 && Charisma < 15)
+        {
+            CharismaLevel = 3;
+        }
+        else if (Charisma >= 15 && Charisma < 20)
+        {
+            CharismaLevel = 4;
+        }
+        else if (Charisma >= 20)
+        {
+            CharismaLevel = 5;
+        }
+
+        if (Courage < 5)
+        {
+            CourageLevel = 1;
+        }
+        else if (Courage >= 5 && Courage < 10)
+        {
+            CourageLevel = 2;
+        }
+        else if (Courage >= 10 && Courage < 15)
+        {
+            CourageLevel = 3;
+        }
+        else if (Courage >= 15 && Courage < 20)
+        {
+            CourageLevel = 4;
+        }
+        else if (Courage >= 20)
+        {
+            CourageLevel = 5;
+        }
+
+        if (Proficiency < 5)
+        {
+            ProficiencyLevel = 1;
+        }
+        else if (Proficiency >= 5 && Proficiency < 10)
+        {
+            ProficiencyLevel = 2;
+        }
+        else if (Proficiency >= 10 && Proficiency < 15)
+        {
+            ProficiencyLevel = 3;
+        }
+        else if (Proficiency >= 15 && Proficiency < 20)
+        {
+            ProficiencyLevel = 4;
+        }
+        else if (Proficiency >= 20)
+        {
+            ProficiencyLevel = 5;
+        }
+
+        IntelligenceUI.value = IntelligenceLevel;
+        CharismaUI.value = CharismaLevel;
+        CourageUI.value = CourageLevel;
+        ProficiencyUI.value = ProficiencyLevel;
+
+        print("here");
+    }
+
 }
