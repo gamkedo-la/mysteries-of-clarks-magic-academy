@@ -10,9 +10,12 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private GameObject InventoryPanel;
     [SerializeField] private GameObject InventoryContents;
 
+    public Slider MCHealth, MCMagic, RhysHealth, RhysMagic, JameelHealth, JameelMagic, HarperHealth, HarperMagic, SkyeHealth, SkyeMagic, SullivanHealth, SullivanMagic;
+
     public GameObject ItemPrefab;
     private InventoryObject inventory;
 
+    private const int INVENTORY_ITEM_X_OFFSET = 248;
     private const int INVENTORY_ITEM_Y_OFFSET = 30;
     // Update is called once per frame
 
@@ -22,7 +25,7 @@ public class PauseMenu : MonoBehaviour
         for (int i = 0; i < inventory.Container.Count ; i++)
         {
             GameObject item = Instantiate(ItemPrefab, Vector3.zero, Quaternion.identity, InventoryContents.transform);
-            item.GetComponent<RectTransform>().localPosition = new Vector3(298, -INVENTORY_ITEM_Y_OFFSET * (i + 1), 0);
+            item.GetComponent<RectTransform>().localPosition = new Vector3(INVENTORY_ITEM_X_OFFSET, -INVENTORY_ITEM_Y_OFFSET * (i + 1), 0);
             item.transform.GetChild(0).GetComponent<Text>().text = inventory.Container[i].item.itemName;
             item.transform.GetChild(1).GetComponent<Text>().text = inventory.Container[i].item.description;
             item.transform.GetChild(2).GetComponent<Text>().text = "x" + inventory.Container[i].amount;
@@ -44,6 +47,7 @@ public class PauseMenu : MonoBehaviour
         } else {
             Time.timeScale = 0;
             MenuPanel.SetActive(true);
+            UpdateUI();
         }
     }
 
@@ -68,6 +72,8 @@ public class PauseMenu : MonoBehaviour
         // Only support items can be used from menu
         if(item.type == ItemType.Support) {
             // TODO: ADD UI functionality to select a party member if the item is not a multi-target
+
+            //UpdateUI();
             GameManager.instance.UseItem(item, "MC");
             bool outOfStock = inventory.Container[index].RemoveAmount(1);
             if(outOfStock) {
@@ -99,5 +105,26 @@ public class PauseMenu : MonoBehaviour
             item.transform.GetChild(1).GetComponent<Text>().text = inventory.Container[i].item.description;
             item.transform.GetChild(2).GetComponent<Text>().text = "x" + inventory.Container[i].amount;
         }
+    }
+
+    public void UpdateUI()
+    {
+        MCHealth.value = GameManager.MCHealth / GameManager.MCMaxHealth;
+        MCMagic.value = GameManager.MCMagic / GameManager.MCMaxMagic;
+
+        RhysHealth.value = GameManager.RhysHealth / GameManager.RhysMaxHealth;
+        RhysMagic.value = GameManager.RhysMagic / GameManager.RhysMaxMagic;
+
+        JameelHealth.value = GameManager.JameelHealth / GameManager.JameelMaxHealth;
+        JameelMagic.value = GameManager.JameelMagic / GameManager.JameelMaxMagic;
+
+        HarperHealth.value = GameManager.HarperHealth / GameManager.HarperMaxHealth;
+        HarperMagic.value = GameManager.HarperMagic / GameManager.HarperMaxMagic;
+
+        SkyeHealth.value = GameManager.SkyeHealth / GameManager.SkyeMaxHealth;
+        SkyeMagic.value = GameManager.SkyeMagic / GameManager.SkyeMaxMagic;
+
+        SullivanHealth.value = GameManager.SullivanHealth / GameManager.SullivanMaxHealth;
+        SullivanMagic.value = GameManager.SullivanMagic / GameManager.SullivanMaxMagic;
     }
 }
