@@ -62,6 +62,7 @@ public class GameManager : MonoBehaviour
     //Money that the player has collected and can spend
     public static int Money;
     public InventoryObject inventory;
+    public static PauseMenu pauseMenu;
     //
 
     //Player Stats
@@ -93,6 +94,8 @@ public class GameManager : MonoBehaviour
         displayDayOfWeek = GameObject.Find("DayOfWeek").GetComponent<Text>();
         displayTimeOfDay = GameObject.Find("TimeOfDay").GetComponent<Text>();
         monthAndDay = GameObject.Find("CalendarDay").GetComponent<Text>();
+        pauseMenu = GetComponentInChildren<PauseMenu>();
+
 /*
         CanvasAnimator = GameObject.Find("CanvasForDate").GetComponent<Animator>();
         print("here5");
@@ -349,4 +352,16 @@ public class GameManager : MonoBehaviour
         print("here");
     }
 
+    public void UseItem(ItemObject item, string target){
+        SupportItem sItem = (SupportItem) item;
+        switch (sItem.property)
+        {
+            case SupportProperty.Health:
+                Debug.Log("add health");
+                break;
+            case SupportProperty.Magic:
+                Debug.Log("add magic");
+                break;
+        }
+    }
 }

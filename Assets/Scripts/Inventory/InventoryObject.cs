@@ -20,6 +20,10 @@ public class InventoryObject : ScriptableObject
             Container.Add(new InventorySlot(_item, _amount));
         }
     }
+
+    public void RemoveItem(int index){
+        Container.RemoveAt(index);
+    }
 }
 
 [System.Serializable]
@@ -33,8 +37,12 @@ public class InventorySlot
         amount = _amount;
     }
 
-    public void AddAmount (int value)
-    {
+    public void AddAmount (int value) {
         amount += value;
+    }
+
+    public bool RemoveAmount (int value) {
+        amount -= value;
+        return amount == 0; // if 0 it needs to be removed.
     }
 }
