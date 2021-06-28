@@ -66,6 +66,7 @@ public class GameManager : MonoBehaviour
     //
 
     //Player Stats
+    public GameObject CanvasForStats;
     public static int Intelligence, Charisma, Courage, Proficiency;
     public static int IntelligenceLevel, CharismaLevel, CourageLevel, ProficiencyLevel;
     public static Slider IntelligenceUI, CharismaUI, CourageUI, ProficiencyUI;
@@ -96,7 +97,7 @@ public class GameManager : MonoBehaviour
         monthAndDay = GameObject.Find("CalendarDay").GetComponent<Text>();
         pauseMenu = GetComponentInChildren<PauseMenu>();
 
-/*
+
         CanvasAnimator = GameObject.Find("CanvasForDate").GetComponent<Animator>();
         print("here5");
         IntelligenceUI = GameObject.Find("IntelligenceSlider").GetComponent<Slider>();
@@ -104,14 +105,18 @@ public class GameManager : MonoBehaviour
         CourageUI = GameObject.Find("CourageSlider").GetComponent<Slider>();
         ProficiencyUI = GameObject.Find("ProficiencySlider").GetComponent<Slider>();
         print("here3");
-        Intelligence = 15;
-        Charisma = 15;
-        Courage = 15;
-        Proficiency = 15;
+        Intelligence = 10;
+        Charisma = 20;
+        Courage = 5;
+        Proficiency = 4;
         print("here4");
         IncreaseStatLevel();
         print("here2");
-*/
+
+        CanvasForStats = GameObject.Find("CanvasForStats");
+        CanvasForStats.SetActive(false);
+
+
         CalculateDayOfWeek();
         CalculateCalendarDay();
         CalculateTimeOfDay();

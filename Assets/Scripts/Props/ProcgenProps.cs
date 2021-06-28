@@ -68,7 +68,7 @@ public class ProcgenProps : MonoBehaviour
 
             for (int col=0; col<cols; col++) {             
                 
-                Debug.Log("book "+col+","+row+" dist:"+dist);
+            //    Debug.Log("book "+col+","+row+" dist:"+dist);
                 
                 if (Random.value*100 < fullness) { // fill this spot?
 

@@ -32,8 +32,6 @@ public class ClassroomDialogueManager : MonoBehaviour
     public bool isTransfigurationDemonstration;
     public GameObject TransfiguredDemonstration;
 
-    GameObject GameManagerStats;
-
     private void Start()
     {
         sentences = new Queue<string>();
@@ -41,8 +39,6 @@ public class ClassroomDialogueManager : MonoBehaviour
         StartCoroutine(InitialWaiting());
 
         datePlay = GameObject.Find("CanvasForDate").GetComponent<Animator>();
-
-        GameManagerStats = GameObject.Find("CanvasForStats");
     }
 
     IEnumerator InitialWaiting()
@@ -122,8 +118,9 @@ public class ClassroomDialogueManager : MonoBehaviour
             Debug.Log("endOfConversation");
             EndOfLessonLearning += GameManager.Intelligence;
             Debug.Log("Play Quick Animation to show learning");
-       //     GameManager.IncreaseStatLevel();
-       //     GameManagerStats.SetActive(true);
+            //Since there is only one gamemanager, we can reference the instance of the CanvasForStats to turn on or off
+            GameManager.instance.CanvasForStats.SetActive(true);
+            GameManager.IncreaseStatLevel();
             StartCoroutine(StatsWaiting());
            // GameManager.ProgressDay();
         }
@@ -131,7 +128,7 @@ public class ClassroomDialogueManager : MonoBehaviour
     IEnumerator StatsWaiting()
     {
         yield return new WaitForSeconds(3f);
-        //   GameManagerStats.SetActive(false);
+        GameManager.instance.CanvasForStats.SetActive(false);
         datePlay.SetBool("ToPlay", true);
         StartCoroutine(Waiting());
     }
