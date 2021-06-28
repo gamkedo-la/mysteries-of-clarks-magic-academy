@@ -5855,6 +5855,9 @@ public class BattleSystem : MonoBehaviour
             //Choosing Who To Attack
             //happens at least once, if it is true, it does it again. (keep going until valid)
             int safteyCounter = 1000;
+
+            bool viableTarget = false;
+
             do
             {
                 WhoToAttack = Random.Range(0, 6);
@@ -5864,35 +5867,41 @@ public class BattleSystem : MonoBehaviour
                     break;
                     //bails us out of the do while
                 }
+                if (isPlayerIndexDead(WhoToAttack) == false)
+                {
+                    if (WhoToAttack == 0 && !MCDead)
+                    {
+                        //  StartCoroutine(EnemyDamageStep(enemyIndex));
+                        viableTarget = true;
+                    }
 
-            } while (isPlayerIndexDead(WhoToAttack));
-
-            //This is broken and will make it look like it is the player's turn when the enemy is just choosing a new target
-            if (WhoToAttack == 1 && !GameManager.RhysInParty || RhysDead)
-            {
-                //  StartCoroutine(EnemyDamageStep(enemyIndex));
-                StartCoroutine(EnemyTurn(enemyIndex));
-            }
-            else if (WhoToAttack == 2 && !GameManager.JameelInParty || JameelDead)
-            {
-                //  StartCoroutine(EnemyDamageStep(enemyIndex));
-                StartCoroutine(EnemyTurn(enemyIndex));
-            }
-            else if (WhoToAttack == 3 && !GameManager.HarperInParty || HarperDead)
-            {
-                // StartCoroutine(EnemyDamageStep(enemyIndex));
-                StartCoroutine(EnemyTurn(enemyIndex));
-            }
-            else if (WhoToAttack == 4 && !GameManager.SkyeInParty || SkyeDead)
-            {
-                // StartCoroutine(EnemyDamageStep(enemyIndex));
-                StartCoroutine(EnemyTurn(enemyIndex));
-            }
-            else if (WhoToAttack == 5 && !GameManager.SullivanInParty || SullivanDead)
-            {
-                // StartCoroutine(EnemyDamageStep(enemyIndex));
-                StartCoroutine(EnemyTurn(enemyIndex));
-            }
+                    else if (WhoToAttack == 1 && GameManager.RhysInParty && !RhysDead)
+                    {
+                        //  StartCoroutine(EnemyDamageStep(enemyIndex));
+                        viableTarget = true;
+                    }
+                    else if (WhoToAttack == 2 && GameManager.JameelInParty && !JameelDead)
+                    {
+                        //  StartCoroutine(EnemyDamageStep(enemyIndex));
+                        viableTarget = true;
+                    }
+                    else if (WhoToAttack == 3 && GameManager.HarperInParty && !HarperDead)
+                    {
+                        // StartCoroutine(EnemyDamageStep(enemyIndex));
+                        viableTarget = true;
+                    }
+                    else if (WhoToAttack == 4 && GameManager.SkyeInParty && !SkyeDead)
+                    {
+                        // StartCoroutine(EnemyDamageStep(enemyIndex));
+                        viableTarget = true;
+                    }
+                    else if (WhoToAttack == 5 && GameManager.SullivanInParty && !SullivanDead)
+                    {
+                        // StartCoroutine(EnemyDamageStep(enemyIndex));
+                        viableTarget = true;
+                    }
+                }//Player not dead
+            } while (viableTarget == false);
 
             yield return new WaitForSeconds(1.5f);
 
@@ -5905,7 +5914,7 @@ public class BattleSystem : MonoBehaviour
                 enemyUnit[enemyIndex].transform.LookAt(MC.transform.position);
 
                 Camera.transform.LookAt(MC.transform.position);
-
+                //Dodge
                 if (GameManager.MCAgility >= RandomAttack)
                 {
                     dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks [PLAYER NAME] with " + enemyUnit[enemyUnitSelected].attackName + "!";
@@ -5915,7 +5924,7 @@ public class BattleSystem : MonoBehaviour
                     yield return new WaitForSeconds(1f);
 
                 }
-
+                //Attack
                 else
                 {
                     dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks [PLAYER NAME] with " + enemyUnit[enemyUnitSelected].attackName + "!";
@@ -5925,7 +5934,7 @@ public class BattleSystem : MonoBehaviour
                     bool isDead = MC.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage);
 
                     print(isDead + " Main Character");
-
+                    //Dead
                     if (isDead)
                     {
                         GameManager.MCHealth -= enemyUnit[enemyUnitSelected].enemyDamage;
@@ -5937,7 +5946,7 @@ public class BattleSystem : MonoBehaviour
                         yield return new WaitForSeconds(3f);
                         EndBattle();
                     }
-
+                    //Not dead, but hurt
                     else
                     {
                         yield return new WaitForSeconds(.5f);
