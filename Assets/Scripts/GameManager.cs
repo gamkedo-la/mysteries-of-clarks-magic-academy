@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
     // Experience System
     public static float MCExp, RhysExp, JameelExp, HarperExp, SkyeExp, SullivanExp, GracieMayExp;
     public static float MCTargetExp, RhysTargetExp, JameelTargetExp, HarperTargetExp, SkyeTargetExp, SullivanTargetExp, GracieMayTargetExp;
-    public static int MCLevel, RhysLevel, JameelLevel, HarperLevel, SkyeLevel, SullivanLevel, GracieMayLevel;
+    public static int MCLevel = 1, RhysLevel = 1, JameelLevel = 1, HarperLevel = 1, SkyeLevel = 1, SullivanLevel = 1, GracieMayLevel = 1;
     //
 
     //ToDetermine the Current Floor of the Dungeon you are in

@@ -8535,13 +8535,29 @@ public class BattleSystem : MonoBehaviour
                 //SLevelUp.SetActive(true);
                 GameManager.MCTargetExp *= 1.25f;
                 //add training points
-                MCExpToNext.text = (GameManager.MCTargetExp - GameManager.MCExp).ToString("F0");
+            //    MCExpToNext.text = (GameManager.MCTargetExp - GameManager.MCExp).ToString("F0");
                 int NewLevel = GameManager.MCLevel;
                 int Difference = NewLevel - OldLevel;
                 //MCPointsToGive = (Difference * 3);
+
+                print(totalExp);
+              //  print(MCTotalExp);
+                print(OldLevel + "    " + GameManager.MCLevel);
+                print(GameManager.MCMaxHealth);
+                print(GameManager.MCMaxMagic);
+
+                if (GameManager.RhysInParty)
+                {
+                    RhysExp(totalExp / GameManager.PartyCount * .8f);
+                }
+                else
+                {
+                    RhysExp(totalExp / GameManager.PartyCount * .2f);
+                }
             }
-            MCExpToNext.text = (GameManager.MCTargetExp - GameManager.MCExp).ToString("F0");
-            MCTotalExp.text = GameManager.MCLevel.ToString("F0");
+       //     MCExpToNext.text = (GameManager.MCTargetExp - GameManager.MCExp).ToString("F0");
+       //     MCTotalExp.text = GameManager.MCLevel.ToString("F0");
+
         }
         else
         {
@@ -8584,6 +8600,15 @@ public class BattleSystem : MonoBehaviour
             }
             RhysExpToNext.text = (GameManager.RhysTargetExp - GameManager.RhysExp).ToString("F0");
             RhysTotalExp.text = GameManager.RhysLevel.ToString("F0");
+
+            if (GameManager.JameelInParty)
+            {
+                JameelExp(totalExp / GameManager.PartyCount * .8f);
+            }
+            else
+            {
+                JameelExp(totalExp / GameManager.PartyCount * .2f);
+            }
         }
         else
         {
@@ -8623,6 +8648,15 @@ public class BattleSystem : MonoBehaviour
                 int NewLevel = GameManager.JameelLevel;
                 int Difference = NewLevel - OldLevel;
                 //JameelPointsToGive = (Difference * 3);
+
+                if (GameManager.HarperInParty)
+                {
+                    HarperExp(totalExp / GameManager.PartyCount * .8f);
+                }
+                else
+                {
+                    HarperExp(totalExp / GameManager.PartyCount * .2f);
+                }
             }
             JameelExpToNext.text = (GameManager.JameelTargetExp - GameManager.JameelExp).ToString("F0");
             JameelTotalExp.text = GameManager.JameelLevel.ToString("F0");
@@ -8665,6 +8699,15 @@ public class BattleSystem : MonoBehaviour
                 int NewLevel = GameManager.HarperLevel;
                 int Difference = NewLevel - OldLevel;
                 //HarperPointsToGive = (Difference * 3);
+
+                if (GameManager.SkyeInParty)
+                {
+                    SkyeExp(totalExp / GameManager.PartyCount * .8f);
+                }
+                else
+                {
+                    SkyeExp(totalExp / GameManager.PartyCount * .2f);
+                }
             }
             HarperExpToNext.text = (GameManager.HarperTargetExp - GameManager.HarperExp).ToString("F0");
             HarperTotalExp.text = GameManager.HarperLevel.ToString("F0");
@@ -8706,7 +8749,16 @@ public class BattleSystem : MonoBehaviour
                 SkyeExpToNext.text = (GameManager.SkyeTargetExp - GameManager.SkyeExp).ToString("F0");
                 int NewLevel = GameManager.SkyeLevel;
                 int Difference = NewLevel - OldLevel;
-               // SkyePointsToGive = (Difference * 3);
+                // SkyePointsToGive = (Difference * 3);
+
+                if (GameManager.SullivanInParty)
+                {
+                    SullivanExp(totalExp / GameManager.PartyCount * .8f);
+                }
+                else
+                {
+                    SullivanExp(totalExp / GameManager.PartyCount * .2f);
+                }
             }
             SkyeExpToNext.text = (GameManager.SkyeTargetExp - GameManager.SkyeExp).ToString("F0");
             SkyeTotalExp.text = GameManager.SkyeLevel.ToString("F0");
@@ -8748,7 +8800,9 @@ public class BattleSystem : MonoBehaviour
                 SullivanExpToNext.text = (GameManager.SullivanTargetExp - GameManager.SullivanExp).ToString("F0");
                 int NewLevel = GameManager.SullivanLevel;
                 int Difference = NewLevel - OldLevel;
-               // SullivanPointsToGive = (Difference * 3);
+                // SullivanPointsToGive = (Difference * 3);
+
+                GracieMayExp(totalExp / GameManager.PartyCount * .8f);
             }
             SullivanExpToNext.text = (GameManager.SullivanTargetExp - GameManager.SullivanExp).ToString("F0");
             SullivanTotalExp.text = GameManager.SullivanLevel.ToString("F0");
@@ -9017,14 +9071,6 @@ public class BattleSystem : MonoBehaviour
 
     public void WinningScreen()
     {
-        print(totalExp);
-        Debug.Log(GameManager.MCTotalExp);
-        Debug.Log(GameManager.MCLevel);
-        print(GameManager.MCMaxHealth );
-        print(GameManager.MCMaxMagic);
-
-
-
         SceneManager.LoadScene(DungeonRoomToLoad);
         Debug.Log(DungeonRoomToLoad);
     }
