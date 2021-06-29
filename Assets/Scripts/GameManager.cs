@@ -353,8 +353,6 @@ public class GameManager : MonoBehaviour
         CharismaUI.value = CharismaLevel;
         CourageUI.value = CourageLevel;
         ProficiencyUI.value = ProficiencyLevel;
-
-        print("here");
     }
 
     public void UseItem(ItemObject item, string target){

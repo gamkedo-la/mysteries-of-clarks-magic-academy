@@ -8456,7 +8456,7 @@ public class BattleSystem : MonoBehaviour
         for (int i = 0; i < enemyUnit.Count; i++)
         {
             GameManager.Money += enemyUnit[i].MoneyToDistribute;
-            MoneyText.text = GameManager.Money.ToString();
+           // MoneyText.text = GameManager.Money.ToString();
         }
         
         if (!MCDead)
@@ -9017,6 +9017,14 @@ public class BattleSystem : MonoBehaviour
 
     public void WinningScreen()
     {
+        print(totalExp);
+        Debug.Log(GameManager.MCTotalExp);
+        Debug.Log(GameManager.MCLevel);
+        print(GameManager.MCMaxHealth );
+        print(GameManager.MCMaxMagic);
+
+
+
         SceneManager.LoadScene(DungeonRoomToLoad);
         Debug.Log(DungeonRoomToLoad);
     }
