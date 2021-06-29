@@ -241,6 +241,9 @@ public class Unit : MonoBehaviour
         {
             Health.maxValue = maxHP;
         }
+
+        ExperienceToDistribute = Random.Range(minExperience, maxExperience);
+        MoneyToDistribute = Random.Range(minMoney, maxMoney);
     }
 
     private void Update()

@@ -47,6 +47,12 @@ public class GameManager : MonoBehaviour
     public static int MCMaxMagic, RhysMaxMagic, JameelMaxMagic, HarperMaxMagic, SkyeMaxMagic, SullivanMaxMagic;
     //
 
+    // Experience System
+    public static float MCExp, RhysExp, JameelExp, HarperExp, SkyeExp, SullivanExp, GracieMayExp;
+    public static float MCTargetExp, RhysTargetExp, JameelTargetExp, HarperTargetExp, SkyeTargetExp, SullivanTargetExp, GracieMayTargetExp;
+    public static int MCLevel, RhysLevel, JameelLevel, HarperLevel, SkyeLevel, SullivanLevel, GracieMayLevel;
+    //
+
     //ToDetermine the Current Floor of the Dungeon you are in
     public static int CurrentFloor;
     //
@@ -85,13 +91,11 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        print("here7");
         dayOfWeek = 1;
         month = 4;
         day = 15;
 
         timeOfDay = 2;
-        print("here6");
         displayDayOfWeek = GameObject.Find("DayOfWeek").GetComponent<Text>();
         displayTimeOfDay = GameObject.Find("TimeOfDay").GetComponent<Text>();
         monthAndDay = GameObject.Find("CalendarDay").GetComponent<Text>();
@@ -99,19 +103,15 @@ public class GameManager : MonoBehaviour
 
 
         CanvasAnimator = GameObject.Find("CanvasForDate").GetComponent<Animator>();
-        print("here5");
         IntelligenceUI = GameObject.Find("IntelligenceSlider").GetComponent<Slider>();
         CharismaUI = GameObject.Find("CharismaSlider").GetComponent<Slider>();
         CourageUI = GameObject.Find("CourageSlider").GetComponent<Slider>();
         ProficiencyUI = GameObject.Find("ProficiencySlider").GetComponent<Slider>();
-        print("here3");
         Intelligence = 10;
         Charisma = 20;
         Courage = 5;
         Proficiency = 4;
-        print("here4");
         IncreaseStatLevel();
-        print("here2");
 
         CanvasForStats = GameObject.Find("CanvasForStats");
         CanvasForStats.SetActive(false);

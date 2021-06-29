@@ -77,24 +77,14 @@ public class BattleSystem : MonoBehaviour
     public Color staminaBaseColor, energyBaseColor, downedColor;
 
     #region Experience Section
-    /*
-    public Text MCExpGain, RhysExpGain, JameelExpGain, HarperExpGain, SkyeExpGain, SullivanExpGain;
-    public Text MCExpToNext, RhysExpToNext, JameelExpToNext, HarperExpToNext, SkyeExpToNext, SullivanExpToNext;
-    public Text MCTotalExp, RhysTotalExp, JameelTotalExp, HarperTotalExp, SkyeTotalExp, SullivanTotalExp;
-    bool MCLevel, RhysLevel, JameelLevel, HarperLevel, SkyeLevel, SullivanLevel;
-    public GameObject MCLevelUp, RhysLevelUp, JameelLevelUp, HarperLevelUp, SkyeLevelUp, SullivanLevelUp;
+    
+   // public Text MCExpGain, RhysExpGain, JameelExpGain, HarperExpGain, SkyeExpGain, SullivanExpGain, GracieMayExpGain;
+    public Text MCExpToNext, RhysExpToNext, JameelExpToNext, HarperExpToNext, SkyeExpToNext, SullivanExpToNext, GracieMayExpToNext;
+    public Text MCTotalExp, RhysTotalExp, JameelTotalExp, HarperTotalExp, SkyeTotalExp, SullivanTotalExp, GracieMayTotalExp;
+    bool MCLevel, RhysLevel, JameelLevel, HarperLevel, SkyeLevel, SullivanLevel, GracieMayLevel;
+   // public GameObject MCLevelUp, RhysLevelUp, JameelLevelUp, HarperLevelUp, SkyeLevelUp, SullivanLevelUp;
 
-    public GameObject PlayerStatsScreen, MCLevelUpScreen, RhysLevelUpScreen, JameelLevelUpScreen, HarperLevelUpScreen, SkyeLevelUpScreen, SullivanLevelUpScreen;
-
-    //This is the attack menu, come back to this when you've determined who does what attack
-    public Slider SFSlider, SSSlider, SCSlider, SChSlider, SASlider;
-    public Slider MFSlider, MSSlider, MCSlider, MChSlider, MASlider;
-    public Slider SeFSlider, SeSSlider, SeCSlider, SeChSlider, SeASlider;
-    public Slider CFSlider, CSSlider, CCSlider, CChSlider, CASlider;
-    public Text SPoints, MPoints, SePoints, CPoints;
-
-    int SPointsToGive, MPointsToGive, SePointsToGive, CPointsToGive;
-    */
+    
     #endregion
 
     public Text MoneyText;
@@ -244,9 +234,7 @@ public class BattleSystem : MonoBehaviour
     //
     bool enemySelect;
     bool isOver;
-    int totalExp;
-    //Witch/Wizard LevelUp
-    bool MCLevel, RhysLevel, JameelLevel, HarperLevel, SkyeLevel, SullivanLevel;
+    float totalExp;
 
     //Im leaving this in here for now, but in Strike Out - you could choose which level up items you choose, but I think in this one, I'd like it automatic
     public GameObject FastballButton, SliderButton, CurveballButton, ChangeUpButton, AgilityButton, Macro;
@@ -600,13 +588,13 @@ public class BattleSystem : MonoBehaviour
     private void Update()
     {
         //Cheat Code to Win Battle
-        /*{
+        {
             if (Input.GetKeyDown(KeyCode.E))
             {
                 CheatToInstantlyWin();
             }
         }
-        */
+        
         //If MC Health <= 0, game is over (at the bottom of this function)
         if (GameManager.RhysHealth <= 0)
         {
@@ -1368,7 +1356,7 @@ public class BattleSystem : MonoBehaviour
                     {
                         RemoveCurrentEnemy();
 
-                        //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                        totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                         enemyCount--;
 
                         enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -1429,7 +1417,7 @@ public class BattleSystem : MonoBehaviour
                     {
                         RemoveCurrentEnemy();
 
-                        //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                        totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                         enemyCount--;
 
                         enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -1490,7 +1478,7 @@ public class BattleSystem : MonoBehaviour
                     {
                         RemoveCurrentEnemy();
 
-                        //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                        totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                         enemyCount--;
 
                         enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -1552,7 +1540,7 @@ public class BattleSystem : MonoBehaviour
                     {
                         RemoveCurrentEnemy();
 
-                        //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                        totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                         enemyCount--;
 
                         enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -1615,7 +1603,7 @@ public class BattleSystem : MonoBehaviour
                     {
                         RemoveCurrentEnemy();
 
-                        //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                        totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                         enemyCount--;
 
                         enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -1677,7 +1665,7 @@ public class BattleSystem : MonoBehaviour
                     {
                         RemoveCurrentEnemy();
 
-                        //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                        totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                         enemyCount--;
 
                         enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -1739,7 +1727,7 @@ public class BattleSystem : MonoBehaviour
                     {
                         RemoveCurrentEnemy();
 
-                        //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                        totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                         enemyCount--;
 
                         enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -1801,7 +1789,7 @@ public class BattleSystem : MonoBehaviour
                     {
                         RemoveCurrentEnemy();
 
-                        //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                        totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                         enemyCount--;
 
                         enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -1863,7 +1851,7 @@ public class BattleSystem : MonoBehaviour
                     {
                         RemoveCurrentEnemy();
 
-                        //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                        totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                         enemyCount--;
 
                         enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -1924,7 +1912,7 @@ public class BattleSystem : MonoBehaviour
                     {
                         RemoveCurrentEnemy();
 
-                        //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                        totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                         enemyCount--;
 
                         enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -1985,7 +1973,7 @@ public class BattleSystem : MonoBehaviour
                     {
                         RemoveCurrentEnemy();
 
-                        //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                        totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                         enemyCount--;
 
                         enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -2046,7 +2034,7 @@ public class BattleSystem : MonoBehaviour
                     {
                         RemoveCurrentEnemy();
 
-                        //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                        totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                         enemyCount--;
 
                         enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -2108,7 +2096,7 @@ public class BattleSystem : MonoBehaviour
                     {
                         RemoveCurrentEnemy();
 
-                        //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                        totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                         enemyCount--;
 
                         enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -2169,7 +2157,7 @@ public class BattleSystem : MonoBehaviour
                     {
                         RemoveCurrentEnemy();
 
-                        //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                        totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                         enemyCount--;
 
                         enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -2232,7 +2220,7 @@ public class BattleSystem : MonoBehaviour
                     {
                         RemoveCurrentEnemy();
 
-                        //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                        totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                         enemyCount--;
 
                         enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -2295,7 +2283,7 @@ public class BattleSystem : MonoBehaviour
                     {
                         RemoveCurrentEnemy();
 
-                        //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                        totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                         enemyCount--;
 
                         enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -2357,7 +2345,7 @@ public class BattleSystem : MonoBehaviour
                     {
                         RemoveCurrentEnemy();
 
-                        //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                        totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                         enemyCount--;
 
                         enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -2419,7 +2407,7 @@ public class BattleSystem : MonoBehaviour
                     {
                         RemoveCurrentEnemy();
 
-                        //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                        totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                         enemyCount--;
 
                         enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -2481,7 +2469,7 @@ public class BattleSystem : MonoBehaviour
                     {
                         RemoveCurrentEnemy();
 
-                        //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                        totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                         enemyCount--;
 
                         enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -2543,7 +2531,7 @@ public class BattleSystem : MonoBehaviour
                     {
                         RemoveCurrentEnemy();
 
-                        //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                        totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                         enemyCount--;
 
                         enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -2605,7 +2593,7 @@ public class BattleSystem : MonoBehaviour
                     {
                         RemoveCurrentEnemy();
 
-                        //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                        totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                         enemyCount--;
 
                         enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -2667,7 +2655,7 @@ public class BattleSystem : MonoBehaviour
                     {
                         RemoveCurrentEnemy();
 
-                        //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                        totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                         enemyCount--;
 
                         enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -2728,7 +2716,7 @@ public class BattleSystem : MonoBehaviour
                 {
                     RemoveCurrentEnemy();
 
-                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -2778,7 +2766,7 @@ public class BattleSystem : MonoBehaviour
                 {
                     RemoveCurrentEnemy();
 
-                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -2828,7 +2816,7 @@ public class BattleSystem : MonoBehaviour
                 {
                     RemoveCurrentEnemy();
 
-                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -2878,7 +2866,7 @@ public class BattleSystem : MonoBehaviour
                 {
                     RemoveCurrentEnemy();
 
-                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -2928,7 +2916,7 @@ public class BattleSystem : MonoBehaviour
                 {
                     RemoveCurrentEnemy();
 
-                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -2978,7 +2966,7 @@ public class BattleSystem : MonoBehaviour
                 {
                     RemoveCurrentEnemy();
 
-                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -3028,7 +3016,7 @@ public class BattleSystem : MonoBehaviour
                 {
                     RemoveCurrentEnemy();
 
-                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -3078,7 +3066,7 @@ public class BattleSystem : MonoBehaviour
                 {
                     RemoveCurrentEnemy();
 
-                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -3128,7 +3116,7 @@ public class BattleSystem : MonoBehaviour
                 {
                     RemoveCurrentEnemy();
 
-                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -3178,7 +3166,7 @@ public class BattleSystem : MonoBehaviour
                 {
                     RemoveCurrentEnemy();
 
-                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -3228,7 +3216,7 @@ public class BattleSystem : MonoBehaviour
                 {
                     RemoveCurrentEnemy();
 
-                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -3278,7 +3266,7 @@ public class BattleSystem : MonoBehaviour
                 {
                     RemoveCurrentEnemy();
 
-                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -3335,7 +3323,7 @@ public class BattleSystem : MonoBehaviour
                 {
                     RemoveCurrentEnemy();
 
-                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -3385,7 +3373,7 @@ public class BattleSystem : MonoBehaviour
                 {
                     RemoveCurrentEnemy();
 
-                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -3435,7 +3423,7 @@ public class BattleSystem : MonoBehaviour
                 {
                     RemoveCurrentEnemy();
 
-                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -3485,7 +3473,7 @@ public class BattleSystem : MonoBehaviour
                 {
                     RemoveCurrentEnemy();
 
-                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -3535,7 +3523,7 @@ public class BattleSystem : MonoBehaviour
                 {
                     RemoveCurrentEnemy();
 
-                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -3585,7 +3573,7 @@ public class BattleSystem : MonoBehaviour
                 {
                     RemoveCurrentEnemy();
 
-                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -3635,7 +3623,7 @@ public class BattleSystem : MonoBehaviour
                 {
                     RemoveCurrentEnemy();
 
-                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -3685,7 +3673,7 @@ public class BattleSystem : MonoBehaviour
                 {
                     RemoveCurrentEnemy();
 
-                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -3735,7 +3723,7 @@ public class BattleSystem : MonoBehaviour
                 {
                     RemoveCurrentEnemy();
 
-                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -3785,7 +3773,7 @@ public class BattleSystem : MonoBehaviour
                 {
                     RemoveCurrentEnemy();
 
-                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -3835,7 +3823,7 @@ public class BattleSystem : MonoBehaviour
                 {
                     RemoveCurrentEnemy();
 
-                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -3885,7 +3873,7 @@ public class BattleSystem : MonoBehaviour
                 {
                     RemoveCurrentEnemy();
 
-                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -3935,7 +3923,7 @@ public class BattleSystem : MonoBehaviour
                 {
                     RemoveCurrentEnemy();
 
-                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -3985,7 +3973,7 @@ public class BattleSystem : MonoBehaviour
                 {
                     RemoveCurrentEnemy();
 
-                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -4039,7 +4027,7 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -4087,7 +4075,7 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -4136,7 +4124,7 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -4184,7 +4172,7 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -4232,7 +4220,7 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -4280,7 +4268,7 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -4328,7 +4316,7 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -4376,7 +4364,7 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -4424,7 +4412,7 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -4472,7 +4460,7 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -4520,7 +4508,7 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -4568,7 +4556,7 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -4622,7 +4610,7 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -4668,7 +4656,7 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -4714,7 +4702,7 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -4760,7 +4748,7 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -4806,7 +4794,7 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -4852,7 +4840,7 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -4898,7 +4886,7 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -4944,7 +4932,7 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -4990,7 +4978,7 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -5036,7 +5024,7 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -5092,7 +5080,7 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -5140,7 +5128,7 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -5188,7 +5176,7 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -5236,7 +5224,7 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -5284,7 +5272,7 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -5332,7 +5320,7 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -5380,7 +5368,7 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -5428,7 +5416,7 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -5476,7 +5464,7 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -5524,7 +5512,7 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -5572,7 +5560,7 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -5620,7 +5608,7 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-                    //     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -6226,24 +6214,12 @@ public class BattleSystem : MonoBehaviour
                 yield return new WaitForSeconds(.5f);
                 StartCoroutine(TurnOffDamageUI());
             }
-        print(WhoToAttack);
+
         // }
          }
         NextTurn();
         }
 
-  /*  IEnumerator EnemyDamageStep(int enemyIndex)
-    {
-        yield return new WaitForSeconds(.1f);
-    
-    
-    
-    
-    
-    
-    
-    }
-  */
     bool isPlayerIndexDead(int playerID)
     {
         switch (playerID)
@@ -8480,64 +8456,21 @@ public class BattleSystem : MonoBehaviour
         for (int i = 0; i < enemyUnit.Count; i++)
         {
             GameManager.Money += enemyUnit[i].MoneyToDistribute;
-          //  MoneyText.text = GameManager.Money.ToString();
+            MoneyText.text = GameManager.Money.ToString();
         }
-        /*
+        
         if (!MCDead)
         {
-            MCExp.text = "   +" + (totalExp / 4).ToString("F0");
-            GameManager.StarterExp = totalExp / 4 + GameManager.StarterExp;
+          //  MCExp.text = "   +" + (totalExp / (GameManager.PartyCount * .8f)).ToString("F0");
+          // GameManager.StarterExp = totalExp / 4 + GameManager.StarterExp;
 
-            StarterExp(totalExp / 4);
+           // if (MCInParty)
+           // {
+           MCExp(totalExp / GameManager.PartyCount * .8f);
+           // }
         }
-        if (!middleDead)
-        {
-            MRExpGain.text = "   +" + (totalExp / 4).ToString("F0");
-            GameManager.MRExp = totalExp / 4 + GameManager.MRExp;
-
-            MidExp(totalExp / 4);
-        }
-        if (!setupDead)
-        {
-            SetUpExpGain.text = "   +" + (totalExp / 4).ToString("F0");
-            GameManager.SetUpExp = totalExp / 4 + GameManager.SetUpExp;
-
-            SetUpExp(totalExp / 4);
-        }
-        if (!closerDead)
-        {
-            CloserExpGain.text = "   +" + (totalExp / 4).ToString("F0");
-            GameManager.CloserExp = totalExp / 4 + GameManager.CloserExp;
-
-            CloserExp(totalExp / 4);
-        }
-        if (starterDead)
-        {
-            StarterExpGain.text = "0";
-            StarterExpToNext.text = GameManager.StarterTargetExp.ToString("F0");
-            StartTotalExp.text = GameManager.StarterLevel.ToString("F0");
-        }
-        if (middleDead)
-        {
-            MRExpGain.text = "0";
-            MRExpToNext.text = GameManager.MRTargetExp.ToString("F0");
-            MRTotalExp.text = GameManager.MRLevel.ToString("F0");
-        }
-        if (setupDead)
-        {
-            SetUpExpGain.text = "0";
-            SetUpExpToNext.text = GameManager.SetupTargetExp.ToString("F0");
-            SetUpTotalExp.text = GameManager.SetUpLevel.ToString("F0");
-        }
-        if (closerDead)
-        {
-            CloserExpGain.text = "0";
-            CloserExpToNext.text = GameManager.CloserTargetExp.ToString("F0");
-            CloserTotalExp.text = GameManager.CloserLevel.ToString("F0");
-        }
-        */
-        ChooseItem();
-
+        
+       //  ChooseItem();
     }
 
     void ChooseItem()
@@ -8581,148 +8514,276 @@ public class BattleSystem : MonoBehaviour
         */
     }
 
-    void StarterExp(int xp)
+    void MCExp(float xp)
     {
-      /*  if (!starterDead)
+        if (!MCDead)
         {
-            xp = (totalExp / 4);
-            int OldLevelS = GameManager.StarterLevel;
+            xp = (totalExp / GameManager.PartyCount * .8f);
+            int OldLevel = GameManager.MCLevel;
 
-            while (GameManager.StarterExp >= GameManager.StarterTargetExp)
+            while (GameManager.MCExp >= GameManager.MCTargetExp)
             {
-                GameManager.StarterExp = GameManager.StarterExp - GameManager.StarterTargetExp;
-                GameManager.StarterLevel++;
+                GameManager.MCExp = GameManager.MCExp - GameManager.MCTargetExp;
+                GameManager.MCLevel++;
 
-                GameManager.StarterEnergyMax += 5;
-                GameManager.StarterMoraleMax += 5;
-                GameManager.StarterEnergy += 5;
-                GameManager.StarterMorale += 5;
+                GameManager.MCMaxMagic += 5;
+                GameManager.MCMaxHealth += 5;
+                GameManager.MCMagic = GameManager.MCMaxMagic;
+                GameManager.MCHealth = GameManager.MCMaxHealth;
 
-                SLevel = true;
-                SLevelUp.SetActive(true);
-                GameManager.StarterTargetExp *= 1.25f;
+                MCLevel = true;
+                //SLevelUp.SetActive(true);
+                GameManager.MCTargetExp *= 1.25f;
                 //add training points
-                StarterExpToNext.text = (GameManager.StarterTargetExp - GameManager.StarterExp).ToString("F0");
-                int NewLevelS = GameManager.StarterLevel;
-                int Difference = NewLevelS - OldLevelS;
-                SPointsToGive = (Difference * 3);
-
-                GameManager.StarterMorale = GameManager.StarterMoraleMax;
-                GameManager.StarterEnergy = GameManager.StarterEnergyMax;
+                MCExpToNext.text = (GameManager.MCTargetExp - GameManager.MCExp).ToString("F0");
+                int NewLevel = GameManager.MCLevel;
+                int Difference = NewLevel - OldLevel;
+                //MCPointsToGive = (Difference * 3);
             }
-            StarterExpToNext.text = (GameManager.StarterTargetExp - GameManager.StarterExp).ToString("F0");
-            StartTotalExp.text = GameManager.StarterLevel.ToString("F0");
+            MCExpToNext.text = (GameManager.MCTargetExp - GameManager.MCExp).ToString("F0");
+            MCTotalExp.text = GameManager.MCLevel.ToString("F0");
         }
         else
         {
-            MidExp(totalExp / 4);
-        }*/
+            if (GameManager.RhysInParty)
+            {
+                RhysExp(totalExp / GameManager.PartyCount * .8f);
+            }
+            else
+            {
+                RhysExp(totalExp / GameManager.PartyCount * .2f);
+            }
+        }
     }
 
-    void MidExp(int xp)
+    void RhysExp(float xp)
     {
-     /*   if (!middleDead)
+        if (!RhysDead)
         {
-            xp = (totalExp / 4);
-            int OldLevelM = GameManager.MRLevel;
+            xp = (totalExp / GameManager.PartyCount * .8f);
+            int OldLevel = GameManager.RhysLevel;
 
-            while (GameManager.MRExp >= GameManager.MRTargetExp)
+            while (GameManager.RhysExp >= GameManager.RhysTargetExp)
             {
-                GameManager.MRExp = GameManager.MRExp - GameManager.MRTargetExp;
-                GameManager.MRLevel++;
+                GameManager.RhysExp = GameManager.RhysExp - GameManager.RhysTargetExp;
+                GameManager.RhysLevel++;
 
-                GameManager.MidRelievEnergyMax += 5;
-                GameManager.MidRelivMoraleMax += 5;
-                GameManager.MidRelivEnergy += 5;
-                GameManager.MidRelivMorale += 5;
+                GameManager.RhysMaxMagic += 5;
+                GameManager.RhysMaxHealth += 5;
+                GameManager.RhysMagic = GameManager.RhysMaxMagic;
+                GameManager.RhysHealth = GameManager.RhysMaxHealth;
 
-                MLevel = true;
-                MLevelUp.SetActive(true);
-                GameManager.MRTargetExp *= 1.5f;
+                RhysLevel = true;
+                //SLevelUp.SetActive(true);
+                GameManager.RhysTargetExp *= 1.25f;
                 //add training points
-                MRExpToNext.text = (GameManager.MRTargetExp - GameManager.MRExp).ToString("F0");
-                int NewLevelM = GameManager.MRLevel;
-                int Difference = NewLevelM - OldLevelM;
-                MPointsToGive = (Difference * 3) + 1;
+                RhysExpToNext.text = (GameManager.RhysTargetExp - GameManager.RhysExp).ToString("F0");
+                int NewLevel = GameManager.RhysLevel;
+                int Difference = NewLevel - OldLevel;
+                //RhysPointsToGive = (Difference * 3);
             }
-            MRExpToNext.text = (GameManager.MRTargetExp - GameManager.MRExp).ToString("F0");
-            MRTotalExp.text = GameManager.MRLevel.ToString("F0");
+            RhysExpToNext.text = (GameManager.RhysTargetExp - GameManager.RhysExp).ToString("F0");
+            RhysTotalExp.text = GameManager.RhysLevel.ToString("F0");
         }
         else
         {
-            SetUpExp(totalExp / 4);
-        }*/
+            if (GameManager.JameelInParty)
+            {
+                JameelExp(totalExp / GameManager.PartyCount * .8f);
+            }
+            else
+            {
+                JameelExp(totalExp / GameManager.PartyCount * .2f);
+            }
+        }
     }
 
-    void SetUpExp(int xp)
+    void JameelExp(float xp)
     {
-      /*  if (!setupDead)
+        if (!JameelDead)
         {
-            xp = (totalExp / 4);
-            int OldLevelSe = GameManager.SetUpLevel;
+            xp = (totalExp / GameManager.PartyCount * .8f);
+            int OldLevel = GameManager.JameelLevel;
 
-            while (GameManager.SetUpExp >= GameManager.SetupTargetExp)
+            while (GameManager.JameelExp >= GameManager.JameelTargetExp)
             {
-                GameManager.SetUpExp = GameManager.SetUpExp - GameManager.SetupTargetExp;
-                GameManager.SetUpLevel++;
+                GameManager.JameelExp = GameManager.JameelExp - GameManager.JameelTargetExp;
+                GameManager.JameelLevel++;
 
-                GameManager.SetUpEnergyMax += 5;
-                GameManager.SetUpMoraleMax += 5;
-                GameManager.SetUpMorale += 5;
-                GameManager.SetUpEnergy += 5;
+                GameManager.JameelMaxMagic += 5;
+                GameManager.JameelMaxHealth += 5;
+                GameManager.JameelMagic = GameManager.JameelMaxMagic;
+                GameManager.JameelHealth = GameManager.JameelMaxHealth;
 
-                SeLevel = true;
-                SetUpLevelUp.SetActive(true);
-                GameManager.SetupTargetExp *= 1.75f;
+                JameelLevel = true;
+                //SLevelUp.SetActive(true);
+                GameManager.JameelTargetExp *= 1.25f;
                 //add training points
-                SetUpExpToNext.text = (GameManager.SetupTargetExp - GameManager.SetUpExp).ToString("F0");
-                int NewLevelSe = GameManager.SetUpLevel;
-                int Difference = NewLevelSe - OldLevelSe;
-                SePointsToGive = (Difference * 3) + 1;
+                JameelExpToNext.text = (GameManager.JameelTargetExp - GameManager.JameelExp).ToString("F0");
+                int NewLevel = GameManager.JameelLevel;
+                int Difference = NewLevel - OldLevel;
+                //JameelPointsToGive = (Difference * 3);
             }
-            SetUpExpToNext.text = (GameManager.SetupTargetExp - GameManager.SetUpExp).ToString("F0");
-            SetUpTotalExp.text = GameManager.SetUpLevel.ToString("F0");
+            JameelExpToNext.text = (GameManager.JameelTargetExp - GameManager.JameelExp).ToString("F0");
+            JameelTotalExp.text = GameManager.JameelLevel.ToString("F0");
         }
         else
         {
-            CloserExp(totalExp / 4);
-        }*/
+            if (GameManager.HarperInParty)
+            {
+                HarperExp(totalExp / GameManager.PartyCount * .8f);
+            }
+            else
+            {
+                HarperExp(totalExp / GameManager.PartyCount * .2f);
+            }
+        }
     }
 
-    void CloserExp(int xp)
+    void HarperExp(float xp)
     {
-       /* if (!closerDead)
+        if (!HarperDead)
         {
-            xp = (totalExp / 4);
-            int OldLevelC = GameManager.CloserLevel;
+            xp = (totalExp / GameManager.PartyCount * .8f);
+            int OldLevel = GameManager.HarperLevel;
 
-            while (GameManager.CloserExp >= GameManager.CloserTargetExp)
+            while (GameManager.HarperExp >= GameManager.HarperTargetExp)
             {
-                GameManager.CloserExp = GameManager.CloserExp - GameManager.CloserTargetExp;
-                GameManager.CloserLevel++;
+                GameManager.HarperExp = GameManager.HarperExp - GameManager.HarperTargetExp;
+                GameManager.HarperLevel++;
 
-                GameManager.CloserEnergyMax += 5;
-                GameManager.CloserMoraleMax += 5;
-                GameManager.CloserMorale += 5;
-                GameManager.CloserEnergy += 5;
+                GameManager.HarperMaxMagic += 5;
+                GameManager.HarperMaxHealth += 5;
+                GameManager.HarperMagic = GameManager.HarperMaxMagic;
+                GameManager.HarperHealth = GameManager.HarperMaxHealth;
 
-                CLevel = true;
-                CloserLevelUp.SetActive(true);
-                GameManager.CloserTargetExp *= 2f;
+                HarperLevel = true;
+                //SLevelUp.SetActive(true);
+                GameManager.HarperTargetExp *= 1.25f;
                 //add training points
-                CloserExpToNext.text = (GameManager.CloserTargetExp - GameManager.CloserExp).ToString("F0");
-                int NewLevelC = GameManager.CloserLevel;
-                int Difference = NewLevelC - OldLevelC;
-                CPointsToGive = (Difference * 3) + 1;
+                HarperExpToNext.text = (GameManager.HarperTargetExp - GameManager.HarperExp).ToString("F0");
+                int NewLevel = GameManager.HarperLevel;
+                int Difference = NewLevel - OldLevel;
+                //HarperPointsToGive = (Difference * 3);
             }
-            CloserExpToNext.text = (GameManager.CloserTargetExp - GameManager.CloserExp).ToString("F0");
-            CloserTotalExp.text = GameManager.CloserLevel.ToString("F0");
+            HarperExpToNext.text = (GameManager.HarperTargetExp - GameManager.HarperExp).ToString("F0");
+            HarperTotalExp.text = GameManager.HarperLevel.ToString("F0");
         }
         else
         {
-            StartCoroutine(WaitingAtEndOfBattle());
-        }*/
+            if (GameManager.SkyeInParty)
+            {
+                SkyeExp(totalExp / GameManager.PartyCount * .8f);
+            }
+            else
+            {
+                SkyeExp(totalExp / GameManager.PartyCount * .2f);
+            }
+        }
     }
+
+    void SkyeExp(float xp)
+    {
+        if (!SkyeDead)
+        {
+            xp = (totalExp / GameManager.PartyCount * .8f);
+            int OldLevel = GameManager.SkyeLevel;
+
+            while (GameManager.SkyeExp >= GameManager.SkyeTargetExp)
+            {
+                GameManager.SkyeExp = GameManager.SkyeExp - GameManager.SkyeTargetExp;
+                GameManager.SkyeLevel++;
+
+                GameManager.SkyeMaxMagic += 5;
+                GameManager.SkyeMaxHealth += 5;
+                GameManager.SkyeMagic = GameManager.SkyeMaxMagic;
+                GameManager.SkyeHealth = GameManager.SkyeMaxHealth;
+
+                SkyeLevel = true;
+                //SLevelUp.SetActive(true);
+                GameManager.SkyeTargetExp *= 1.25f;
+                //add training points
+                SkyeExpToNext.text = (GameManager.SkyeTargetExp - GameManager.SkyeExp).ToString("F0");
+                int NewLevel = GameManager.SkyeLevel;
+                int Difference = NewLevel - OldLevel;
+               // SkyePointsToGive = (Difference * 3);
+            }
+            SkyeExpToNext.text = (GameManager.SkyeTargetExp - GameManager.SkyeExp).ToString("F0");
+            SkyeTotalExp.text = GameManager.SkyeLevel.ToString("F0");
+        }
+        else
+        {
+            if (GameManager.SullivanInParty)
+            {
+                SullivanExp(totalExp / GameManager.PartyCount * .8f);
+            }
+            else
+            {
+                SullivanExp(totalExp / GameManager.PartyCount * .2f);
+            }
+        }
+    }
+
+    void SullivanExp(float xp)
+    {
+        if (!SullivanDead)
+        {
+            xp = (totalExp / GameManager.PartyCount * .8f);
+            int OldLevel = GameManager.SullivanLevel;
+
+            while (GameManager.SullivanExp >= GameManager.SullivanTargetExp)
+            {
+                GameManager.SullivanExp = GameManager.SullivanExp - GameManager.SullivanTargetExp;
+                GameManager.SullivanLevel++;
+
+                GameManager.SullivanMaxMagic += 5;
+                GameManager.SullivanMaxHealth += 5;
+                GameManager.SullivanMagic = GameManager.SullivanMaxMagic;
+                GameManager.SullivanHealth = GameManager.SullivanMaxHealth;
+
+                SullivanLevel = true;
+                //SLevelUp.SetActive(true);
+                GameManager.SullivanTargetExp *= 1.25f;
+                //add training points
+                SullivanExpToNext.text = (GameManager.SullivanTargetExp - GameManager.SullivanExp).ToString("F0");
+                int NewLevel = GameManager.SullivanLevel;
+                int Difference = NewLevel - OldLevel;
+               // SullivanPointsToGive = (Difference * 3);
+            }
+            SullivanExpToNext.text = (GameManager.SullivanTargetExp - GameManager.SullivanExp).ToString("F0");
+            SullivanTotalExp.text = GameManager.SullivanLevel.ToString("F0");
+        }
+        else
+        {
+            GracieMayExp(totalExp / GameManager.PartyCount * .8f);
+        }
+    }
+
+    void GracieMayExp(float xp)
+    {
+        xp = (totalExp / GameManager.PartyCount * .8f);
+        int OldLevel = GameManager.GracieMayLevel;
+
+        while (GameManager.GracieMayExp >= GameManager.GracieMayTargetExp)
+        {
+            GameManager.GracieMayExp = GameManager.GracieMayExp - GameManager.GracieMayTargetExp;
+            GameManager.GracieMayLevel++;
+
+            GracieMayLevel = true;
+            //SLevelUp.SetActive(true);
+            GameManager.GracieMayTargetExp *= 1.25f;
+            //add training points
+            GracieMayExpToNext.text = (GameManager.GracieMayTargetExp - GameManager.GracieMayExp).ToString("F0");
+            int NewLevel = GameManager.GracieMayLevel;
+            int Difference = NewLevel - OldLevel;
+            //GracieMayPointsToGive = (Difference * 3);
+        }
+        GracieMayExpToNext.text = (GameManager.GracieMayTargetExp - GameManager.GracieMayExp).ToString("F0");
+        GracieMayTotalExp.text = GameManager.GracieMayLevel.ToString("F0");
+
+        StartCoroutine(WaitingAtEndOfBattle());
+    }
+
 
     void CheatToInstantlyWin()
     {
@@ -8730,11 +8791,11 @@ public class BattleSystem : MonoBehaviour
         for (int i = 0; i < enemyUnit.Count; i++)
         {
             enemyUnit[i].TakeDamage(10000);
-            //    Debug.Log("Cheat Activated");
+            Debug.Log("Cheat Activated");
         }
         state = BattleState.WON;
         EndBattle();
-        //  Debug.Log("Attempted To Cheat To Win");
+        Debug.Log("Attempted To Cheat To Win");
     }
 
 
