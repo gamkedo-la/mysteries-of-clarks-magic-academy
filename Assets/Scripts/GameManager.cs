@@ -30,9 +30,6 @@ public class GameManager : MonoBehaviour
     //Determining if the Party Member is available (story timeline wise)
     public static bool RhysAvailable, JameelAvailable, GracieMayAvailable, HarperAvailable, SkyeAvailable, SullivanAvailable;
     //
-    //Party Agility Stats
-    public static int MCAgility, RhysAgility, JameelAgility, HarperAgility, SkyeAgility, SullivanAgility;
-    //
 
     //This is determining party count size
     public static bool RhysInParty, JameelInParty, HarperInParty, SkyeInParty, SullivanInParty;
@@ -45,6 +42,16 @@ public class GameManager : MonoBehaviour
 
     public static int MCMaxHealth, RhysMaxHealth, JameelMaxHealth, HarperMaxHealth, SkyeMaxHealth, SullivanMaxHealth;
     public static int MCMaxMagic, RhysMaxMagic, JameelMaxMagic, HarperMaxMagic, SkyeMaxMagic, SullivanMaxMagic;
+    //
+
+    //PlayerMagicStats
+    public static int MCTrans = 3, MCCharms = 3, MCPotions = 3, MCDADA = 3, MCDodge = 3;
+    public static int RhysTrans = 3, RhysCharms = 3, RhysPotions = 3, RhysDADA = 3, RhysDodge = 3;
+    public static int JameelTrans = 3, JameelCharms = 3, JameelPotions = 3, JameelDADA = 3, JameelDodge = 3;
+    public static int HarperTrans = 3, HarperCharms = 3, HarperPotions = 3, HarperDADA = 3, HarperDodge = 3;
+    public static int SkyeTrans = 3, SkyeCharms = 3, SkyePotions = 3, SkyeDADA = 3, SkyeDodge = 3;
+    public static int SullivanTrans = 3, SullivanCharms = 3, SullivanPotions = 3, SullivanDADA = 3, SullivanDodge = 3;
+    public static int GracieMayTrans = 3, GracieMayCharms = 3, GracieMayPotions = 3, GracieMayDADA = 3, GracieMayDodge = 3;
     //
 
     // Experience System

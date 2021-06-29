@@ -77,10 +77,21 @@ public class BattleSystem : MonoBehaviour
     public Color staminaBaseColor, energyBaseColor, downedColor;
 
     #region Experience Section
-    
-   // public Text MCExpGain, RhysExpGain, JameelExpGain, HarperExpGain, SkyeExpGain, SullivanExpGain, GracieMayExpGain;
-    public Text MCExpToNext, RhysExpToNext, JameelExpToNext, HarperExpToNext, SkyeExpToNext, SullivanExpToNext, GracieMayExpToNext;
-    public Text MCTotalExp, RhysTotalExp, JameelTotalExp, HarperTotalExp, SkyeTotalExp, SullivanTotalExp, GracieMayTotalExp;
+
+
+    public Text MCTrans, MCCharms, MCPotions, MCDADA, MCDodge;
+    public Text RhysTrans, RhysCharms, RhysPotions, RhysDADA, RhysDodge;
+    public Text JameelTrans, JameelCharms, JameelPotions, JameelDADA, JameelDodge;
+    public Text HarperTrans, HarperCharms, HarperPotions, HarperDADA, HarperDodge;
+    public Text SkyeTrans, SkyeCharms, SkyePotions, SkyeDADA, SkyeDodge;
+    public Text SullivanTrans, SullivanCharms, SullivanPotions, SullivanDADA, SullivanDodge;
+    public Text GracieMayTrans, GracieMayCharms, GracieMayPotions, GracieMayDADA, GracieMayDodge;
+    int MCPointsToGive, RhysPointsToGive, JameelPointsToGive, HarperPointsToGive, SkyePointsToGive, SullivanPointsToGive, GracieMayPointsToGive;
+
+
+    // public Text MCExpGain, RhysExpGain, JameelExpGain, HarperExpGain, SkyeExpGain, SullivanExpGain, GracieMayExpGain;
+ //   public Text MCExpToNext, RhysExpToNext, JameelExpToNext, HarperExpToNext, SkyeExpToNext, SullivanExpToNext, GracieMayExpToNext;
+ //   public Text MCTotalExp, RhysTotalExp, JameelTotalExp, HarperTotalExp, SkyeTotalExp, SullivanTotalExp, GracieMayTotalExp;
     bool MCLevel, RhysLevel, JameelLevel, HarperLevel, SkyeLevel, SullivanLevel, GracieMayLevel;
    // public GameObject MCLevelUp, RhysLevelUp, JameelLevelUp, HarperLevelUp, SkyeLevelUp, SullivanLevelUp;
 
@@ -237,7 +248,7 @@ public class BattleSystem : MonoBehaviour
     float totalExp;
 
     //Im leaving this in here for now, but in Strike Out - you could choose which level up items you choose, but I think in this one, I'd like it automatic
-    public GameObject FastballButton, SliderButton, CurveballButton, ChangeUpButton, AgilityButton, Macro;
+    public GameObject FastballButton, SliderButton, CurveballButton, ChangeUpButton, DodgeButton, Macro;
 
     //Initiated GameObjects
     GameObject playerGO1, playerGO2, playerGO3, playerGO4;
@@ -1023,7 +1034,7 @@ public class BattleSystem : MonoBehaviour
       */
      //   else
      //   {
-     //Build into this system a little - add their agility score
+     //Build into this system a little - add their Dodge score
             int Rand = Random.Range(0, 2);
             if (Rand == 0)
             {
@@ -5903,7 +5914,7 @@ public class BattleSystem : MonoBehaviour
 
                 Camera.transform.LookAt(MC.transform.position);
                 //Dodge
-                if (GameManager.MCAgility >= RandomAttack)
+                if (GameManager.MCDodge >= RandomAttack)
                 {
                     dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks [PLAYER NAME] with " + enemyUnit[enemyUnitSelected].attackName + "!";
                     yield return new WaitForSeconds(.5f);
@@ -5920,6 +5931,8 @@ public class BattleSystem : MonoBehaviour
                     yield return new WaitForSeconds(2f);
 
                     bool isDead = MC.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage);
+
+                    MCDamageUI.text = "".ToString();
 
                     print(isDead + " Main Character");
                     //Dead
@@ -5955,7 +5968,7 @@ public class BattleSystem : MonoBehaviour
 
                 Camera.transform.LookAt(Rhys.transform.position);
 
-                if (GameManager.RhysAgility >= RandomAttack)
+                if (GameManager.RhysDodge >= RandomAttack)
                 {
                     dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks Rhys with " + enemyUnit[enemyUnitSelected].attackName + "!";
                     yield return new WaitForSeconds(.5f);
@@ -5970,6 +5983,9 @@ public class BattleSystem : MonoBehaviour
 
                     yield return new WaitForSeconds(1f);
                     bool isDead = Rhys.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage);
+
+                    RhysDamageUI.text = "".ToString();
+
                     print(isDead + " Middle");
                     if (isDead)
                     {
@@ -6008,7 +6024,7 @@ public class BattleSystem : MonoBehaviour
 
                 Camera.transform.LookAt(Jameel.transform.position);
 
-                if (GameManager.JameelAgility >= RandomAttack)
+                if (GameManager.JameelDodge >= RandomAttack)
                 {
                     dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks Jameel with " + enemyUnit[enemyUnitSelected].attackName + "!";
                     yield return new WaitForSeconds(.5f);
@@ -6023,6 +6039,9 @@ public class BattleSystem : MonoBehaviour
 
                     yield return new WaitForSeconds(1f);
                     bool isDead = Jameel.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage);
+
+                    JameelDamageUI.text = "".ToString();
+
                     print(isDead + " Jameel");
                     if (isDead)
                     {
@@ -6061,7 +6080,7 @@ public class BattleSystem : MonoBehaviour
 
                 Camera.transform.LookAt(Harper.transform.position);
 
-                if (GameManager.HarperAgility >= RandomAttack)
+                if (GameManager.HarperDodge >= RandomAttack)
                 {
                     dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks Harper with " + enemyUnit[enemyUnitSelected].attackName + "!";
                     yield return new WaitForSeconds(.5f);
@@ -6076,6 +6095,9 @@ public class BattleSystem : MonoBehaviour
 
                     yield return new WaitForSeconds(1f);
                     bool isDead = Harper.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage);
+
+                    HarperDamageUI.text = "".ToString();
+
                     print(isDead + " Harper");
                     if (isDead)
                     {
@@ -6114,7 +6136,7 @@ public class BattleSystem : MonoBehaviour
 
                 Camera.transform.LookAt(Skye.transform.position);
 
-                if (GameManager.SkyeAgility >= RandomAttack)
+                if (GameManager.SkyeDodge >= RandomAttack)
                 {
                     dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks Skye with " + enemyUnit[enemyUnitSelected].attackName + "!";
                     yield return new WaitForSeconds(.5f);
@@ -6129,6 +6151,9 @@ public class BattleSystem : MonoBehaviour
 
                     yield return new WaitForSeconds(1f);
                     bool isDead = Skye.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage);
+
+                    SkyeDamageUI.text = "".ToString();
+
                     print(isDead + " Middle");
                     if (isDead)
                     {
@@ -6167,7 +6192,7 @@ public class BattleSystem : MonoBehaviour
 
                 Camera.transform.LookAt(Sullivan.transform.position);
 
-                if (GameManager.SullivanAgility >= RandomAttack)
+                if (GameManager.SullivanDodge >= RandomAttack)
                 {
                     dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks Sullivan with " + enemyUnit[enemyUnitSelected].attackName + "!";
                     yield return new WaitForSeconds(.5f);
@@ -6182,6 +6207,9 @@ public class BattleSystem : MonoBehaviour
 
                     yield return new WaitForSeconds(1f);
                     bool isDead = Sullivan.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage);
+
+                    SullivanDamageUI.text = "".ToString();
+
                     print(isDead + " Middle");
                     if (isDead)
                     {
@@ -6245,7 +6273,7 @@ public class BattleSystem : MonoBehaviour
     IEnumerator TurnOffDamageUI()
     {
             yield return new WaitForSeconds(1f);
-            MCDamageUI.text = "".ToString();
+        MCDamageUI.text = "".ToString();
         RhysDamageUI.text = "".ToString();
         JameelDamageUI.text = "".ToString();
         HarperDamageUI.text = "".ToString();
@@ -8421,10 +8449,72 @@ public class BattleSystem : MonoBehaviour
             MCSpells.SetActive(false);
             MCMenu.SetActive(false);
 
+            RhysSpells.SetActive(false);
+            RhysMenu.SetActive(false);
+
+            JameelSpells.SetActive(false);
+            JameelMenu.SetActive(false);
+
+            HarperSpells.SetActive(false);
+            HarperMenu.SetActive(false);
+
+            SkyeSpells.SetActive(false);
+            SkyeMenu.SetActive(false);
+
+            SullivanSpells.SetActive(false);
+            SullivanMenu.SetActive(false);
+
+
+
             if (!isOver && !preventingAddXPDup)
             {
+                print("here3");
                 AddXP();
                 isOver = true;
+                #region Levels UI
+                MCTrans.text = GameManager.MCTrans.ToString();
+                MCCharms.text = GameManager.MCCharms.ToString();
+                MCPotions.text = GameManager.MCPotions.ToString();
+                MCDADA.text = GameManager.MCDADA.ToString();
+                MCDodge.text = GameManager.MCDodge.ToString();
+
+
+                RhysTrans.text = GameManager.RhysTrans.ToString();
+                RhysCharms.text = GameManager.RhysCharms.ToString();
+                RhysPotions.text = GameManager.RhysPotions.ToString();
+                RhysDADA.text = GameManager.RhysDADA.ToString();
+                RhysDodge.text = GameManager.RhysDodge.ToString();
+
+                JameelTrans.text = GameManager.JameelTrans.ToString();
+                JameelCharms.text = GameManager.JameelCharms.ToString();
+                JameelPotions.text = GameManager.JameelPotions.ToString();
+                JameelDADA.text = GameManager.JameelDADA.ToString();
+                JameelDodge.text = GameManager.JameelDodge.ToString();
+
+                HarperTrans.text = GameManager.HarperTrans.ToString();
+                HarperCharms.text = GameManager.HarperCharms.ToString();
+                HarperPotions.text = GameManager.HarperPotions.ToString();
+                HarperDADA.text = GameManager.HarperDADA.ToString();
+                HarperDodge.text = GameManager.HarperDodge.ToString();
+
+                SkyeTrans.text = GameManager.SkyeTrans.ToString();
+                SkyeCharms.text = GameManager.SkyeCharms.ToString();
+                SkyePotions.text = GameManager.SkyePotions.ToString();
+                SkyeDADA.text = GameManager.SkyeDADA.ToString();
+                SkyeDodge.text = GameManager.SkyeDodge.ToString();
+
+                SullivanTrans.text = GameManager.SullivanTrans.ToString();
+                SullivanCharms.text = GameManager.SullivanCharms.ToString();
+                SullivanPotions.text = GameManager.SullivanPotions.ToString();
+                SullivanDADA.text = GameManager.SullivanDADA.ToString();
+                SullivanDodge.text = GameManager.SullivanDodge.ToString();
+
+                GracieMayTrans.text = GameManager.GracieMayTrans.ToString();
+                GracieMayCharms.text = GameManager.GracieMayCharms.ToString();
+                GracieMayPotions.text = GameManager.GracieMayPotions.ToString();
+                GracieMayDADA.text = GameManager.GracieMayDADA.ToString();
+                GracieMayDodge.text = GameManager.GracieMayDodge.ToString();
+                #endregion
             }
 
             isOver = true;
@@ -8451,6 +8541,7 @@ public class BattleSystem : MonoBehaviour
 
     public void AddXP()
     {
+        print("here 2");
         preventingAddXPDup = true;
 
         for (int i = 0; i < enemyUnit.Count; i++)
@@ -8532,13 +8623,49 @@ public class BattleSystem : MonoBehaviour
                 GameManager.MCHealth = GameManager.MCMaxHealth;
 
                 MCLevel = true;
+                print("here");
                 //SLevelUp.SetActive(true);
                 GameManager.MCTargetExp *= 1.25f;
                 //add training points
             //    MCExpToNext.text = (GameManager.MCTargetExp - GameManager.MCExp).ToString("F0");
                 int NewLevel = GameManager.MCLevel;
                 int Difference = NewLevel - OldLevel;
-                //MCPointsToGive = (Difference * 3);
+                MCPointsToGive = (Difference * 3);
+
+                while (MCPointsToGive > 0)
+                {
+                    float PercentToGain = Random.RandomRange(0, 1);
+                    if (PercentToGain < .2f)
+                    {
+                        GameManager.MCTrans++;
+                        MCTrans.GetComponent<Text>().color = Color.green;
+                        MCPointsToGive--;
+                    }
+                    else if (PercentToGain < .4f && PercentToGain >= .2f)
+                    {
+                        GameManager.MCCharms++;
+                        MCCharms.GetComponent<Text>().color = Color.green;
+                        MCPointsToGive--;
+                    }
+                    else if (PercentToGain < .6f && PercentToGain >= .4f)
+                    {
+                        GameManager.MCPotions++;
+                        MCPotions.GetComponent<Text>().color = Color.green;
+                        MCPointsToGive--;
+                    }
+                    else if (PercentToGain < .8f && PercentToGain >= .6f)
+                    {
+                        GameManager.MCDADA++;
+                        MCDADA.GetComponent<Text>().color = Color.green;
+                        MCPointsToGive--;
+                    }
+                    else if (PercentToGain < 1 && PercentToGain >= .8f)
+                    {
+                        GameManager.MCDodge++;
+                        MCDodge.GetComponent<Text>().color = Color.green;
+                        MCPointsToGive--;
+                    }
+                }
 
                 print(totalExp);
               //  print(MCTotalExp);
@@ -8593,13 +8720,48 @@ public class BattleSystem : MonoBehaviour
                 //SLevelUp.SetActive(true);
                 GameManager.RhysTargetExp *= 1.25f;
                 //add training points
-                RhysExpToNext.text = (GameManager.RhysTargetExp - GameManager.RhysExp).ToString("F0");
+              //  RhysExpToNext.text = (GameManager.RhysTargetExp - GameManager.RhysExp).ToString("F0");
                 int NewLevel = GameManager.RhysLevel;
                 int Difference = NewLevel - OldLevel;
-                //RhysPointsToGive = (Difference * 3);
+                RhysPointsToGive = (Difference * 3);
+
+                while (RhysPointsToGive > 0)
+                {
+                    float PercentToGain = Random.RandomRange(0, 1);
+                    if (PercentToGain < .2f)
+                    {
+                        GameManager.RhysTrans++;
+                        RhysTrans.GetComponent<Text>().color = Color.green;
+                        RhysPointsToGive--;
+                    }
+                    else if (PercentToGain < .4f && PercentToGain >= .2f)
+                    {
+                        GameManager.RhysCharms++;
+                        RhysCharms.GetComponent<Text>().color = Color.green;
+                        RhysPointsToGive--;
+                    }
+                    else if (PercentToGain < .6f && PercentToGain >= .4f)
+                    {
+                        GameManager.RhysPotions++;
+                        RhysPotions.GetComponent<Text>().color = Color.green;
+                        RhysPointsToGive--;
+                    }
+                    else if (PercentToGain < .8f && PercentToGain >= .6f)
+                    {
+                        GameManager.RhysDADA++;
+                        RhysDADA.GetComponent<Text>().color = Color.green;
+                        RhysPointsToGive--;
+                    }
+                    else if (PercentToGain < 1 && PercentToGain >= .8f)
+                    {
+                        GameManager.RhysDodge++;
+                        RhysDodge.GetComponent<Text>().color = Color.green;
+                        RhysPointsToGive--;
+                    }
+                }
             }
-            RhysExpToNext.text = (GameManager.RhysTargetExp - GameManager.RhysExp).ToString("F0");
-            RhysTotalExp.text = GameManager.RhysLevel.ToString("F0");
+         //   RhysExpToNext.text = (GameManager.RhysTargetExp - GameManager.RhysExp).ToString("F0");
+         //   RhysTotalExp.text = GameManager.RhysLevel.ToString("F0");
 
             if (GameManager.JameelInParty)
             {
@@ -8644,10 +8806,45 @@ public class BattleSystem : MonoBehaviour
                 //SLevelUp.SetActive(true);
                 GameManager.JameelTargetExp *= 1.25f;
                 //add training points
-                JameelExpToNext.text = (GameManager.JameelTargetExp - GameManager.JameelExp).ToString("F0");
+             //   JameelExpToNext.text = (GameManager.JameelTargetExp - GameManager.JameelExp).ToString("F0");
                 int NewLevel = GameManager.JameelLevel;
                 int Difference = NewLevel - OldLevel;
-                //JameelPointsToGive = (Difference * 3);
+                JameelPointsToGive = (Difference * 3);
+
+                while (JameelPointsToGive > 0)
+                {
+                    float PercentToGain = Random.RandomRange(0, 1);
+                    if (PercentToGain < .2f)
+                    {
+                        GameManager.JameelTrans++;
+                        JameelTrans.GetComponent<Text>().color = Color.green;
+                        JameelPointsToGive--;
+                    }
+                    else if (PercentToGain < .4f && PercentToGain >= .2f)
+                    {
+                        GameManager.JameelCharms++;
+                        JameelCharms.GetComponent<Text>().color = Color.green;
+                        JameelPointsToGive--;
+                    }
+                    else if (PercentToGain < .6f && PercentToGain >= .4f)
+                    {
+                        GameManager.JameelPotions++;
+                        JameelPotions.GetComponent<Text>().color = Color.green;
+                        JameelPointsToGive--;
+                    }
+                    else if (PercentToGain < .8f && PercentToGain >= .6f)
+                    {
+                        GameManager.JameelDADA++;
+                        JameelDADA.GetComponent<Text>().color = Color.green;
+                        JameelPointsToGive--;
+                    }
+                    else if (PercentToGain < 1 && PercentToGain >= .8f)
+                    {
+                        GameManager.JameelDodge++;
+                        JameelDodge.GetComponent<Text>().color = Color.green;
+                        JameelPointsToGive--;
+                    }
+                }
 
                 if (GameManager.HarperInParty)
                 {
@@ -8658,8 +8855,8 @@ public class BattleSystem : MonoBehaviour
                     HarperExp(totalExp / GameManager.PartyCount * .2f);
                 }
             }
-            JameelExpToNext.text = (GameManager.JameelTargetExp - GameManager.JameelExp).ToString("F0");
-            JameelTotalExp.text = GameManager.JameelLevel.ToString("F0");
+         //   JameelExpToNext.text = (GameManager.JameelTargetExp - GameManager.JameelExp).ToString("F0");
+         //   JameelTotalExp.text = GameManager.JameelLevel.ToString("F0");
         }
         else
         {
@@ -8695,10 +8892,45 @@ public class BattleSystem : MonoBehaviour
                 //SLevelUp.SetActive(true);
                 GameManager.HarperTargetExp *= 1.25f;
                 //add training points
-                HarperExpToNext.text = (GameManager.HarperTargetExp - GameManager.HarperExp).ToString("F0");
+             //   HarperExpToNext.text = (GameManager.HarperTargetExp - GameManager.HarperExp).ToString("F0");
                 int NewLevel = GameManager.HarperLevel;
                 int Difference = NewLevel - OldLevel;
-                //HarperPointsToGive = (Difference * 3);
+                HarperPointsToGive = (Difference * 3);
+
+                while (HarperPointsToGive > 0)
+                {
+                    float PercentToGain = Random.RandomRange(0, 1);
+                    if (PercentToGain < .2f)
+                    {
+                        GameManager.HarperTrans++;
+                        HarperTrans.GetComponent<Text>().color = Color.green;
+                        HarperPointsToGive--;
+                    }
+                    else if (PercentToGain < .4f && PercentToGain >= .2f)
+                    {
+                        GameManager.HarperCharms++;
+                        HarperCharms.GetComponent<Text>().color = Color.green;
+                        HarperPointsToGive--;
+                    }
+                    else if (PercentToGain < .6f && PercentToGain >= .4f)
+                    {
+                        GameManager.HarperPotions++;
+                        HarperPotions.GetComponent<Text>().color = Color.green;
+                        HarperPointsToGive--;
+                    }
+                    else if (PercentToGain < .8f && PercentToGain >= .6f)
+                    {
+                        GameManager.HarperDADA++;
+                        HarperDADA.GetComponent<Text>().color = Color.green;
+                        HarperPointsToGive--;
+                    }
+                    else if (PercentToGain < 1 && PercentToGain >= .8f)
+                    {
+                        GameManager.HarperDodge++;
+                        HarperDodge.GetComponent<Text>().color = Color.green;
+                        HarperPointsToGive--;
+                    }
+                }
 
                 if (GameManager.SkyeInParty)
                 {
@@ -8709,8 +8941,8 @@ public class BattleSystem : MonoBehaviour
                     SkyeExp(totalExp / GameManager.PartyCount * .2f);
                 }
             }
-            HarperExpToNext.text = (GameManager.HarperTargetExp - GameManager.HarperExp).ToString("F0");
-            HarperTotalExp.text = GameManager.HarperLevel.ToString("F0");
+        //    HarperExpToNext.text = (GameManager.HarperTargetExp - GameManager.HarperExp).ToString("F0");
+        //    HarperTotalExp.text = GameManager.HarperLevel.ToString("F0");
         }
         else
         {
@@ -8746,10 +8978,45 @@ public class BattleSystem : MonoBehaviour
                 //SLevelUp.SetActive(true);
                 GameManager.SkyeTargetExp *= 1.25f;
                 //add training points
-                SkyeExpToNext.text = (GameManager.SkyeTargetExp - GameManager.SkyeExp).ToString("F0");
+             //   SkyeExpToNext.text = (GameManager.SkyeTargetExp - GameManager.SkyeExp).ToString("F0");
                 int NewLevel = GameManager.SkyeLevel;
                 int Difference = NewLevel - OldLevel;
-                // SkyePointsToGive = (Difference * 3);
+                 SkyePointsToGive = (Difference * 3);
+
+                while (SkyePointsToGive > 0)
+                {
+                    float PercentToGain = Random.RandomRange(0, 1);
+                    if (PercentToGain < .2f)
+                    {
+                        GameManager.SkyeTrans++;
+                        SkyeTrans.GetComponent<Text>().color = Color.green;
+                        SkyePointsToGive--;
+                    }
+                    else if (PercentToGain < .4f && PercentToGain >= .2f)
+                    {
+                        GameManager.SkyeCharms++;
+                        SkyeCharms.GetComponent<Text>().color = Color.green;
+                        SkyePointsToGive--;
+                    }
+                    else if (PercentToGain < .6f && PercentToGain >= .4f)
+                    {
+                        GameManager.SkyePotions++;
+                        SkyePotions.GetComponent<Text>().color = Color.green;
+                        SkyePointsToGive--;
+                    }
+                    else if (PercentToGain < .8f && PercentToGain >= .6f)
+                    {
+                        GameManager.SkyeDADA++;
+                        SkyeDADA.GetComponent<Text>().color = Color.green;
+                        SkyePointsToGive--;
+                    }
+                    else if (PercentToGain < 1 && PercentToGain >= .8f)
+                    {
+                        GameManager.SkyeDodge++;
+                        SkyeDodge.GetComponent<Text>().color = Color.green;
+                        SkyePointsToGive--;
+                    }
+                }
 
                 if (GameManager.SullivanInParty)
                 {
@@ -8760,8 +9027,8 @@ public class BattleSystem : MonoBehaviour
                     SullivanExp(totalExp / GameManager.PartyCount * .2f);
                 }
             }
-            SkyeExpToNext.text = (GameManager.SkyeTargetExp - GameManager.SkyeExp).ToString("F0");
-            SkyeTotalExp.text = GameManager.SkyeLevel.ToString("F0");
+         //   SkyeExpToNext.text = (GameManager.SkyeTargetExp - GameManager.SkyeExp).ToString("F0");
+         //   SkyeTotalExp.text = GameManager.SkyeLevel.ToString("F0");
         }
         else
         {
@@ -8797,15 +9064,50 @@ public class BattleSystem : MonoBehaviour
                 //SLevelUp.SetActive(true);
                 GameManager.SullivanTargetExp *= 1.25f;
                 //add training points
-                SullivanExpToNext.text = (GameManager.SullivanTargetExp - GameManager.SullivanExp).ToString("F0");
+              //  SullivanExpToNext.text = (GameManager.SullivanTargetExp - GameManager.SullivanExp).ToString("F0");
                 int NewLevel = GameManager.SullivanLevel;
                 int Difference = NewLevel - OldLevel;
-                // SullivanPointsToGive = (Difference * 3);
+                SullivanPointsToGive = (Difference * 3);
+
+                while (SullivanPointsToGive > 0)
+                {
+                    float PercentToGain = Random.RandomRange(0, 1);
+                    if (PercentToGain < .2f)
+                    {
+                        GameManager.SullivanTrans++;
+                        SullivanTrans.GetComponent<Text>().color = Color.green;
+                        SullivanPointsToGive--;
+                    }
+                    else if (PercentToGain < .4f && PercentToGain >= .2f)
+                    {
+                        GameManager.SullivanCharms++;
+                        SullivanCharms.GetComponent<Text>().color = Color.green;
+                        SullivanPointsToGive--;
+                    }
+                    else if (PercentToGain < .6f && PercentToGain >= .4f)
+                    {
+                        GameManager.SullivanPotions++;
+                        SullivanPotions.GetComponent<Text>().color = Color.green;
+                        SullivanPointsToGive--;
+                    }
+                    else if (PercentToGain < .8f && PercentToGain >= .6f)
+                    {
+                        GameManager.SullivanDADA++;
+                        SullivanDADA.GetComponent<Text>().color = Color.green;
+                        SullivanPointsToGive--;
+                    }
+                    else if (PercentToGain < 1 && PercentToGain >= .8f)
+                    {
+                        GameManager.SullivanDodge++;
+                        SullivanDodge.GetComponent<Text>().color = Color.green;
+                        SullivanPointsToGive--;
+                    }
+                }
 
                 GracieMayExp(totalExp / GameManager.PartyCount * .8f);
             }
-            SullivanExpToNext.text = (GameManager.SullivanTargetExp - GameManager.SullivanExp).ToString("F0");
-            SullivanTotalExp.text = GameManager.SullivanLevel.ToString("F0");
+         //   SullivanExpToNext.text = (GameManager.SullivanTargetExp - GameManager.SullivanExp).ToString("F0");
+        //    SullivanTotalExp.text = GameManager.SullivanLevel.ToString("F0");
         }
         else
         {
@@ -8827,13 +9129,94 @@ public class BattleSystem : MonoBehaviour
             //SLevelUp.SetActive(true);
             GameManager.GracieMayTargetExp *= 1.25f;
             //add training points
-            GracieMayExpToNext.text = (GameManager.GracieMayTargetExp - GameManager.GracieMayExp).ToString("F0");
+         //   GracieMayExpToNext.text = (GameManager.GracieMayTargetExp - GameManager.GracieMayExp).ToString("F0");
             int NewLevel = GameManager.GracieMayLevel;
             int Difference = NewLevel - OldLevel;
-            //GracieMayPointsToGive = (Difference * 3);
+            GracieMayPointsToGive = (Difference * 3);
+
+            while (GracieMayPointsToGive > 0)
+            {
+                float PercentToGain = Random.RandomRange(0, 1);
+                if (PercentToGain < .2f)
+                {
+                    GameManager.GracieMayTrans++;
+                    GracieMayTrans.GetComponent<Text>().color = Color.green;
+                    GracieMayPointsToGive--;
+                }
+                else if (PercentToGain < .4f && PercentToGain >= .2f)
+                {
+                    GameManager.GracieMayCharms++;
+                    GracieMayCharms.GetComponent<Text>().color = Color.green;
+                    GracieMayPointsToGive--;
+                }
+                else if (PercentToGain < .6f && PercentToGain >= .4f)
+                {
+                    GameManager.GracieMayPotions++;
+                    GracieMayPotions.GetComponent<Text>().color = Color.green;
+                    GracieMayPointsToGive--;
+                }
+                else if (PercentToGain < .8f && PercentToGain >= .6f)
+                {
+                    GameManager.GracieMayDADA++;
+                    GracieMayDADA.GetComponent<Text>().color = Color.green;
+                    GracieMayPointsToGive--;
+                }
+                else if (PercentToGain < 1 && PercentToGain >= .8f)
+                {
+                    GameManager.GracieMayDodge++;
+                    GracieMayDodge.GetComponent<Text>().color = Color.green;
+                    GracieMayPointsToGive--;
+                }
+            }
         }
-        GracieMayExpToNext.text = (GameManager.GracieMayTargetExp - GameManager.GracieMayExp).ToString("F0");
-        GracieMayTotalExp.text = GameManager.GracieMayLevel.ToString("F0");
+      //  GracieMayExpToNext.text = (GameManager.GracieMayTargetExp - GameManager.GracieMayExp).ToString("F0");
+       // GracieMayTotalExp.text = GameManager.GracieMayLevel.ToString("F0");
+
+
+        #region Levels UI
+        MCTrans.text = GameManager.MCTrans.ToString();
+        MCCharms.text = GameManager.MCCharms.ToString();
+        MCPotions.text = GameManager.MCPotions.ToString();
+        MCDADA.text = GameManager.MCDADA.ToString();
+        MCDodge.text = GameManager.MCDodge.ToString();
+
+
+        RhysTrans.text = GameManager.RhysTrans.ToString();
+        RhysCharms.text = GameManager.RhysCharms.ToString();
+        RhysPotions.text = GameManager.RhysPotions.ToString();
+        RhysDADA.text = GameManager.RhysDADA.ToString();
+        RhysDodge.text = GameManager.RhysDodge.ToString();
+
+        JameelTrans.text = GameManager.JameelTrans.ToString();
+        JameelCharms.text = GameManager.JameelCharms.ToString();
+        JameelPotions.text = GameManager.JameelPotions.ToString();
+        JameelDADA.text = GameManager.JameelDADA.ToString();
+        JameelDodge.text = GameManager.JameelDodge.ToString();
+
+        HarperTrans.text = GameManager.HarperTrans.ToString();
+        HarperCharms.text = GameManager.HarperCharms.ToString();
+        HarperPotions.text = GameManager.HarperPotions.ToString();
+        HarperDADA.text = GameManager.HarperDADA.ToString();
+        HarperDodge.text = GameManager.HarperDodge.ToString();
+
+        SkyeTrans.text = GameManager.SkyeTrans.ToString();
+        SkyeCharms.text = GameManager.SkyeCharms.ToString();
+        SkyePotions.text = GameManager.SkyePotions.ToString();
+        SkyeDADA.text = GameManager.SkyeDADA.ToString();
+        SkyeDodge.text = GameManager.SkyeDodge.ToString();
+
+        SullivanTrans.text = GameManager.SullivanTrans.ToString();
+        SullivanCharms.text = GameManager.SullivanCharms.ToString();
+        SullivanPotions.text = GameManager.SullivanPotions.ToString();
+        SullivanDADA.text = GameManager.SullivanDADA.ToString();
+        SullivanDodge.text = GameManager.SullivanDodge.ToString();
+
+        GracieMayTrans.text = GameManager.GracieMayTrans.ToString();
+        GracieMayCharms.text = GameManager.GracieMayCharms.ToString();
+        GracieMayPotions.text = GameManager.GracieMayPotions.ToString();
+        GracieMayDADA.text = GameManager.GracieMayDADA.ToString();
+        GracieMayDodge.text = GameManager.GracieMayDodge.ToString();
+        #endregion
 
         StartCoroutine(WaitingAtEndOfBattle());
     }
@@ -8851,223 +9234,6 @@ public class BattleSystem : MonoBehaviour
         EndBattle();
         Debug.Log("Attempted To Cheat To Win");
     }
-
-
-    public void BattleFinished()
-    {
-        if (isOver)
-        {
-            /*
-            print(SPointsToGive + "   " + MPointsToGive + "   " + SePointsToGive + "   " + CPointsToGive);
-
-            Macro.SetActive(true);
-
-            PlayerStatsScreen.SetActive(true);
-            SFSlider.value = GameManager.StarterFast;
-            SSSlider.value = GameManager.StarterSlid;
-            SCSlider.value = GameManager.StarterCurve;
-            SChSlider.value = GameManager.StarterChange;
-            SASlider.value = GameManager.StarterAgil;
-
-            MFSlider.value = GameManager.MiddleFast;
-            MSSlider.value = GameManager.MiddleSlid;
-            MCSlider.value = GameManager.MiddleCurve;
-            MChSlider.value = GameManager.MiddleChange;
-            MASlider.value = GameManager.MiddleAgil;
-
-            SeFSlider.value = GameManager.SetUpFast;
-            SeSSlider.value = GameManager.SetUpSlid;
-            SeCSlider.value = GameManager.SetUpCurve;
-            SeChSlider.value = GameManager.SetUpChange;
-            SeASlider.value = GameManager.SetUpAgil;
-
-            CFSlider.value = GameManager.CloserFast;
-            CSSlider.value = GameManager.CloserSlid;
-            CCSlider.value = GameManager.CloserCurve;
-            CChSlider.value = GameManager.CloserChange;
-            CASlider.value = GameManager.CloserAgil;
-
-            SPoints.text = SPointsToGive.ToString();
-
-            if (SLevel)
-            {
-                PlayerStatsScreen.SetActive(true);
-                SLevelUpScreen.SetActive(true);
-                starterLevel = true;
-                // StarterLevelUp();
-
-                FastballButton.SetActive(true);
-                SliderButton.SetActive(true);
-                CurveballButton.SetActive(true);
-                ChangeUpButton.SetActive(true);
-                AgilityButton.SetActive(true);
-            }
-            if (!SLevel && MLevel)
-            {
-                middleLevel = true;
-                MLevelUpScreen.SetActive(true);
-                // MidRelieverLevelUp();
-
-                FastballButton.SetActive(true);
-                SliderButton.SetActive(true);
-                CurveballButton.SetActive(true);
-                ChangeUpButton.SetActive(true);
-                AgilityButton.SetActive(true);
-            }
-            if (!SLevel && !MLevel && SeLevel)
-            {
-                setUpLevel = true;
-                SeLevelUpScreen.SetActive(true);
-                // SetLevelUp();
-
-                FastballButton.SetActive(true);
-                SliderButton.SetActive(true);
-                CurveballButton.SetActive(true);
-                ChangeUpButton.SetActive(true);
-                AgilityButton.SetActive(true);
-            }
-            if (!SLevel && !MLevel && !SeLevel && CLevel)
-            {
-                closerLevel = true;
-                CLevelUpScreen.SetActive(true);
-                //  CloseLevelUp();
-
-                FastballButton.SetActive(true);
-                SliderButton.SetActive(true);
-                CurveballButton.SetActive(true);
-                ChangeUpButton.SetActive(true);
-                AgilityButton.SetActive(true);
-            }
-            EndingMenu.SetActive(false);
-            if (!SLevel && !MLevel && !SeLevel && !CLevel)
-            {
-                StartCoroutine(WaitingAtEndOfBattle());
-            }
-            */
-        }
-    }
-    /*
-    void StarterLevelUp()
-    {
-        GameManager.StarterMorale = GameManager.StarterMoraleMax;
-        GameManager.StarterEnergy = GameManager.StarterEnergyMax;
-
-        if (MLevel)
-        {
-            starterLevel = false;
-            middleLevel = true;
-            MLevelUpScreen.SetActive(true);
-            SLevelUpScreen.SetActive(false);
-        }
-        if (!MLevel && SeLevel)
-        {
-            starterLevel = false;
-            setUpLevel = true;
-            SeLevelUpScreen.SetActive(true);
-            MLevelUpScreen.SetActive(false);
-        }
-        if (!SeLevel && CLevel)
-        {
-            starterLevel = false;
-            closerLevel = true;
-            CLevelUpScreen.SetActive(true);
-            SeLevelUpScreen.SetActive(false);
-        }
-        if (!MLevel && !SeLevel && !CLevel)
-        {
-            starterLevel = false;
-            StartCoroutine(WaitingAtEndOfBattle());
-        }
-    }
-
-    void MidRelieverLevelUp()
-    {
-        GameManager.MidRelivMorale = GameManager.MidRelivMoraleMax;
-        GameManager.MidRelivEnergy = GameManager.MidRelievEnergyMax;
-        MPoints.text = MPointsToGive.ToString();
-
-        if (MLevel)
-        {
-            middleLevel = true;
-            SLevelUpScreen.SetActive(false);
-            MLevelUpScreen.SetActive(true);
-        }
-        if (!MLevel && SeLevel)
-        {
-            middleLevel = false;
-            setUpLevel = true;
-            SeLevelUpScreen.SetActive(true);
-            MLevelUpScreen.SetActive(false);
-            SLevelUpScreen.SetActive(false);
-        }
-        if (!MLevel && !SeLevel && CLevel)
-        {
-            middleLevel = false;
-            closerLevel = true;
-            SLevelUpScreen.SetActive(false);
-            MLevelUpScreen.SetActive(false);
-            CLevelUpScreen.SetActive(true);
-        }
-        if (!SeLevel && !CLevel)
-        {
-            middleLevel = false;
-            StartCoroutine(WaitingAtEndOfBattle());
-        }
-    }
-
-    void SetLevelUp()
-    {
-        GameManager.SetUpMorale = GameManager.SetUpMoraleMax;
-        GameManager.SetUpEnergy = GameManager.SetUpEnergyMax;
-        SePoints.text = SePointsToGive.ToString();
-
-        if (SeLevel)
-        {
-            setUpLevel = true;
-            SLevelUpScreen.SetActive(false);
-            MLevelUpScreen.SetActive(false);
-            SeLevelUpScreen.SetActive(true);
-        }
-        if (!SeLevel && CLevel)
-        {
-            setUpLevel = false;
-            closerLevel = true;
-            CLevelUpScreen.SetActive(true);
-            SeLevelUpScreen.SetActive(false);
-            MLevelUpScreen.SetActive(false);
-            SLevelUpScreen.SetActive(false);
-            CloseLevelUp();
-        }
-
-        if (!SeLevel && !CLevel)
-        {
-            StartCoroutine(WaitingAtEndOfBattle());
-        }
-    }
-
-    void CloseLevelUp()
-    {
-        GameManager.CloserMorale = GameManager.CloserMoraleMax;
-        GameManager.CloserEnergy = GameManager.CloserEnergyMax;
-        CPoints.text = CPointsToGive.ToString();
-
-        CLevelUpScreen.SetActive(true);
-        SLevelUpScreen.SetActive(false);
-        MLevelUpScreen.SetActive(false);
-        SeLevelUpScreen.SetActive(false);
-
-        if (CLevel)
-        {
-            setUpLevel = false;
-            closerLevel = true;
-        }
-        if (!CLevel)
-        {
-            closerLevel = false;
-            StartCoroutine(WaitingAtEndOfBattle());
-        }
-    }
-    */
 
     public void WinningScreen()
     {
