@@ -8612,7 +8612,7 @@ public class BattleSystem : MonoBehaviour
             xp = (totalExp / GameManager.PartyCount * .8f);
             int OldLevel = GameManager.MCLevel;
 
-            while (GameManager.MCExp >= GameManager.MCTargetExp)
+            while (GameManager.MCLevel >= GameManager.MCTargetExp)
             {
                 GameManager.MCExp = GameManager.MCExp - GameManager.MCTargetExp;
                 GameManager.MCLevel++;

@@ -8,6 +8,9 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    public static GameObject directionalLight;
+    public Material[] skyBox;
+
     public static int month, day;
     public static Text monthAndDay;
 
@@ -101,6 +104,8 @@ public class GameManager : MonoBehaviour
         dayOfWeek = 1;
         month = 4;
         day = 15;
+
+        directionalLight = GameObject.Find("Sun");
 
         timeOfDay = 2;
         displayDayOfWeek = GameObject.Find("DayOfWeek").GetComponent<Text>();
@@ -225,22 +230,27 @@ public class GameManager : MonoBehaviour
         if (timeOfDay == 0)
         {
             displayTimeOfDay.text = "Morning";
+            directionalLight.transform.rotation = Quaternion.Euler(17, -30, 17);
         }
         if (timeOfDay == 1)
         {
             displayTimeOfDay.text = "Lunch";
+            directionalLight.transform.rotation = Quaternion.Euler(70,0,7);
         }
         if (timeOfDay == 2)
         {
             displayTimeOfDay.text = "Afternoon";
+            directionalLight.transform.rotation = Quaternion.Euler(70,0,7);
         }
         if (timeOfDay == 3)
         {
             displayTimeOfDay.text = "Evening";
+            directionalLight.transform.rotation = Quaternion.Euler(6,-150,-150);
         }
         if (timeOfDay == 4)
         {
             displayTimeOfDay.text = "Night";
+            directionalLight.transform.rotation = Quaternion.Euler(58,-112,-90);
         }
     }
 
@@ -249,6 +259,32 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.C))
         {
             SceneManager.LoadScene("ClassroomDialogueTest");
+        }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            ProgressDay();
+        }
+
+        if (timeOfDay == 0)
+        {
+            RenderSettings.skybox = skyBox[0];
+        }
+        if (timeOfDay == 1)
+        {
+            RenderSettings.skybox = skyBox[1];
+        }
+        if (timeOfDay == 2)
+        {
+            RenderSettings.skybox = skyBox[1];
+        }
+        if (timeOfDay == 3)
+        {
+            RenderSettings.skybox = skyBox[2];
+        }
+        if (timeOfDay == 4)
+        {
+            RenderSettings.skybox = skyBox[3];
         }
     }
 
@@ -265,6 +301,7 @@ public class GameManager : MonoBehaviour
                 dayOfWeek = 0;
             }
             timeOfDay = 0;
+            CalculateTimeOfDay();
             CalculateDayOfWeek();
             CalculateCalendarDay();
         }
