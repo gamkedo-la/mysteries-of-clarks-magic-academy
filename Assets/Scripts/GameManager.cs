@@ -119,10 +119,10 @@ public class GameManager : MonoBehaviour
         CharismaUI = GameObject.Find("CharismaSlider").GetComponent<Slider>();
         CourageUI = GameObject.Find("CourageSlider").GetComponent<Slider>();
         ProficiencyUI = GameObject.Find("ProficiencySlider").GetComponent<Slider>();
-        Intelligence = 10;
-        Charisma = 20;
-        Courage = 5;
-        Proficiency = 4;
+        Intelligence = 1;
+        Charisma = 1;
+        Courage = 1;
+        Proficiency = 1;
         IncreaseStatLevel();
 
         CanvasForStats = GameObject.Find("CanvasForStats");
@@ -259,11 +259,6 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.C))
         {
             SceneManager.LoadScene("ClassroomDialogueTest");
-        }
-
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            ProgressDay();
         }
 
         if (timeOfDay == 0)
