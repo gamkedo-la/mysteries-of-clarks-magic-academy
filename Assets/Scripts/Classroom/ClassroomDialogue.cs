@@ -8,4 +8,7 @@ public class ClassroomDialogue
 {
     public string name;
     public string[] sentences;
+
+    public bool[] isCalledOn;
+    public bool[] isWandMotion;
 }

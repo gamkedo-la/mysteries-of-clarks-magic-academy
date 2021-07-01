@@ -11,9 +11,17 @@ public class ButtonChoiceForClassroom : MonoBehaviour
 
     public GameObject choicesToTurnOff, conversationToTurnOn;
 
+    public bool isPractical;
+    public Animator player;
     public void ChoiceSelected()
     {
         conversationToTurnOn.SetActive(true);
+
+        if (isPractical)
+        {
+            player.SetBool("wandMovement", true);
+        }
+
         StartCoroutine(Waiting());
     }
      

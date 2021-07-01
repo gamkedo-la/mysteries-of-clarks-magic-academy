@@ -42,7 +42,7 @@ public class MannequinFaceFlip : MonoBehaviour
 
     IEnumerator Waiting()
     {
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(4f);
         mouthFlip.transform.rotation = Quaternion.Euler(-90, 0, 90);
         hasStarted = true;
     }

@@ -12,12 +12,11 @@ public class ClassroomDialogueManager : MonoBehaviour
     public Animator animator;
 
     private Queue<string> sentences;
-    public bool[] isCalledOn;
-    public bool[] isWandMoving;
-    public bool[] isWriting;
-    public int ConvoCount;
+    private Queue<bool> isCalledOn;
+    private Queue<bool> isWandMotion;
     public Animator player;
-        
+    public bool isWriting;
+
     public float WaitTimeSec;
     public ClassroomDialogue dialogue;
 
@@ -40,6 +39,13 @@ public class ClassroomDialogueManager : MonoBehaviour
     private void Start()
     {
         sentences = new Queue<string>();
+        isCalledOn = new Queue<bool>();
+        isWandMotion = new Queue<bool>();
+
+        if (isWriting)
+        {
+            player.SetBool("isWriting", true);
+        }
 
         StartCoroutine(InitialWaiting());
 
@@ -67,10 +73,21 @@ public class ClassroomDialogueManager : MonoBehaviour
         nameText.text = dialogue.name;
 
         sentences.Clear();
+        isCalledOn.Clear();
+        isWandMotion.Clear();
 
         foreach (string sentence in dialogue.sentences)
         {
             sentences.Enqueue(sentence);
+            foreach (bool called in dialogue.isCalledOn)
+            {
+                isCalledOn.Enqueue(called);
+                foreach (bool wand in dialogue.isWandMotion)
+                {
+                    isWandMotion.Enqueue(wand);
+
+                }
+            }
         }
 
         DisplayNextSentence();
@@ -78,51 +95,50 @@ public class ClassroomDialogueManager : MonoBehaviour
 
     public void DisplayNextSentence()
     {
-        if (isCalledOn.Length == 0 && isWandMoving.Length == 0 && isWriting.Length == 0)
-        {
-            player.SetBool("calledOn", false);
-            player.SetBool("wandMovement", false);
-            player.SetBool("isWriting", false);
-        }
-
-        else if (ConvoCount > isCalledOn.Length && ConvoCount > isWandMoving.Length && ConvoCount > isWriting.Length)
-        {
-            player.SetBool("calledOn", false);
-            player.SetBool("wandMovement", false);
-            player.SetBool("isWriting", false);
-        }
-        else
-        {
-            if (isCalledOn[ConvoCount])
-            {
-                player.SetBool("calledOn", true);
-            }
-            else if (isWandMoving[ConvoCount] )
-            {
-                player.SetBool("wandMovement", true);
-            }
-            else if (isWriting[ConvoCount] )
-            {
-                player.SetBool("isWriting", true);
-            }
-            else
-            {
-                player.SetBool("calledOn", false);
-                player.SetBool("wandMovement", false);
-                player.SetBool("isWriting", false);
-            }
-        }
-        ConvoCount++;
-
-
         if (sentences.Count == 0)
         {
             EndDialogue();
             return;
         }
         string sentence = sentences.Dequeue();
+        bool called = isCalledOn.Dequeue();
+        bool wand = isWandMotion.Dequeue();
+
+
         StopAllCoroutines();
         StartCoroutine(TypeSentence(sentence));
+
+        if (!isWriting)
+        {
+            StartCoroutine(TypeBool(called));
+            StartCoroutine(TypeBoolTwo(wand));
+        }
+    }
+    IEnumerator TypeBool(bool called)
+    {
+        if (called)
+        {
+            player.SetBool("calledOn", true);
+            yield return null;
+        }
+        else
+        {
+            player.SetBool("calledOn", false);
+            yield return null;
+        }
+    }
+    IEnumerator TypeBoolTwo(bool wand)
+    {
+        if (wand)
+        {
+            player.SetBool("wandMovement", true);
+            yield return null;
+        }
+        else
+        {
+            player.SetBool("wandMovement", false);
+            yield return null;
+        }
     }
 
     IEnumerator TypeSentence(string sentence)
