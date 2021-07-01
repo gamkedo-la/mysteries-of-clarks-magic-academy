@@ -119,10 +119,10 @@ public class GameManager : MonoBehaviour
         CharismaUI = GameObject.Find("CharismaSlider").GetComponent<Slider>();
         CourageUI = GameObject.Find("CourageSlider").GetComponent<Slider>();
         ProficiencyUI = GameObject.Find("ProficiencySlider").GetComponent<Slider>();
-        Intelligence = 1;
-        Charisma = 1;
-        Courage = 1;
-        Proficiency = 1;
+        Intelligence = 0;
+        Charisma = 0;
+        Courage = 0;
+        Proficiency = 0;
         IncreaseStatLevel();
 
         CanvasForStats = GameObject.Find("CanvasForStats");

@@ -578,6 +578,8 @@ MonoBehaviour:
   HousePointsToIncrease: 0
   choicesToTurnOff: {fileID: 906738818}
   conversationToTurnOn: {fileID: 0}
+  isPractical: 0
+  player: {fileID: 0}
 --- !u!114 &433140716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -710,6 +712,8 @@ MonoBehaviour:
     sentences:
     - Great! I know a neat spot.
     - Let's go!
+    isCalledOn: 
+    isWandMotion: 
   toBeContinued: 0
   isChoice: 0
   isFinished: 1
@@ -1254,6 +1258,8 @@ MonoBehaviour:
     name: Friend
     sentences:
     - Okay then. Maybe another time.
+    isCalledOn: 
+    isWandMotion: 
   toBeContinued: 0
   isChoice: 0
   isFinished: 1
@@ -1823,6 +1829,8 @@ MonoBehaviour:
   HousePointsToIncrease: -5
   choicesToTurnOff: {fileID: 906738818}
   conversationToTurnOn: {fileID: 0}
+  isPractical: 0
+  player: {fileID: 0}
 --- !u!114 &1192750922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2499,6 +2507,8 @@ MonoBehaviour:
     - Hi there.
     - This is testing.
     - Want to hang out?
+    isCalledOn: 
+    isWandMotion: 
   toBeContinued: 0
   isChoice: 1
   isFinished: 0
@@ -2803,6 +2813,8 @@ MonoBehaviour:
   HousePointsToIncrease: 0
   choicesToTurnOff: {fileID: 906738818}
   conversationToTurnOn: {fileID: 0}
+  isPractical: 0
+  player: {fileID: 0}
 --- !u!114 &1504548226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3950,6 +3962,8 @@ MonoBehaviour:
     - This is crazy.
     - But I'm testing the NPC dialogue.
     - 'Hopefully it is working and finishes now. '
+    isCalledOn: 
+    isWandMotion: 
   toBeContinued: 0
   isChoice: 0
   isFinished: 1
@@ -4195,26 +4209,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98d44779ba40bdc4a9ac804d89eafbd0, type: 3}
---- !u!1 &6484497334285761473 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6484497334564103307, guid: 98d44779ba40bdc4a9ac804d89eafbd0,
-    type: 3}
-  m_PrefabInstance: {fileID: 6484497334285761472}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &6484497334285761474
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6484497334285761473}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sharedProfile: {fileID: 11400000, guid: 898147a8fa367a940bd7c3447187bc01, type: 2}
-  isGlobal: 0
-  blendDistance: 0
-  weight: 1
-  priority: 0
