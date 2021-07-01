@@ -12,7 +12,12 @@ public class ClassroomDialogueManager : MonoBehaviour
     public Animator animator;
 
     private Queue<string> sentences;
-
+    public bool[] isCalledOn;
+    public bool[] isWandMoving;
+    public bool[] isWriting;
+    public int ConvoCount;
+    public Animator player;
+        
     public float WaitTimeSec;
     public ClassroomDialogue dialogue;
 
@@ -73,12 +78,48 @@ public class ClassroomDialogueManager : MonoBehaviour
 
     public void DisplayNextSentence()
     {
+        if (isCalledOn.Length == 0 && isWandMoving.Length == 0 && isWriting.Length == 0)
+        {
+            player.SetBool("calledOn", false);
+            player.SetBool("wandMovement", false);
+            player.SetBool("isWriting", false);
+        }
+
+        else if (ConvoCount > isCalledOn.Length && ConvoCount > isWandMoving.Length && ConvoCount > isWriting.Length)
+        {
+            player.SetBool("calledOn", false);
+            player.SetBool("wandMovement", false);
+            player.SetBool("isWriting", false);
+        }
+        else
+        {
+            if (isCalledOn[ConvoCount])
+            {
+                player.SetBool("calledOn", true);
+            }
+            else if (isWandMoving[ConvoCount] )
+            {
+                player.SetBool("wandMovement", true);
+            }
+            else if (isWriting[ConvoCount] )
+            {
+                player.SetBool("isWriting", true);
+            }
+            else
+            {
+                player.SetBool("calledOn", false);
+                player.SetBool("wandMovement", false);
+                player.SetBool("isWriting", false);
+            }
+        }
+        ConvoCount++;
+
+
         if (sentences.Count == 0)
         {
             EndDialogue();
             return;
         }
-
         string sentence = sentences.Dequeue();
         StopAllCoroutines();
         StartCoroutine(TypeSentence(sentence));

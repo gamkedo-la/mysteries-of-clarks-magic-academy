@@ -10,28 +10,40 @@ public class MannequinFaceFlip : MonoBehaviour
     public bool stayHappy;
     public bool fire;
     public GameObject fireball;
+    bool hasStarted;
 
     private void Start()
     {
         currentTime = Random.Range(minTime, maxTime);
-        mouthFlip.transform.rotation = Quaternion.Euler(-90, 0, 90);
+        StartCoroutine(Waiting());
+
     }
 
     public void Update()
     {
-        currentTime -= Time.deltaTime;
-
-        if (currentTime <= 0)
+        if (hasStarted)
         {
-            if (fire)
+            currentTime -= Time.deltaTime;
+
+            if (currentTime <= 0)
             {
-                fireball.SetActive(true);
-                mouthFlip.SetActive(false);
-            }
-            if (!stayHappy)
-            {
-                mouthFlip.transform.rotation = Quaternion.Euler(90, 0, 90);
+                if (fire)
+                {
+                    fireball.SetActive(true);
+                    mouthFlip.SetActive(false);
+                }
+                if (!stayHappy)
+                {
+                    mouthFlip.transform.rotation = Quaternion.Euler(90, 0, 90);
+                }
             }
         }
+    }
+
+    IEnumerator Waiting()
+    {
+        yield return new WaitForSeconds(2.5f);
+        mouthFlip.transform.rotation = Quaternion.Euler(-90, 0, 90);
+        hasStarted = true;
     }
 }

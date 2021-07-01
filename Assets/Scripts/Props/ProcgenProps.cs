@@ -44,7 +44,7 @@ public class ProcgenProps : MonoBehaviour
 
     void removeOldPrefabs() { // unity feels buggy here: not all get removed...
 
-        Debug.Log("removing old books in bookshelf");
+        //Debug.Log("removing old books in bookshelf");
         foreach (Transform child in transform) {
             // edit mode requires the use of this... hmmmm
             GameObject.DestroyImmediate(child.gameObject);
@@ -54,8 +54,7 @@ public class ProcgenProps : MonoBehaviour
     }
 
     public void Generate() {
-        Debug.Log("generating a "+cols+"x"+rows+" bookshelf that's "+
-            fullness + "% full and " + messiness + "% messy.");
+      //  Debug.Log("generating a "+cols+"x"+rows+" bookshelf that's "+  fullness + "% full and " + messiness + "% messy.");
 
         removeOldPrefabs();
         removeOldPrefabs();
