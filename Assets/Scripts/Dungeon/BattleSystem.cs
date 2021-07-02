@@ -247,9 +247,6 @@ public class BattleSystem : MonoBehaviour
     bool isOver;
     float totalExp;
 
-    //Im leaving this in here for now, but in Strike Out - you could choose which level up items you choose, but I think in this one, I'd like it automatic
-    public GameObject FastballButton, SliderButton, CurveballButton, ChangeUpButton, DodgeButton, Macro;
-
     //Initiated GameObjects
     GameObject playerGO1, playerGO2, playerGO3, playerGO4;
 
@@ -340,7 +337,7 @@ public class BattleSystem : MonoBehaviour
 
         state = BattleState.START;
 
-      //  print(enemyBattleStationLocations.Count);
+      //  //print(enemyBattleStationLocations.Count);
 
         if (GameManager.RhysHealth <= 0)
         {
@@ -924,7 +921,7 @@ public class BattleSystem : MonoBehaviour
     }
     public void DefensiveShiftItem()
     {
-        print("Shift");
+        //print("Shift");
         for (int i = 0; i < enemyUnit.Count; i++)
         {
             isDead = enemyUnit[i].TakeDamage(20);
@@ -985,7 +982,7 @@ public class BattleSystem : MonoBehaviour
     public void ItemMenuButton()
     {
         ItemMenu.transform.localPosition = new Vector3(233, 20, 0);
-        print(ItemMenu.name);
+        //print(ItemMenu.name);
         backButtonItem.SetActive(true);
         PlayerMenu.SetActive(false);
         PlayerPitches.SetActive(false);
@@ -5934,7 +5931,7 @@ public class BattleSystem : MonoBehaviour
 
                     MCDamageUI.text = "".ToString();
 
-                    print(isDead + " Main Character");
+                 //   //print(isDead + " Main Character");
                     //Dead
                     if (isDead)
                     {
@@ -5986,7 +5983,7 @@ public class BattleSystem : MonoBehaviour
 
                     RhysDamageUI.text = "".ToString();
 
-                    print(isDead + " Middle");
+                 //   //print(isDead + " Middle");
                     if (isDead)
                     {
                         GameManager.RhysHealth -= enemyUnit[enemyUnitSelected].enemyDamage;
@@ -5997,7 +5994,7 @@ public class BattleSystem : MonoBehaviour
                         //   DebugPrintList(playerTurnOrder);
 
                         RhysAnim.SetBool("isDead", true);
-                        print("Rhys Dead" + GameManager.RhysHealth + "/" + GameManager.RhysMaxHealth);
+                    //    //print("Rhys Dead" + GameManager.RhysHealth + "/" + GameManager.RhysMaxHealth);
                         RhysDead = true;
                         yield return new WaitForSeconds(3f);
 
@@ -6042,7 +6039,7 @@ public class BattleSystem : MonoBehaviour
 
                     JameelDamageUI.text = "".ToString();
 
-                    print(isDead + " Jameel");
+                    //print(isDead + " Jameel");
                     if (isDead)
                     {
                         GameManager.JameelHealth -= enemyUnit[enemyUnitSelected].enemyDamage;
@@ -6098,7 +6095,7 @@ public class BattleSystem : MonoBehaviour
 
                     HarperDamageUI.text = "".ToString();
 
-                    print(isDead + " Harper");
+                    //print(isDead + " Harper");
                     if (isDead)
                     {
                         GameManager.HarperHealth -= enemyUnit[enemyUnitSelected].enemyDamage;
@@ -6154,7 +6151,7 @@ public class BattleSystem : MonoBehaviour
 
                     SkyeDamageUI.text = "".ToString();
 
-                    print(isDead + " Middle");
+                    //print(isDead + " Middle");
                     if (isDead)
                     {
                         GameManager.SkyeHealth -= enemyUnit[enemyUnitSelected].enemyDamage;
@@ -6210,7 +6207,7 @@ public class BattleSystem : MonoBehaviour
 
                     SullivanDamageUI.text = "".ToString();
 
-                    print(isDead + " Middle");
+                    //print(isDead + " Middle");
                     if (isDead)
                     {
                         GameManager.SullivanHealth -= enemyUnit[enemyUnitSelected].enemyDamage;
@@ -8468,7 +8465,7 @@ public class BattleSystem : MonoBehaviour
 
             if (!isOver && !preventingAddXPDup)
             {
-                print("here3");
+              //  //print("here3");
                 AddXP();
                 isOver = true;
                 #region Levels UI
@@ -8541,13 +8538,13 @@ public class BattleSystem : MonoBehaviour
 
     public void AddXP()
     {
-        print("here 2");
+       // //print("here 2");
         preventingAddXPDup = true;
 
         for (int i = 0; i < enemyUnit.Count; i++)
         {
             GameManager.Money += enemyUnit[i].MoneyToDistribute;
-           // MoneyText.text = GameManager.Money.ToString();
+            MoneyText.text = GameManager.Money.ToString();
         }
         
         if (!MCDead)
@@ -8623,8 +8620,8 @@ public class BattleSystem : MonoBehaviour
                 GameManager.MCHealth = GameManager.MCMaxHealth;
 
                 MCLevel = true;
-                print("here");
-                //SLevelUp.SetActive(true);
+              //  //print("here");
+               // MCLevelUp.SetActive(true);
                 GameManager.MCTargetExp *= 1.25f;
                 //add training points
             //    MCExpToNext.text = (GameManager.MCTargetExp - GameManager.MCExp).ToString("F0");
@@ -8632,9 +8629,11 @@ public class BattleSystem : MonoBehaviour
                 int Difference = NewLevel - OldLevel;
                 MCPointsToGive = (Difference * 3);
 
+                //print(MCPointsToGive);
+                /*
                 while (MCPointsToGive > 0)
                 {
-                    float PercentToGain = Random.RandomRange(0, 1);
+                    float PercentToGain = Random.Range(0, 1);
                     if (PercentToGain < .2f)
                     {
                         GameManager.MCTrans++;
@@ -8666,12 +8665,12 @@ public class BattleSystem : MonoBehaviour
                         MCPointsToGive--;
                     }
                 }
-
-                print(totalExp);
-              //  print(MCTotalExp);
-                print(OldLevel + "    " + GameManager.MCLevel);
-                print(GameManager.MCMaxHealth);
-                print(GameManager.MCMaxMagic);
+                */
+                //print(totalExp);
+              //  //print(MCTotalExp);
+                //print(OldLevel + "    " + GameManager.MCLevel);
+                //print(GameManager.MCMaxHealth);
+                //print(GameManager.MCMaxMagic);
 
                 if (GameManager.RhysInParty)
                 {
@@ -8727,7 +8726,7 @@ public class BattleSystem : MonoBehaviour
 
                 while (RhysPointsToGive > 0)
                 {
-                    float PercentToGain = Random.RandomRange(0, 1);
+                    float PercentToGain = Random.Range(0, 1);
                     if (PercentToGain < .2f)
                     {
                         GameManager.RhysTrans++;
@@ -8811,9 +8810,9 @@ public class BattleSystem : MonoBehaviour
                 int Difference = NewLevel - OldLevel;
                 JameelPointsToGive = (Difference * 3);
 
-                while (JameelPointsToGive > 0)
+              /*  while (JameelPointsToGive > 0)
                 {
-                    float PercentToGain = Random.RandomRange(0, 1);
+                    float PercentToGain = Random.Range(0, 1);
                     if (PercentToGain < .2f)
                     {
                         GameManager.JameelTrans++;
@@ -8845,7 +8844,7 @@ public class BattleSystem : MonoBehaviour
                         JameelPointsToGive--;
                     }
                 }
-
+              */
                 if (GameManager.HarperInParty)
                 {
                     HarperExp(totalExp / GameManager.PartyCount * .8f);
@@ -8897,9 +8896,9 @@ public class BattleSystem : MonoBehaviour
                 int Difference = NewLevel - OldLevel;
                 HarperPointsToGive = (Difference * 3);
 
-                while (HarperPointsToGive > 0)
+              /*  while (HarperPointsToGive > 0)
                 {
-                    float PercentToGain = Random.RandomRange(0, 1);
+                    float PercentToGain = Random.Range(0, 1);
                     if (PercentToGain < .2f)
                     {
                         GameManager.HarperTrans++;
@@ -8931,7 +8930,7 @@ public class BattleSystem : MonoBehaviour
                         HarperPointsToGive--;
                     }
                 }
-
+              */
                 if (GameManager.SkyeInParty)
                 {
                     SkyeExp(totalExp / GameManager.PartyCount * .8f);
@@ -8983,9 +8982,9 @@ public class BattleSystem : MonoBehaviour
                 int Difference = NewLevel - OldLevel;
                  SkyePointsToGive = (Difference * 3);
 
-                while (SkyePointsToGive > 0)
+              /*  while (SkyePointsToGive > 0)
                 {
-                    float PercentToGain = Random.RandomRange(0, 1);
+                    float PercentToGain = Random.Range(0, 1);
                     if (PercentToGain < .2f)
                     {
                         GameManager.SkyeTrans++;
@@ -9017,7 +9016,7 @@ public class BattleSystem : MonoBehaviour
                         SkyePointsToGive--;
                     }
                 }
-
+              */
                 if (GameManager.SullivanInParty)
                 {
                     SullivanExp(totalExp / GameManager.PartyCount * .8f);
@@ -9069,9 +9068,9 @@ public class BattleSystem : MonoBehaviour
                 int Difference = NewLevel - OldLevel;
                 SullivanPointsToGive = (Difference * 3);
 
-                while (SullivanPointsToGive > 0)
+               /* while (SullivanPointsToGive > 0)
                 {
-                    float PercentToGain = Random.RandomRange(0, 1);
+                    float PercentToGain = Random.Range(0, 1);
                     if (PercentToGain < .2f)
                     {
                         GameManager.SullivanTrans++;
@@ -9103,7 +9102,7 @@ public class BattleSystem : MonoBehaviour
                         SullivanPointsToGive--;
                     }
                 }
-
+               */
                 GracieMayExp(totalExp / GameManager.PartyCount * .8f);
             }
          //   SullivanExpToNext.text = (GameManager.SullivanTargetExp - GameManager.SullivanExp).ToString("F0");
@@ -9134,9 +9133,9 @@ public class BattleSystem : MonoBehaviour
             int Difference = NewLevel - OldLevel;
             GracieMayPointsToGive = (Difference * 3);
 
-            while (GracieMayPointsToGive > 0)
+           /* while (GracieMayPointsToGive > 0)
             {
-                float PercentToGain = Random.RandomRange(0, 1);
+                float PercentToGain = Random.Range(0, 1);
                 if (PercentToGain < .2f)
                 {
                     GameManager.GracieMayTrans++;
@@ -9167,7 +9166,7 @@ public class BattleSystem : MonoBehaviour
                     GracieMayDodge.GetComponent<Text>().color = Color.green;
                     GracieMayPointsToGive--;
                 }
-            }
+            }*/
         }
       //  GracieMayExpToNext.text = (GameManager.GracieMayTargetExp - GameManager.GracieMayExp).ToString("F0");
        // GracieMayTotalExp.text = GameManager.GracieMayLevel.ToString("F0");
