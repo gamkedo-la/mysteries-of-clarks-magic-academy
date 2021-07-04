@@ -157,23 +157,22 @@ public class PauseMenu : MonoBehaviour
 
     public void UpdateUI()
     {
-        Debug.Log(GameManager.MCHealth / GameManager.MCMaxHealth);
         MCHealth.value = intDivideToFloat(GameManager.MCHealth, GameManager.MCMaxHealth);
         MCMagic.value = intDivideToFloat(GameManager.MCMagic, GameManager.MCMaxMagic);
 
-        RhysHealth.value = GameManager.RhysHealth / GameManager.RhysMaxHealth;
-        RhysMagic.value = GameManager.RhysMagic / GameManager.RhysMaxMagic;
+        RhysHealth.value = intDivideToFloat(GameManager.RhysHealth , GameManager.RhysMaxHealth);
+        RhysMagic.value = intDivideToFloat(GameManager.RhysMagic , GameManager.RhysMaxMagic);
 
-        JameelHealth.value = GameManager.JameelHealth / GameManager.JameelMaxHealth;
-        JameelMagic.value = GameManager.JameelMagic / GameManager.JameelMaxMagic;
+        JameelHealth.value = intDivideToFloat(GameManager.JameelHealth , GameManager.JameelMaxHealth);
+        JameelMagic.value = intDivideToFloat(GameManager.JameelMagic , GameManager.JameelMaxMagic);
 
-        HarperHealth.value = GameManager.HarperHealth / GameManager.HarperMaxHealth;
-        HarperMagic.value = GameManager.HarperMagic / GameManager.HarperMaxMagic;
+        HarperHealth.value = intDivideToFloat(GameManager.HarperHealth , GameManager.HarperMaxHealth);
+        HarperMagic.value = intDivideToFloat(GameManager.HarperMagic , GameManager.HarperMaxMagic);
 
-        SkyeHealth.value = GameManager.SkyeHealth / GameManager.SkyeMaxHealth;
-        SkyeMagic.value = GameManager.SkyeMagic / GameManager.SkyeMaxMagic;
+        SkyeHealth.value = intDivideToFloat(GameManager.SkyeHealth , GameManager.SkyeMaxHealth);
+        SkyeMagic.value = intDivideToFloat(GameManager.SkyeMagic , GameManager.SkyeMaxMagic);
 
-        SullivanHealth.value = GameManager.SullivanHealth / GameManager.SullivanMaxHealth;
-        SullivanMagic.value = GameManager.SullivanMagic / GameManager.SullivanMaxMagic;
+        SullivanHealth.value = intDivideToFloat(GameManager.SullivanHealth , GameManager.SullivanMaxHealth);
+        SullivanMagic.value = intDivideToFloat(GameManager.SullivanMagic , GameManager.SullivanMaxMagic);
     }
 }
