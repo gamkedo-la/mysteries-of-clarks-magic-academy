@@ -149,6 +149,12 @@ public class GameManager : MonoBehaviour
 
 
         MCTargetExp = 5;
+        RhysTargetExp = 5;
+        JameelTargetExp = 5;
+        SkyeTargetExp = 5;
+        HarperTargetExp = 5;
+        SullivanTargetExp = 5;
+        GracieMayTargetExp = 5;
         //
 
         MCMaxHealth = 20;

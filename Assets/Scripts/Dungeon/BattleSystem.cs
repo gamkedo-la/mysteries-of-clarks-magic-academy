@@ -8689,14 +8689,14 @@ public class BattleSystem : MonoBehaviour
 
 
                 //Add this later
-               /* if (GameManager.RhysInParty)
+                if (GameManager.RhysInParty)
                 {
                     RhysExp(totalExp / GameManager.PartyCount * .8f);
                 }
                 else
                 {
                     RhysExp(totalExp / GameManager.PartyCount * .2f);
-                }*/
+                }
             }
             Debug.Log(GameManager.MCLevel);
             Debug.Log(GameManager.MCTargetExp);
@@ -8722,10 +8722,14 @@ public class BattleSystem : MonoBehaviour
     {
         if (!RhysDead)
         {
-            xp = (totalExp / GameManager.PartyCount * .8f);
+           // xp = (totalExp / GameManager.PartyCount * .8f);
             int OldLevel = GameManager.RhysLevel;
 
-            while (GameManager.RhysExp >= GameManager.RhysTargetExp)
+            int safteyLimit = 2000;
+
+            GameManager.RhysExp += xp;
+
+            while (GameManager.RhysExp >= GameManager.RhysTargetExp && safteyLimit-- > 0)
             {
                 GameManager.RhysExp = GameManager.RhysExp - GameManager.RhysTargetExp;
                 GameManager.RhysLevel++;
@@ -8746,7 +8750,7 @@ public class BattleSystem : MonoBehaviour
 
                 while (RhysPointsToGive > 0)
                 {
-                    float PercentToGain = Random.Range(0, 1);
+                    float PercentToGain = Random.Range(0f, 1f);
                     if (PercentToGain < .2f)
                     {
                         GameManager.RhysTrans++;
@@ -8808,10 +8812,14 @@ public class BattleSystem : MonoBehaviour
     {
         if (!JameelDead)
         {
-            xp = (totalExp / GameManager.PartyCount * .8f);
+           // xp = (totalExp / GameManager.PartyCount * .8f);
             int OldLevel = GameManager.JameelLevel;
 
-            while (GameManager.JameelExp >= GameManager.JameelTargetExp)
+            int safteyLimit = 2000;
+
+            GameManager.JameelExp += xp;
+
+            while (GameManager.JameelExp >= GameManager.JameelTargetExp && safteyLimit-- > 0)
             {
                 GameManager.JameelExp = GameManager.JameelExp - GameManager.JameelTargetExp;
                 GameManager.JameelLevel++;
@@ -8830,9 +8838,9 @@ public class BattleSystem : MonoBehaviour
                 int Difference = NewLevel - OldLevel;
                 JameelPointsToGive = (Difference * 3);
 
-              /*  while (JameelPointsToGive > 0)
+                while (JameelPointsToGive > 0)
                 {
-                    float PercentToGain = Random.Range(0, 1);
+                    float PercentToGain = Random.Range(0f, 1f);
                     if (PercentToGain < .2f)
                     {
                         GameManager.JameelTrans++;
@@ -8864,7 +8872,7 @@ public class BattleSystem : MonoBehaviour
                         JameelPointsToGive--;
                     }
                 }
-              */
+              
                 if (GameManager.HarperInParty)
                 {
                     HarperExp(totalExp / GameManager.PartyCount * .8f);
@@ -8894,10 +8902,14 @@ public class BattleSystem : MonoBehaviour
     {
         if (!HarperDead)
         {
-            xp = (totalExp / GameManager.PartyCount * .8f);
+           // xp = (totalExp / GameManager.PartyCount * .8f);
             int OldLevel = GameManager.HarperLevel;
 
-            while (GameManager.HarperExp >= GameManager.HarperTargetExp)
+            int safteyLimit = 2000;
+
+            GameManager.HarperExp += xp;
+
+            while (GameManager.HarperExp >= GameManager.HarperTargetExp && safteyLimit-- > 0)
             {
                 GameManager.HarperExp = GameManager.HarperExp - GameManager.HarperTargetExp;
                 GameManager.HarperLevel++;
@@ -8916,9 +8928,9 @@ public class BattleSystem : MonoBehaviour
                 int Difference = NewLevel - OldLevel;
                 HarperPointsToGive = (Difference * 3);
 
-              /*  while (HarperPointsToGive > 0)
+               while (HarperPointsToGive > 0)
                 {
-                    float PercentToGain = Random.Range(0, 1);
+                    float PercentToGain = Random.Range(0f, 1f);
                     if (PercentToGain < .2f)
                     {
                         GameManager.HarperTrans++;
@@ -8950,7 +8962,7 @@ public class BattleSystem : MonoBehaviour
                         HarperPointsToGive--;
                     }
                 }
-              */
+              
                 if (GameManager.SkyeInParty)
                 {
                     SkyeExp(totalExp / GameManager.PartyCount * .8f);
@@ -8980,10 +8992,14 @@ public class BattleSystem : MonoBehaviour
     {
         if (!SkyeDead)
         {
-            xp = (totalExp / GameManager.PartyCount * .8f);
+           // xp = (totalExp / GameManager.PartyCount * .8f);
             int OldLevel = GameManager.SkyeLevel;
 
-            while (GameManager.SkyeExp >= GameManager.SkyeTargetExp)
+            int safteyLimit = 2000;
+
+            GameManager.SkyeExp += xp;
+
+            while (GameManager.SkyeExp >= GameManager.SkyeTargetExp && safteyLimit-- > 0)
             {
                 GameManager.SkyeExp = GameManager.SkyeExp - GameManager.SkyeTargetExp;
                 GameManager.SkyeLevel++;
@@ -9002,9 +9018,9 @@ public class BattleSystem : MonoBehaviour
                 int Difference = NewLevel - OldLevel;
                  SkyePointsToGive = (Difference * 3);
 
-              /*  while (SkyePointsToGive > 0)
+                while (SkyePointsToGive > 0)
                 {
-                    float PercentToGain = Random.Range(0, 1);
+                    float PercentToGain = Random.Range(0f, 1f);
                     if (PercentToGain < .2f)
                     {
                         GameManager.SkyeTrans++;
@@ -9036,7 +9052,7 @@ public class BattleSystem : MonoBehaviour
                         SkyePointsToGive--;
                     }
                 }
-              */
+              
                 if (GameManager.SullivanInParty)
                 {
                     SullivanExp(totalExp / GameManager.PartyCount * .8f);
@@ -9066,10 +9082,14 @@ public class BattleSystem : MonoBehaviour
     {
         if (!SullivanDead)
         {
-            xp = (totalExp / GameManager.PartyCount * .8f);
+          //  xp = (totalExp / GameManager.PartyCount * .8f);
             int OldLevel = GameManager.SullivanLevel;
 
-            while (GameManager.SullivanExp >= GameManager.SullivanTargetExp)
+            int safteyLimit = 2000;
+
+            GameManager.SullivanExp += xp;
+
+            while (GameManager.SullivanExp >= GameManager.SullivanTargetExp && safteyLimit-- > 0)
             {
                 GameManager.SullivanExp = GameManager.SullivanExp - GameManager.SullivanTargetExp;
                 GameManager.SullivanLevel++;
@@ -9088,9 +9108,9 @@ public class BattleSystem : MonoBehaviour
                 int Difference = NewLevel - OldLevel;
                 SullivanPointsToGive = (Difference * 3);
 
-               /* while (SullivanPointsToGive > 0)
+                while (SullivanPointsToGive > 0)
                 {
-                    float PercentToGain = Random.Range(0, 1);
+                    float PercentToGain = Random.Range(0f, 1f);
                     if (PercentToGain < .2f)
                     {
                         GameManager.SullivanTrans++;
@@ -9122,7 +9142,7 @@ public class BattleSystem : MonoBehaviour
                         SullivanPointsToGive--;
                     }
                 }
-               */
+               
                 GracieMayExp(totalExp / GameManager.PartyCount * .8f);
             }
          //   SullivanExpToNext.text = (GameManager.SullivanTargetExp - GameManager.SullivanExp).ToString("F0");
@@ -9136,10 +9156,14 @@ public class BattleSystem : MonoBehaviour
 
     void GracieMayExp(float xp)
     {
-        xp = (totalExp / GameManager.PartyCount * .8f);
+        //xp = (totalExp / GameManager.PartyCount * .8f);
         int OldLevel = GameManager.GracieMayLevel;
 
-        while (GameManager.GracieMayExp >= GameManager.GracieMayTargetExp)
+        int safteyLimit = 2000;
+
+        GameManager.GracieMayExp += xp;
+
+        while (GameManager.GracieMayExp >= GameManager.GracieMayTargetExp && safteyLimit-- > 0)
         {
             GameManager.GracieMayExp = GameManager.GracieMayExp - GameManager.GracieMayTargetExp;
             GameManager.GracieMayLevel++;
@@ -9153,9 +9177,9 @@ public class BattleSystem : MonoBehaviour
             int Difference = NewLevel - OldLevel;
             GracieMayPointsToGive = (Difference * 3);
 
-           /* while (GracieMayPointsToGive > 0)
+            while (GracieMayPointsToGive > 0)
             {
-                float PercentToGain = Random.Range(0, 1);
+                float PercentToGain = Random.Range(0f, 1f);
                 if (PercentToGain < .2f)
                 {
                     GameManager.GracieMayTrans++;
@@ -9186,7 +9210,7 @@ public class BattleSystem : MonoBehaviour
                     GracieMayDodge.GetComponent<Text>().color = Color.green;
                     GracieMayPointsToGive--;
                 }
-            }*/
+            }
         }
       //  GracieMayExpToNext.text = (GameManager.GracieMayTargetExp - GameManager.GracieMayExp).ToString("F0");
        // GracieMayTotalExp.text = GameManager.GracieMayLevel.ToString("F0");
