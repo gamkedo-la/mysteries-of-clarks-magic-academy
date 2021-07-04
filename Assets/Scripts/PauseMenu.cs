@@ -149,10 +149,17 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
+    private float intDivideToFloat(int a, int b)
+    {
+        return ((float)a) / ((float)b);
+    }
+
+
     public void UpdateUI()
     {
-        MCHealth.value = GameManager.MCHealth / GameManager.MCMaxHealth;
-        MCMagic.value = GameManager.MCMagic / GameManager.MCMaxMagic;
+        Debug.Log(GameManager.MCHealth / GameManager.MCMaxHealth);
+        MCHealth.value = intDivideToFloat(GameManager.MCHealth, GameManager.MCMaxHealth);
+        MCMagic.value = intDivideToFloat(GameManager.MCMagic, GameManager.MCMaxMagic);
 
         RhysHealth.value = GameManager.RhysHealth / GameManager.RhysMaxHealth;
         RhysMagic.value = GameManager.RhysMagic / GameManager.RhysMaxMagic;
