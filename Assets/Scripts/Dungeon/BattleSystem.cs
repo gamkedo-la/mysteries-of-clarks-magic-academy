@@ -390,6 +390,8 @@ public class BattleSystem : MonoBehaviour
             {
                 enemyStartCount = 5;
             }
+
+            enemyStartCount = 2;
         }
 
         enemyTurnOrder.Add(CharacterIdentifier.Enemy1);
@@ -8549,12 +8551,14 @@ public class BattleSystem : MonoBehaviour
         
         if (!MCDead)
         {
-          //  MCExp.text = "   +" + (totalExp / (GameManager.PartyCount * .8f)).ToString("F0");
-          // GameManager.StarterExp = totalExp / 4 + GameManager.StarterExp;
+            //  MCExp.text = "   +" + (totalExp / (GameManager.PartyCount * .8f)).ToString("F0");
+            // GameManager.StarterExp = totalExp / 4 + GameManager.StarterExp;
 
-           // if (MCInParty)
-           // {
+            // if (MCInParty)
+            // {
+            Debug.Log(totalExp + "  " + GameManager.PartyCount + "  " + totalExp / GameManager.PartyCount);
            MCExp(totalExp / GameManager.PartyCount * .8f);
+           print(totalExp);
            // }
         }
         
@@ -8606,10 +8610,19 @@ public class BattleSystem : MonoBehaviour
     {
         if (!MCDead)
         {
-            xp = (totalExp / GameManager.PartyCount * .8f);
+          //  xp = (totalExp / GameManager.PartyCount * .8f);
             int OldLevel = GameManager.MCLevel;
 
-            while (GameManager.MCLevel >= GameManager.MCTargetExp)
+            int safetyLimit = 2000;
+
+            GameManager.MCExp += xp;
+
+            Debug.Log(GameManager.MCLevel);
+            Debug.Log(GameManager.MCTargetExp);
+            Debug.Log(GameManager.MCExp);
+            Debug.Log("----");
+
+            while (GameManager.MCExp >= GameManager.MCTargetExp && safetyLimit-- > 0)
             {
                 GameManager.MCExp = GameManager.MCExp - GameManager.MCTargetExp;
                 GameManager.MCLevel++;
@@ -8672,17 +8685,24 @@ public class BattleSystem : MonoBehaviour
                 //print(GameManager.MCMaxHealth);
                 //print(GameManager.MCMaxMagic);
 
-                if (GameManager.RhysInParty)
+
+
+
+                //Add this later
+               /* if (GameManager.RhysInParty)
                 {
                     RhysExp(totalExp / GameManager.PartyCount * .8f);
                 }
                 else
                 {
                     RhysExp(totalExp / GameManager.PartyCount * .2f);
-                }
+                }*/
             }
-       //     MCExpToNext.text = (GameManager.MCTargetExp - GameManager.MCExp).ToString("F0");
-       //     MCTotalExp.text = GameManager.MCLevel.ToString("F0");
+            Debug.Log(GameManager.MCLevel);
+            Debug.Log(GameManager.MCTargetExp);
+            Debug.Log(GameManager.MCExp);
+
+            Debug.Log(safetyLimit);
 
         }
         else

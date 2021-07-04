@@ -146,6 +146,9 @@ public class GameManager : MonoBehaviour
         {
             Debug.LogError("The party contains more than 4 people");
         }
+
+
+        MCTargetExp = 5;
         //
 
         MCMaxHealth = 20;
