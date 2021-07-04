@@ -399,10 +399,76 @@ public class GameManager : MonoBehaviour
         switch (sItem.property)
         {
             case SupportProperty.Health:
-                Debug.Log("add health");
+                Debug.Log("Add Health");
+                ModifyHealth(sItem.itemUseValue, target);
                 break;
             case SupportProperty.Magic:
-                Debug.Log("add magic");
+                Debug.Log("Add Magic");
+                ModifyHealth(sItem.itemUseValue, target);
+                break;
+        }
+    }
+
+    public void ModifyHealth (int amount, string target) {
+        switch (target)
+        {
+            case "all":
+                MCHealth = MCHealth + amount > MCMaxHealth ? MCMaxHealth : MCHealth + amount;
+                RhysHealth = RhysHealth + amount > RhysMaxHealth ? RhysMaxHealth : RhysHealth + amount;
+                JameelHealth = JameelHealth + amount > JameelMaxHealth ? JameelMaxHealth : JameelHealth + amount;
+                HarperHealth = HarperHealth + amount > HarperMaxHealth ? HarperMaxHealth : HarperHealth + amount;
+                SkyeHealth = SkyeHealth + amount > SkyeMaxHealth ? SkyeMaxHealth : SkyeHealth + amount;
+                SullivanHealth = SullivanHealth + amount > SullivanMaxHealth ? SullivanMaxHealth : SullivanHealth + amount;
+                break;
+            case "MC":
+                MCHealth = MCHealth + amount > MCMaxHealth ? MCMaxHealth : MCHealth + amount;
+                break;
+            case "Rhys":
+                RhysHealth = RhysHealth + amount > RhysMaxHealth ? RhysMaxHealth : RhysHealth + amount;
+                break;
+            case "Jameel":
+                JameelHealth = JameelHealth + amount > JameelMaxHealth ? JameelMaxHealth : JameelHealth + amount;
+                break;
+            case "Harper":
+                HarperHealth = HarperHealth + amount > HarperMaxHealth ? HarperMaxHealth : HarperHealth + amount;
+                break;
+            case "Skye":
+                SkyeHealth = SkyeHealth + amount > SkyeMaxHealth ? SkyeMaxHealth : SkyeHealth + amount;
+                break;
+            case "Sullivan":
+                SullivanHealth = SullivanHealth + amount > SullivanMaxHealth ? SullivanMaxHealth : SullivanHealth + amount;
+                break;
+        }
+    }
+
+    public void ModifyMagic (int amount, string target) {
+        switch (target)
+        {
+            case "all":
+                MCMagic = MCMagic + amount > MCMaxMagic ? MCMaxMagic : MCMagic + amount;
+                RhysMagic = RhysMagic + amount > RhysMaxMagic ? RhysMaxMagic : RhysMagic + amount;
+                JameelMagic = JameelMagic + amount > JameelMaxMagic ? JameelMaxMagic : JameelMagic + amount;
+                HarperMagic = HarperMagic + amount > HarperMaxMagic ? HarperMaxMagic : HarperMagic + amount;
+                SkyeMagic = SkyeMagic + amount > SkyeMaxMagic ? SkyeMaxMagic : SkyeMagic + amount;
+                SullivanMagic = SullivanMagic + amount > SullivanMaxMagic ? SullivanMaxMagic : SullivanMagic + amount;
+                break;
+            case "MC":
+                MCMagic = MCMagic + amount > MCMaxMagic ? MCMaxMagic : MCMagic + amount;
+                break;
+            case "Rhys":
+                RhysMagic = RhysMagic + amount > RhysMaxMagic ? RhysMaxMagic : RhysMagic + amount;
+                break;
+            case "Jameel":
+                JameelMagic = JameelMagic + amount > JameelMaxMagic ? JameelMaxMagic : JameelMagic + amount;
+                break;
+            case "Harper":
+                HarperMagic = HarperMagic + amount > HarperMaxMagic ? HarperMaxMagic : HarperMagic + amount;
+                break;
+            case "Skye":
+                SkyeMagic = SkyeMagic + amount > SkyeMaxMagic ? SkyeMaxMagic : SkyeMagic + amount;
+                break;
+            case "Sullivan":
+                SullivanMagic = SullivanMagic + amount > SullivanMaxMagic ? SullivanMaxMagic : SullivanMagic + amount;
                 break;
         }
     }

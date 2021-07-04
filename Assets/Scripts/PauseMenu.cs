@@ -7,13 +7,16 @@ public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private GameObject MenuPanel;
     [SerializeField] private GameObject DefaultButton;
+    [SerializeField] private GameObject MainButtons;
     [SerializeField] private GameObject InventoryPanel;
     [SerializeField] private GameObject InventoryContents;
+    [SerializeField] private GameObject PartyFrames;
 
     public Slider MCHealth, MCMagic, RhysHealth, RhysMagic, JameelHealth, JameelMagic, HarperHealth, HarperMagic, SkyeHealth, SkyeMagic, SullivanHealth, SullivanMagic;
 
     public GameObject ItemPrefab;
     private InventoryObject inventory;
+    private int currentlySelectedItem;
 
     private const int INVENTORY_ITEM_X_OFFSET = 248;
     private const int INVENTORY_ITEM_Y_OFFSET = 30;
@@ -21,6 +24,7 @@ public class PauseMenu : MonoBehaviour
 
     void Start() {
         inventory = GameManager.instance.inventory;
+        currentlySelectedItem = -1; // No item selected
         // Initial inventory population
         for (int i = 0; i < inventory.Container.Count ; i++)
         {
@@ -29,7 +33,7 @@ public class PauseMenu : MonoBehaviour
             item.transform.GetChild(0).GetComponent<Text>().text = inventory.Container[i].item.itemName;
             item.transform.GetChild(1).GetComponent<Text>().text = inventory.Container[i].item.description;
             item.transform.GetChild(2).GetComponent<Text>().text = "x" + inventory.Container[i].amount;
-            item.GetComponent<Button>().onClick.AddListener( delegate { UseItem(item.transform.GetSiblingIndex()); });
+            item.GetComponent<Button>().onClick.AddListener( delegate { ClickItem(item.transform.GetSiblingIndex()); });
         }
     }
 
@@ -44,6 +48,8 @@ public class PauseMenu : MonoBehaviour
         if(Time.timeScale == 0){
             Time.timeScale = 1;
             MenuPanel.SetActive(false);
+            PartyFrames.SetActive(false);
+            InventoryPanel.SetActive(false);
         } else {
             Time.timeScale = 0;
             MenuPanel.SetActive(true);
@@ -66,22 +72,57 @@ public class PauseMenu : MonoBehaviour
         InventoryPanel.SetActive(!InventoryPanel.activeSelf);
     }
 
-    public void UseItem (int index) {
+    public void ClickItem (int index) {
         ItemObject item = inventory.Container[index].item;
-
         // Only support items can be used from menu
         if(item.type == ItemType.Support) {
             // TODO: ADD UI functionality to select a party member if the item is not a multi-target
-
-            //UpdateUI();
-            GameManager.instance.UseItem(item, "MC");
-            bool outOfStock = inventory.Container[index].RemoveAmount(1);
-            if(outOfStock) {
-                inventory.RemoveItem(index);
-                RemoveItem(index);
+            currentlySelectedItem = index;
+            if(item.multiTarget) {
+                UseItem("all");
             } else {
-                UpdateItems();
+                ToggleInventoryButtons();
             }
+        }
+    }
+
+    public void UseItem (string target) {
+        GameManager.instance.UseItem(inventory.Container[currentlySelectedItem].item, target);
+        UpdateUI();
+        bool outOfStock = inventory.Container[currentlySelectedItem].RemoveAmount(1);
+        if(outOfStock) {
+            inventory.RemoveItem(currentlySelectedItem);
+            RemoveItem(currentlySelectedItem);
+        } else {
+            UpdateItems();
+        }
+
+        currentlySelectedItem = -1;
+        if(target != "all") { //re-enable buttons
+            ToggleInventoryButtons();
+        }
+    }
+
+    public void ToggleInventoryButtons () {
+        foreach (Transform item in InventoryContents.transform)
+        {
+            Button itemButton = item.GetComponent<Button>();
+            itemButton.interactable = !itemButton.interactable;
+        }
+    }
+
+     public void ToggleMainButtons () {
+        foreach (Transform item in MainButtons.transform)
+        {
+            Button itemButton = item.GetComponent<Button>();
+            itemButton.interactable = !itemButton.interactable;
+        }
+    }
+
+    public void ClickPartyFrame (string name) {
+        // I Imagine these elements might have more functionalities, thats why I'm using this flag
+        if(currentlySelectedItem != -1) {
+            UseItem(name);
         }
     }
 
