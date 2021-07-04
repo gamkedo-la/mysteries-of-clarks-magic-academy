@@ -8643,10 +8643,10 @@ public class BattleSystem : MonoBehaviour
                 MCPointsToGive = (Difference * 3);
 
                 //print(MCPointsToGive);
-                /*
+                
                 while (MCPointsToGive > 0)
                 {
-                    float PercentToGain = Random.Range(0, 1);
+                    float PercentToGain = Random.Range(0f, 1f);
                     if (PercentToGain < .2f)
                     {
                         GameManager.MCTrans++;
@@ -8678,7 +8678,7 @@ public class BattleSystem : MonoBehaviour
                         MCPointsToGive--;
                     }
                 }
-                */
+                
                 //print(totalExp);
               //  //print(MCTotalExp);
                 //print(OldLevel + "    " + GameManager.MCLevel);
