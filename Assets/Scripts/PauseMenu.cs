@@ -35,6 +35,7 @@ public class PauseMenu : MonoBehaviour
             item.transform.GetChild(2).GetComponent<Text>().text = "x" + inventory.Container[i].amount;
             item.GetComponent<Button>().onClick.AddListener( delegate { ClickItem(item.transform.GetSiblingIndex()); });
         }
+        
     }
 
     void Update()

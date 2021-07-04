@@ -155,12 +155,12 @@ public class GameManager : MonoBehaviour
         SkyeMaxHealth = 20;
         SullivanMaxHealth = 20;
 
-        MCHealth = 20;
-        RhysHealth = 20;
-        JameelHealth = 20;
-        HarperHealth = 20;
-        SkyeHealth = 20;
-        SullivanHealth = 20;
+        MCHealth = 10;
+        RhysHealth = 10;
+        JameelHealth =10;
+        HarperHealth = 10;
+        SkyeHealth = 10;
+        SullivanHealth = 10;
 
         MCMaxMagic = 20;
         RhysMaxMagic = 20;
@@ -169,12 +169,12 @@ public class GameManager : MonoBehaviour
         SkyeMaxMagic = 20;
         SullivanMaxMagic = 20;
 
-        MCMagic = 20;
-        RhysMagic = 20;
-        JameelMagic = 20;
-        HarperMagic = 20;
-        SkyeMagic = 20;
-        SullivanMagic = 20;
+        MCMagic = 10;
+        RhysMagic = 10;
+        JameelMagic = 10;
+        HarperMagic = 10;
+        SkyeMagic = 10;
+        SullivanMagic = 10;
     }
 
     public static void CalculateDayOfWeek()
@@ -261,6 +261,12 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene("ClassroomDialogueTest");
         }
 
+        //Turn this off when done testing
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            ProgressDay();
+        }
+
         if (timeOfDay == 0)
         {
             RenderSettings.skybox = skyBox[0];
@@ -304,7 +310,12 @@ public class GameManager : MonoBehaviour
 
     public static void IncreaseStatLevel()
     {
-        if (Intelligence < 5)
+        if (Intelligence == 0)
+        {
+            IntelligenceLevel = 0;
+        }
+
+        else if (Intelligence < 5 && Intelligence > 0)
         {
             IntelligenceLevel = 1;
         }
@@ -325,7 +336,12 @@ public class GameManager : MonoBehaviour
             IntelligenceLevel = 5;
         }
 
-        if (Charisma < 5)
+
+        if (Charisma == 0)
+        {
+            CharismaLevel = 0;
+        }
+        else if (Charisma < 5 && Charisma > 0)
         {
             CharismaLevel = 1;
         }
@@ -346,7 +362,13 @@ public class GameManager : MonoBehaviour
             CharismaLevel = 5;
         }
 
-        if (Courage < 5)
+
+        if (Courage == 0)
+        {
+            CourageLevel = 0;
+        }
+
+        else if (Courage < 5 && Courage > 0)
         {
             CourageLevel = 1;
         }
@@ -367,7 +389,12 @@ public class GameManager : MonoBehaviour
             CourageLevel = 5;
         }
 
-        if (Proficiency < 5)
+        if (Proficiency == 0)
+        {
+            ProficiencyLevel = 0;
+        }
+
+        else if (Proficiency < 5 && Proficiency > 0)
         {
             ProficiencyLevel = 1;
         }

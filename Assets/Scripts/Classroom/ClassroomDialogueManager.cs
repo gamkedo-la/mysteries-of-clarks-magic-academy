@@ -173,8 +173,7 @@ public class ClassroomDialogueManager : MonoBehaviour
         if (isFinished)
         {
             Debug.Log("endOfConversation");
-            EndOfLessonLearning += GameManager.Intelligence;
-            Debug.Log("Play Quick Animation to show learning");
+            GameManager.Intelligence += EndOfLessonLearning ;
             //Since there is only one gamemanager, we can reference the instance of the CanvasForStats to turn on or off
             GameManager.instance.CanvasForStats.SetActive(true);
             GameManager.IncreaseStatLevel();
