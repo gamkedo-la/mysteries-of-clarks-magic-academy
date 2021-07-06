@@ -20,7 +20,7 @@ public class RoomSpawner : MonoBehaviour
     private int rand;
     private bool spawned = false;
 
-    public float waitTime = 4f;
+    public float waitTime = 2f;
 
     GameObject parented;
     GameObject thisCreatedGameObject, thisCreatedGameObject2;
@@ -31,8 +31,9 @@ public class RoomSpawner : MonoBehaviour
         //Destroy the gameObject's spawn points after 4 seconds so the level doesn't get bogged down with spawns.
         Destroy(gameObject, waitTime);
         templates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomTemplates>();
-        Invoke("Spawn", 0.1f);
+        if (templates != null) Invoke("Spawn", 0.1f);
     }
+
     private void Spawn()
     {
         if (!spawned)

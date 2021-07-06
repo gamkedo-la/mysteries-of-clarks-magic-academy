@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class RoomTemplates : MonoBehaviour 
-{
+public class RoomTemplates : MonoBehaviour {
 	public static RoomTemplates Instance;
 	//If you want a room to have a higher % chance to get pulled, add multiple instances in the array
 
@@ -45,26 +44,25 @@ public class RoomTemplates : MonoBehaviour
 
 	GameObject turnOffMenu;
 	public string LevelName;
-	
+
 	public List<PrefabLevelPair> specialLevels;
 	public bool levelIsSpecial = false;
 	public int currentLevel;
 
 	[System.Serializable]
-	public class PrefabLevelPair 
-	{
+	public class PrefabLevelPair {
 		public GameObject levelPrefab;
 		public int levelNumber;
 	}
 
-	private void Start() 
-	{
-		if (Instance != null) 
-		{
+	private void Start() {
+		if (Instance != null) {
 			Destroy(this.gameObject);
 			return;
 		}
 		Instance = this;
+
+		DontDestroyOnLoad(this.gameObject);
 
 		playerSpawn = GameObject.FindGameObjectWithTag("Player");
 		loadScreen = GameObject.Find("LoadingScreen");
@@ -73,17 +71,12 @@ public class RoomTemplates : MonoBehaviour
 		parented = GameObject.FindGameObjectWithTag("Rooms");
 		currentLevel = GameManager.currentFloor;
 
-		foreach (PrefabLevelPair floor in specialLevels) 
-		{
-			if (currentLevel == floor.levelNumber) 
-			{
+		foreach (PrefabLevelPair floor in specialLevels) {
+			if (currentLevel == floor.levelNumber) {
 				GameObject specialLevel = null;
-				if (floor.levelPrefab.scene.rootCount == 0) 
-				{
+				if (floor.levelPrefab.scene.rootCount == 0) {
 					specialLevel = Instantiate(floor.levelPrefab);
-				}
-				else 
-				{
+				} else {
 					specialLevel = floor.levelPrefab;
 				}
 
@@ -93,39 +86,28 @@ public class RoomTemplates : MonoBehaviour
 			}
 		}
 
-		if (!levelIsSpecial) 
-		{
+		if (!levelIsSpecial) {
 			startingP = Instantiate(StartingPointRoom, transform.position, Quaternion.identity) as GameObject;
 			startingP.transform.parent = parented.transform;
 			StartCoroutine(Waiting());
 			TreasureSpawnPercent = Random.Range(0, 100);
 			//  print(TreasureSpawnPercent + " " + percentChanceToSpawnTreasure);
 		}
-
-		GameObject.DontDestroyOnLoad(this.gameObject);
 	}
 
-	private void Update() 
-	{
-		if (Input.GetKey(KeyCode.Q)) 
-		{
+	private void Update() {
+		if (Input.GetKey(KeyCode.Q)) {
 			ClearTheRooms();
 		}
 
-		if (waitTime <= 0) 
-		{
-			if (!playerPlaced) 
-			{
-				if (!exitRoom) 
-				{
-					for (int i = 0; i < rooms.Count; i++) 
-					{
-						if (i == rooms.Count - 1) 
-						{
+		if (waitTime <= 0) {
+			if (!playerPlaced) {
+				if (!exitRoom) {
+					for (int i = 0; i < rooms.Count; i++) {
+						if (i == rooms.Count - 1) {
 							staircaseSpawn = Instantiate(staircase, rooms[i].transform.position, Quaternion.identity) as GameObject;
 
-							if (!treasurePlaced && percentChanceToSpawnTreasure >= TreasureSpawnPercent) 
-							{
+							if (!treasurePlaced && percentChanceToSpawnTreasure >= TreasureSpawnPercent) {
 								treasureSpawn = Instantiate(treasure, rooms[Random.Range(1, rooms.Count - 1)].transform.position, Quaternion.identity) as GameObject;
 								treasurePlaced = true;
 							}
@@ -142,60 +124,50 @@ public class RoomTemplates : MonoBehaviour
 				playerSpawn.transform.position = rooms[0].transform.position + spawnHeight;
 				loadScreen.SetActive(false);
 			}
-			for (int i = 0; i < enemiesToSpawn; i++) 
-			{
-				if (enemiesToSpawn > 0) 
-				{
+			for (int i = 0; i < enemiesToSpawn; i++) {
+				if (enemiesToSpawn > 0) {
 					Vector3 offset = new Vector3(0, 1.25f, 0);
 					enemySpawn = Instantiate(enemy, rooms[Random.Range(1, rooms.Count - 1)].transform.position + offset, Quaternion.identity) as GameObject;
 					enemiesToSpawn--;
 					enemySpawn.transform.parent = parented.transform;
 				}
 			}
-		} else 
-		{
+		} else {
 			waitTime -= Time.deltaTime;
 		}
 
 	}
 
-	public void RunStartOfScene() 
-	{
+	public void RunStartOfScene() {
 		playerSpawn = GameObject.FindGameObjectWithTag("Player");
 		loadScreen = GameObject.Find("LoadingScreen");
-		loadScreen.SetActive(false);
+		loadScreen?.SetActive(false);
 		turnOffMenu = GameObject.Find("DialogueBoxForStairs");
-		turnOffMenu.SetActive(false);
+		turnOffMenu?.SetActive(false);
 		parented = GameObject.FindGameObjectWithTag("Rooms");
 	}
 
-	public void ClearTheRooms() 
-	{
+	public void ClearTheRooms() {
 		for (int i = rooms.Count - 1; i >= 0; i--) {
 			Destroy(rooms[i]);
 			rooms.RemoveAt(i);
 		}
 	}
 
-	IEnumerator Waiting() 
-	{
+	IEnumerator Waiting() {
 		yield return new WaitForSeconds(waitTime);
 		enemiesToSpawn = Random.Range(rooms.Count * EnemiesSpawnedPercentageMin / 100, rooms.Count  * EnemiesSpawnedPercentageMax/100);
 		//   print(enemiesToSpawn);
 	}
 
-	public void AdvanceFloor() 
-	{
+	public void AdvanceFloor() {
 		GameManager.currentFloor++;
 		if (GameManager.currentFloor > GameManager.DungeonFloorCount[dungeonNumber]) GameManager.DungeonFloorCount[dungeonNumber] = GameManager.currentFloor;
-		SceneManager.LoadScene("DungeonTest");
-		Destroy(this.gameObject);
-
-		//Eventually make this public, track this through the game manager, provide bosses on various specific floors. 
+		Destroy(this);
+		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
 
-	public void StayOnFloor() 
-	{
+	public void StayOnFloor() {
 		turnOffMenu.SetActive(false);
 	}
 }
