@@ -57,12 +57,12 @@ public class RoomTemplates : MonoBehaviour {
 
 	private void Start() {
 		if (Instance != null) {
-			Destroy(this.gameObject);
+			Destroy(gameObject);
 			return;
 		}
 		Instance = this;
 
-		DontDestroyOnLoad(this.gameObject);
+		DontDestroyOnLoad(gameObject);
 
 		playerSpawn = GameObject.FindGameObjectWithTag("Player");
 		loadScreen = GameObject.Find("LoadingScreen");
@@ -81,6 +81,7 @@ public class RoomTemplates : MonoBehaviour {
 				}
 
 				specialLevel.SetActive(true);
+				specialLevel.transform.parent = gameObject.transform;
 				levelIsSpecial = true;
 				return;
 			}
