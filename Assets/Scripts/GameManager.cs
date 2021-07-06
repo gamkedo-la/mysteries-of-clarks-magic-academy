@@ -25,13 +25,12 @@ public class GameManager : MonoBehaviour
     public static int Friend1Experience, Friend1Level;
 
     public static bool isInFriendConversation;
+	
+	public static int currentFloor;
+	public static int[] DungeonFloorCount;
 
-    public static int Dungeon1FloorCount;
-    public static int Dungeon1MiniBossFloor = 2;
-    public static int Dungeon1FinalBossFloor = 4;
-
-    //Determining if the Party Member is available (story timeline wise)
-    public static bool RhysAvailable, JameelAvailable, GracieMayAvailable, HarperAvailable, SkyeAvailable, SullivanAvailable;
+	//Determining if the Party Member is available (story timeline wise)
+	public static bool RhysAvailable, JameelAvailable, GracieMayAvailable, HarperAvailable, SkyeAvailable, SullivanAvailable;
     //
 
     //This is determining party count size

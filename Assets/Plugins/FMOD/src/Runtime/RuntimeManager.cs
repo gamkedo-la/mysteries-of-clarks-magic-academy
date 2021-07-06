@@ -374,7 +374,7 @@ retry:
             {
                 if (Listeners[i] != null && listener.gameObject == Listeners[i].gameObject)
                 {
-                    Debug.LogWarning(string.Format(("[FMOD] Listener has already been added at index {0}."), i));
+                    //Debug.LogWarning(string.Format(("[FMOD] Listener has already been added at index {0}."), i));
                     return i;
                 }
             }

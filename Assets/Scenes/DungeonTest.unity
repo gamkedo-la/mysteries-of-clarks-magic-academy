@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44338697, g: 0.49265927, b: 0.57229424, a: 1}
+  m_IndirectSpecularColor: {r: 0.44338676, g: 0.4926588, b: 0.57229334, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4155,6 +4155,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1771164847240579453, guid: ca588341c6a70234484b3b33a73d5e2c,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 9.931595
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca588341c6a70234484b3b33a73d5e2c, type: 3}
 --- !u!1001 &899930917
@@ -5751,6 +5756,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80442fe0a605e994583230db99a05d2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dungeonNumber: 0
   bottomRooms:
   - {fileID: 982508139293487886, guid: 8ee4e5042abc8f24ab6510ed5483f387, type: 3}
   - {fileID: 7013939729550855012, guid: 2f3d974fd9e3f1f4ebff364b726a3be6, type: 3}
@@ -5788,8 +5794,13 @@ MonoBehaviour:
   StartingPointRoom: {fileID: 2209220804059353951, guid: 5383108e7fecee946ac4375a81e731cc,
     type: 3}
   LevelName: DungeonTest
-  miniBossFloorLayout: {fileID: 1097940518}
-  finalBossFloorLayout: {fileID: 1566505404}
+  specialLevels:
+  - levelPrefab: {fileID: 1097940518}
+    levelNumber: 2
+  - levelPrefab: {fileID: 1566505404}
+    levelNumber: 4
+  levelIsSpecial: 0
+  currentLevel: 0
 --- !u!4 &1176001436
 Transform:
   m_ObjectHideFlags: 0
@@ -10352,12 +10363,22 @@ PrefabInstance:
     - target: {fileID: 4132115395053139388, guid: 6e911099bdbece546a41a5342e0731d8,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000017066634
+      value: -0.00000001706663
       objectReference: {fileID: 0}
     - target: {fileID: 4132115395053139388, guid: 6e911099bdbece546a41a5342e0731d8,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000021885216
+      value: 0.0000000021885211
+      objectReference: {fileID: 0}
+    - target: {fileID: 4132115395053139391, guid: 6e911099bdbece546a41a5342e0731d8,
+        type: 3}
+      propertyPath: m_Lens.m_SensorSize.x
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4132115395060652180, guid: 6e911099bdbece546a41a5342e0731d8,
+        type: 3}
+      propertyPath: m_Lens.m_SensorSize.x
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 4132115395060652181, guid: 6e911099bdbece546a41a5342e0731d8,
         type: 3}
@@ -10377,12 +10398,17 @@ PrefabInstance:
     - target: {fileID: 4132115395299435648, guid: 6e911099bdbece546a41a5342e0731d8,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000019122316
+      value: 0.00000001912232
       objectReference: {fileID: 0}
     - target: {fileID: 4132115395299435648, guid: 6e911099bdbece546a41a5342e0731d8,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000021002802
+      value: -0.0000000021002802
+      objectReference: {fileID: 0}
+    - target: {fileID: 4132115395299435651, guid: 6e911099bdbece546a41a5342e0731d8,
+        type: 3}
+      propertyPath: m_Lens.m_SensorSize.x
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 4132115396440224975, guid: 6e911099bdbece546a41a5342e0731d8,
         type: 3}
@@ -10444,15 +10470,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainCharacterDungeon
       objectReference: {fileID: 0}
+    - target: {fileID: 4132115396575579802, guid: 6e911099bdbece546a41a5342e0731d8,
+        type: 3}
+      propertyPath: m_Lens.m_SensorSize.x
+      value: 1.6
+      objectReference: {fileID: 0}
     - target: {fileID: 4132115396718831984, guid: 6e911099bdbece546a41a5342e0731d8,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000034133265
+      value: -0.00000003413326
       objectReference: {fileID: 0}
     - target: {fileID: 4132115396718831984, guid: 6e911099bdbece546a41a5342e0731d8,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000043770436
+      value: 0.000000004377043
       objectReference: {fileID: 0}
     - target: {fileID: 6964173571347612296, guid: 6e911099bdbece546a41a5342e0731d8,
         type: 3}
