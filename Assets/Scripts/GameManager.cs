@@ -26,8 +26,8 @@ public class GameManager : MonoBehaviour
 
     public static bool isInFriendConversation;
 	
-	public static int currentFloor;
-	public static int[] DungeonFloorCount;
+	public static int currentFloor = 0;
+	public static int[] DungeonFloorCount = { 0, 0, 0, 0, 0, 0 };
 
 	//Determining if the Party Member is available (story timeline wise)
 	public static bool RhysAvailable, JameelAvailable, GracieMayAvailable, HarperAvailable, SkyeAvailable, SullivanAvailable;
