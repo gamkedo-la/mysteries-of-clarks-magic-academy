@@ -45,6 +45,8 @@ public class Dungeon6Generator : MonoBehaviour {
 
 		currentLevel = GameManager.currentFloor;
 
+		FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Floor", currentLevel % 5);
+
 		foreach (PrefabLevelPair floor in specialLevels) {
 			if (currentLevel == floor.levelNumber) {
 				GameObject specialLevel = null;

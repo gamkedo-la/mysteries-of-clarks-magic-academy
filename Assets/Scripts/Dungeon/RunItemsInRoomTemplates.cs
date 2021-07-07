@@ -14,6 +14,6 @@ public class RunItemsInRoomTemplates : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
         roomTemplates = GameObject.Find("RoomTemplates");
-        roomTemplates.GetComponent<RoomTemplates>().RunStartOfScene();
+        roomTemplates.GetComponent<RoomTemplates>()?.RunStartOfScene();
     }
 }

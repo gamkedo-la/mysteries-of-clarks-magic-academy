@@ -48,6 +48,7 @@ public class RoomTemplates : MonoBehaviour {
 	public List<PrefabLevelPair> specialLevels;
 	public bool levelIsSpecial = false;
 	public int currentLevel;
+	public bool startHasRun = false;
 
 	[System.Serializable]
 	public class PrefabLevelPair {
@@ -56,11 +57,16 @@ public class RoomTemplates : MonoBehaviour {
 	}
 
 	private void Start() {
+		if (startHasRun) return;
+
 		if (Instance != null) {
 			Destroy(gameObject);
 			return;
 		}
-		Instance = this;
+		else 
+		{
+			Instance = this;
+		}
 
 		DontDestroyOnLoad(gameObject);
 
@@ -70,6 +76,8 @@ public class RoomTemplates : MonoBehaviour {
 		turnOffMenu.SetActive(false);
 		parented = GameObject.FindGameObjectWithTag("Rooms");
 		currentLevel = GameManager.currentFloor;
+
+		FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Floor", currentLevel % 5);
 
 		foreach (PrefabLevelPair floor in specialLevels) {
 			if (currentLevel == floor.levelNumber) {
@@ -83,17 +91,20 @@ public class RoomTemplates : MonoBehaviour {
 				specialLevel.SetActive(true);
 				specialLevel.transform.parent = gameObject.transform;
 				levelIsSpecial = true;
-				return;
+				break;
 			}
 		}
 
 		if (!levelIsSpecial) {
+			Debug.Log("Instanciating first room");
 			startingP = Instantiate(StartingPointRoom, transform.position, Quaternion.identity) as GameObject;
 			startingP.transform.parent = parented.transform;
 			StartCoroutine(Waiting());
 			TreasureSpawnPercent = Random.Range(0, 100);
 			//  print(TreasureSpawnPercent + " " + percentChanceToSpawnTreasure);
 		}
+
+		startHasRun = true;
 	}
 
 	private void Update() {
@@ -164,7 +175,7 @@ public class RoomTemplates : MonoBehaviour {
 	public void AdvanceFloor() {
 		GameManager.currentFloor++;
 		if (GameManager.currentFloor > GameManager.DungeonFloorCount[dungeonNumber]) GameManager.DungeonFloorCount[dungeonNumber] = GameManager.currentFloor;
-		Destroy(this);
+		Destroy(gameObject);
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
 
