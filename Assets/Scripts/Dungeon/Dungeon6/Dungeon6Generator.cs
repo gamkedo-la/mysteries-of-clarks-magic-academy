@@ -15,9 +15,12 @@ public class Dungeon6Generator : MonoBehaviour {
 	public AnimationCurve densityFalloffCurve;
 	public float gridScale = 15f;
 
+	public float minRadius = 3f;
+	public float maxRadius = 7f;
+
 	private int currentLevel;
 	private float[,] densityMap;
-	private int mapSize = 20;
+	private int mapSize = 30;
 	private List<Vector2> clearings;
 	private List<GameObject> currentRooms = new List<GameObject>();
 
@@ -62,32 +65,46 @@ public class Dungeon6Generator : MonoBehaviour {
 			}
 		}
 
+		Dictionary<Vector2, float> clearings = new Dictionary<Vector2, float>();
+		clearings.Add(new Vector2(mapSize/2, mapSize/2), Random.Range(minRadius, maxRadius));
+		Vector2 lastPos = new Vector2(mapSize/2, mapSize/2);
+		float lastRadius = clearings[lastPos];
+		for (int i = 0; i <= currentLevel+3; i++) {
+			Vector2 newPos = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
+			float newRadius = Random.Range(minRadius, maxRadius);
+			float placementMultiplier = (lastRadius + newRadius) * Random.Range(0.5f, 0.75f);
+			newPos *= placementMultiplier;
+			newPos = newPos + lastPos;
+			clearings.Add(newPos, newRadius);
+		}
+
+		//////////////////////////////////////////////////////////////////////////////////////////
 		densityMap = new float[mapSize, mapSize];
 		for (int x = 0; x < mapSize; x++) {
 			for (int y = 0; y < mapSize; y++) {
-				densityMap[x, y] = 1f;
+				densityMap[x, y] = 2f;
 			}
 		}
 
 
 		//room generation
-		for (int i = 0; i <= currentLevel; i++) {
-			float radius = Random.Range(5f, 10f);
-			float centerX = Random.Range(0, mapSize);
-			float centerY = Random.Range(0, mapSize);
-			
+		foreach (KeyValuePair<Vector2, float> room in clearings) {
 			for (int x = 0; x < mapSize; x++) {
 				for (int y = 0; y < mapSize; y++) {
-					densityMap[x, y] = 1f - densityFalloffCurve.Evaluate(Vector2.Distance(new Vector2((int)x, (int)y), new Vector2(centerX, centerY)) / radius);
+					float newValue = densityFalloffCurve.Evaluate(Vector2.Distance(new Vector2((int)x, (int)y), room.Key) / room.Value);
+					if (newValue >= 0f && newValue <= 1f && newValue < densityMap[x, y]) densityMap[x, y] = newValue;
 				}
 			}
 		}
 
 
 
+		//Generate level from density map
 		for (int x = 0; x < mapSize; x++) {
 			for (int y = 0; y < mapSize; y++) {
 				float density = densityMap[x, y];
+				if (density == 2f) continue;
+
 				float newTileDensity = float.MaxValue;
 				int newTileIndex = 0;
 				for (int i = 0; i < tiles.Count; i++) {
@@ -102,6 +119,7 @@ public class Dungeon6Generator : MonoBehaviour {
 				currentRooms.Add(newTile);
 			}
 		}
+		
 
 	}
 
