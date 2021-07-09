@@ -559,7 +559,7 @@ public class BattleSystem : MonoBehaviour
             GameObject enemyGO = Instantiate(enemyPrefab[RandEnemy], enemyBattleStationLocations[i]);
             enemyUnit.Add(enemyGO.GetComponent<Unit>());
             enemyAnim.Add(enemyGO.GetComponentInChildren<Animator>());
-         //   enemyUnit[i].transform.rotation = Quaternion.Euler(0, 180, 0);
+            enemyUnit[i].transform.rotation = Quaternion.Euler(0, 180, 0);
         }
         enemyUnit[0].GetComponent<Unit>().myEnumValue = CharacterIdentifier.Enemy1;
         if (enemyStartCount >= 2)
