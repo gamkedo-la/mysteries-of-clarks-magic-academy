@@ -1332,8 +1332,15 @@ public class BattleSystem : MonoBehaviour
                     MCMagic.value = GameManager.MCMagic ;
                     MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
+                    if (!isDead)
+                    {
+                        enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                    }
+                    if (isDead)
+                    {
+                        enemyAnim[WhoToAttack].SetBool("isDead", true);
+                    }
                     isDead = enemyUnit[enemyUnitSelected].Flippendo(MC.MCSpell2Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
-
 
                     throwRock = false;
                     flippendo = false;
@@ -1373,6 +1380,7 @@ public class BattleSystem : MonoBehaviour
                     }
                     NextTurn();
 
+
                 }
             }
 
@@ -1393,6 +1401,14 @@ public class BattleSystem : MonoBehaviour
                     MCMagic.value = GameManager.MCMagic;
                     MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
+                    if (!isDead)
+                    {
+                        enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                    }
+                    if (isDead)
+                    {
+                        enemyAnim[WhoToAttack].SetBool("isDead", true);
+                    }
                     isDead = enemyUnit[enemyUnitSelected].PulsateSunt(MC.MCSpell3Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
 
@@ -1432,6 +1448,7 @@ public class BattleSystem : MonoBehaviour
 
                         enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                     }
+
                     NextTurn();
 
                 }
@@ -1454,6 +1471,14 @@ public class BattleSystem : MonoBehaviour
                     MCMagic.value = GameManager.MCMagic;
                     MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
+                    if (!isDead)
+                    {
+                        enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                    }
+                    if (isDead)
+                    {
+                        enemyAnim[WhoToAttack].SetBool("isDead", true);
+                    }
                     isDead = enemyUnit[enemyUnitSelected].Stupefaciunt(MC.MCSpell4Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
 
@@ -1516,6 +1541,14 @@ public class BattleSystem : MonoBehaviour
                     MCMagic.value = GameManager.MCMagic;
                     MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
+                    if (!isDead)
+                    {
+                        enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                    }
+                    if (isDead)
+                    {
+                        enemyAnim[WhoToAttack].SetBool("isDead", true);
+                    }
                     isDead = enemyUnit[enemyUnitSelected].Incendio(MC.MCSpell5Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
 
@@ -1557,6 +1590,7 @@ public class BattleSystem : MonoBehaviour
                     }
                     NextTurn();
 
+
                 }
             }
 
@@ -1579,6 +1613,14 @@ public class BattleSystem : MonoBehaviour
                     MCMagic.value = GameManager.MCMagic;
                     MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
+                    if (!isDead)
+                    {
+                        enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                    }
+                    if (isDead)
+                    {
+                        enemyAnim[WhoToAttack].SetBool("isDead", true);
+                    }
                     isDead = enemyUnit[enemyUnitSelected].IncendioMaxima(MC.MCSpell6Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
 
@@ -1608,7 +1650,6 @@ public class BattleSystem : MonoBehaviour
                     dialogueText.text = "The attack is successful!";
                     yield return new WaitForSeconds(2f);
 
-                    //This checks to see if the Enemy is Dead or has HP remaining
                     if (isDead)
                     {
                         RemoveCurrentEnemy();
@@ -1619,6 +1660,7 @@ public class BattleSystem : MonoBehaviour
                         enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                     }
                     NextTurn();
+
 
                 }
             }
@@ -1641,6 +1683,14 @@ public class BattleSystem : MonoBehaviour
                     MCMagic.value = GameManager.MCMagic;
                     MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
+                    if (!isDead)
+                    {
+                        enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                    }
+                    if (isDead)
+                    {
+                        enemyAnim[WhoToAttack].SetBool("isDead", true);
+                    }
                     isDead = enemyUnit[enemyUnitSelected].Avis(MC.MCSpell7Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
 
@@ -1670,7 +1720,6 @@ public class BattleSystem : MonoBehaviour
                     dialogueText.text = "The attack is successful!";
                     yield return new WaitForSeconds(2f);
 
-                    //This checks to see if the Enemy is Dead or has HP remaining
                     if (isDead)
                     {
                         RemoveCurrentEnemy();
@@ -1681,6 +1730,7 @@ public class BattleSystem : MonoBehaviour
                         enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                     }
                     NextTurn();
+
 
                 }
             }
@@ -1703,6 +1753,14 @@ public class BattleSystem : MonoBehaviour
                     MCMagic.value = GameManager.MCMagic;
                     MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
+                    if (!isDead)
+                    {
+                        enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                    }
+                    if (isDead)
+                    {
+                        enemyAnim[WhoToAttack].SetBool("isDead", true);
+                    }
                     isDead = enemyUnit[enemyUnitSelected].AvisMaxima(MC.MCSpell8Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
 
@@ -1732,7 +1790,6 @@ public class BattleSystem : MonoBehaviour
                     dialogueText.text = "The attack is successful!";
                     yield return new WaitForSeconds(2f);
 
-                    //This checks to see if the Enemy is Dead or has HP remaining
                     if (isDead)
                     {
                         RemoveCurrentEnemy();
@@ -1743,6 +1800,7 @@ public class BattleSystem : MonoBehaviour
                         enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                     }
                     NextTurn();
+
 
                 }
             }
@@ -1765,6 +1823,14 @@ public class BattleSystem : MonoBehaviour
                     MCMagic.value = GameManager.MCMagic;
                     MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
+                    if (!isDead)
+                    {
+                        enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                    }
+                    if (isDead)
+                    {
+                        enemyAnim[WhoToAttack].SetBool("isDead", true);
+                    }
                     isDead = enemyUnit[enemyUnitSelected].Glacius(MC.MCSpell9Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
 
@@ -1794,7 +1860,6 @@ public class BattleSystem : MonoBehaviour
                     dialogueText.text = "The attack is successful!";
                     yield return new WaitForSeconds(2f);
 
-                    //This checks to see if the Enemy is Dead or has HP remaining
                     if (isDead)
                     {
                         RemoveCurrentEnemy();
@@ -1805,6 +1870,7 @@ public class BattleSystem : MonoBehaviour
                         enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                     }
                     NextTurn();
+
 
                 }
             }
@@ -1827,6 +1893,14 @@ public class BattleSystem : MonoBehaviour
                     MCMagic.value = GameManager.MCMagic;
                     MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
+                    if (!isDead)
+                    {
+                        enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                    }
+                    if (isDead)
+                    {
+                        enemyAnim[WhoToAttack].SetBool("isDead", true);
+                    }
                     isDead = enemyUnit[enemyUnitSelected].MinorCura(MC.MCSpell10Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
 
@@ -1856,7 +1930,6 @@ public class BattleSystem : MonoBehaviour
                     dialogueText.text = "The attack is successful!";
                     yield return new WaitForSeconds(2f);
 
-                    //This checks to see if the Enemy is Dead or has HP remaining
                     if (isDead)
                     {
                         RemoveCurrentEnemy();
@@ -1867,6 +1940,7 @@ public class BattleSystem : MonoBehaviour
                         enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                     }
                     NextTurn();
+
 
                 }
             }
@@ -1888,6 +1962,14 @@ public class BattleSystem : MonoBehaviour
                     MCMagic.value = GameManager.MCMagic;
                     MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
+                    if (!isDead)
+                    {
+                        enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                    }
+                    if (isDead)
+                    {
+                        enemyAnim[WhoToAttack].SetBool("isDead", true);
+                    }
                     isDead = enemyUnit[enemyUnitSelected].ImpetumSubsisto(MC.MCSpell11Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
 
@@ -1917,7 +1999,6 @@ public class BattleSystem : MonoBehaviour
                     dialogueText.text = "The attack is successful!";
                     yield return new WaitForSeconds(2f);
 
-                    //This checks to see if the Enemy is Dead or has HP remaining
                     if (isDead)
                     {
                         RemoveCurrentEnemy();
@@ -1928,6 +2009,7 @@ public class BattleSystem : MonoBehaviour
                         enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                     }
                     NextTurn();
+
 
                 }
             }
@@ -1949,6 +2031,14 @@ public class BattleSystem : MonoBehaviour
                     MCMagic.value = GameManager.MCMagic;
                     MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
+                    if (!isDead)
+                    {
+                        enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                    }
+                    if (isDead)
+                    {
+                        enemyAnim[WhoToAttack].SetBool("isDead", true);
+                    }
                     isDead = enemyUnit[enemyUnitSelected].Augamenti(MC.MCSpell12Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
 
@@ -1978,7 +2068,6 @@ public class BattleSystem : MonoBehaviour
                     dialogueText.text = "The attack is successful!";
                     yield return new WaitForSeconds(2f);
 
-                    //This checks to see if the Enemy is Dead or has HP remaining
                     if (isDead)
                     {
                         RemoveCurrentEnemy();
@@ -1989,6 +2078,7 @@ public class BattleSystem : MonoBehaviour
                         enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                     }
                     NextTurn();
+
 
                 }
             }
@@ -2010,6 +2100,14 @@ public class BattleSystem : MonoBehaviour
                     MCMagic.value = GameManager.MCMagic;
                     MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
+                    if (!isDead)
+                    {
+                        enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                    }
+                    if (isDead)
+                    {
+                        enemyAnim[WhoToAttack].SetBool("isDead", true);
+                    }
                     isDead = enemyUnit[enemyUnitSelected].MothsDeorsum(MC.MCSpell13Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
 
@@ -2072,6 +2170,14 @@ public class BattleSystem : MonoBehaviour
                     MCMagic.value = GameManager.MCMagic;
                     MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
+                    if (!isDead)
+                    {
+                        enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                    }
+                    if (isDead)
+                    {
+                        enemyAnim[WhoToAttack].SetBool("isDead", true);
+                    }
                     isDead = enemyUnit[enemyUnitSelected].MothsInteriore(MC.MCSpell14Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
 
@@ -2101,7 +2207,6 @@ public class BattleSystem : MonoBehaviour
                     dialogueText.text = "The attack is successful!";
                     yield return new WaitForSeconds(2f);
 
-                    //This checks to see if the Enemy is Dead or has HP remaining
                     if (isDead)
                     {
                         RemoveCurrentEnemy();
@@ -2112,6 +2217,7 @@ public class BattleSystem : MonoBehaviour
                         enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                     }
                     NextTurn();
+
 
                 }
             }
@@ -2133,6 +2239,14 @@ public class BattleSystem : MonoBehaviour
                     MCMagic.value = GameManager.MCMagic;
                     MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
+                    if (!isDead)
+                    {
+                        enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                    }
+                    if (isDead)
+                    {
+                        enemyAnim[WhoToAttack].SetBool("isDead", true);
+                    }
                     isDead = enemyUnit[enemyUnitSelected].InternaCombustione(MC.MCSpell15Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
 
@@ -2162,7 +2276,6 @@ public class BattleSystem : MonoBehaviour
                     dialogueText.text = "The attack is successful!";
                     yield return new WaitForSeconds(2f);
 
-                    //This checks to see if the Enemy is Dead or has HP remaining
                     if (isDead)
                     {
                         RemoveCurrentEnemy();
@@ -2173,6 +2286,7 @@ public class BattleSystem : MonoBehaviour
                         enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                     }
                     NextTurn();
+
 
                 }
             }
@@ -2196,6 +2310,14 @@ public class BattleSystem : MonoBehaviour
                     MCMagic.value = GameManager.MCMagic;
                     MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
+                    if (!isDead)
+                    {
+                        enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                    }
+                    if (isDead)
+                    {
+                        enemyAnim[WhoToAttack].SetBool("isDead", true);
+                    }
                     isDead = enemyUnit[enemyUnitSelected].Bombarda(MC.MCSpell16Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
 
@@ -2225,7 +2347,6 @@ public class BattleSystem : MonoBehaviour
                     dialogueText.text = "The attack is successful!";
                     yield return new WaitForSeconds(2f);
 
-                    //This checks to see if the Enemy is Dead or has HP remaining
                     if (isDead)
                     {
                         RemoveCurrentEnemy();
@@ -2236,6 +2357,7 @@ public class BattleSystem : MonoBehaviour
                         enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                     }
                     NextTurn();
+
 
                 }
             }
@@ -2259,6 +2381,14 @@ public class BattleSystem : MonoBehaviour
                     MCMagic.value = GameManager.MCMagic;
                     MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
+                    if (!isDead)
+                    {
+                        enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                    }
+                    if (isDead)
+                    {
+                        enemyAnim[WhoToAttack].SetBool("isDead", true);
+                    }
                     isDead = enemyUnit[enemyUnitSelected].BombardaMaxima(MC.MCSpell17Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
 
@@ -2288,7 +2418,6 @@ public class BattleSystem : MonoBehaviour
                     dialogueText.text = "The attack is successful!";
                     yield return new WaitForSeconds(2f);
 
-                    //This checks to see if the Enemy is Dead or has HP remaining
                     if (isDead)
                     {
                         RemoveCurrentEnemy();
@@ -2321,6 +2450,14 @@ public class BattleSystem : MonoBehaviour
                     MCMagic.value = GameManager.MCMagic;
                     MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
+                    if (!isDead)
+                    {
+                        enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                    }
+                    if (isDead)
+                    {
+                        enemyAnim[WhoToAttack].SetBool("isDead", true);
+                    }
                     isDead = enemyUnit[enemyUnitSelected].BombardaUltima(MC.MCSpell18Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
 
@@ -2362,6 +2499,7 @@ public class BattleSystem : MonoBehaviour
                     }
                     NextTurn();
 
+
                 }
             }
 
@@ -2383,6 +2521,14 @@ public class BattleSystem : MonoBehaviour
                     MCMagic.value = GameManager.MCMagic;
                     MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
+                    if (!isDead)
+                    {
+                        enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                    }
+                    if (isDead)
+                    {
+                        enemyAnim[WhoToAttack].SetBool("isDead", true);
+                    }
                     isDead = enemyUnit[enemyUnitSelected].MinusSanaCoetus(MC.MCSpell19Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
 
@@ -2424,6 +2570,7 @@ public class BattleSystem : MonoBehaviour
                     }
                     NextTurn();
 
+
                 }
             }
 
@@ -2445,6 +2592,14 @@ public class BattleSystem : MonoBehaviour
                     MCMagic.value = GameManager.MCMagic;
                     MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
+                    if (!isDead)
+                    {
+                        enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                    }
+                    if (isDead)
+                    {
+                        enemyAnim[WhoToAttack].SetBool("isDead", true);
+                    }
                     isDead = enemyUnit[enemyUnitSelected].ChorusPedes(MC.MCSpell20Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
 
@@ -2486,6 +2641,7 @@ public class BattleSystem : MonoBehaviour
                     }
                     NextTurn();
 
+
                 }
             }
 
@@ -2507,6 +2663,14 @@ public class BattleSystem : MonoBehaviour
                     MCMagic.value = GameManager.MCMagic;
                     MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
+                    if (!isDead)
+                    {
+                        enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                    }
+                    if (isDead)
+                    {
+                        enemyAnim[WhoToAttack].SetBool("isDead", true);
+                    }
                     isDead = enemyUnit[enemyUnitSelected].CriticaFocus(MC.MCSpell21Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
 
@@ -2548,6 +2712,7 @@ public class BattleSystem : MonoBehaviour
                     }
                     NextTurn();
 
+
                 }
             }
 
@@ -2569,6 +2734,14 @@ public class BattleSystem : MonoBehaviour
                     MCMagic.value = GameManager.MCMagic;
                     MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
+                    if (!isDead)
+                    {
+                        enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                    }
+                    if (isDead)
+                    {
+                        enemyAnim[WhoToAttack].SetBool("isDead", true);
+                    }
                     isDead = enemyUnit[enemyUnitSelected].Diffindo(MC.MCSpell22Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
 
@@ -2610,6 +2783,7 @@ public class BattleSystem : MonoBehaviour
                     }
                     NextTurn();
 
+
                 }
             }
 
@@ -2631,6 +2805,14 @@ public class BattleSystem : MonoBehaviour
                     MCMagic.value = GameManager.MCMagic;
                     MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
+                    if (!isDead)
+                    {
+                        enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                    }
+                    if (isDead)
+                    {
+                        enemyAnim[WhoToAttack].SetBool("isDead", true);
+                    }
                     isDead = enemyUnit[enemyUnitSelected].DiffindoMaxima(MC.MCSpell23Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
 
@@ -2672,6 +2854,7 @@ public class BattleSystem : MonoBehaviour
                     }
                     NextTurn();
 
+
                 }
             }
 
@@ -2702,6 +2885,14 @@ public class BattleSystem : MonoBehaviour
                 RhysMagic.value = GameManager.RhysMagic;
                 RhysAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
+                if (!isDead)
+                {
+                    enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                }
+                if (isDead)
+                {
+                    enemyAnim[WhoToAttack].SetBool("isDead", true);
+                }
                 isDead = enemyUnit[enemyUnitSelected].RhysFlippendo(Rhys.RhysSpell2Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
 
@@ -2721,7 +2912,6 @@ public class BattleSystem : MonoBehaviour
                 dialogueText.text = "The attack is successful!";
                 yield return new WaitForSeconds(2f);
 
-                //This checks to see if the Enemy is Dead or has HP remaining
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
@@ -2732,6 +2922,7 @@ public class BattleSystem : MonoBehaviour
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
+
             }
         }
 
@@ -2752,6 +2943,14 @@ public class BattleSystem : MonoBehaviour
                 RhysMagic.value = GameManager.RhysMagic;
                 RhysAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
+                if (!isDead)
+                {
+                    enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                }
+                if (isDead)
+                {
+                    enemyAnim[WhoToAttack].SetBool("isDead", true);
+                }
                 isDead = enemyUnit[enemyUnitSelected].RhysCorpusLiget(Rhys.RhysSpell3Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
 
@@ -2782,6 +2981,7 @@ public class BattleSystem : MonoBehaviour
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
+
             }
         }
 
@@ -2802,6 +3002,14 @@ public class BattleSystem : MonoBehaviour
                 RhysMagic.value = GameManager.RhysMagic;
                 RhysAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
+                if (!isDead)
+                {
+                    enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                }
+                if (isDead)
+                {
+                    enemyAnim[WhoToAttack].SetBool("isDead", true);
+                }
                 isDead = enemyUnit[enemyUnitSelected].RhysMothsDeorsum(Rhys.RhysSpell4Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
 
@@ -2821,7 +3029,6 @@ public class BattleSystem : MonoBehaviour
                 dialogueText.text = "The attack is successful!";
                 yield return new WaitForSeconds(2f);
 
-                //This checks to see if the Enemy is Dead or has HP remaining
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
@@ -2832,6 +3039,7 @@ public class BattleSystem : MonoBehaviour
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
+
             }
         }
 
@@ -2852,6 +3060,14 @@ public class BattleSystem : MonoBehaviour
                 RhysMagic.value = GameManager.RhysMagic;
                 RhysAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
+                if (!isDead)
+                {
+                    enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                }
+                if (isDead)
+                {
+                    enemyAnim[WhoToAttack].SetBool("isDead", true);
+                }
                 isDead = enemyUnit[enemyUnitSelected].RhysMothsInteriore(Rhys.RhysSpell5Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
 
@@ -2871,7 +3087,6 @@ public class BattleSystem : MonoBehaviour
                 dialogueText.text = "The attack is successful!";
                 yield return new WaitForSeconds(2f);
 
-                //This checks to see if the Enemy is Dead or has HP remaining
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
@@ -2882,6 +3097,7 @@ public class BattleSystem : MonoBehaviour
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
+
             }
         }
 
@@ -2902,6 +3118,14 @@ public class BattleSystem : MonoBehaviour
                 RhysMagic.value = GameManager.RhysMagic;
                 RhysAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
+                if (!isDead)
+                {
+                    enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                }
+                if (isDead)
+                {
+                    enemyAnim[WhoToAttack].SetBool("isDead", true);
+                }
                 isDead = enemyUnit[enemyUnitSelected].RhysInternumCombustione(Rhys.RhysSpell6Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
 
@@ -2932,6 +3156,7 @@ public class BattleSystem : MonoBehaviour
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
+
             }
         }
 
@@ -2952,6 +3177,14 @@ public class BattleSystem : MonoBehaviour
                 RhysMagic.value = GameManager.RhysMagic;
                 RhysAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
+                if (!isDead)
+                {
+                    enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                }
+                if (isDead)
+                {
+                    enemyAnim[WhoToAttack].SetBool("isDead", true);
+                }
                 isDead = enemyUnit[enemyUnitSelected].RhysTenuiLabor(Rhys.RhysSpell7Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
 
@@ -2982,6 +3215,7 @@ public class BattleSystem : MonoBehaviour
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
+
             }
         }
 
@@ -3002,6 +3236,14 @@ public class BattleSystem : MonoBehaviour
                 RhysMagic.value = GameManager.RhysMagic;
                 RhysAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
+                if (!isDead)
+                {
+                    enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                }
+                if (isDead)
+                {
+                    enemyAnim[WhoToAttack].SetBool("isDead", true);
+                }
                 isDead = enemyUnit[enemyUnitSelected].RhysFlippendo(Rhys.RhysSpell8Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
 
@@ -3032,6 +3274,7 @@ public class BattleSystem : MonoBehaviour
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
+
             }
         }
 
@@ -3052,6 +3295,14 @@ public class BattleSystem : MonoBehaviour
                 RhysMagic.value = GameManager.RhysMagic;
                 RhysAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
+                if (!isDead)
+                {
+                    enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                }
+                if (isDead)
+                {
+                    enemyAnim[WhoToAttack].SetBool("isDead", true);
+                }
                 isDead = enemyUnit[enemyUnitSelected].RhysFumos(Rhys.RhysSpell9Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
 
@@ -3071,7 +3322,6 @@ public class BattleSystem : MonoBehaviour
                 dialogueText.text = "The attack is successful!";
                 yield return new WaitForSeconds(2f);
 
-                //This checks to see if the Enemy is Dead or has HP remaining
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
@@ -3082,6 +3332,7 @@ public class BattleSystem : MonoBehaviour
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
+
             }
         }
 
@@ -3102,6 +3353,14 @@ public class BattleSystem : MonoBehaviour
                 RhysMagic.value = GameManager.RhysMagic;
                 RhysAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
+                if (!isDead)
+                {
+                    enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                }
+                if (isDead)
+                {
+                    enemyAnim[WhoToAttack].SetBool("isDead", true);
+                }
                 isDead = enemyUnit[enemyUnitSelected].RhysWaddiwasi(Rhys.RhysSpell10Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
 
@@ -3132,6 +3391,7 @@ public class BattleSystem : MonoBehaviour
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
+
             }
         }
 
@@ -3152,6 +3412,14 @@ public class BattleSystem : MonoBehaviour
                 RhysMagic.value = GameManager.RhysMagic;
                 RhysAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
+                if (!isDead)
+                {
+                    enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                }
+                if (isDead)
+                {
+                    enemyAnim[WhoToAttack].SetBool("isDead", true);
+                }
                 isDead = enemyUnit[enemyUnitSelected].RhysConjurePugione(Rhys.RhysSpell11Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
 
@@ -3182,6 +3450,7 @@ public class BattleSystem : MonoBehaviour
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
+
             }
         }
 
@@ -3202,6 +3471,14 @@ public class BattleSystem : MonoBehaviour
                 RhysMagic.value = GameManager.RhysMagic;
                 RhysAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
+                if (!isDead)
+                {
+                    enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                }
+                if (isDead)
+                {
+                    enemyAnim[WhoToAttack].SetBool("isDead", true);
+                }
                 isDead = enemyUnit[enemyUnitSelected].RhysImpetumSubsisto(Rhys.RhysSpell12Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
 
@@ -3232,6 +3509,7 @@ public class BattleSystem : MonoBehaviour
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
+
             }
         }
 
@@ -3252,6 +3530,14 @@ public class BattleSystem : MonoBehaviour
                 RhysMagic.value = GameManager.RhysMagic;
                 RhysAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
+                if (!isDead)
+                {
+                    enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                }
+                if (isDead)
+                {
+                    enemyAnim[WhoToAttack].SetBool("isDead", true);
+                }
                 isDead = enemyUnit[enemyUnitSelected].RhysIraUolueris(Rhys.RhysSpell13Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
 
@@ -3271,7 +3557,6 @@ public class BattleSystem : MonoBehaviour
                 dialogueText.text = "The attack is successful!";
                 yield return new WaitForSeconds(2f);
 
-                //This checks to see if the Enemy is Dead or has HP remaining
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
@@ -3282,6 +3567,7 @@ public class BattleSystem : MonoBehaviour
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
+
             }
         }
     }
@@ -3309,6 +3595,14 @@ public class BattleSystem : MonoBehaviour
                 JameelMagic.value = GameManager.JameelMagic;
                 JameelAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
+                if (!isDead)
+                {
+                    enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                }
+                if (isDead)
+                {
+                    enemyAnim[WhoToAttack].SetBool("isDead", true);
+                }
                 isDead = enemyUnit[enemyUnitSelected].JameelFlippendo(Jameel.JameelSpell2Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
                 jameelFlippendo = false;
@@ -3339,6 +3633,7 @@ public class BattleSystem : MonoBehaviour
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
+
             }
         }
 
@@ -3359,6 +3654,14 @@ public class BattleSystem : MonoBehaviour
                 JameelMagic.value = GameManager.JameelMagic;
                 JameelAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
+                if (!isDead)
+                {
+                    enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                }
+                if (isDead)
+                {
+                    enemyAnim[WhoToAttack].SetBool("isDead", true);
+                }
                 isDead = enemyUnit[enemyUnitSelected].JameelFlippendo(Jameel.JameelSpell3Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
                 jameelFlippendo = false;
@@ -3378,7 +3681,6 @@ public class BattleSystem : MonoBehaviour
                 dialogueText.text = "The attack is successful!";
                 yield return new WaitForSeconds(2f);
 
-                //This checks to see if the Enemy is Dead or has HP remaining
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
@@ -3389,6 +3691,7 @@ public class BattleSystem : MonoBehaviour
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
+
             }
         }
 
@@ -3409,6 +3712,14 @@ public class BattleSystem : MonoBehaviour
                 JameelMagic.value = GameManager.JameelMagic;
                 JameelAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
+                if (!isDead)
+                {
+                    enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                }
+                if (isDead)
+                {
+                    enemyAnim[WhoToAttack].SetBool("isDead", true);
+                }
                 isDead = enemyUnit[enemyUnitSelected].JameelFlippendo(Jameel.JameelSpell4Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
                 jameelFlippendo = false;
@@ -3439,6 +3750,8 @@ public class BattleSystem : MonoBehaviour
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
+
+
             }
         }
 
@@ -3459,6 +3772,14 @@ public class BattleSystem : MonoBehaviour
                 JameelMagic.value = GameManager.JameelMagic;
                 JameelAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
+                if (!isDead)
+                {
+                    enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                }
+                if (isDead)
+                {
+                    enemyAnim[WhoToAttack].SetBool("isDead", true);
+                }
                 isDead = enemyUnit[enemyUnitSelected].JameelFlippendo(Jameel.JameelSpell5Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
                 jameelFlippendo = false;
@@ -3489,6 +3810,8 @@ public class BattleSystem : MonoBehaviour
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
+
+
             }
         }
 
@@ -3509,6 +3832,14 @@ public class BattleSystem : MonoBehaviour
                 JameelMagic.value = GameManager.JameelMagic;
                 JameelAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
+                if (!isDead)
+                {
+                    enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                }
+                if (isDead)
+                {
+                    enemyAnim[WhoToAttack].SetBool("isDead", true);
+                }
                 isDead = enemyUnit[enemyUnitSelected].JameelFlippendo(Jameel.JameelSpell6Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
                 jameelFlippendo = false;
@@ -3528,7 +3859,6 @@ public class BattleSystem : MonoBehaviour
                 dialogueText.text = "The attack is successful!";
                 yield return new WaitForSeconds(2f);
 
-                //This checks to see if the Enemy is Dead or has HP remaining
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
@@ -3539,6 +3869,8 @@ public class BattleSystem : MonoBehaviour
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
+
+
             }
         }
 
@@ -3559,6 +3891,14 @@ public class BattleSystem : MonoBehaviour
                 JameelMagic.value = GameManager.JameelMagic;
                 JameelAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
+                if (!isDead)
+                {
+                    enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                }
+                if (isDead)
+                {
+                    enemyAnim[WhoToAttack].SetBool("isDead", true);
+                }
                 isDead = enemyUnit[enemyUnitSelected].JameelFlippendo(Jameel.JameelSpell7Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
                 jameelFlippendo = false;
@@ -3578,7 +3918,6 @@ public class BattleSystem : MonoBehaviour
                 dialogueText.text = "The attack is successful!";
                 yield return new WaitForSeconds(2f);
 
-                //This checks to see if the Enemy is Dead or has HP remaining
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
@@ -3589,6 +3928,8 @@ public class BattleSystem : MonoBehaviour
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
+
+
             }
         }
 
@@ -3609,6 +3950,14 @@ public class BattleSystem : MonoBehaviour
                 JameelMagic.value = GameManager.JameelMagic;
                 JameelAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
+                if (!isDead)
+                {
+                    enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                }
+                if (isDead)
+                {
+                    enemyAnim[WhoToAttack].SetBool("isDead", true);
+                }
                 isDead = enemyUnit[enemyUnitSelected].JameelFlippendo(Jameel.JameelSpell8Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
                 jameelFlippendo = false;
@@ -3639,6 +3988,8 @@ public class BattleSystem : MonoBehaviour
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
+
+
             }
         }
 
@@ -3659,6 +4010,14 @@ public class BattleSystem : MonoBehaviour
                 JameelMagic.value = GameManager.JameelMagic;
                 JameelAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
+                if (!isDead)
+                {
+                    enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                }
+                if (isDead)
+                {
+                    enemyAnim[WhoToAttack].SetBool("isDead", true);
+                }
                 isDead = enemyUnit[enemyUnitSelected].JameelFlippendo(Jameel.JameelSpell9Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
                 jameelFlippendo = false;
@@ -3678,7 +4037,6 @@ public class BattleSystem : MonoBehaviour
                 dialogueText.text = "The attack is successful!";
                 yield return new WaitForSeconds(2f);
 
-                //This checks to see if the Enemy is Dead or has HP remaining
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
@@ -3689,6 +4047,8 @@ public class BattleSystem : MonoBehaviour
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
+
+
             }
         }
 
@@ -3709,6 +4069,14 @@ public class BattleSystem : MonoBehaviour
                 JameelMagic.value = GameManager.JameelMagic;
                 JameelAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
+                if (!isDead)
+                {
+                    enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                }
+                if (isDead)
+                {
+                    enemyAnim[WhoToAttack].SetBool("isDead", true);
+                }
                 isDead = enemyUnit[enemyUnitSelected].JameelFlippendo(Jameel.JameelSpell10Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
                 jameelFlippendo = false;
@@ -3728,7 +4096,6 @@ public class BattleSystem : MonoBehaviour
                 dialogueText.text = "The attack is successful!";
                 yield return new WaitForSeconds(2f);
 
-                //This checks to see if the Enemy is Dead or has HP remaining
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
@@ -3739,6 +4106,8 @@ public class BattleSystem : MonoBehaviour
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
+
+
             }
         }
 
@@ -3759,6 +4128,14 @@ public class BattleSystem : MonoBehaviour
                 JameelMagic.value = GameManager.JameelMagic;
                 JameelAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
+                if (!isDead)
+                {
+                    enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                }
+                if (isDead)
+                {
+                    enemyAnim[WhoToAttack].SetBool("isDead", true);
+                }
                 isDead = enemyUnit[enemyUnitSelected].JameelFlippendo(Jameel.JameelSpell11Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
                 jameelFlippendo = false;
@@ -3778,7 +4155,6 @@ public class BattleSystem : MonoBehaviour
                 dialogueText.text = "The attack is successful!";
                 yield return new WaitForSeconds(2f);
 
-                //This checks to see if the Enemy is Dead or has HP remaining
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
@@ -3789,6 +4165,8 @@ public class BattleSystem : MonoBehaviour
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
+
+
             }
         }
 
@@ -3809,6 +4187,14 @@ public class BattleSystem : MonoBehaviour
                 JameelMagic.value = GameManager.JameelMagic;
                 JameelAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
+                if (!isDead)
+                {
+                    enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                }
+                if (isDead)
+                {
+                    enemyAnim[WhoToAttack].SetBool("isDead", true);
+                }
                 isDead = enemyUnit[enemyUnitSelected].JameelFlippendo(Jameel.JameelSpell12Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
                 jameelFlippendo = false;
@@ -3839,6 +4225,8 @@ public class BattleSystem : MonoBehaviour
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
+
+
             }
         }
 
@@ -3859,6 +4247,14 @@ public class BattleSystem : MonoBehaviour
                 JameelMagic.value = GameManager.JameelMagic;
                 JameelAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
+                if (!isDead)
+                {
+                    enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                }
+                if (isDead)
+                {
+                    enemyAnim[WhoToAttack].SetBool("isDead", true);
+                }
                 isDead = enemyUnit[enemyUnitSelected].JameelFlippendo(Jameel.JameelSpell13Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
                 jameelFlippendo = false;
@@ -3889,6 +4285,8 @@ public class BattleSystem : MonoBehaviour
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
+
+
             }
         }
 
@@ -3909,6 +4307,14 @@ public class BattleSystem : MonoBehaviour
                 JameelMagic.value = GameManager.JameelMagic;
                 JameelAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
+                if (!isDead)
+                {
+                    enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                }
+                if (isDead)
+                {
+                    enemyAnim[WhoToAttack].SetBool("isDead", true);
+                }
                 isDead = enemyUnit[enemyUnitSelected].JameelFlippendo(Jameel.JameelSpell14Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
                 jameelFlippendo = false;
@@ -3939,6 +4345,8 @@ public class BattleSystem : MonoBehaviour
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
+
+
             }
         }
 
@@ -3959,6 +4367,14 @@ public class BattleSystem : MonoBehaviour
                 JameelMagic.value = GameManager.JameelMagic;
                 JameelAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
+                if (!isDead)
+                {
+                    enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                }
+                if (isDead)
+                {
+                    enemyAnim[WhoToAttack].SetBool("isDead", true);
+                }
                 isDead = enemyUnit[enemyUnitSelected].JameelFlippendo(Jameel.JameelSpell15Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
                 jameelFlippendo = false;
@@ -3989,6 +4405,8 @@ public class BattleSystem : MonoBehaviour
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
+
+
             }
         }
     }
@@ -4015,6 +4433,14 @@ public class BattleSystem : MonoBehaviour
                 HarperMagic.value = GameManager.HarperMagic;
                 HarperAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
+                if (!isDead)
+                {
+                    enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                }
+                if (isDead)
+                {
+                    enemyAnim[WhoToAttack].SetBool("isDead", true);
+                }
                 isDead = enemyUnit[enemyUnitSelected].HarperFlippendo(Harper.HarperSpell2Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
                 harperThrowRock = false;
@@ -4037,12 +4463,15 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
+
                     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
+
+
             }
         }
 
@@ -4063,6 +4492,14 @@ public class BattleSystem : MonoBehaviour
                 HarperMagic.value = GameManager.HarperMagic;
                 HarperAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
+                if (!isDead)
+                {
+                    enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                }
+                if (isDead)
+                {
+                    enemyAnim[WhoToAttack].SetBool("isDead", true);
+                }
                 isDead = enemyUnit[enemyUnitSelected].HarperDeflectorImpetum(Harper.HarperSpell3Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
                 harperThrowRock = false;
@@ -4085,12 +4522,15 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
+
                     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
+
+
             }
         }
 
@@ -4112,6 +4552,14 @@ public class BattleSystem : MonoBehaviour
                 HarperMagic.value = GameManager.HarperMagic;
                 HarperAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
+                if (!isDead)
+                {
+                    enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                }
+                if (isDead)
+                {
+                    enemyAnim[WhoToAttack].SetBool("isDead", true);
+                }
                 isDead = enemyUnit[enemyUnitSelected].HarperMinorFortitudinem(Harper.HarperSpell4Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
                 harperThrowRock = false;
@@ -4134,12 +4582,15 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
+
                     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
+
+
             }
         }
 
@@ -4160,6 +4611,14 @@ public class BattleSystem : MonoBehaviour
                 HarperMagic.value = GameManager.HarperMagic;
                 HarperAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
+                if (!isDead)
+                {
+                    enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                }
+                if (isDead)
+                {
+                    enemyAnim[WhoToAttack].SetBool("isDead", true);
+                }
                 isDead = enemyUnit[enemyUnitSelected].HarperMoserateFortitudinem(Harper.HarperSpell5Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
                 harperThrowRock = false;
@@ -4182,12 +4641,15 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
+
                     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
+
+
             }
         }
 
@@ -4208,6 +4670,14 @@ public class BattleSystem : MonoBehaviour
                 HarperMagic.value = GameManager.HarperMagic;
                 HarperAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
+                if (!isDead)
+                {
+                    enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                }
+                if (isDead)
+                {
+                    enemyAnim[WhoToAttack].SetBool("isDead", true);
+                }
                 isDead = enemyUnit[enemyUnitSelected].HarperMaiorFortitudinem(Harper.HarperSpell6Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
                 harperThrowRock = false;
@@ -4230,12 +4700,15 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
+
                     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
+
+
             }
         }
 
@@ -4256,6 +4729,14 @@ public class BattleSystem : MonoBehaviour
                 HarperMagic.value = GameManager.HarperMagic;
                 HarperAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
+                if (!isDead)
+                {
+                    enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                }
+                if (isDead)
+                {
+                    enemyAnim[WhoToAttack].SetBool("isDead", true);
+                }
                 isDead = enemyUnit[enemyUnitSelected].HarperInternumCombustione(Harper.HarperSpell7Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
                 harperThrowRock = false;
@@ -4278,12 +4759,15 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
+
                     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
+
+
             }
         }
 
@@ -4304,6 +4788,14 @@ public class BattleSystem : MonoBehaviour
                 HarperMagic.value = GameManager.HarperMagic;
                 HarperAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
+                if (!isDead)
+                {
+                    enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                }
+                if (isDead)
+                {
+                    enemyAnim[WhoToAttack].SetBool("isDead", true);
+                }
                 isDead = enemyUnit[enemyUnitSelected].HarperLaedo(Harper.HarperSpell8Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
                 harperThrowRock = false;
@@ -4326,12 +4818,15 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
+
                     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
+
+
             }
         }
 
@@ -4352,6 +4847,14 @@ public class BattleSystem : MonoBehaviour
                 HarperMagic.value = GameManager.HarperMagic;
                 HarperAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
+                if (!isDead)
+                {
+                    enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                }
+                if (isDead)
+                {
+                    enemyAnim[WhoToAttack].SetBool("isDead", true);
+                }
                 isDead = enemyUnit[enemyUnitSelected].HarperLociPraesidium(Harper.HarperSpell9Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
                 harperThrowRock = false;
@@ -4374,12 +4877,15 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
+
                     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
+
+
             }
         }
 
@@ -4400,6 +4906,14 @@ public class BattleSystem : MonoBehaviour
                 HarperMagic.value = GameManager.HarperMagic;
                 HarperAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
+                if (!isDead)
+                {
+                    enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                }
+                if (isDead)
+                {
+                    enemyAnim[WhoToAttack].SetBool("isDead", true);
+                }
                 isDead = enemyUnit[enemyUnitSelected].HarperPerturbo(Harper.HarperSpell10Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
                 harperThrowRock = false;
@@ -4422,12 +4936,15 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
+
                     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
+
+
             }
         }
 
@@ -4448,6 +4965,14 @@ public class BattleSystem : MonoBehaviour
                 HarperMagic.value = GameManager.HarperMagic;
                 HarperAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
+                if (!isDead)
+                {
+                    enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                }
+                if (isDead)
+                {
+                    enemyAnim[WhoToAttack].SetBool("isDead", true);
+                }
                 isDead = enemyUnit[enemyUnitSelected].HarperPulsateSunt(Harper.HarperSpell11Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
                 harperThrowRock = false;
@@ -4470,12 +4995,15 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
+
                     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
+
+
             }
         }
 
@@ -4496,6 +5024,14 @@ public class BattleSystem : MonoBehaviour
                 HarperMagic.value = GameManager.HarperMagic;
                 HarperAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
+                if (!isDead)
+                {
+                    enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                }
+                if (isDead)
+                {
+                    enemyAnim[WhoToAttack].SetBool("isDead", true);
+                }
                 isDead = enemyUnit[enemyUnitSelected].HarperFumes(Harper.HarperSpell12Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
                 harperThrowRock = false;
@@ -4518,12 +5054,15 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
+
                     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
+
+
             }
         }
 
@@ -4544,6 +5083,14 @@ public class BattleSystem : MonoBehaviour
                 HarperMagic.value = GameManager.HarperMagic;
                 HarperAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
+                if (!isDead)
+                {
+                    enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                }
+                if (isDead)
+                {
+                    enemyAnim[WhoToAttack].SetBool("isDead", true);
+                }
                 isDead = enemyUnit[enemyUnitSelected].HarperDiminuendo(Harper.HarperSpell13Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
                 harperThrowRock = false;
@@ -4566,12 +5113,15 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
+
                     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
+
+
             }
         }
     }
@@ -4600,6 +5150,14 @@ public class BattleSystem : MonoBehaviour
                 SkyeMagic.value = GameManager.SkyeMagic;
                 SkyeAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
+                if (!isDead)
+                {
+                    enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                }
+                if (isDead)
+                {
+                    enemyAnim[WhoToAttack].SetBool("isDead", true);
+                }
                 isDead = enemyUnit[enemyUnitSelected].SkyeFlippendo(Skye.SkyeSpell2Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
                 skyeThrowRock = false;
@@ -4620,12 +5178,15 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
+
                     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
+
+
             }
         }
 
@@ -4646,6 +5207,14 @@ public class BattleSystem : MonoBehaviour
                 SkyeMagic.value = GameManager.SkyeMagic;
                 SkyeAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
+                if (!isDead)
+                {
+                    enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                }
+                if (isDead)
+                {
+                    enemyAnim[WhoToAttack].SetBool("isDead", true);
+                }
                 isDead = enemyUnit[enemyUnitSelected].SkyeMinorCura(Skye.SkyeSpell3Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
                 skyeThrowRock = false;
@@ -4666,12 +5235,15 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
+
                     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
+
+
             }
         }
 
@@ -4692,6 +5264,14 @@ public class BattleSystem : MonoBehaviour
                 SkyeMagic.value = GameManager.SkyeMagic;
                 SkyeAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
+                if (!isDead)
+                {
+                    enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                }
+                if (isDead)
+                {
+                    enemyAnim[WhoToAttack].SetBool("isDead", true);
+                }
                 isDead = enemyUnit[enemyUnitSelected].SkyeMaiorCura(Skye.SkyeSpell4Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
                 skyeThrowRock = false;
@@ -4712,12 +5292,15 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
+
                     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
+
+
             }
         }
 
@@ -4738,6 +5321,14 @@ public class BattleSystem : MonoBehaviour
                 SkyeMagic.value = GameManager.SkyeMagic;
                 SkyeAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
+                if (!isDead)
+                {
+                    enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                }
+                if (isDead)
+                {
+                    enemyAnim[WhoToAttack].SetBool("isDead", true);
+                }
                 isDead = enemyUnit[enemyUnitSelected].SkyeSenaPlenaPotion(Skye.SkyeSpell5Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
                 skyeThrowRock = false;
@@ -4758,12 +5349,15 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
+
                     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
+
+
             }
         }
 
@@ -4784,6 +5378,14 @@ public class BattleSystem : MonoBehaviour
                 SkyeMagic.value = GameManager.SkyeMagic;
                 SkyeAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
+                if (!isDead)
+                {
+                    enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                }
+                if (isDead)
+                {
+                    enemyAnim[WhoToAttack].SetBool("isDead", true);
+                }
                 isDead = enemyUnit[enemyUnitSelected].SkyeReanimatePotion(Skye.SkyeSpell6Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
                 skyeThrowRock = false;
@@ -4804,12 +5406,15 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
+
                     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
+
+
             }
         }
 
@@ -4830,6 +5435,14 @@ public class BattleSystem : MonoBehaviour
                 SkyeMagic.value = GameManager.SkyeMagic;
                 SkyeAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
+                if (!isDead)
+                {
+                    enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                }
+                if (isDead)
+                {
+                    enemyAnim[WhoToAttack].SetBool("isDead", true);
+                }
                 isDead = enemyUnit[enemyUnitSelected].SkyeSanaCoetusPotion(Skye.SkyeSpell7Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
                 skyeThrowRock = false;
@@ -4850,12 +5463,15 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
+
                     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
+
+
             }
         }
 
@@ -4876,6 +5492,14 @@ public class BattleSystem : MonoBehaviour
                 SkyeMagic.value = GameManager.SkyeMagic;
                 SkyeAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
+                if (!isDead)
+                {
+                    enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                }
+                if (isDead)
+                {
+                    enemyAnim[WhoToAttack].SetBool("isDead", true);
+                }
                 isDead = enemyUnit[enemyUnitSelected].SkyeAntidoteToCommonPoisons(Skye.SkyeSpell8Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
                 skyeThrowRock = false;
@@ -4896,12 +5520,15 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
+
                     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
+
+
             }
         }
 
@@ -4922,6 +5549,14 @@ public class BattleSystem : MonoBehaviour
                 SkyeMagic.value = GameManager.SkyeMagic;
                 SkyeAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
+                if (!isDead)
+                {
+                    enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                }
+                if (isDead)
+                {
+                    enemyAnim[WhoToAttack].SetBool("isDead", true);
+                }
                 isDead = enemyUnit[enemyUnitSelected].SkyeStrengthPotion(Skye.SkyeSpell9Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
                 skyeThrowRock = false;
@@ -4942,12 +5577,15 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
+
                     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
+
+
             }
         }
 
@@ -4968,6 +5606,14 @@ public class BattleSystem : MonoBehaviour
                 SkyeMagic.value = GameManager.SkyeMagic;
                 SkyeAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
+                if (!isDead)
+                {
+                    enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                }
+                if (isDead)
+                {
+                    enemyAnim[WhoToAttack].SetBool("isDead", true);
+                }
                 isDead = enemyUnit[enemyUnitSelected].SkyeConfundus(Skye.SkyeSpell10Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
                 skyeThrowRock = false;
@@ -4988,12 +5634,15 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
+
                     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
+
+
             }
         }
 
@@ -5014,6 +5663,14 @@ public class BattleSystem : MonoBehaviour
                 SkyeMagic.value = GameManager.SkyeMagic;
                 SkyeAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
+                if (!isDead)
+                {
+                    enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                }
+                if (isDead)
+                {
+                    enemyAnim[WhoToAttack].SetBool("isDead", true);
+                }
                 isDead = enemyUnit[enemyUnitSelected].SkyeIraUolueris(Skye.SkyeSpell11Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
                 skyeThrowRock = false;
@@ -5034,12 +5691,15 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
+
                     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
+
+
             }
         }
     }
@@ -5068,6 +5728,14 @@ public class BattleSystem : MonoBehaviour
                 SullivanMagic.value = GameManager.SullivanMagic;
                 SullivanAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
+                if (!isDead)
+                {
+                    enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                }
+                if (isDead)
+                {
+                    enemyAnim[WhoToAttack].SetBool("isDead", true);
+                }
                 isDead = enemyUnit[enemyUnitSelected].SullivanFlippendo(Sullivan.SullivanSpell2Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
                 sullivanRockThrow = false;
@@ -5090,12 +5758,15 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
+
                     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
+
+
             }
         }
 
@@ -5116,6 +5787,14 @@ public class BattleSystem : MonoBehaviour
                 SullivanMagic.value = GameManager.SullivanMagic;
                 SullivanAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
+                if (!isDead)
+                {
+                    enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                }
+                if (isDead)
+                {
+                    enemyAnim[WhoToAttack].SetBool("isDead", true);
+                }
                 isDead = enemyUnit[enemyUnitSelected].SullivanExiling(Sullivan.SullivanSpell3Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
                 sullivanRockThrow = false;
@@ -5138,12 +5817,15 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
+
                     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
+
+
             }
         }
 
@@ -5164,6 +5846,14 @@ public class BattleSystem : MonoBehaviour
                 SullivanMagic.value = GameManager.SullivanMagic;
                 SullivanAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
+                if (!isDead)
+                {
+                    enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                }
+                if (isDead)
+                {
+                    enemyAnim[WhoToAttack].SetBool("isDead", true);
+                }
                 isDead = enemyUnit[enemyUnitSelected].SullivanProtego(Sullivan.SullivanSpell4Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
                 sullivanRockThrow = false;
@@ -5186,12 +5876,15 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
+
                     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
+
+
             }
         }
 
@@ -5212,6 +5905,14 @@ public class BattleSystem : MonoBehaviour
                 SullivanMagic.value = GameManager.SullivanMagic;
                 SullivanAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
+                if (!isDead)
+                {
+                    enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                }
+                if (isDead)
+                {
+                    enemyAnim[WhoToAttack].SetBool("isDead", true);
+                }
                 isDead = enemyUnit[enemyUnitSelected].SullivanIgnusMagnum(Sullivan.SullivanSpell5Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
                 sullivanRockThrow = false;
@@ -5234,12 +5935,15 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
+
                     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
+
+
             }
         }
 
@@ -5260,6 +5964,14 @@ public class BattleSystem : MonoBehaviour
                 SullivanMagic.value = GameManager.SullivanMagic;
                 SullivanAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
+                if (!isDead)
+                {
+                    enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                }
+                if (isDead)
+                {
+                    enemyAnim[WhoToAttack].SetBool("isDead", true);
+                }
                 isDead = enemyUnit[enemyUnitSelected].SullivanSagittaLecit(Sullivan.SullivanSpell6Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
                 sullivanRockThrow = false;
@@ -5282,12 +5994,15 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
+
                     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
+
+
             }
         }
 
@@ -5308,6 +6023,14 @@ public class BattleSystem : MonoBehaviour
                 SullivanMagic.value = GameManager.SullivanMagic;
                 SullivanAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
+                if (!isDead)
+                {
+                    enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                }
+                if (isDead)
+                {
+                    enemyAnim[WhoToAttack].SetBool("isDead", true);
+                }
                 isDead = enemyUnit[enemyUnitSelected].SullivanMonstrumSella(Sullivan.SullivanSpell7Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
                 sullivanRockThrow = false;
@@ -5330,12 +6053,15 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
+
                     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
+
+
             }
         }
 
@@ -5356,6 +6082,14 @@ public class BattleSystem : MonoBehaviour
                 SullivanMagic.value = GameManager.SullivanMagic;
                 SullivanAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
+                if (!isDead)
+                {
+                    enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                }
+                if (isDead)
+                {
+                    enemyAnim[WhoToAttack].SetBool("isDead", true);
+                }
                 isDead = enemyUnit[enemyUnitSelected].SullivanIncarcerous(Sullivan.SullivanSpell8Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
                 sullivanRockThrow = false;
@@ -5378,12 +6112,15 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
+
                     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
+
+
             }
         }
 
@@ -5404,6 +6141,14 @@ public class BattleSystem : MonoBehaviour
                 SullivanMagic.value = GameManager.SullivanMagic;
                 SullivanAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
+                if (!isDead)
+                {
+                    enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                }
+                if (isDead)
+                {
+                    enemyAnim[WhoToAttack].SetBool("isDead", true);
+                }
                 isDead = enemyUnit[enemyUnitSelected].SullivanUltimumChao(Sullivan.SullivanSpell9Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
                 sullivanRockThrow = false;
@@ -5426,12 +6171,15 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
+
                     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
+
+
             }
         }
 
@@ -5452,6 +6200,14 @@ public class BattleSystem : MonoBehaviour
                 SullivanMagic.value = GameManager.SullivanMagic;
                 SullivanAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
+                if (!isDead)
+                {
+                    enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                }
+                if (isDead)
+                {
+                    enemyAnim[WhoToAttack].SetBool("isDead", true);
+                }
                 isDead = enemyUnit[enemyUnitSelected].SullivanMutareStatum(Sullivan.SullivanSpell10Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
                 sullivanRockThrow = false;
@@ -5474,12 +6230,15 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
+
                     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
+
+
             }
         }
 
@@ -5500,6 +6259,14 @@ public class BattleSystem : MonoBehaviour
                 SullivanMagic.value = GameManager.SullivanMagic;
                 SullivanAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
+                if (!isDead)
+                {
+                    enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                }
+                if (isDead)
+                {
+                    enemyAnim[WhoToAttack].SetBool("isDead", true);
+                }
                 isDead = enemyUnit[enemyUnitSelected].SullivanEngorgement(Sullivan.SullivanSpell11Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
                 sullivanRockThrow = false;
@@ -5522,12 +6289,15 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
+
                     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
+
+
             }
         }
 
@@ -5548,6 +6318,14 @@ public class BattleSystem : MonoBehaviour
                 SullivanMagic.value = GameManager.SullivanMagic;
                 SullivanAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
+                if (!isDead)
+                {
+                    enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                }
+                if (isDead)
+                {
+                    enemyAnim[WhoToAttack].SetBool("isDead", true);
+                }
                 isDead = enemyUnit[enemyUnitSelected].SullivanStatuamLocomotion(Sullivan.SullivanSpell12Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
                 sullivanRockThrow = false;
@@ -5570,12 +6348,15 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
+
                     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
+
+
             }
         }
 
@@ -5596,6 +6377,14 @@ public class BattleSystem : MonoBehaviour
                 SullivanMagic.value = GameManager.SullivanMagic;
                 SullivanAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
+                if (!isDead)
+                {
+                    enemyAnim[WhoToAttack].Play("Armature|TakeDamage");
+                }
+                if (isDead)
+                {
+                    enemyAnim[WhoToAttack].SetBool("isDead", true);
+                }
                 isDead = enemyUnit[enemyUnitSelected].SullivanCriticaFocus(Sullivan.SullivanSpell13Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
 
                 sullivanRockThrow = false;
@@ -5618,12 +6407,17 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
+
                     totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
                     enemyCount--;
 
                     enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+
                 }
+
                 NextTurn();
+
+
             }
         }
     }
@@ -5903,7 +6697,7 @@ public class BattleSystem : MonoBehaviour
 
             yield return new WaitForSeconds(1.5f);
 
-            //enemyAnim[enemyIndex].Play("Armature|Swing");
+            enemyAnim[enemyIndex].Play("Armature|Attack");
         
             yield return new WaitForSeconds(.5f);
 
