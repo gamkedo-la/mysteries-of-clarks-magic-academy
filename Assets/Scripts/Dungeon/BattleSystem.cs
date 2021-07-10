@@ -581,6 +581,7 @@ public class BattleSystem : MonoBehaviour
 
         yield return new WaitForSeconds(3f);
         cutsceneCam.SetActive(false);
+        Camera.SetActive(true);
 
         if (GameManager.enemyAttackedPlayer)
         {
