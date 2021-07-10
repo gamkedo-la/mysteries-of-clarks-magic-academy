@@ -27,6 +27,9 @@ public class Unit : MonoBehaviour
     public int minMoney;
     public int maxMoney;
 
+    public GameObject DADAParticle,TransParticle,CharmsParticle,PotionsParticle;
+    bool isDADA, isTrans, isCharms, isPotions;
+
     //Build these and rename these later based on the player
     #region MC Attacks
     public int MCSpell1Damage;
@@ -324,6 +327,7 @@ public class Unit : MonoBehaviour
 
     public bool Flippendo(int dmg)
     {
+        isCharms = true;
         Health.value = currentHP / maxHP;
 
         currentHP -= dmg;
@@ -333,7 +337,7 @@ public class Unit : MonoBehaviour
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
-
+        WandActive();
         if (currentHP <= 0)
         {
             //  anim.Play("Armature|Downed");
@@ -345,9 +349,11 @@ public class Unit : MonoBehaviour
             //  anim.Play("Armature|Damage");
             return false;
         }
+
     }
     public bool PulsateSunt(int dmg)
     {
+        isCharms = true;
         Health.value = currentHP / maxHP;
 
         currentHP -= dmg;
@@ -357,7 +363,7 @@ public class Unit : MonoBehaviour
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
-
+        WandActive();
         if (currentHP <= 0)
         {
             //  anim.Play("Armature|Downed");
@@ -369,9 +375,11 @@ public class Unit : MonoBehaviour
             //  anim.Play("Armature|Damage");
             return false;
         }
+
     }
     public bool Stupefaciunt(int dmg)
     {
+        isDADA = true;
         Health.value = currentHP / maxHP;
 
         currentHP -= dmg;
@@ -381,7 +389,7 @@ public class Unit : MonoBehaviour
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
-
+        WandActive();
         if (currentHP <= 0)
         {
             //  anim.Play("Armature|Downed");
@@ -393,9 +401,11 @@ public class Unit : MonoBehaviour
             //  anim.Play("Armature|Damage");
             return false;
         }
+
     }
     public bool Incendio(int dmg)
     {
+        isDADA = true;
         Health.value = currentHP / maxHP;
 
         currentHP -= dmg;
@@ -405,7 +415,7 @@ public class Unit : MonoBehaviour
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
-
+        WandActive();
         if (currentHP <= 0)
         {
             //  anim.Play("Armature|Downed");
@@ -417,9 +427,11 @@ public class Unit : MonoBehaviour
             //  anim.Play("Armature|Damage");
             return false;
         }
+
     }
     public bool IncendioMaxima(int dmg)
     {
+        isDADA = true;
         Health.value = currentHP / maxHP;
 
         currentHP -= dmg;
@@ -429,7 +441,7 @@ public class Unit : MonoBehaviour
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
-
+        WandActive();
         if (currentHP <= 0)
         {
             //  anim.Play("Armature|Downed");
@@ -441,9 +453,11 @@ public class Unit : MonoBehaviour
             //  anim.Play("Armature|Damage");
             return false;
         }
+
     }
     public bool Avis(int dmg)
     {
+        isTrans = true;
         Health.value = currentHP / maxHP;
 
         currentHP -= dmg;
@@ -453,7 +467,7 @@ public class Unit : MonoBehaviour
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
-
+        WandActive();
         if (currentHP <= 0)
         {
             //  anim.Play("Armature|Downed");
@@ -465,9 +479,11 @@ public class Unit : MonoBehaviour
             //  anim.Play("Armature|Damage");
             return false;
         }
+
     }
     public bool AvisMaxima(int dmg)
     {
+        isTrans = true;
         Health.value = currentHP / maxHP;
 
         currentHP -= dmg;
@@ -477,7 +493,7 @@ public class Unit : MonoBehaviour
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
-
+        WandActive();
         if (currentHP <= 0)
         {
             //  anim.Play("Armature|Downed");
@@ -489,9 +505,11 @@ public class Unit : MonoBehaviour
             //  anim.Play("Armature|Damage");
             return false;
         }
+
     }
     public bool Glacius(int dmg)
     {
+        isCharms = true;
         Health.value = currentHP / maxHP;
 
         currentHP -= dmg;
@@ -501,7 +519,7 @@ public class Unit : MonoBehaviour
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
-
+        WandActive();
         if (currentHP <= 0)
         {
             //  anim.Play("Armature|Downed");
@@ -513,9 +531,11 @@ public class Unit : MonoBehaviour
             //  anim.Play("Armature|Damage");
             return false;
         }
+
     }
     public bool MinorCura(int dmg)
     {
+        isPotions = true;
         Health.value = currentHP / maxHP;
 
         currentHP -= dmg;
@@ -525,7 +545,7 @@ public class Unit : MonoBehaviour
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
-
+        WandActive();
         if (currentHP <= 0)
         {
             //  anim.Play("Armature|Downed");
@@ -537,9 +557,11 @@ public class Unit : MonoBehaviour
             //  anim.Play("Armature|Damage");
             return false;
         }
+
     }
     public bool ImpetumSubsisto(int dmg)
     {
+        isDADA = true;
         Health.value = currentHP / maxHP;
 
         currentHP -= dmg;
@@ -549,7 +571,7 @@ public class Unit : MonoBehaviour
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
-
+        WandActive();
         if (currentHP <= 0)
         {
             //  anim.Play("Armature|Downed");
@@ -561,9 +583,11 @@ public class Unit : MonoBehaviour
             //  anim.Play("Armature|Damage");
             return false;
         }
+
     }
     public bool Augamenti(int dmg)
     {
+        isCharms = true;
         Health.value = currentHP / maxHP;
 
         currentHP -= dmg;
@@ -573,7 +597,7 @@ public class Unit : MonoBehaviour
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
-
+        WandActive();
         if (currentHP <= 0)
         {
             //  anim.Play("Armature|Downed");
@@ -585,9 +609,11 @@ public class Unit : MonoBehaviour
             //  anim.Play("Armature|Damage");
             return false;
         }
+
     }
     public bool MothsDeorsum(int dmg)
     {
+        isDADA = true;
         Health.value = currentHP / maxHP;
 
         currentHP -= dmg;
@@ -597,7 +623,7 @@ public class Unit : MonoBehaviour
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
-
+        WandActive();
         if (currentHP <= 0)
         {
             //  anim.Play("Armature|Downed");
@@ -609,9 +635,11 @@ public class Unit : MonoBehaviour
             //  anim.Play("Armature|Damage");
             return false;
         }
+
     }
     public bool MothsInteriore(int dmg)
     {
+        isDADA = true;
         Health.value = currentHP / maxHP;
 
         currentHP -= dmg;
@@ -621,7 +649,7 @@ public class Unit : MonoBehaviour
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
-
+        WandActive();
         if (currentHP <= 0)
         {
             //  anim.Play("Armature|Downed");
@@ -633,9 +661,11 @@ public class Unit : MonoBehaviour
             //  anim.Play("Armature|Damage");
             return false;
         }
+
     }
     public bool InternaCombustione(int dmg)
     {
+        isCharms = true;
         Health.value = currentHP / maxHP;
 
         currentHP -= dmg;
@@ -645,7 +675,7 @@ public class Unit : MonoBehaviour
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
-
+        WandActive();
         if (currentHP <= 0)
         {
             //  anim.Play("Armature|Downed");
@@ -657,9 +687,11 @@ public class Unit : MonoBehaviour
             //  anim.Play("Armature|Damage");
             return false;
         }
+
     }
     public bool Bombarda(int dmg)
     {
+        isTrans = true;
         Health.value = currentHP / maxHP;
 
         currentHP -= dmg;
@@ -669,7 +701,7 @@ public class Unit : MonoBehaviour
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
-
+        WandActive();
         if (currentHP <= 0)
         {
             //  anim.Play("Armature|Downed");
@@ -681,9 +713,11 @@ public class Unit : MonoBehaviour
             //  anim.Play("Armature|Damage");
             return false;
         }
+
     }
     public bool BombardaMaxima(int dmg)
     {
+        isTrans = true;
         Health.value = currentHP / maxHP;
 
         currentHP -= dmg;
@@ -693,7 +727,7 @@ public class Unit : MonoBehaviour
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
-
+        WandActive();
         if (currentHP <= 0)
         {
             //  anim.Play("Armature|Downed");
@@ -705,9 +739,11 @@ public class Unit : MonoBehaviour
             //  anim.Play("Armature|Damage");
             return false;
         }
+
     }
     public bool BombardaUltima(int dmg)
     {
+        isTrans = true;
         Health.value = currentHP / maxHP;
 
         currentHP -= dmg;
@@ -718,7 +754,7 @@ public class Unit : MonoBehaviour
         Health.value = (currentHP / maxHP);
 
         StartCoroutine(ClearText());
-
+        WandActive();
         if (currentHP <= 0)
         {
             //  anim.Play("Armature|Downed");
@@ -730,9 +766,11 @@ public class Unit : MonoBehaviour
             //  anim.Play("Armature|Damage");
             return false;
         }
+
     }
     public bool MinusSanaCoetus(int dmg)
     {
+        isPotions = true;
         Health.value = currentHP / maxHP;
 
         currentHP -= dmg;
@@ -742,7 +780,7 @@ public class Unit : MonoBehaviour
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
-
+        WandActive();
         if (currentHP <= 0)
         {
             //  anim.Play("Armature|Downed");
@@ -754,10 +792,12 @@ public class Unit : MonoBehaviour
             //  anim.Play("Armature|Damage");
             return false;
         }
+
     }
 
     public bool ChorusPedes(int dmg)
     {
+        isCharms = true;
         Health.value = currentHP / maxHP;
 
         currentHP -= dmg;
@@ -767,7 +807,7 @@ public class Unit : MonoBehaviour
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
-
+        WandActive();
         if (currentHP <= 0)
         {
             //  anim.Play("Armature|Downed");
@@ -779,9 +819,11 @@ public class Unit : MonoBehaviour
             //  anim.Play("Armature|Damage");
             return false;
         }
+
     }
     public bool CriticaFocus(int dmg)
     {
+        isTrans = true;
         Health.value = currentHP / maxHP;
 
         currentHP -= dmg;
@@ -791,7 +833,7 @@ public class Unit : MonoBehaviour
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
-
+        WandActive();
         if (currentHP <= 0)
         {
             //  anim.Play("Armature|Downed");
@@ -803,9 +845,11 @@ public class Unit : MonoBehaviour
             //  anim.Play("Armature|Damage");
             return false;
         }
+
     }
     public bool Diffindo(int dmg)
     {
+        isCharms = true;
         Health.value = currentHP / maxHP;
 
         currentHP -= dmg;
@@ -815,7 +859,7 @@ public class Unit : MonoBehaviour
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
-
+        WandActive();
         if (currentHP <= 0)
         {
             //  anim.Play("Armature|Downed");
@@ -827,9 +871,11 @@ public class Unit : MonoBehaviour
             //  anim.Play("Armature|Damage");
             return false;
         }
+
     }
     public bool DiffindoMaxima(int dmg)
     {
+        isCharms = true;
         Health.value = currentHP / maxHP;
 
         currentHP -= dmg;
@@ -839,7 +885,7 @@ public class Unit : MonoBehaviour
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
-
+        WandActive();
         if (currentHP <= 0)
         {
             //  anim.Play("Armature|Downed");
@@ -851,6 +897,7 @@ public class Unit : MonoBehaviour
             //  anim.Play("Armature|Damage");
             return false;
         }
+
     }
 
 
@@ -2486,5 +2533,41 @@ public class Unit : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         DamageUI.text = "".ToString();
+    }
+
+    void WandActive()
+    {
+       /* if (isDADA)
+        {
+            DADAParticle.SetActive(true);
+        }
+        else if (isCharms)
+        {
+            CharmsParticle.SetActive(true);
+        }
+        else if (isTrans)
+        {
+            TransParticle.SetActive(true);
+        }
+        else if (isPotions)
+        {
+            PotionsParticle.SetActive(true);
+        }
+
+        isDADA = false;
+        isCharms = false;
+        isTrans = false;
+        isPotions = false;
+       */
+        WandClear();
+    }
+
+    IEnumerator WandClear()
+    {
+        yield return new WaitForSeconds(2f);
+        DADAParticle.SetActive(false);
+        CharmsParticle.SetActive(false);
+        TransParticle.SetActive(false);
+        PotionsParticle.SetActive(false);
     }
 }
