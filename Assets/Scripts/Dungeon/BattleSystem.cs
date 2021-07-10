@@ -55,6 +55,7 @@ public class BattleSystem : MonoBehaviour
     public GameObject SullivanConfirmMenu;
 
     public GameObject EndingMenu;
+    public GameObject Inventory;
     #endregion
 
     //The Player's Party
@@ -871,6 +872,10 @@ public class BattleSystem : MonoBehaviour
     #endregion
 
     #region ItemManagement
+
+    public void ToggleInventory () {
+        Inventory.SetActive(!Inventory.activeInHierarchy);
+    }
     /*
      * 
      *Initially Borrowed from Strike Out - will adjust later
