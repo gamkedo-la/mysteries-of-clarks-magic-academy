@@ -18,9 +18,14 @@ public class Dungeon6Generator : MonoBehaviour {
 	public float minRadius = 3f;
 	public float maxRadius = 7f;
 
+	public GameObject enemy;
+	public GameObject tresure;
+	public GameObject exit;
+	public GameObject player;
+
+
 	private int currentLevel;
 	private float[,] densityMap;
-	private int mapSize = 30;
 	private List<Vector2> clearings;
 	private List<GameObject> currentRooms = new List<GameObject>();
 
@@ -44,8 +49,7 @@ public class Dungeon6Generator : MonoBehaviour {
 		}
 		Instance = this;
 		DontDestroyOnLoad(gameObject);
-
-
+		
 		currentLevel = GameManager.currentFloor;
 
 		FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Floor", currentLevel % 5);
@@ -65,43 +69,65 @@ public class Dungeon6Generator : MonoBehaviour {
 			}
 		}
 
+		//Generate clearings
 		Dictionary<Vector2, float> clearings = new Dictionary<Vector2, float>();
-		clearings.Add(new Vector2(mapSize/2, mapSize/2), Random.Range(minRadius, maxRadius));
-		Vector2 lastPos = new Vector2(mapSize/2, mapSize/2);
+		clearings.Add(new Vector2(0f, 0f), Random.Range(minRadius, maxRadius));
+		Vector2 lastPos = new Vector2(0f, 0f);
 		float lastRadius = clearings[lastPos];
-		for (int i = 0; i <= currentLevel+3; i++) {
+		for (int i = 0; i <= currentLevel; i++) {
 			Vector2 newPos = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
 			float newRadius = Random.Range(minRadius, maxRadius);
 			float placementMultiplier = (lastRadius + newRadius) * Random.Range(0.5f, 0.75f);
 			newPos *= placementMultiplier;
 			newPos = newPos + lastPos;
 			clearings.Add(newPos, newRadius);
+			lastPos = newPos;
+			lastRadius = newRadius;
 		}
 
-		//////////////////////////////////////////////////////////////////////////////////////////
-		densityMap = new float[mapSize, mapSize];
-		for (int x = 0; x < mapSize; x++) {
-			for (int y = 0; y < mapSize; y++) {
+		//Calculate map size
+		int farLeft = 0;
+		int farRight = 0;
+		int farTop = 0;
+		int farBottom = 0;
+		foreach (KeyValuePair<Vector2, float> room in clearings) {
+			int testLeft = (int)Mathf.Abs(Mathf.Min(room.Key.x - room.Value));
+			int testRight = (int)Mathf.Max(room.Key.x + room.Value);
+			int testTop = (int)Mathf.Abs(Mathf.Min(room.Key.y - room.Value));
+			int testBottom = (int)Mathf.Max(room.Key.y + room.Value);
+
+			if (farLeft < testLeft) farLeft = testLeft;
+			if (farRight < testRight) farRight = testRight;
+			if (farTop < testTop) farTop = testTop;
+			if (farBottom < testBottom) farBottom = testBottom;
+		}
+		int mapWidth = farLeft + farRight + 4;
+		int mapHeight = farTop + farBottom + 4;
+		int offsetX = farLeft+2;
+		int offsetY = farTop+2;
+		Debug.Log(currentLevel + " " + mapWidth + "x" + mapHeight + " " + clearings.Count);
+		
+		//Create empty density map
+		densityMap = new float[mapWidth, mapHeight];
+		for (int x = 0; x < mapWidth; x++) {
+			for (int y = 0; y < mapHeight; y++) {
 				densityMap[x, y] = 2f;
 			}
 		}
 
-
 		//room generation
 		foreach (KeyValuePair<Vector2, float> room in clearings) {
-			for (int x = 0; x < mapSize; x++) {
-				for (int y = 0; y < mapSize; y++) {
-					float newValue = densityFalloffCurve.Evaluate(Vector2.Distance(new Vector2((int)x, (int)y), room.Key) / room.Value);
+			for (int x = 0; x < mapWidth; x++) {
+				for (int y = 0; y < mapHeight; y++) {
+					float newValue = densityFalloffCurve.Evaluate(Vector2.Distance(new Vector2((int)x-offsetX, (int)y-offsetY), room.Key) / room.Value);
 					if (newValue >= 0f && newValue <= 1f && newValue < densityMap[x, y]) densityMap[x, y] = newValue;
 				}
 			}
 		}
 
-
-
 		//Generate level from density map
-		for (int x = 0; x < mapSize; x++) {
-			for (int y = 0; y < mapSize; y++) {
+		for (int x = 0; x < mapWidth; x++) {
+			for (int y = 0; y < mapHeight; y++) {
 				float density = densityMap[x, y];
 				if (density == 2f) continue;
 
@@ -113,20 +139,40 @@ public class Dungeon6Generator : MonoBehaviour {
 						newTileIndex = i;
 					}
 				}
-
-				GameObject newTile = Instantiate(tiles[newTileIndex].tilePrefabs[Random.Range(0, tiles[newTileIndex].tilePrefabs.Count)], new Vector3(x*gridScale, 0, y*gridScale), Quaternion.identity, gameObject.transform);
+				
+				GameObject newTile = Instantiate(tiles[newTileIndex].tilePrefabs[Random.Range(0, tiles[newTileIndex].tilePrefabs.Count)], new Vector3((x-offsetX)*gridScale+offsetX, 0, (y-offsetY)*gridScale), Quaternion.identity, gameObject.transform);
+				newTile.transform.Rotate(0f, Random.Range(0,5)*90, 0f);
 				newTile.SetActive(true);
 				currentRooms.Add(newTile);
 			}
 		}
-		
+
+		//Spawn Exit
+		GameObject theExit = null;
+		if (exit.scene.rootCount == 0) {
+			theExit = Instantiate(exit);
+		} else {
+			theExit = exit;
+		}
+		Vector3 newPosition = new Vector3(lastPos.x, 0f, lastPos.y);
+		theExit.transform.position = newPosition * gridScale;
+
+		//Spawn Player
+		GameObject thePlayer = null;
+		if (exit.scene.rootCount == 0) {
+			thePlayer = Instantiate(player);
+		} else {
+			thePlayer = player;
+		}
+		thePlayer.transform.position = new Vector3(0f, 1.4f, 0f); ;
+
 
 	}
 
 	public void AdvanceFloor() {
 		GameManager.currentFloor++;
 		if (GameManager.currentFloor > GameManager.DungeonFloorCount[dungeonNumber]) GameManager.DungeonFloorCount[dungeonNumber] = GameManager.currentFloor;
-		Destroy(this);
+		Destroy(gameObject);
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
 }
