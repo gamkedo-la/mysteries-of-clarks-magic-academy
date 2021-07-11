@@ -18,6 +18,12 @@ public class Dungeon6Generator : MonoBehaviour {
 	public float minRadius = 3f;
 	public float maxRadius = 7f;
 
+	public GameObject enemy;
+	public GameObject tresure;
+	public GameObject exit;
+	public GameObject player;
+
+
 	private int currentLevel;
 	private float[,] densityMap;
 	private int mapSize = 30;
@@ -47,6 +53,7 @@ public class Dungeon6Generator : MonoBehaviour {
 
 
 		currentLevel = GameManager.currentFloor;
+		Debug.Log(GameManager.currentFloor);
 
 		FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Floor", currentLevel % 5);
 
@@ -69,13 +76,15 @@ public class Dungeon6Generator : MonoBehaviour {
 		clearings.Add(new Vector2(mapSize/2, mapSize/2), Random.Range(minRadius, maxRadius));
 		Vector2 lastPos = new Vector2(mapSize/2, mapSize/2);
 		float lastRadius = clearings[lastPos];
-		for (int i = 0; i <= currentLevel+3; i++) {
+		for (int i = 0; i <= currentLevel+2; i++) {
 			Vector2 newPos = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
 			float newRadius = Random.Range(minRadius, maxRadius);
 			float placementMultiplier = (lastRadius + newRadius) * Random.Range(0.5f, 0.75f);
 			newPos *= placementMultiplier;
 			newPos = newPos + lastPos;
 			clearings.Add(newPos, newRadius);
+			lastPos = newPos;
+			lastRadius = newRadius;
 		}
 
 		//////////////////////////////////////////////////////////////////////////////////////////
@@ -119,14 +128,34 @@ public class Dungeon6Generator : MonoBehaviour {
 				currentRooms.Add(newTile);
 			}
 		}
-		
+
+		//Spawn Exit
+		GameObject theExit = null;
+		if (exit.scene.rootCount == 0) {
+			theExit = Instantiate(exit);
+		} else {
+			theExit = exit;
+		}
+		Vector3 newPosition = new Vector3(lastPos.x, 0f, lastPos.y);
+		theExit.transform.position = newPosition * gridScale;
+
+		//Spawn Player
+		GameObject thePlayer = null;
+		if (exit.scene.rootCount == 0) {
+			thePlayer = Instantiate(player);
+		} else {
+			thePlayer = player;
+		}
+		newPosition = new Vector3(mapSize/2, 0.09333f, mapSize/2);
+		thePlayer.transform.position = newPosition * gridScale;
+
 
 	}
 
 	public void AdvanceFloor() {
 		GameManager.currentFloor++;
 		if (GameManager.currentFloor > GameManager.DungeonFloorCount[dungeonNumber]) GameManager.DungeonFloorCount[dungeonNumber] = GameManager.currentFloor;
-		Destroy(this);
+		Destroy(gameObject);
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
 }
