@@ -1320,6 +1320,70 @@ public class BattleSystem : MonoBehaviour
         //Modify the Spell1Damage and Spell1Magic used based on the player, the spell, and their level 
         if (state == BattleState.MCTURN)
         {
+            if (throwRock)
+            {
+                if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+                {
+                    throwRock = false;
+                    dialogueText.text = "Enemy is knocked out, select another target.";
+                    yield return new WaitForSeconds(1f);
+                    dialogueText.text = "Select someone to attack!";
+                    MCMenu.SetActive(true);
+                    MCSpells.SetActive(false);
+                }
+                else
+                {
+                    GameManager.MCMagic -= MC.MCSpell1MagicConsumed;
+                    MCMagic.value = GameManager.MCMagic;
+                    MCAnim.Play("Armature|Attack");
+                    yield return new WaitForSeconds(2f);
+
+
+                    isDead = enemyUnit[enemyUnitSelected].ThrowRock(MC.MCSpell1Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+                    EnemyAnim();
+                    throwRock = false;
+                    flippendo = false;
+                    pulsateSunt = false;
+                    stupefaciunt = false;
+                    incendio = false;
+                    incendioMaxima = false;
+                    avis = false;
+                    avisMaxima = false;
+                    glacies = false;
+                    minorCura = false;
+                    impetumSubsisto = false;
+                    augamenti = false;
+                    mothsDeorsum = false;
+                    mothsInteriore = false;
+                    internaCombustione = false;
+                    bombarda = false;
+                    bombardaMaxima = false;
+                    bombardaUltima = false;
+                    minusSanaCoetus = false;
+                    chorusPedes = false;
+                    criticaFocus = false;
+                    diffindo = false;
+                    diffindoMaxima = false;
+                    dialogueText.text = "The attack is successful!";
+                    yield return new WaitForSeconds(2f);
+
+                    //This checks to see if the Enemy is Dead or has HP remaining
+                    if (isDead)
+                    {
+                        RemoveCurrentEnemy();
+
+                        totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                        enemyCount--;
+
+                        enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                    }
+                    NextTurn();
+
+
+                }
+            }
+
             if (flippendo)
             {
                 if (enemyUnit[enemyUnitSelected].currentHP <= 0)
@@ -2753,6 +2817,61 @@ public class BattleSystem : MonoBehaviour
     {
         //To Do Damage Enemy
         yield return new WaitForSeconds(1f);
+
+        if (rhysThrowRock)
+        {
+            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            {
+                throwRock = false;
+                dialogueText.text = "Enemy is knocked out, select another target.";
+                yield return new WaitForSeconds(1f);
+                dialogueText.text = "Select someone to attack!";
+                RhysMenu.SetActive(true);
+                RhysSpells.SetActive(false);
+            }
+            else
+            {
+                GameManager.RhysMagic -= Rhys.RhysSpell1MagicConsumed;
+                RhysMagic.value = GameManager.RhysMagic;
+                RhysAnim.Play("Armature|Attack");
+                yield return new WaitForSeconds(2f);
+
+
+                isDead = enemyUnit[enemyUnitSelected].ThrowRock(Rhys.RhysSpell1Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+                EnemyAnim();
+                rhysThrowRock = false;
+                rhysFlippendo = false;
+                rhysCorpusLiget = false;
+                rhysMothsDeorsum = false;
+                rhysMothInteriore = false;
+                rhysInternumCombustione = false;
+                rhysTenuiLabor = false;
+                rhysIncendio = false;
+                rhysFumos = false;
+                rhysWaddiwasi = false;
+                rhysConjurePugione = false;
+                rhysImpetumSubsisto = false;
+                rhysUolueris = false;
+                dialogueText.text = "The attack is successful!";
+                yield return new WaitForSeconds(2f);
+
+                //This checks to see if the Enemy is Dead or has HP remaining
+                if (isDead)
+                {
+                    RemoveCurrentEnemy();
+
+                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    enemyCount--;
+
+                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                }
+                NextTurn();
+
+
+            }
+        }
+
         if (rhysFlippendo)
         {
             if (enemyUnit[enemyUnitSelected].currentHP <= 0)
@@ -3403,6 +3522,62 @@ public class BattleSystem : MonoBehaviour
     {
         //To Do Damage Enemy
         yield return new WaitForSeconds(1f);
+
+        if (jameelThrowRock)
+        {
+            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            {
+                throwRock = false;
+                dialogueText.text = "Enemy is knocked out, select another target.";
+                yield return new WaitForSeconds(1f);
+                dialogueText.text = "Select someone to attack!";
+                JameelMenu.SetActive(true);
+                JameelSpells.SetActive(false);
+            }
+            else
+            {
+                GameManager.JameelMagic -= Jameel.JameelSpell1MagicConsumed;
+                JameelMagic.value = GameManager.JameelMagic;
+                JameelAnim.Play("Armature|Attack");
+                yield return new WaitForSeconds(2f);
+
+
+                isDead = enemyUnit[enemyUnitSelected].ThrowRock(Jameel.JameelSpell1Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+                EnemyAnim();
+                jameelThrowRock = false;
+                jameelFlippendo = false;
+                jameelMinusSanaCoetus = false;
+                jameelMinorCura = false;
+                jameelMaiorCura = false;
+                jameelPartumNix = false;
+                jameelHiemsImpetus = false;
+                jameelBombarda = false;
+                jameelBombardaMaxima = false;
+                jameelBombardaUltima = false;
+                jameelRepellere = false;
+                jameelDiffindo = false;
+                jameelDiffindoMaxima = false;
+                jameelImpetumSubsisto = false;
+                jameelChorusPedes = false;
+                dialogueText.text = "The attack is successful!";
+                yield return new WaitForSeconds(2f);
+
+                //This checks to see if the Enemy is Dead or has HP remaining
+                if (isDead)
+                {
+                    RemoveCurrentEnemy();
+
+                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    enemyCount--;
+
+                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                }
+                NextTurn();
+
+
+            }
+        }
         if (jameelFlippendo)
         {
             if (enemyUnit[enemyUnitSelected].currentHP <= 0)
@@ -4170,6 +4345,60 @@ public class BattleSystem : MonoBehaviour
     {
         //To Do Damage Enemy
         yield return new WaitForSeconds(1f);
+
+        if (harperThrowRock)
+        {
+            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            {
+                throwRock = false;
+                dialogueText.text = "Enemy is knocked out, select another target.";
+                yield return new WaitForSeconds(1f);
+                dialogueText.text = "Select someone to attack!";
+                HarperMenu.SetActive(true);
+                HarperSpells.SetActive(false);
+            }
+            else
+            {
+                GameManager.HarperMagic -= Harper.HarperSpell1MagicConsumed;
+                HarperMagic.value = GameManager.HarperMagic;
+                HarperAnim.Play("Armature|Attack");
+                yield return new WaitForSeconds(2f);
+
+
+                isDead = enemyUnit[enemyUnitSelected].ThrowRock(Harper.HarperSpell1Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+                EnemyAnim();
+                harperThrowRock = false;
+                harperFlippendo = false;
+                harperDeflectorImpetum = false;
+                harperMinorFortitudinem = false;
+                harperMoserateFortitudinem = false;
+                harperMaiorFortitudinem = false;
+                harperInternumCombustione = false;
+                harperLaedo = false;
+                harperLociPraesidium = false;
+                harperPerturbo = false;
+                harperPulsateSunt = false;
+                harperFumes = false;
+                harperDiminuendo = false;
+                dialogueText.text = "The attack is successful!";
+                yield return new WaitForSeconds(2f);
+
+                //This checks to see if the Enemy is Dead or has HP remaining
+                if (isDead)
+                {
+                    RemoveCurrentEnemy();
+
+                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    enemyCount--;
+
+                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                }
+                NextTurn();
+
+
+            }
+        }
         if (harperFlippendo)
         {
             if (enemyUnit[enemyUnitSelected].currentHP <= 0)
@@ -4827,6 +5056,56 @@ public class BattleSystem : MonoBehaviour
     {
         //To Do Damage Enemy
         yield return new WaitForSeconds(1f);
+
+        if (skyeThrowRock)
+        {
+            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            {
+                throwRock = false;
+                dialogueText.text = "Enemy is knocked out, select another target.";
+                yield return new WaitForSeconds(1f);
+                dialogueText.text = "Select someone to attack!";
+                SkyeMenu.SetActive(true);
+                SkyeSpells.SetActive(false);
+            }
+            else
+            {
+                GameManager.SkyeMagic -= Skye.SkyeSpell1MagicConsumed;
+                SkyeMagic.value = GameManager.SkyeMagic;
+                SkyeAnim.Play("Armature|Attack");
+                yield return new WaitForSeconds(2f);
+
+
+                isDead = enemyUnit[enemyUnitSelected].ThrowRock(Skye.SkyeSpell1Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+                EnemyAnim();
+                skyeThrowRock = false;
+                skyeFlippendo = false;
+                skyeMinorCura = false;
+                skyeMaiorCura = false;
+                skyeSenaPlenaPotion = false;
+                skyeReanimatePotion = false;
+                skyeSanaCoetusPotion = false;
+                skyeAntidoteToCommonPoisons = false;
+                skyeStrengthPotion = false;
+                skyeConfundus = false;
+                skyeIraUolueris = false;
+                dialogueText.text = "The attack is successful!";
+                yield return new WaitForSeconds(2f);
+
+                //This checks to see if the Enemy is Dead or has HP remaining
+                if (isDead)
+                {
+                    RemoveCurrentEnemy();
+
+                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    enemyCount--;
+
+                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                }
+                NextTurn();
+            }
+        }
         if (skyeFlippendo)
         {
             if (enemyUnit[enemyUnitSelected].currentHP <= 0)
@@ -5338,6 +5617,59 @@ public class BattleSystem : MonoBehaviour
     {
         //To Do Damage Enemy
         yield return new WaitForSeconds(1f);
+
+        if (sullivanRockThrow)
+        {
+            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            {
+                throwRock = false;
+                dialogueText.text = "Enemy is knocked out, select another target.";
+                yield return new WaitForSeconds(1f);
+                dialogueText.text = "Select someone to attack!";
+                SullivanMenu.SetActive(true);
+                SullivanSpells.SetActive(false);
+            }
+            else
+            {
+                GameManager.SullivanMagic -= Sullivan.SullivanSpell1MagicConsumed;
+                SullivanMagic.value = GameManager.SullivanMagic;
+                SullivanAnim.Play("Armature|Attack");
+                yield return new WaitForSeconds(2f);
+
+
+                isDead = enemyUnit[enemyUnitSelected].ThrowRock(Sullivan.SullivanSpell1Damage); //This is the modifier for damage based on player level - add this when spells are determined //+ GameManager.StarterFast);
+
+                EnemyAnim();
+                sullivanRockThrow = false;
+                sullivanFlippendo = false;
+                sullivanExiling = false;
+                sullivanProtego = false;
+                sullivanIgnusMagnum = false;
+                sullivanSagittaIecit = false;
+                sullivanMonstrumSella = false;
+                sullivanIncarcerous = false;
+                sullivanUltimumChao = false;
+                sullivanMutareStatum = false;
+                sullivanEngorgement = false;
+                sullivanStatuamLocomotion = false;
+                sullivanCriticaFocus = false;
+                dialogueText.text = "The attack is successful!";
+                yield return new WaitForSeconds(2f);
+
+                //This checks to see if the Enemy is Dead or has HP remaining
+                if (isDead)
+                {
+                    RemoveCurrentEnemy();
+
+                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+                    enemyCount--;
+
+                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
+                }
+                NextTurn();
+            }
+        }
+
         if (sullivanFlippendo)
         {
             if (enemyUnit[enemyUnitSelected].currentHP <= 0)
@@ -6938,6 +7270,82 @@ public class BattleSystem : MonoBehaviour
     }
 
     #region Player Pitch Selection (opens up confirm menu)
+
+
+    public void RockThrow()
+    {
+        if (state == BattleState.MCTURN)
+        {
+            throwRock = true;
+
+            MCMenu.SetActive(true);
+            MCSpells.SetActive(false);
+            enemySelect = true;
+            MCConfirmMenu.SetActive(true);
+            MCSpells.SetActive(false);
+            MCMenu.SetActive(false);
+        }
+
+        if (state == BattleState.RHYSTURN)
+        {
+            rhysThrowRock = true;
+
+            RhysMenu.SetActive(true);
+            RhysSpells.SetActive(false);
+            enemySelect = true;
+            RhysConfirmMenu.SetActive(true);
+            RhysSpells.SetActive(false);
+            RhysMenu.SetActive(false);
+        }
+
+        if (state == BattleState.JAMEELTURN)
+        {
+            jameelThrowRock = true;
+
+            JameelMenu.SetActive(true);
+            JameelSpells.SetActive(false);
+            enemySelect = true;
+            JameelConfirmMenu.SetActive(true);
+            JameelSpells.SetActive(false);
+            JameelMenu.SetActive(false);
+        }
+
+        if (state == BattleState.HARPERTURN)
+        {
+            harperThrowRock = true;
+
+            HarperMenu.SetActive(true);
+            HarperSpells.SetActive(false);
+            enemySelect = true;
+            HarperConfirmMenu.SetActive(true);
+            HarperSpells.SetActive(false);
+            HarperMenu.SetActive(false);
+        }
+
+        if (state == BattleState.SKYETURN)
+        {
+            skyeThrowRock = true;
+
+            SkyeMenu.SetActive(true);
+            SkyeSpells.SetActive(false);
+            enemySelect = true;
+            SkyeConfirmMenu.SetActive(true);
+            SkyeSpells.SetActive(false);
+            SkyeMenu.SetActive(false);
+        }
+
+        if (state == BattleState.SULLIVANTURN)
+        {
+            sullivanRockThrow = true;
+
+            SullivanMenu.SetActive(true);
+            SullivanSpells.SetActive(false);
+            enemySelect = true;
+            SullivanConfirmMenu.SetActive(true);
+            SullivanSpells.SetActive(false);
+            SullivanMenu.SetActive(false);
+        }
+    }
 
     //Clean this up when you know what spells and who is casting what
     #region MC Attack UI Buttons
