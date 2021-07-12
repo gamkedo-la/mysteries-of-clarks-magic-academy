@@ -19,7 +19,7 @@ public class Dungeon6Generator : MonoBehaviour {
 	public float maxRadius = 7f;
 
 	public GameObject enemy;
-	public GameObject tresure;
+	public GameObject treasure;
 	public GameObject exit;
 	public GameObject player;
 
@@ -74,7 +74,7 @@ public class Dungeon6Generator : MonoBehaviour {
 		clearings.Add(new Vector2(0f, 0f), Random.Range(minRadius, maxRadius));
 		Vector2 lastPos = new Vector2(0f, 0f);
 		float lastRadius = clearings[lastPos];
-		for (int i = 0; i <= currentLevel; i++) {
+		for (int i = 0; i <= currentLevel+1; i++) {
 			Vector2 newPos = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
 			float newRadius = Random.Range(minRadius, maxRadius);
 			float placementMultiplier = (lastRadius + newRadius) * Random.Range(0.5f, 0.75f);
@@ -154,8 +154,16 @@ public class Dungeon6Generator : MonoBehaviour {
 		} else {
 			theExit = exit;
 		}
-		Vector3 newPosition = new Vector3(lastPos.x, 0f, lastPos.y);
+		Vector2 farthestClearing = new Vector2(0f, 0f);
+		foreach (KeyValuePair<Vector2, float> room in clearings) {
+			if (Vector2.Distance(room.Key, new Vector2(0f, 0f)) > Vector2.Distance(farthestClearing, new Vector2(0f, 0f))) {
+				farthestClearing = room.Key;
+			}
+		}
+		Vector3 newPosition = new Vector3(farthestClearing.x, 0f, farthestClearing.y);
 		theExit.transform.position = newPosition * gridScale;
+		theExit.transform.Rotate(0f, Random.Range(0f, 360f), 0f);
+		theExit.transform.parent = transform;
 
 		//Spawn Player
 		GameObject thePlayer = null;
@@ -164,7 +172,9 @@ public class Dungeon6Generator : MonoBehaviour {
 		} else {
 			thePlayer = player;
 		}
-		thePlayer.transform.position = new Vector3(0f, 1.4f, 0f); ;
+		thePlayer.transform.position = new Vector3(0f, 1.4f, 0f);
+		thePlayer.transform.Rotate(0f, Random.Range(0f, 360f), 0f);
+
 
 
 	}
