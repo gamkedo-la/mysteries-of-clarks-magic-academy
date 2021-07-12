@@ -18,6 +18,8 @@ public class Dungeon6Generator : MonoBehaviour {
 	public float minRadius = 3f;
 	public float maxRadius = 7f;
 
+	public float percentChanceToSpawnTreasure = 50f;
+
 	public GameObject enemy;
 	public GameObject treasure;
 	public GameObject exit;
@@ -175,6 +177,25 @@ public class Dungeon6Generator : MonoBehaviour {
 		thePlayer.transform.position = new Vector3(0f, 1.4f, 0f);
 		thePlayer.transform.Rotate(0f, Random.Range(0f, 360f), 0f);
 
+		//Spawn Treasure
+		foreach (KeyValuePair<Vector2, float> room in clearings) {
+			if (room.Key == new Vector2(0f, 0f)) continue;
+			if (room.Key == farthestClearing) continue;
+
+			if (percentChanceToSpawnTreasure >= Random.Range(0f, 100f)) {
+				GameObject theTreasure = null;
+				if (exit.scene.rootCount == 0) {
+					theTreasure = Instantiate(treasure);
+				} else {
+					theTreasure = treasure;
+				}
+				newPosition = new Vector3(room.Key.x, 0f, room.Key.y);
+				theTreasure.transform.position = newPosition * gridScale;
+				theTreasure.transform.Rotate(0f, Random.Range(0f, 360f), 0f);
+
+				break;
+			}
+		}
 
 
 	}
