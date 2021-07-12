@@ -10,5 +10,7 @@ public class FriendshipDialogue
     public string[] sentences;
 
     public GameObject[] cameras;
-    public Animator[] animationsToPlay;
+    public Animation[] animationsToPlay;
+
+    public bool[] isCalledOn;
 }

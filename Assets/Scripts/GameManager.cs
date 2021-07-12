@@ -86,6 +86,22 @@ public class GameManager : MonoBehaviour
     public static int IntelligenceLevel, CharismaLevel, CourageLevel, ProficiencyLevel;
     public static Slider IntelligenceUI, CharismaUI, CourageUI, ProficiencyUI;
     //
+
+    //Friendship Levels
+    public static int RhysFriendship, JameelFriendship, HarperFriendship, SullivanFriendship, SkyeFriendship, GracieMayFriendship, AtornFriendship, ManrajFriendship, SpecterFriendship;
+    public GameObject CanvasForFriendship, CanvasForFriendshipBackground;
+    public GameObject RhysBackground, JameelBackground, SkyeBackground, HarperBackground, SullivanBackground, GracieMayBackground, AtornBackground, SpecterBackground, ManrajBackground;
+    public Image[] RhysFriendLevelUI;
+    public Image[] JameelFriendLevelUI;
+    public Image[] SkyeFriendLevelUI;
+    public Image[] HarperFriendLevelUI;
+    public Image[] SullivanFriendLevelUI;
+    public Image[] GracieMayFriendLevelUI;
+    public Image[] AtornFriendLevelUI;
+    public Image[] SpecterFriendLevelUI;
+    public Image[] ManrajFriendLevelUI;
+    //In a friendship conversation
+    public static bool RhysTalk, JameelTalk, HarperTalk, SullivanTalk, SkyeTalk, GracieMayTalk, AtornTalk, ManrajTalk, SpecterTalk;
     private void Awake()
     {
         if (instance == null)
@@ -145,8 +161,31 @@ public class GameManager : MonoBehaviour
         {
             Debug.LogError("The party contains more than 4 people");
         }
+        // Friendship Level
+        RhysFriendship = 5;
+        JameelFriendship = 0;
+        HarperFriendship = 0;
+        SullivanFriendship = 0;
+        SkyeFriendship = 0;
+        GracieMayFriendship = 0;
+        AtornFriendship = 0;
+        ManrajFriendship = 0;
+        SpecterFriendship = 0;
+        //
+        //Friendship in conversation
+        RhysTalk = false;
+        JameelTalk = false;
+        HarperTalk = false;
+        SullivanTalk = false;
+        SkyeTalk = false;
+        GracieMayTalk = false;
+        AtornTalk = false;
+        ManrajTalk = false;
+        SpecterTalk = false;
+        //
 
 
+        // Starting Experience Level
         MCTargetExp = 5;
         RhysTargetExp = 5;
         JameelTargetExp = 5;
@@ -264,17 +303,22 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        //Turn this off when done testing
         if (Input.GetKeyDown(KeyCode.C))
         {
             SceneManager.LoadScene("ClassroomDialogueTest");
         }
 
-        //Turn this off when done testing
         if (Input.GetKeyDown(KeyCode.M))
         {
             ProgressDay();
         }
 
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            UpdateLevels();
+        }
+        //
         if (timeOfDay == 0)
         {
             RenderSettings.skybox = skyBox[0];
@@ -505,6 +549,15 @@ public class GameManager : MonoBehaviour
             case "Sullivan":
                 SullivanMagic = SullivanMagic + amount > SullivanMaxMagic ? SullivanMaxMagic : SullivanMagic + amount;
                 break;
+        }
+    }
+
+    void UpdateLevels()
+    {
+        for (int i = 0; i < RhysFriendship; i++)
+        {
+            RhysFriendLevelUI[i].GetComponent<Image>().color = Color.cyan;
+            print("here");
         }
     }
 }
