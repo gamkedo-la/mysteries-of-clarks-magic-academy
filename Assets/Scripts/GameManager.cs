@@ -91,15 +91,9 @@ public class GameManager : MonoBehaviour
     public static int RhysFriendship, JameelFriendship, HarperFriendship, SullivanFriendship, SkyeFriendship, GracieMayFriendship, AtornFriendship, ManrajFriendship, SpecterFriendship;
     public GameObject CanvasForFriendship, CanvasForFriendshipBackground;
     public GameObject RhysBackground, JameelBackground, SkyeBackground, HarperBackground, SullivanBackground, GracieMayBackground, AtornBackground, SpecterBackground, ManrajBackground;
-    public Image[] RhysFriendLevelUI;
-    public Image[] JameelFriendLevelUI;
-    public Image[] SkyeFriendLevelUI;
-    public Image[] HarperFriendLevelUI;
-    public Image[] SullivanFriendLevelUI;
-    public Image[] GracieMayFriendLevelUI;
-    public Image[] AtornFriendLevelUI;
-    public Image[] SpecterFriendLevelUI;
-    public Image[] ManrajFriendLevelUI;
+    public Image[] FriendLevelUI;
+    int colorCount;
+    public Text LevelUpText;
     //In a friendship conversation
     public static bool RhysTalk, JameelTalk, HarperTalk, SullivanTalk, SkyeTalk, GracieMayTalk, AtornTalk, ManrajTalk, SpecterTalk;
     private void Awake()
@@ -162,7 +156,7 @@ public class GameManager : MonoBehaviour
             Debug.LogError("The party contains more than 4 people");
         }
         // Friendship Level
-        RhysFriendship = 5;
+        RhysFriendship = 0;
         JameelFriendship = 0;
         HarperFriendship = 0;
         SullivanFriendship = 0;
@@ -173,7 +167,7 @@ public class GameManager : MonoBehaviour
         SpecterFriendship = 0;
         //
         //Friendship in conversation
-        RhysTalk = false;
+        RhysTalk = true;
         JameelTalk = false;
         HarperTalk = false;
         SullivanTalk = false;
@@ -551,13 +545,312 @@ public class GameManager : MonoBehaviour
                 break;
         }
     }
-
-    void UpdateLevels()
+    #region FriendshipLevelUp
+    public void UpdateLevels()
     {
-        for (int i = 0; i < RhysFriendship; i++)
+        CanvasForFriendship.SetActive(true);
+        if (RhysTalk)
         {
-            RhysFriendLevelUI[i].GetComponent<Image>().color = Color.cyan;
-            print("here");
+            RhysBackground.SetActive(true);
+            for (int i = 0; i < RhysFriendship; i++)
+            {
+                FriendLevelUI[i].GetComponent<Image>().color = Color.cyan;
+                if (RhysFriendship >= 5)
+                {
+                    LevelUpText.text = "MAX";
+                }
+                else
+                {
+                    LevelUpText.text = "Level Up";
+                }
+            }
+        }
+
+        if (JameelTalk)
+        {
+            JameelBackground.SetActive(true);
+            for (int i = 0; i < JameelFriendship; i++)
+            {
+                FriendLevelUI[i].GetComponent<Image>().color = Color.cyan;
+                if (JameelFriendship >= 5)
+                {
+                    LevelUpText.text = "MAX";
+                }
+                else
+                {
+                    LevelUpText.text = "Level Up";
+                }
+            }
+        }
+
+        if (HarperTalk)
+        {
+            HarperBackground.SetActive(true);
+            for (int i = 0; i < HarperFriendship; i++)
+            {
+                FriendLevelUI[i].GetComponent<Image>().color = Color.cyan;
+                if (HarperFriendship >= 5)
+                {
+                    LevelUpText.text = "MAX";
+                }
+                else
+                {
+                    LevelUpText.text = "Level Up";
+                }
+            }
+        }
+
+        if (SkyeTalk)
+        {
+            SkyeBackground.SetActive(true);
+            for (int i = 0; i < SkyeFriendship; i++)
+            {
+                FriendLevelUI[i].GetComponent<Image>().color = Color.cyan;
+                if (SkyeFriendship >= 5)
+                {
+                    LevelUpText.text = "MAX";
+                }
+                else
+                {
+                    LevelUpText.text = "Level Up";
+                }
+            }
+        }
+
+        if (SullivanTalk)
+        {
+            SullivanBackground.SetActive(true);
+            for (int i = 0; i < SullivanFriendship; i++)
+            {
+                FriendLevelUI[i].GetComponent<Image>().color = Color.cyan;
+                if (SullivanFriendship >= 5)
+                {
+                    LevelUpText.text = "MAX";
+                }
+                else
+                {
+                    LevelUpText.text = "Level Up";
+                }
+            }
+        }
+
+        if (GracieMayTalk)
+        {
+            GracieMayBackground.SetActive(true);
+            for (int i = 0; i < GracieMayFriendship; i++)
+            {
+                FriendLevelUI[i].GetComponent<Image>().color = Color.cyan;
+                if (GracieMayFriendship >= 5)
+                {
+                    LevelUpText.text = "MAX";
+                }
+                else
+                {
+                    LevelUpText.text = "Level Up";
+                }
+            }
+        }
+
+        if (AtornTalk)
+        {
+            AtornBackground.SetActive(true);
+            for (int i = 0; i < AtornFriendship; i++)
+            {
+                FriendLevelUI[i].GetComponent<Image>().color = Color.cyan;
+                if (AtornFriendship >= 5)
+                {
+                    LevelUpText.text = "MAX";
+                }
+                else
+                {
+                    LevelUpText.text = "Level Up";
+                }
+            }
+        }
+
+        if (SpecterTalk)
+        {
+            SpecterBackground.SetActive(true);
+            for (int i = 0; i < SpecterFriendship; i++)
+            {
+                FriendLevelUI[i].GetComponent<Image>().color = Color.cyan;
+                if (SpecterFriendship >= 5)
+                {
+                    LevelUpText.text = "MAX";
+                }
+                else
+                {
+                    LevelUpText.text = "Level Up";
+                }
+            }
+        }
+
+        if (ManrajTalk)
+        {
+            ManrajBackground.SetActive(true);
+            for (int i = 0; i < ManrajFriendship; i++)
+            {
+                FriendLevelUI[i].GetComponent<Image>().color = Color.cyan;
+                if (ManrajFriendship >= 5)
+                {
+                    LevelUpText.text = "MAX";
+                }
+                else {
+                    LevelUpText.text = "Level Up";
+                }
+            }
+        }
+        StartCoroutine(JostleColors());
+    }
+
+    IEnumerator JostleColors()
+    {
+        if (colorCount <= 2)
+        {
+            yield return new WaitForSeconds(.5f);
+            if (RhysTalk)
+            {
+                FriendLevelUI[RhysFriendship - 1].GetComponent<Image>().color = Color.white;
+            }
+
+            if (JameelTalk)
+            {
+                FriendLevelUI[JameelFriendship - 1].GetComponent<Image>().color = Color.white;
+            }
+
+            if (HarperTalk)
+            {
+                FriendLevelUI[HarperFriendship - 1].GetComponent<Image>().color = Color.white;
+            }
+
+            if (SkyeTalk)
+            {
+                FriendLevelUI[SkyeFriendship - 1].GetComponent<Image>().color = Color.white;
+            }
+
+            if (SullivanTalk)
+            {
+                FriendLevelUI[SullivanFriendship - 1].GetComponent<Image>().color = Color.white;
+            }
+
+            if (GracieMayTalk)
+            {
+                FriendLevelUI[GracieMayFriendship - 1].GetComponent<Image>().color = Color.white;
+            }
+
+            if (AtornTalk)
+            {
+                FriendLevelUI[AtornFriendship - 1].GetComponent<Image>().color = Color.white;
+            }
+
+            if (SpecterTalk)
+            {
+                FriendLevelUI[SpecterFriendship - 1].GetComponent<Image>().color = Color.white;
+            }
+
+            if (ManrajTalk)
+            {
+                FriendLevelUI[ManrajFriendship - 1].GetComponent<Image>().color = Color.white;
+            }
+
+            yield return new WaitForSeconds(.5f);
+
+            if (RhysTalk)
+            {
+                FriendLevelUI[RhysFriendship - 1].GetComponent<Image>().color = Color.cyan;
+            }
+
+            if (JameelTalk)
+            {
+                FriendLevelUI[JameelFriendship - 1].GetComponent<Image>().color = Color.cyan;
+            }
+
+            if (HarperTalk)
+            {
+                FriendLevelUI[HarperFriendship - 1].GetComponent<Image>().color = Color.cyan;
+            }
+
+            if (SkyeTalk)
+            {
+                FriendLevelUI[SkyeFriendship - 1].GetComponent<Image>().color = Color.cyan;
+            }
+
+            if (SullivanTalk)
+            {
+                FriendLevelUI[SullivanFriendship - 1].GetComponent<Image>().color = Color.cyan;
+            }
+
+            if (GracieMayTalk)
+            {
+                FriendLevelUI[GracieMayFriendship - 1].GetComponent<Image>().color = Color.cyan;
+            }
+
+            if (AtornTalk)
+            {
+                FriendLevelUI[AtornFriendship - 1].GetComponent<Image>().color = Color.cyan;
+            }
+
+            if (SpecterTalk)
+            {
+                FriendLevelUI[SpecterFriendship - 1].GetComponent<Image>().color = Color.cyan;
+            }
+
+            if (ManrajTalk)
+            {
+                FriendLevelUI[ManrajFriendship - 1].GetComponent<Image>().color = Color.cyan;
+            }
+            colorCount++;
+            StartCoroutine(JostleColors());
+        }
+        else
+        {
+            yield return new WaitForSeconds(.1f);
+            if (RhysTalk)
+            {
+                FriendLevelUI[RhysFriendship - 1].GetComponent<Image>().color = Color.cyan;
+            }
+
+            if (JameelTalk)
+            {
+                FriendLevelUI[JameelFriendship - 1].GetComponent<Image>().color = Color.cyan;
+            }
+
+            if (HarperTalk)
+            {
+                FriendLevelUI[HarperFriendship - 1].GetComponent<Image>().color = Color.cyan;
+            }
+
+            if (SkyeTalk)
+            {
+                FriendLevelUI[SkyeFriendship - 1].GetComponent<Image>().color = Color.cyan;
+            }
+
+            if (SullivanTalk)
+            {
+                FriendLevelUI[SullivanFriendship - 1].GetComponent<Image>().color = Color.cyan;
+            }
+
+            if (GracieMayTalk)
+            {
+                FriendLevelUI[GracieMayFriendship - 1].GetComponent<Image>().color = Color.cyan;
+            }
+
+            if (AtornTalk)
+            {
+                FriendLevelUI[AtornFriendship - 1].GetComponent<Image>().color = Color.cyan;
+            }
+
+            if (SpecterTalk)
+            {
+                FriendLevelUI[SpecterFriendship - 1].GetComponent<Image>().color = Color.cyan;
+            }
+
+            if (ManrajTalk)
+            {
+                FriendLevelUI[ManrajFriendship - 1].GetComponent<Image>().color = Color.cyan;
+            }
+            colorCount = 0;
         }
     }
+    #endregion
 }
