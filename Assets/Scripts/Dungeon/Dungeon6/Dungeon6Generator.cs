@@ -19,6 +19,7 @@ public class Dungeon6Generator : MonoBehaviour {
 	public float maxRadius = 7f;
 
 	public float percentChanceToSpawnTreasure = 50f;
+	public int EnemiesSpawnedPerClearingeMin = 1, EnemiesSpawnedPerClearingMax = 5;
 
 	public GameObject enemy;
 	public GameObject treasure;
@@ -56,6 +57,7 @@ public class Dungeon6Generator : MonoBehaviour {
 
 		FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Floor", currentLevel % 5);
 
+		//Check for special levels
 		foreach (PrefabLevelPair floor in specialLevels) {
 			if (currentLevel == floor.levelNumber) {
 				GameObject specialLevel = null;
@@ -192,11 +194,31 @@ public class Dungeon6Generator : MonoBehaviour {
 				newPosition = new Vector3(room.Key.x, 0f, room.Key.y);
 				theTreasure.transform.position = newPosition * gridScale;
 				theTreasure.transform.Rotate(0f, Random.Range(0f, 360f), 0f);
+				theTreasure.transform.parent = transform;
 
 				break;
 			}
 		}
 
+		//Spawn Enemies
+		int enemiesToSpawn = Random.Range(clearings.Count * EnemiesSpawnedPerClearingeMin, clearings.Count  * EnemiesSpawnedPerClearingMax);
+		Debug.Log(enemiesToSpawn);
+		while (enemiesToSpawn > 0) {
+			foreach (KeyValuePair<Vector2, float> room in clearings) {
+				if (room.Key == new Vector2(0f, 0f)) continue;
+
+				if (Random.Range(0, 1f) < clearings.Count/1f) {
+					GameObject newEnemy = Instantiate(enemy);
+					Vector2 newPos = ((new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized * (Random.Range(-1f, 1f)*room.Value/1.5f)) + room.Key) * gridScale;
+					newEnemy.transform.position = new Vector3(newPos.x, 1.25f, newPos.y);
+					newEnemy.transform.Rotate(0f, Random.Range(0f, 360f), 0f);
+					newEnemy.transform.parent = transform;
+					enemiesToSpawn--;
+				}
+
+				if (enemiesToSpawn <= 0) break;
+			}
+		}
 
 	}
 
