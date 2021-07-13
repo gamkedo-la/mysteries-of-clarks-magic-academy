@@ -684,12 +684,12 @@ PrefabInstance:
     - target: {fileID: 502002653910905254, guid: 305106af8dfbcab42be98ce083903432,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000008515311
+      value: 0.000000008515315
       objectReference: {fileID: 0}
     - target: {fileID: 502002653910905254, guid: 305106af8dfbcab42be98ce083903432,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000012265134
+      value: -0.0000000012265138
       objectReference: {fileID: 0}
     - target: {fileID: 502002654614130099, guid: 305106af8dfbcab42be98ce083903432,
         type: 3}
@@ -699,12 +699,12 @@ PrefabInstance:
     - target: {fileID: 502002654614130099, guid: 305106af8dfbcab42be98ce083903432,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0000000084645135
+      value: 0.000000008465139
       objectReference: {fileID: 0}
     - target: {fileID: 502002654614130099, guid: 305106af8dfbcab42be98ce083903432,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000015349092
+      value: -0.0000000015350226
       objectReference: {fileID: 0}
     - target: {fileID: 502002654917599721, guid: 305106af8dfbcab42be98ce083903432,
         type: 3}
@@ -802,20 +802,29 @@ MonoBehaviour:
   animator: {fileID: 590992103}
   WaitTimeSec: 0.25
   dialogue:
-    name: Friend
+    name: Sullivan
     sentences:
     - Great! I know a neat spot.
-    - Let's go!
-    isCalledOn: 
-    isWandMotion: 
+    - 'We can head there now. '
+    isCalledOn: 0000
+    isWandMotion: 0000
   toBeContinued: 0
   isChoice: 0
   isFinished: 1
   thisConversation: {fileID: 0}
   nextConversation: {fileID: 0}
   choicesMenu: {fileID: 0}
-  RoomToGoTo: TestFriendshipScene
+  RoomToGoTo: SullivanFriendshipArc
   dialogueOption: {fileID: 422738887}
+  Rhys: 0
+  Jameel: 0
+  Harper: 0
+  Skye: 0
+  Sullivan: 1
+  GracieMay: 0
+  Atorn: 0
+  Specter: 0
+  Manraj: 0
 --- !u!4 &554538437
 Transform:
   m_ObjectHideFlags: 0
@@ -1352,8 +1361,8 @@ MonoBehaviour:
     name: Friend
     sentences:
     - Okay then. Maybe another time.
-    isCalledOn: 
-    isWandMotion: 
+    isCalledOn: 00
+    isWandMotion: 00
   toBeContinued: 0
   isChoice: 0
   isFinished: 1
@@ -1362,6 +1371,15 @@ MonoBehaviour:
   choicesMenu: {fileID: 0}
   RoomToGoTo: 
   dialogueOption: {fileID: 0}
+  Rhys: 0
+  Jameel: 0
+  Harper: 0
+  Skye: 0
+  Sullivan: 1
+  GracieMay: 0
+  Atorn: 0
+  Specter: 0
+  Manraj: 0
 --- !u!1 &906738818
 GameObject:
   m_ObjectHideFlags: 0
@@ -2596,13 +2614,13 @@ MonoBehaviour:
   animator: {fileID: 590992103}
   WaitTimeSec: 0
   dialogue:
-    name: Friend
+    name: Sullivan
     sentences:
     - Hi there.
     - This is testing.
     - Want to hang out?
-    isCalledOn: 
-    isWandMotion: 
+    isCalledOn: 000000
+    isWandMotion: 000000
   toBeContinued: 0
   isChoice: 1
   isFinished: 0
@@ -2611,6 +2629,15 @@ MonoBehaviour:
   choicesMenu: {fileID: 212411997}
   RoomToGoTo: 
   dialogueOption: {fileID: 422738887}
+  Rhys: 0
+  Jameel: 0
+  Harper: 0
+  Skye: 0
+  Sullivan: 1
+  GracieMay: 0
+  Atorn: 0
+  Specter: 0
+  Manraj: 0
 --- !u!136 &1361388846
 CapsuleCollider:
   m_ObjectHideFlags: 0

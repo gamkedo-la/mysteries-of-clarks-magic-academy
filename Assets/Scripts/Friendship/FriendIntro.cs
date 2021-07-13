@@ -30,6 +30,8 @@ public class FriendIntro : MonoBehaviour
     bool isInRange, dialogueHasStarted;
     public GameObject dialogueOption;
 
+    public bool Rhys, Jameel, Harper, Skye, Sullivan, GracieMay, Atorn, Specter, Manraj;
+
     private void Start()
     {
         sentences = new Queue<string>();
@@ -148,20 +150,57 @@ public class FriendIntro : MonoBehaviour
             choicesMenu.SetActive(true);
             thisConversation.SetActive(false);
         }
-        if (isFinished)
+
+        if (!isChoice)
         {
-            if (GameManager.isInFriendConversation)
+            Debug.Log("endOfConversation");
+            print("here");
+            if (Rhys)
             {
-                StartCoroutine(Waiting());
-                GameManager.isInFriendConversation = false;
-            }
-            else if (!GameManager.isInFriendConversation)
-            {
-                nextConversation.SetActive(true);
-                thisConversation.SetActive(false);
+                GameManager.RhysTalk = true;
             }
 
-            Debug.Log("endOfConversation");
+            if (Jameel)
+            {
+                GameManager.JameelTalk = true;
+            }
+
+            if (Harper)
+            {
+                GameManager.HarperTalk = true;
+            }
+
+            if (Skye)
+            {
+                GameManager.SkyeTalk = true;
+            }
+
+            if (Sullivan)
+            {
+                GameManager.SullivanTalk = true;
+            }
+
+            if (GracieMay)
+            {
+                GameManager.GracieMayTalk = true;
+            }
+
+            if (Atorn)
+            {
+                GameManager.AtornTalk = true;
+            }
+
+            if(Manraj)
+            {
+                GameManager.ManrajTalk = true;
+            }
+
+            if (Specter)
+            {
+                GameManager.SpecterTalk = true;
+            }
+            StartCoroutine(Waiting());
+
           //  datePlay.SetBool("ToPlay", true);
             // GameManager.ProgressDay();
 

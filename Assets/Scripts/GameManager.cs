@@ -24,8 +24,6 @@ public class GameManager : MonoBehaviour
 
     public static int Friend1Experience, Friend1Level;
 
-    public static bool isInFriendConversation;
-	
 	public static int currentFloor = 0;
 	public static int[] DungeonFloorCount = { 0, 0, 0, 0, 0, 0 };
 
@@ -167,10 +165,10 @@ public class GameManager : MonoBehaviour
         SpecterFriendship = 0;
         //
         //Friendship in conversation
-        RhysTalk = true;
+        RhysTalk = false;
         JameelTalk = false;
         HarperTalk = false;
-        SullivanTalk = false;
+        SullivanTalk = true;
         SkyeTalk = false;
         GracieMayTalk = false;
         AtornTalk = false;

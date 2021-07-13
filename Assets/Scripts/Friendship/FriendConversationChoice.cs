@@ -11,14 +11,12 @@ public class FriendConversationChoice : MonoBehaviour
     {
         if (AcceptConversation)
         {
-            GameManager.isInFriendConversation = true;
             AcceptConversationDialogue.SetActive(true);
             choiceGameObject.SetActive(false);
         }
 
         if (DeclineConversation)
         {
-            GameManager.isInFriendConversation = false;
             DeclineConversationDialogue.SetActive(true);
             choiceGameObject.SetActive(false);
         }

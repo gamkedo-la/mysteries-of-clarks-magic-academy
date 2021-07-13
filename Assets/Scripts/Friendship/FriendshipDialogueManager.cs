@@ -230,17 +230,15 @@ public class FriendshipDialogueManager : MonoBehaviour
             StartCoroutine(StatsWaiting());
             // GameManager.ProgressDay();
 
-            /* After conversation is done
-            RhysTalk = false;
-            JameelTalk = false;
-            HarperTalk = false;
-            SullivanTalk = false;
-            SkyeTalk = false;
-            GracieMayTalk = false;
-            AtornTalk = false;
-            ManrajTalk = false;
-            SpecterTalk = false;
-            */
+            GameManager.RhysTalk = false;
+            GameManager.JameelTalk = false;
+            GameManager.HarperTalk = false;
+            GameManager.SullivanTalk = false;
+            GameManager.SkyeTalk = false;
+            GameManager.GracieMayTalk = false;
+            GameManager.AtornTalk = false;
+            GameManager.ManrajTalk = false;
+            GameManager.SpecterTalk = false;
         }
     }
     IEnumerator StatsWaiting()
