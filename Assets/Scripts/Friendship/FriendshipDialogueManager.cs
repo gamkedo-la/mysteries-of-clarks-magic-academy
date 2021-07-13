@@ -12,11 +12,12 @@ public class FriendshipDialogueManager : MonoBehaviour
     public Animator animator;
 
     private Queue<string> sentences;
-    private Queue<string> names; 
+    private Queue<string> names;
     private Queue<bool> isCalledOn;
     private Queue<GameObject> cameras;
     private Queue<Animation> animationsToPlay;
     public Animator player;
+    public GameObject friend;
 
     public float WaitTimeSec;
     public FriendshipDialogue dialogue;
@@ -36,6 +37,8 @@ public class FriendshipDialogueManager : MonoBehaviour
 
     public bool isTransfigurationDemonstration;
     public GameObject TransfiguredDemonstration;
+
+    public bool LevelUp;
 
     private void Start()
     {
@@ -106,13 +109,15 @@ public class FriendshipDialogueManager : MonoBehaviour
             return;
         }
         string sentence = sentences.Dequeue();
+        string name = names.Dequeue();
         bool called = isCalledOn.Dequeue();
         GameObject camera = cameras.Dequeue();
         Animation animation = animationsToPlay.Dequeue();
+        //  friend.GetComponent<Animation>().Play(animationsToPlay);
 
         StopAllCoroutines();
         StartCoroutine(TypeSentence(sentence));
-
+        StartCoroutine(TypeSentence2(name));
     }
     IEnumerator TypeBool(bool called)
     {
@@ -138,14 +143,72 @@ public class FriendshipDialogueManager : MonoBehaviour
         }
     }
 
+    IEnumerator TypeSentence2(string name)
+    {
+        nameText.text = "";
+        foreach (char letter in name.ToCharArray())
+        {
+            nameText.text += letter;
+            yield return null;
+        }
+    }
+
     void EndDialogue()
     {
         animator.SetBool("isOpen", false);
 
         if (toBeContinued)
         {
-            nextConversation.SetActive(true);
-            thisConversation.SetActive(false);
+            if (LevelUp)
+            {
+                // public static bool RhysTalk, JameelTalk, HarperTalk, SullivanTalk, SkyeTalk, GracieMayTalk, AtornTalk, ManrajTalk, SpecterTalk;
+                if (GameManager.RhysTalk)
+                {
+                    GameManager.RhysFriendship++;
+                }
+                else if (GameManager.JameelTalk)
+                {
+                    GameManager.JameelFriendship++;
+                }
+                else if (GameManager.HarperTalk)
+                {
+                    GameManager.HarperFriendship++;
+                }
+                else if (GameManager.SullivanTalk)
+                {
+                    GameManager.SullivanFriendship++;
+                }
+                else if (GameManager.SkyeTalk)
+                {
+                    GameManager.SkyeFriendship++;
+                }
+                else if (GameManager.GracieMayTalk)
+                {
+                    GameManager.GracieMayFriendship++;
+                }
+                else if (GameManager.ManrajTalk)
+                {
+                    GameManager.ManrajFriendship++;
+                }
+                else if (GameManager.AtornTalk)
+                {
+                    GameManager.AtornFriendship++;
+                }
+                else if (GameManager.SpecterTalk)
+                {
+                    GameManager.SpecterFriendship++;
+                }
+                GameManager.instance.UpdateLevels();
+                GameManager.instance.CanvasForFriendship.SetActive(true);
+                StartCoroutine(WaitForFriendship());
+            }
+
+            else
+            {
+                nextConversation.SetActive(true);
+                thisConversation.SetActive(false);
+
+            }
 
             if (isTransfigurationDemonstration)
             {
@@ -186,6 +249,14 @@ public class FriendshipDialogueManager : MonoBehaviour
         GameManager.instance.CanvasForStats.SetActive(false);
         datePlay.SetBool("ToPlay", true);
         StartCoroutine(Waiting());
+    }
+
+    IEnumerator WaitForFriendship()
+    {
+        yield return new WaitForSeconds(5);
+        GameManager.instance.CanvasForFriendship.SetActive(false);
+        nextConversation.SetActive(true);
+        thisConversation.SetActive(false);
     }
 
     IEnumerator Waiting()
