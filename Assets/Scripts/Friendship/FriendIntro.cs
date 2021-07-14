@@ -16,6 +16,8 @@ public class FriendIntro : MonoBehaviour
     public float WaitTimeSec;
     public ClassroomDialogue dialogue;
 
+    public GameObject thisFriend;
+
     public bool toBeContinued;
     public bool isChoice;
     public bool isFinished;
@@ -55,6 +57,18 @@ public class FriendIntro : MonoBehaviour
         {
             dialogueOption.SetActive(false);
             DisplayNextSentence();
+        }
+        if (isInRange)
+        {
+            Vector3 lookPos = GameObject.FindGameObjectWithTag("Player").transform.position - thisFriend.transform.position;
+            Quaternion lookRot = Quaternion.LookRotation(lookPos, Vector3.up);
+            float eulerY = lookRot.eulerAngles.y;
+            Quaternion rotation = Quaternion.Euler(0, eulerY, 0);
+            thisFriend.transform.rotation = rotation;
+        }
+        else
+        {
+            thisFriend.transform.rotation = Quaternion.Euler(0, 90, 0);
         }
     }
 
