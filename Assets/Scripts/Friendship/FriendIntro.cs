@@ -20,23 +20,21 @@ public class FriendIntro : MonoBehaviour
     public bool isChoice;
     public bool isFinished;
 
+    public GameObject startingConvo;
     public GameObject thisConversation, nextConversation;
     public GameObject choicesMenu;
 
     public string RoomToGoTo;
 
-    Animator datePlay;
-
     bool isInRange, dialogueHasStarted;
     public GameObject dialogueOption;
 
+    public bool acceptConvo;
     public bool Rhys, Jameel, Harper, Skye, Sullivan, GracieMay, Atorn, Specter, Manraj;
 
     private void Start()
     {
         sentences = new Queue<string>();
-
-        datePlay = GameObject.Find("CanvasForDate").GetComponent<Animator>();
 
         if (isFinished)
         {
@@ -53,30 +51,10 @@ public class FriendIntro : MonoBehaviour
 
     private void Update()
     {
-        if (isInRange)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                if (isFinished)
-                {
-                    DisplayNextSentence();
-                    dialogueHasStarted = true;
-                }
-                else
-                {
-                    if (!dialogueHasStarted)
-                    {
-                        StartDialogue(dialogue);
-                        dialogueOption.SetActive(false);
-                        dialogueHasStarted = true;
-                    }
-
-                    else
-                    {
-                        DisplayNextSentence();
-                    }
-                }
-            }
+            dialogueOption.SetActive(false);
+            DisplayNextSentence();
         }
     }
 
@@ -94,6 +72,7 @@ public class FriendIntro : MonoBehaviour
         if (other.tag == "Player")
         {
             isInRange = false;
+            dialogueOption.SetActive(false);
         }
     }
 
@@ -151,59 +130,64 @@ public class FriendIntro : MonoBehaviour
             thisConversation.SetActive(false);
         }
 
-        if (!isChoice)
+        if (isFinished)
         {
-            Debug.Log("endOfConversation");
-            print("here");
-            if (Rhys)
+            if (acceptConvo)
             {
-                GameManager.RhysTalk = true;
-            }
+                if (Rhys)
+                {
+                    GameManager.RhysTalk = true;
+                }
 
-            if (Jameel)
+                if (Jameel)
+                {
+                    GameManager.JameelTalk = true;
+                }
+
+                if (Harper)
+                {
+                    GameManager.HarperTalk = true;
+                }
+
+                if (Skye)
+                {
+                    GameManager.SkyeTalk = true;
+                }
+
+                if (Sullivan)
+                {
+                    GameManager.SullivanTalk = true;
+                }
+
+                if (GracieMay)
+                {
+                    GameManager.GracieMayTalk = true;
+                }
+
+                if (Atorn)
+                {
+                    GameManager.AtornTalk = true;
+                }
+
+                if (Manraj)
+                {
+                    GameManager.ManrajTalk = true;
+                }
+
+                if (Specter)
+                {
+                    GameManager.SpecterTalk = true;
+                }
+                StartCoroutine(Waiting());
+            }
+            else
             {
-                GameManager.JameelTalk = true;
+
+                startingConvo.SetActive(true);
+                isInRange = false;
+                thisConversation.SetActive(false);
+                //Player can walk again
             }
-
-            if (Harper)
-            {
-                GameManager.HarperTalk = true;
-            }
-
-            if (Skye)
-            {
-                GameManager.SkyeTalk = true;
-            }
-
-            if (Sullivan)
-            {
-                GameManager.SullivanTalk = true;
-            }
-
-            if (GracieMay)
-            {
-                GameManager.GracieMayTalk = true;
-            }
-
-            if (Atorn)
-            {
-                GameManager.AtornTalk = true;
-            }
-
-            if(Manraj)
-            {
-                GameManager.ManrajTalk = true;
-            }
-
-            if (Specter)
-            {
-                GameManager.SpecterTalk = true;
-            }
-            StartCoroutine(Waiting());
-
-          //  datePlay.SetBool("ToPlay", true);
-            // GameManager.ProgressDay();
-
         }
     }
 
