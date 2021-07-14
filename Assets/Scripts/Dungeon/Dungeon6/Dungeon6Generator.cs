@@ -19,7 +19,7 @@ public class Dungeon6Generator : MonoBehaviour {
 	public float maxRadius = 7f;
 
 	public float percentChanceToSpawnTreasure = 50f;
-	public int EnemiesSpawnedPerClearingeMin = 1, EnemiesSpawnedPerClearingMax = 5;
+	public int enemiesSpawnedPerClearingeMin = 3, enemiesSpawnedPerClearingMax = 10;
 
 	public GameObject enemy;
 	public GameObject treasure;
@@ -81,7 +81,7 @@ public class Dungeon6Generator : MonoBehaviour {
 		for (int i = 0; i <= currentLevel+1; i++) {
 			Vector2 newPos = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
 			float newRadius = Random.Range(minRadius, maxRadius);
-			float placementMultiplier = (lastRadius + newRadius) * Random.Range(0.5f, 0.75f);
+			float placementMultiplier = (lastRadius + newRadius) * Random.Range(0.3f, 0.9f);
 			newPos *= placementMultiplier;
 			newPos = newPos + lastPos;
 			clearings.Add(newPos, newRadius);
@@ -201,11 +201,12 @@ public class Dungeon6Generator : MonoBehaviour {
 		}
 
 		//Spawn Enemies
-		int enemiesToSpawn = Random.Range(clearings.Count * EnemiesSpawnedPerClearingeMin, clearings.Count  * EnemiesSpawnedPerClearingMax);
+		int enemiesToSpawn = Random.Range((clearings.Count-1) * enemiesSpawnedPerClearingeMin, (clearings.Count-1)  * enemiesSpawnedPerClearingMax);
 		Debug.Log(enemiesToSpawn);
 		while (enemiesToSpawn > 0) {
 			foreach (KeyValuePair<Vector2, float> room in clearings) {
 				if (room.Key == new Vector2(0f, 0f)) continue;
+				if (room.Key == farthestClearing) continue;
 
 				if (Random.Range(0, 1f) < clearings.Count/1f) {
 					GameObject newEnemy = Instantiate(enemy);
