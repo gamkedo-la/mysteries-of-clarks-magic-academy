@@ -12,14 +12,14 @@ public class TreasureChest : MonoBehaviour
     private void Start()
     {
         TreasureDialogue = GameObject.Find("InteractImageDisplay");
-        TreasureDialogue.SetActive(false);
+        TreasureDialogue?.SetActive(false);
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
             canOpen = true;
-            TreasureDialogue.SetActive(true);
+            TreasureDialogue?.SetActive(true);
         }
     }
 
@@ -28,7 +28,7 @@ public class TreasureChest : MonoBehaviour
         if (other.tag == "Player")
         {
             canOpen = false;
-            TreasureDialogue.SetActive(false);
+            TreasureDialogue?.SetActive(false);
         }
     }
 

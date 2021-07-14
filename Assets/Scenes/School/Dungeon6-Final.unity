@@ -453,7 +453,7 @@ Transform:
   m_GameObject: {fileID: 85106374}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 30, y: -15, z: 0}
-  m_LocalScale: {x: 15, y: 1, z: 15}
+  m_LocalScale: {x: 10, y: 1, z: 10}
   m_Children:
   - {fileID: 1309942789}
   - {fileID: 1857668132}
@@ -1288,7 +1288,7 @@ Transform:
   m_GameObject: {fileID: 362149088}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 15, y: -15, z: 15}
-  m_LocalScale: {x: 15, y: 1, z: 15}
+  m_LocalScale: {x: 10, y: 1, z: 10}
   m_Children:
   - {fileID: 1487003418}
   - {fileID: 1147913975}
@@ -1698,7 +1698,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 485908729}
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2281,7 +2281,7 @@ Transform:
   m_GameObject: {fileID: 843155043}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -15, z: 15}
-  m_LocalScale: {x: 15, y: 1, z: 15}
+  m_LocalScale: {x: 10, y: 1, z: 10}
   m_Children:
   - {fileID: 654179340}
   - {fileID: 1142074490}
@@ -2476,7 +2476,7 @@ Transform:
   m_GameObject: {fileID: 953727103}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -15, z: 0}
-  m_LocalScale: {x: 15, y: 1, z: 15}
+  m_LocalScale: {x: 10, y: 1, z: 10}
   m_Children:
   - {fileID: 1857790011}
   m_Father: {fileID: 0}
@@ -3396,10 +3396,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: StayOnFloor
-        m_Mode: 1
+      - m_Target: {fileID: 621614397}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3634,7 +3634,7 @@ Transform:
   m_GameObject: {fileID: 1361163398}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 30, y: -15, z: 15}
-  m_LocalScale: {x: 15, y: 1, z: 15}
+  m_LocalScale: {x: 10, y: 1, z: 10}
   m_Children:
   - {fileID: 1512230826}
   - {fileID: 1816874928}
@@ -4667,7 +4667,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1708581806}
   - component: {fileID: 1708581805}
-  - component: {fileID: 1708581804}
   m_Layer: 0
   m_Name: TurnObjectOn
   m_TagString: Untagged
@@ -4675,18 +4674,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1708581804
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1708581803}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 242b12fc43700104c9da1df1f9f698ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1708581805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4805,7 +4792,7 @@ Transform:
   m_GameObject: {fileID: 1729643538}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 30, y: -15, z: 0}
-  m_LocalScale: {x: 15, y: 1, z: 15}
+  m_LocalScale: {x: 10, y: 1, z: 10}
   m_Children:
   - {fileID: 1062165149}
   - {fileID: 354795194}
@@ -5180,7 +5167,7 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0.99591976
     - serializedVersion: 3
-      time: 1.2
+      time: 1.3
       value: 1.1
       inSlope: Infinity
       outSlope: Infinity
@@ -5191,12 +5178,12 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  gridScale: 15
+  gridScale: 10
   minRadius: 3
   maxRadius: 7
   percentChanceToSpawnTreasure: 50
-  EnemiesSpawnedPerClearingeMin: 1
-  EnemiesSpawnedPerClearingMax: 5
+  enemiesSpawnedPerClearingeMin: 3
+  enemiesSpawnedPerClearingMax: 10
   enemy: {fileID: 3850822852890711762, guid: 60ebbc643f5f01743ba0a0238ebdca78, type: 3}
   treasure: {fileID: 8197017496622106850, guid: 93a888ffe9bb83648b5261f04ac62e15,
     type: 3}
@@ -5722,7 +5709,7 @@ Transform:
   m_GameObject: {fileID: 1923712719}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -15, z: 15}
-  m_LocalScale: {x: 15, y: 1, z: 15}
+  m_LocalScale: {x: 10, y: 1, z: 10}
   m_Children:
   - {fileID: 918783669}
   - {fileID: 402825989}
@@ -5996,7 +5983,7 @@ Transform:
   m_GameObject: {fileID: 2033995668}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 15, y: -15, z: 0}
-  m_LocalScale: {x: 15, y: 1, z: 15}
+  m_LocalScale: {x: 10, y: 1, z: 10}
   m_Children:
   - {fileID: 1166000522}
   - {fileID: 1742899350}
