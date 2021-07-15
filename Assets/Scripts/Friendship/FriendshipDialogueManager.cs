@@ -38,6 +38,10 @@ public class FriendshipDialogueManager : MonoBehaviour
     public bool isTransfigurationDemonstration;
     public GameObject TransfiguredDemonstration;
 
+    public bool TimerOnChoice;
+    bool startCountdown;
+    public float WaitForChoice;
+
     public bool LevelUp;
 
     private void Start()
@@ -64,6 +68,17 @@ public class FriendshipDialogueManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             DisplayNextSentence();
+        }
+
+        if (startCountdown)
+        {
+            WaitForChoice -= Time.deltaTime;
+
+            if (WaitForChoice <= 0)
+            {
+                choicesMenu.SetActive(true);
+                thisConversation.SetActive(false);
+            }
         }
     }
 
@@ -207,7 +222,6 @@ public class FriendshipDialogueManager : MonoBehaviour
             {
                 nextConversation.SetActive(true);
                 thisConversation.SetActive(false);
-
             }
 
             if (isTransfigurationDemonstration)
@@ -217,8 +231,15 @@ public class FriendshipDialogueManager : MonoBehaviour
         }
         if (isChoice)
         {
-            choicesMenu.SetActive(true);
-            thisConversation.SetActive(false);
+            if (TimerOnChoice)
+            {
+                startCountdown = true;
+            }
+            else
+            {
+                choicesMenu.SetActive(true);
+                thisConversation.SetActive(false);
+            }
         }
         if (isFinished)
         {
