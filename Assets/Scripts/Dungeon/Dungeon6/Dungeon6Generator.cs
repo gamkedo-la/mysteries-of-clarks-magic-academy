@@ -13,7 +13,7 @@ public class Dungeon6Generator : MonoBehaviour {
 	public bool levelIsSpecial = false;
 	public List<TileDensityPair> tiles;
 
-	public AnimationCurve densityFalloffCurve;
+	public AnimationCurve densityFalloffCurve, clearingSeperation;
 	public float gridScale = 15f;
 
 	public float minRadius = 3f;
@@ -44,7 +44,16 @@ public class Dungeon6Generator : MonoBehaviour {
 	}
 
 	void Update() {
-		if (Input.GetKey(KeyCode.Q)) {
+		if (Input.GetKey(KeyCode.P)) {
+			AdvanceFloor();
+		}
+		if (Input.GetKey(KeyCode.O)) {
+			GameManager.currentFloor--;
+			AdvanceFloor();
+		}
+		if (Input.GetKey(KeyCode.I)) {
+			GameManager.currentFloor--;
+			GameManager.currentFloor--;
 			AdvanceFloor();
 		}
 	}
@@ -89,7 +98,7 @@ public class Dungeon6Generator : MonoBehaviour {
 		for (int i = 0; i <= numberOfClearings; i++) {
 			Vector2 newPos = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
 			float newRadius = Random.Range(minRadius, maxRadius);
-			float placementMultiplier = (lastRadius + newRadius) * Random.Range(0.3f, 0.9f);
+			float placementMultiplier = (lastRadius + newRadius) * clearingSeperation.Evaluate(Random.Range(0f, 1f));
 			newPos *= placementMultiplier;
 			newPos = newPos + lastPos;
 			clearings.Add(newPos, newRadius);
@@ -233,6 +242,7 @@ public class Dungeon6Generator : MonoBehaviour {
 
 	public void AdvanceFloor() {
 		GameManager.currentFloor++;
+		if (GameManager.currentFloor < 0) GameManager.currentFloor = 0;
 		if (GameManager.currentFloor > GameManager.DungeonFloorCount[dungeonNumber]) GameManager.DungeonFloorCount[dungeonNumber] = GameManager.currentFloor;
 		Destroy(gameObject);
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);

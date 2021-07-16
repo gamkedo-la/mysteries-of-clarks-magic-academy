@@ -14,6 +14,7 @@ public class Dungeon2Generator : MonoBehaviour {
 	public float gridScale = 15f;
 
 	public List<GameObject> streetSide;
+	public List<GameObject> streetCourner;
 	public List<GameObject> streetEnds;
 	public List<GameObject> alleywayStart;
 	public List<GameObject> alleyway;
@@ -36,7 +37,16 @@ public class Dungeon2Generator : MonoBehaviour {
 	}
 
 	void Update() {
-		if (Input.GetKey(KeyCode.Q)) {
+		if (Input.GetKey(KeyCode.P)) {
+			AdvanceFloor();
+		}
+		if (Input.GetKey(KeyCode.O)) {
+			GameManager.currentFloor--;
+			AdvanceFloor();
+		}
+		if (Input.GetKey(KeyCode.I)) {
+			GameManager.currentFloor--;
+			GameManager.currentFloor--;
 			AdvanceFloor();
 		}
 	}
@@ -77,6 +87,7 @@ public class Dungeon2Generator : MonoBehaviour {
 
 	public void AdvanceFloor() {
 		GameManager.currentFloor++;
+		if (GameManager.currentFloor < 0) GameManager.currentFloor = 0;
 		if (GameManager.currentFloor > GameManager.DungeonFloorCount[dungeonNumber]) GameManager.DungeonFloorCount[dungeonNumber] = GameManager.currentFloor;
 		Destroy(gameObject);
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
