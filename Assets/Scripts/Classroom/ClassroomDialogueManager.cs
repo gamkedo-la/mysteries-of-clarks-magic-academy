@@ -193,7 +193,10 @@ public class ClassroomDialogueManager : MonoBehaviour
     {
         yield return new WaitForSeconds(2.1f);
         datePlay.SetBool("ToPlay", false);
-        StartCoroutine(LoadRoomWait());
+        if (GameManager.freePeriod)
+        {
+            StartCoroutine(LoadRoomWait());
+        }
     }
 
     IEnumerator LoadRoomWait()

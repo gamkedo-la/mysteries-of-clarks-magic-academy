@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour
 	public static int currentFloor = 0;
 	public static int[] DungeonFloorCount = { 0, 0, 0, 0, 0, 0 };
 
+    public static bool freePeriod;
+
 	//Determining if the Party Member is available (story timeline wise)
 	public static bool RhysAvailable, JameelAvailable, GracieMayAvailable, HarperAvailable, SkyeAvailable, SullivanAvailable;
     //
@@ -865,44 +867,51 @@ public class GameManager : MonoBehaviour
             {
                 if (month == 4 && (day == 18 || day == 25 || day == 29))
                 {
+                    SceneManager.LoadScene("CharmsClassroom");
                     print("Load Charms");
                 }
                 else if (month == 5 && (day == 9 || day == 13 || day == 17 || day == 26))
                 {
+                    SceneManager.LoadScene("CharmsClassroom");
                     print("Load Charms");
                 }
                 else if (month == 4 && (day == 21 || day == 28))
                 {
+                    SceneManager.LoadScene("DADAClassroom");
                     print("Load DADA");
                 }
                 else if (month == 5 && (day == 12 || day == 19 || day == 25))
                 {
+                    SceneManager.LoadScene("DADAClassroom");
                     print("Load DADA");
                 }
                 else if (month == 5 && day == 24)
                 {
+                    SceneManager.LoadScene("PotionsClassroom");
                     print("Load Potions");
                 }
 
                 else if (month == 5 && day == 27)
                 {
+                    SceneManager.LoadScene("TransfigurationClassroom");
                     print("Load Trans");
                 }
 
                 else if (month == 4 && (day == 19 || day == 22 || day == 26))
                 {
                     print("Progress Day");
-                    // ProgressDay();
+                     ProgressDay();
                 }
 
                 else if (month == 5 && (day == 2 || day == 3 || day == 5 || day == 6 || day == 10 || day == 16 || day == 20))
                 {
                     print("Progress Day");
-                    // ProgressDay();
+                     ProgressDay();
                 }
 
                 else
                 {
+                    freePeriod = true;
                     print("Load a generic room (probably the dorm) for free period");
                 }
             }
@@ -911,43 +920,49 @@ public class GameManager : MonoBehaviour
             {
                 if (month == 4 && (day == 22 || day == 27))
                 {
+                    SceneManager.LoadScene("TransfigurationClassroom");
                     print("Load Trans");
                 }
 
                 else if (month == 5 && (day == 2 || day == 6 || day == 11 || day == 20 || day == 25))
                 {
+                    SceneManager.LoadScene("TransfigurationClassroom");
                     print("Load Trans");
                 }
 
                 else if (month == 5 && (day == 5 || day == 12 || day == 26))
                 {
+                    SceneManager.LoadScene("DADAClassroom");
                     print("Load DADA");
                 }
 
                 else if (month == 5 && day == 24)
                 {
+                    SceneManager.LoadScene("CharmsClassroom");
                     print("Load Charms");
                 }
 
                 else if (month == 5 && day == 27)
                 {
+                    SceneManager.LoadScene("PotionsClassroom");
                     print("Load Potions");
                 }
 
                 else if (month == 4 && (day == 18 || day == 20 || day == 21 || day == 25 || day == 28 || day == 29))
                 {
                     print("Progress Day");
-                    //ProgressDay();
+                    ProgressDay();
                 }
 
                 else if (month == 5 && (day == 4 || day == 9 || day == 13 || day == 16 || day == 18 || day == 19))
                 {
                     print("Progress Day");
-                    //ProgressDay();
+                    ProgressDay();
                 }
 
                 else
                 {
+                    freePeriod = true;
                     print("Load a generic room outside of classroom");
                 }
             }
@@ -956,30 +971,38 @@ public class GameManager : MonoBehaviour
             {
                 if (month == 4 && (day == 20 || day == 26))
                 {
+                    SceneManager.LoadScene("PotionsClassroom");
                     print("Load Potions");
                 }
 
                 else if (month == 5 && (day == 3 || day == 4 || day == 10 || day == 18))
                 {
+                    SceneManager.LoadScene("PotionsClassroom");
                     print("Load Potions");
                 }
 
                 else if (month == 4 && (day == 19 || day == 27))
                 {
                     print("Progress Day");
-                    //ProgressDay();
+                    ProgressDay();
                 }
 
                 else if (month == 5 && (day == 11 || day == 17))
                 {
                     print("Progress Day");
-                    //ProgressDay();
+                    ProgressDay();
                 }
 
                 else
                 {
+                    freePeriod = true;
                     print("Load outside of potions room for free period");
                 }
+            }
+            else
+            {
+                freePeriod = true;
+                print("free period");
             }
         }
 
