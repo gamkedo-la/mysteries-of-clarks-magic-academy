@@ -108,13 +108,13 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        dayOfWeek = 1;
+        dayOfWeek = 0;
         month = 4;
-        day = 18;
+        day = 17;
 
         directionalLight = GameObject.Find("Sun");
 
-        timeOfDay = 0;
+        timeOfDay = 4;
         displayDayOfWeek = GameObject.Find("DayOfWeek").GetComponent<Text>();
         displayTimeOfDay = GameObject.Find("TimeOfDay").GetComponent<Text>();
         monthAndDay = GameObject.Find("CalendarDay").GetComponent<Text>();
@@ -349,9 +349,8 @@ public class GameManager : MonoBehaviour
             CalculateTimeOfDay();
             CalculateDayOfWeek();
             CalculateCalendarDay();
-
-            GameManager.instance.DetermineSchedule();
         }
+        GameManager.instance.DetermineSchedule();
     }
 
     public static void IncreaseStatLevel()
@@ -859,49 +858,128 @@ public class GameManager : MonoBehaviour
     #region Determine Freedom of Schedule
     public void DetermineSchedule()
     {
-        if (timeOfDay == 0 && (dayOfWeek == 1 || dayOfWeek == 2 || dayOfWeek == 3 || dayOfWeek == 4 || dayOfWeek == 5))
+        if (dayOfWeek == 1 || dayOfWeek == 2 || dayOfWeek == 3 || dayOfWeek == 4 || dayOfWeek == 5)
         {
-            if (month == 4 && (day == 18 || day == 25 || day == 29))
+            //Weekday mornings
+            if (timeOfDay == 0)
             {
-                print("Load Charms");
-            }
-            else if (month == 5 && (day == 9 || day == 13 || day == 17 || day == 26))
-            {
-                print("Load Charms");
-            }
-            else if (month == 4 && (day == 21 || day == 28))
-            {
-                print("Load DADA");
-            }
-            else if (month == 5 && (day == 12 || day == 19 || day == 25))
-            {
-                print("Load DADA");
-            }
-            else if (month == 5 && day == 24)
-            {
-                print("Load Potions");
-            }
+                if (month == 4 && (day == 18 || day == 25 || day == 29))
+                {
+                    print("Load Charms");
+                }
+                else if (month == 5 && (day == 9 || day == 13 || day == 17 || day == 26))
+                {
+                    print("Load Charms");
+                }
+                else if (month == 4 && (day == 21 || day == 28))
+                {
+                    print("Load DADA");
+                }
+                else if (month == 5 && (day == 12 || day == 19 || day == 25))
+                {
+                    print("Load DADA");
+                }
+                else if (month == 5 && day == 24)
+                {
+                    print("Load Potions");
+                }
 
-            else if (month == 5 && day == 27)
-            {
-                print("Load Trans");
-            }
+                else if (month == 5 && day == 27)
+                {
+                    print("Load Trans");
+                }
 
-            else if (month == 4 && (day == 19 || day == 22 || day == 26))
-            {
-                print("Progress Day");
-                // ProgressDay();
-            }
+                else if (month == 4 && (day == 19 || day == 22 || day == 26))
+                {
+                    print("Progress Day");
+                    // ProgressDay();
+                }
 
-            else if (month == 5 && (day == 2 || day == 3 || day == 5 || day == 6 || day == 10 || day == 16 || day == 20))
-            {
-                print("Progress Day");
-                // ProgressDay();
-            }
+                else if (month == 5 && (day == 2 || day == 3 || day == 5 || day == 6 || day == 10 || day == 16 || day == 20))
+                {
+                    print("Progress Day");
+                    // ProgressDay();
+                }
 
-            else
+                else
+                {
+                    print("Load a generic room (probably the dorm) for free period");
+                }
+            }
+            //Weekday afternoons
+            if (timeOfDay == 2)
             {
-                print("Load a generic room (probably the dorm) for free period");
+                if (month == 4 && (day == 22 || day == 27))
+                {
+                    print("Load Trans");
+                }
+
+                else if (month == 5 && (day == 2 || day == 6 || day == 11 || day == 20 || day == 25))
+                {
+                    print("Load Trans");
+                }
+
+                else if (month == 5 && (day == 5 || day == 12 || day == 26))
+                {
+                    print("Load DADA");
+                }
+
+                else if (month == 5 && day == 24)
+                {
+                    print("Load Charms");
+                }
+
+                else if (month == 5 && day == 27)
+                {
+                    print("Load Potions");
+                }
+
+                else if (month == 4 && (day == 18 || day == 20 || day == 21 || day == 25 || day == 28 || day == 29))
+                {
+                    print("Progress Day");
+                    //ProgressDay();
+                }
+
+                else if (month == 5 && (day == 4 || day == 9 || day == 13 || day == 16 || day == 18 || day == 19))
+                {
+                    print("Progress Day");
+                    //ProgressDay();
+                }
+
+                else
+                {
+                    print("Load a generic room outside of classroom");
+                }
+            }
+            //Weekday evenings
+            if (timeOfDay == 3)
+            {
+                if (month == 4 && (day == 20 || day == 26))
+                {
+                    print("Load Potions");
+                }
+
+                else if (month == 5 && (day == 3 || day == 4 || day == 10 || day == 18))
+                {
+                    print("Load Potions");
+                }
+
+                else if (month == 4 && (day == 19 || day == 27))
+                {
+                    print("Progress Day");
+                    //ProgressDay();
+                }
+
+                else if (month == 5 && (day == 11 || day == 17))
+                {
+                    print("Progress Day");
+                    //ProgressDay();
+                }
+
+                else
+                {
+                    print("Load outside of potions room for free period");
+                }
             }
         }
     }
