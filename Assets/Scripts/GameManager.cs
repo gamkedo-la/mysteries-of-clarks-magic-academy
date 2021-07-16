@@ -982,6 +982,18 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+
+        if (dayOfWeek == 0 || dayOfWeek == 6)
+        {
+            if (timeOfDay == 1)
+            {
+                ProgressDay();
+            }
+            if (timeOfDay == 2)
+            {
+                ProgressDay();
+            }
+        }
     }
 
 
