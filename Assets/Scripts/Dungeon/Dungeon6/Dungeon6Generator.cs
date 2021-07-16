@@ -7,6 +7,7 @@ public class Dungeon6Generator : MonoBehaviour {
 	public static Dungeon6Generator Instance;
 
 	public int dungeonNumber = 5;
+	public int currentLevel;
 
 	public List<PrefabLevelPair> specialLevels;
 	public bool levelIsSpecial = false;
@@ -27,10 +28,8 @@ public class Dungeon6Generator : MonoBehaviour {
 	public GameObject player;
 
 
-	private int currentLevel;
-	private float[,] densityMap;
-	private List<Vector2> clearings;
-	private List<GameObject> currentRooms = new List<GameObject>();
+	public List<Vector2> clearings;
+	public List<GameObject> currentRooms = new List<GameObject>();
 
 	[System.Serializable]
 	public class PrefabLevelPair {
@@ -44,6 +43,12 @@ public class Dungeon6Generator : MonoBehaviour {
 		public float density;
 	}
 
+	void Update() {
+		if (Input.GetKey(KeyCode.Q)) {
+			AdvanceFloor();
+		}
+	}
+
 	private void Start() {
 
 		if (Instance != null) {
@@ -55,6 +60,8 @@ public class Dungeon6Generator : MonoBehaviour {
 		
 		currentLevel = GameManager.currentFloor;
 
+		FMODUnity.RuntimeManager.StudioSystem.setParameterByName("GameState", 0);
+		FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Dungeon", dungeonNumber);
 		FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Floor", currentLevel % 5);
 
 		//Check for special levels
@@ -76,9 +83,10 @@ public class Dungeon6Generator : MonoBehaviour {
 		//Generate clearings
 		Dictionary<Vector2, float> clearings = new Dictionary<Vector2, float>();
 		clearings.Add(new Vector2(0f, 0f), Random.Range(minRadius, maxRadius));
+		int numberOfClearings = (int)(currentLevel*1.34f)+1;
 		Vector2 lastPos = new Vector2(0f, 0f);
 		float lastRadius = clearings[lastPos];
-		for (int i = 0; i <= currentLevel+1; i++) {
+		for (int i = 0; i <= numberOfClearings; i++) {
 			Vector2 newPos = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
 			float newRadius = Random.Range(minRadius, maxRadius);
 			float placementMultiplier = (lastRadius + newRadius) * Random.Range(0.3f, 0.9f);
@@ -110,9 +118,9 @@ public class Dungeon6Generator : MonoBehaviour {
 		int offsetX = farLeft+2;
 		int offsetY = farTop+2;
 		Debug.Log(currentLevel + " " + mapWidth + "x" + mapHeight + " " + clearings.Count);
-		
+
 		//Create empty density map
-		densityMap = new float[mapWidth, mapHeight];
+		float[,] densityMap = new float[mapWidth, mapHeight];
 		for (int x = 0; x < mapWidth; x++) {
 			for (int y = 0; y < mapHeight; y++) {
 				densityMap[x, y] = 2f;

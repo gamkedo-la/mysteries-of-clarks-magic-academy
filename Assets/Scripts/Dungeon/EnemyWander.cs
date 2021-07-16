@@ -27,7 +27,8 @@ public class EnemyWander : MonoBehaviour
         rb = GetComponent<Rigidbody>();
 
         StartCoroutine(InitialWait());
-    }
+		player = GameObject.FindGameObjectWithTag("Player");
+	}
 
     private void Update()
     {
