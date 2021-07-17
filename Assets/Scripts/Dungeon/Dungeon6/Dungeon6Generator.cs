@@ -161,7 +161,7 @@ public class Dungeon6Generator : MonoBehaviour {
 					}
 				}
 				
-				GameObject newTile = Instantiate(tiles[newTileIndex].tilePrefabs[Random.Range(0, tiles[newTileIndex].tilePrefabs.Count)], new Vector3((x-offsetX)*gridScale+offsetX, 0, (y-offsetY)*gridScale), Quaternion.identity, gameObject.transform);
+				GameObject newTile = Instantiate(tiles[newTileIndex].tilePrefabs[Random.Range(0, tiles[newTileIndex].tilePrefabs.Count)], new Vector3((x-offsetX)*gridScale, 0, (y-offsetY)*gridScale), Quaternion.identity, gameObject.transform);
 				newTile.transform.Rotate(0f, Random.Range(0,5)*90, 0f);
 				newTile.SetActive(true);
 				currentRooms.Add(newTile);
