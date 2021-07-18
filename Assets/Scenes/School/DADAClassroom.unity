@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -169,11 +169,15 @@ MonoBehaviour:
   nameText: {fileID: 870354259}
   dialogueText: {fileID: 1953736904}
   animator: {fileID: 191732667}
+  player: {fileID: 2068031925}
+  isWriting: 1
   WaitTimeSec: 1
   dialogue:
     name: You
     sentences:
     - 'That doesn''t feel right, but I''ll go with it. '
+    isCalledOn: 00
+    isWandMotion: 00
   toBeContinued: 0
   isChoice: 0
   isFinished: 1
@@ -337,6 +341,8 @@ MonoBehaviour:
   HousePointsToIncrease: 0
   choicesToTurnOff: {fileID: 452721324}
   conversationToTurnOn: {fileID: 1454583552}
+  isPractical: 0
+  player: {fileID: 0}
 --- !u!114 &46046899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -586,6 +592,8 @@ MonoBehaviour:
   nameText: {fileID: 870354259}
   dialogueText: {fileID: 1953736904}
   animator: {fileID: 191732667}
+  player: {fileID: 2068031925}
+  isWriting: 0
   WaitTimeSec: 1.5
   dialogue:
     name: Prof Craven
@@ -596,6 +604,8 @@ MonoBehaviour:
     - ...
     - 'Anyone? '
     - '[Player] could you please tell us - Which spell can cure depression?'
+    isCalledOn: 0000000001
+    isWandMotion: 0000000000
   toBeContinued: 0
   isChoice: 1
   isFinished: 0
@@ -742,6 +752,8 @@ MonoBehaviour:
   HousePointsToIncrease: 0
   choicesToTurnOff: {fileID: 168673464}
   conversationToTurnOn: {fileID: 1300267196}
+  isPractical: 0
+  player: {fileID: 0}
 --- !u!114 &124019017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1165,11 +1177,15 @@ MonoBehaviour:
   nameText: {fileID: 870354259}
   dialogueText: {fileID: 1953736904}
   animator: {fileID: 191732667}
+  player: {fileID: 2068031925}
+  isWriting: 0
   WaitTimeSec: 1
   dialogue:
     name: You
     sentences:
     - You paid attention during class and feel like you learned something.
+    isCalledOn: 00
+    isWandMotion: 00
   toBeContinued: 0
   isChoice: 0
   isFinished: 1
@@ -1541,6 +1557,8 @@ MonoBehaviour:
   HousePointsToIncrease: 0
   choicesToTurnOff: {fileID: 1322714426}
   conversationToTurnOn: {fileID: 1121271722}
+  isPractical: 0
+  player: {fileID: 0}
 --- !u!114 &208630207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2054,6 +2072,8 @@ MonoBehaviour:
   nameText: {fileID: 870354259}
   dialogueText: {fileID: 1953736904}
   animator: {fileID: 191732667}
+  player: {fileID: 2068031925}
+  isWriting: 1
   WaitTimeSec: 1
   dialogue:
     name: Prof Craven
@@ -2061,6 +2081,8 @@ MonoBehaviour:
     - Welcome to your third day of exams.
     - 'You know the drill. '
     - No cheating, yada yada yada..
+    isCalledOn: 000000
+    isWandMotion: 000000
   toBeContinued: 0
   isChoice: 1
   isFinished: 0
@@ -2103,11 +2125,15 @@ MonoBehaviour:
   nameText: {fileID: 870354259}
   dialogueText: {fileID: 1953736904}
   animator: {fileID: 191732667}
+  player: {fileID: 2068031925}
+  isWriting: 0
   WaitTimeSec: 1
   dialogue:
     name: You
     sentences:
     - You paid attention during class and feel like you learned something
+    isCalledOn: 00
+    isWandMotion: 00
   toBeContinued: 0
   isChoice: 0
   isFinished: 1
@@ -2192,6 +2218,8 @@ MonoBehaviour:
   HousePointsToIncrease: 0
   choicesToTurnOff: {fileID: 1322714426}
   conversationToTurnOn: {fileID: 1298539704}
+  isPractical: 0
+  player: {fileID: 0}
 --- !u!114 &254977212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2318,11 +2346,15 @@ MonoBehaviour:
   nameText: {fileID: 870354259}
   dialogueText: {fileID: 1953736904}
   animator: {fileID: 191732667}
+  player: {fileID: 2068031925}
+  isWriting: 0
   WaitTimeSec: 1
   dialogue:
     name: Prof Craven
     sentences:
     - 'Close, but no. Those are California. They resemble aliens, but not right. '
+    isCalledOn: 00
+    isWandMotion: 00
   toBeContinued: 1
   isChoice: 0
   isFinished: 0
@@ -2727,12 +2759,16 @@ MonoBehaviour:
   nameText: {fileID: 870354259}
   dialogueText: {fileID: 1953736904}
   animator: {fileID: 191732667}
+  player: {fileID: 2068031925}
+  isWriting: 0
   WaitTimeSec: 1
   dialogue:
     name: Prof Craven
     sentences:
     - 'Correct. That is the sure fire way to obtain the advantage. 5 points to Eagle
       Eye. '
+    isCalledOn: 01
+    isWandMotion: 00
   toBeContinued: 1
   isChoice: 0
   isFinished: 0
@@ -2913,6 +2949,8 @@ MonoBehaviour:
   HousePointsToIncrease: 0
   choicesToTurnOff: {fileID: 452721324}
   conversationToTurnOn: {fileID: 1462833421}
+  isPractical: 0
+  player: {fileID: 0}
 --- !u!114 &343968490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3118,6 +3156,8 @@ MonoBehaviour:
   nameText: {fileID: 870354259}
   dialogueText: {fileID: 1953736904}
   animator: {fileID: 191732667}
+  player: {fileID: 2068031925}
+  isWriting: 0
   WaitTimeSec: 1
   dialogue:
     name: Prof Craven
@@ -3126,6 +3166,8 @@ MonoBehaviour:
     - Or trial and error.
     - 'But in trial and error you may not have a chance to execute what you learned
       before it is too late. '
+    isCalledOn: 000000
+    isWandMotion: 000000
   toBeContinued: 1
   isChoice: 0
   isFinished: 0
@@ -3390,6 +3432,8 @@ MonoBehaviour:
   nameText: {fileID: 870354259}
   dialogueText: {fileID: 1953736904}
   animator: {fileID: 191732667}
+  player: {fileID: 2068031925}
+  isWriting: 0
   WaitTimeSec: 3
   dialogue:
     name: Prof Craven
@@ -3403,6 +3447,8 @@ MonoBehaviour:
       the teacher''s table. '
     - 'Anyway, now that you all have learned that, please open your textbooks to
       page 394. '
+    isCalledOn: 0000000000
+    isWandMotion: 0000000000
   toBeContinued: 1
   isChoice: 0
   isFinished: 0
@@ -3495,6 +3541,8 @@ MonoBehaviour:
   nameText: {fileID: 870354259}
   dialogueText: {fileID: 1953736904}
   animator: {fileID: 191732667}
+  player: {fileID: 2068031925}
+  isWriting: 0
   WaitTimeSec: 1
   dialogue:
     name: Prof Craven
@@ -3510,6 +3558,8 @@ MonoBehaviour:
     - '... Anyone? '
     - ...
     - Mr Ratcliffe - you seem to be spacing, what is your answer?
+    isCalledOn: 0000000000000000
+    isWandMotion: 0000000000000000
   toBeContinued: 1
   isChoice: 0
   isFinished: 0
@@ -4204,6 +4254,8 @@ MonoBehaviour:
   HousePointsToIncrease: 0
   choicesToTurnOff: {fileID: 312360387}
   conversationToTurnOn: {fileID: 31914946}
+  isPractical: 0
+  player: {fileID: 0}
 --- !u!114 &598901822
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4889,6 +4941,8 @@ MonoBehaviour:
   HousePointsToIncrease: 0
   choicesToTurnOff: {fileID: 617892178}
   conversationToTurnOn: {fileID: 261962255}
+  isPractical: 0
+  player: {fileID: 0}
 --- !u!114 &694867817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5015,6 +5069,8 @@ MonoBehaviour:
   nameText: {fileID: 870354259}
   dialogueText: {fileID: 1953736904}
   animator: {fileID: 191732667}
+  player: {fileID: 2068031925}
+  isWriting: 0
   WaitTimeSec: 1.5
   dialogue:
     name: Prof Craven
@@ -5034,6 +5090,8 @@ MonoBehaviour:
     - 'Please pay attention as this will be on the test. '
     - Hopefully There are grass monsters like the garden gnome, Van Meter monster,
       fairies, pixies, ... his works.
+    isCalledOn: 00000000000000000000
+    isWandMotion: 00000000000000000000
   toBeContinued: 1
   isChoice: 0
   isFinished: 0
@@ -5057,6 +5115,62 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2029800005}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &712780708
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 712780710}
+  - component: {fileID: 712780709}
+  m_Layer: 0
+  m_Name: TurnCorrectLessonOn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &712780709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 712780708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c4d6d19abbd73a44af01548da35428f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Charms: 0
+  DADA: 1
+  Trans: 0
+  Potions: 0
+  Lessons:
+  - {fileID: 2029800004}
+  - {fileID: 1014395179}
+  - {fileID: 124971918}
+  - {fileID: 633295074}
+  - {fileID: 414014779}
+  - {fileID: 217404437}
+  - {fileID: 737872465}
+  - {fileID: 848721432}
+--- !u!4 &712780710
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 712780708}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 16.355045, y: -21.022484, z: 32.374317}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &737872465
 GameObject:
@@ -5227,6 +5341,8 @@ MonoBehaviour:
   HousePointsToIncrease: 5
   choicesToTurnOff: {fileID: 312360387}
   conversationToTurnOn: {fileID: 1088444533}
+  isPractical: 0
+  player: {fileID: 0}
 --- !u!114 &770720224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5810,11 +5926,15 @@ MonoBehaviour:
   nameText: {fileID: 870354259}
   dialogueText: {fileID: 1953736904}
   animator: {fileID: 191732667}
+  player: {fileID: 2068031925}
+  isWriting: 1
   WaitTimeSec: 1
   dialogue:
     name: You
     sentences:
     - You feel confident in your answer.
+    isCalledOn: 00
+    isWandMotion: 00
   toBeContinued: 0
   isChoice: 0
   isFinished: 1
@@ -5967,12 +6087,16 @@ MonoBehaviour:
   nameText: {fileID: 870354259}
   dialogueText: {fileID: 1953736904}
   animator: {fileID: 191732667}
+  player: {fileID: 2068031925}
+  isWriting: 0
   WaitTimeSec: 1
   dialogue:
     name: Prof Craven
     sentences:
     - 'Sigh... No. That is the opposite side of the country. Did ''Alien'' throw
       you off? '
+    isCalledOn: 00
+    isWandMotion: 00
   toBeContinued: 1
   isChoice: 0
   isFinished: 0
@@ -6492,12 +6616,16 @@ MonoBehaviour:
   nameText: {fileID: 870354259}
   dialogueText: {fileID: 1953736904}
   animator: {fileID: 191732667}
+  player: {fileID: 2068031925}
+  isWriting: 0
   WaitTimeSec: 1
   dialogue:
     name: Rhys
     sentences:
     - Oh man, I wasn't paying attention.
     - '[Player] could you help me out?'
+    isCalledOn: 0001
+    isWandMotion: 0000
   toBeContinued: 0
   isChoice: 1
   isFinished: 0
@@ -6661,6 +6789,8 @@ MonoBehaviour:
   HousePointsToIncrease: 5
   choicesToTurnOff: {fileID: 1322714426}
   conversationToTurnOn: {fileID: 1584414616}
+  isPractical: 0
+  player: {fileID: 0}
 --- !u!114 &1085678075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6787,11 +6917,15 @@ MonoBehaviour:
   nameText: {fileID: 870354259}
   dialogueText: {fileID: 1953736904}
   animator: {fileID: 191732667}
+  player: {fileID: 2068031925}
+  isWriting: 1
   WaitTimeSec: 1
   dialogue:
     name: You
     sentences:
     - You feel confident in your answer.
+    isCalledOn: 00
+    isWandMotion: 00
   toBeContinued: 0
   isChoice: 0
   isFinished: 1
@@ -7000,6 +7134,8 @@ MonoBehaviour:
   nameText: {fileID: 870354259}
   dialogueText: {fileID: 1953736904}
   animator: {fileID: 191732667}
+  player: {fileID: 2068031925}
+  isWriting: 0
   WaitTimeSec: 1
   dialogue:
     name: Prof Craven
@@ -7007,6 +7143,8 @@ MonoBehaviour:
     - 'No, that is to clear sleep deprivation. A handy spell, but not a way to cure
       depression. '
     - Currently there is no spell to cure depression.
+    isCalledOn: 0100
+    isWandMotion: 0000
   toBeContinued: 1
   isChoice: 0
   isFinished: 0
@@ -7063,11 +7201,15 @@ MonoBehaviour:
   nameText: {fileID: 870354259}
   dialogueText: {fileID: 1953736904}
   animator: {fileID: 191732667}
+  player: {fileID: 2068031925}
+  isWriting: 0
   WaitTimeSec: 1
   dialogue:
     name: Prof Craven
     sentences:
     - 'Correct. 5 points to Eagle Eye. '
+    isCalledOn: 00
+    isWandMotion: 00
   toBeContinued: 1
   isChoice: 0
   isFinished: 0
@@ -7296,12 +7438,16 @@ MonoBehaviour:
   nameText: {fileID: 870354259}
   dialogueText: {fileID: 1953736904}
   animator: {fileID: 191732667}
+  player: {fileID: 2068031925}
+  isWriting: 0
   WaitTimeSec: 1
   dialogue:
     name: You
     sentences:
     - 'You paid attention during class and feel like you learned something useful
       in the mystery corridors '
+    isCalledOn: 00
+    isWandMotion: 00
   toBeContinued: 0
   isChoice: 0
   isFinished: 1
@@ -7536,11 +7682,15 @@ MonoBehaviour:
   nameText: {fileID: 870354259}
   dialogueText: {fileID: 1953736904}
   animator: {fileID: 191732667}
+  player: {fileID: 2068031925}
+  isWriting: 0
   WaitTimeSec: 1
   dialogue:
     name: You
     sentences:
     - You paid attention during class and feel like you learned something.
+    isCalledOn: 00
+    isWandMotion: 00
   toBeContinued: 0
   isChoice: 0
   isFinished: 1
@@ -7572,6 +7722,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 311494610}
     m_Modifications:
+    - target: {fileID: 186933417, guid: 98d44779ba40bdc4a9ac804d89eafbd0, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: b92fa990e873dc4468f4e17f5315303a, type: 2}
     - target: {fileID: 6484497334564103307, guid: 98d44779ba40bdc4a9ac804d89eafbd0,
         type: 3}
       propertyPath: m_IsActive
@@ -7948,6 +8102,8 @@ MonoBehaviour:
   nameText: {fileID: 870354259}
   dialogueText: {fileID: 1953736904}
   animator: {fileID: 191732667}
+  player: {fileID: 2068031925}
+  isWriting: 0
   WaitTimeSec: 1
   dialogue:
     name: Prof Craven
@@ -7957,6 +8113,8 @@ MonoBehaviour:
     - Ah, Paradise... Did I ever tell you how by using magic, you can win big in
       Las Vegas?
     - It all starts with...
+    isCalledOn: 000000
+    isWandMotion: 000000
   toBeContinued: 1
   isChoice: 0
   isFinished: 0
@@ -8281,6 +8439,8 @@ MonoBehaviour:
   nameText: {fileID: 870354259}
   dialogueText: {fileID: 1953736904}
   animator: {fileID: 191732667}
+  player: {fileID: 2068031925}
+  isWriting: 0
   WaitTimeSec: 1
   dialogue:
     name: Prof Craven
@@ -8288,6 +8448,8 @@ MonoBehaviour:
     - ' Obliviate? That may cure depression, but it will also wipe all of your other
       memories so... Yes, but no. '
     - Currently there is no spell to cure depression.
+    isCalledOn: 0100
+    isWandMotion: 0000
   toBeContinued: 1
   isChoice: 0
   isFinished: 0
@@ -8344,11 +8506,15 @@ MonoBehaviour:
   nameText: {fileID: 870354259}
   dialogueText: {fileID: 1953736904}
   animator: {fileID: 191732667}
+  player: {fileID: 2068031925}
+  isWriting: 1
   WaitTimeSec: 1
   dialogue:
     name: You
     sentences:
     - You don't feel confident in your answer.
+    isCalledOn: 00
+    isWandMotion: 00
   toBeContinued: 0
   isChoice: 0
   isFinished: 1
@@ -8484,11 +8650,15 @@ MonoBehaviour:
   nameText: {fileID: 870354259}
   dialogueText: {fileID: 1953736904}
   animator: {fileID: 191732667}
+  player: {fileID: 2068031925}
+  isWriting: 0
   WaitTimeSec: 1
   dialogue:
     name: Rhys
     sentences:
     - Oof, I thought you'd know that one.
+    isCalledOn: 00
+    isWandMotion: 00
   toBeContinued: 1
   isChoice: 0
   isFinished: 0
@@ -8559,11 +8729,15 @@ MonoBehaviour:
   nameText: {fileID: 870354259}
   dialogueText: {fileID: 1953736904}
   animator: {fileID: 191732667}
+  player: {fileID: 2068031925}
+  isWriting: 0
   WaitTimeSec: 1
   dialogue:
     name: You
     sentences:
     - You paid attention during class and feel like you learned something
+    isCalledOn: 00
+    isWandMotion: 00
   toBeContinued: 0
   isChoice: 0
   isFinished: 1
@@ -8775,11 +8949,15 @@ MonoBehaviour:
   nameText: {fileID: 870354259}
   dialogueText: {fileID: 1953736904}
   animator: {fileID: 191732667}
+  player: {fileID: 2068031925}
+  isWriting: 0
   WaitTimeSec: 1
   dialogue:
     name: Rhys
     sentences:
     - 'Not a bad answer, but no. You need to defeat them by targeting a weakness. '
+    isCalledOn: 01
+    isWandMotion: 00
   toBeContinued: 1
   isChoice: 0
   isFinished: 0
@@ -8836,11 +9014,15 @@ MonoBehaviour:
   nameText: {fileID: 870354259}
   dialogueText: {fileID: 1953736904}
   animator: {fileID: 191732667}
+  player: {fileID: 2068031925}
+  isWriting: 0
   WaitTimeSec: 1
   dialogue:
     name: Prof Craven
     sentences:
     - 'Not a bad answer, but no. The correct response is to target their weakness. '
+    isCalledOn: 01
+    isWandMotion: 00
   toBeContinued: 1
   isChoice: 0
   isFinished: 0
@@ -8976,6 +9158,8 @@ MonoBehaviour:
   nameText: {fileID: 870354259}
   dialogueText: {fileID: 1953736904}
   animator: {fileID: 191732667}
+  player: {fileID: 2068031925}
+  isWriting: 0
   WaitTimeSec: 1
   dialogue:
     name: Prof Craven
@@ -8983,6 +9167,8 @@ MonoBehaviour:
     - 'Many non-magical persons have created medicines to push it away and there
       are potions in development to cure it, but currently there is no spell for
       it. '
+    isCalledOn: 00
+    isWandMotion: 00
   toBeContinued: 1
   isChoice: 0
   isFinished: 0
@@ -9067,6 +9253,8 @@ MonoBehaviour:
   HousePointsToIncrease: 0
   choicesToTurnOff: {fileID: 168673464}
   conversationToTurnOn: {fileID: 877516741}
+  isPractical: 0
+  player: {fileID: 0}
 --- !u!114 &1481662550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9289,6 +9477,8 @@ MonoBehaviour:
   nameText: {fileID: 870354259}
   dialogueText: {fileID: 1953736904}
   animator: {fileID: 191732667}
+  player: {fileID: 2068031925}
+  isWriting: 0
   WaitTimeSec: 1
   dialogue:
     name: Prof Craven
@@ -9296,6 +9486,8 @@ MonoBehaviour:
     - That is the right answer - currently there is no spell to cure depression.
     - 'It is a mental disease that we don''t have a quick solution for. 5 points
       to Eagle Eye. '
+    isCalledOn: 0100
+    isWandMotion: 0000
   toBeContinued: 1
   isChoice: 0
   isFinished: 0
@@ -9555,6 +9747,8 @@ MonoBehaviour:
   HousePointsToIncrease: 5
   choicesToTurnOff: {fileID: 452721324}
   conversationToTurnOn: {fileID: 326082700}
+  isPractical: 0
+  player: {fileID: 0}
 --- !u!114 &1630857241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10253,11 +10447,15 @@ MonoBehaviour:
   nameText: {fileID: 870354259}
   dialogueText: {fileID: 1953736904}
   animator: {fileID: 191732667}
+  player: {fileID: 2068031925}
+  isWriting: 0
   WaitTimeSec: 1
   dialogue:
     name: You
     sentences:
     - You paid attention during class and feel like you learned something.
+    isCalledOn: 00
+    isWandMotion: 00
   toBeContinued: 0
   isChoice: 0
   isFinished: 1
@@ -10314,6 +10512,8 @@ MonoBehaviour:
   nameText: {fileID: 870354259}
   dialogueText: {fileID: 1953736904}
   animator: {fileID: 191732667}
+  player: {fileID: 2068031925}
+  isWriting: 0
   WaitTimeSec: 1
   dialogue:
     name: Prof Craven
@@ -10326,6 +10526,8 @@ MonoBehaviour:
     - 'Fine, I suppose all call on something. '
     - '[Player] you don''t look like you''re paying attention - what monster originated
       from Nevada? '
+    isCalledOn: 0000000001
+    isWandMotion: 0000000000
   toBeContinued: 0
   isChoice: 1
   isFinished: 0
@@ -10471,6 +10673,8 @@ MonoBehaviour:
   HousePointsToIncrease: 0
   choicesToTurnOff: {fileID: 168673464}
   conversationToTurnOn: {fileID: 1300267196}
+  isPractical: 0
+  player: {fileID: 0}
 --- !u!114 &1797077147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11197,6 +11401,8 @@ MonoBehaviour:
   nameText: {fileID: 870354259}
   dialogueText: {fileID: 1953736904}
   animator: {fileID: 191732667}
+  player: {fileID: 2068031925}
+  isWriting: 1
   WaitTimeSec: 1
   dialogue:
     name: Prof Craven
@@ -11204,6 +11410,8 @@ MonoBehaviour:
     - Welcome to your second day of exams.
     - 'You know the drill. '
     - No cheating, yada yada yada..
+    isCalledOn: 000000
+    isWandMotion: 000000
   toBeContinued: 0
   isChoice: 1
   isFinished: 0
@@ -11415,6 +11623,8 @@ MonoBehaviour:
   nameText: {fileID: 870354259}
   dialogueText: {fileID: 1953736904}
   animator: {fileID: 191732667}
+  player: {fileID: 2068031925}
+  isWriting: 0
   WaitTimeSec: 1.5
   dialogue:
     name: Prof Craven
@@ -11425,6 +11635,8 @@ MonoBehaviour:
       rogue tomato in the Great Hall during breakfast.
     - The spell is called the Disarming Charm.
     - 'You move your wand like this - '
+    isCalledOn: 00000000
+    isWandMotion: 00000000
   toBeContinued: 1
   isChoice: 0
   isFinished: 0
@@ -11495,6 +11707,8 @@ MonoBehaviour:
   HousePointsToIncrease: 0
   choicesToTurnOff: {fileID: 617892178}
   conversationToTurnOn: {fileID: 901514429}
+  isPractical: 0
+  player: {fileID: 0}
 --- !u!114 &1947374931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11892,11 +12106,15 @@ MonoBehaviour:
   nameText: {fileID: 870354259}
   dialogueText: {fileID: 1953736904}
   animator: {fileID: 191732667}
+  player: {fileID: 2068031925}
+  isWriting: 0
   WaitTimeSec: 1
   dialogue:
     name: Rhys
     sentences:
     - Phew. Thanks! I appreciate it!
+    isCalledOn: 00
+    isWandMotion: 00
   toBeContinued: 1
   isChoice: 0
   isFinished: 0
@@ -12063,6 +12281,8 @@ MonoBehaviour:
   nameText: {fileID: 870354259}
   dialogueText: {fileID: 1953736904}
   animator: {fileID: 191732667}
+  player: {fileID: 2068031925}
+  isWriting: 0
   WaitTimeSec: 1.5
   dialogue:
     name: Prof Craven
@@ -12089,6 +12309,8 @@ MonoBehaviour:
       be stopped. Soon, that magical energy became too much to control and she erupted. '
     - 'The event in the non-magical world was called the "Great Boston Fire of 1872",
       but the magical world knows better. '
+    isCalledOn: 00000000000000000000
+    isWandMotion: 00000000000000000000
   toBeContinued: 0
   isChoice: 1
   isFinished: 0
@@ -12210,7 +12432,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2029800005
 Transform:
   m_ObjectHideFlags: 0
@@ -12227,6 +12449,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &2068031925 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 186933417, guid: 98d44779ba40bdc4a9ac804d89eafbd0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1216955370}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2081668682
 GameObject:
   m_ObjectHideFlags: 0
@@ -12287,6 +12515,8 @@ MonoBehaviour:
   HousePointsToIncrease: 0
   choicesToTurnOff: {fileID: 312360387}
   conversationToTurnOn: {fileID: 31914946}
+  isPractical: 0
+  player: {fileID: 0}
 --- !u!114 &2081668685
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12672,6 +12902,8 @@ MonoBehaviour:
   HousePointsToIncrease: 5
   choicesToTurnOff: {fileID: 617892178}
   conversationToTurnOn: {fileID: 1125874542}
+  isPractical: 0
+  player: {fileID: 0}
 --- !u!114 &2103523944
 MonoBehaviour:
   m_ObjectHideFlags: 0
