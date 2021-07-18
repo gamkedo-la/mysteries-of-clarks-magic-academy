@@ -96,6 +96,9 @@ public class GameManager : MonoBehaviour
     public Text LevelUpText;
     //In a friendship conversation
     public static bool RhysTalk, JameelTalk, HarperTalk, SullivanTalk, SkyeTalk, GracieMayTalk, AtornTalk, ManrajTalk, SpecterTalk;
+
+    //Date change
+    public Animator datePlay;
     private void Awake()
     {
         if (instance == null)
@@ -855,7 +858,17 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
+    public void DatePlay()
+    {
+        GameManager.instance.datePlay.SetBool("ToPlay", true);
+        StartCoroutine(Waiting());
+    }
 
+    IEnumerator Waiting()
+    {
+        yield return new WaitForSeconds(2.1f);
+        GameManager.instance.datePlay.SetBool("ToPlay", false);
+    }
 
     #region Determine Freedom of Schedule
     public void DetermineSchedule()
@@ -900,13 +913,15 @@ public class GameManager : MonoBehaviour
                 else if (month == 4 && (day == 19 || day == 22 || day == 26))
                 {
                     print("Progress Day");
-                     ProgressDay();
+                    GameManager.instance.DatePlay();
+                  //  ProgressDay();
                 }
 
                 else if (month == 5 && (day == 2 || day == 3 || day == 5 || day == 6 || day == 10 || day == 16 || day == 20))
                 {
                     print("Progress Day");
-                     ProgressDay();
+                    GameManager.instance.DatePlay();
+                 //   ProgressDay();
                 }
 
                 else
@@ -951,13 +966,15 @@ public class GameManager : MonoBehaviour
                 else if (month == 4 && (day == 18 || day == 20 || day == 21 || day == 25 || day == 28 || day == 29))
                 {
                     print("Progress Day");
-                    ProgressDay();
+                    GameManager.instance.DatePlay();
+                  //  ProgressDay();
                 }
 
                 else if (month == 5 && (day == 4 || day == 9 || day == 13 || day == 16 || day == 18 || day == 19))
                 {
                     print("Progress Day");
-                    ProgressDay();
+                    GameManager.instance.DatePlay();
+                  //  ProgressDay();
                 }
 
                 else
@@ -984,13 +1001,15 @@ public class GameManager : MonoBehaviour
                 else if (month == 4 && (day == 19 || day == 27))
                 {
                     print("Progress Day");
-                    ProgressDay();
+                    GameManager.instance.DatePlay();
+                  //  ProgressDay();
                 }
 
                 else if (month == 5 && (day == 11 || day == 17))
                 {
                     print("Progress Day");
-                    ProgressDay();
+                    GameManager.instance.DatePlay();
+                  //  ProgressDay();
                 }
 
                 else
