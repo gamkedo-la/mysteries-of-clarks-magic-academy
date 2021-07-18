@@ -27,8 +27,6 @@ public class Dungeon6Generator : MonoBehaviour {
 	public GameObject exit;
 	public GameObject player;
 
-
-	public List<Vector2> clearings;
 	public List<GameObject> currentRooms = new List<GameObject>();
 
 	[System.Serializable]
@@ -186,16 +184,6 @@ public class Dungeon6Generator : MonoBehaviour {
 		theExit.transform.Rotate(0f, Random.Range(0f, 360f), 0f);
 		theExit.transform.parent = transform;
 
-		//Spawn Player
-		GameObject thePlayer = null;
-		if (exit.scene.rootCount == 0) {
-			thePlayer = Instantiate(player);
-		} else {
-			thePlayer = player;
-		}
-		thePlayer.transform.position = new Vector3(0f, 1.4f, 0f);
-		thePlayer.transform.Rotate(0f, Random.Range(0f, 360f), 0f);
-
 		//Spawn Treasure
 		foreach (KeyValuePair<Vector2, float> room in clearings) {
 			if (room.Key == new Vector2(0f, 0f)) continue;
@@ -237,6 +225,16 @@ public class Dungeon6Generator : MonoBehaviour {
 				if (enemiesToSpawn <= 0) break;
 			}
 		}
+
+		//Spawn Player
+		GameObject thePlayer = null;
+		if (player.scene.rootCount == 0) {
+			thePlayer = Instantiate(player);
+		} else {
+			thePlayer = player;
+		}
+		thePlayer.transform.position = new Vector3(0f, 1.4f, 0f);
+		thePlayer.transform.Rotate(0f, Random.Range(0f, 360f), 0f);
 
 	}
 
