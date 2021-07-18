@@ -11,8 +11,8 @@ public class PerformAnimation : MonoBehaviour
     bool animStarted;
 
     public void AnimToPlay()
-    {
-        GameManager.ProgressDay();
+    { 
+       GameManager.ProgressDay();
     }
 
 }

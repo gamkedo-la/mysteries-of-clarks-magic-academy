@@ -36,11 +36,19 @@ public class ClassroomDialogueManager : MonoBehaviour
     public bool isTransfigurationDemonstration;
     public GameObject TransfiguredDemonstration;
 
+    public bool isFinal;
+    public bool isMorningFinal, isEveningFinal;
+
     private void Start()
     {
         sentences = new Queue<string>();
         isCalledOn = new Queue<bool>();
         isWandMotion = new Queue<bool>();
+
+        if (isFinal)
+        {
+            GameManager.isFinal = true;
+        }
 
         if (isWriting)
         {
@@ -172,6 +180,18 @@ public class ClassroomDialogueManager : MonoBehaviour
         }
         if (isFinished)
         {
+            if (isFinal)
+            {
+                if (isMorningFinal)
+                {
+                    GameManager.timeOfDay = 2;
+                }
+                if (isEveningFinal)
+                {
+                    GameManager.timeOfDay = 4;
+                }
+            }
+
             Debug.Log("endOfConversation");
             GameManager.Intelligence += EndOfLessonLearning ;
             //Since there is only one gamemanager, we can reference the instance of the CanvasForStats to turn on or off
@@ -192,7 +212,10 @@ public class ClassroomDialogueManager : MonoBehaviour
     IEnumerator Waiting()
     {
         yield return new WaitForSeconds(2.1f);
+
         datePlay.SetBool("ToPlay", false);
+        isFinal = false;
+        GameManager.isFinal = false;
         if (GameManager.freePeriod)
         {
             StartCoroutine(LoadRoomWait());

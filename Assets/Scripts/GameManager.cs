@@ -105,6 +105,9 @@ public class GameManager : MonoBehaviour
     public Text dateSlide;
     public Animation dateSlideAnim;
 
+    //Finals
+    public static bool isFinal;
+
     private void Awake()
     {
         if (instance == null)
@@ -119,13 +122,19 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
+        /*
         dayOfWeek = 0;
         month = 4;
         day = 17;
+        */
+
+        dayOfWeek = 1;
+        month = 5;
+        day = 23;
 
         directionalLight = GameObject.Find("Sun");
 
-        timeOfDay = 4;
+        timeOfDay = 3;
         displayDayOfWeek = GameObject.Find("DayOfWeek").GetComponent<Text>();
         displayTimeOfDay = GameObject.Find("TimeOfDay").GetComponent<Text>();
         monthAndDay = GameObject.Find("CalendarDay").GetComponent<Text>();
@@ -346,7 +355,10 @@ public class GameManager : MonoBehaviour
 
     public static void ProgressDay()
     {
-        timeOfDay++;
+        if (!isFinal)
+        {
+            timeOfDay++;
+        }
         CalculateTimeOfDay();
         if (timeOfDay > 4)
         {
@@ -371,7 +383,10 @@ public class GameManager : MonoBehaviour
 
             GameManager.instance.StartCoroutine(DateWait());
         }
-        GameManager.instance.DetermineSchedule();
+        else
+        {
+            GameManager.instance.DetermineSchedule();
+        }
     }
 
     public static IEnumerator DateWait()
@@ -935,6 +950,7 @@ public class GameManager : MonoBehaviour
                 else if (month == 5 && day == 24)
                 {
                     SceneManager.LoadScene("PotionsClassroom");
+                    timeOfDay++;
                     print("Load Potions");
                 }
 
@@ -988,6 +1004,7 @@ public class GameManager : MonoBehaviour
                 else if (month == 5 && day == 24)
                 {
                     SceneManager.LoadScene("CharmsClassroom");
+                    timeOfDay++;
                     print("Load Charms");
                 }
 
