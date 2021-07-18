@@ -8,6 +8,8 @@ public class TurnObjectOnOnCollision : MonoBehaviour
     public GameObject icon;
     public string battleSceneToLoad;
     bool canEnterBattle;
+    public GameObject BattleTransition;
+    public Animator transition;
 
     private void Start()
     {
@@ -20,9 +22,9 @@ public class TurnObjectOnOnCollision : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                //Animator To Load Into Battle Scene
-                SceneManager.LoadScene(battleSceneToLoad);
-                Destroy(this.gameObject);
+                BattleTransition.SetActive(true);
+                transition.SetTrigger("Start");
+                StartCoroutine(Waiting());
             }
         }
     }
@@ -44,4 +46,13 @@ public class TurnObjectOnOnCollision : MonoBehaviour
         }
     }
 
+
+    IEnumerator Waiting()
+    {
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene(battleSceneToLoad);
+        transition.SetTrigger("End");
+        BattleTransition.SetActive(false);
+        Destroy(this.gameObject);
+    }
 }

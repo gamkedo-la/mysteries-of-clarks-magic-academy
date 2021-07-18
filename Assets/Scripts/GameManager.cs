@@ -378,6 +378,7 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
 
+        GameManager.instance.DateSlide.SetActive(false);
         day++;
         dayOfWeek++;
         if (dayOfWeek > 6)
@@ -388,8 +389,7 @@ public class GameManager : MonoBehaviour
         CalculateTimeOfDay();
         CalculateDayOfWeek();
         CalculateCalendarDay();
-
-        GameManager.instance.DateSlide.SetActive(false);
+        GameManager.instance.DetermineSchedule();
     }
 
     public static void IncreaseStatLevel()
