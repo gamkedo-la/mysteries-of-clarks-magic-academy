@@ -99,6 +99,12 @@ public class GameManager : MonoBehaviour
 
     //Date change
     public Animator datePlay;
+    //Date Slide
+    public GameObject DateSlide;
+    public Text monthSlide;
+    public Text dateSlide;
+    public Animation dateSlideAnim;
+
     private void Awake()
     {
         if (instance == null)
@@ -344,18 +350,46 @@ public class GameManager : MonoBehaviour
         CalculateTimeOfDay();
         if (timeOfDay > 4)
         {
-            day++;
-            dayOfWeek++;
-            if (dayOfWeek > 6)
+            GameManager.instance.DateSlide.SetActive(true);
+            if (GameManager.month == 4)
             {
-                dayOfWeek = 0;
+                GameManager.instance.monthSlide.text = "April";
             }
-            timeOfDay = 0;
-            CalculateTimeOfDay();
-            CalculateDayOfWeek();
-            CalculateCalendarDay();
+
+            if (GameManager.month == 5)
+            {
+                GameManager.instance.monthSlide.text = "May";
+            }
+
+            if (GameManager.month == 6)
+            {
+                GameManager.instance.monthSlide.text = "June";
+            }
+
+            GameManager.instance.dateSlide.text = (day - 3) + "     " + (day - 2) + "     " + (day - 1) + "     " + day + "     " + (day + 1) + "     " + (day + 2) + "     " + (day + 3) + "     " + (day + 4);
+            GameManager.instance.dateSlideAnim.Play("DateSlide");
+
+            GameManager.instance.StartCoroutine(DateWait());
         }
         GameManager.instance.DetermineSchedule();
+    }
+
+    public static IEnumerator DateWait()
+    {
+        yield return new WaitForSeconds(3f);
+
+        day++;
+        dayOfWeek++;
+        if (dayOfWeek > 6)
+        {
+            dayOfWeek = 0;
+        }
+        timeOfDay = 0;
+        CalculateTimeOfDay();
+        CalculateDayOfWeek();
+        CalculateCalendarDay();
+
+        GameManager.instance.DateSlide.SetActive(false);
     }
 
     public static void IncreaseStatLevel()
