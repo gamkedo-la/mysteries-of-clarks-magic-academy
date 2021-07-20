@@ -16,13 +16,17 @@ public class Dungeon2Generator : MonoBehaviour {
 	public int minStreetLength = 1;
 	public int maxStreetLength = 4;
 	public int blockLength = 6;
+	public float chanceOfAlley = 0.05f;
 
 	public List<GameObject> streetSide;
 	public List<GameObject> streetInsideCourner;
 	public List<GameObject> streetOutsideCourner;
 	public List<GameObject> streetEndL;
 	public List<GameObject> streetEndR;
-	
+	public List<GameObject> alleyStart;
+	public List<GameObject> alleyway;
+	public List<GameObject> alleyCap;
+
 	public int enemiesSpawnedPerTileMin = 10, enemiesSpawnedPerTileMax = 50;
 
 	public GameObject enemy;
@@ -137,10 +141,13 @@ public class Dungeon2Generator : MonoBehaviour {
 
 		//Instanciate tiles
 		List<GameObject> ends = new List<GameObject>();
+		List<GameObject> alleys = new List<GameObject>();
+		List<Vector2> alleyPos = new List<Vector2>();
 		foreach (Vector2 tile in streets) {
 			GameObject toSpawn = null;
 			float spawnRotation = 0f;
 			bool isEnd = false;
+			bool isAlley = false;
 
 			//streetSide
 			if (streets.Contains(tile + Vector2.down) && !streets.Contains(tile + Vector2.up)) {
@@ -220,6 +227,26 @@ public class Dungeon2Generator : MonoBehaviour {
 				spawnRotation = 270f;
 				isEnd = true;
 			}
+			//AlleyStart
+			if (Random.Range(0f, 1f) <= chanceOfAlley) {
+				if (streets.Contains(tile + Vector2.left) && streets.Contains(tile + Vector2.right) && !streets.Contains(tile + Vector2.up) && !streets.Contains(tile + Vector2.up + Vector2.left*2) && !streets.Contains(tile + Vector2.up + Vector2.right*2) && !alleyPos.Contains(tile + Vector2.right) && !alleyPos.Contains(tile + Vector2.left)) {
+					toSpawn = alleyStart[Random.Range(0, alleyStart.Count)];
+					spawnRotation = 0f;
+					isAlley = true;
+				} else if (streets.Contains(tile + Vector2.up) && streets.Contains(tile + Vector2.down) && !streets.Contains(tile + Vector2.right) && !streets.Contains(tile + Vector2.right + Vector2.up*2) && !streets.Contains(tile + Vector2.right + Vector2.down*2) && !alleyPos.Contains(tile + Vector2.up) && !alleyPos.Contains(tile + Vector2.down)) {
+					toSpawn = alleyStart[Random.Range(0, alleyStart.Count)];
+					spawnRotation = 90f;
+					isAlley = true;
+				} else if (streets.Contains(tile + Vector2.right) && streets.Contains(tile + Vector2.left) && !streets.Contains(tile + Vector2.down) && !streets.Contains(tile + Vector2.down + Vector2.right*2) && !streets.Contains(tile + Vector2.down + Vector2.left*2) && !alleyPos.Contains(tile + Vector2.left) && !alleyPos.Contains(tile + Vector2.right)) {
+					toSpawn = alleyStart[Random.Range(0, alleyStart.Count)];
+					spawnRotation = 180f;
+					isAlley = true;
+				} else if (streets.Contains(tile + Vector2.down) && streets.Contains(tile + Vector2.up) && !streets.Contains(tile + Vector2.left) && !streets.Contains(tile + Vector2.left + Vector2.down*2) && !streets.Contains(tile + Vector2.left + Vector2.up*2) && !alleyPos.Contains(tile + Vector2.down) && !alleyPos.Contains(tile + Vector2.up)) {
+					toSpawn = alleyStart[Random.Range(0, alleyStart.Count)];
+					spawnRotation = 270f;
+					isAlley = true;
+				}
+			}
 
 
 			if (!toSpawn) continue;
@@ -228,8 +255,149 @@ public class Dungeon2Generator : MonoBehaviour {
 			toSpawn.transform.position = new Vector3(tile.x, 0f, tile.y) * gridScale;
 			toSpawn.transform.Rotate(0f, spawnRotation, 0f);
 			toSpawn.transform.parent = transform;
-			if (isEnd) ends.Add(toSpawn);
-			else currentRooms.Add(toSpawn);
+			toSpawn.name = tile.ToString();
+
+			if (isEnd) {
+				ends.Add(toSpawn);
+			} else if (isAlley) {
+				alleys.Add(toSpawn);
+				alleyPos.Add(tile);
+			} else {
+				currentRooms.Add(toSpawn);
+			}
+		}
+
+		//Build Alleys
+		int alleyCount = alleys.Count;
+		if (alleyCount > 0) {
+			for (int i = 0; i < alleyCount; i++) {
+				GameObject currentTile = alleys[i];
+				Vector2 currentPos = new Vector2(currentTile.transform.position.x, currentTile.transform.position.z) / gridScale;
+				Vector2 direction = Vector2.up;
+				if (currentTile.transform.rotation.eulerAngles.y == 90f) direction = Vector2.right;
+				else if (currentTile.transform.rotation.eulerAngles.y == 180f) direction = Vector2.down;
+				else if (currentTile.transform.rotation.eulerAngles.y == 270f) direction = Vector2.left;
+				currentPos += direction;
+				//Debug.Log(currentPos.ToString());
+				//Debug.Log(currentTile.transform.rotation.eulerAngles.y);
+
+				int length = Random.Range(1, blockLength-2);
+				if (length > 0) {
+					while (length > 0) {
+						if (streets.Contains(currentPos + direction)) {
+							bool shouldConnect = false;
+							if (direction == Vector2.up && (streets.Contains(currentPos +Vector2.up+Vector2.left) && streets.Contains(currentPos +Vector2.up+Vector2.right))) {
+								shouldConnect = true;
+							} else if (direction == Vector2.right && (streets.Contains(currentPos +Vector2.right+Vector2.up) && streets.Contains(currentPos +Vector2.right+Vector2.down))) {
+								shouldConnect = true;
+							} else if (direction == Vector2.down && (streets.Contains(currentPos +Vector2.down+Vector2.right) && streets.Contains(currentPos +Vector2.down+Vector2.left))) {
+								shouldConnect = true;
+							} else if (direction == Vector2.left && (streets.Contains(currentPos +Vector2.left+Vector2.down) && streets.Contains(currentPos +Vector2.left+Vector2.up))) {
+								shouldConnect = true;
+							}
+							if (shouldConnect) {
+								GameObject spawn = Instantiate(alleyway[Random.Range(0, alleyway.Count)]);
+								spawn.SetActive(true);
+								spawn.transform.position = new Vector3(currentPos.x, 0f, currentPos.y) * gridScale;
+								spawn.transform.Rotate(0f, (Mathf.Atan2(direction.x, direction.y) / Mathf.PI) * 180f, 0f);
+								spawn.transform.parent = transform;
+								alleys.Add(spawn);
+								alleyPos.Add(currentPos);
+
+								GameObject toReplace = GameObject.Find((currentPos + direction).ToString());
+								GameObject newWall = Instantiate(alleyStart[Random.Range(0, alleyStart.Count)], toReplace.transform.position, toReplace.transform.rotation);
+								newWall.SetActive(true);
+								newWall.transform.parent = transform;
+								newWall.name = (currentPos + direction).ToString();
+								currentRooms.Add(newWall);
+								currentRooms.Remove(toReplace);
+								Destroy(toReplace);
+
+								length = 0;
+							} else {
+								GameObject spawn = Instantiate(alleyCap[Random.Range(0, alleyCap.Count)]);
+								spawn.SetActive(true);
+								spawn.transform.position = new Vector3(currentPos.x, 0f, currentPos.y) * gridScale;
+								spawn.transform.Rotate(0f, (Mathf.Atan2(direction.x, direction.y) / Mathf.PI) * 180f, 0f);
+								spawn.transform.parent = transform;
+								alleys.Add(spawn);
+								alleyPos.Add(currentPos);
+								length = 0;
+							}
+						} else if (alleyPos.Contains(currentPos + direction) || alleyPos.Contains(currentPos + direction*2)) {
+							GameObject spawn = Instantiate(alleyCap[Random.Range(0, alleyCap.Count)]);
+							spawn.SetActive(true);
+							spawn.transform.position = new Vector3(currentPos.x, 0f, currentPos.y) * gridScale;
+							spawn.transform.Rotate(0f, (Mathf.Atan2(direction.x, direction.y) / Mathf.PI) * 180f, 0f);
+							spawn.transform.parent = transform;
+							alleys.Add(spawn);
+							alleyPos.Add(currentPos);
+							length = 0;
+						} else {
+							GameObject spawn = Instantiate(alleyway[Random.Range(0, alleyway.Count)]);
+							spawn.SetActive(true);
+							spawn.transform.position = new Vector3(currentPos.x, 0f, currentPos.y) * gridScale;
+							spawn.transform.Rotate(0f, (Mathf.Atan2(direction.x, direction.y) / Mathf.PI) * 180f, 0f);
+							spawn.transform.parent = transform;
+							alleys.Add(spawn);
+							alleyPos.Add(currentPos);
+						}
+
+						currentPos += direction;
+						length--;
+					}
+				}
+
+				if (length == 0) {
+					if (streets.Contains(currentPos + direction)) {
+						bool shouldConnect = false;
+						if (direction == Vector2.up && (streets.Contains(currentPos +Vector2.up+Vector2.left) && streets.Contains(currentPos +Vector2.up+Vector2.right))) {
+							shouldConnect = true;
+						} else if (direction == Vector2.right && (streets.Contains(currentPos +Vector2.right+Vector2.up) && streets.Contains(currentPos +Vector2.right+Vector2.down))) {
+							shouldConnect = true;
+						} else if (direction == Vector2.down && (streets.Contains(currentPos +Vector2.down+Vector2.right) && streets.Contains(currentPos +Vector2.down+Vector2.left))) {
+							shouldConnect = true;
+						} else if (direction == Vector2.left && (streets.Contains(currentPos +Vector2.left+Vector2.down) && streets.Contains(currentPos +Vector2.left+Vector2.up))) {
+							shouldConnect = true;
+						}
+						if (shouldConnect) {
+							GameObject spawn = Instantiate(alleyway[Random.Range(0, alleyway.Count)]);
+							spawn.SetActive(true);
+							spawn.transform.position = new Vector3(currentPos.x, 0f, currentPos.y) * gridScale;
+							spawn.transform.Rotate(0f, (Mathf.Atan2(direction.x, direction.y) / Mathf.PI) * 180f, 0f);
+							spawn.transform.parent = transform;
+							alleys.Add(spawn);
+							alleyPos.Add(currentPos);
+
+							GameObject toReplace = GameObject.Find((currentPos + direction).ToString());
+							GameObject newWall = Instantiate(alleyStart[Random.Range(0, alleyStart.Count)], toReplace.transform.position, toReplace.transform.rotation);
+							newWall.SetActive(true);
+							newWall.transform.parent = transform;
+							newWall.name = (currentPos + direction).ToString();
+							currentRooms.Add(newWall);
+							currentRooms.Remove(toReplace);
+							Destroy(toReplace);
+						} else {
+							GameObject spawn = Instantiate(alleyCap[Random.Range(0, alleyCap.Count)]);
+							spawn.SetActive(true);
+							spawn.transform.position = new Vector3(currentPos.x, 0f, currentPos.y) * gridScale;
+							spawn.transform.Rotate(0f, (Mathf.Atan2(direction.x, direction.y) / Mathf.PI) * 180f, 0f);
+							spawn.transform.parent = transform;
+							alleys.Add(spawn);
+							alleyPos.Add(currentPos);
+						}
+
+					} else {
+						GameObject spawn = Instantiate(alleyCap[Random.Range(0, alleyCap.Count)]);
+						spawn.SetActive(true);
+						spawn.transform.position = new Vector3(currentPos.x, 0f, currentPos.y) * gridScale;
+						spawn.transform.Rotate(0f, (Mathf.Atan2(direction.x, direction.y) / Mathf.PI) * 180f, 0f);
+						spawn.transform.parent = transform;
+						alleys.Add(spawn);
+						alleyPos.Add(currentPos);
+					}
+				}
+			}
 		}
 
 		//Spawn Player
@@ -287,7 +455,7 @@ public class Dungeon2Generator : MonoBehaviour {
 
 		//Spawn Enemies
 		int enemiesToSpawn = Random.Range(currentRooms.Count * enemiesSpawnedPerTileMin / 100, currentRooms.Count  * enemiesSpawnedPerTileMax/100);
-		Debug.Log(enemiesToSpawn);
+		//Debug.Log(enemiesToSpawn);
 		for (int i = 0; i < enemiesToSpawn; i++) {
 			if (enemiesToSpawn > 0) {
 				Vector3 offset = new Vector3(0, 1.25f, 0);
@@ -296,7 +464,6 @@ public class Dungeon2Generator : MonoBehaviour {
 				enemySpawn.transform.parent = transform;
 			}
 		}
-
 	}
 
 	public void AdvanceFloor() {
