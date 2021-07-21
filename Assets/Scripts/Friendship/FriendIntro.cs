@@ -115,6 +115,9 @@ public class FriendIntro : MonoBehaviour
         }
 
         string sentence = sentences.Dequeue();
+
+        sentence = sentence.Replace("[MC]", GameManager.MCFirstName);
+
         StopAllCoroutines();
         StartCoroutine(TypeSentence(sentence));
     }

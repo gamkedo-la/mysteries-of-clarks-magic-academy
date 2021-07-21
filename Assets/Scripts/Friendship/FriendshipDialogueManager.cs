@@ -128,6 +128,9 @@ public class FriendshipDialogueManager : MonoBehaviour
         bool called = isCalledOn.Dequeue();
         GameObject camera = cameras.Dequeue();
         Animation animation = animationsToPlay.Dequeue();
+
+        sentence = sentence.Replace("[MC]", GameManager.MCFirstName);
+
         //  friend.GetComponent<Animation>().Play(animationsToPlay);
 
         StopAllCoroutines();
