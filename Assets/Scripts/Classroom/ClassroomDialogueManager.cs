@@ -113,7 +113,8 @@ public class ClassroomDialogueManager : MonoBehaviour
         bool wand = isWandMotion.Dequeue();
 
         //update sentence
-        sentence = sentence.Replace("[MC]", GameManager.MCLastName);
+        sentence = sentence.Replace("[MC]", "Miss " + GameManager.MCLastName);
+        sentence = sentence.Replace("[MCFirst]", GameManager.MCFirstName);
         //
 
         StopAllCoroutines();

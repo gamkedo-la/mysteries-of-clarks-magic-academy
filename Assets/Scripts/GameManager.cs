@@ -125,7 +125,11 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
     private void Start()
-    {
+    { 
+        /* Test player names
+        MCFirstName = "Sara";
+        MCLastName = "Lee";
+        */
         dayOfWeek = 0;
         month = 4;
         day = 17;
