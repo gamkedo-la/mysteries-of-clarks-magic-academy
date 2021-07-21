@@ -43,6 +43,8 @@ public class FriendshipDialogueManager : MonoBehaviour
     public float WaitForChoice;
 
     public bool LevelUp;
+    public bool isAtornFinal;
+    public GameObject AtornBelow4, Atorn4;
 
     private void Start()
     {
@@ -177,6 +179,11 @@ public class FriendshipDialogueManager : MonoBehaviour
 
         if (toBeContinued)
         {
+
+            if (isAtornFinal)
+            {
+                ToggleAtorn();
+            }
             if (LevelUp)
             {
                 // public static bool RhysTalk, JameelTalk, HarperTalk, SullivanTalk, SkyeTalk, GracieMayTalk, AtornTalk, ManrajTalk, SpecterTalk;
@@ -250,6 +257,7 @@ public class FriendshipDialogueManager : MonoBehaviour
             GameManager.Intelligence += EndOfLessonLearning;
             //Since there is only one gamemanager, we can reference the instance of the CanvasForStats to turn on or off
             GameManager.instance.CanvasForStats.SetActive(true);
+
             GameManager.IncreaseStatLevel();
             StartCoroutine(StatsWaiting());
             // GameManager.ProgressDay();
@@ -292,5 +300,19 @@ public class FriendshipDialogueManager : MonoBehaviour
     {
         yield return new WaitForSeconds(.1f);
         SceneManager.LoadScene(RoomToGoTo);
+    }
+
+    void ToggleAtorn()
+    {
+        if (GameManager.AtornFriendship == 4)
+        {
+            Atorn4.SetActive(true);
+            thisConversation.SetActive(false);
+        }
+        else
+        {
+            AtornBelow4.SetActive(true);
+            thisConversation.SetActive(false);
+        }
     }
 }
