@@ -108,6 +108,10 @@ public class GameManager : MonoBehaviour
     //Finals
     public static bool isFinal;
 
+    //Player Name
+    public static string MCFirstName;
+    public static string MCLastName;
+
     private void Awake()
     {
         if (instance == null)
@@ -122,7 +126,10 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        
+
+        MCFirstName = "Joe";
+        MCLastName = "Smith";
+
         dayOfWeek = 0;
         month = 4;
         day = 17;

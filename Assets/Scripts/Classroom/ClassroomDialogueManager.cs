@@ -112,6 +112,9 @@ public class ClassroomDialogueManager : MonoBehaviour
         bool called = isCalledOn.Dequeue();
         bool wand = isWandMotion.Dequeue();
 
+        //update sentence
+        sentence = sentence.Replace("[MC]", GameManager.MCLastName);
+        //
 
         StopAllCoroutines();
         StartCoroutine(TypeSentence(sentence));
