@@ -833,7 +833,14 @@ public class BattleSystem : MonoBehaviour
 
         if (!isPlayerTurn)
         {
-            Next.text = "Up Next:  " + playerTurnOrder[0].ToString();
+            if (playerTurnOrder[0].ToString() == "MC")
+            {
+                Next.text = "Up Next:  " + GameManager.MCFirstName.ToString();
+            }
+            else
+            {
+                Next.text = "Up Next:  " + playerTurnOrder[0].ToString();
+            }
         }
 
     }
@@ -6627,7 +6634,7 @@ public class BattleSystem : MonoBehaviour
                 //Dodge
                 if (GameManager.MCDodge >= RandomAttack)
                 {
-                    dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks [PLAYER NAME] with " + enemyUnit[enemyUnitSelected].attackName + "!";
+                    dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks " + GameManager.MCFirstName + " with " + enemyUnit[enemyUnitSelected].attackName + "!";
                     yield return new WaitForSeconds(.5f);
                     dialogueText.text = "[PLAYER NAME] Dodges!";
                     MCAnim.Play("Armature|Dodge");
@@ -6637,7 +6644,7 @@ public class BattleSystem : MonoBehaviour
                 //Attack
                 else
                 {
-                    dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks [PLAYER NAME] with " + enemyUnit[enemyUnitSelected].attackName + "!";
+                    dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks " + GameManager.MCFirstName + " with " + enemyUnit[enemyUnitSelected].attackName + "!";
 
                     yield return new WaitForSeconds(2f);
 
@@ -7008,7 +7015,7 @@ public class BattleSystem : MonoBehaviour
         if (!MCDead)
         {
             MCMenu.SetActive(true);
-            dialogueText.text = "[Player Name]: Choose an Action.";
+            dialogueText.text = GameManager.MCFirstName +": Choose an Action.";
 
             throwRock = false;
             flippendo = false;
