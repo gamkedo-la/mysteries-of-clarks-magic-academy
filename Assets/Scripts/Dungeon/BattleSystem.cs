@@ -56,6 +56,8 @@ public class BattleSystem : MonoBehaviour
 
     public GameObject EndingMenu;
     public GameObject Inventory;
+    public InventoryObject InventoryContainer;
+    public int InventorySelectedItem;
     #endregion
 
     //The Player's Party
@@ -141,6 +143,7 @@ public class BattleSystem : MonoBehaviour
     bool criticaFocus;
     bool diffindo;
     bool diffindoMaxima;
+    bool mcUsingItem;
     #endregion
 
     #region RhysAttacks
@@ -157,6 +160,7 @@ public class BattleSystem : MonoBehaviour
     bool rhysConjurePugione;
     bool rhysImpetumSubsisto;
     bool rhysUolueris;
+    bool rhysUsingItem;
 
     #endregion
 
@@ -176,6 +180,7 @@ public class BattleSystem : MonoBehaviour
     bool jameelDiffindoMaxima;
     bool jameelImpetumSubsisto;
     bool jameelChorusPedes;
+    bool jameelUsingItem;
     #endregion
 
     #region HarperAttacks
@@ -192,6 +197,7 @@ public class BattleSystem : MonoBehaviour
     bool harperPulsateSunt;
     bool harperFumes;
     bool harperDiminuendo;
+    bool harperUsingItem;
 
     #endregion
 
@@ -207,6 +213,7 @@ public class BattleSystem : MonoBehaviour
     bool skyeStrengthPotion;
     bool skyeConfundus;
     bool skyeIraUolueris;
+    bool skyeUsingItem;
 
     #endregion
 
@@ -224,6 +231,7 @@ public class BattleSystem : MonoBehaviour
     bool sullivanEngorgement;
     bool sullivanStatuamLocomotion;
     bool sullivanCriticaFocus;
+    bool sullivanUsingItem;
     #endregion
 
     //Enemy
@@ -308,6 +316,8 @@ public class BattleSystem : MonoBehaviour
         HarperDamageUI.text = "".ToString();
         SkyeDamageUI.text = "".ToString();
         SullivanDamageUI.text = "".ToString();
+
+        InventoryContainer = GameManager.instance.inventory;
 
         playerTurnOrder.Add(CharacterIdentifier.MC);
 
@@ -444,22 +454,12 @@ public class BattleSystem : MonoBehaviour
         SkyeMagic.maxValue =  GameManager.SkyeMaxMagic;
         SullivanMagic.maxValue =  GameManager.SullivanMaxMagic;
 
-        MCHealth.value = GameManager.MCHealth ;
-        RhysHealth.value = GameManager.RhysHealth ;
-        JameelHealth.value = GameManager.JameelHealth ;
-        HarperHealth.value = GameManager.HarperHealth ;
-        SkyeHealth.value = GameManager.SkyeHealth ;
-        SullivanHealth.value = GameManager.SullivanHealth;
-
-        MCMagic.value = GameManager.MCMagic ;
-        RhysMagic.value = GameManager.RhysMagic ;
-        JameelMagic.value = GameManager.JameelMagic ;
-        HarperMagic.value = GameManager.HarperMagic;
-        SkyeMagic.value = GameManager.SkyeMagic ;
-        SullivanMagic.value = GameManager.SullivanMagic;
+        UpdateLifeUI();
+        UpdateMagicUI();
 
     //    ItemMenu = GameObject.Find("Inventory");
         GameManagerObject = GameObject.Find("GameManager");
+        InventorySelectedItem = -1;
 
         StartCoroutine(SetUpBattle());
     }
@@ -1116,7 +1116,6 @@ public class BattleSystem : MonoBehaviour
 
     public void ConfirmAttack()
     {
-
         if (state == BattleState.MCTURN)
         {
             MCConfirmMenu.SetActive(false);
@@ -2807,6 +2806,36 @@ public class BattleSystem : MonoBehaviour
 
 
                 }
+            }
+
+            if(mcUsingItem) {
+                ItemObject item = InventoryContainer.Container[InventorySelectedItem].item;
+                if(item.type == ItemType.Support) {
+                    if(item.multiTarget == true) {
+                        GameManager.instance.UseItem(item, "all");
+                    } else {
+                        GameManager.instance.UseItem(item, "MC");
+                    }
+                } else if(item.type == ItemType.Offensive) {
+                    OffensiveItem oItem = (OffensiveItem) item;
+                    if(item.multiTarget == true) {
+                        // TODO: code to hit all enemies
+                    } else {
+                        enemySelect = true;
+                        // TODO: Code to hit a specific enemy
+                    }
+                }
+
+                UpdateLifeUI();
+                UpdateMagicUI();
+
+                bool outOfStock = InventoryContainer.Container[InventorySelectedItem].RemoveAmount(1);
+                if(outOfStock) {
+                    Inventory.GetComponent<BattleInventory>().RemoveItem(InventorySelectedItem);
+                } else {
+                    Inventory.GetComponent<BattleInventory>().UpdateItem(InventorySelectedItem);
+                }
+                NextTurn();
             }
 
         }
@@ -7349,6 +7378,63 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
+    public void AttemptItemUse(int index) {
+        ItemObject item = GameManager.instance.inventory.Container[index].item;
+        Inventory.SetActive(false);
+        InventorySelectedItem = index;
+
+        if (state == BattleState.MCTURN)
+        {
+            mcUsingItem = true;
+            MCMenu.SetActive(true);
+            MCConfirmMenu.SetActive(true);
+            MCMenu.SetActive(false);
+        }
+
+        if (state == BattleState.RHYSTURN)
+        {
+            rhysUsingItem = true;
+            RhysMenu.SetActive(true);
+            RhysConfirmMenu.SetActive(true);
+            RhysMenu.SetActive(false);
+        }
+
+        if (state == BattleState.JAMEELTURN)
+        {
+            jameelUsingItem = true;
+            JameelMenu.SetActive(true);
+            JameelConfirmMenu.SetActive(true);
+            JameelMenu.SetActive(false);
+        }
+
+        if (state == BattleState.HARPERTURN)
+        {
+            harperUsingItem = true;
+            HarperMenu.SetActive(true);
+            HarperConfirmMenu.SetActive(true);
+            HarperMenu.SetActive(false);
+        }
+
+        if (state == BattleState.SKYETURN)
+        {
+            skyeUsingItem = true;
+            SkyeMenu.SetActive(true);
+            SkyeConfirmMenu.SetActive(true);
+            SkyeMenu.SetActive(false);
+        }
+
+        if (state == BattleState.SULLIVANTURN)
+        {
+            sullivanUsingItem = true;
+            SullivanMenu.SetActive(true);
+            SullivanConfirmMenu.SetActive(true);
+            SullivanMenu.SetActive(false);
+        }
+        if(item.type == ItemType.Offensive && !item.multiTarget) { // if using single target offensive item
+            enemySelect = true;
+        }
+    }
+
     //Clean this up when you know what spells and who is casting what
     #region MC Attack UI Buttons
 
@@ -10023,6 +10109,23 @@ public class BattleSystem : MonoBehaviour
         StartCoroutine(WaitingAtEndOfBattle());
     }
 
+    void UpdateLifeUI() {
+        MCHealth.value = GameManager.MCHealth ;
+        RhysHealth.value = GameManager.RhysHealth ;
+        JameelHealth.value = GameManager.JameelHealth ;
+        HarperHealth.value = GameManager.HarperHealth ;
+        SkyeHealth.value = GameManager.SkyeHealth ;
+        SullivanHealth.value = GameManager.SullivanHealth;
+    }
+
+    void UpdateMagicUI() {
+        MCMagic.value = GameManager.MCMagic ;
+        RhysMagic.value = GameManager.RhysMagic ;
+        JameelMagic.value = GameManager.JameelMagic ;
+        HarperMagic.value = GameManager.HarperMagic;
+        SkyeMagic.value = GameManager.SkyeMagic ;
+        SullivanMagic.value = GameManager.SullivanMagic;
+    }
 
     void CheatToInstantlyWin()
     {

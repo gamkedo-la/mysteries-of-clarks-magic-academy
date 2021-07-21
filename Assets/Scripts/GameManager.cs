@@ -530,7 +530,7 @@ public class GameManager : MonoBehaviour
                 break;
             case SupportProperty.Magic:
                 Debug.Log("Add Magic");
-                ModifyHealth(sItem.itemUseValue, target);
+                ModifyMagic(sItem.itemUseValue, target);
                 break;
         }
     }
