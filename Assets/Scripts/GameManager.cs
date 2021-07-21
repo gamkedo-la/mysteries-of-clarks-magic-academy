@@ -126,10 +126,6 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-
-        MCFirstName = "Joe";
-        MCLastName = "Smith";
-
         dayOfWeek = 0;
         month = 4;
         day = 17;
