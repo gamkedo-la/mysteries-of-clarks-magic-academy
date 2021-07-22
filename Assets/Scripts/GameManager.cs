@@ -187,7 +187,7 @@ public class GameManager : MonoBehaviour
         SullivanFriendship = 0;
         SkyeFriendship = 0;
         GracieMayFriendship = 0;
-        AtornFriendship = 4;
+        AtornFriendship = 0;
         ManrajFriendship = 0;
         SpecterFriendship = 0;
         //
