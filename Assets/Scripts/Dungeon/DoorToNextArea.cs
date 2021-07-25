@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.AI;
 
 public class DoorToNextArea : MonoBehaviour
 {
@@ -21,8 +22,19 @@ public class DoorToNextArea : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        player.transform.position = GameManager.playerSpawn;
-        player.transform.rotation = GameManager.playerRotation;
+
+        if (GameManager.playerSpawn == new Vector3(0, 0, 0))
+        {
+            print("first iteration");
+        }
+
+        else
+        {
+            player.GetComponent<NavMeshAgent>().enabled = false;
+            player.transform.position = GameManager.playerSpawn;
+            player.transform.rotation = GameManager.playerRotation;
+            player.GetComponent<NavMeshAgent>().enabled = true;
+        }
     }
 
     private void Update()
