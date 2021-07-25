@@ -25,8 +25,8 @@ public class RandomStudent : MonoBehaviour
     float animationSpeed;
     public Animator maleAnimation, femaleAnimation;
 
-    public Transform[] startingPositions;
-    public Transform[] endingPositions;
+    public GameObject[] startingPositions;
+    public GameObject[] endingPositions;
     int chooseEnd;
 
     NavMeshAgent agent;
@@ -35,6 +35,10 @@ public class RandomStudent : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+
+        startingPositions = GameObject.FindGameObjectsWithTag("ComeFrom");
+        endingPositions = GameObject.FindGameObjectsWithTag("GoTo");
+
         int chooseStart = Random.Range(0, startingPositions.Length);
         chooseEnd = Random.Range(0, endingPositions.Length);
         this.GetComponent<NavMeshAgent>().enabled = false;
@@ -146,7 +150,6 @@ public class RandomStudent : MonoBehaviour
         }
         else if (distanceToMC <= 1.5f)
         {
-            print("here");
             GetComponent<BoxCollider>().enabled = false;
             if (chooseGender == 0)
             {
