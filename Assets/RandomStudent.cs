@@ -42,9 +42,10 @@ public class RandomStudent : MonoBehaviour
         int chooseStart = Random.Range(0, startingPositions.Length);
         chooseEnd = Random.Range(0, endingPositions.Length);
         this.GetComponent<NavMeshAgent>().enabled = false;
+        this.GetComponent<BoxCollider>().enabled = false;
         transform.position = startingPositions[chooseStart].transform.position;
         this.GetComponent<NavMeshAgent>().enabled = true;
-
+        this.GetComponent<BoxCollider>().enabled = true;
 
         animationSpeed = Random.Range(.5f, 1.5f);
         this.GetComponent<NavMeshAgent>().speed *= animationSpeed;
@@ -123,7 +124,7 @@ public class RandomStudent : MonoBehaviour
 
         if (distance <= 1)
         {
-            this.gameObject.SetActive(false);
+            Destroy(this.gameObject);
         }
 
         float distanceToMC = Vector3.Distance(this.transform.position, GameObject.FindWithTag("Player").transform.position);

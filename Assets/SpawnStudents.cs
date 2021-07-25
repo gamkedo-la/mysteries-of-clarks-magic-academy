@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class SpawnStudents : MonoBehaviour
 {
-    public int MorningCount, LunchCount, AfternoonCount, EveningCount, NightCount;
-    int CurrentCount;
+    //InstantiationRate 
+    public float MorningCount, LunchCount, AfternoonCount, EveningCount, NightCount;
+    float CurrentCount;
     public GameObject RandomStudent;
 
     private void Start()
@@ -52,14 +53,8 @@ public class SpawnStudents : MonoBehaviour
 
     IEnumerator Waiting()
     {
-        yield return new WaitForSeconds(1f);
-
-        print(GameManager.timeOfDay + " " + CurrentCount);
-
-        for (int i = 0; i < CurrentCount; i++)
-        {
-            Instantiate(RandomStudent, transform.position, transform.rotation);
-            CurrentCount--;
-        }
+        yield return new WaitForSeconds(CurrentCount);
+        Instantiate(RandomStudent, transform.position, transform.rotation);
+        StartCoroutine(Waiting());
     }
 }
