@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class RandomStudent : MonoBehaviour
 {
@@ -23,14 +24,31 @@ public class RandomStudent : MonoBehaviour
 
     float animationSpeed;
     public Animator maleAnimation, femaleAnimation;
-    // Start is called before the first frame update
+
+    public Transform[] startingPositions;
+    public Transform[] endingPositions;
+    int chooseEnd;
+
+    NavMeshAgent agent;
+
+    public Material semiTransparent, Transparent;
     void Start()
     {
-        animationSpeed = Random.Range(.5f, 1.3f);
+        agent = GetComponent<NavMeshAgent>();
+        int chooseStart = Random.Range(0, startingPositions.Length);
+        chooseEnd = Random.Range(0, endingPositions.Length);
+        this.GetComponent<NavMeshAgent>().enabled = false;
+        transform.position = startingPositions[chooseStart].transform.position;
+        this.GetComponent<NavMeshAgent>().enabled = true;
+
+
+        animationSpeed = Random.Range(.5f, 1.5f);
+        this.GetComponent<NavMeshAgent>().speed *= animationSpeed;
+
+        print(this.GetComponent<NavMeshAgent>().speed);
+
         sizeMultiplier = Random.Range(.85f, 1.3f);
-        //Only on male for now.
         chooseGender = Random.Range(0, 2);
-        print(chooseGender);
 
         hairColorChoice = Random.Range(0, hairColor.Length);
 
@@ -48,8 +66,8 @@ public class RandomStudent : MonoBehaviour
             maleHairStyle[hairstyle].SetActive(true);
 
            maleHairStyle[hairstyle].GetComponent<Renderer>().material = hairColor[hairColorChoice];
-            mats[0] = skin[chooseSkin];
-            maleRenderer.GetComponent<SkinnedMeshRenderer>().material = mats[0];
+           mats[0] = skin[chooseSkin];
+           maleRenderer.GetComponent<SkinnedMeshRenderer>().material = mats[0];
 
           //  chooseHouse = Random.Range(0, 4);
             /*if (chooseHouse == 0)
@@ -91,6 +109,70 @@ public class RandomStudent : MonoBehaviour
             femaleRenderer.GetComponent<SkinnedMeshRenderer>().material = mats[0];
 
             femaleAnimation.speed = animationSpeed;
+        }
+    }
+
+    private void Update()
+    {
+        this.transform.LookAt(endingPositions[chooseEnd].transform);
+        agent.SetDestination(endingPositions[chooseEnd].transform.position);
+
+        float distance = Vector3.Distance(this.transform.position, endingPositions[chooseEnd].transform.position);
+
+        if (distance <= 1)
+        {
+            this.gameObject.SetActive(false);
+        }
+
+        float distanceToMC = Vector3.Distance(this.transform.position, GameObject.FindWithTag("Player").transform.position);
+
+        if (distanceToMC <= 5 && distanceToMC >1.5f)
+        {
+            GetComponent<BoxCollider>().enabled = true;
+            if (chooseGender == 0)
+            {
+                maleHairStyle[hairstyle].GetComponent<Renderer>().material = semiTransparent;
+                mats[0] = semiTransparent;
+                maleRenderer.GetComponent<SkinnedMeshRenderer>().material = mats[0];
+                male.SetActive(true);
+            }
+            if (chooseGender == 1)
+            {
+                femaleHairStyle[hairstyle].GetComponent<Renderer>().material = semiTransparent;
+                mats[0] = semiTransparent;
+                femaleRenderer.GetComponent<SkinnedMeshRenderer>().material = mats[0];
+                female.SetActive(true);
+            }
+        }
+        else if (distanceToMC <= 1.5f)
+        {
+            print("here");
+            GetComponent<BoxCollider>().enabled = false;
+            if (chooseGender == 0)
+            {
+                male.SetActive(false);
+            }
+            if (chooseGender == 1)
+            {
+                female.SetActive(false);
+            }
+        }
+        else
+        {
+            if (chooseGender == 0)
+            {
+                maleHairStyle[hairstyle].GetComponent<Renderer>().material = hairColor[hairColorChoice];
+                mats[0] = skin[chooseSkin];
+                maleRenderer.GetComponent<SkinnedMeshRenderer>().material = mats[0];
+                male.SetActive(true);
+            }
+            if (chooseGender == 1)
+            {
+                femaleHairStyle[hairstyle].GetComponent<Renderer>().material = hairColor[hairColorChoice];
+                mats[0] = skin[chooseSkin];
+                femaleRenderer.GetComponent<SkinnedMeshRenderer>().material = mats[0];
+                female.SetActive(true);
+            }
         }
     }
 }
