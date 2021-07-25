@@ -11,7 +11,19 @@ public class DoorToNextArea : MonoBehaviour
     public string RoomName;
     public Text RoomText;
 
+    public Vector3 LocationToSpawnInRoomYoureGoingTo;
+    public Quaternion RotationToSpawnInRoomYoureGoingTo;
+
     public GameObject UIForRoomChange;
+
+    GameObject player; 
+
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        player.transform.position = GameManager.playerSpawn;
+        player.transform.rotation = GameManager.playerRotation;
+    }
 
     private void Update()
     {
@@ -21,6 +33,8 @@ public class DoorToNextArea : MonoBehaviour
             RoomText.text = RoomName;
             if (Input.GetKeyDown(KeyCode.Space))
             {
+                GameManager.playerRotation = RotationToSpawnInRoomYoureGoingTo;
+                GameManager.playerSpawn = LocationToSpawnInRoomYoureGoingTo;
                 SceneManager.LoadScene(RoomToGoTo);
             }
         }

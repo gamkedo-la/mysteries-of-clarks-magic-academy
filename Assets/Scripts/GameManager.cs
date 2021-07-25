@@ -112,6 +112,9 @@ public class GameManager : MonoBehaviour
     public static string MCFirstName;
     public static string MCLastName;
 
+    public static Vector3 playerSpawn;
+    public static Quaternion playerRotation;
+
     private void Awake()
     {
         if (instance == null)
