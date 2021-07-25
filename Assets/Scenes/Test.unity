@@ -1432,12 +1432,12 @@ PrefabInstance:
     - target: {fileID: 502002653910905254, guid: 305106af8dfbcab42be98ce083903432,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000008515315
+      value: -0.000000008515311
       objectReference: {fileID: 0}
     - target: {fileID: 502002653910905254, guid: 305106af8dfbcab42be98ce083903432,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000012265138
+      value: 0.0000000012265134
       objectReference: {fileID: 0}
     - target: {fileID: 502002654604943514, guid: 305106af8dfbcab42be98ce083903432,
         type: 3}
@@ -1585,6 +1585,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 527216256}
+  - component: {fileID: 527216257}
   m_Layer: 0
   m_Name: SpawnRandomStudents
   m_TagString: Untagged
@@ -1606,6 +1607,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &527216257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 527216255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e78e2bedf76274c4484134bad193d9b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MorningCount: 5
+  LunchCount: 10
+  AfternoonCount: 3
+  EveningCount: 30
+  NightCount: 2
+  RandomStudent: {fileID: 668885812346295377, guid: 19735151f73eddd4d84a746c2ffc3a99,
+    type: 3}
 --- !u!1 &568610402
 GameObject:
   m_ObjectHideFlags: 0
@@ -7710,66 +7730,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 668885812346295343, guid: 19735151f73eddd4d84a746c2ffc3a99,
-        type: 3}
-      propertyPath: endingPositions.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 668885812346295343, guid: 19735151f73eddd4d84a746c2ffc3a99,
-        type: 3}
-      propertyPath: startingPositions.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 668885812346295343, guid: 19735151f73eddd4d84a746c2ffc3a99,
-        type: 3}
-      propertyPath: endingPositions.Array.data[0]
-      value: 
-      objectReference: {fileID: 783374908}
-    - target: {fileID: 668885812346295343, guid: 19735151f73eddd4d84a746c2ffc3a99,
-        type: 3}
-      propertyPath: endingPositions.Array.data[1]
-      value: 
-      objectReference: {fileID: 1731229651}
-    - target: {fileID: 668885812346295343, guid: 19735151f73eddd4d84a746c2ffc3a99,
-        type: 3}
-      propertyPath: endingPositions.Array.data[2]
-      value: 
-      objectReference: {fileID: 47060734}
-    - target: {fileID: 668885812346295343, guid: 19735151f73eddd4d84a746c2ffc3a99,
-        type: 3}
-      propertyPath: endingPositions.Array.data[3]
-      value: 
-      objectReference: {fileID: 714093129}
-    - target: {fileID: 668885812346295343, guid: 19735151f73eddd4d84a746c2ffc3a99,
-        type: 3}
-      propertyPath: endingPositions.Array.data[4]
-      value: 
-      objectReference: {fileID: 921752564}
-    - target: {fileID: 668885812346295343, guid: 19735151f73eddd4d84a746c2ffc3a99,
-        type: 3}
-      propertyPath: startingPositions.Array.data[0]
-      value: 
-      objectReference: {fileID: 1186782148}
-    - target: {fileID: 668885812346295343, guid: 19735151f73eddd4d84a746c2ffc3a99,
-        type: 3}
-      propertyPath: startingPositions.Array.data[1]
-      value: 
-      objectReference: {fileID: 1196299260}
-    - target: {fileID: 668885812346295343, guid: 19735151f73eddd4d84a746c2ffc3a99,
-        type: 3}
-      propertyPath: startingPositions.Array.data[2]
-      value: 
-      objectReference: {fileID: 1415372035}
-    - target: {fileID: 668885812346295343, guid: 19735151f73eddd4d84a746c2ffc3a99,
-        type: 3}
-      propertyPath: startingPositions.Array.data[3]
-      value: 
-      objectReference: {fileID: 1464517143}
-    - target: {fileID: 668885812346295343, guid: 19735151f73eddd4d84a746c2ffc3a99,
-        type: 3}
-      propertyPath: startingPositions.Array.data[4]
-      value: 
-      objectReference: {fileID: 1618234823}
     - target: {fileID: 668885812346295376, guid: 19735151f73eddd4d84a746c2ffc3a99,
         type: 3}
       propertyPath: m_RootOrder
@@ -7829,6 +7789,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RandomStudent
+      objectReference: {fileID: 0}
+    - target: {fileID: 668885812346295377, guid: 19735151f73eddd4d84a746c2ffc3a99,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19735151f73eddd4d84a746c2ffc3a99, type: 3}

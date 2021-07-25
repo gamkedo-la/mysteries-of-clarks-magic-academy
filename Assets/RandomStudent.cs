@@ -49,8 +49,6 @@ public class RandomStudent : MonoBehaviour
         animationSpeed = Random.Range(.5f, 1.5f);
         this.GetComponent<NavMeshAgent>().speed *= animationSpeed;
 
-        print(this.GetComponent<NavMeshAgent>().speed);
-
         sizeMultiplier = Random.Range(.85f, 1.3f);
         chooseGender = Random.Range(0, 2);
 

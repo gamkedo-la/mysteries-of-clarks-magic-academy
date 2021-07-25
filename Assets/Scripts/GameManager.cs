@@ -132,8 +132,8 @@ public class GameManager : MonoBehaviour
         */
         dayOfWeek = 0;
         month = 4;
-        day = 17;
-        
+        //day = 17;
+        day = 12;
         /* Finals Testing
         dayOfWeek = 1;
         month = 5;
