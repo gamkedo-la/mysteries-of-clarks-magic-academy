@@ -240,6 +240,12 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!137 &52757616 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -1526964690268444965, guid: 6f9a68fe50727bc4d96a11e92a71eb76,
+    type: 3}
+  m_PrefabInstance: {fileID: 1069203737}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &54980492
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -326,9 +332,9 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 54980492}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &66425285 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -516098083770646512, guid: d05084ae04f9bd84f9191b110e6b223e,
+--- !u!137 &66425287 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -1526964690268444965, guid: d05084ae04f9bd84f9191b110e6b223e,
     type: 3}
   m_PrefabInstance: {fileID: 483964009}
   m_PrefabAsset: {fileID: 0}
@@ -1535,12 +1541,12 @@ PrefabInstance:
     - target: {fileID: 502002653910905254, guid: 305106af8dfbcab42be98ce083903432,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000008515311
+      value: 0.000000008515315
       objectReference: {fileID: 0}
     - target: {fileID: 502002653910905254, guid: 305106af8dfbcab42be98ce083903432,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000012265134
+      value: -0.0000000012265138
       objectReference: {fileID: 0}
     - target: {fileID: 502002654604943514, guid: 305106af8dfbcab42be98ce083903432,
         type: 3}
@@ -1570,17 +1576,17 @@ PrefabInstance:
     - target: {fileID: 502002654614130099, guid: 305106af8dfbcab42be98ce083903432,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.1784248
+      value: 0.17842482
       objectReference: {fileID: 0}
     - target: {fileID: 502002654614130099, guid: 305106af8dfbcab42be98ce083903432,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000008465141
+      value: -0.000000008465139
       objectReference: {fileID: 0}
     - target: {fileID: 502002654614130099, guid: 305106af8dfbcab42be98ce083903432,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000015350229
+      value: 0.0000000015350226
       objectReference: {fileID: 0}
     - target: {fileID: 502002654917599721, guid: 305106af8dfbcab42be98ce083903432,
         type: 3}
@@ -1726,10 +1732,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   male: {fileID: 18978465}
   female: {fileID: 172722966}
+  skin: []
   EE: {fileID: 5150185411585346521, guid: 936c6ab16f1d3964e9a4640ddfb7285a, type: 3}
   DL: {fileID: -4677595253774661879, guid: d05084ae04f9bd84f9191b110e6b223e, type: 3}
   HH: {fileID: 3953210987849776394, guid: fe5f5b58cbd7d66439e2218441a9e1d6, type: 3}
   GD: {fileID: 3101582922936145899, guid: 5bd34a4a430f5e14e9bdd40321980424, type: 3}
+  femaleRenderer: {fileID: 52757616}
+  maleRenderer: {fileID: 66425287}
+  mats:
+  - {fileID: 3111753102985593842, guid: 936c6ab16f1d3964e9a4640ddfb7285a, type: 3}
+  - {fileID: 3111753102985593842, guid: 936c6ab16f1d3964e9a4640ddfb7285a, type: 3}
+  - {fileID: 3111753102985593842, guid: 936c6ab16f1d3964e9a4640ddfb7285a, type: 3}
+  - {fileID: 205335922712662895, guid: f138c1a65a8eb084da6f09796a5f757b, type: 3}
+  - {fileID: -9107778726004652365, guid: 37b1c2df63c9d924eab250e63e9d8112, type: 3}
+  - {fileID: 3487798359267234263, guid: 19cf30a2aa4ed5a4898985213a4ff745, type: 3}
+  - {fileID: 5945284640638111330, guid: 5cc3a3f4a3bdc6646bc3d16104246460, type: 3}
+  - {fileID: 4184966897300545001, guid: 6f9a68fe50727bc4d96a11e92a71eb76, type: 3}
   femaleHairStyle:
   - {fileID: 860612379}
   - {fileID: 929698964}
@@ -1754,11 +1772,6 @@ MonoBehaviour:
   - {fileID: -1804569026587910824, guid: c47ec28e5aa4b0b4ab3929b20db63aa9, type: 3}
   - {fileID: 3487798359267234263, guid: 19cf30a2aa4ed5a4898985213a4ff745, type: 3}
   - {fileID: -1783071003982897382, guid: c47ec28e5aa4b0b4ab3929b20db63aa9, type: 3}
-  femaleCube001: {fileID: 0}
-  maleCube001: {fileID: 66425285}
-  femaleColors: []
-  maleColors:
-  - {fileID: -4677595253774661879, guid: d05084ae04f9bd84f9191b110e6b223e, type: 3}
   maleAnimation: {fileID: 18978467}
   femaleAnimation: {fileID: 172722968}
 --- !u!1 &538428067 stripped
