@@ -48,7 +48,7 @@ Shader "Custom/WorldspaceFloor"
         void surf (Input IN, inout SurfaceOutputStandard o)
         {
             float2 UV = IN.worldPos.zx;
-            fixed4 c = tex2D(_MainTex, UV * _Scale);
+            fixed4 c = tex2D(_MainTex, UV * _Scale) * _Color;
 
             o.Albedo = c.rgb;
             o.Normal = UnpackNormal(tex2D(_Normal, UV * _Scale));
