@@ -133,15 +133,15 @@ public class GameManager : MonoBehaviour
         MCFirstName = "Sara";
         MCLastName = "Lee";
         */
-        dayOfWeek = 0;
+       /* dayOfWeek = 0;
         month = 4;
         day = 17;
-
-        /* Finals Testing
+       */
+        // Finals Testing
         dayOfWeek = 1;
         month = 5;
-        day = 23;
-        */
+        day = 28;
+        
         directionalLight = GameObject.Find("Sun");
 
         timeOfDay = 3;
@@ -1090,7 +1090,7 @@ public class GameManager : MonoBehaviour
                     //  ProgressDay();
                 }
 
-                else if (month == 4 && (day == 18 || day == 20 || day == 25 || day == 27))
+                else if (month == 4 && (day == 18 ||day == 25))
                 {
                     SceneManager.LoadScene("GreatHall");
                     print("Load Great Hall");
@@ -1108,10 +1108,20 @@ public class GameManager : MonoBehaviour
                     print("Load Great Hall");
                 }
 
-                else
+                //Weekday night
+                if (timeOfDay == 4)
                 {
-                    freePeriod = true;
-                    print("Load outside of potions room or great hall for free period");
+                    if (month == 4 && (day == 20 || day == 27))
+                    {
+                        SceneManager.LoadScene("GreatHall");
+                        print("Load Great Hall");
+                    }
+
+                    else
+                    {
+                        freePeriod = true;
+                        print("Load outside of potions room or great hall for free period");
+                    }
                 }
             }
             else
@@ -1123,13 +1133,22 @@ public class GameManager : MonoBehaviour
 
         if (dayOfWeek == 0 || dayOfWeek == 6)
         {
-            if (timeOfDay == 1)
+            if (month == 5 && (day == 15 || day == 29) && timeOfDay == 1)
             {
-                ProgressDay();
+                SceneManager.LoadScene("GreatHall");
+                print("Load Great Hall");
             }
-            if (timeOfDay == 2)
+
+            else
             {
-                ProgressDay();
+                if (timeOfDay == 1)
+                {
+                    ProgressDay();
+                }
+                if (timeOfDay == 2)
+                {
+                    ProgressDay();
+                }
             }
         }
     }
