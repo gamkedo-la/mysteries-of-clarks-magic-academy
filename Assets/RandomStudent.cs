@@ -117,7 +117,6 @@ public class RandomStudent : MonoBehaviour
 
     private void Update()
     {
-        this.transform.LookAt(endingPositions[chooseEnd].transform);
         agent.SetDestination(endingPositions[chooseEnd].transform.position);
 
         float distance = Vector3.Distance(this.transform.position, endingPositions[chooseEnd].transform.position);
