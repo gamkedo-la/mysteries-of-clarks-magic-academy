@@ -135,8 +135,8 @@ public class GameManager : MonoBehaviour
         */
         dayOfWeek = 0;
         month = 4;
-        //day = 17;
-        day = 12;
+        day = 17;
+
         /* Finals Testing
         dayOfWeek = 1;
         month = 5;
@@ -990,6 +990,23 @@ public class GameManager : MonoBehaviour
                     print("Load a generic room (probably the dorm) for free period");
                 }
             }
+
+            //Week day lunch
+            if (timeOfDay == 1)
+            {
+                if (month == 5 && (day == 15 || day == 18 || day == 29))
+                {
+                    SceneManager.LoadScene("GreatHall");
+                    print("Load Great Hall");
+                }
+                else
+                {
+                    freePeriod = true;
+                    print("Load a generic room outside of classroom for free period");
+                }
+            }
+
+
             //Weekday afternoons
             if (timeOfDay == 2)
             {
@@ -1063,20 +1080,38 @@ public class GameManager : MonoBehaviour
                 {
                     print("Progress Day");
                     GameManager.instance.DatePlay();
-                  //  ProgressDay();
+                    //  ProgressDay();
                 }
 
                 else if (month == 5 && (day == 11 || day == 17))
                 {
                     print("Progress Day");
                     GameManager.instance.DatePlay();
-                  //  ProgressDay();
+                    //  ProgressDay();
+                }
+
+                else if (month == 4 && (day == 18 || day == 20 || day == 25 || day == 27))
+                {
+                    SceneManager.LoadScene("GreatHall");
+                    print("Load Great Hall");
+                }
+
+                else if (month == 5 && (day == 2 || day == 23))
+                {
+                    SceneManager.LoadScene("GreatHall");
+                    print("Load Great Hall");
+                }
+
+                else if (month == 6 && day == 1 )
+                {
+                    SceneManager.LoadScene("GreatHall");
+                    print("Load Great Hall");
                 }
 
                 else
                 {
                     freePeriod = true;
-                    print("Load outside of potions room for free period");
+                    print("Load outside of potions room or great hall for free period");
                 }
             }
             else
