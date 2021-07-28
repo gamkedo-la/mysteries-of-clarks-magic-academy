@@ -42,6 +42,7 @@ public class TreasureChest : MonoBehaviour
                 hasOpened = true;
                 //Show UI for what you got
                 //Add item to inventory
+                GameManager.instance.ToggleNotificationPanel("Treasure opened");
             }
         }
     }

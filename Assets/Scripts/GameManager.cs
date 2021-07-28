@@ -115,6 +115,10 @@ public class GameManager : MonoBehaviour
     public static Vector3 playerSpawn;
     public static Quaternion playerRotation;
 
+    // Notifications
+    public GameObject notificationPanel;
+    public Text notificationText;
+
     private void Awake()
     {
         if (instance == null)
@@ -1223,6 +1227,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void ToggleNotificationPanel(string newText) {
+        notificationText.text = newText;
+        notificationPanel.SetActive(!notificationPanel.activeInHierarchy);
+    }
 
     #endregion
 }
