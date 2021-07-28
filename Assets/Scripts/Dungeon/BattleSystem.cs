@@ -308,6 +308,8 @@ public class BattleSystem : MonoBehaviour
     int DefenseModifierTurnCount = 0;
     float AttackModifier = 1.0f;
     float DefenseModifier = 1.0f;
+
+    public GameObject GracieMaySpell1, GracieMaySpell2, GracieMaySpell3, GracieMaySpell4;
     private void Start()
     {
         if (GameObject.Find("GameManager") == null)
@@ -7079,7 +7081,7 @@ public class BattleSystem : MonoBehaviour
         float chance = Random.Range(0, 100);
 
         float gracieSpawnChance = (GameManager.GracieMayFriendship / 10) * chance;
-        chance = 100;
+        
         if (chance > .5f)
         {
             int spell = Random.Range(0, 4);
@@ -7092,6 +7094,7 @@ public class BattleSystem : MonoBehaviour
                 GameManager.SkyeHealth += Mathf.RoundToInt(GameManager.SkyeMaxHealth * .3f);
                 GameManager.SullivanHealth += Mathf.RoundToInt(GameManager.SullivanMaxHealth * .3f);
                 dialogueText.text = "Gracie May: Here is a little health for you!";
+                GracieMaySpell1.SetActive(true);
                 UpdateLifeUI();
             }
 
@@ -7104,6 +7107,7 @@ public class BattleSystem : MonoBehaviour
                 GameManager.SkyeMagic += Mathf.RoundToInt(GameManager.SkyeMaxMagic * .3f);
                 GameManager.SullivanMagic += Mathf.RoundToInt(GameManager.SullivanMaxMagic * .3f);
                 dialogueText.text = "Gracie May: Here is a little stamina for you!";
+                GracieMaySpell2.SetActive(true);
                 UpdateMagicUI();
             }
 
@@ -7112,6 +7116,7 @@ public class BattleSystem : MonoBehaviour
                 AttackModifierTurnCount = 3;
                 AttackModifier = 1.3f;
                 dialogueText.text = "Attack up!";
+                GracieMaySpell3.SetActive(true);
             }
 
             if (spell == 3)
@@ -7119,6 +7124,7 @@ public class BattleSystem : MonoBehaviour
                 DefenseModifierTurnCount = 3;
                 DefenseModifier = .7f;
                 dialogueText.text = "Defense up!";
+                GracieMaySpell4.SetActive(true);
             }
 
         }
@@ -7130,26 +7136,20 @@ public class BattleSystem : MonoBehaviour
         gracieMaySet.SetActive(true);
         gracieMayAnim.SetBool("isAttack", true);
         
-        //Health up all
-        //Energy up all
-        //Attack up all
-        //Defense up all
-
-        //this is where you'd put the powerups she can do
-        /*
-        if ()
-        isDead = enemyUnit[enemyUnitSelected].ThrowRock(MC.MCSpell1Damage);
-        */        
-
         StartCoroutine(GracieWaiting());
     }
 
     IEnumerator GracieWaiting()
     {
         yield return new WaitForSeconds(6);
+        GracieMaySpell1.SetActive(false);
+        GracieMaySpell2.SetActive(false);
+        GracieMaySpell3.SetActive(false);
+        GracieMaySpell4.SetActive(false);
         gracieMaySet.SetActive(false);
         print("end spell here");
         gracieMayAnim.SetBool("isAttack", false);
+
         NextTurn();
     }
 

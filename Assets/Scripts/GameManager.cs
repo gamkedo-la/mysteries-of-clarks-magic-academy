@@ -183,7 +183,7 @@ public class GameManager : MonoBehaviour
         //  PartyCount++;
         //  PartyCount++;
 
-        GracieMayAvailable = true;
+     //   GracieMayAvailable = true;
 
         if (PartyCount > 4)
         {
