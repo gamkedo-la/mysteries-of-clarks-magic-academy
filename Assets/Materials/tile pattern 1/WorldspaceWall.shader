@@ -51,7 +51,8 @@ Shader "Custom/WorldspaceWall"
             // zy is north south walls
             // zx is good for floors and ceilings
             // this version uses a sum for walls of ns+ew
-            float2 UV = IN.worldPos.xy + IN.worldPos.zy; 
+            float2 UV = IN.worldPos.xy;
+            UV.x = UV.x + IN.worldPos.z; 
             fixed4 c = tex2D(_MainTex, UV * _Scale) * _Color;
 
             o.Albedo = c.rgb;

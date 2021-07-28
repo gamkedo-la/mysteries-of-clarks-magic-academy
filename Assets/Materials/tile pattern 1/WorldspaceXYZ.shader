@@ -52,7 +52,11 @@ Shader "Custom/WorldspaceXYZ"
             // zx is good for floors and ceilings
             // this version adds them all together!
             // so it works for all walls and floor+ceiling
-            float2 UV = IN.worldPos.xy + IN.worldPos.zy + + IN.worldPos.zx; 
+            float2 UV = IN.worldPos.xy + IN.worldPos.zz; 
+            //UV.x = UV.x + IN.worldPos.z; 
+            //UV.y = UV.y + IN.worldPos.z; 
+            //UV.y = UV.y + IN.worldPos.z; 
+            // + IN.worldPos.zy + IN.worldPos.zx; 
             fixed4 c = tex2D(_MainTex, UV * _Scale) * _Color;
 
             o.Albedo = c.rgb;
