@@ -285,7 +285,7 @@ public class BattleSystem : MonoBehaviour
     public Text MCDamageUI, RhysDamageUI, JameelDamageUI, HarperDamageUI, SkyeDamageUI, SullivanDamageUI;
 
     public enum CharacterIdentifier
-    { MC, Rhys, Jameel, Harper, Skye, Sullivan, Enemy1, Enemy2, Enemy3, Enemy4, Enemy5 };
+    { MC, Rhys, Jameel, Harper, Skye, Sullivan, GracieMay, Enemy1, Enemy2, Enemy3, Enemy4, Enemy5 };
 
     public List<CharacterIdentifier> playerTurnOrder = new List<CharacterIdentifier>();
     public List<CharacterIdentifier> enemyTurnOrder = new List<CharacterIdentifier>();
@@ -301,6 +301,8 @@ public class BattleSystem : MonoBehaviour
 
     public string DungeonRoomToLoad, LosingScreenToLoad;
 
+    public GameObject gracieMaySet;
+    public Animator gracieMayAnim;
 
     private void Start()
     {
@@ -340,6 +342,11 @@ public class BattleSystem : MonoBehaviour
         if (GameManager.SullivanInParty)
         {
             playerTurnOrder.Add(CharacterIdentifier.Sullivan);
+        }
+
+        if (GameManager.GracieMayAvailable)
+        {
+            playerTurnOrder.Add(CharacterIdentifier.GracieMay);
         }
 
 
@@ -783,6 +790,10 @@ public class BattleSystem : MonoBehaviour
             case CharacterIdentifier.MC:
                 MCTurn();
                 state = BattleState.MCTURN;
+                break;
+            case CharacterIdentifier.GracieMay:
+                print("this is gracie's turn");
+                //state = BattleState.MCTURN;
                 break;
             case CharacterIdentifier.Rhys:
                 RhysTurn();
