@@ -7056,30 +7056,79 @@ public class BattleSystem : MonoBehaviour
 
     void GracieMay()
     {
+        float chance = Random.Range(0, 100);
+
+        float gracieSpawnChance = (GameManager.GracieMayFriendship / 10) * chance;
+
+        if (chance > .5f)
+        {
+            int spell = Random.Range(0, 4);
+            if (spell == 0)
+            {
+                GameManager.MCHealth += Mathf.RoundToInt(GameManager.MCMaxHealth * .3f);
+                GameManager.RhysHealth += Mathf.RoundToInt(GameManager.RhysMaxHealth * .3f);
+                GameManager.JameelHealth += Mathf.RoundToInt(GameManager.JameelMaxHealth * .3f);
+                GameManager.HarperHealth += Mathf.RoundToInt(GameManager.HarperMaxHealth * .3f);
+                GameManager.SkyeHealth += Mathf.RoundToInt(GameManager.SkyeMaxHealth * .3f);
+                GameManager.SullivanHealth += Mathf.RoundToInt(GameManager.SullivanMaxHealth * .3f);
+                dialogueText.text = "Gracie May: Here is a little health for you!";
+                UpdateLifeUI();
+            }
+
+            if (spell == 1)
+            {
+                GameManager.MCMagic += Mathf.RoundToInt(GameManager.MCMaxMagic * .3f);
+                GameManager.RhysMagic += Mathf.RoundToInt(GameManager.RhysMaxMagic * .3f);
+                GameManager.JameelMagic += Mathf.RoundToInt(GameManager.JameelMaxMagic * .3f);
+                GameManager.HarperMagic += Mathf.RoundToInt(GameManager.HarperMaxMagic * .3f);
+                GameManager.SkyeMagic += Mathf.RoundToInt(GameManager.SkyeMaxMagic * .3f);
+                GameManager.SullivanMagic += Mathf.RoundToInt(GameManager.SullivanMaxMagic * .3f);
+                dialogueText.text = "Gracie May: Here is a little stamina for you!";
+                UpdateMagicUI();
+            }
+
+            if (spell == 2)
+            {
+
+                dialogueText.text = "Gracie May: Here is a little stamina for you!";
+            }
+
+            if (spell == 3)
+            {
+
+                dialogueText.text = "Gracie May: Here is a little stamina for you!";
+            }
+
+        }
+        else
+        {
+            NextTurn();
+        }
         //if (chance to do a spell)
         gracieMaySet.SetActive(true);
         gracieMayAnim.SetBool("isAttack", true);
-        print("print spell here");
-        //Print spell name somewhere on screen
+        
+        //Health up all
+        //Energy up all
+        //Attack up all
+        //Defense up all
 
         //this is where you'd put the powerups she can do
         /*
         if ()
         isDead = enemyUnit[enemyUnitSelected].ThrowRock(MC.MCSpell1Damage);
         */        
-        dialogueText.text = "She did a move!";
 
         StartCoroutine(GracieWaiting());
     }
 
     IEnumerator GracieWaiting()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(6);
         gracieMaySet.SetActive(false);
         print("end spell here");
         gracieMayAnim.SetBool("isAttack", false);
         NextTurn();
-        //End the turn
     }
 
     void RhysTurn()
