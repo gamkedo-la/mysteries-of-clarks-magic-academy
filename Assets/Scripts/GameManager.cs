@@ -133,18 +133,18 @@ public class GameManager : MonoBehaviour
         MCFirstName = "Sara";
         MCLastName = "Lee";
         */
-       /* dayOfWeek = 0;
+        dayOfWeek = 0;
         month = 4;
         day = 17;
-       */
-        // Finals Testing
+       
+        /*// Finals Testing
         dayOfWeek = 1;
         month = 5;
         day = 28;
-        
+        */
         directionalLight = GameObject.Find("Sun");
 
-        timeOfDay = 3;
+        timeOfDay = 4;
         displayDayOfWeek = GameObject.Find("DayOfWeek").GetComponent<Text>();
         displayTimeOfDay = GameObject.Find("TimeOfDay").GetComponent<Text>();
         monthAndDay = GameObject.Find("CalendarDay").GetComponent<Text>();
