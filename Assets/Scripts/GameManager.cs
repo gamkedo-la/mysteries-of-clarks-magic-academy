@@ -198,7 +198,7 @@ public class GameManager : MonoBehaviour
         RhysTalk = false;
         JameelTalk = false;
         HarperTalk = false;
-        SullivanTalk = true;
+        SullivanTalk = false;
         SkyeTalk = false;
         GracieMayTalk = false;
         AtornTalk = false;
@@ -388,7 +388,75 @@ public class GameManager : MonoBehaviour
                 GameManager.instance.monthSlide.text = "June";
             }
 
-            GameManager.instance.dateSlide.text = (day - 3) + "     " + (day - 2) + "     " + (day - 1) + "     " + day + "     " + (day + 1) + "     " + (day + 2) + "     " + (day + 3) + "     " + (day + 4);
+            if (month == 4 && day == 26)
+            {
+                GameManager.instance.dateSlide.text = (day - 3) + "     " + (day - 2) + "     " + (day - 1) + "     " + day + "     " + (day + 1) + "     " + (day + 2) + "     " + (day + 3) + "      " + "1";
+            }
+
+            else if (month == 4 && day == 27)
+            {
+                GameManager.instance.dateSlide.text = (day - 3) + "     " + (day - 2) + "     " + (day - 1) + "     " + day + "     " + (day + 1) + "     " + (day + 2) + "     " + (day + 3) + "      " + "1";
+            }
+
+            else if(month == 4 && day == 28)
+            {
+                GameManager.instance.dateSlide.text = (day - 3) + "     " + (day - 2) + "     " + (day - 1) + "     " + day + "     " + (day + 1) + "     " + (day + 2) + "     " + "1" + "      " + "2";
+            }
+
+            else if (month == 4 && day == 29)
+            {
+                GameManager.instance.dateSlide.text = (day - 3) + "     " + (day - 2) + "     " + (day - 1) + "     " + day + "     " + (day + 1) + "     " + "1" + "     " + "2" + "     " + "3";
+            }
+
+            else if (month == 4 && day == 30)
+            {
+                GameManager.instance.dateSlide.text = (day - 3) + "     " + (day - 2) + "     " + (day - 1) + "     " + day + "     " + "1" + "     " + "2" + "     " + "3" + "     " + "4";
+            }
+
+            else if (month == 5 && day == 1)
+            {
+                GameManager.instance.dateSlide.text = "28" + "     " + "29" + "     " + "30" + "     " + day + "     " + (day + 1) + "     " + (day + 2) + "     " + (day + 3) + "     " + (day + 4);
+            }
+
+            else if (month == 5 && day == 2)
+            {
+                GameManager.instance.dateSlide.text = "29" + "     " + "30" + "     " + (day - 1) + "     " + day + "     " + (day + 1) + "     " + (day + 2) + "     " + (day + 3) + "     " + (day + 4);
+            }
+
+            else if (month == 5 && day == 3)
+            {
+                GameManager.instance.dateSlide.text = "30" + "     " + (day - 2) + "     " + (day - 1) + "     " + day + "     " + (day + 1) + "     " + (day + 2) + "     " + (day + 3) + "     " + (day + 4);
+            }
+
+            else if(month == 5 && day == 28)
+            {
+                GameManager.instance.dateSlide.text = (day - 3) + "     " + (day - 2) + "     " + (day - 1) + "     " + day + "     " + (day + 1) + "     " + (day + 2) + "     " + (day + 3) + "      " + "1";
+            }
+
+            else if (month == 5 && day == 29)
+            {
+                GameManager.instance.dateSlide.text = (day - 3) + "     " + (day - 2) + "     " + (day - 1) + "     " + day + "     " + (day + 1) + "     " + (day + 2) + "     " + "1" + "     " + "2";
+            }
+
+            else if (month == 5 && day == 30)
+            {
+                GameManager.instance.dateSlide.text = (day - 3) + "     " + (day - 2) + "     " + (day - 1) + "     " + day + "     " + (day + 1) + "     " + "1" + "     " + "2" + "     " + "3";
+            }
+
+            else if (month == 5 && day == 31)
+            {
+                GameManager.instance.dateSlide.text = (day - 3) + "     " + (day - 2) + "     " + (day - 1) + "     " + day + "     " + "1" + "     " + "2" + "     " + "3" + "     " + "4";
+            }
+
+            else if (month == 6 && day == 1)
+            {
+                GameManager.instance.dateSlide.text = "29" + "     " + "30" + "     " + "31" + "     " + day + "     " + (day + 1) + "     " + (day + 2) + "     " + (day + 3) + "     " + (day + 4);
+            }
+
+            else
+            {
+                GameManager.instance.dateSlide.text = (day - 3) + "     " + (day - 2) + "     " + (day - 1) + "     " + day + "     " + (day + 1) + "     " + (day + 2) + "     " + (day + 3) + "     " + (day + 4);
+            }
             GameManager.instance.dateSlideAnim.Play("DateSlide");
 
             GameManager.instance.StartCoroutine(DateWait());
