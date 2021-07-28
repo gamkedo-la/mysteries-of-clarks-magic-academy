@@ -39,11 +39,11 @@ public class GameManager : MonoBehaviour
     //
 
     //Health and Magic of Party
-    public static int MCHealth, RhysHealth, JameelHealth, HarperHealth, SkyeHealth, SullivanHealth;
-    public static int MCMagic, RhysMagic, JameelMagic, HarperMagic, SkyeMagic, SullivanMagic;
+    public static float MCHealth, RhysHealth, JameelHealth, HarperHealth, SkyeHealth, SullivanHealth;
+    public static float MCMagic, RhysMagic, JameelMagic, HarperMagic, SkyeMagic, SullivanMagic;
 
-    public static int MCMaxHealth, RhysMaxHealth, JameelMaxHealth, HarperMaxHealth, SkyeMaxHealth, SullivanMaxHealth;
-    public static int MCMaxMagic, RhysMaxMagic, JameelMaxMagic, HarperMaxMagic, SkyeMaxMagic, SullivanMaxMagic;
+    public static float MCMaxHealth, RhysMaxHealth, JameelMaxHealth, HarperMaxHealth, SkyeMaxHealth, SullivanMaxHealth;
+    public static float MCMaxMagic, RhysMaxMagic, JameelMaxMagic, HarperMaxMagic, SkyeMaxMagic, SullivanMaxMagic;
     //
 
     //PlayerMagicStats

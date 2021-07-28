@@ -14,7 +14,7 @@ public class Unit : MonoBehaviour
     public int heal;
 
     public int maxHP;
-    public int currentHP;
+    public float currentHP;
     //I don't think these are functional right now
     public int agilityPercent;
     public int critialChance;
@@ -32,205 +32,205 @@ public class Unit : MonoBehaviour
 
     //Build these and rename these later based on the player
     #region MC Attacks
-    public int MCSpell1Damage;
-    public int MCSpell1MagicConsumed;
-    public int MCSpell2Damage;
-    public int MCSpell2MagicConsumed;
-    public int MCSpell3Damage;
-    public int MCSpell3MagicConsumed;
-    public int MCSpell4Damage;
-    public int MCSpell4MagicConsumed;
-    public int MCSpell5Damage;
-    public int MCSpell5MagicConsumed;
-    public int MCSpell6Damage;
-    public int MCSpell6MagicConsumed;
-    public int MCSpell7Damage;
-    public int MCSpell7MagicConsumed;
-    public int MCSpell8Damage;
-    public int MCSpell8MagicConsumed;
-    public int MCSpell9Damage;
-    public int MCSpell9MagicConsumed;
-    public int MCSpell10Damage;
-    public int MCSpell10MagicConsumed;
-    public int MCSpell11Damage;
-    public int MCSpell11MagicConsumed;
-    public int MCSpell12Damage;
-    public int MCSpell12MagicConsumed;
-    public int MCSpell13Damage;
-    public int MCSpell13MagicConsumed;
-    public int MCSpell14Damage;
-    public int MCSpell14MagicConsumed;
-    public int MCSpell15Damage;
-    public int MCSpell15MagicConsumed;
-    public int MCSpell16Damage;
-    public int MCSpell16MagicConsumed;
-    public int MCSpell17Damage;
-    public int MCSpell17MagicConsumed;
-    public int MCSpell18Damage;
-    public int MCSpell18MagicConsumed;
-    public int MCSpell19Damage;
-    public int MCSpell19MagicConsumed;
-    public int MCSpell20Damage;
-    public int MCSpell20MagicConsumed;
-    public int MCSpell21Damage;
-    public int MCSpell21MagicConsumed;
-    public int MCSpell22Damage;
-    public int MCSpell22MagicConsumed;
-    public int MCSpell23Damage;
-    public int MCSpell23MagicConsumed;
+    public float MCSpell1Damage;
+    public float MCSpell1MagicConsumed;
+    public float MCSpell2Damage;
+    public float MCSpell2MagicConsumed;
+    public float MCSpell3Damage;
+    public float MCSpell3MagicConsumed;
+    public float MCSpell4Damage;
+    public float MCSpell4MagicConsumed;
+    public float MCSpell5Damage;
+    public float MCSpell5MagicConsumed;
+    public float MCSpell6Damage;
+    public float MCSpell6MagicConsumed;
+    public float MCSpell7Damage;
+    public float MCSpell7MagicConsumed;
+    public float MCSpell8Damage;
+    public float MCSpell8MagicConsumed;
+    public float MCSpell9Damage;
+    public float MCSpell9MagicConsumed;
+    public float MCSpell10Damage;
+    public float MCSpell10MagicConsumed;
+    public float MCSpell11Damage;
+    public float MCSpell11MagicConsumed;
+    public float MCSpell12Damage;
+    public float MCSpell12MagicConsumed;
+    public float MCSpell13Damage;
+    public float MCSpell13MagicConsumed;
+    public float MCSpell14Damage;
+    public float MCSpell14MagicConsumed;
+    public float MCSpell15Damage;
+    public float MCSpell15MagicConsumed;
+    public float MCSpell16Damage;
+    public float MCSpell16MagicConsumed;
+    public float MCSpell17Damage;
+    public float MCSpell17MagicConsumed;
+    public float MCSpell18Damage;
+    public float MCSpell18MagicConsumed;
+    public float MCSpell19Damage;
+    public float MCSpell19MagicConsumed;
+    public float MCSpell20Damage;
+    public float MCSpell20MagicConsumed;
+    public float MCSpell21Damage;
+    public float MCSpell21MagicConsumed;
+    public float MCSpell22Damage;
+    public float MCSpell22MagicConsumed;
+    public float MCSpell23Damage;
+    public float MCSpell23MagicConsumed;
 
     #endregion
 
     #region RhysAttacks
-    public int RhysSpell1Damage;
-    public int RhysSpell1MagicConsumed;
-    public int RhysSpell2Damage;
-    public int RhysSpell2MagicConsumed;
-    public int RhysSpell3Damage;
-    public int RhysSpell3MagicConsumed;
-    public int RhysSpell4Damage;
-    public int RhysSpell4MagicConsumed;
-    public int RhysSpell5Damage;
-    public int RhysSpell5MagicConsumed;
-    public int RhysSpell6Damage;
-    public int RhysSpell6MagicConsumed;
-    public int RhysSpell7Damage;
-    public int RhysSpell7MagicConsumed;
-    public int RhysSpell8Damage;
-    public int RhysSpell8MagicConsumed;
-    public int RhysSpell9Damage;
-    public int RhysSpell9MagicConsumed;
-    public int RhysSpell10Damage;
-    public int RhysSpell10MagicConsumed;
-    public int RhysSpell11Damage;
-    public int RhysSpell11MagicConsumed;
-    public int RhysSpell12Damage;
-    public int RhysSpell12MagicConsumed;
-    public int RhysSpell13Damage;
-    public int RhysSpell13MagicConsumed;
+    public float RhysSpell1Damage;
+    public float RhysSpell1MagicConsumed;
+    public float RhysSpell2Damage;
+    public float RhysSpell2MagicConsumed;
+    public float RhysSpell3Damage;
+    public float RhysSpell3MagicConsumed;
+    public float RhysSpell4Damage;
+    public float RhysSpell4MagicConsumed;
+    public float RhysSpell5Damage;
+    public float RhysSpell5MagicConsumed;
+    public float RhysSpell6Damage;
+    public float RhysSpell6MagicConsumed;
+    public float RhysSpell7Damage;
+    public float RhysSpell7MagicConsumed;
+    public float RhysSpell8Damage;
+    public float RhysSpell8MagicConsumed;
+    public float RhysSpell9Damage;
+    public float RhysSpell9MagicConsumed;
+    public float RhysSpell10Damage;
+    public float RhysSpell10MagicConsumed;
+    public float RhysSpell11Damage;
+    public float RhysSpell11MagicConsumed;
+    public float RhysSpell12Damage;
+    public float RhysSpell12MagicConsumed;
+    public float RhysSpell13Damage;
+    public float RhysSpell13MagicConsumed;
     #endregion
 
     #region Jameel Attacks
-    public int JameelSpell1Damage;
-    public int JameelSpell1MagicConsumed;
-    public int JameelSpell2Damage;
-    public int JameelSpell2MagicConsumed;
-    public int JameelSpell3Damage;
-    public int JameelSpell3MagicConsumed;
-    public int JameelSpell4Damage;
-    public int JameelSpell4MagicConsumed;
-    public int JameelSpell5Damage;
-    public int JameelSpell5MagicConsumed;
-    public int JameelSpell6Damage;
-    public int JameelSpell6MagicConsumed;
-    public int JameelSpell7Damage;
-    public int JameelSpell7MagicConsumed;
-    public int JameelSpell8Damage;
-    public int JameelSpell8MagicConsumed;
-    public int JameelSpell9Damage;
-    public int JameelSpell9MagicConsumed;
-    public int JameelSpell10Damage;
-    public int JameelSpell10MagicConsumed;
-    public int JameelSpell11Damage;
-    public int JameelSpell11MagicConsumed;
-    public int JameelSpell12Damage;
-    public int JameelSpell12MagicConsumed;
-    public int JameelSpell13Damage;
-    public int JameelSpell13MagicConsumed;
-    public int JameelSpell14Damage;
-    public int JameelSpell14MagicConsumed;
-    public int JameelSpell15Damage;
-    public int JameelSpell15MagicConsumed;
+    public float JameelSpell1Damage;
+    public float JameelSpell1MagicConsumed;
+    public float JameelSpell2Damage;
+    public float JameelSpell2MagicConsumed;
+    public float JameelSpell3Damage;
+    public float JameelSpell3MagicConsumed;
+    public float JameelSpell4Damage;
+    public float JameelSpell4MagicConsumed;
+    public float JameelSpell5Damage;
+    public float JameelSpell5MagicConsumed;
+    public float JameelSpell6Damage;
+    public float JameelSpell6MagicConsumed;
+    public float JameelSpell7Damage;
+    public float JameelSpell7MagicConsumed;
+    public float JameelSpell8Damage;
+    public float JameelSpell8MagicConsumed;
+    public float JameelSpell9Damage;
+    public float JameelSpell9MagicConsumed;
+    public float JameelSpell10Damage;
+    public float JameelSpell10MagicConsumed;
+    public float JameelSpell11Damage;
+    public float JameelSpell11MagicConsumed;
+    public float JameelSpell12Damage;
+    public float JameelSpell12MagicConsumed;
+    public float JameelSpell13Damage;
+    public float JameelSpell13MagicConsumed;
+    public float JameelSpell14Damage;
+    public float JameelSpell14MagicConsumed;
+    public float JameelSpell15Damage;
+    public float JameelSpell15MagicConsumed;
     #endregion
 
     #region Harper Attacks
-    public int HarperSpell1Damage;
-    public int HarperSpell1MagicConsumed;
-    public int HarperSpell2Damage;
-    public int HarperSpell2MagicConsumed;
-    public int HarperSpell3Damage;
-    public int HarperSpell3MagicConsumed;
-    public int HarperSpell4Damage;
-    public int HarperSpell4MagicConsumed;
-    public int HarperSpell5Damage;
-    public int HarperSpell5MagicConsumed;
-    public int HarperSpell6Damage;
-    public int HarperSpell6MagicConsumed;
-    public int HarperSpell7Damage;
-    public int HarperSpell7MagicConsumed;
-    public int HarperSpell8Damage;
-    public int HarperSpell8MagicConsumed;
-    public int HarperSpell9Damage;
-    public int HarperSpell9MagicConsumed;
-    public int HarperSpell10Damage;
-    public int HarperSpell10MagicConsumed;
-    public int HarperSpell11Damage;
-    public int HarperSpell11MagicConsumed;
-    public int HarperSpell12Damage;
-    public int HarperSpell12MagicConsumed;
-    public int HarperSpell13Damage;
-    public int HarperSpell13MagicConsumed;
+    public float HarperSpell1Damage;
+    public float HarperSpell1MagicConsumed;
+    public float HarperSpell2Damage;
+    public float HarperSpell2MagicConsumed;
+    public float HarperSpell3Damage;
+    public float HarperSpell3MagicConsumed;
+    public float HarperSpell4Damage;
+    public float HarperSpell4MagicConsumed;
+    public float HarperSpell5Damage;
+    public float HarperSpell5MagicConsumed;
+    public float HarperSpell6Damage;
+    public float HarperSpell6MagicConsumed;
+    public float HarperSpell7Damage;
+    public float HarperSpell7MagicConsumed;
+    public float HarperSpell8Damage;
+    public float HarperSpell8MagicConsumed;
+    public float HarperSpell9Damage;
+    public float HarperSpell9MagicConsumed;
+    public float HarperSpell10Damage;
+    public float HarperSpell10MagicConsumed;
+    public float HarperSpell11Damage;
+    public float HarperSpell11MagicConsumed;
+    public float HarperSpell12Damage;
+    public float HarperSpell12MagicConsumed;
+    public float HarperSpell13Damage;
+    public float HarperSpell13MagicConsumed;
 
     #endregion
 
     #region Skye Attacks 
-    public int SkyeSpell1Damage;
-    public int SkyeSpell1MagicConsumed;
-    public int SkyeSpell2Damage;
-    public int SkyeSpell2MagicConsumed;
-    public int SkyeSpell3Damage;
-    public int SkyeSpell3MagicConsumed;
-    public int SkyeSpell4Damage;
-    public int SkyeSpell4MagicConsumed;
-    public int SkyeSpell5Damage;
-    public int SkyeSpell5MagicConsumed;
-    public int SkyeSpell6Damage;
-    public int SkyeSpell6MagicConsumed;
-    public int SkyeSpell7Damage;
-    public int SkyeSpell7MagicConsumed;
-    public int SkyeSpell8Damage;
-    public int SkyeSpell8MagicConsumed;
-    public int SkyeSpell9Damage;
-    public int SkyeSpell9MagicConsumed;
-    public int SkyeSpell10Damage;
-    public int SkyeSpell10MagicConsumed;
-    public int SkyeSpell11Damage;
-    public int SkyeSpell11MagicConsumed;
+    public float SkyeSpell1Damage;
+    public float SkyeSpell1MagicConsumed;
+    public float SkyeSpell2Damage;
+    public float SkyeSpell2MagicConsumed;
+    public float SkyeSpell3Damage;
+    public float SkyeSpell3MagicConsumed;
+    public float SkyeSpell4Damage;
+    public float SkyeSpell4MagicConsumed;
+    public float SkyeSpell5Damage;
+    public float SkyeSpell5MagicConsumed;
+    public float SkyeSpell6Damage;
+    public float SkyeSpell6MagicConsumed;
+    public float SkyeSpell7Damage;
+    public float SkyeSpell7MagicConsumed;
+    public float SkyeSpell8Damage;
+    public float SkyeSpell8MagicConsumed;
+    public float SkyeSpell9Damage;
+    public float SkyeSpell9MagicConsumed;
+    public float SkyeSpell10Damage;
+    public float SkyeSpell10MagicConsumed;
+    public float SkyeSpell11Damage;
+    public float SkyeSpell11MagicConsumed;
     #endregion
 
     #region Sullivan Attacks
-    public int SullivanSpell1Damage;
-    public int SullivanSpell1MagicConsumed;
-    public int SullivanSpell2Damage;
-    public int SullivanSpell2MagicConsumed;
-    public int SullivanSpell3Damage;
-    public int SullivanSpell3MagicConsumed;
-    public int SullivanSpell4Damage;
-    public int SullivanSpell4MagicConsumed;
-    public int SullivanSpell5Damage;
-    public int SullivanSpell5MagicConsumed;
-    public int SullivanSpell6Damage;
-    public int SullivanSpell6MagicConsumed;
-    public int SullivanSpell7Damage;
-    public int SullivanSpell7MagicConsumed;
-    public int SullivanSpell8Damage;
-    public int SullivanSpell8MagicConsumed;
-    public int SullivanSpell9Damage;
-    public int SullivanSpell9MagicConsumed;
-    public int SullivanSpell10Damage;
-    public int SullivanSpell10MagicConsumed;
-    public int SullivanSpell11Damage;
-    public int SullivanSpell11MagicConsumed;
-    public int SullivanSpell12Damage;
-    public int SullivanSpell12MagicConsumed;
-    public int SullivanSpell13Damage;
-    public int SullivanSpell13MagicConsumed;
+    public float SullivanSpell1Damage;
+    public float SullivanSpell1MagicConsumed;
+    public float SullivanSpell2Damage;
+    public float SullivanSpell2MagicConsumed;
+    public float SullivanSpell3Damage;
+    public float SullivanSpell3MagicConsumed;
+    public float SullivanSpell4Damage;
+    public float SullivanSpell4MagicConsumed;
+    public float SullivanSpell5Damage;
+    public float SullivanSpell5MagicConsumed;
+    public float SullivanSpell6Damage;
+    public float SullivanSpell6MagicConsumed;
+    public float SullivanSpell7Damage;
+    public float SullivanSpell7MagicConsumed;
+    public float SullivanSpell8Damage;
+    public float SullivanSpell8MagicConsumed;
+    public float SullivanSpell9Damage;
+    public float SullivanSpell9MagicConsumed;
+    public float SullivanSpell10Damage;
+    public float SullivanSpell10MagicConsumed;
+    public float SullivanSpell11Damage;
+    public float SullivanSpell11MagicConsumed;
+    public float SullivanSpell12Damage;
+    public float SullivanSpell12MagicConsumed;
+    public float SullivanSpell13Damage;
+    public float SullivanSpell13MagicConsumed;
     #endregion
     //enemyAttack
     public int minAttackAvil, maxAttackAvil;
     int attackToDo;
     int minDamage, maxDamage;
-    public int enemyDamage;
+    public float enemyDamage;
     public string attackName;
 
     public Text DamageUI;
@@ -257,7 +257,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public bool TakeDamage(int dmg)
+    public bool TakeDamage(float dmg)
     {
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
         currentHP -= dmg;
@@ -270,7 +270,7 @@ public class Unit : MonoBehaviour
             return false;
     }
 
-    public bool TakeDamageSpell1(int dmg)
+    public bool TakeDamageSpell1(float dmg)
     {
         Health.value = currentHP / maxHP;
 
@@ -298,7 +298,7 @@ public class Unit : MonoBehaviour
     }
 
     #region MC Attacks
-    public bool ThrowRock(int dmg)
+    public bool ThrowRock(float dmg)
     {
         Health.value = currentHP / maxHP;
 
@@ -325,7 +325,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public bool Flippendo(int dmg)
+    public bool Flippendo(float dmg)
     {
         isCharms = true;
         Health.value = currentHP / maxHP;
@@ -351,7 +351,7 @@ public class Unit : MonoBehaviour
         }
 
     }
-    public bool PulsateSunt(int dmg)
+    public bool PulsateSunt(float dmg)
     {
         isCharms = true;
         Health.value = currentHP / maxHP;
@@ -377,7 +377,7 @@ public class Unit : MonoBehaviour
         }
 
     }
-    public bool Stupefaciunt(int dmg)
+    public bool Stupefaciunt(float dmg)
     {
         isDADA = true;
         Health.value = currentHP / maxHP;
@@ -403,7 +403,7 @@ public class Unit : MonoBehaviour
         }
 
     }
-    public bool Incendio(int dmg)
+    public bool Incendio(float dmg)
     {
         isDADA = true;
         Health.value = currentHP / maxHP;
@@ -429,7 +429,7 @@ public class Unit : MonoBehaviour
         }
 
     }
-    public bool IncendioMaxima(int dmg)
+    public bool IncendioMaxima(float dmg)
     {
         isDADA = true;
         Health.value = currentHP / maxHP;
@@ -455,7 +455,7 @@ public class Unit : MonoBehaviour
         }
 
     }
-    public bool Avis(int dmg)
+    public bool Avis(float dmg)
     {
         isTrans = true;
         Health.value = currentHP / maxHP;
@@ -481,7 +481,7 @@ public class Unit : MonoBehaviour
         }
 
     }
-    public bool AvisMaxima(int dmg)
+    public bool AvisMaxima(float dmg)
     {
         isTrans = true;
         Health.value = currentHP / maxHP;
@@ -507,7 +507,7 @@ public class Unit : MonoBehaviour
         }
 
     }
-    public bool Glacius(int dmg)
+    public bool Glacius(float dmg)
     {
         isCharms = true;
         Health.value = currentHP / maxHP;
@@ -533,7 +533,7 @@ public class Unit : MonoBehaviour
         }
 
     }
-    public bool MinorCura(int dmg)
+    public bool MinorCura(float dmg)
     {
         isPotions = true;
         Health.value = currentHP / maxHP;
@@ -559,7 +559,7 @@ public class Unit : MonoBehaviour
         }
 
     }
-    public bool ImpetumSubsisto(int dmg)
+    public bool ImpetumSubsisto(float dmg)
     {
         isDADA = true;
         Health.value = currentHP / maxHP;
@@ -585,7 +585,7 @@ public class Unit : MonoBehaviour
         }
 
     }
-    public bool Augamenti(int dmg)
+    public bool Augamenti(float dmg)
     {
         isCharms = true;
         Health.value = currentHP / maxHP;
@@ -611,7 +611,7 @@ public class Unit : MonoBehaviour
         }
 
     }
-    public bool MothsDeorsum(int dmg)
+    public bool MothsDeorsum(float dmg)
     {
         isDADA = true;
         Health.value = currentHP / maxHP;
@@ -637,7 +637,7 @@ public class Unit : MonoBehaviour
         }
 
     }
-    public bool MothsInteriore(int dmg)
+    public bool MothsInteriore(float dmg)
     {
         isDADA = true;
         Health.value = currentHP / maxHP;
@@ -663,7 +663,7 @@ public class Unit : MonoBehaviour
         }
 
     }
-    public bool InternaCombustione(int dmg)
+    public bool InternaCombustione(float dmg)
     {
         isCharms = true;
         Health.value = currentHP / maxHP;
@@ -689,7 +689,7 @@ public class Unit : MonoBehaviour
         }
 
     }
-    public bool Bombarda(int dmg)
+    public bool Bombarda(float dmg)
     {
         isTrans = true;
         Health.value = currentHP / maxHP;
@@ -715,7 +715,7 @@ public class Unit : MonoBehaviour
         }
 
     }
-    public bool BombardaMaxima(int dmg)
+    public bool BombardaMaxima(float dmg)
     {
         isTrans = true;
         Health.value = currentHP / maxHP;
@@ -741,7 +741,7 @@ public class Unit : MonoBehaviour
         }
 
     }
-    public bool BombardaUltima(int dmg)
+    public bool BombardaUltima(float dmg)
     {
         isTrans = true;
         Health.value = currentHP / maxHP;
@@ -768,7 +768,7 @@ public class Unit : MonoBehaviour
         }
 
     }
-    public bool MinusSanaCoetus(int dmg)
+    public bool MinusSanaCoetus(float dmg)
     {
         isPotions = true;
         Health.value = currentHP / maxHP;
@@ -795,7 +795,7 @@ public class Unit : MonoBehaviour
 
     }
 
-    public bool ChorusPedes(int dmg)
+    public bool ChorusPedes(float dmg)
     {
         isCharms = true;
         Health.value = currentHP / maxHP;
@@ -821,7 +821,7 @@ public class Unit : MonoBehaviour
         }
 
     }
-    public bool CriticaFocus(int dmg)
+    public bool CriticaFocus(float dmg)
     {
         isTrans = true;
         Health.value = currentHP / maxHP;
@@ -847,7 +847,7 @@ public class Unit : MonoBehaviour
         }
 
     }
-    public bool Diffindo(int dmg)
+    public bool Diffindo(float dmg)
     {
         isCharms = true;
         Health.value = currentHP / maxHP;
@@ -873,7 +873,7 @@ public class Unit : MonoBehaviour
         }
 
     }
-    public bool DiffindoMaxima(int dmg)
+    public bool DiffindoMaxima(float dmg)
     {
         isCharms = true;
         Health.value = currentHP / maxHP;
@@ -904,7 +904,7 @@ public class Unit : MonoBehaviour
     #endregion
 
     #region RhysAttacks
-    public bool RhysFlippendo(int dmg)
+    public bool RhysFlippendo(float dmg)
     {
         Health.value = currentHP / maxHP;
 
@@ -929,7 +929,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public bool RhysCorpusLiget(int dmg)
+    public bool RhysCorpusLiget(float dmg)
     {
         Health.value = currentHP / maxHP;
 
@@ -954,7 +954,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public bool RhysMothsDeorsum(int dmg)
+    public bool RhysMothsDeorsum(float dmg)
     {
         Health.value = currentHP / maxHP;
 
@@ -979,7 +979,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public bool RhysMothsInteriore(int dmg)
+    public bool RhysMothsInteriore(float dmg)
     {
         Health.value = currentHP / maxHP;
 
@@ -1004,7 +1004,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public bool RhysInternumCombustione(int dmg)
+    public bool RhysInternumCombustione(float dmg)
     {
         Health.value = currentHP / maxHP;
 
@@ -1029,7 +1029,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public bool RhysTenuiLabor(int dmg)
+    public bool RhysTenuiLabor(float dmg)
     {
         Health.value = currentHP / maxHP;
 
@@ -1054,7 +1054,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public bool RhysIncendio(int dmg)
+    public bool RhysIncendio(float dmg)
     {
         Health.value = currentHP / maxHP;
 
@@ -1079,7 +1079,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public bool RhysFumos(int dmg)
+    public bool RhysFumos(float dmg)
     {
         Health.value = currentHP / maxHP;
 
@@ -1104,7 +1104,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public bool RhysWaddiwasi(int dmg)
+    public bool RhysWaddiwasi(float dmg)
     {
         Health.value = currentHP / maxHP;
 
@@ -1129,7 +1129,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public bool RhysConjurePugione(int dmg)
+    public bool RhysConjurePugione(float dmg)
     {
         Health.value = currentHP / maxHP;
 
@@ -1154,7 +1154,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public bool RhysImpetumSubsisto(int dmg)
+    public bool RhysImpetumSubsisto(float dmg)
     {
         Health.value = currentHP / maxHP;
 
@@ -1179,7 +1179,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public bool RhysIraUolueris(int dmg)
+    public bool RhysIraUolueris(float dmg)
     {
         Health.value = currentHP / maxHP;
 
@@ -1206,7 +1206,7 @@ public class Unit : MonoBehaviour
     #endregion
 
     #region Jameel Attacks
-    public bool JameelFlippendo(int dmg)
+    public bool JameelFlippendo(float dmg)
     {
         Health.value = currentHP / maxHP;
 
@@ -1231,7 +1231,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public bool JameelMinusSanaCoetus(int dmg)
+    public bool JameelMinusSanaCoetus(float dmg)
     {
         Health.value = currentHP / maxHP;
 
@@ -1256,7 +1256,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public bool JameelMinorCura(int dmg)
+    public bool JameelMinorCura(float dmg)
     {
         Health.value = currentHP / maxHP;
 
@@ -1281,7 +1281,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public bool JameelMaiorCura(int dmg)
+    public bool JameelMaiorCura(float dmg)
     {
         Health.value = currentHP / maxHP;
 
@@ -1306,7 +1306,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public bool JameelPartumNix(int dmg)
+    public bool JameelPartumNix(float dmg)
     {
         Health.value = currentHP / maxHP;
 
@@ -1331,7 +1331,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public bool JameelHiemsImpetus(int dmg)
+    public bool JameelHiemsImpetus(float dmg)
     {
         Health.value = currentHP / maxHP;
 
@@ -1356,7 +1356,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public bool JameelBombarda(int dmg)
+    public bool JameelBombarda(float dmg)
     {
         Health.value = currentHP / maxHP;
 
@@ -1381,7 +1381,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public bool JameelBombardaMaxima(int dmg)
+    public bool JameelBombardaMaxima(float dmg)
     {
         Health.value = currentHP / maxHP;
 
@@ -1406,7 +1406,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public bool JameelBombardaUltima(int dmg)
+    public bool JameelBombardaUltima(float dmg)
     {
         Health.value = currentHP / maxHP;
 
@@ -1431,7 +1431,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public bool JameelRepellere(int dmg)
+    public bool JameelRepellere(float dmg)
     {
         Health.value = currentHP / maxHP;
 
@@ -1456,7 +1456,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public bool JameelDiffindo(int dmg)
+    public bool JameelDiffindo(float dmg)
     {
         Health.value = currentHP / maxHP;
 
@@ -1481,7 +1481,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public bool JameelDiffindoMaxima(int dmg)
+    public bool JameelDiffindoMaxima(float dmg)
     {
         Health.value = currentHP / maxHP;
 
@@ -1506,7 +1506,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public bool JameelImpetumSubsisto(int dmg)
+    public bool JameelImpetumSubsisto(float dmg)
     {
         Health.value = currentHP / maxHP;
 
@@ -1531,7 +1531,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public bool JameelChorusPedes(int dmg)
+    public bool JameelChorusPedes(float dmg)
     {
         Health.value = currentHP / maxHP;
 
@@ -1559,7 +1559,7 @@ public class Unit : MonoBehaviour
     #endregion
 
     #region Harper Attacks
-    public bool HarperFlippendo(int dmg)
+    public bool HarperFlippendo(float dmg)
     {
         Health.value = currentHP / maxHP;
 
@@ -1584,7 +1584,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public bool HarperDeflectorImpetum(int dmg)
+    public bool HarperDeflectorImpetum(float dmg)
     {
         Health.value = currentHP / maxHP;
 
@@ -1609,7 +1609,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public bool HarperMinorFortitudinem(int dmg)
+    public bool HarperMinorFortitudinem(float dmg)
     {
         Health.value = currentHP / maxHP;
 
@@ -1634,7 +1634,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public bool HarperMoserateFortitudinem(int dmg)
+    public bool HarperMoserateFortitudinem(float dmg)
     {
         Health.value = currentHP / maxHP;
 
@@ -1659,7 +1659,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public bool HarperMaiorFortitudinem(int dmg)
+    public bool HarperMaiorFortitudinem(float dmg)
     {
         Health.value = currentHP / maxHP;
 
@@ -1684,7 +1684,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public bool HarperInternumCombustione(int dmg)
+    public bool HarperInternumCombustione(float dmg)
     {
         Health.value = currentHP / maxHP;
 
@@ -1709,7 +1709,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public bool HarperLaedo(int dmg)
+    public bool HarperLaedo(float dmg)
     {
         Health.value = currentHP / maxHP;
 
@@ -1734,7 +1734,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public bool HarperLociPraesidium(int dmg)
+    public bool HarperLociPraesidium(float dmg)
     {
         Health.value = currentHP / maxHP;
 
@@ -1759,7 +1759,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public bool HarperPerturbo(int dmg)
+    public bool HarperPerturbo(float dmg)
     {
         Health.value = currentHP / maxHP;
 
@@ -1784,7 +1784,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public bool HarperPulsateSunt(int dmg)
+    public bool HarperPulsateSunt(float dmg)
     {
         Health.value = currentHP / maxHP;
 
@@ -1808,7 +1808,7 @@ public class Unit : MonoBehaviour
             return false;
         }
     }
-    public bool HarperFumes(int dmg)
+    public bool HarperFumes(float dmg)
     {
         Health.value = currentHP / maxHP;
 
@@ -1832,7 +1832,7 @@ public class Unit : MonoBehaviour
             return false;
         }
     }
-    public bool HarperDiminuendo(int dmg)
+    public bool HarperDiminuendo(float dmg)
     {
         Health.value = currentHP / maxHP;
 
@@ -1859,7 +1859,7 @@ public class Unit : MonoBehaviour
     #endregion
 
     #region Skye Attacks
-    public bool SkyeFlippendo(int dmg)
+    public bool SkyeFlippendo(float dmg)
     {
         Health.value = currentHP / maxHP;
 
@@ -1884,7 +1884,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public bool SkyeMinorCura(int dmg)
+    public bool SkyeMinorCura(float dmg)
     {
         Health.value = currentHP / maxHP;
 
@@ -1909,7 +1909,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public bool SkyeMaiorCura(int dmg)
+    public bool SkyeMaiorCura(float dmg)
     {
         Health.value = currentHP / maxHP;
 
@@ -1934,7 +1934,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public bool SkyeSenaPlenaPotion(int dmg)
+    public bool SkyeSenaPlenaPotion(float dmg)
     {
         Health.value = currentHP / maxHP;
 
@@ -1959,7 +1959,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public bool SkyeReanimatePotion(int dmg)
+    public bool SkyeReanimatePotion(float dmg)
     {
         Health.value = currentHP / maxHP;
 
@@ -1984,7 +1984,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public bool SkyeSanaCoetusPotion(int dmg)
+    public bool SkyeSanaCoetusPotion(float dmg)
     {
         Health.value = currentHP / maxHP;
 
@@ -2009,7 +2009,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public bool SkyeAntidoteToCommonPoisons(int dmg)
+    public bool SkyeAntidoteToCommonPoisons(float dmg)
     {
         Health.value = currentHP / maxHP;
 
@@ -2034,7 +2034,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public bool SkyeStrengthPotion(int dmg)
+    public bool SkyeStrengthPotion(float dmg)
     {
         Health.value = currentHP / maxHP;
 
@@ -2059,7 +2059,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public bool SkyeConfundus(int dmg)
+    public bool SkyeConfundus(float dmg)
     {
         Health.value = currentHP / maxHP;
 
@@ -2084,7 +2084,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public bool SkyeIraUolueris(int dmg)
+    public bool SkyeIraUolueris(float dmg)
     {
         Health.value = currentHP / maxHP;
 
@@ -2111,7 +2111,7 @@ public class Unit : MonoBehaviour
     #endregion
 
     #region Sullivan Attacks
-    public bool SullivanFlippendo(int dmg)
+    public bool SullivanFlippendo(float dmg)
     {
         Health.value = currentHP / maxHP;
 
@@ -2136,7 +2136,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public bool SullivanExiling(int dmg)
+    public bool SullivanExiling(float dmg)
     {
         Health.value = currentHP / maxHP;
 
@@ -2161,7 +2161,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public bool SullivanProtego(int dmg)
+    public bool SullivanProtego(float dmg)
     {
         Health.value = currentHP / maxHP;
 
@@ -2186,7 +2186,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public bool SullivanIgnusMagnum(int dmg)
+    public bool SullivanIgnusMagnum(float dmg)
     {
         Health.value = currentHP / maxHP;
 
@@ -2211,7 +2211,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public bool SullivanSagittaLecit(int dmg)
+    public bool SullivanSagittaLecit(float dmg)
     {
         Health.value = currentHP / maxHP;
 
@@ -2236,7 +2236,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public bool SullivanMonstrumSella(int dmg)
+    public bool SullivanMonstrumSella(float dmg)
     {
         Health.value = currentHP / maxHP;
 
@@ -2261,7 +2261,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public bool SullivanIncarcerous(int dmg)
+    public bool SullivanIncarcerous(float dmg)
     {
         Health.value = currentHP / maxHP;
 
@@ -2286,7 +2286,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public bool SullivanUltimumChao(int dmg)
+    public bool SullivanUltimumChao(float dmg)
     {
         Health.value = currentHP / maxHP;
 
@@ -2311,7 +2311,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public bool SullivanMutareStatum(int dmg)
+    public bool SullivanMutareStatum(float dmg)
     {
         Health.value = currentHP / maxHP;
 
@@ -2336,7 +2336,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public bool SullivanEngorgement(int dmg)
+    public bool SullivanEngorgement(float dmg)
     {
         Health.value = currentHP / maxHP;
 
@@ -2361,7 +2361,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public bool SullivanStatuamLocomotion(int dmg)
+    public bool SullivanStatuamLocomotion(float dmg)
     {
         Health.value = currentHP / maxHP;
 
@@ -2386,7 +2386,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public bool SullivanCriticaFocus(int dmg)
+    public bool SullivanCriticaFocus(float dmg)
     {
         Health.value = currentHP / maxHP;
 
