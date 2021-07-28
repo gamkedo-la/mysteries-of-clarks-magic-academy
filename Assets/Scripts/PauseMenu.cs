@@ -70,6 +70,7 @@ public class PauseMenu : MonoBehaviour
     }
 
     public void Inventory() {
+        UpdateItems();
         InventoryPanel.SetActive(!InventoryPanel.activeSelf);
     }
 

@@ -8,6 +8,7 @@ public class TreasureChest : MonoBehaviour
     bool canOpen;
     bool hasOpened;
     public Animator openingAnim;
+    public ItemObject item;
 
     private void Start()
     {
@@ -42,7 +43,8 @@ public class TreasureChest : MonoBehaviour
                 hasOpened = true;
                 //Show UI for what you got
                 //Add item to inventory
-                GameManager.instance.ToggleNotificationPanel("Treasure opened");
+                GameManager.instance.inventory.AddItem(item, 1);
+                GameManager.instance.ToggleNotificationPanel($"You obtained {item.name} x1!");
             }
         }
     }
