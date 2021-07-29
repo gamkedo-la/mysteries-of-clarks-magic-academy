@@ -1091,6 +1091,10 @@ public class BattleSystem : MonoBehaviour
     {
         enemyTurnOrder.Remove(enemyUnit[enemyUnitSelected].myEnumValue);
         totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+        totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
+        enemyCount--;
+
+        enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
     }
 
     void AddCurrentEnemy()
@@ -1251,15 +1255,8 @@ public class BattleSystem : MonoBehaviour
                     if (isDead)
                     {
                         RemoveCurrentEnemy();
-
-                        totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                        enemyCount--;
-
-                        enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                     }
                     NextTurn();
-
-
                 }
             }
 
@@ -1292,15 +1289,8 @@ public class BattleSystem : MonoBehaviour
                     if (isDead)
                     {
                         RemoveCurrentEnemy();
-
-                        totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                        enemyCount--;
-
-                        enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                     }
                     NextTurn();
-
-
                 }
             }
 
@@ -1337,6 +1327,7 @@ public class BattleSystem : MonoBehaviour
                     }
 
                     NextTurn();
+
                     if (hasBeenStunned)
                     {
                         AddCurrentEnemy();
@@ -1373,14 +1364,8 @@ public class BattleSystem : MonoBehaviour
                     if (isDead)
                     {
                         RemoveCurrentEnemy();
-
-                        totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                        enemyCount--;
-
-                        enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                     }
                     NextTurn();
-
                 }
             }
 
@@ -1414,15 +1399,8 @@ public class BattleSystem : MonoBehaviour
                     if (isDead)
                     {
                         RemoveCurrentEnemy();
-
-                        totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                        enemyCount--;
-
-                        enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                     }
                     NextTurn();
-
-
                 }
             }
 
@@ -1455,15 +1433,8 @@ public class BattleSystem : MonoBehaviour
                     if (isDead)
                     {
                         RemoveCurrentEnemy();
-
-                        totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                        enemyCount--;
-
-                        enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                     }
                     NextTurn();
-
-
                 }
             }
 
@@ -1494,15 +1465,8 @@ public class BattleSystem : MonoBehaviour
                     if (isDead)
                     {
                         RemoveCurrentEnemy();
-
-                        totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                        enemyCount--;
-
-                        enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                     }
                     NextTurn();
-
-
                 }
             }
 
@@ -1535,15 +1499,8 @@ public class BattleSystem : MonoBehaviour
                     if (isDead)
                     {
                         RemoveCurrentEnemy();
-
-                        totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                        enemyCount--;
-
-                        enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                     }
                     NextTurn();
-
-
                 }
             }
 
@@ -1577,15 +1534,8 @@ public class BattleSystem : MonoBehaviour
                     if (isDead)
                     {
                         RemoveCurrentEnemy();
-
-                        totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                        enemyCount--;
-
-                        enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                     }
                     NextTurn();
-
-
                 }
             }
 
@@ -1618,15 +1568,8 @@ public class BattleSystem : MonoBehaviour
                     if (isDead)
                     {
                         RemoveCurrentEnemy();
-
-                        totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                        enemyCount--;
-
-                        enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                     }
                     NextTurn();
-
-
                 }
             }
 
@@ -1659,11 +1602,6 @@ public class BattleSystem : MonoBehaviour
                     if (isDead)
                     {
                         RemoveCurrentEnemy();
-
-                        totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                        enemyCount--;
-
-                        enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                     }
                     NextTurn();
 
@@ -1700,15 +1638,8 @@ public class BattleSystem : MonoBehaviour
                     if (isDead)
                     {
                         RemoveCurrentEnemy();
-
-                        totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                        enemyCount--;
-
-                        enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                     }
                     NextTurn();
-
-
                 }
             }
 
@@ -1742,14 +1673,8 @@ public class BattleSystem : MonoBehaviour
                     if (isDead)
                     {
                         RemoveCurrentEnemy();
-
-                        totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                        enemyCount--;
-
-                        enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                     }
                     NextTurn();
-
                 }
             }
 
@@ -1783,15 +1708,8 @@ public class BattleSystem : MonoBehaviour
                     if (isDead)
                     {
                         RemoveCurrentEnemy();
-
-                        totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                        enemyCount--;
-
-                        enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                     }
                     NextTurn();
-
-
                 }
             }
 
@@ -1824,15 +1742,8 @@ public class BattleSystem : MonoBehaviour
                     if (isDead)
                     {
                         RemoveCurrentEnemy();
-
-                        totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                        enemyCount--;
-
-                        enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                     }
                     NextTurn();
-
-
                 }
             }
 
@@ -1867,15 +1778,8 @@ public class BattleSystem : MonoBehaviour
                     if (isDead)
                     {
                         RemoveCurrentEnemy();
-
-                        totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                        enemyCount--;
-
-                        enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                     }
                     NextTurn();
-
-
                 }
             }
 
@@ -1910,14 +1814,8 @@ public class BattleSystem : MonoBehaviour
                     if (isDead)
                     {
                         RemoveCurrentEnemy();
-
-                        totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                        enemyCount--;
-
-                        enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                     }
                     NextTurn();
-
                 }
             }
 
@@ -1952,15 +1850,8 @@ public class BattleSystem : MonoBehaviour
                     if (isDead)
                     {
                         RemoveCurrentEnemy();
-
-                        totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                        enemyCount--;
-
-                        enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                     }
                     NextTurn();
-
-
                 }
             }
 
@@ -1995,15 +1886,8 @@ public class BattleSystem : MonoBehaviour
                     if (isDead)
                     {
                         RemoveCurrentEnemy();
-
-                        totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                        enemyCount--;
-
-                        enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                     }
                     NextTurn();
-
-
                 }
             }
 
@@ -2038,15 +1922,8 @@ public class BattleSystem : MonoBehaviour
                     if (isDead)
                     {
                         RemoveCurrentEnemy();
-
-                        totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                        enemyCount--;
-
-                        enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                     }
                     NextTurn();
-
-
                 }
             }
 
@@ -2081,15 +1958,8 @@ public class BattleSystem : MonoBehaviour
                     if (isDead)
                     {
                         RemoveCurrentEnemy();
-
-                        totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                        enemyCount--;
-
-                        enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                     }
                     NextTurn();
-
-
                 }
             }
 
@@ -2124,15 +1994,8 @@ public class BattleSystem : MonoBehaviour
                     if (isDead)
                     {
                         RemoveCurrentEnemy();
-
-                        totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                        enemyCount--;
-
-                        enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                     }
                     NextTurn();
-
-
                 }
             }
 
@@ -2168,15 +2031,8 @@ public class BattleSystem : MonoBehaviour
                     if (isDead)
                     {
                         RemoveCurrentEnemy();
-
-                        totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                        enemyCount--;
-
-                        enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                     }
                     NextTurn();
-
-
                 }
             }
 
@@ -2349,15 +2205,8 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-
-                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                    enemyCount--;
-
-                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
-
-
             }
         }
 
@@ -2390,14 +2239,8 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-
-                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                    enemyCount--;
-
-                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
-
             }
         }
 
@@ -2431,14 +2274,8 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-
-                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                    enemyCount--;
-
-                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
-
             }
         }
 
@@ -2471,14 +2308,8 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-
-                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                    enemyCount--;
-
-                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
-
             }
         }
 
@@ -2511,14 +2342,8 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-
-                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                    enemyCount--;
-
-                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
-
             }
         }
 
@@ -2552,14 +2377,8 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-
-                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                    enemyCount--;
-
-                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
-
             }
         }
 
@@ -2593,14 +2412,8 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-
-                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                    enemyCount--;
-
-                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
-
             }
         }
 
@@ -2634,14 +2447,8 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-
-                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                    enemyCount--;
-
-                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
-
             }
         }
 
@@ -2674,14 +2481,8 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-
-                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                    enemyCount--;
-
-                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
-
             }
         }
 
@@ -2715,14 +2516,8 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-
-                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                    enemyCount--;
-
-                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
-
             }
         }
 
@@ -2756,14 +2551,8 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-
-                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                    enemyCount--;
-
-                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
-
             }
         }
 
@@ -2797,14 +2586,8 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-
-                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                    enemyCount--;
-
-                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
-
             }
         }
 
@@ -2837,14 +2620,8 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-
-                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                    enemyCount--;
-
-                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
-
             }
         }
     }
@@ -2885,15 +2662,8 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-
-                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                    enemyCount--;
-
-                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
-
-
             }
         }
         if (jameelFlippendo)
@@ -2925,14 +2695,8 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-
-                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                    enemyCount--;
-
-                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
-
             }
         }
 
@@ -2964,14 +2728,8 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-
-                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                    enemyCount--;
-
-                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
-
             }
         }
 
@@ -3003,15 +2761,8 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-
-                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                    enemyCount--;
-
-                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
-
-
             }
         }
 
@@ -3044,15 +2795,8 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-
-                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                    enemyCount--;
-
-                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
-
-
             }
         }
 
@@ -3084,15 +2828,8 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-
-                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                    enemyCount--;
-
-                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
-
-
             }
         }
 
@@ -3124,15 +2861,8 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-
-                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                    enemyCount--;
-
-                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
-
-
             }
         }
 
@@ -3165,15 +2895,8 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-
-                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                    enemyCount--;
-
-                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
-
-
             }
         }
 
@@ -3205,15 +2928,8 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-
-                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                    enemyCount--;
-
-                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
-
-
             }
         }
 
@@ -3245,15 +2961,8 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-
-                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                    enemyCount--;
-
-                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
-
-
             }
         }
 
@@ -3285,15 +2994,8 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-
-                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                    enemyCount--;
-
-                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
-
-
             }
         }
 
@@ -3326,15 +3028,8 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-
-                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                    enemyCount--;
-
-                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
-
-
             }
         }
 
@@ -3367,15 +3062,8 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-
-                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                    enemyCount--;
-
-                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
-
-
             }
         }
 
@@ -3401,20 +3089,7 @@ public class BattleSystem : MonoBehaviour
                 isDead = enemyUnit[enemyUnitSelected].JameelImpetumSubsisto(Jameel.JameelSpell14Damage * AttackModifier); 
 
                 EnemyAnim();
-                jameelFlippendo = false;
-                jameelMinusSanaCoetus = false;
-                jameelMinorCura = false;
-                jameelMaiorCura = false;
-                jameelPartumNix = false;
-                jameelHiemsImpetus = false;
-                jameelBombarda = false;
-                jameelBombardaMaxima = false;
-                jameelBombardaUltima = false;
-                jameelRepellere = false;
-                jameelDiffindo = false;
-                jameelDiffindoMaxima = false;
-                jameelImpetumSubsisto = false;
-                jameelChorusPedes = false;
+                TurnOffAttackBools();
                 dialogueText.text = "The attack is successful!";
                 yield return new WaitForSeconds(2f);
 
@@ -3422,15 +3097,8 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-
-                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                    enemyCount--;
-
-                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
-
-
             }
         }
 
@@ -3456,20 +3124,7 @@ public class BattleSystem : MonoBehaviour
                 isDead = enemyUnit[enemyUnitSelected].JameelChorusPedes(Jameel.JameelSpell15Damage * AttackModifier); 
 
                 EnemyAnim();
-                jameelFlippendo = false;
-                jameelMinusSanaCoetus = false;
-                jameelMinorCura = false;
-                jameelMaiorCura = false;
-                jameelPartumNix = false;
-                jameelHiemsImpetus = false;
-                jameelBombarda = false;
-                jameelBombardaMaxima = false;
-                jameelBombardaUltima = false;
-                jameelRepellere = false;
-                jameelDiffindo = false;
-                jameelDiffindoMaxima = false;
-                jameelImpetumSubsisto = false;
-                jameelChorusPedes = false;
+                TurnOffAttackBools();
                 dialogueText.text = "The attack is successful!";
                 yield return new WaitForSeconds(2f);
 
@@ -3477,15 +3132,8 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-
-                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                    enemyCount--;
-
-                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
-
-
             }
         }
     }
@@ -3525,15 +3173,8 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-
-                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                    enemyCount--;
-
-                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
-
-
             }
         }
         if (harperFlippendo)
@@ -3565,15 +3206,8 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-
-                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                    enemyCount--;
-
-                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
-
-
             }
         }
 
@@ -3606,15 +3240,8 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-
-                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                    enemyCount--;
-
-                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
-
-
             }
         }
 
@@ -3648,15 +3275,8 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-
-                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                    enemyCount--;
-
-                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
-
-
             }
         }
 
@@ -3689,15 +3309,8 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-
-                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                    enemyCount--;
-
-                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
-
-
             }
         }
 
@@ -3730,15 +3343,8 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-
-                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                    enemyCount--;
-
-                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
-
-
             }
         }
 
@@ -3771,15 +3377,8 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-
-                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                    enemyCount--;
-
-                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
-
-
             }
         }
 
@@ -3812,15 +3411,8 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-
-                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                    enemyCount--;
-
-                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
-
-
             }
         }
 
@@ -3853,15 +3445,8 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-
-                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                    enemyCount--;
-
-                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
-
-
             }
         }
 
@@ -3894,15 +3479,8 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-
-                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                    enemyCount--;
-
-                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
-
-
             }
         }
 
@@ -3935,15 +3513,8 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-
-                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                    enemyCount--;
-
-                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
-
-
             }
         }
 
@@ -3976,15 +3547,8 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-
-                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                    enemyCount--;
-
-                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
-
-
             }
         }
 
@@ -4017,15 +3581,8 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-
-                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                    enemyCount--;
-
-                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
-
-
             }
         }
     }
@@ -4067,11 +3624,6 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-
-                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                    enemyCount--;
-
-                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
             }
@@ -4105,15 +3657,8 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-
-                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                    enemyCount--;
-
-                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
-
-
             }
         }
 
@@ -4145,15 +3690,8 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-
-                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                    enemyCount--;
-
-                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
-
-
             }
         }
 
@@ -4184,15 +3722,8 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-
-                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                    enemyCount--;
-
-                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
-
-
             }
         }
 
@@ -4223,15 +3754,8 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-
-                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                    enemyCount--;
-
-                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
-
-
             }
         }
 
@@ -4262,15 +3786,8 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-
-                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                    enemyCount--;
-
-                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
-
-
             }
         }
 
@@ -4301,15 +3818,8 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-
-                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                    enemyCount--;
-
-                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
-
-
             }
         }
 
@@ -4340,15 +3850,8 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-
-                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                    enemyCount--;
-
-                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
-
-
             }
         }
 
@@ -4379,15 +3882,8 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-
-                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                    enemyCount--;
-
-                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
-
-
             }
         }
 
@@ -4418,15 +3914,8 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-
-                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                    enemyCount--;
-
-                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
-
-
             }
         }
 
@@ -4457,15 +3946,8 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-
-                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                    enemyCount--;
-
-                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
-
-
             }
         }
     }
@@ -4507,11 +3989,6 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-
-                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                    enemyCount--;
-
-                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
             }
@@ -4544,11 +4021,6 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-
-                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                    enemyCount--;
-
-                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
             }
@@ -4581,11 +4053,6 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-
-                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                    enemyCount--;
-
-                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
             }
@@ -4618,11 +4085,6 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-
-                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                    enemyCount--;
-
-                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
             }
@@ -4655,11 +4117,6 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-
-                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                    enemyCount--;
-
-                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
             }
@@ -4692,11 +4149,6 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-
-                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                    enemyCount--;
-
-                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
             }
@@ -4729,11 +4181,6 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-
-                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                    enemyCount--;
-
-                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
             }
@@ -4766,11 +4213,6 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-
-                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                    enemyCount--;
-
-                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
             }
@@ -4803,11 +4245,6 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-
-                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                    enemyCount--;
-
-                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
             }
@@ -4840,11 +4277,6 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-
-                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                    enemyCount--;
-
-                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
             }
@@ -4877,11 +4309,6 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-
-                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                    enemyCount--;
-
-                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
             }
@@ -4914,11 +4341,6 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-
-                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                    enemyCount--;
-
-                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
                 }
                 NextTurn();
             }
@@ -4951,12 +4373,6 @@ public class BattleSystem : MonoBehaviour
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
-
-                    totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
-                    enemyCount--;
-
-                    enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
-
                 }
                 NextTurn();
             }
