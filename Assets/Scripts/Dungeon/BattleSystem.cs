@@ -303,8 +303,10 @@ public class BattleSystem : MonoBehaviour
 
     int AttackModifierTurnCount = 0;
     int DefenseModifierTurnCount = 0;
+    int EvasionTurnCount = 0;
     float AttackModifier = 1.0f;
     float DefenseModifier = 1.0f;
+    float EvasionModifier = 1.0f;
 
     bool enemyStunned;
 
@@ -1205,6 +1207,7 @@ public class BattleSystem : MonoBehaviour
 
     IEnumerator MCAttack()
     {
+        //Attack and Defense up tracking
         if (AttackModifierTurnCount > 0)
         {
             AttackModifierTurnCount--;
@@ -1221,6 +1224,16 @@ public class BattleSystem : MonoBehaviour
         {
             DefenseModifier = 1.0f;
         }
+        //Evasion up tracking
+        if (EvasionTurnCount > 0)
+        {
+            EvasionTurnCount--;
+        }
+        if (EvasionTurnCount <= 0)
+        {
+            EvasionModifier = 1.0f;
+        }
+
         //To Do Damage Enemy
         yield return new WaitForSeconds(1f);
         //Modify the Spell1Damage and Spell1Magic used based on the player, the spell, and their level 
@@ -4673,7 +4686,7 @@ public class BattleSystem : MonoBehaviour
 
                     Camera.transform.LookAt(MC.transform.position);
                     //Dodge
-                    if (GameManager.MCDodge >= RandomAttack)
+                    if ((GameManager.MCDodge * EvasionModifier) >= RandomAttack)
                     {
                         dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks " + GameManager.MCFirstName + " with " + enemyUnit[enemyUnitSelected].attackName + "!";
                         yield return new WaitForSeconds(.5f);
@@ -4726,7 +4739,7 @@ public class BattleSystem : MonoBehaviour
 
                     Camera.transform.LookAt(Rhys.transform.position);
 
-                    if (GameManager.RhysDodge >= RandomAttack)
+                    if ((GameManager.RhysDodge * EvasionModifier) >= RandomAttack)
                     {
                         dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks Rhys with " + enemyUnit[enemyUnitSelected].attackName + "!";
                         yield return new WaitForSeconds(.5f);
@@ -4777,7 +4790,7 @@ public class BattleSystem : MonoBehaviour
 
                     Camera.transform.LookAt(Jameel.transform.position);
 
-                    if (GameManager.JameelDodge >= RandomAttack)
+                    if ((GameManager.JameelDodge * EvasionModifier) >= RandomAttack)
                     {
                         dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks Jameel with " + enemyUnit[enemyUnitSelected].attackName + "!";
                         yield return new WaitForSeconds(.5f);
@@ -4829,7 +4842,7 @@ public class BattleSystem : MonoBehaviour
 
                     Camera.transform.LookAt(Harper.transform.position);
 
-                    if (GameManager.HarperDodge >= RandomAttack)
+                    if ((GameManager.HarperDodge * EvasionModifier) >= RandomAttack)
                     {
                         dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks Harper with " + enemyUnit[enemyUnitSelected].attackName + "!";
                         yield return new WaitForSeconds(.5f);
@@ -4881,7 +4894,7 @@ public class BattleSystem : MonoBehaviour
 
                     Camera.transform.LookAt(Skye.transform.position);
 
-                    if (GameManager.SkyeDodge >= RandomAttack)
+                    if ((GameManager.SkyeDodge * EvasionModifier) >= RandomAttack)
                     {
                         dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks Skye with " + enemyUnit[enemyUnitSelected].attackName + "!";
                         yield return new WaitForSeconds(.5f);
@@ -4933,7 +4946,7 @@ public class BattleSystem : MonoBehaviour
 
                     Camera.transform.LookAt(Sullivan.transform.position);
 
-                    if (GameManager.SullivanDodge >= RandomAttack)
+                    if ((GameManager.SullivanDodge * EvasionModifier) >= RandomAttack)
                     {
                         dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks Sullivan with " + enemyUnit[enemyUnitSelected].attackName + "!";
                         yield return new WaitForSeconds(.5f);
@@ -5065,7 +5078,7 @@ public class BattleSystem : MonoBehaviour
 
         if (chance > .5f)
         {
-            int spell = Random.Range(0, 4);
+            int spell = Random.Range(0, 5);
             if (spell == 0)
             {
                 GameManager.MCHealth += Mathf.RoundToInt(GameManager.MCMaxHealth * .3f);
@@ -5106,6 +5119,13 @@ public class BattleSystem : MonoBehaviour
                 DefenseModifier = .7f;
                 dialogueText.text = "Defense up!";
                 GracieMaySpell4.SetActive(true);
+            }
+
+            if (spell == 4)
+            {
+                EvasionTurnCount = 3;
+                EvasionModifier = 2;
+                dialogueText.text = "Evasion Rase up!";
             }
 
         }
@@ -7324,7 +7344,6 @@ public class BattleSystem : MonoBehaviour
 
     public void AddXP()
     {
-       // //print("here 2");
         preventingAddXPDup = true;
 
         for (int i = 0; i < enemyUnit.Count; i++)
