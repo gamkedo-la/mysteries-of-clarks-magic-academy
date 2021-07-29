@@ -1232,7 +1232,7 @@ public class BattleSystem : MonoBehaviour
                     yield return new WaitForSeconds(2f);
 
 
-                    isDead = enemyUnit[enemyUnitSelected].ThrowRock(MC.MCSpell1Damage * AttackModifier); 
+                    isDead = enemyUnit[enemyUnitSelected].ThrowRock((MC.MCSpell1Damage * AttackModifier) + GameManager.MCDodge); 
 
                     EnemyAnim();
                     TurnOffAttackBools();
@@ -2331,7 +2331,7 @@ public class BattleSystem : MonoBehaviour
                 yield return new WaitForSeconds(2f);
 
 
-                isDead = enemyUnit[enemyUnitSelected].ThrowRock(Rhys.RhysSpell1Damage * AttackModifier); 
+                isDead = enemyUnit[enemyUnitSelected].ThrowRock((Rhys.RhysSpell1Damage * AttackModifier) + GameManager.RhysDodge); 
 
                 EnemyAnim();
                 TurnOffAttackBools();
@@ -2867,7 +2867,7 @@ public class BattleSystem : MonoBehaviour
                 yield return new WaitForSeconds(2f);
 
 
-                isDead = enemyUnit[enemyUnitSelected].ThrowRock(Jameel.JameelSpell1Damage * AttackModifier); 
+                isDead = enemyUnit[enemyUnitSelected].ThrowRock((Jameel.JameelSpell1Damage * AttackModifier) + GameManager.JameelDodge); 
 
                 EnemyAnim();
                 TurnOffAttackBools();
@@ -3507,7 +3507,7 @@ public class BattleSystem : MonoBehaviour
                 yield return new WaitForSeconds(2f);
 
 
-                isDead = enemyUnit[enemyUnitSelected].ThrowRock(Harper.HarperSpell1Damage * AttackModifier); 
+                isDead = enemyUnit[enemyUnitSelected].ThrowRock((Harper.HarperSpell1Damage * AttackModifier) + GameManager.HarperDodge); 
 
                 EnemyAnim();
                 TurnOffAttackBools();
@@ -4049,7 +4049,7 @@ public class BattleSystem : MonoBehaviour
                 yield return new WaitForSeconds(2f);
 
 
-                isDead = enemyUnit[enemyUnitSelected].ThrowRock(Skye.SkyeSpell1Damage * AttackModifier); 
+                isDead = enemyUnit[enemyUnitSelected].ThrowRock((Skye.SkyeSpell1Damage * AttackModifier) + GameManager.SkyeDodge); 
 
                 EnemyAnim();
                 TurnOffAttackBools();
@@ -4489,7 +4489,7 @@ public class BattleSystem : MonoBehaviour
                 yield return new WaitForSeconds(2f);
 
 
-                isDead = enemyUnit[enemyUnitSelected].ThrowRock(Sullivan.SullivanSpell1Damage * AttackModifier); 
+                isDead = enemyUnit[enemyUnitSelected].ThrowRock((Sullivan.SullivanSpell1Damage * AttackModifier) + GameManager.SullivanDodge); 
 
                 EnemyAnim();
                 TurnOffAttackBools();
