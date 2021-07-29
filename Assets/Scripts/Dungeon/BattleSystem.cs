@@ -847,6 +847,17 @@ public class BattleSystem : MonoBehaviour
             {
                 Next.text = "Up Next:  " + GameManager.MCFirstName.ToString();
             }
+            if (playerTurnOrder[0].ToString() == "GracieMay")
+            {
+                if (playerTurnOrder[1].ToString() == "MC")
+                {
+                    Next.text = "Up Next:  " + GameManager.MCFirstName.ToString();
+                }
+                else
+                {
+                    Next.text = "Up Next:  " + playerTurnOrder[1].ToString();
+                }
+            }
             else
             {
                 Next.text = "Up Next:  " + playerTurnOrder[0].ToString();
@@ -5617,7 +5628,7 @@ public class BattleSystem : MonoBehaviour
         float chance = Random.Range(0, 100);
 
         float gracieSpawnChance = (GameManager.GracieMayFriendship / 10) * chance;
-        
+
         if (chance > .5f)
         {
             int spell = Random.Range(0, 4);
