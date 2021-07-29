@@ -39,7 +39,7 @@ public class SpellDescription : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
         else if (Trans)
         {
-            descriptionBox.GetComponent<Image>().color = Color.red;
+            descriptionBox.GetComponent<Image>().color = Color.grey;
         }
 
         else if (Charms)
@@ -53,7 +53,7 @@ public class SpellDescription : MonoBehaviour, IPointerEnterHandler, IPointerExi
         }
         else if (Health)
         {
-            descriptionBox.GetComponent<Image>().color = Color.cyan;
+            descriptionBox.GetComponent<Image>().color = Color.red;
         }
 
         if (HP)

@@ -1256,8 +1256,8 @@ public class BattleSystem : MonoBehaviour
                 }
                 else
                 {
-                    GameManager.MCMagic -= MC.MCSpell2MagicConsumed;
-                    MCMagic.value = GameManager.MCMagic;
+                    GameManager.MCHealth -= MC.MCSpell2MagicConsumed;
+                    MCHealth.value = GameManager.MCHealth;
                     MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
 
@@ -1706,8 +1706,8 @@ public class BattleSystem : MonoBehaviour
                 }
                 else
                 {
-                    GameManager.MCMagic -= MC.MCSpell13MagicConsumed;
-                    MCMagic.value = GameManager.MCMagic;
+                    GameManager.MCHealth -= MC.MCSpell13MagicConsumed;
+                    MCHealth.value = GameManager.MCHealth;
                     MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
 
@@ -1748,8 +1748,8 @@ public class BattleSystem : MonoBehaviour
                 }
                 else
                 {
-                    GameManager.MCMagic -= MC.MCSpell14MagicConsumed;
-                    MCMagic.value = GameManager.MCMagic;
+                    GameManager.MCHealth -= MC.MCSpell14MagicConsumed;
+                    MCHealth.value = GameManager.MCHealth;
                     MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
 
@@ -1789,8 +1789,8 @@ public class BattleSystem : MonoBehaviour
                 }
                 else
                 {
-                    GameManager.MCMagic -= MC.MCSpell15MagicConsumed;
-                    MCMagic.value = GameManager.MCMagic;
+                    GameManager.MCHealth -= MC.MCSpell15MagicConsumed;
+                    MCHealth.value = GameManager.MCHealth;
                     MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
 
@@ -1832,8 +1832,8 @@ public class BattleSystem : MonoBehaviour
                 }
                 else
                 {
-                    GameManager.MCMagic -= MC.MCSpell16MagicConsumed;
-                    MCMagic.value = GameManager.MCMagic;
+                    GameManager.MCHealth -= MC.MCSpell16MagicConsumed;
+                    MCHealth.value = GameManager.MCHealth;
                     MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
 
@@ -1875,8 +1875,8 @@ public class BattleSystem : MonoBehaviour
                 }
                 else
                 {
-                    GameManager.MCMagic -= MC.MCSpell17MagicConsumed;
-                    MCMagic.value = GameManager.MCMagic;
+                    GameManager.MCHealth -= MC.MCSpell17MagicConsumed;
+                    MCHealth.value = GameManager.MCHealth;
                     MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
 
@@ -1916,8 +1916,8 @@ public class BattleSystem : MonoBehaviour
                 }
                 else
                 {
-                    GameManager.MCMagic -= MC.MCSpell18MagicConsumed;
-                    MCMagic.value = GameManager.MCMagic;
+                    GameManager.MCHealth -= MC.MCSpell18MagicConsumed;
+                    MCHealth.value = GameManager.MCHealth;
                     MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
 
@@ -2355,8 +2355,8 @@ public class BattleSystem : MonoBehaviour
             }
             else
             {
-                GameManager.RhysMagic -= Rhys.RhysSpell2MagicConsumed;
-                RhysMagic.value = GameManager.RhysMagic;
+                GameManager.RhysHealth -= Rhys.RhysSpell2MagicConsumed;
+                RhysHealth.value = GameManager.RhysHealth;
                 RhysAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
@@ -2436,8 +2436,8 @@ public class BattleSystem : MonoBehaviour
             }
             else
             {
-                GameManager.RhysMagic -= Rhys.RhysSpell4MagicConsumed;
-                RhysMagic.value = GameManager.RhysMagic;
+                GameManager.RhysHealth -= Rhys.RhysSpell4MagicConsumed;
+                RhysHealth.value = GameManager.RhysHealth;
                 RhysAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
@@ -2476,8 +2476,8 @@ public class BattleSystem : MonoBehaviour
             }
             else
             {
-                GameManager.RhysMagic -= Rhys.RhysSpell5MagicConsumed;
-                RhysMagic.value = GameManager.RhysMagic;
+                GameManager.RhysHealth -= Rhys.RhysSpell5MagicConsumed;
+                RhysHealth.value = GameManager.RhysHealth;
                 RhysAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
@@ -2516,8 +2516,8 @@ public class BattleSystem : MonoBehaviour
             }
             else
             {
-                GameManager.RhysMagic -= Rhys.RhysSpell6MagicConsumed;
-                RhysMagic.value = GameManager.RhysMagic;
+                GameManager.RhysHealth -= Rhys.RhysSpell6MagicConsumed;
+                RhysHealth.value = GameManager.RhysHealth;
                 RhysAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
@@ -2890,8 +2890,8 @@ public class BattleSystem : MonoBehaviour
             }
             else
             {
-                GameManager.JameelMagic -= Jameel.JameelSpell2MagicConsumed;
-                JameelMagic.value = GameManager.JameelMagic;
+                GameManager.JameelHealth -= Jameel.JameelSpell2MagicConsumed;
+                JameelHealth.value = GameManager.JameelHealth;
                 JameelAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
@@ -2936,7 +2936,7 @@ public class BattleSystem : MonoBehaviour
                 yield return new WaitForSeconds(2f);
 
 
-                isDead = enemyUnit[enemyUnitSelected].JameelFlippendo(Jameel.JameelSpell3Damage * AttackModifier); 
+                isDead = enemyUnit[enemyUnitSelected].JameelMinusSanaCoetus(Jameel.JameelSpell3Damage * AttackModifier); 
 
                 EnemyAnim();
                 TurnOffAttackBools();
@@ -2974,7 +2974,7 @@ public class BattleSystem : MonoBehaviour
                 JameelAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
-                isDead = enemyUnit[enemyUnitSelected].JameelFlippendo(Jameel.JameelSpell4Damage * AttackModifier); 
+                isDead = enemyUnit[enemyUnitSelected].JameelMinorCura(Jameel.JameelSpell4Damage * AttackModifier); 
 
                 EnemyAnim();
                 TurnOffAttackBools();
@@ -3015,7 +3015,7 @@ public class BattleSystem : MonoBehaviour
                 yield return new WaitForSeconds(2f);
 
 
-                isDead = enemyUnit[enemyUnitSelected].JameelFlippendo(Jameel.JameelSpell5Damage * AttackModifier); 
+                isDead = enemyUnit[enemyUnitSelected].JameelMaiorCura(Jameel.JameelSpell5Damage * AttackModifier); 
 
                 EnemyAnim();
                 TurnOffAttackBools();
@@ -3056,7 +3056,7 @@ public class BattleSystem : MonoBehaviour
                 yield return new WaitForSeconds(2f);
 
 
-                isDead = enemyUnit[enemyUnitSelected].JameelFlippendo(Jameel.JameelSpell6Damage * AttackModifier); 
+                isDead = enemyUnit[enemyUnitSelected].JameelPartumNix(Jameel.JameelSpell6Damage * AttackModifier); 
 
                 EnemyAnim();
                 TurnOffAttackBools();
@@ -3096,7 +3096,7 @@ public class BattleSystem : MonoBehaviour
                 yield return new WaitForSeconds(2f);
 
 
-                isDead = enemyUnit[enemyUnitSelected].JameelFlippendo(Jameel.JameelSpell7Damage * AttackModifier); 
+                isDead = enemyUnit[enemyUnitSelected].JameelHiemsImpetus(Jameel.JameelSpell7Damage * AttackModifier); 
 
                 EnemyAnim();
                 TurnOffAttackBools();
@@ -3130,13 +3130,13 @@ public class BattleSystem : MonoBehaviour
             }
             else
             {
-                GameManager.JameelMagic -= Jameel.JameelSpell8MagicConsumed;
-                JameelMagic.value = GameManager.JameelMagic;
+                GameManager.JameelHealth -= Jameel.JameelSpell8MagicConsumed;
+                JameelHealth.value = GameManager.JameelHealth;
                 JameelAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
 
-                isDead = enemyUnit[enemyUnitSelected].JameelFlippendo(Jameel.JameelSpell8Damage * AttackModifier); 
+                isDead = enemyUnit[enemyUnitSelected].JameelBombarda(Jameel.JameelSpell8Damage * AttackModifier); 
 
                 EnemyAnim();
                 TurnOffAttackBools();
@@ -3171,13 +3171,13 @@ public class BattleSystem : MonoBehaviour
             }
             else
             {
-                GameManager.JameelMagic -= Jameel.JameelSpell9MagicConsumed;
-                JameelMagic.value = GameManager.JameelMagic;
+                GameManager.JameelHealth -= Jameel.JameelSpell9MagicConsumed;
+                JameelHealth.value = GameManager.JameelHealth;
                 JameelAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
 
-                isDead = enemyUnit[enemyUnitSelected].JameelFlippendo(Jameel.JameelSpell9Damage * AttackModifier); 
+                isDead = enemyUnit[enemyUnitSelected].JameelBombardaMaxima(Jameel.JameelSpell9Damage * AttackModifier); 
 
                 EnemyAnim();
                 TurnOffAttackBools();
@@ -3211,13 +3211,13 @@ public class BattleSystem : MonoBehaviour
             }
             else
             {
-                GameManager.JameelMagic -= Jameel.JameelSpell10MagicConsumed;
-                JameelMagic.value = GameManager.JameelMagic;
+                GameManager.JameelHealth -= Jameel.JameelSpell10MagicConsumed;
+                JameelHealth.value = GameManager.JameelHealth;
                 JameelAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
 
-                isDead = enemyUnit[enemyUnitSelected].JameelFlippendo(Jameel.JameelSpell10Damage * AttackModifier); 
+                isDead = enemyUnit[enemyUnitSelected].JameelBombardaUltima(Jameel.JameelSpell10Damage * AttackModifier); 
 
                 EnemyAnim();
                 TurnOffAttackBools();
@@ -3257,7 +3257,7 @@ public class BattleSystem : MonoBehaviour
                 yield return new WaitForSeconds(2f);
 
 
-                isDead = enemyUnit[enemyUnitSelected].JameelFlippendo(Jameel.JameelSpell11Damage * AttackModifier); 
+                isDead = enemyUnit[enemyUnitSelected].JameelRepellere(Jameel.JameelSpell11Damage * AttackModifier); 
 
                 EnemyAnim();
                 TurnOffAttackBools();
@@ -3297,7 +3297,7 @@ public class BattleSystem : MonoBehaviour
                 yield return new WaitForSeconds(2f);
 
 
-                isDead = enemyUnit[enemyUnitSelected].JameelFlippendo(Jameel.JameelSpell12Damage * AttackModifier); 
+                isDead = enemyUnit[enemyUnitSelected].JameelDiffindo(Jameel.JameelSpell12Damage * AttackModifier); 
 
                 EnemyAnim();
                 TurnOffAttackBools();
@@ -3338,7 +3338,7 @@ public class BattleSystem : MonoBehaviour
                 yield return new WaitForSeconds(2f);
 
 
-                isDead = enemyUnit[enemyUnitSelected].JameelFlippendo(Jameel.JameelSpell13Damage * AttackModifier); 
+                isDead = enemyUnit[enemyUnitSelected].JameelDiffindoMaxima(Jameel.JameelSpell13Damage * AttackModifier); 
 
                 EnemyAnim();
                 TurnOffAttackBools();
@@ -3379,7 +3379,7 @@ public class BattleSystem : MonoBehaviour
                 yield return new WaitForSeconds(2f);
 
 
-                isDead = enemyUnit[enemyUnitSelected].JameelFlippendo(Jameel.JameelSpell14Damage * AttackModifier); 
+                isDead = enemyUnit[enemyUnitSelected].JameelImpetumSubsisto(Jameel.JameelSpell14Damage * AttackModifier); 
 
                 EnemyAnim();
                 jameelFlippendo = false;
@@ -3434,7 +3434,7 @@ public class BattleSystem : MonoBehaviour
                 yield return new WaitForSeconds(2f);
 
 
-                isDead = enemyUnit[enemyUnitSelected].JameelFlippendo(Jameel.JameelSpell15Damage * AttackModifier); 
+                isDead = enemyUnit[enemyUnitSelected].JameelChorusPedes(Jameel.JameelSpell15Damage * AttackModifier); 
 
                 EnemyAnim();
                 jameelFlippendo = false;
@@ -3530,8 +3530,8 @@ public class BattleSystem : MonoBehaviour
             }
             else
             {
-                GameManager.HarperMagic -= Harper.HarperSpell2MagicConsumed;
-                HarperMagic.value = GameManager.HarperMagic;
+                GameManager.HarperHealth -= Harper.HarperSpell2MagicConsumed;
+                HarperHealth.value = GameManager.HarperHealth;
                 HarperAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
@@ -3736,8 +3736,8 @@ public class BattleSystem : MonoBehaviour
             }
             else
             {
-                GameManager.HarperMagic -= Harper.HarperSpell7MagicConsumed;
-                HarperMagic.value = GameManager.HarperMagic;
+                GameManager.HarperHealth -= Harper.HarperSpell7MagicConsumed;
+                HarperHealth.value = GameManager.HarperHealth;
                 HarperAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
@@ -3777,8 +3777,8 @@ public class BattleSystem : MonoBehaviour
             }
             else
             {
-                GameManager.HarperMagic -= Harper.HarperSpell8MagicConsumed;
-                HarperMagic.value = GameManager.HarperMagic;
+                GameManager.HarperHealth -= Harper.HarperSpell8MagicConsumed;
+                HarperHealth.value = GameManager.HarperHealth;
                 HarperAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
@@ -3818,8 +3818,8 @@ public class BattleSystem : MonoBehaviour
             }
             else
             {
-                GameManager.HarperMagic -= Harper.HarperSpell9MagicConsumed;
-                HarperMagic.value = GameManager.HarperMagic;
+                GameManager.HarperHealth -= Harper.HarperSpell9MagicConsumed;
+                HarperHealth.value = GameManager.HarperHealth;
                 HarperAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
@@ -4070,8 +4070,8 @@ public class BattleSystem : MonoBehaviour
             }
             else
             {
-                GameManager.SkyeMagic -= Skye.SkyeSpell2MagicConsumed;
-                SkyeMagic.value = GameManager.SkyeMagic;
+                GameManager.SkyeHealth -= Skye.SkyeSpell2MagicConsumed;
+                SkyeHealth.value = GameManager.SkyeHealth;
                 SkyeAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
@@ -4511,8 +4511,8 @@ public class BattleSystem : MonoBehaviour
             }
             else
             {
-                GameManager.SullivanMagic -= Sullivan.SullivanSpell2MagicConsumed;
-                SullivanMagic.value = GameManager.SullivanMagic;
+                GameManager.SullivanHealth -= Sullivan.SullivanSpell2MagicConsumed;
+                SullivanHealth.value = GameManager.SullivanHealth;
                 SullivanAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
@@ -4770,8 +4770,8 @@ public class BattleSystem : MonoBehaviour
             }
             else
             {
-                GameManager.SullivanMagic -= Sullivan.SullivanSpell9MagicConsumed;
-                SullivanMagic.value = GameManager.SullivanMagic;
+                GameManager.SullivanHealth -= Sullivan.SullivanSpell9MagicConsumed;
+                SullivanHealth.value = GameManager.SullivanHealth;
                 SullivanAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
@@ -6087,7 +6087,7 @@ public class BattleSystem : MonoBehaviour
     {
         if (state == BattleState.MCTURN)
         {
-            if (MC.MCSpell2MagicConsumed <= GameManager.MCMagic)
+            if (MC.MCSpell2MagicConsumed <= GameManager.MCHealth)
             {
                 flippendo = true;
 
@@ -6307,7 +6307,7 @@ public class BattleSystem : MonoBehaviour
     {
         if (state == BattleState.MCTURN)
         {
-            if (MC.MCSpell13MagicConsumed <= GameManager.MCMagic)
+            if (MC.MCSpell13MagicConsumed <= GameManager.MCHealth)
             {
                 mothsDeorsum = true;
 
@@ -6327,7 +6327,7 @@ public class BattleSystem : MonoBehaviour
     {
         if (state == BattleState.MCTURN)
         {
-            if (MC.MCSpell14MagicConsumed <= GameManager.MCMagic)
+            if (MC.MCSpell14MagicConsumed <= GameManager.MCHealth)
             {
                 mothsInteriore = true;
 
@@ -6347,7 +6347,7 @@ public class BattleSystem : MonoBehaviour
     {
         if (state == BattleState.MCTURN)
         {
-            if (MC.MCSpell15MagicConsumed <= GameManager.MCMagic)
+            if (MC.MCSpell15MagicConsumed <= GameManager.MCHealth)
             {
                 internaCombustione = true;
 
@@ -6367,7 +6367,7 @@ public class BattleSystem : MonoBehaviour
     {
         if (state == BattleState.MCTURN)
         {
-            if (MC.MCSpell16MagicConsumed <= GameManager.MCMagic)
+            if (MC.MCSpell16MagicConsumed <= GameManager.MCHealth)
             {
                 bombarda = true;
 
@@ -6387,7 +6387,7 @@ public class BattleSystem : MonoBehaviour
     {
         if (state == BattleState.MCTURN)
         {
-            if (MC.MCSpell17MagicConsumed <= GameManager.MCMagic)
+            if (MC.MCSpell17MagicConsumed <= GameManager.MCHealth)
             {
                 bombardaMaxima = true;
 
@@ -6407,7 +6407,7 @@ public class BattleSystem : MonoBehaviour
     {
         if (state == BattleState.MCTURN)
         {
-            if (MC.MCSpell18MagicConsumed <= GameManager.MCMagic)
+            if (MC.MCSpell18MagicConsumed <= GameManager.MCHealth)
             {
                 bombardaUltima = true;
 
@@ -6530,7 +6530,7 @@ public class BattleSystem : MonoBehaviour
     {
         if (state == BattleState.RHYSTURN)
         {
-            if (Rhys.RhysSpell2MagicConsumed <= GameManager.RhysMagic)
+            if (Rhys.RhysSpell2MagicConsumed <= GameManager.RhysHealth)
             {
                 rhysFlippendo = true;
 
@@ -6568,7 +6568,7 @@ public class BattleSystem : MonoBehaviour
     {
         if (state == BattleState.RHYSTURN)
         {
-            if (Rhys.RhysSpell4MagicConsumed <= GameManager.RhysMagic)
+            if (Rhys.RhysSpell4MagicConsumed <= GameManager.RhysHealth)
             {
                 rhysMothsDeorsum = true;
 
@@ -6587,7 +6587,7 @@ public class BattleSystem : MonoBehaviour
     {
         if (state == BattleState.RHYSTURN)
         {
-            if (Rhys.RhysSpell5MagicConsumed <= GameManager.RhysMagic)
+            if (Rhys.RhysSpell5MagicConsumed <= GameManager.RhysHealth)
             {
                 rhysMothInteriore = true;
 
@@ -6607,7 +6607,7 @@ public class BattleSystem : MonoBehaviour
     {
         if (state == BattleState.RHYSTURN)
         {
-            if (Rhys.RhysSpell6MagicConsumed <= GameManager.RhysMagic)
+            if (Rhys.RhysSpell6MagicConsumed <= GameManager.RhysHealth)
             {
                 rhysInternumCombustione = true;
 
@@ -6765,7 +6765,7 @@ public class BattleSystem : MonoBehaviour
     {
         if (state == BattleState.JAMEELTURN)
         {
-            if (Jameel.JameelSpell2MagicConsumed <= GameManager.JameelMagic)
+            if (Jameel.JameelSpell2MagicConsumed <= GameManager.JameelHealth)
             {
                 jameelFlippendo = true;
 
@@ -6885,7 +6885,7 @@ public class BattleSystem : MonoBehaviour
     {
         if (state == BattleState.JAMEELTURN)
         {
-            if (Jameel.JameelSpell8MagicConsumed <= GameManager.JameelMagic)
+            if (Jameel.JameelSpell8MagicConsumed <= GameManager.JameelHealth)
             {
                 jameelBombarda = true;
 
@@ -6905,7 +6905,7 @@ public class BattleSystem : MonoBehaviour
     {
         if (state == BattleState.JAMEELTURN)
         {
-            if (Jameel.JameelSpell9MagicConsumed <= GameManager.JameelMagic)
+            if (Jameel.JameelSpell9MagicConsumed <= GameManager.JameelHealth)
             {
                 jameelBombardaMaxima = true;
 
@@ -6925,7 +6925,7 @@ public class BattleSystem : MonoBehaviour
     {
         if (state == BattleState.JAMEELTURN)
         {
-            if (Jameel.JameelSpell10MagicConsumed <= GameManager.JameelMagic)
+            if (Jameel.JameelSpell10MagicConsumed <= GameManager.JameelHealth)
             {
                 jameelBombardaUltima = true;
 
@@ -7048,7 +7048,7 @@ public class BattleSystem : MonoBehaviour
     {
         if (state == BattleState.HARPERTURN)
         {
-            if (Harper.HarperSpell2MagicConsumed <= GameManager.HarperMagic)
+            if (Harper.HarperSpell2MagicConsumed <= GameManager.HarperHealth)
             {
                 harperFlippendo = true;
 
@@ -7148,7 +7148,7 @@ public class BattleSystem : MonoBehaviour
     {
         if (state == BattleState.HARPERTURN)
         {
-            if (Harper.HarperSpell7MagicConsumed <= GameManager.HarperMagic)
+            if (Harper.HarperSpell7MagicConsumed <= GameManager.HarperHealth)
             {
                 harperInternumCombustione = true;
 
@@ -7168,7 +7168,7 @@ public class BattleSystem : MonoBehaviour
     {
         if (state == BattleState.HARPERTURN)
         {
-            if (Harper.HarperSpell8MagicConsumed <= GameManager.HarperMagic)
+            if (Harper.HarperSpell8MagicConsumed <= GameManager.HarperHealth)
             {
                 harperLaedo = true;
 
@@ -7188,7 +7188,7 @@ public class BattleSystem : MonoBehaviour
     {
         if (state == BattleState.HARPERTURN)
         {
-            if (Harper.HarperSpell9MagicConsumed <= GameManager.HarperMagic)
+            if (Harper.HarperSpell9MagicConsumed <= GameManager.HarperHealth)
             {
                 harperLociPraesidium = true;
 
@@ -7290,7 +7290,7 @@ public class BattleSystem : MonoBehaviour
     {
         if (state == BattleState.SKYETURN)
         {
-            if (Skye.SkyeSpell2MagicConsumed <= GameManager.SkyeMagic)
+            if (Skye.SkyeSpell2MagicConsumed <= GameManager.SkyeHealth)
             {
                 skyeFlippendo = true;
 
@@ -7492,7 +7492,7 @@ public class BattleSystem : MonoBehaviour
     {
         if (state == BattleState.SULLIVANTURN)
         {
-            if (Sullivan.SullivanSpell2MagicConsumed <= GameManager.SullivanMagic)
+            if (Sullivan.SullivanSpell2MagicConsumed <= GameManager.SullivanHealth)
             {
                 sullivanFlippendo = true;
 
@@ -7632,7 +7632,7 @@ public class BattleSystem : MonoBehaviour
     {
         if (state == BattleState.SULLIVANTURN)
         {
-            if (Sullivan.SullivanSpell9MagicConsumed <= GameManager.SullivanMagic)
+            if (Sullivan.SullivanSpell9MagicConsumed <= GameManager.SullivanHealth)
             {
                 sullivanUltimumChao = true;
 
