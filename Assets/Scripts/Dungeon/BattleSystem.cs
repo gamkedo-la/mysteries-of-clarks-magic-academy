@@ -1904,42 +1904,21 @@ public class BattleSystem : MonoBehaviour
                 }
             }
 
-
+            /*
             if (chorusPedes)
             {
-                if (enemyUnit[enemyUnitSelected].currentHP <= 0)
-                {
-                    chorusPedes = false;
-                    dialogueText.text = "Enemy is knocked out, select another target.";
-                    yield return new WaitForSeconds(1f);
-                    dialogueText.text = "Select someone to attack!";
-                    MCMenu.SetActive(true);
-                    MCSpells.SetActive(false);
-                }
-                else
-                {
-                    GameManager.MCMagic -= MC.MCSpell20MagicConsumed;
-                    MCMagic.value = GameManager.MCMagic;
-                    MCAnim.Play("Armature|Attack");
-                    yield return new WaitForSeconds(2f);
-
-
-                    isDead = enemyUnit[enemyUnitSelected].ChorusPedes(MC.MCSpell20Damage * AttackModifier); 
-
-                    EnemyAnim();
-
-                    TurnOffAttackBools();
-                    yield return new WaitForSeconds(2f);
-
-                    //This checks to see if the Enemy is Dead or has HP remaining
-                    if (isDead)
-                    {
-                        RemoveCurrentEnemy();
-                    }
-                    NextTurn();
-                }
+                GameManager.MCMagic -= MC.MCSpell20MagicConsumed;
+                MCMagic.value = GameManager.MCMagic;
+                dialogueText.text = "Evasion Rate up for the party!";
+                EvasionTurnCount = 3;
+                EvasionModifier = 100f;
+                MCAnim.Play("Armature|Attack");
+                yield return new WaitForSeconds(2f);
+                chorusPedes = false;
+                TurnOffAttackBools();
+                NextTurn();
             }
-
+            */
 
             if (criticaFocus)
             {
@@ -4419,15 +4398,15 @@ public class BattleSystem : MonoBehaviour
         }
         else
         {
-            if (enemyUnit[enemyUnitSelected].HasBeenStunned(true))
+          /*  if (enemyUnit[enemyUnitSelected].HasBeenStunned(true))
             {
                 dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " has been stunned!";
                 yield return new WaitForSeconds(1f);
                 print("look at that, ive been stunned");
                 enemyUnit[enemyUnitSelected].HasBeenStunned(false);
-            }
-            else
-            {
+            }*/
+           // else
+            
                 enemyUnit[enemyUnitSelected].DetermineAttack();
 
                 //This is attacking all the players - a little buggy from Stike Out so commenting out for now. 
@@ -4992,7 +4971,7 @@ public class BattleSystem : MonoBehaviour
                     yield return new WaitForSeconds(.5f);
                     StartCoroutine(TurnOffDamageUI());
                 }
-            }
+            
         }
         NextTurn();
     }
@@ -5124,7 +5103,7 @@ public class BattleSystem : MonoBehaviour
             if (spell == 4)
             {
                 EvasionTurnCount = 3;
-                EvasionModifier = 2;
+                EvasionModifier = 1.5f;
                 dialogueText.text = "Evasion Rase up!";
             }
 
@@ -5915,17 +5894,29 @@ public class BattleSystem : MonoBehaviour
             if (MC.MCSpell20MagicConsumed <= GameManager.MCMagic)
             {
                 chorusPedes = true;
-
-                MCMenu.SetActive(true);
-                MCSpells.SetActive(false);
-                enemySelect = true;
-                MCConfirmMenu.SetActive(true);
+                MCConfirmMenu.SetActive(false);
                 MCSpells.SetActive(false);
                 MCMenu.SetActive(false);
+
+                GameManager.MCMagic -= MC.MCSpell20MagicConsumed;
+                MCMagic.value = GameManager.MCMagic;
+                dialogueText.text = "Evasion Rate up for the party!";
+                EvasionTurnCount = 3;
+                EvasionModifier = 100f;
+                MCAnim.Play("Armature|Attack");
+                StartCoroutine(ChorusPedes());
             }
             else
                 dialogueText.text = "Not enough energy!";
         }
+    }
+
+    IEnumerator ChorusPedes()
+    {
+        yield return new WaitForSeconds(4f);
+        chorusPedes = false;
+        TurnOffAttackBools();
+        NextTurn();
     }
 
     public void MCCriticaFocus()
