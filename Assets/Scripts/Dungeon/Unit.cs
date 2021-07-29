@@ -237,6 +237,7 @@ public class Unit : MonoBehaviour
     public Slider Health;
 
     public bool isEnemy;
+    bool imStunned;
 
     private void Start()
     {
@@ -268,6 +269,19 @@ public class Unit : MonoBehaviour
         }
         else
             return false;
+    }
+
+    public bool HasBeenStunned(bool stunned)
+    {
+        print("youve stunned me");
+        if (currentHP >= 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     public bool TakeDamageSpell1(float dmg)
