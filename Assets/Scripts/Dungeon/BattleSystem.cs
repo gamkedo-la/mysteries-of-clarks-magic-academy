@@ -1904,22 +1904,6 @@ public class BattleSystem : MonoBehaviour
                 }
             }
 
-            /*
-            if (chorusPedes)
-            {
-                GameManager.MCMagic -= MC.MCSpell20MagicConsumed;
-                MCMagic.value = GameManager.MCMagic;
-                dialogueText.text = "Evasion Rate up for the party!";
-                EvasionTurnCount = 3;
-                EvasionModifier = 100f;
-                MCAnim.Play("Armature|Attack");
-                yield return new WaitForSeconds(2f);
-                chorusPedes = false;
-                TurnOffAttackBools();
-                NextTurn();
-            }
-            */
-
             if (criticaFocus)
             {
                 if (enemyUnit[enemyUnitSelected].currentHP <= 0)
@@ -3079,41 +3063,6 @@ public class BattleSystem : MonoBehaviour
 
 
                 isDead = enemyUnit[enemyUnitSelected].JameelImpetumSubsisto(Jameel.JameelSpell14Damage * AttackModifier); 
-
-                EnemyAnim();
-                TurnOffAttackBools();
-                dialogueText.text = "The attack is successful!";
-                yield return new WaitForSeconds(2f);
-
-                //This checks to see if the Enemy is Dead or has HP remaining
-                if (isDead)
-                {
-                    RemoveCurrentEnemy();
-                }
-                NextTurn();
-            }
-        }
-
-        if (jameelChorusPedes)
-        {
-            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
-            {
-                jameelChorusPedes = false;
-                dialogueText.text = "Enemy is knocked out, select another target.";
-                yield return new WaitForSeconds(1f);
-                dialogueText.text = "Select someone to attack!";
-                JameelMenu.SetActive(true);
-                JameelSpells.SetActive(false);
-            }
-            else
-            {
-                GameManager.JameelMagic -= Jameel.JameelSpell15MagicConsumed;
-                JameelMagic.value = GameManager.JameelMagic;
-                JameelAnim.Play("Armature|Attack");
-                yield return new WaitForSeconds(2f);
-
-
-                isDead = enemyUnit[enemyUnitSelected].JameelChorusPedes(Jameel.JameelSpell15Damage * AttackModifier); 
 
                 EnemyAnim();
                 TurnOffAttackBools();
@@ -5102,8 +5051,7 @@ public class BattleSystem : MonoBehaviour
 
             if (spell == 4)
             {
-                EvasionTurnCount = 3;
-                EvasionModifier = 1.5f;
+                EvasionGroup();
                 dialogueText.text = "Evasion Rase up!";
             }
 
@@ -5901,8 +5849,7 @@ public class BattleSystem : MonoBehaviour
                 GameManager.MCMagic -= MC.MCSpell20MagicConsumed;
                 MCMagic.value = GameManager.MCMagic;
                 dialogueText.text = "Evasion Rate up for the party!";
-                EvasionTurnCount = 3;
-                EvasionModifier = 100f;
+                EvasionGroup();
                 MCAnim.Play("Armature|Attack");
                 StartCoroutine(ChorusPedes());
             }
@@ -5914,6 +5861,7 @@ public class BattleSystem : MonoBehaviour
     IEnumerator ChorusPedes()
     {
         yield return new WaitForSeconds(4f);
+        jameelChorusPedes = false;
         chorusPedes = false;
         TurnOffAttackBools();
         NextTurn();
@@ -6484,13 +6432,16 @@ public class BattleSystem : MonoBehaviour
             if (Jameel.JameelSpell15MagicConsumed <= GameManager.JameelMagic)
             {
                 jameelChorusPedes = true;
-
-                JameelMenu.SetActive(true);
-                JameelSpells.SetActive(false);
-                enemySelect = true;
-                JameelConfirmMenu.SetActive(true);
+                JameelConfirmMenu.SetActive(false);
                 JameelSpells.SetActive(false);
                 JameelMenu.SetActive(false);
+
+                GameManager.JameelMagic -= Jameel.JameelSpell15MagicConsumed;
+                JameelMagic.value = GameManager.JameelMagic;
+                dialogueText.text = "Evasion Rate up for the party!";
+                EvasionGroup();
+                JameelAnim.Play("Armature|Attack");
+                StartCoroutine(ChorusPedes());
             }
             else
                 dialogueText.text = "Not enough energy!";
@@ -7184,7 +7135,13 @@ public class BattleSystem : MonoBehaviour
         }
     }
     #endregion
- 
+
+    void EvasionGroup()
+    {
+        EvasionModifier = 1.5f;
+        EvasionTurnCount = 3f;
+    }
+
     public void OnCancelButton()
     {
         if (state == BattleState.MCTURN)
