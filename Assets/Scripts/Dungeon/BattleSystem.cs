@@ -1873,42 +1873,6 @@ public class BattleSystem : MonoBehaviour
                 }
             }
 
-
-            if (minusSanaCoetus)
-            {
-                if (enemyUnit[enemyUnitSelected].currentHP <= 0)
-                {
-                    minusSanaCoetus = false;
-                    dialogueText.text = "Enemy is knocked out, select another target.";
-                    yield return new WaitForSeconds(1f);
-                    dialogueText.text = "Select someone to attack!";
-                    MCMenu.SetActive(true);
-                    MCSpells.SetActive(false);
-                }
-                else
-                {
-                    GameManager.MCMagic -= MC.MCSpell19MagicConsumed;
-                    MCMagic.value = GameManager.MCMagic;
-                    MCAnim.Play("Armature|Attack");
-                    yield return new WaitForSeconds(2f);
-
-
-                    isDead = enemyUnit[enemyUnitSelected].MinusSanaCoetus(MC.MCSpell19Damage * AttackModifier);
-
-                    EnemyAnim();
-
-                    TurnOffAttackBools();
-                    yield return new WaitForSeconds(2f);
-
-                    //This checks to see if the Enemy is Dead or has HP remaining
-                    if (isDead)
-                    {
-                        RemoveCurrentEnemy();
-                    }
-                    NextTurn();
-                }
-            }
-
             if (diffindo)
             {
                 if (enemyUnit[enemyUnitSelected].currentHP <= 0)
@@ -2637,39 +2601,6 @@ public class BattleSystem : MonoBehaviour
                 yield return new WaitForSeconds(2f);
 
                 //This checks to see if the Enemy is Dead or has HP remaining
-                if (isDead)
-                {
-                    RemoveCurrentEnemy();
-                }
-                NextTurn();
-            }
-        }
-
-        if (jameelMinusSanaCoetus)
-        {
-            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
-            {
-                jameelMinusSanaCoetus = false;
-                dialogueText.text = "Enemy is knocked out, select another target.";
-                yield return new WaitForSeconds(1f);
-                dialogueText.text = "Select someone to attack!";
-                JameelMenu.SetActive(true);
-                JameelSpells.SetActive(false);
-            }
-            else
-            {
-                GameManager.JameelMagic -= Jameel.JameelSpell3MagicConsumed;
-                JameelMagic.value = GameManager.JameelMagic;
-                JameelAnim.Play("Armature|Attack");
-                yield return new WaitForSeconds(2f);
-
-
-                isDead = enemyUnit[enemyUnitSelected].JameelMinusSanaCoetus(Jameel.JameelSpell3Damage * AttackModifier);
-
-                EnemyAnim();
-                TurnOffAttackBools();
-                yield return new WaitForSeconds(2f);
-
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
@@ -4620,7 +4551,7 @@ public class BattleSystem : MonoBehaviour
                         {
                             //Counter
                             yield return new WaitForSeconds(2f);
-                            dialogueText.text = "Harper is countering with Deflector Impetum!"
+                            dialogueText.text = "Harper is countering with Deflector Impetum!";
                             HarperAnim.Play("Armature|Attack");
                             yield return new WaitForSeconds(2f);
 
@@ -5694,16 +5625,79 @@ public class BattleSystem : MonoBehaviour
             {
                 minusSanaCoetus = true;
 
-                MCMenu.SetActive(true);
-                MCSpells.SetActive(false);
-                enemySelect = true;
-                MCConfirmMenu.SetActive(true);
+                MCConfirmMenu.SetActive(false);
                 MCSpells.SetActive(false);
                 MCMenu.SetActive(false);
+
+                GameManager.MCMagic -= MC.MCSpell19MagicConsumed;
+                MCMagic.value = GameManager.MCMagic;
+                dialogueText.text = "Small health increase for everyone!";
+
+                MCAnim.Play("Armature|Attack");
+                StartCoroutine(MinusSanaCoetus());
             }
             else
                 dialogueText.text = "Not enough energy!";
         }
+    }
+
+    IEnumerator MinusSanaCoetus()
+    {
+        GameManager.MCHealth *= 1.25f;
+        if (GameManager.MCHealth > GameManager.MCMaxHealth)
+        {
+            GameManager.MCHealth = GameManager.MCMaxHealth;
+        }
+
+        if (GameManager.RhysInParty && !RhysDead)
+        {
+            GameManager.RhysHealth *= 1.25f;
+            if (GameManager.RhysHealth > GameManager.RhysMaxHealth)
+            {
+                GameManager.RhysHealth = GameManager.RhysMaxHealth;
+            }
+        }
+
+        if (GameManager.JameelInParty && !JameelDead)
+        {
+            GameManager.JameelHealth *= 1.25f;
+            if (GameManager.JameelHealth > GameManager.JameelMaxHealth)
+            {
+                GameManager.JameelHealth = GameManager.JameelMaxHealth;
+            }
+        }
+
+        if (GameManager.HarperInParty && !HarperDead)
+        {
+            GameManager.HarperHealth *= 1.25f;
+            if (GameManager.HarperHealth > GameManager.HarperMaxHealth)
+            {
+                GameManager.HarperHealth = GameManager.HarperMaxHealth;
+            }
+        }
+
+        if (GameManager.SkyeInParty && !SkyeDead)
+        {
+            GameManager.SkyeHealth *= 1.25f;
+            if (GameManager.SkyeHealth > GameManager.SkyeMaxHealth)
+            {
+                GameManager.SkyeHealth = GameManager.SkyeMaxHealth;
+            }
+        }
+
+        if (GameManager.SullivanInParty && !SullivanDead)
+        {
+            GameManager.SullivanHealth *= 1.25f;
+            if (GameManager.SullivanHealth > GameManager.SullivanMaxHealth)
+            {
+                GameManager.SullivanHealth = GameManager.SullivanMaxHealth;
+            }
+        }
+        yield return new WaitForSeconds(4f);
+        minusSanaCoetus = false;
+        jameelMinusSanaCoetus = false;
+        TurnOffAttackBools();
+        NextTurn();
     }
 
     public void MCChorusPedes()
@@ -5752,7 +5746,7 @@ public class BattleSystem : MonoBehaviour
 
                 GameManager.MCMagic -= MC.MCSpell21MagicConsumed;
                 MCMagic.value = GameManager.MCMagic;
-                dialogueText = "Attack up!";
+                dialogueText.text = "Attack up!";
                 IncreaseAttack();
                 MCAnim.Play("Armature|Attack");
                 StartCoroutine(CriticaFocus());
@@ -6077,12 +6071,16 @@ public class BattleSystem : MonoBehaviour
             {
                 jameelMinusSanaCoetus = true;
 
-                JameelMenu.SetActive(true);
-                JameelSpells.SetActive(false);
-                enemySelect = true;
-                JameelConfirmMenu.SetActive(true);
+                JameelConfirmMenu.SetActive(false);
                 JameelSpells.SetActive(false);
                 JameelMenu.SetActive(false);
+
+                GameManager.JameelMagic -= Jameel.JameelSpell3MagicConsumed;
+                JameelMagic.value = GameManager.JameelMagic;
+                dialogueText.text = "Small health increase for everyone!";
+
+                JameelAnim.Play("Armature|Attack");
+                StartCoroutine(MinusSanaCoetus());
             }
             else
                 dialogueText.text = "Not enough energy!";
@@ -7123,7 +7121,7 @@ public class BattleSystem : MonoBehaviour
 
                 GameManager.SullivanMagic -= Sullivan.SullivanSpell13MagicConsumed;
                 SullivanMagic.value = GameManager.SullivanMagic;
-                dialogueText = "Attack up!";
+                dialogueText.text = "Attack up!";
                 IncreaseAttack();
                 SullivanAnim.Play("Armature|Attack");
                 StartCoroutine(CriticaFocus());
@@ -7137,7 +7135,7 @@ public class BattleSystem : MonoBehaviour
     void EvasionGroup()
     {
         EvasionModifier = 1.5f;
-        EvasionTurnCount = 3f;
+        EvasionTurnCount = 3;
     }
 
     void IncreaseAttack()
@@ -8040,7 +8038,6 @@ public class BattleSystem : MonoBehaviour
         yield return new WaitForSeconds(2f);
         dialogueText.text = "Please choose an action.";
     }
-
 
     #region Losing Screen Menus
 
