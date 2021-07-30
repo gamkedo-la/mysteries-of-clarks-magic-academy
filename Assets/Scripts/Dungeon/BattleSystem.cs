@@ -318,6 +318,11 @@ public class BattleSystem : MonoBehaviour
             Debug.LogWarning("The GameManager needs to be in this scene for everything to work");
         }
 
+        if (GameManager.HarperFriendship > 3)
+        {
+            harperDeflectorImpetum = true;
+        }
+
         MCDamageUI.text = "".ToString();
         RhysDamageUI.text = "".ToString();
         JameelDamageUI.text = "".ToString();
@@ -1904,42 +1909,6 @@ public class BattleSystem : MonoBehaviour
                 }
             }
 
-            if (criticaFocus)
-            {
-                if (enemyUnit[enemyUnitSelected].currentHP <= 0)
-                {
-                    criticaFocus = false;
-                    dialogueText.text = "Enemy is knocked out, select another target.";
-                    yield return new WaitForSeconds(1f);
-                    dialogueText.text = "Select someone to attack!";
-                    MCMenu.SetActive(true);
-                    MCSpells.SetActive(false);
-                }
-                else
-                {
-                    GameManager.MCMagic -= MC.MCSpell21MagicConsumed;
-                    MCMagic.value = GameManager.MCMagic;
-                    MCAnim.Play("Armature|Attack");
-                    yield return new WaitForSeconds(2f);
-
-
-                    isDead = enemyUnit[enemyUnitSelected].CriticaFocus(MC.MCSpell21Damage * AttackModifier);
-
-                    EnemyAnim();
-
-                    TurnOffAttackBools();
-                    yield return new WaitForSeconds(2f);
-
-                    //This checks to see if the Enemy is Dead or has HP remaining
-                    if (isDead)
-                    {
-                        RemoveCurrentEnemy();
-                    }
-                    NextTurn();
-                }
-            }
-
-
             if (diffindo)
             {
                 if (enemyUnit[enemyUnitSelected].currentHP <= 0)
@@ -3152,41 +3121,6 @@ public class BattleSystem : MonoBehaviour
             }
         }
 
-        if (harperDeflectorImpetum)
-        {
-            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
-            {
-                harperDeflectorImpetum = false;
-                dialogueText.text = "Enemy is knocked out, select another target.";
-                yield return new WaitForSeconds(1f);
-                dialogueText.text = "Select someone to attack!";
-                HarperMenu.SetActive(true);
-                HarperSpells.SetActive(false);
-            }
-            else
-            {
-                GameManager.HarperMagic -= Harper.HarperSpell3MagicConsumed;
-                HarperMagic.value = GameManager.HarperMagic;
-                HarperAnim.Play("Armature|Attack");
-                yield return new WaitForSeconds(2f);
-
-
-                isDead = enemyUnit[enemyUnitSelected].HarperDeflectorImpetum(Harper.HarperSpell3Damage * AttackModifier);
-
-                EnemyAnim();
-                TurnOffAttackBools();
-                yield return new WaitForSeconds(2f);
-
-                //This checks to see if the Enemy is Dead or has HP remaining
-                if (isDead)
-                {
-                    RemoveCurrentEnemy();
-                }
-                NextTurn();
-            }
-        }
-
-
         if (harperMinorFortitudinem)
         {
             if (enemyUnit[enemyUnitSelected].currentHP <= 0)
@@ -3889,40 +3823,22 @@ public class BattleSystem : MonoBehaviour
                 SullivanAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
-                isDead = enemyUnit[enemyUnitSelected].SullivanExiling(Sullivan.SullivanSpell3Damage * AttackModifier);
-                EnemyAnim();
-                TurnOffAttackBools();
-                yield return new WaitForSeconds(2f);
+                int chanceToInstaKill = Random.Range(0, 100);
 
-                //This checks to see if the Enemy is Dead or has HP remaining
-                if (isDead)
+
+                if (!Boss && (chanceToInstaKill + GameManager.SullivanLevel + GameManager.SullivanTrans) > 65)
                 {
-                    RemoveCurrentEnemy();
+                    float SullivanSpell3ModifiedDamage = enemyUnit[enemyUnitSelected].currentHP;
+                    isDead = enemyUnit[enemyUnitSelected].SullivanExiling(SullivanSpell3ModifiedDamage * AttackModifier);
+                    EnemyAnim();
                 }
-                NextTurn();
-            }
-        }
-
-        if (sullivanProtego)
-        {
-            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
-            {
-                sullivanProtego = false;
-                dialogueText.text = "Enemy is knocked out, select another target.";
-                yield return new WaitForSeconds(1f);
-                dialogueText.text = "Select someone to attack!";
-                SullivanMenu.SetActive(true);
-                SullivanSpells.SetActive(false);
-            }
-            else
-            {
-                GameManager.SullivanMagic -= Sullivan.SullivanSpell4MagicConsumed;
-                SullivanMagic.value = GameManager.SullivanMagic;
-                SullivanAnim.Play("Armature|Attack");
-                yield return new WaitForSeconds(2f);
-
-                isDead = enemyUnit[enemyUnitSelected].SullivanProtego(Sullivan.SullivanSpell4Damage * AttackModifier);
-                EnemyAnim();
+                else
+                {
+                    float SullivanSpell3ModifiedDamage = 0;
+                    isDead = enemyUnit[enemyUnitSelected].SullivanExiling(SullivanSpell3ModifiedDamage * AttackModifier);
+                    dialogueText.text = "Miss!";
+                }
+                
                 TurnOffAttackBools();
                 yield return new WaitForSeconds(2f);
 
@@ -4113,7 +4029,23 @@ public class BattleSystem : MonoBehaviour
                 SullivanAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
-                isDead = enemyUnit[enemyUnitSelected].SullivanMutareStatum(Sullivan.SullivanSpell10Damage * AttackModifier);
+                if (!Boss)
+                {
+                    float currentEnemyHP = enemyUnit[enemyUnitSelected].currentHP;
+                    float currentSullivanHP = GameManager.SullivanHealth;
+
+                    if (currentEnemyHP >= GameManager.SullivanMaxHealth)
+                    {
+                        currentEnemyHP = GameManager.SullivanMaxHealth;
+                    }
+
+                    GameManager.SullivanHealth = currentEnemyHP;
+                    enemyUnit[enemyUnitSelected].currentHP = currentSullivanHP;
+                }
+                else
+                {
+                    dialogueText.text = "... The target appears immune to the transfer.";
+                }
                 EnemyAnim();
                 TurnOffAttackBools();
                 yield return new WaitForSeconds(2f);
@@ -4178,38 +4110,6 @@ public class BattleSystem : MonoBehaviour
                 yield return new WaitForSeconds(2f);
 
                 isDead = enemyUnit[enemyUnitSelected].SullivanStatuamLocomotion(Sullivan.SullivanSpell12Damage * AttackModifier);
-                EnemyAnim();
-                TurnOffAttackBools();
-                yield return new WaitForSeconds(2f);
-
-                //This checks to see if the Enemy is Dead or has HP remaining
-                if (isDead)
-                {
-                    RemoveCurrentEnemy();
-                }
-                NextTurn();
-            }
-        }
-
-        if (sullivanCriticaFocus)
-        {
-            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
-            {
-                sullivanCriticaFocus = false;
-                dialogueText.text = "Enemy is knocked out, select another target.";
-                yield return new WaitForSeconds(1f);
-                dialogueText.text = "Select someone to attack!";
-                SullivanMenu.SetActive(true);
-                SullivanSpells.SetActive(false);
-            }
-            else
-            {
-                GameManager.SullivanMagic -= Sullivan.SullivanSpell13MagicConsumed;
-                SullivanMagic.value = GameManager.SullivanMagic;
-                SullivanAnim.Play("Armature|Attack");
-                yield return new WaitForSeconds(2f);
-
-                isDead = enemyUnit[enemyUnitSelected].SullivanCriticaFocus(Sullivan.SullivanSpell13Damage * AttackModifier);
                 EnemyAnim();
                 TurnOffAttackBools();
                 yield return new WaitForSeconds(2f);
@@ -4712,8 +4612,33 @@ public class BattleSystem : MonoBehaviour
                         HarperDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
                         GameManager.HarperHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier;
                         HarperHealth.value = GameManager.HarperHealth;
-                        yield return new WaitForSeconds(2f);
 
+
+                        //Harper's Counter
+                        float CounterChance = Random.Range(0, 100);
+                        if ((CounterChance < (GameManager.HarperFriendship * 10)) && GameManager.HarperFriendship > 3)
+                        {
+                            //Counter
+                            yield return new WaitForSeconds(2f);
+                            dialogueText.text = "Harper is countering with Deflector Impetum!"
+                            HarperAnim.Play("Armature|Attack");
+                            yield return new WaitForSeconds(2f);
+
+                            isDead = enemyUnit[enemyUnitSelected].HarperDeflectorImpetum(Harper.HarperSpell3Damage * AttackModifier);
+
+                            EnemyAnim();
+                            yield return new WaitForSeconds(2f);
+
+                            //This checks to see if the Enemy is Dead or has HP remaining
+                            if (isDead)
+                            {
+                                RemoveCurrentEnemy();
+                            }
+                        }
+                        else
+                        {
+                            yield return new WaitForSeconds(2f);
+                        }
                     }
                 }
 
@@ -4913,12 +4838,56 @@ public class BattleSystem : MonoBehaviour
             int spell = Random.Range(0, 5);
             if (spell == 0)
             {
-                GameManager.MCHealth += Mathf.RoundToInt(GameManager.MCMaxHealth * .3f);
-                GameManager.RhysHealth += Mathf.RoundToInt(GameManager.RhysMaxHealth * .3f);
-                GameManager.JameelHealth += Mathf.RoundToInt(GameManager.JameelMaxHealth * .3f);
-                GameManager.HarperHealth += Mathf.RoundToInt(GameManager.HarperMaxHealth * .3f);
-                GameManager.SkyeHealth += Mathf.RoundToInt(GameManager.SkyeMaxHealth * .3f);
-                GameManager.SullivanHealth += Mathf.RoundToInt(GameManager.SullivanMaxHealth * .3f);
+                GameManager.MCHealth *= 1.5f;
+                if (GameManager.MCHealth > GameManager.MCMaxHealth)
+                {
+                    GameManager.MCHealth = GameManager.MCMaxHealth;
+                }
+
+                if (GameManager.RhysInParty && !RhysDead)
+                {
+                    GameManager.RhysHealth *= 1.5f;
+                    if (GameManager.RhysHealth > GameManager.RhysMaxHealth)
+                    {
+                        GameManager.RhysHealth = GameManager.RhysMaxHealth;
+                    }
+                }
+
+                if (GameManager.JameelInParty && !JameelDead)
+                {
+                    GameManager.JameelHealth *= 1.5f;
+                    if (GameManager.JameelHealth > GameManager.JameelMaxHealth)
+                    {
+                        GameManager.JameelHealth = GameManager.JameelMaxHealth;
+                    }
+                }
+
+                if (GameManager.HarperInParty && !HarperDead)
+                {
+                    GameManager.HarperHealth *= 1.5f;
+                    if (GameManager.HarperHealth > GameManager.HarperMaxHealth)
+                    {
+                        GameManager.HarperHealth = GameManager.HarperMaxHealth;
+                    }
+                }
+
+                if (GameManager.SkyeInParty && !SkyeDead)
+                {
+                    GameManager.SkyeHealth *= 1.5f;
+                    if (GameManager.SkyeHealth > GameManager.SkyeMaxHealth)
+                    {
+                        GameManager.SkyeHealth = GameManager.SkyeMaxHealth;
+                    }
+                }
+
+                if (GameManager.SullivanInParty && !SullivanDead)
+                {
+                    GameManager.SullivanHealth *= 1.5f;
+                    if (GameManager.SullivanHealth > GameManager.SullivanMaxHealth)
+                    {
+                        GameManager.SullivanHealth = GameManager.SullivanMaxHealth;
+                    }
+                }
                 dialogueText.text = "Gracie May: Here is a little health for you!";
                 GracieMaySpell1.SetActive(true);
                 UpdateLifeUI();
@@ -5777,16 +5746,29 @@ public class BattleSystem : MonoBehaviour
             {
                 criticaFocus = true;
 
-                MCMenu.SetActive(true);
-                MCSpells.SetActive(false);
-                enemySelect = true;
-                MCConfirmMenu.SetActive(true);
+                MCConfirmMenu.SetActive(false);
                 MCSpells.SetActive(false);
                 MCMenu.SetActive(false);
+
+                GameManager.MCMagic -= MC.MCSpell21MagicConsumed;
+                MCMagic.value = GameManager.MCMagic;
+                dialogueText = "Attack up!";
+                IncreaseAttack();
+                MCAnim.Play("Armature|Attack");
+                StartCoroutine(CriticaFocus());
             }
             else
                 dialogueText.text = "Not enough energy!";
         }
+    }
+
+    IEnumerator CriticaFocus()
+    {
+        yield return new WaitForSeconds(4f);
+        criticaFocus = false;
+        sullivanCriticaFocus = false;
+        TurnOffAttackBools();
+        NextTurn();
     }
 
     public void MCDiffindo()
@@ -6373,26 +6355,6 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
-    public void HarperDeflectorImpetum()
-    {
-        if (state == BattleState.HARPERTURN)
-        {
-            if (Harper.HarperSpell3MagicConsumed <= GameManager.HarperMagic)
-            {
-                harperDeflectorImpetum = true;
-
-                HarperMenu.SetActive(true);
-                HarperSpells.SetActive(false);
-                enemySelect = true;
-                HarperConfirmMenu.SetActive(true);
-                HarperSpells.SetActive(false);
-                HarperMenu.SetActive(false);
-            }
-            else
-                dialogueText.text = "Not enough energy!";
-        }
-    }
-
     public void HarperMinorFortitudinem()
     {
         if (state == BattleState.HARPERTURN)
@@ -6962,16 +6924,29 @@ public class BattleSystem : MonoBehaviour
             {
                 sullivanProtego = true;
 
-                SullivanMenu.SetActive(true);
-                SullivanSpells.SetActive(false);
-                enemySelect = true;
-                SullivanConfirmMenu.SetActive(true);
+                SullivanConfirmMenu.SetActive(false);
                 SullivanSpells.SetActive(false);
                 SullivanMenu.SetActive(false);
+
+                GameManager.SullivanMagic -= Sullivan.SullivanSpell4MagicConsumed;
+                SullivanMagic.value = GameManager.SullivanMagic;
+                dialogueText.text = "Sullivan casts a protective charm over the group for 1 full turn!";
+                DefenseModifier = 0;
+                DefenseModifierTurnCount = 2;
+                SullivanAnim.Play("Armature|Attack");
+                StartCoroutine(Protego());
             }
             else
                 dialogueText.text = "Not enough energy!";
         }
+    }
+
+    IEnumerator Protego()
+    {
+        yield return new WaitForSeconds(4f);
+        sullivanProtego = false;
+        TurnOffAttackBools();
+        NextTurn();
     }
 
     public void SullivanIgnusMagnum()
@@ -7142,12 +7117,16 @@ public class BattleSystem : MonoBehaviour
             {
                 sullivanCriticaFocus = true;
 
-                SullivanMenu.SetActive(true);
-                SullivanSpells.SetActive(false);
-                enemySelect = true;
-                SullivanConfirmMenu.SetActive(true);
+                SullivanConfirmMenu.SetActive(false);
                 SullivanSpells.SetActive(false);
                 SullivanMenu.SetActive(false);
+
+                GameManager.SullivanMagic -= Sullivan.SullivanSpell13MagicConsumed;
+                SullivanMagic.value = GameManager.SullivanMagic;
+                dialogueText = "Attack up!";
+                IncreaseAttack();
+                SullivanAnim.Play("Armature|Attack");
+                StartCoroutine(CriticaFocus());
             }
             else
                 dialogueText.text = "Not enough energy!";
