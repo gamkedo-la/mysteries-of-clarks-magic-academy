@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -64,6 +65,11 @@ public class Dungeon2Generator : MonoBehaviour {
 		}
 		Instance = this;
 		DontDestroyOnLoad(gameObject);
+
+	}
+
+	public void Generate() {
+		Clear();
 
 		currentLevel = GameManager.currentFloor;
 
@@ -417,6 +423,7 @@ public class Dungeon2Generator : MonoBehaviour {
 		} else {
 			thePlayer.transform.Rotate(0f, Random.Range(0f, 360f), 0f);
 		}
+		thePlayer.transform.parent = transform;
 
 		//Spawn Exit
 		GameObject theExit = null;
@@ -466,6 +473,12 @@ public class Dungeon2Generator : MonoBehaviour {
 		}
 	}
 
+	public void Clear() {
+		for (int i = transform.childCount-1; i >= 0; i--) {
+			DestroyImmediate(transform.GetChild(i).gameObject);
+		}
+	}
+
 	public void AdvanceFloor() {
 		GameManager.currentFloor++;
 		if (GameManager.currentFloor < 0) GameManager.currentFloor = 0;
@@ -474,3 +487,22 @@ public class Dungeon2Generator : MonoBehaviour {
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
 }
+
+
+
+#if UNITY_EDITOR
+[CustomEditor(typeof(Dungeon2Generator))]
+public class Dungeon2GeneratorEditor : Editor {
+	public override void OnInspectorGUI() {
+		base.OnInspectorGUI();
+
+		if (GUILayout.Button("Generate")) {
+			(target as Dungeon2Generator).Generate();
+		}
+
+		if (GUILayout.Button("Clear")) {
+			(target as Dungeon2Generator).Clear();
+		}
+	}
+}
+#endif
