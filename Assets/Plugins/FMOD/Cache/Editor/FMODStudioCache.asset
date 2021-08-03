@@ -42988,6 +42988,28 @@ MonoBehaviour:
   Type: 1
   IsGlobal: 1
   Exists: 0
+--- !u!114 &-4827310760378865286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Music/GameState
+  m_EditorClassIdentifier: 
+  Name: GameState
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 1
+  IsGlobal: 1
+  Exists: 1
 --- !u!114 &-4826553269827352873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74361,6 +74383,28 @@ MonoBehaviour:
   Type: 1
   IsGlobal: 1
   Exists: 0
+--- !u!114 &-1575931676563622525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Music/Floor
+  m_EditorClassIdentifier: 
+  Name: Floor
+  Min: 0
+  Max: 4
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 1
+  IsGlobal: 1
+  Exists: 1
 --- !u!114 &-1575574031918971702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76757,10 +76801,10 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 6732491829589196491}
-  - {fileID: 1150626601910811852}
-  - {fileID: 3590937741130601626}
-  - {fileID: -4874940801087158300}
+  - {fileID: -4827310760378865286}
+  - {fileID: 4554334523600459763}
+  - {fileID: -1575931676563622525}
+  - {fileID: 1981987625618070370}
   MinDistance: 0
   MaxDistance: 0
   Length: 0
@@ -90078,7 +90122,7 @@ MonoBehaviour:
   - {fileID: 8601465784281014723}
   StringsBanks:
   - {fileID: 2372509545951279307}
-  stringsBankWriteTime: 637593766314801256
+  stringsBankWriteTime: 637598625512979136
   cacheVersion: 8
 --- !u!114 &1557053310251795
 MonoBehaviour:
@@ -110056,6 +110100,28 @@ MonoBehaviour:
   Type: 1
   IsGlobal: 1
   Exists: 0
+--- !u!114 &1981987625618070370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Music/Dungeon
+  m_EditorClassIdentifier: 
+  Name: Dungeon
+  Min: 0
+  Max: 5
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 1
+  IsGlobal: 1
+  Exists: 1
 --- !u!114 &1983758784575362003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114559,7 +114625,7 @@ MonoBehaviour:
   Path: FMOD/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637593766314801256
+  lastModified: 637598625512979136
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -137556,6 +137622,28 @@ MonoBehaviour:
   Type: 1
   IsGlobal: 1
   Exists: 0
+--- !u!114 &4554334523600459763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Music/Combat
+  m_EditorClassIdentifier: 
+  Name: Combat
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 1
+  IsGlobal: 1
+  Exists: 1
 --- !u!114 &4554456636140966454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176055,11 +176143,11 @@ MonoBehaviour:
   Path: FMOD/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637625355204155449
+  lastModified: 637635779681607015
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 25078336
+    Value: 30479552
   Exists: 1
 --- !u!114 &8609670283283390606
 MonoBehaviour:
