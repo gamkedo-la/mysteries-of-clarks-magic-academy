@@ -137,10 +137,14 @@ public class GameManager : MonoBehaviour
         MCFirstName = "Sara";
         MCLastName = "Lee";
         */
+
+        //Start game here
         dayOfWeek = 0;
         month = 4;
-        day = 17;
-       
+        //day = 17;
+
+        day = 19;
+
         /*// Finals Testing
         dayOfWeek = 1;
         month = 5;
@@ -183,7 +187,7 @@ public class GameManager : MonoBehaviour
         //  PartyCount++;
         //  PartyCount++;
 
-     //   GracieMayAvailable = true;
+        GracieMayAvailable = true;
 
         if (PartyCount > 4)
         {

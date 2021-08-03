@@ -4764,6 +4764,8 @@ public class BattleSystem : MonoBehaviour
 
         float gracieSpawnChance = (GameManager.GracieMayFriendship / 10) * chance;
 
+        chance = 100f;
+
         if (chance > .5f)
         {
             int spell = Random.Range(0, 5);
