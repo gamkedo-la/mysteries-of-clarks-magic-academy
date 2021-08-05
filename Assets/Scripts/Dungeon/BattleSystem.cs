@@ -108,6 +108,8 @@ public class BattleSystem : MonoBehaviour
 
     //determining enemySelection
     public int enemyUnitSelected;
+    public int playerUnitSelected;
+    public List<Transform> playerBattleStationLocations;
     public List<Transform> enemyBattleStationLocations;
     public List<GameObject> enemyPrefab;
     public List<Unit> enemyUnit;
@@ -254,6 +256,7 @@ public class BattleSystem : MonoBehaviour
 
     //
     bool enemySelect;
+    bool playerSelect;
     bool isOver;
     float totalExp;
 
@@ -529,7 +532,7 @@ public class BattleSystem : MonoBehaviour
             Harper = playerGO3.GetComponent<Unit>();
             HarperAnim = playerGO3.GetComponentInChildren<Animator>();
         }
-        if (GameManager.SkyeInParty && !GameManager.SullivanInParty)
+        if (GameManager.PartyCount == 3 && GameManager.SkyeInParty && !GameManager.SullivanInParty)
         {
             playerGO3 = Instantiate(SkyePrefab, ThirdBattleStation);
             Skye = playerGO3.GetComponent<Unit>();
@@ -762,6 +765,41 @@ public class BattleSystem : MonoBehaviour
             EndBattle();
         }
 
+        #endregion
+
+        #region Select Team Member
+        if ((state == BattleState.MCTURN || state == BattleState.RHYSTURN || state == BattleState.JAMEELTURN || state == BattleState.HARPERTURN || state == BattleState.SKYETURN || state == BattleState.SULLIVANTURN) && playerSelect)
+        {
+            //SelectionProcess
+            playerSelectionParticle.SetActive(true);
+
+            int membersInParty = playerTurnOrder.Count;
+
+            playerSelectionParticle.transform.position = playerBattleStationLocations[playerUnitSelected].transform.position;
+
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                if (playerUnitSelected <= 0)
+                {
+                    playerUnitSelected = membersInParty - 1;
+                }
+                playerUnitSelected--;           
+                playerSelectionParticle.transform.position = playerBattleStationLocations[playerUnitSelected].transform.position;
+                Camera.transform.LookAt(playerBattleStationLocations[playerUnitSelected]);
+            }
+            
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+                playerUnitSelected++;
+                if (playerUnitSelected >= membersInParty -1)
+                {
+                    playerUnitSelected = 0;
+                }
+
+                playerSelectionParticle.transform.position = playerBattleStationLocations[playerUnitSelected].transform.position;
+                Camera.transform.LookAt(playerBattleStationLocations[playerUnitSelected]);
+            }
+        }
         #endregion
     }
 
@@ -1051,6 +1089,9 @@ public class BattleSystem : MonoBehaviour
 
         enemySelectionParticle.SetActive(false);
         enemySelect = false;
+
+        playerSelectionParticle.SetActive(false);
+        playerSelect = false;
     }
 
     public void CancelAttack()
@@ -1564,35 +1605,44 @@ public class BattleSystem : MonoBehaviour
 
             if (minorCura)
             {
-                if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+                GameManager.MCMagic -= MC.MCSpell10MagicConsumed;
+                MCMagic.value = GameManager.MCMagic;
+                MCAnim.Play("Armature|Attack");
+                yield return new WaitForSeconds(2f);
+
+                if (playerTurnOrder[playerUnitSelected - 1].ToString() == "Rhys")
                 {
-                    minorCura = false;
-                    dialogueText.text = "Enemy is knocked out, select another target.";
-                    yield return new WaitForSeconds(1f);
-                    dialogueText.text = "Select someone to attack!";
-                    MCMenu.SetActive(true);
-                    MCSpells.SetActive(false);
+                    GameManager.RhysHealth += GameManager.RhysMaxHealth * .2f;
                 }
-                else
+
+                if (playerTurnOrder[playerUnitSelected - 1].ToString() == "Skye")
                 {
-                    GameManager.MCMagic -= MC.MCSpell10MagicConsumed;
-                    MCMagic.value = GameManager.MCMagic;
-                    MCAnim.Play("Armature|Attack");
-                    yield return new WaitForSeconds(2f);
-                    GameManager.isGreen = true;
-                    isDead = enemyUnit[enemyUnitSelected].MinorCura(MC.MCSpell10Damage * AttackModifier);
-
-                    EnemyAnim();
-
-                    TurnOffAttackBools();
-                    yield return new WaitForSeconds(2f);
-
-                    if (isDead)
-                    {
-                        RemoveCurrentEnemy();
-                    }
-                    NextTurn();
+                    GameManager.SkyeHealth += GameManager.SkyeMaxHealth * .2f;
                 }
+
+                if (playerTurnOrder[playerUnitSelected - 1].ToString() == "Harper")
+                {
+                    GameManager.HarperHealth += GameManager.HarperMaxHealth * .2f;
+                }
+
+                if (playerTurnOrder[playerUnitSelected - 1].ToString() == "Sullivan")
+                {
+                    GameManager.SullivanHealth += GameManager.SullivanMaxHealth * .2f;
+                }
+
+                if (playerTurnOrder[playerUnitSelected - 1].ToString() == "Jameel")
+                {
+                    GameManager.JameelHealth += GameManager.JameelMaxHealth * .2f;
+                }
+
+                if (playerTurnOrder[playerUnitSelected - 1].ToString() == GameManager.MCFirstName)
+                {
+                    GameManager.MCHealth += GameManager.MCMaxHealth * .2f;
+                    
+                }
+                UpdateLifeUI();
+                TurnOffAttackBools();
+                NextTurn();
             }
 
             if (impetumSubsisto)
@@ -1626,8 +1676,6 @@ public class BattleSystem : MonoBehaviour
                         RemoveCurrentEnemy();
                     }
                     NextTurn();
-
-
                 }
             }
 
@@ -5482,7 +5530,7 @@ public class BattleSystem : MonoBehaviour
 
                 MCMenu.SetActive(true);
                 MCSpells.SetActive(false);
-                enemySelect = true;
+                playerSelect = true;
                 MCConfirmMenu.SetActive(true);
                 MCSpells.SetActive(false);
                 MCMenu.SetActive(false);
