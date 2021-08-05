@@ -345,15 +345,16 @@ MonoBehaviour:
   Health: {fileID: 8110876357570949706}
   isEnemy: 1
   weakRed: 0
-  weakBlue: 0
+  weakBlue: 1
   weakYellow: 0
   weakGreen: 0
   weakPhys: 1
   strRed: 0
   strBlue: 0
-  strYellow: 1
-  strGreen: 0
+  strYellow: 0
+  strGreen: 1
   strPhys: 0
+  Summary: {fileID: 3552561361138062327}
 --- !u!95 &9140356654772005843
 Animator:
   serializedVersion: 3
@@ -373,6 +374,85 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &2672203927894889886
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6413134642923474572}
+  - component: {fileID: 5274289973756681876}
+  - component: {fileID: 3552561361138062327}
+  m_Layer: 5
+  m_Name: DmgTaken (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &6413134642923474572
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2672203927894889886}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8110876356226105024}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.0016064, y: 54.8}
+  m_SizeDelta: {x: 163.43, y: 73.28}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &5274289973756681876
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2672203927894889886}
+  m_CullTransparentMesh: 1
+--- !u!114 &3552561361138062327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2672203927894889886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: e3de53fd20508bc4b817e4d786133659, type: 3}
+    m_FontSize: 50
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 50
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 
 --- !u!1 &8110876356062332130
 GameObject:
   m_ObjectHideFlags: 0
@@ -482,8 +562,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0000121593475, y: 0.00038909912}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: -4.41, y: 0.00038909912}
+  m_SizeDelta: {x: 213.42, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8110876356079103194
 CanvasRenderer:
@@ -526,7 +606,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Weak '
+  m_Text: 'Weak: Charms   Physical '
 --- !u!1 &8110876356226105025
 GameObject:
   m_ObjectHideFlags: 0
@@ -559,6 +639,7 @@ RectTransform:
   m_Children:
   - {fileID: 8110876357570949707}
   - {fileID: 8110876356324777592}
+  - {fileID: 6413134642923474572}
   m_Father: {fileID: 85030071966216094}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -785,7 +866,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Str '
+  m_Text: 'Str: Potions '
 --- !u!1 &8110876357213359643
 GameObject:
   m_ObjectHideFlags: 0

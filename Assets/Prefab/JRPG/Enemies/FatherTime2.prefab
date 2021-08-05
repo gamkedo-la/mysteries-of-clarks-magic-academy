@@ -391,6 +391,85 @@ Transform:
   m_Father: {fileID: 8213714720832811952}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1826537729764688045
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4153718166737937047}
+  - component: {fileID: 97479359680042008}
+  - component: {fileID: 1177300768740393096}
+  m_Layer: 5
+  m_Name: DmgTaken (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &4153718166737937047
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1826537729764688045}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2492968927674930756}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.0016064, y: 39.1}
+  m_SizeDelta: {x: 163.43, y: 73.28}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &97479359680042008
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1826537729764688045}
+  m_CullTransparentMesh: 1
+--- !u!114 &1177300768740393096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1826537729764688045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: e3de53fd20508bc4b817e4d786133659, type: 3}
+    m_FontSize: 50
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 50
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 
 --- !u!1 &2383845420848800875
 GameObject:
   m_ObjectHideFlags: 0
@@ -470,7 +549,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2492968927553619036
 RectTransform:
   m_ObjectHideFlags: 0
@@ -639,6 +718,7 @@ RectTransform:
   m_Children:
   - {fileID: 2492968929551407823}
   - {fileID: 2492968928377337596}
+  - {fileID: 4153718166737937047}
   m_Father: {fileID: 5996902980834264858}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -742,8 +822,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.7175171, y: 30.000195}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: -2.42, y: 17.42}
+  m_SizeDelta: {x: 220.93, y: 84.65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2492968928110043716
 CanvasRenderer:
@@ -775,10 +855,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 2299a8f702617fd4cae9dba3d4db93a3, type: 3}
-    m_FontSize: 14
+    m_FontSize: 16
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -786,7 +866,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Str '
+  m_Text: "Str: Transfig,  Charms,\n        DADA,   Potions, \n               Physical "
 --- !u!1 &2492968928377337597
 GameObject:
   m_ObjectHideFlags: 0
@@ -1851,12 +1931,13 @@ MonoBehaviour:
   weakBlue: 0
   weakYellow: 0
   weakGreen: 0
-  weakPhys: 1
-  strRed: 0
-  strBlue: 0
+  weakPhys: 0
+  strRed: 1
+  strBlue: 1
   strYellow: 1
-  strGreen: 0
-  strPhys: 0
+  strGreen: 1
+  strPhys: 1
+  Summary: {fileID: 1177300768740393096}
 --- !u!1 &6340746290122766766
 GameObject:
   m_ObjectHideFlags: 0

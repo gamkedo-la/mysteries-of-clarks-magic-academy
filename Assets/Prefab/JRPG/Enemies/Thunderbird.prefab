@@ -113,8 +113,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.7175171, y: 30.000195}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 1.7175171, y: -11.54}
+  m_SizeDelta: {x: 160, y: 113.08}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &36088817574757549
 CanvasRenderer:
@@ -157,7 +157,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Str '
+  m_Text: "Str Transfig\n       Charms\n       DADA\n       Potions"
 --- !u!1 &36088817875890348
 GameObject:
   m_ObjectHideFlags: 0
@@ -190,12 +190,13 @@ RectTransform:
   m_Children:
   - {fileID: 36088818146933798}
   - {fileID: 36088817307471893}
+  - {fileID: 2471714566348999026}
   m_Father: {fileID: 8152007779224527347}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0.18550014, y: 7.97}
+  m_AnchoredPosition: {x: -0.18550014, y: 14.76}
   m_SizeDelta: {x: 163.4236, y: 81.9367}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &36088817875890344
@@ -351,7 +352,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &36088817997193909
 RectTransform:
   m_ObjectHideFlags: 0
@@ -651,6 +652,85 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &1863145738451561400
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2471714566348999026}
+  - component: {fileID: 3005668015520601159}
+  - component: {fileID: 7027010779096440777}
+  m_Layer: 5
+  m_Name: DmgTaken (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2471714566348999026
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1863145738451561400}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 36088817875890349}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.0016064, y: -256.6}
+  m_SizeDelta: {x: 163.43, y: 73.28}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &3005668015520601159
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1863145738451561400}
+  m_CullTransparentMesh: 1
+--- !u!114 &7027010779096440777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1863145738451561400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: e3de53fd20508bc4b817e4d786133659, type: 3}
+    m_FontSize: 50
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 50
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 
 --- !u!95 &6963898639751269752
 Animator:
   serializedVersion: 3
@@ -1018,12 +1098,13 @@ MonoBehaviour:
   weakBlue: 0
   weakYellow: 0
   weakGreen: 0
-  weakPhys: 1
-  strRed: 0
-  strBlue: 0
+  weakPhys: 0
+  strRed: 1
+  strBlue: 1
   strYellow: 1
-  strGreen: 0
+  strGreen: 1
   strPhys: 0
+  Summary: {fileID: 7027010779096440777}
 --- !u!1001 &6873005944608691681
 PrefabInstance:
   m_ObjectHideFlags: 0

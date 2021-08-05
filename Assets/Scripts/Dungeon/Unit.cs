@@ -241,6 +241,7 @@ public class Unit : MonoBehaviour
 
     public bool weakRed, weakBlue, weakYellow, weakGreen, weakPhys;
     public bool strRed, strBlue, strYellow, strGreen, strPhys;
+    public Text Summary;
 
     private void Start()
     {
@@ -295,14 +296,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -337,14 +338,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -381,14 +382,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -423,14 +424,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -465,14 +466,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -507,14 +508,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -550,14 +551,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -593,14 +594,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -636,14 +637,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -679,14 +680,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -722,14 +723,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -763,14 +764,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -804,14 +805,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -846,14 +847,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -888,14 +889,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -930,14 +931,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -972,14 +973,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -1014,14 +1015,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -1055,14 +1056,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -1097,14 +1098,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -1139,14 +1140,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -1181,14 +1182,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -1223,14 +1224,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -1265,14 +1266,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -1311,14 +1312,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -1352,14 +1353,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -1393,14 +1394,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -1434,14 +1435,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -1475,14 +1476,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -1515,14 +1516,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -1556,14 +1557,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -1597,14 +1598,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -1638,14 +1639,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -1679,14 +1680,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -1720,14 +1721,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -1761,14 +1762,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -1804,14 +1805,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -1843,14 +1844,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -1883,14 +1884,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -1924,14 +1925,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -1965,14 +1966,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -2006,14 +2007,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -2046,14 +2047,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -2087,14 +2088,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -2128,14 +2129,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -2169,14 +2170,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -2209,14 +2210,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -2250,14 +2251,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -2291,14 +2292,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -2332,14 +2333,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -2375,14 +2376,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -2416,14 +2417,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -2456,14 +2457,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -2496,14 +2497,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -2536,14 +2537,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -2576,14 +2577,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -2617,14 +2618,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -2658,14 +2659,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -2699,14 +2700,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -2740,14 +2741,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -2780,14 +2781,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -2820,14 +2821,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -2863,14 +2864,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -2904,14 +2905,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -2945,14 +2946,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -2986,14 +2987,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -3027,14 +3028,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -3068,14 +3069,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -3109,14 +3110,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -3150,14 +3151,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -3191,14 +3192,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -3232,14 +3233,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -3275,14 +3276,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -3316,14 +3317,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -3357,14 +3358,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -3397,14 +3398,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -3436,14 +3437,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -3476,14 +3477,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -3517,14 +3518,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -3558,14 +3559,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -3598,14 +3599,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -3638,14 +3639,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -3678,14 +3679,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
@@ -3718,14 +3719,14 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            print("Critical Hit!");
+            Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            print("Resist!");
+            Summary.text = "Resist!";
         }
 
         else
