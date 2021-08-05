@@ -1090,6 +1090,13 @@ public class BattleSystem : MonoBehaviour
             SullivanMenu.SetActive(true);
             SullivanConfirmMenu.SetActive(false);
         }
+
+        GameManager.isRed = false;
+        GameManager.isBlue = false;
+        GameManager.isYellow = false;
+        GameManager.isGreen = false;
+        GameManager.isPhysical = false;
+
         enemySelectionParticle.SetActive(false);
         enemySelect = false;
     }
@@ -1262,7 +1269,7 @@ public class BattleSystem : MonoBehaviour
                     MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
 
-
+                    GameManager.isPhysical = true;
                     isDead = enemyUnit[enemyUnitSelected].ThrowRock((MC.MCSpell1Damage * AttackModifier) + GameManager.MCDodge);
 
                     EnemyAnim();
@@ -1282,6 +1289,7 @@ public class BattleSystem : MonoBehaviour
             {
                 if (enemyUnit[enemyUnitSelected].currentHP <= 0)
                 {
+                    
                     flippendo = false;
                     dialogueText.text = "Enemy is knocked out, select another target.";
                     yield return new WaitForSeconds(1f);
@@ -1296,7 +1304,7 @@ public class BattleSystem : MonoBehaviour
                     MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
 
-
+                    GameManager.isPhysical = true;
                     isDead = enemyUnit[enemyUnitSelected].Flippendo(MC.MCSpell2Damage * AttackModifier);
 
                     EnemyAnim();
@@ -1329,7 +1337,7 @@ public class BattleSystem : MonoBehaviour
                     MCMagic.value = GameManager.MCMagic;
                     MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
-
+                    GameManager.isYellow = true;
                     hasBeenStunned = enemyUnit[enemyUnitSelected].HasBeenStunned(true);
 
                     //  isDead = enemyUnit[enemyUnitSelected].PulsateSunt(MC.MCSpell3Damage * AttackModifier); 
@@ -1370,7 +1378,7 @@ public class BattleSystem : MonoBehaviour
                     MCMagic.value = GameManager.MCMagic;
                     MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
-
+                    GameManager.isYellow = true;
                     isDead = enemyUnit[enemyUnitSelected].Stupefaciunt(MC.MCSpell4Damage * AttackModifier);
 
                     EnemyAnim();
@@ -1405,7 +1413,7 @@ public class BattleSystem : MonoBehaviour
                     MCMagic.value = GameManager.MCMagic;
                     MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
-
+                    GameManager.isYellow = true;
                     isDead = enemyUnit[enemyUnitSelected].Incendio(MC.MCSpell5Damage * AttackModifier);
 
                     EnemyAnim();
@@ -1441,7 +1449,7 @@ public class BattleSystem : MonoBehaviour
                     MCMagic.value = GameManager.MCMagic;
                     MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
-
+                    GameManager.isYellow = true;
                     isDead = enemyUnit[enemyUnitSelected].IncendioMaxima(MC.MCSpell6Damage * AttackModifier);
 
                     EnemyAnim();
@@ -1474,6 +1482,7 @@ public class BattleSystem : MonoBehaviour
                     MCMagic.value = GameManager.MCMagic;
                     MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
+                    GameManager.isRed = true;
                     isDead = enemyUnit[enemyUnitSelected].Avis(MC.MCSpell7Damage * AttackModifier);
 
                     EnemyAnim();
@@ -1506,7 +1515,7 @@ public class BattleSystem : MonoBehaviour
                     MCMagic.value = GameManager.MCMagic;
                     MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
-
+                    GameManager.isRed = true;
                     isDead = enemyUnit[enemyUnitSelected].AvisMaxima(MC.MCSpell8Damage * AttackModifier);
 
                     EnemyAnim();
@@ -1541,7 +1550,7 @@ public class BattleSystem : MonoBehaviour
                     MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
 
-
+                    GameManager.isBlue = true;
                     isDead = enemyUnit[enemyUnitSelected].Glacius(MC.MCSpell9Damage * AttackModifier);
 
                     EnemyAnim();
@@ -1575,7 +1584,7 @@ public class BattleSystem : MonoBehaviour
                     MCMagic.value = GameManager.MCMagic;
                     MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
-
+                    GameManager.isGreen = true;
                     isDead = enemyUnit[enemyUnitSelected].MinorCura(MC.MCSpell10Damage * AttackModifier);
 
                     EnemyAnim();
@@ -1609,7 +1618,7 @@ public class BattleSystem : MonoBehaviour
                     MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
 
-
+                    GameManager.isBlue = true;
                     isDead = enemyUnit[enemyUnitSelected].ImpetumSubsisto(MC.MCSpell11Damage * AttackModifier);
 
                     EnemyAnim();
@@ -1645,7 +1654,7 @@ public class BattleSystem : MonoBehaviour
                     MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
 
-
+                    GameManager.isBlue = true;
                     isDead = enemyUnit[enemyUnitSelected].Augamenti(MC.MCSpell12Damage * AttackModifier);
 
                     EnemyAnim();
@@ -1679,7 +1688,7 @@ public class BattleSystem : MonoBehaviour
                     MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
 
-
+                    GameManager.isPhysical = true;
                     isDead = enemyUnit[enemyUnitSelected].MothsDeorsum(MC.MCSpell13Damage * AttackModifier);
 
                     EnemyAnim();
@@ -1715,7 +1724,7 @@ public class BattleSystem : MonoBehaviour
                     MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
 
-
+                    GameManager.isPhysical = true;
                     isDead = enemyUnit[enemyUnitSelected].MothsInteriore(MC.MCSpell14Damage * AttackModifier);
 
                     EnemyAnim();
@@ -1749,7 +1758,7 @@ public class BattleSystem : MonoBehaviour
                     MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
 
-
+                    GameManager.isPhysical = true;
                     isDead = enemyUnit[enemyUnitSelected].InternaCombustione(MC.MCSpell15Damage * AttackModifier);
 
                     EnemyAnim();
@@ -1785,7 +1794,7 @@ public class BattleSystem : MonoBehaviour
                     MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
 
-
+                    GameManager.isPhysical = true;
                     isDead = enemyUnit[enemyUnitSelected].Bombarda(MC.MCSpell16Damage * AttackModifier);
 
                     EnemyAnim();
@@ -1821,7 +1830,7 @@ public class BattleSystem : MonoBehaviour
                     MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
 
-
+                    GameManager.isPhysical = true;
                     isDead = enemyUnit[enemyUnitSelected].BombardaMaxima(MC.MCSpell17Damage * AttackModifier);
 
                     EnemyAnim();
@@ -1856,7 +1865,7 @@ public class BattleSystem : MonoBehaviour
                     MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
 
-
+                    GameManager.isPhysical = true;
                     isDead = enemyUnit[enemyUnitSelected].BombardaUltima(MC.MCSpell18Damage * AttackModifier);
 
                     EnemyAnim();
@@ -1891,7 +1900,7 @@ public class BattleSystem : MonoBehaviour
                     MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
 
-
+                    GameManager.isBlue = true;
                     isDead = enemyUnit[enemyUnitSelected].Diffindo(MC.MCSpell22Damage * AttackModifier);
 
                     EnemyAnim();
@@ -1927,7 +1936,7 @@ public class BattleSystem : MonoBehaviour
                     MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
 
-
+                    GameManager.isBlue = true;
                     isDead = enemyUnit[enemyUnitSelected].DiffindoMaxima(MC.MCSpell23Damage * AttackModifier);
 
                     EnemyAnim();
@@ -2074,6 +2083,12 @@ public class BattleSystem : MonoBehaviour
         sullivanStatuamLocomotion = false;
         sullivanCriticaFocus = false;
 
+        GameManager.isRed = false;
+        GameManager.isBlue = false;
+        GameManager.isGreen = false;
+        GameManager.isYellow = false;
+        GameManager.isPhysical = false;
+
         dialogueText.text = "The attack is successful!";
     }
 
@@ -2103,7 +2118,7 @@ public class BattleSystem : MonoBehaviour
                 RhysAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
-
+                GameManager.isPhysical = true;
                 isDead = enemyUnit[enemyUnitSelected].ThrowRock((Rhys.RhysSpell1Damage * AttackModifier) + GameManager.RhysDodge);
 
                 EnemyAnim();
@@ -2137,7 +2152,7 @@ public class BattleSystem : MonoBehaviour
                 RhysAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
-
+                GameManager.isPhysical = true;
                 isDead = enemyUnit[enemyUnitSelected].RhysFlippendo(Rhys.RhysSpell2Damage * AttackModifier);
 
                 EnemyAnim();
@@ -2171,7 +2186,7 @@ public class BattleSystem : MonoBehaviour
                 RhysAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
-
+                GameManager.isYellow = true;
                 isDead = enemyUnit[enemyUnitSelected].RhysCorpusLiget(Rhys.RhysSpell3Damage * AttackModifier);
 
                 EnemyAnim();
@@ -2206,7 +2221,7 @@ public class BattleSystem : MonoBehaviour
                 RhysAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
-
+                GameManager.isPhysical = true;
                 isDead = enemyUnit[enemyUnitSelected].RhysMothsDeorsum(Rhys.RhysSpell4Damage * AttackModifier);
 
                 EnemyAnim();
@@ -2240,7 +2255,7 @@ public class BattleSystem : MonoBehaviour
                 RhysAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
-
+                GameManager.isPhysical = true;
                 isDead = enemyUnit[enemyUnitSelected].RhysMothsInteriore(Rhys.RhysSpell5Damage * AttackModifier);
 
                 EnemyAnim();
@@ -2274,7 +2289,7 @@ public class BattleSystem : MonoBehaviour
                 RhysAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
-
+                GameManager.isPhysical = true;
                 isDead = enemyUnit[enemyUnitSelected].RhysInternumCombustione(Rhys.RhysSpell6Damage * AttackModifier);
 
                 EnemyAnim();
@@ -2309,7 +2324,7 @@ public class BattleSystem : MonoBehaviour
                 RhysAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
-
+                GameManager.isYellow = true;
                 isDead = enemyUnit[enemyUnitSelected].RhysTenuiLabor(Rhys.RhysSpell7Damage * AttackModifier);
 
                 EnemyAnim();
@@ -2344,7 +2359,7 @@ public class BattleSystem : MonoBehaviour
                 RhysAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
-
+                GameManager.isYellow = true;
                 isDead = enemyUnit[enemyUnitSelected].RhysFlippendo(Rhys.RhysSpell8Damage * AttackModifier);
 
                 EnemyAnim();
@@ -2379,7 +2394,7 @@ public class BattleSystem : MonoBehaviour
                 RhysAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
-
+                GameManager.isYellow = true;
                 isDead = enemyUnit[enemyUnitSelected].RhysFumos(Rhys.RhysSpell9Damage * AttackModifier);
 
                 EnemyAnim();
@@ -2413,7 +2428,7 @@ public class BattleSystem : MonoBehaviour
                 RhysAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
-
+                GameManager.isRed = true;
                 isDead = enemyUnit[enemyUnitSelected].RhysWaddiwasi(Rhys.RhysSpell10Damage * AttackModifier);
 
                 EnemyAnim();
@@ -2448,7 +2463,7 @@ public class BattleSystem : MonoBehaviour
                 RhysAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
-
+                GameManager.isRed = true;
                 isDead = enemyUnit[enemyUnitSelected].RhysConjurePugione(Rhys.RhysSpell11Damage * AttackModifier);
 
                 EnemyAnim();
@@ -2483,7 +2498,7 @@ public class BattleSystem : MonoBehaviour
                 RhysAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
-
+                GameManager.isBlue = true;
                 isDead = enemyUnit[enemyUnitSelected].RhysImpetumSubsisto(Rhys.RhysSpell12Damage * AttackModifier);
 
                 EnemyAnim();
@@ -2518,7 +2533,7 @@ public class BattleSystem : MonoBehaviour
                 RhysAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
-
+                GameManager.isYellow = true;
                 isDead = enemyUnit[enemyUnitSelected].RhysIraUolueris(Rhys.RhysSpell13Damage * AttackModifier);
 
                 EnemyAnim();
@@ -2560,7 +2575,7 @@ public class BattleSystem : MonoBehaviour
                 JameelAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
-
+                GameManager.isPhysical = true;
                 isDead = enemyUnit[enemyUnitSelected].ThrowRock((Jameel.JameelSpell1Damage * AttackModifier) + GameManager.JameelDodge);
 
                 EnemyAnim();
@@ -2593,7 +2608,7 @@ public class BattleSystem : MonoBehaviour
                 JameelAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
-
+                GameManager.isPhysical = true;
                 isDead = enemyUnit[enemyUnitSelected].JameelFlippendo(Jameel.JameelSpell2Damage * AttackModifier);
 
                 EnemyAnim();
@@ -2627,6 +2642,7 @@ public class BattleSystem : MonoBehaviour
                 JameelAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
+                GameManager.isGreen = true;
                 isDead = enemyUnit[enemyUnitSelected].JameelMinorCura(Jameel.JameelSpell4Damage * AttackModifier);
 
                 EnemyAnim();
@@ -2660,7 +2676,7 @@ public class BattleSystem : MonoBehaviour
                 JameelAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
-
+                GameManager.isGreen = true;
                 isDead = enemyUnit[enemyUnitSelected].JameelMaiorCura(Jameel.JameelSpell5Damage * AttackModifier);
 
                 EnemyAnim();
@@ -2694,7 +2710,7 @@ public class BattleSystem : MonoBehaviour
                 JameelAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
-
+                GameManager.isBlue = true;
                 isDead = enemyUnit[enemyUnitSelected].JameelPartumNix(Jameel.JameelSpell6Damage * AttackModifier);
 
                 EnemyAnim();
@@ -2727,7 +2743,7 @@ public class BattleSystem : MonoBehaviour
                 JameelAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
-
+                GameManager.isBlue = true;
                 isDead = enemyUnit[enemyUnitSelected].JameelHiemsImpetus(Jameel.JameelSpell7Damage * AttackModifier);
 
                 EnemyAnim();
@@ -2760,7 +2776,7 @@ public class BattleSystem : MonoBehaviour
                 JameelAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
-
+                GameManager.isPhysical = true;
                 isDead = enemyUnit[enemyUnitSelected].JameelBombarda(Jameel.JameelSpell8Damage * AttackModifier);
 
                 EnemyAnim();
@@ -2794,7 +2810,7 @@ public class BattleSystem : MonoBehaviour
                 JameelAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
-
+                GameManager.isPhysical = true;
                 isDead = enemyUnit[enemyUnitSelected].JameelBombardaMaxima(Jameel.JameelSpell9Damage * AttackModifier);
 
                 EnemyAnim();
@@ -2827,7 +2843,7 @@ public class BattleSystem : MonoBehaviour
                 JameelAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
-
+                GameManager.isPhysical = true;
                 isDead = enemyUnit[enemyUnitSelected].JameelBombardaUltima(Jameel.JameelSpell10Damage * AttackModifier);
 
                 EnemyAnim();
@@ -2860,7 +2876,7 @@ public class BattleSystem : MonoBehaviour
                 JameelAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
-
+                GameManager.isBlue = true;
                 isDead = enemyUnit[enemyUnitSelected].JameelRepellere(Jameel.JameelSpell11Damage * AttackModifier);
 
                 EnemyAnim();
@@ -2893,7 +2909,7 @@ public class BattleSystem : MonoBehaviour
                 JameelAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
-
+                GameManager.isBlue = true;
                 isDead = enemyUnit[enemyUnitSelected].JameelDiffindo(Jameel.JameelSpell12Damage * AttackModifier);
 
                 EnemyAnim();
@@ -2927,7 +2943,7 @@ public class BattleSystem : MonoBehaviour
                 JameelAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
-
+                GameManager.isBlue = true;
                 isDead = enemyUnit[enemyUnitSelected].JameelDiffindoMaxima(Jameel.JameelSpell13Damage * AttackModifier);
 
                 EnemyAnim();
@@ -2961,7 +2977,7 @@ public class BattleSystem : MonoBehaviour
                 JameelAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
-
+                GameManager.isBlue = true;
                 isDead = enemyUnit[enemyUnitSelected].JameelImpetumSubsisto(Jameel.JameelSpell14Damage * AttackModifier);
 
                 EnemyAnim();
@@ -3003,7 +3019,7 @@ public class BattleSystem : MonoBehaviour
                 HarperAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
-
+                GameManager.isPhysical = true;
                 isDead = enemyUnit[enemyUnitSelected].ThrowRock((Harper.HarperSpell1Damage * AttackModifier) + GameManager.HarperDodge);
 
                 EnemyAnim();
@@ -3036,7 +3052,7 @@ public class BattleSystem : MonoBehaviour
                 HarperAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
-
+                GameManager.isPhysical = true;
                 isDead = enemyUnit[enemyUnitSelected].HarperFlippendo(Harper.HarperSpell2Damage * AttackModifier);
 
                 EnemyAnim();
@@ -3070,7 +3086,7 @@ public class BattleSystem : MonoBehaviour
                 HarperAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
-
+                GameManager.isYellow = true;
                 isDead = enemyUnit[enemyUnitSelected].HarperMinorFortitudinem(Harper.HarperSpell4Damage * AttackModifier);
 
                 EnemyAnim();
@@ -3104,7 +3120,7 @@ public class BattleSystem : MonoBehaviour
                 HarperAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
-
+                GameManager.isYellow = true;
                 isDead = enemyUnit[enemyUnitSelected].HarperMoserateFortitudinem(Harper.HarperSpell5Damage * AttackModifier);
 
                 EnemyAnim();
@@ -3138,7 +3154,7 @@ public class BattleSystem : MonoBehaviour
                 HarperAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
-
+                GameManager.isYellow = true;
                 isDead = enemyUnit[enemyUnitSelected].HarperMaiorFortitudinem(Harper.HarperSpell6Damage * AttackModifier);
 
                 EnemyAnim();
@@ -3172,7 +3188,7 @@ public class BattleSystem : MonoBehaviour
                 HarperAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
-
+                GameManager.isPhysical = true;
                 isDead = enemyUnit[enemyUnitSelected].HarperInternumCombustione(Harper.HarperSpell7Damage * AttackModifier);
 
                 EnemyAnim();
@@ -3206,7 +3222,7 @@ public class BattleSystem : MonoBehaviour
                 HarperAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
-
+                GameManager.isPhysical = true;
                 isDead = enemyUnit[enemyUnitSelected].HarperLaedo(Harper.HarperSpell8Damage * AttackModifier);
 
                 EnemyAnim();
@@ -3240,7 +3256,7 @@ public class BattleSystem : MonoBehaviour
                 HarperAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
-
+                GameManager.isPhysical = true;
                 isDead = enemyUnit[enemyUnitSelected].HarperLociPraesidium(Harper.HarperSpell9Damage * AttackModifier);
 
                 EnemyAnim();
@@ -3274,7 +3290,7 @@ public class BattleSystem : MonoBehaviour
                 HarperAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
-
+                GameManager.isYellow = true;
                 isDead = enemyUnit[enemyUnitSelected].HarperPerturbo(Harper.HarperSpell10Damage * AttackModifier);
 
                 EnemyAnim();
@@ -3308,7 +3324,7 @@ public class BattleSystem : MonoBehaviour
                 HarperAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
-
+                GameManager.isYellow = true;
                 isDead = enemyUnit[enemyUnitSelected].HarperPulsateSunt(Harper.HarperSpell11Damage * AttackModifier);
 
                 EnemyAnim();
@@ -3342,7 +3358,7 @@ public class BattleSystem : MonoBehaviour
                 HarperAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
-
+                GameManager.isYellow = true;
                 isDead = enemyUnit[enemyUnitSelected].HarperFumes(Harper.HarperSpell12Damage * AttackModifier);
 
                 EnemyAnim();
@@ -3376,7 +3392,7 @@ public class BattleSystem : MonoBehaviour
                 HarperAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
-
+                GameManager.isYellow = true;
                 isDead = enemyUnit[enemyUnitSelected].HarperDiminuendo(Harper.HarperSpell13Damage * AttackModifier);
 
                 EnemyAnim();
@@ -3419,7 +3435,7 @@ public class BattleSystem : MonoBehaviour
                 SkyeAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
-
+                GameManager.isPhysical = true;
                 isDead = enemyUnit[enemyUnitSelected].ThrowRock((Skye.SkyeSpell1Damage * AttackModifier) + GameManager.SkyeDodge);
 
                 EnemyAnim();
@@ -3452,7 +3468,7 @@ public class BattleSystem : MonoBehaviour
                 SkyeAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
-
+                GameManager.isPhysical = true;
                 isDead = enemyUnit[enemyUnitSelected].SkyeFlippendo(Skye.SkyeSpell2Damage * AttackModifier);
 
                 EnemyAnim();
@@ -3486,6 +3502,7 @@ public class BattleSystem : MonoBehaviour
                 SkyeAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
+                GameManager.isGreen = true;
                 isDead = enemyUnit[enemyUnitSelected].SkyeMinorCura(Skye.SkyeSpell3Damage * AttackModifier);
 
                 EnemyAnim();
@@ -3519,6 +3536,7 @@ public class BattleSystem : MonoBehaviour
                 SkyeAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
+                GameManager.isGreen = true;
                 isDead = enemyUnit[enemyUnitSelected].SkyeMaiorCura(Skye.SkyeSpell4Damage * AttackModifier);
                 EnemyAnim();
                 TurnOffAttackBools();
@@ -3551,6 +3569,7 @@ public class BattleSystem : MonoBehaviour
                 SkyeAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
+                GameManager.isGreen = true;
                 isDead = enemyUnit[enemyUnitSelected].SkyeReanimatePotion(Skye.SkyeSpell6Damage * AttackModifier);
                 EnemyAnim();
                 TurnOffAttackBools();
@@ -3583,6 +3602,7 @@ public class BattleSystem : MonoBehaviour
                 SkyeAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
+                GameManager.isGreen = true;
                 isDead = enemyUnit[enemyUnitSelected].SkyeAntidoteToCommonPoisons(Skye.SkyeSpell8Damage * AttackModifier);
                 EnemyAnim();
                 TurnOffAttackBools();
@@ -3615,6 +3635,7 @@ public class BattleSystem : MonoBehaviour
                 SkyeAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
+                GameManager.isBlue = true;
                 isDead = enemyUnit[enemyUnitSelected].SkyeConfundus(Skye.SkyeSpell10Damage * AttackModifier);
                 EnemyAnim();
                 TurnOffAttackBools();
@@ -3647,6 +3668,7 @@ public class BattleSystem : MonoBehaviour
                 SkyeAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
+                GameManager.isYellow = true;
                 isDead = enemyUnit[enemyUnitSelected].SkyeIraUolueris(Skye.SkyeSpell11Damage * AttackModifier);
                 EnemyAnim();
                 TurnOffAttackBools();
@@ -3688,7 +3710,7 @@ public class BattleSystem : MonoBehaviour
                 SullivanAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
-
+                GameManager.isPhysical = true;
                 isDead = enemyUnit[enemyUnitSelected].ThrowRock((Sullivan.SullivanSpell1Damage * AttackModifier) + GameManager.SullivanDodge);
 
                 EnemyAnim();
@@ -3722,6 +3744,7 @@ public class BattleSystem : MonoBehaviour
                 SullivanAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
+                GameManager.isPhysical = true;
                 isDead = enemyUnit[enemyUnitSelected].SullivanFlippendo(Sullivan.SullivanSpell2Damage * AttackModifier);
                 EnemyAnim();
                 TurnOffAttackBools();
@@ -3756,7 +3779,7 @@ public class BattleSystem : MonoBehaviour
 
                 int chanceToInstaKill = Random.Range(0, 100);
 
-
+                GameManager.isRed = true;
                 if (!Boss && (chanceToInstaKill + GameManager.SullivanLevel + GameManager.SullivanTrans) > 65)
                 {
                     float SullivanSpell3ModifiedDamage = enemyUnit[enemyUnitSelected].currentHP;
@@ -3800,6 +3823,7 @@ public class BattleSystem : MonoBehaviour
                 SullivanAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
+                GameManager.isRed = true;
                 isDead = enemyUnit[enemyUnitSelected].SullivanIgnusMagnum(Sullivan.SullivanSpell5Damage * AttackModifier);
                 EnemyAnim();
                 TurnOffAttackBools();
@@ -3832,6 +3856,7 @@ public class BattleSystem : MonoBehaviour
                 SullivanAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
+                GameManager.isRed = true;
                 isDead = enemyUnit[enemyUnitSelected].SullivanSagittaLecit(Sullivan.SullivanSpell6Damage * AttackModifier);
                 EnemyAnim();
                 TurnOffAttackBools();
@@ -3864,6 +3889,7 @@ public class BattleSystem : MonoBehaviour
                 SullivanAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
+                GameManager.isRed = true;
                 isDead = enemyUnit[enemyUnitSelected].SullivanMonstrumSella(Sullivan.SullivanSpell7Damage * AttackModifier);
                 EnemyAnim();
                 TurnOffAttackBools();
@@ -3896,6 +3922,7 @@ public class BattleSystem : MonoBehaviour
                 SullivanAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
+                GameManager.isRed = true;
                 isDead = enemyUnit[enemyUnitSelected].SullivanIncarcerous(Sullivan.SullivanSpell8Damage * AttackModifier);
                 EnemyAnim();
                 TurnOffAttackBools();
@@ -3928,6 +3955,7 @@ public class BattleSystem : MonoBehaviour
                 SullivanAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
+                GameManager.isPhysical = true;
                 isDead = enemyUnit[enemyUnitSelected].SullivanUltimumChao(Sullivan.SullivanSpell9Damage * AttackModifier);
                 EnemyAnim();
                 TurnOffAttackBools();
@@ -3960,6 +3988,7 @@ public class BattleSystem : MonoBehaviour
                 SullivanAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
+                GameManager.isRed = true;
                 if (!Boss)
                 {
                     float currentEnemyHP = enemyUnit[enemyUnitSelected].currentHP;
@@ -4008,6 +4037,7 @@ public class BattleSystem : MonoBehaviour
                 SullivanAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
+                GameManager.isRed = true;
                 isDead = enemyUnit[enemyUnitSelected].SullivanEngorgement(Sullivan.SullivanSpell11Damage * AttackModifier);
                 EnemyAnim();
                 TurnOffAttackBools();
@@ -4040,6 +4070,7 @@ public class BattleSystem : MonoBehaviour
                 SullivanAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
+                GameManager.isRed = true;
                 isDead = enemyUnit[enemyUnitSelected].SullivanStatuamLocomotion(Sullivan.SullivanSpell12Damage * AttackModifier);
                 EnemyAnim();
                 TurnOffAttackBools();
@@ -4072,6 +4103,12 @@ public class BattleSystem : MonoBehaviour
     #region Enemy Attack
     IEnumerator EnemyTurn(int enemyIndex)
     {
+        GameManager.isRed = false;
+        GameManager.isBlue = false;
+        GameManager.isYellow = false;
+        GameManager.isGreen = false;
+        GameManager.isPhysical = false;
+
         Camera.transform.position = enemyCam.transform.position;
         Camera.transform.LookAt(MC.transform.position);
 
@@ -7195,6 +7232,12 @@ public class BattleSystem : MonoBehaviour
     #region End of Battle States
     void EndBattle()
     {
+        GameManager.isRed = false;
+        GameManager.isBlue = false;
+        GameManager.isGreen = false;
+        GameManager.isYellow = false;
+        GameManager.isPhysical = false;
+
         Camera.transform.position = battleCam.transform.position;
         Camera.transform.LookAt(enemyCamTarget);
         if (state == BattleState.WON)

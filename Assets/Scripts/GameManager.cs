@@ -121,6 +121,8 @@ public class GameManager : MonoBehaviour
 
     GameObject player;
 
+    public static bool isRed, isBlue, isYellow, isGreen, isPhysical;
+
     private void Awake()
     {
         if (instance == null)
