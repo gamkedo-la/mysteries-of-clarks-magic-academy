@@ -13,6 +13,7 @@ public class RandomStudent : MonoBehaviour
     int chooseSkin;
     public Material[] skin;
     public Material EE, DL, HH, GD;
+    public GameObject FhouseMaterial, MhouseMaterial;
     public SkinnedMeshRenderer femaleRenderer, maleRenderer;
     public Material[] mats; 
 
@@ -72,28 +73,24 @@ public class RandomStudent : MonoBehaviour
            mats[0] = skin[chooseSkin];
            maleRenderer.GetComponent<SkinnedMeshRenderer>().material = mats[0];
 
-          //  chooseHouse = Random.Range(0, 4);
-            /*if (chooseHouse == 0)
+            chooseHouse = Random.Range(0, 4);
+            if (chooseHouse == 0)
             {
-                mats[0] = EE;
-                // maleRenderer.material = EE;
+                MhouseMaterial.GetComponent<Renderer>().material = EE;
             }
-            if (chooseHouse == 1)
+            else if (chooseHouse == 1)
             {
-                mats[0] = EE;
-               // maleRenderer.material = DL;
+                MhouseMaterial.GetComponent<Renderer>().material = DL;
             }
-            if (chooseHouse == 2)
+            else if (chooseHouse == 2)
             {
-                mats[0] = EE;
-               // maleRenderer.material = HH;
+                MhouseMaterial.GetComponent<Renderer>().material = GD;
             }
-            if (chooseHouse == 3)
+            else if (chooseHouse == 3)
             {
-                mats[0] = EE;
-               // maleRenderer.material = GD;
-            }*/
-            // maleRenderer.GetComponent<Renderer>().material = mats[1];
+                MhouseMaterial.GetComponent<Renderer>().material = HH;
+            }
+
             maleAnimation.speed = animationSpeed;
         }
         if (chooseGender == 1)
@@ -110,6 +107,24 @@ public class RandomStudent : MonoBehaviour
             femaleHairStyle[hairstyle].GetComponent<Renderer>().material = hairColor[hairColorChoice];
             mats[0] = skin[chooseSkin];
             femaleRenderer.GetComponent<SkinnedMeshRenderer>().material = mats[0];
+
+            chooseHouse = Random.Range(0, 4);
+            if (chooseHouse == 0)
+            {
+                FhouseMaterial.GetComponent<Renderer>().material = EE;
+            }
+            else if (chooseHouse == 1)
+            {
+                FhouseMaterial.GetComponent<Renderer>().material = DL;
+            }
+            else if (chooseHouse == 2)
+            {
+                FhouseMaterial.GetComponent<Renderer>().material = GD;
+            }
+            else if (chooseHouse == 3)
+            {
+                FhouseMaterial.GetComponent<Renderer>().material = HH;
+            }
 
             femaleAnimation.speed = animationSpeed;
         }
