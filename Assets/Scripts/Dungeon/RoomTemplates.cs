@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class RoomTemplates : MonoBehaviour {
 	public static RoomTemplates Instance;
@@ -50,6 +51,8 @@ public class RoomTemplates : MonoBehaviour {
 	public int currentLevel;
 	public bool startHasRun = false;
 
+	public Text currentFloorText;
+
 	[System.Serializable]
 	public class PrefabLevelPair {
 		public GameObject levelPrefab;
@@ -76,6 +79,7 @@ public class RoomTemplates : MonoBehaviour {
 		turnOffMenu.SetActive(false);
 		parented = GameObject.FindGameObjectWithTag("Rooms");
 		currentLevel = GameManager.currentFloor;
+		currentFloorText.text = (currentLevel + 1).ToString();
 
 		FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Floor", currentLevel % 5);
 
