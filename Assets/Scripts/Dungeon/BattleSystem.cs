@@ -1058,36 +1058,42 @@ public class BattleSystem : MonoBehaviour
         if (state == BattleState.MCTURN)
         {
             MCMenu.SetActive(true);
+            MCSpells.SetActive(false);
             MCConfirmMenu.SetActive(false);
         }
 
         if (state == BattleState.RHYSTURN)
         {
             RhysMenu.SetActive(true);
+            RhysSpells.SetActive(false);
             RhysConfirmMenu.SetActive(false);
         }
 
         if (state == BattleState.JAMEELTURN)
         {
             JameelMenu.SetActive(true);
+            JameelSpells.SetActive(false);
             JameelConfirmMenu.SetActive(false);
         }
 
         if (state == BattleState.HARPERTURN)
         {
             HarperMenu.SetActive(true);
+            HarperSpells.SetActive(false);
             HarperConfirmMenu.SetActive(false);
         }
 
         if (state == BattleState.SKYETURN)
         {
             SkyeMenu.SetActive(true);
+            SkyeSpells.SetActive(false);
             SkyeConfirmMenu.SetActive(false);
         }
 
         if (state == BattleState.SULLIVANTURN)
         {
             SullivanMenu.SetActive(true);
+            SullivanSpells.SetActive(false);
             SullivanConfirmMenu.SetActive(false);
         }
 
