@@ -2669,70 +2669,86 @@ public class BattleSystem : MonoBehaviour
 
         if (jameelMinorCura)
         {
-            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            GameManager.JameelMagic -= Jameel.JameelSpell4MagicConsumed;
+            JameelMagic.value = GameManager.JameelMagic;
+            JameelAnim.Play("Armature|Attack");
+            yield return new WaitForSeconds(2f);
+
+            if (playerTurnOrder[playerUnitSelected - 1].ToString() == "Rhys")
             {
-                jameelMinorCura = false;
-                dialogueText.text = "Enemy is knocked out, select another target.";
-                yield return new WaitForSeconds(1f);
-                dialogueText.text = "Select someone to attack!";
-                JameelMenu.SetActive(true);
-                JameelSpells.SetActive(false);
+                GameManager.RhysHealth += GameManager.RhysMaxHealth * .2f;
             }
-            else
+
+            if (playerTurnOrder[playerUnitSelected - 1].ToString() == "Skye")
             {
-                GameManager.JameelMagic -= Jameel.JameelSpell4MagicConsumed;
-                JameelMagic.value = GameManager.JameelMagic;
-                JameelAnim.Play("Armature|Attack");
-                yield return new WaitForSeconds(2f);
-
-                GameManager.isGreen = true;
-                isDead = enemyUnit[enemyUnitSelected].JameelMinorCura(Jameel.JameelSpell4Damage * AttackModifier);
-
-                EnemyAnim();
-                TurnOffAttackBools();
-                yield return new WaitForSeconds(2f);
-
-                //This checks to see if the Enemy is Dead or has HP remaining
-                if (isDead)
-                {
-                    RemoveCurrentEnemy();
-                }
-                NextTurn();
+                GameManager.SkyeHealth += GameManager.SkyeMaxHealth * .2f;
             }
+
+            if (playerTurnOrder[playerUnitSelected - 1].ToString() == "Harper")
+            {
+                GameManager.HarperHealth += GameManager.HarperMaxHealth * .2f;
+            }
+
+            if (playerTurnOrder[playerUnitSelected - 1].ToString() == "Sullivan")
+            {
+                GameManager.SullivanHealth += GameManager.SullivanMaxHealth * .2f;
+            }
+
+            if (playerTurnOrder[playerUnitSelected - 1].ToString() == "Jameel")
+            {
+                GameManager.JameelHealth += GameManager.JameelMaxHealth * .2f;
+            }
+
+            if (playerTurnOrder[playerUnitSelected - 1].ToString() == GameManager.MCFirstName)
+            {
+                GameManager.MCHealth += GameManager.MCMaxHealth * .2f;
+
+            }
+            UpdateLifeUI();
+            TurnOffAttackBools();
+            NextTurn();
         }
 
         if (jameelMaiorCura)
         {
-            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            GameManager.JameelMagic -= Jameel.JameelSpell5MagicConsumed;
+            JameelMagic.value = GameManager.JameelMagic;
+            JameelAnim.Play("Armature|Attack");
+            yield return new WaitForSeconds(2f);
+
+            if (playerTurnOrder[playerUnitSelected - 1].ToString() == "Rhys")
             {
-                jameelMaiorCura = false;
-                dialogueText.text = "Enemy is knocked out, select another target.";
-                yield return new WaitForSeconds(1f);
-                dialogueText.text = "Select someone to attack!";
-                JameelMenu.SetActive(true);
-                JameelSpells.SetActive(false);
+                GameManager.RhysHealth += GameManager.RhysMaxHealth * .6f;
             }
-            else
+
+            if (playerTurnOrder[playerUnitSelected - 1].ToString() == "Skye")
             {
-                GameManager.JameelMagic -= Jameel.JameelSpell5MagicConsumed;
-                JameelMagic.value = GameManager.JameelMagic;
-                JameelAnim.Play("Armature|Attack");
-                yield return new WaitForSeconds(2f);
-
-                GameManager.isGreen = true;
-                isDead = enemyUnit[enemyUnitSelected].JameelMaiorCura(Jameel.JameelSpell5Damage * AttackModifier);
-
-                EnemyAnim();
-                TurnOffAttackBools();
-                yield return new WaitForSeconds(2f);
-
-                //This checks to see if the Enemy is Dead or has HP remaining
-                if (isDead)
-                {
-                    RemoveCurrentEnemy();
-                }
-                NextTurn();
+                GameManager.SkyeHealth += GameManager.SkyeMaxHealth * .6f;
             }
+
+            if (playerTurnOrder[playerUnitSelected - 1].ToString() == "Harper")
+            {
+                GameManager.HarperHealth += GameManager.HarperMaxHealth * .6f;
+            }
+
+            if (playerTurnOrder[playerUnitSelected - 1].ToString() == "Sullivan")
+            {
+                GameManager.SullivanHealth += GameManager.SullivanMaxHealth * .6f;
+            }
+
+            if (playerTurnOrder[playerUnitSelected - 1].ToString() == "Jameel")
+            {
+                GameManager.JameelHealth += GameManager.JameelMaxHealth * .6f;
+            }
+
+            if (playerTurnOrder[playerUnitSelected - 1].ToString() == GameManager.MCFirstName)
+            {
+                GameManager.MCHealth += GameManager.MCMaxHealth * .6f;
+
+            }
+            UpdateLifeUI();
+            TurnOffAttackBools();
+            NextTurn();
         }
 
         if (jameelPartumNix)
@@ -3529,69 +3545,86 @@ public class BattleSystem : MonoBehaviour
 
         if (skyeMinorCura)
         {
-            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            GameManager.SkyeMagic -= Skye.SkyeSpell3MagicConsumed;
+            SkyeMagic.value = GameManager.SkyeMagic;
+            SkyeAnim.Play("Armature|Attack");
+            yield return new WaitForSeconds(2f);
+
+            if (playerTurnOrder[playerUnitSelected - 1].ToString() == "Rhys")
             {
-                skyeMinorCura = false;
-                dialogueText.text = "Enemy is knocked out, select another target.";
-                yield return new WaitForSeconds(1f);
-                dialogueText.text = "Select someone to attack!";
-                SkyeMenu.SetActive(true);
-                SkyeSpells.SetActive(false);
+                GameManager.RhysHealth += GameManager.RhysMaxHealth * .2f;
             }
-            else
+
+            if (playerTurnOrder[playerUnitSelected - 1].ToString() == "Skye")
             {
-                GameManager.SkyeMagic -= Skye.SkyeSpell3MagicConsumed;
-                SkyeMagic.value = GameManager.SkyeMagic;
-                SkyeAnim.Play("Armature|Attack");
-                yield return new WaitForSeconds(2f);
-
-                GameManager.isGreen = true;
-                isDead = enemyUnit[enemyUnitSelected].SkyeMinorCura(Skye.SkyeSpell3Damage * AttackModifier);
-
-                EnemyAnim();
-                TurnOffAttackBools();
-                yield return new WaitForSeconds(2f);
-
-                //This checks to see if the Enemy is Dead or has HP remaining
-                if (isDead)
-                {
-                    RemoveCurrentEnemy();
-                }
-                NextTurn();
+                GameManager.SkyeHealth += GameManager.SkyeMaxHealth * .2f;
             }
+
+            if (playerTurnOrder[playerUnitSelected - 1].ToString() == "Harper")
+            {
+                GameManager.HarperHealth += GameManager.HarperMaxHealth * .2f;
+            }
+
+            if (playerTurnOrder[playerUnitSelected - 1].ToString() == "Sullivan")
+            {
+                GameManager.SullivanHealth += GameManager.SullivanMaxHealth * .2f;
+            }
+
+            if (playerTurnOrder[playerUnitSelected - 1].ToString() == "Jameel")
+            {
+                GameManager.JameelHealth += GameManager.JameelMaxHealth * .2f;
+            }
+
+            if (playerTurnOrder[playerUnitSelected - 1].ToString() == GameManager.MCFirstName)
+            {
+                GameManager.MCHealth += GameManager.MCMaxHealth * .2f;
+
+            }
+            UpdateLifeUI();
+            TurnOffAttackBools();
+            NextTurn();
         }
 
         if (skyeMaiorCura)
         {
-            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
-            {
-                skyeMaiorCura = false;
-                dialogueText.text = "Enemy is knocked out, select another target.";
-                yield return new WaitForSeconds(1f);
-                dialogueText.text = "Select someone to attack!";
-                SkyeMenu.SetActive(true);
-                SkyeSpells.SetActive(false);
-            }
-            else
-            {
-                GameManager.SkyeMagic -= Skye.SkyeSpell4MagicConsumed;
-                SkyeMagic.value = GameManager.SkyeMagic;
-                SkyeAnim.Play("Armature|Attack");
-                yield return new WaitForSeconds(2f);
+            GameManager.SkyeMagic -= Skye.SkyeSpell4MagicConsumed;
+            SkyeMagic.value = GameManager.SkyeMagic;
+            SkyeAnim.Play("Armature|Attack");
+            yield return new WaitForSeconds(2f);
 
-                GameManager.isGreen = true;
-                isDead = enemyUnit[enemyUnitSelected].SkyeMaiorCura(Skye.SkyeSpell4Damage * AttackModifier);
-                EnemyAnim();
-                TurnOffAttackBools();
-                yield return new WaitForSeconds(2f);
-
-                //This checks to see if the Enemy is Dead or has HP remaining
-                if (isDead)
-                {
-                    RemoveCurrentEnemy();
-                }
-                NextTurn();
+            if (playerTurnOrder[playerUnitSelected - 1].ToString() == "Rhys")
+            {
+                GameManager.RhysHealth += GameManager.RhysMaxHealth * .6f;
             }
+
+            if (playerTurnOrder[playerUnitSelected - 1].ToString() == "Skye")
+            {
+                GameManager.SkyeHealth += GameManager.SkyeMaxHealth * .6f;
+            }
+
+            if (playerTurnOrder[playerUnitSelected - 1].ToString() == "Harper")
+            {
+                GameManager.HarperHealth += GameManager.HarperMaxHealth * .6f;
+            }
+
+            if (playerTurnOrder[playerUnitSelected - 1].ToString() == "Sullivan")
+            {
+                GameManager.SullivanHealth += GameManager.SullivanMaxHealth * .6f;
+            }
+
+            if (playerTurnOrder[playerUnitSelected - 1].ToString() == "Jameel")
+            {
+                GameManager.JameelHealth += GameManager.JameelMaxHealth * .6f;
+            }
+
+            if (playerTurnOrder[playerUnitSelected - 1].ToString() == GameManager.MCFirstName)
+            {
+                GameManager.MCHealth += GameManager.MCMaxHealth * .6f;
+
+            }
+            UpdateLifeUI();
+            TurnOffAttackBools();
+            NextTurn();
         }
 
         if (skyeReanimatePotion)
@@ -6180,7 +6213,7 @@ public class BattleSystem : MonoBehaviour
 
                 JameelMenu.SetActive(true);
                 JameelSpells.SetActive(false);
-                enemySelect = true;
+                playerSelect = true;
                 JameelConfirmMenu.SetActive(true);
                 JameelSpells.SetActive(false);
                 JameelMenu.SetActive(false);
@@ -6200,7 +6233,7 @@ public class BattleSystem : MonoBehaviour
 
                 JameelMenu.SetActive(true);
                 JameelSpells.SetActive(false);
-                enemySelect = true;
+                playerSelect = true;
                 JameelConfirmMenu.SetActive(true);
                 JameelSpells.SetActive(false);
                 JameelMenu.SetActive(false);
@@ -6668,7 +6701,7 @@ public class BattleSystem : MonoBehaviour
 
                 SkyeMenu.SetActive(true);
                 SkyeSpells.SetActive(false);
-                enemySelect = true;
+                playerSelect = true;
                 SkyeConfirmMenu.SetActive(true);
                 SkyeSpells.SetActive(false);
                 SkyeMenu.SetActive(false);
@@ -6688,7 +6721,7 @@ public class BattleSystem : MonoBehaviour
 
                 SkyeMenu.SetActive(true);
                 SkyeSpells.SetActive(false);
-                enemySelect = true;
+                playerSelect = true;
                 SkyeConfirmMenu.SetActive(true);
                 SkyeSpells.SetActive(false);
                 SkyeMenu.SetActive(false);
