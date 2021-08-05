@@ -239,6 +239,9 @@ public class Unit : MonoBehaviour
     public bool isEnemy;
     bool imStunned;
 
+    public bool weakRed, weakBlue, weakYellow, weakGreen, weakPhys;
+    public bool strRed, strBlue, strYellow, strGreen, strPhys;
+
     private void Start()
     {
         if (isEnemy)
@@ -288,11 +291,26 @@ public class Unit : MonoBehaviour
     {
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg ;
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
 
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
         Health.value = (currentHP / maxHP);
         Debug.Log(Health.value);
         Debug.Log(currentHP + "/" + maxHP);
@@ -315,11 +333,26 @@ public class Unit : MonoBehaviour
     public bool ThrowRock(float dmg)
     {
         Health.value = currentHP / maxHP;
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
 
-        currentHP -= dmg;
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
 
         Health.value = (currentHP / maxHP);
         Debug.Log(Health.value);
@@ -344,10 +377,26 @@ public class Unit : MonoBehaviour
         isCharms = true;
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
+
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -370,10 +419,26 @@ public class Unit : MonoBehaviour
         isCharms = true;
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
+
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -396,10 +461,26 @@ public class Unit : MonoBehaviour
         isDADA = true;
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
+
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -422,10 +503,27 @@ public class Unit : MonoBehaviour
         isDADA = true;
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
+
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
+
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -448,10 +546,27 @@ public class Unit : MonoBehaviour
         isDADA = true;
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
+
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
+
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -474,10 +589,27 @@ public class Unit : MonoBehaviour
         isTrans = true;
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
+
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
+
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -500,10 +632,27 @@ public class Unit : MonoBehaviour
         isTrans = true;
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
+
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
+
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -526,10 +675,27 @@ public class Unit : MonoBehaviour
         isCharms = true;
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
+
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
+
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -552,10 +718,26 @@ public class Unit : MonoBehaviour
         isPotions = true;
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
+
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -577,11 +759,26 @@ public class Unit : MonoBehaviour
     {
         isDADA = true;
         Health.value = currentHP / maxHP;
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
 
-        currentHP -= dmg;
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -603,11 +800,26 @@ public class Unit : MonoBehaviour
     {
         isCharms = true;
         Health.value = currentHP / maxHP;
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
 
-        currentHP -= dmg;
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -630,10 +842,26 @@ public class Unit : MonoBehaviour
         isDADA = true;
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
+
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -656,10 +884,26 @@ public class Unit : MonoBehaviour
         isDADA = true;
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
+
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -682,10 +926,26 @@ public class Unit : MonoBehaviour
         isCharms = true;
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
+
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -708,10 +968,26 @@ public class Unit : MonoBehaviour
         isTrans = true;
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
+
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -734,10 +1010,26 @@ public class Unit : MonoBehaviour
         isTrans = true;
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
+
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -759,11 +1051,26 @@ public class Unit : MonoBehaviour
     {
         isTrans = true;
         Health.value = currentHP / maxHP;
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
 
-        currentHP -= dmg;
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
 
         Health.value = (currentHP / maxHP);
 
@@ -786,11 +1093,26 @@ public class Unit : MonoBehaviour
     {
         isPotions = true;
         Health.value = currentHP / maxHP;
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
 
-        currentHP -= dmg;
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -813,11 +1135,26 @@ public class Unit : MonoBehaviour
     {
         isCharms = true;
         Health.value = currentHP / maxHP;
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
 
-        currentHP -= dmg;
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -840,10 +1177,26 @@ public class Unit : MonoBehaviour
         isTrans = true;
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
+
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -866,10 +1219,26 @@ public class Unit : MonoBehaviour
         isCharms = true;
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
+
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -892,10 +1261,26 @@ public class Unit : MonoBehaviour
         isCharms = true;
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
+
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -922,10 +1307,26 @@ public class Unit : MonoBehaviour
     {
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
+
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -947,10 +1348,26 @@ public class Unit : MonoBehaviour
     {
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
+
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -972,10 +1389,26 @@ public class Unit : MonoBehaviour
     {
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
+
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -997,10 +1430,26 @@ public class Unit : MonoBehaviour
     {
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
+
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -1022,11 +1471,26 @@ public class Unit : MonoBehaviour
     {
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
 
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
 
@@ -1047,10 +1511,26 @@ public class Unit : MonoBehaviour
     {
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
+
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -1072,10 +1552,26 @@ public class Unit : MonoBehaviour
     {
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
+
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -1097,10 +1593,26 @@ public class Unit : MonoBehaviour
     {
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
+
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -1122,10 +1634,26 @@ public class Unit : MonoBehaviour
     {
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
+
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -1147,10 +1675,26 @@ public class Unit : MonoBehaviour
     {
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
+
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -1172,10 +1716,26 @@ public class Unit : MonoBehaviour
     {
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
+
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -1197,10 +1757,26 @@ public class Unit : MonoBehaviour
     {
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
+
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -1224,11 +1800,26 @@ public class Unit : MonoBehaviour
     {
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
 
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
 
@@ -1248,11 +1839,26 @@ public class Unit : MonoBehaviour
     public bool JameelMinusSanaCoetus(float dmg)
     {
         Health.value = currentHP / maxHP;
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
 
-        currentHP -= dmg;
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -1273,11 +1879,26 @@ public class Unit : MonoBehaviour
     public bool JameelMinorCura(float dmg)
     {
         Health.value = currentHP / maxHP;
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
 
-        currentHP -= dmg;
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -1299,10 +1920,26 @@ public class Unit : MonoBehaviour
     {
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
+
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -1324,10 +1961,26 @@ public class Unit : MonoBehaviour
     {
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
+
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -1349,11 +2002,26 @@ public class Unit : MonoBehaviour
     {
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
 
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
 
@@ -1374,10 +2042,26 @@ public class Unit : MonoBehaviour
     {
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
+
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -1399,10 +2083,26 @@ public class Unit : MonoBehaviour
     {
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
+
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -1424,10 +2124,26 @@ public class Unit : MonoBehaviour
     {
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
+
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -1449,11 +2165,26 @@ public class Unit : MonoBehaviour
     {
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
 
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
 
@@ -1474,10 +2205,26 @@ public class Unit : MonoBehaviour
     {
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
+
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -1499,10 +2246,26 @@ public class Unit : MonoBehaviour
     {
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
+
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -1524,10 +2287,26 @@ public class Unit : MonoBehaviour
     {
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
+
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -1549,11 +2328,26 @@ public class Unit : MonoBehaviour
     {
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
 
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
 
@@ -1577,10 +2371,26 @@ public class Unit : MonoBehaviour
     {
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
+
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -1602,11 +2412,26 @@ public class Unit : MonoBehaviour
     {
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
 
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
 
@@ -1627,11 +2452,26 @@ public class Unit : MonoBehaviour
     {
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
 
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
 
@@ -1652,11 +2492,26 @@ public class Unit : MonoBehaviour
     {
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
 
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
 
@@ -1677,11 +2532,26 @@ public class Unit : MonoBehaviour
     {
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
 
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
 
@@ -1702,10 +2572,26 @@ public class Unit : MonoBehaviour
     {
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
+
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -1727,10 +2613,26 @@ public class Unit : MonoBehaviour
     {
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
+
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -1752,10 +2654,26 @@ public class Unit : MonoBehaviour
     {
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
+
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -1777,10 +2695,26 @@ public class Unit : MonoBehaviour
     {
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
+
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -1802,10 +2736,26 @@ public class Unit : MonoBehaviour
     {
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
+
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -1826,10 +2776,26 @@ public class Unit : MonoBehaviour
     {
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
+
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -1850,10 +2816,26 @@ public class Unit : MonoBehaviour
     {
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
+
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -1877,11 +2859,27 @@ public class Unit : MonoBehaviour
     {
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
 
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+ 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
 
@@ -1902,10 +2900,26 @@ public class Unit : MonoBehaviour
     {
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
+
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -1927,10 +2941,26 @@ public class Unit : MonoBehaviour
     {
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
+
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -1952,10 +2982,26 @@ public class Unit : MonoBehaviour
     {
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
+
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -1977,10 +3023,26 @@ public class Unit : MonoBehaviour
     {
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
+
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -2002,10 +3064,26 @@ public class Unit : MonoBehaviour
     {
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
+
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -2027,10 +3105,26 @@ public class Unit : MonoBehaviour
     {
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
+
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -2052,10 +3146,26 @@ public class Unit : MonoBehaviour
     {
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
+
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -2077,10 +3187,26 @@ public class Unit : MonoBehaviour
     {
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
+
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -2102,10 +3228,26 @@ public class Unit : MonoBehaviour
     {
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
+
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -2129,10 +3271,26 @@ public class Unit : MonoBehaviour
     {
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
+
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -2154,10 +3312,26 @@ public class Unit : MonoBehaviour
     {
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
+
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -2179,11 +3353,26 @@ public class Unit : MonoBehaviour
     {
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
 
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
 
@@ -2204,11 +3393,26 @@ public class Unit : MonoBehaviour
     {
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
 
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
 
@@ -2228,12 +3432,26 @@ public class Unit : MonoBehaviour
     public bool SullivanSagittaLecit(float dmg)
     {
         Health.value = currentHP / maxHP;
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
 
-        currentHP -= dmg;
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
-
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
 
@@ -2254,10 +3472,26 @@ public class Unit : MonoBehaviour
     {
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
+
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -2279,10 +3513,26 @@ public class Unit : MonoBehaviour
     {
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
+
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
         //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -2304,11 +3554,26 @@ public class Unit : MonoBehaviour
     {
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
 
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
 
@@ -2329,11 +3594,26 @@ public class Unit : MonoBehaviour
     {
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
 
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
 
@@ -2354,11 +3634,26 @@ public class Unit : MonoBehaviour
     {
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
 
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
 
@@ -2379,11 +3674,26 @@ public class Unit : MonoBehaviour
     {
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
 
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
 
@@ -2404,11 +3714,26 @@ public class Unit : MonoBehaviour
     {
         Health.value = currentHP / maxHP;
 
-        currentHP -= dmg;
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
-        Health.value = (currentHP / maxHP);
-        DamageUI.text = "-" + dmg.ToString();
+        if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
+        {
+            currentHP -= (dmg * 2);
+            DamageUI.text = "-" + (dmg * 2).ToString();
+            print("Critical Hit!");
+        }
 
+        else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
+        {
+            currentHP -= (dmg * .5f);
+            DamageUI.text = "-" + (dmg * .5f).ToString();
+            print("Resist!");
+        }
+
+        else
+        {
+            currentHP -= dmg;
+            DamageUI.text = "-" + dmg.ToString();
+        }
+        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
 
