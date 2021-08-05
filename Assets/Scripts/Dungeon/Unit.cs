@@ -264,7 +264,7 @@ public class Unit : MonoBehaviour
 
     public bool TakeDamage(float dmg)
     {
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
         currentHP -= dmg;
 
         if (currentHP <= 0)
@@ -286,6 +286,12 @@ public class Unit : MonoBehaviour
         {
             return false;
         }
+    }
+
+    IEnumerator WaitingForText()
+    {
+        yield return new WaitForSeconds(2.5f);
+        Summary.text = "";
     }
 
     public bool TakeDamageSpell1(float dmg)
@@ -311,7 +317,8 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+
+        StartCoroutine(WaitingForText());
         Health.value = (currentHP / maxHP);
         Debug.Log(Health.value);
         Debug.Log(currentHP + "/" + maxHP);
@@ -353,7 +360,8 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+
+        StartCoroutine(WaitingForText());
 
         Health.value = (currentHP / maxHP);
         Debug.Log(Health.value);
@@ -397,7 +405,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -439,7 +447,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -481,7 +489,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -523,7 +531,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
 
 
         Health.value = (currentHP / maxHP);
@@ -566,7 +574,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
 
 
         Health.value = (currentHP / maxHP);
@@ -609,7 +617,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
 
 
         Health.value = (currentHP / maxHP);
@@ -652,7 +660,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
 
 
         Health.value = (currentHP / maxHP);
@@ -695,7 +703,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
 
 
         Health.value = (currentHP / maxHP);
@@ -738,7 +746,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -779,7 +787,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -820,7 +828,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -862,7 +870,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -904,7 +912,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -946,7 +954,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -988,7 +996,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -1030,7 +1038,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -1071,7 +1079,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
 
         Health.value = (currentHP / maxHP);
 
@@ -1113,7 +1121,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -1155,7 +1163,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -1197,7 +1205,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -1239,7 +1247,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -1281,7 +1289,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -1327,7 +1335,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -1368,7 +1376,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -1409,7 +1417,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -1450,7 +1458,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -1491,7 +1499,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
 
@@ -1531,7 +1539,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -1572,7 +1580,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -1613,7 +1621,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -1654,7 +1662,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -1695,7 +1703,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -1736,7 +1744,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -1777,7 +1785,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -1820,7 +1828,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
 
@@ -1859,7 +1867,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -1899,7 +1907,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -1940,7 +1948,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -1981,7 +1989,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -2022,7 +2030,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
 
@@ -2062,7 +2070,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -2103,7 +2111,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -2144,7 +2152,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -2185,7 +2193,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
 
@@ -2225,7 +2233,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -2266,7 +2274,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -2307,7 +2315,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -2348,7 +2356,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
 
@@ -2391,7 +2399,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -2432,7 +2440,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
 
@@ -2472,7 +2480,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
 
@@ -2512,7 +2520,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
 
@@ -2552,7 +2560,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
 
@@ -2592,7 +2600,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -2633,7 +2641,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -2674,7 +2682,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -2715,7 +2723,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -2756,7 +2764,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -2796,7 +2804,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -2836,7 +2844,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -2879,7 +2887,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
  
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -2920,7 +2928,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -2961,7 +2969,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -3002,7 +3010,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -3043,7 +3051,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -3084,7 +3092,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -3125,7 +3133,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -3166,7 +3174,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -3207,7 +3215,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -3248,7 +3256,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -3291,7 +3299,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -3332,7 +3340,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -3373,7 +3381,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
 
@@ -3413,7 +3421,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
 
@@ -3452,7 +3460,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
 
@@ -3492,7 +3500,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -3533,7 +3541,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
 
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
@@ -3574,7 +3582,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
 
@@ -3614,7 +3622,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
 
@@ -3654,7 +3662,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
 
@@ -3694,7 +3702,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
 
@@ -3734,7 +3742,7 @@ public class Unit : MonoBehaviour
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
-        //This is a bool to determine if after the attack has landed - if it kills the enemy or not
+        StartCoroutine(WaitingForText());
         Health.value = (currentHP / maxHP);
         StartCoroutine(ClearText());
 
