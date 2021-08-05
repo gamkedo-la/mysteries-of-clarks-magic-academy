@@ -119,6 +119,8 @@ public class GameManager : MonoBehaviour
     public GameObject notificationPanel;
     public Text notificationText;
 
+    GameObject player;
+
     private void Awake()
     {
         if (instance == null)
@@ -132,7 +134,9 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
     private void Start()
-    { 
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+
         /* Test player names
         MCFirstName = "Sara";
         MCLastName = "Lee";
@@ -141,9 +145,7 @@ public class GameManager : MonoBehaviour
         //Start game here
         dayOfWeek = 0;
         month = 4;
-        //day = 17;
-
-        day = 19;
+        day = 17;
 
         /*// Finals Testing
         dayOfWeek = 1;
@@ -1052,20 +1054,26 @@ public class GameManager : MonoBehaviour
                 {
                     print("Progress Day");
                     GameManager.instance.DatePlay();
-                  //  ProgressDay();
+                    //  ProgressDay();
                 }
 
                 else if (month == 5 && (day == 2 || day == 3 || day == 5 || day == 6 || day == 10 || day == 16 || day == 20))
                 {
                     print("Progress Day");
                     GameManager.instance.DatePlay();
-                 //   ProgressDay();
+                    //   ProgressDay();
                 }
 
                 else
                 {
                     freePeriod = true;
-                    print("Load a generic room (probably the dorm) for free period");
+                    playerSpawn = new Vector3(-21.18f, 31.78f, -70.54f);
+                    playerRotation = new Quaternion(0, 0, 0, 0);
+                    player.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
+                    player.transform.position = GameManager.playerSpawn;
+                    player.transform.rotation = GameManager.playerRotation;
+                    player.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = true;
+                    print("Load a dorm for free period at start of day");
                 }
             }
 

@@ -39,6 +39,9 @@ public class ClassroomDialogueManager : MonoBehaviour
     public bool isFinal;
     public bool isMorningFinal, isEveningFinal;
 
+    public Vector3 LocationToSpawnInRoomYoureGoingTo;
+    public Quaternion RotationToSpawnInRoomYoureGoingTo;
+
     private void Start()
     {
         sentences = new Queue<string>();
@@ -222,6 +225,8 @@ public class ClassroomDialogueManager : MonoBehaviour
         GameManager.isFinal = false;
         if (GameManager.freePeriod)
         {
+            GameManager.playerRotation = RotationToSpawnInRoomYoureGoingTo;
+            GameManager.playerSpawn = LocationToSpawnInRoomYoureGoingTo;
             StartCoroutine(LoadRoomWait());
         }
     }
