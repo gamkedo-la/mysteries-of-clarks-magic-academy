@@ -7238,6 +7238,30 @@ public class BattleSystem : MonoBehaviour
         GameManager.isYellow = false;
         GameManager.isPhysical = false;
 
+        MCMenu.SetActive(false);
+        MCSpells.SetActive(false);
+        MCConfirmMenu.SetActive(false);
+
+        RhysMenu.SetActive(false);
+        RhysSpells.SetActive(false);
+        RhysConfirmMenu.SetActive(false);
+
+        JameelMenu.SetActive(false);
+        JameelSpells.SetActive(false);
+        JameelConfirmMenu.SetActive(false);
+
+        HarperMenu.SetActive(false);
+        HarperSpells.SetActive(false);
+        HarperConfirmMenu.SetActive(false);
+
+        SkyeMenu.SetActive(false);
+        SkyeSpells.SetActive(false);
+        SkyeConfirmMenu.SetActive(false);
+
+        SullivanMenu.SetActive(false);
+        SullivanSpells.SetActive(false);
+        SullivanConfirmMenu.SetActive(false);
+
         Camera.transform.position = battleCam.transform.position;
         Camera.transform.LookAt(enemyCamTarget);
         if (state == BattleState.WON)
