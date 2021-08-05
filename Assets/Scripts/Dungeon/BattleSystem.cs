@@ -1344,26 +1344,15 @@ public class BattleSystem : MonoBehaviour
                     MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
                     GameManager.isYellow = true;
-                    hasBeenStunned = enemyUnit[enemyUnitSelected].HasBeenStunned(true);
-
-                    //  isDead = enemyUnit[enemyUnitSelected].PulsateSunt(MC.MCSpell3Damage * AttackModifier); 
-
+                    hasBeenStunned = enemyUnit[enemyUnitSelected].HasBeenStunned(enemyUnit[enemyUnitSelected].imStunned);
+                    print(enemyUnit[enemyUnitSelected].name + " " + enemyUnit[enemyUnitSelected].imStunned);
+                    print(enemyUnit[0].name + " " + enemyUnit[0].imStunned);
                     EnemyAnim();
                     TurnOffAttackBools();
                     yield return new WaitForSeconds(2f);
 
                     //This checks to see if the Enemy is Dead or has HP remaining
-                    if (hasBeenStunned)
-                    {
-                        RemoveCurrentEnemy();
-                    }
-
                     NextTurn();
-
-                    if (hasBeenStunned)
-                    {
-                        AddCurrentEnemy();
-                    }
                 }
             }
 
@@ -4125,605 +4114,606 @@ public class BattleSystem : MonoBehaviour
         }
         else
         {
-            /*  if (enemyUnit[enemyUnitSelected].HasBeenStunned(true))
-              {
-                  dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " has been stunned!";
-                  yield return new WaitForSeconds(1f);
-                  print("look at that, ive been stunned");
-                  enemyUnit[enemyUnitSelected].HasBeenStunned(false);
-              }*/
-            // else
-
-            enemyUnit[enemyUnitSelected].DetermineAttack();
-
-            //This is attacking all the players - a little buggy from Stike Out so commenting out for now. 
-            #region Attack all or take Magic from All
-            /* if (Unit.attackAll)
-                {
-                    dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks Everyone with " + enemyUnit[enemyUnitSelected].attackName + "!";
-
-                    enemyAnim[enemyIndex].Play("Armature|Swing");
-
-                    if (Announcer)
-                    {
-                        yield return new WaitForSeconds(3.5f);
-                    }
-                    else
-                    {
-                        yield return new WaitForSeconds(2f);
-                    }
-
-                    int RandomAttack = Random.Range(0, 100);
-
-                    if (GameManager.MiddleAgil >= RandomAttack)
-                    {
-                        dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks Mid Reliever with " + enemyUnit[enemyUnitSelected].attackName + "!";
-                        yield return new WaitForSeconds(.5f);
-                        dialogueText.text = "Mid Reliever Dodges!";
-                        yield return new WaitForSeconds(1f);
-
-                    }
-
-                    bool isDead1 = Starter.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier);
-                    bool isDead2 = MiddleReliever.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier);
-                    bool isDead3 = SetUp.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier);
-                    bool isDead4 = Closer.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier);
-
-                    if (isDead1 && GameManager.StarterAgil < RandomAttack)
-                    {
-                        GameManager.StarterMorale -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier;
-                        StarterMorale.value = (GameManager.StarterMorale / GameManager.StarterMoraleMax);
-                        starterDead = true;
-                        StarterDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
-                        //
-                        playerTurnOrder.Remove(CharacterIdentifier.Starter);
-                        //   Debug.Log("Removing Starter");
-
-                        //
-                        StarterAnim.SetBool("isDead", true);
-                    }
-                    if (isDead2 && GameManager.MiddleAgil < RandomAttack)
-                    {
-                        GameManager.MidRelivMorale -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier;
-                        MiddleMorale.value = (GameManager.MidRelivMorale / GameManager.MidRelivMoraleMax);
-                        middleDead = true;
-                        MiddleDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
-
-                        playerTurnOrder.Remove(CharacterIdentifier.Middle);
-                        //  Debug.Log("Removing Middle");
-
-
-                        MidRelAnim.SetBool("isDead", true);
-
-                    }
-                    if (isDead3 && GameManager.SetUpAgil < RandomAttack)
-                    {
-                        GameManager.SetUpMorale -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier;
-                        SetUpMorale.value = (GameManager.SetUpMorale / GameManager.SetUpMoraleMax);
-                        setupDead = true;
-                        SetUpDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
-
-                        playerTurnOrder.Remove(CharacterIdentifier.SetUp);
-                        //   Debug.Log("Removing SetUp");
-
-
-                        SetUpAnim.SetBool("isDead", true);
-                    }
-                    if (isDead4 && GameManager.CloserAgil < RandomAttack)
-                    {
-                        GameManager.CloserMorale -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier;
-                        CloserMorale.value = (GameManager.CloserMorale / GameManager.CloserMoraleMax);
-                        closerDead = true;
-                        CloserDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
-
-                        playerTurnOrder.Remove(CharacterIdentifier.Closer);
-                        //    Debug.Log("Removing Closer");
-
-
-                        CloserAnim.SetBool("isDead", true);
-
-                    }
-
-                    if (!isDead1 && GameManager.StarterAgil < RandomAttack)
-                    {
-                        yield return new WaitForSeconds(.5f);
-                        StarterAnim.Play("Armature|Oof");
-
-                        GameManager.StarterMorale -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier;
-                        StarterDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
-                        StarterMorale.value = (GameManager.StarterMorale / GameManager.StarterMoraleMax);
-                    }
-
-                    if (!isDead2 && GameManager.MiddleAgil < RandomAttack)
-                    {
-                        yield return new WaitForSeconds(.5f);
-                        MidRelAnim.Play("Armature|Oof");
-
-                        GameManager.MidRelivMorale -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier;
-                        MiddleDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
-                        MiddleMorale.value = (GameManager.MidRelivMorale / GameManager.MidRelivMoraleMax);
-                    }
-
-                    if (!isDead3 && GameManager.SetUpAgil < RandomAttack)
-                    {
-                        yield return new WaitForSeconds(.5f);
-                        SetUpAnim.Play("Armature|Oof");
-
-                        GameManager.SetUpMorale -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier;
-                        SetUpDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
-                        SetUpMorale.value = (GameManager.SetUpMorale / GameManager.SetUpMoraleMax);
-                    }
-
-                    if (!isDead4 && GameManager.CloserAgil < RandomAttack)
-                    {
-                        yield return new WaitForSeconds(.5f);
-                        CloserAnim.Play("Armature|Oof");
-
-                        GameManager.CloserMorale -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier;
-                        CloserDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
-                        CloserMorale.value = (GameManager.CloserMorale / GameManager.CloserMoraleMax);
-                    }
-                    Unit.attackAll = false;
-                    yield return new WaitForSeconds(2f);
-                    StartCoroutine(TurnOffDamageUI());
-                    // NextPlayerTurnAfterEnemyTurn(enemyIndex);
-                }
-
-                else if (Unit.energyAll)
-                {
-                    dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " tires the Pitchers with " + enemyUnit[enemyUnitSelected].attackName + "!";
-
-                    enemyAnim[enemyIndex].Play("Armature|Swing");
-
-                    yield return new WaitForSeconds(1f);
-
-                    bool isDead1 = Starter.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier);
-                    bool isDead2 = MiddleReliever.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier);
-                    bool isDead3 = SetUp.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier);
-                    bool isDead4 = Closer.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier);
-
-                    if (!isDead1)
-                    {
-                        yield return new WaitForSeconds(.5f);
-                        StarterAnim.Play("Armature|Oof");
-
-                        GameManager.StarterEnergy -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier;
-                        StarterDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
-                        StarterEnergy.value = (GameManager.StarterEnergy / GameManager.StarterEnergyMax);
-                    }
-
-                    if (!isDead2)
-                    {
-                        yield return new WaitForSeconds(.5f);
-                        MidRelAnim.Play("Armature|Oof");
-
-                        GameManager.MidRelivEnergy -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier;
-                        MiddleDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
-                        MiddleEnergy.value = (GameManager.MidRelivEnergy / GameManager.MidRelievEnergyMax);
-                    }
-
-                    if (!isDead3)
-                    {
-                        yield return new WaitForSeconds(.5f);
-                        SetUpAnim.Play("Armature|Oof");
-
-                        GameManager.SetUpEnergy -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier;
-                        SetUpDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
-                        SetUpEnergy.value = (GameManager.SetUpEnergy / GameManager.SetUpEnergyMax);
-                    }
-
-                    if (!isDead4)
-                    {
-                        yield return new WaitForSeconds(.5f);
-                        CloserAnim.Play("Armature|Oof");
-
-                        GameManager.CloserEnergy -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier;
-                        CloserDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
-                        CloserEnergy.value = (GameManager.CloserEnergy / GameManager.CloserEnergyMax);
-                    }
-                    Unit.energyAll = false;
-                    yield return new WaitForSeconds(1f);
-                    StartCoroutine(TurnOffDamageUI());
-                    //NextPlayerTurnAfterEnemyTurn(enemyIndex);
-                }
-
-                */
-            #endregion
-            // else
-            // {
-            int RandomAttack = Random.Range(0, 100);
-
-            //attack animation
-
-            //Choosing Who To Attack
-            //happens at least once, if it is true, it does it again. (keep going until valid)
-            int safteyCounter = 1000;
-
-            bool viableTarget = false;
-
-            do
+           /* if (enemyUnit[enemyIndex].HasBeenStunned(enemyUnit[enemyIndex].imStunned))
             {
-                WhoToAttack = Random.Range(0, 6);
-                if (safteyCounter-- < 0)
-                {
-                    Debug.LogError("Couldn't find a living WhoToAttack, is the Whole Team Dead?");
-                    break;
-                    //bails us out of the do while
-                }
-                if (isPlayerIndexDead(WhoToAttack) == false)
-                {
-                    if (WhoToAttack == 0 && !MCDead)
-                    {
-                        viableTarget = true;
-                    }
-
-                    else if (WhoToAttack == 1 && GameManager.RhysInParty && !RhysDead)
-                    {
-                        viableTarget = true;
-                    }
-                    else if (WhoToAttack == 2 && GameManager.JameelInParty && !JameelDead)
-                    {
-                        viableTarget = true;
-                    }
-                    else if (WhoToAttack == 3 && GameManager.HarperInParty && !HarperDead)
-                    {
-                        viableTarget = true;
-                    }
-                    else if (WhoToAttack == 4 && GameManager.SkyeInParty && !SkyeDead)
-                    {
-                        viableTarget = true;
-                    }
-                    else if (WhoToAttack == 5 && GameManager.SullivanInParty && !SullivanDead)
-                    {
-                        viableTarget = true;
-                    }
-                }//Player not dead
-            } while (viableTarget == false);
-
-            yield return new WaitForSeconds(1.5f);
-
-            enemyAnim[enemyIndex].Play("Armature|Attack");
-
-            yield return new WaitForSeconds(.5f);
-
-            if (WhoToAttack == 0 && !MCDead)
-            {
-                enemyUnit[enemyIndex].transform.LookAt(MC.transform.position);
-
-                Camera.transform.LookAt(MC.transform.position);
-                //Dodge
-                if ((GameManager.MCDodge * EvasionModifier) >= RandomAttack)
-                {
-                    dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks " + GameManager.MCFirstName + " with " + enemyUnit[enemyUnitSelected].attackName + "!";
-                    yield return new WaitForSeconds(.5f);
-                    dialogueText.text = "[PLAYER NAME] Dodges!";
-                    MCAnim.Play("Armature|Dodge");
-                    yield return new WaitForSeconds(1f);
-
-                }
-                //Attack
-                else
-                {
-                    dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks " + GameManager.MCFirstName + " with " + enemyUnit[enemyUnitSelected].attackName + "!";
-
-                    yield return new WaitForSeconds(2f);
-
-                    bool isDead = MC.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier);
-
-                    MCDamageUI.text = "".ToString();
-
-                    //Dead
-                    if (isDead)
-                    {
-                        GameManager.MCHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier;
-                        MCHealth.value = GameManager.MCHealth;
-                        MCDead = true;
-                        MCAnim.SetBool("isDead", true);
-                        Debug.Log("Game Over because Main Character died");
-                        state = BattleState.LOST;
-                        yield return new WaitForSeconds(3f);
-                        EndBattle();
-                    }
-                    //Not dead, but hurt
-                    else
-                    {
-                        yield return new WaitForSeconds(.5f);
-                        MCAnim.Play("Armature|TakeDamage");
-                        MCDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
-                        GameManager.MCHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier;
-                        MCHealth.value = GameManager.MCHealth;
-                        yield return new WaitForSeconds(2f);
-
-                    }
-                }
-                StartCoroutine(TurnOffDamageUI());
+                dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " has been stunned!";
+                yield return new WaitForSeconds(4f);
+                print("look at that, ive been stunned");
+                enemyUnit[enemyIndex].HasBeenStunned(enemyUnit[enemyIndex].imStunned);
+                NextTurn();
             }
+            else
+            {*/
+                enemyUnit[enemyUnitSelected].DetermineAttack();
 
-            else if (WhoToAttack == 1 && !RhysDead && GameManager.RhysInParty)
-            {
-                enemyUnit[enemyIndex].transform.LookAt(Rhys.transform.position);
-
-                Camera.transform.LookAt(Rhys.transform.position);
-
-                if ((GameManager.RhysDodge * EvasionModifier) >= RandomAttack)
-                {
-                    dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks Rhys with " + enemyUnit[enemyUnitSelected].attackName + "!";
-                    yield return new WaitForSeconds(.5f);
-                    RhysAnim.Play("Armature|Dodge");
-                    dialogueText.text = "Rhys Dodges!";
-                    yield return new WaitForSeconds(1f);
-
-                }
-                else
-                {
-                    dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks Rhys with " + enemyUnit[enemyUnitSelected].attackName + "!";
-
-                    yield return new WaitForSeconds(1f);
-                    bool isDead = Rhys.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier);
-
-                    RhysDamageUI.text = "".ToString();
-
-                    if (isDead)
+                //This is attacking all the players - a little buggy from Stike Out so commenting out for now. 
+                #region Attack all or take Magic from All
+                /* if (Unit.attackAll)
                     {
-                        GameManager.RhysHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier;
-                        RhysHealth.value = GameManager.RhysHealth;
-                        playerTurnOrder.Remove(CharacterIdentifier.Rhys);
+                        dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks Everyone with " + enemyUnit[enemyUnitSelected].attackName + "!";
 
-                        RhysAnim.SetBool("isDead", true);
-                        RhysDead = true;
-                        yield return new WaitForSeconds(3f);
+                        enemyAnim[enemyIndex].Play("Armature|Swing");
 
-                    }
-
-                    else
-                    {
-                        yield return new WaitForSeconds(.5f);
-                        RhysAnim.Play("Armature|TakeDamage");
-                        RhysDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
-                        GameManager.RhysHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier;
-                        RhysHealth.value = GameManager.RhysHealth;
-                        yield return new WaitForSeconds(2f);
-
-                    }
-                }
-
-                yield return new WaitForSeconds(.5f);
-                StartCoroutine(TurnOffDamageUI());
-            }
-            else if (WhoToAttack == 2 && !JameelDead && GameManager.JameelInParty)
-            {
-                enemyUnit[enemyIndex].transform.LookAt(Jameel.transform.position);
-
-                Camera.transform.LookAt(Jameel.transform.position);
-
-                if ((GameManager.JameelDodge * EvasionModifier) >= RandomAttack)
-                {
-                    dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks Jameel with " + enemyUnit[enemyUnitSelected].attackName + "!";
-                    yield return new WaitForSeconds(.5f);
-                    JameelAnim.Play("Armature|Dodge");
-                    dialogueText.text = "Jameel Dodges!";
-                    yield return new WaitForSeconds(1f);
-
-                }
-                else
-                {
-                    dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks Jameel with " + enemyUnit[enemyUnitSelected].attackName + "!";
-
-                    yield return new WaitForSeconds(1f);
-                    bool isDead = Jameel.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier);
-
-                    JameelDamageUI.text = "".ToString();
-
-                    if (isDead)
-                    {
-                        GameManager.JameelHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier;
-                        JameelHealth.value = GameManager.JameelHealth;
-                        JameelDead = true;
-
-                        playerTurnOrder.Remove(CharacterIdentifier.Jameel);
-
-                        JameelAnim.SetBool("isDead", true);
-                        yield return new WaitForSeconds(3f);
-
-                    }
-
-                    else
-                    {
-                        yield return new WaitForSeconds(.5f);
-                        JameelAnim.Play("Armature|TakeDamage");
-                        JameelDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
-                        GameManager.JameelHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier;
-                        JameelHealth.value = GameManager.JameelHealth;
-                        yield return new WaitForSeconds(2f);
-
-                    }
-                }
-
-                yield return new WaitForSeconds(.5f);
-                StartCoroutine(TurnOffDamageUI());
-            }
-            else if (WhoToAttack == 3 && !HarperDead && GameManager.HarperInParty)
-            {
-                enemyUnit[enemyIndex].transform.LookAt(Harper.transform.position);
-
-                Camera.transform.LookAt(Harper.transform.position);
-
-                if ((GameManager.HarperDodge * EvasionModifier) >= RandomAttack)
-                {
-                    dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks Harper with " + enemyUnit[enemyUnitSelected].attackName + "!";
-                    yield return new WaitForSeconds(.5f);
-                    HarperAnim.Play("Armature|Dodge");
-                    dialogueText.text = "Harper Dodges!";
-                    yield return new WaitForSeconds(1f);
-
-                }
-                else
-                {
-                    dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks Harper with " + enemyUnit[enemyUnitSelected].attackName + "!";
-
-                    yield return new WaitForSeconds(1f);
-                    bool isDead = Harper.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier);
-
-                    HarperDamageUI.text = "".ToString();
-
-                    if (isDead)
-                    {
-                        GameManager.HarperHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier;
-                        HarperHealth.value = GameManager.HarperHealth;
-                        HarperDead = true;
-
-                        playerTurnOrder.Remove(CharacterIdentifier.Harper);
-
-                        HarperAnim.SetBool("isDead", true);
-                        yield return new WaitForSeconds(3f);
-
-                    }
-
-                    else
-                    {
-                        yield return new WaitForSeconds(.5f);
-                        HarperAnim.Play("Armature|TakeDamage");
-                        HarperDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
-                        GameManager.HarperHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier;
-                        HarperHealth.value = GameManager.HarperHealth;
-
-
-                        //Harper's Counter
-                        float CounterChance = Random.Range(0, 100);
-                        if ((CounterChance < (GameManager.HarperFriendship * 10)) && GameManager.HarperFriendship > 3)
+                        if (Announcer)
                         {
-                            //Counter
-                            yield return new WaitForSeconds(2f);
-                            dialogueText.text = "Harper is countering with Deflector Impetum!";
-                            HarperAnim.Play("Armature|Attack");
-                            yield return new WaitForSeconds(2f);
-
-                            isDead = enemyUnit[enemyUnitSelected].HarperDeflectorImpetum(Harper.HarperSpell3Damage * AttackModifier);
-
-                            EnemyAnim();
-                            yield return new WaitForSeconds(2f);
-
-                            //This checks to see if the Enemy is Dead or has HP remaining
-                            if (isDead)
-                            {
-                                RemoveCurrentEnemy();
-                            }
+                            yield return new WaitForSeconds(3.5f);
                         }
                         else
                         {
                             yield return new WaitForSeconds(2f);
                         }
+
+                        int RandomAttack = Random.Range(0, 100);
+
+                        if (GameManager.MiddleAgil >= RandomAttack)
+                        {
+                            dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks Mid Reliever with " + enemyUnit[enemyUnitSelected].attackName + "!";
+                            yield return new WaitForSeconds(.5f);
+                            dialogueText.text = "Mid Reliever Dodges!";
+                            yield return new WaitForSeconds(1f);
+
+                        }
+
+                        bool isDead1 = Starter.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier);
+                        bool isDead2 = MiddleReliever.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier);
+                        bool isDead3 = SetUp.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier);
+                        bool isDead4 = Closer.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier);
+
+                        if (isDead1 && GameManager.StarterAgil < RandomAttack)
+                        {
+                            GameManager.StarterMorale -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier;
+                            StarterMorale.value = (GameManager.StarterMorale / GameManager.StarterMoraleMax);
+                            starterDead = true;
+                            StarterDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
+                            //
+                            playerTurnOrder.Remove(CharacterIdentifier.Starter);
+                            //   Debug.Log("Removing Starter");
+
+                            //
+                            StarterAnim.SetBool("isDead", true);
+                        }
+                        if (isDead2 && GameManager.MiddleAgil < RandomAttack)
+                        {
+                            GameManager.MidRelivMorale -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier;
+                            MiddleMorale.value = (GameManager.MidRelivMorale / GameManager.MidRelivMoraleMax);
+                            middleDead = true;
+                            MiddleDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
+
+                            playerTurnOrder.Remove(CharacterIdentifier.Middle);
+                            //  Debug.Log("Removing Middle");
+
+
+                            MidRelAnim.SetBool("isDead", true);
+
+                        }
+                        if (isDead3 && GameManager.SetUpAgil < RandomAttack)
+                        {
+                            GameManager.SetUpMorale -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier;
+                            SetUpMorale.value = (GameManager.SetUpMorale / GameManager.SetUpMoraleMax);
+                            setupDead = true;
+                            SetUpDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
+
+                            playerTurnOrder.Remove(CharacterIdentifier.SetUp);
+                            //   Debug.Log("Removing SetUp");
+
+
+                            SetUpAnim.SetBool("isDead", true);
+                        }
+                        if (isDead4 && GameManager.CloserAgil < RandomAttack)
+                        {
+                            GameManager.CloserMorale -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier;
+                            CloserMorale.value = (GameManager.CloserMorale / GameManager.CloserMoraleMax);
+                            closerDead = true;
+                            CloserDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
+
+                            playerTurnOrder.Remove(CharacterIdentifier.Closer);
+                            //    Debug.Log("Removing Closer");
+
+
+                            CloserAnim.SetBool("isDead", true);
+
+                        }
+
+                        if (!isDead1 && GameManager.StarterAgil < RandomAttack)
+                        {
+                            yield return new WaitForSeconds(.5f);
+                            StarterAnim.Play("Armature|Oof");
+
+                            GameManager.StarterMorale -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier;
+                            StarterDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
+                            StarterMorale.value = (GameManager.StarterMorale / GameManager.StarterMoraleMax);
+                        }
+
+                        if (!isDead2 && GameManager.MiddleAgil < RandomAttack)
+                        {
+                            yield return new WaitForSeconds(.5f);
+                            MidRelAnim.Play("Armature|Oof");
+
+                            GameManager.MidRelivMorale -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier;
+                            MiddleDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
+                            MiddleMorale.value = (GameManager.MidRelivMorale / GameManager.MidRelivMoraleMax);
+                        }
+
+                        if (!isDead3 && GameManager.SetUpAgil < RandomAttack)
+                        {
+                            yield return new WaitForSeconds(.5f);
+                            SetUpAnim.Play("Armature|Oof");
+
+                            GameManager.SetUpMorale -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier;
+                            SetUpDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
+                            SetUpMorale.value = (GameManager.SetUpMorale / GameManager.SetUpMoraleMax);
+                        }
+
+                        if (!isDead4 && GameManager.CloserAgil < RandomAttack)
+                        {
+                            yield return new WaitForSeconds(.5f);
+                            CloserAnim.Play("Armature|Oof");
+
+                            GameManager.CloserMorale -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier;
+                            CloserDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
+                            CloserMorale.value = (GameManager.CloserMorale / GameManager.CloserMoraleMax);
+                        }
+                        Unit.attackAll = false;
+                        yield return new WaitForSeconds(2f);
+                        StartCoroutine(TurnOffDamageUI());
+                        // NextPlayerTurnAfterEnemyTurn(enemyIndex);
                     }
-                }
+
+                    else if (Unit.energyAll)
+                    {
+                        dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " tires the Pitchers with " + enemyUnit[enemyUnitSelected].attackName + "!";
+
+                        enemyAnim[enemyIndex].Play("Armature|Swing");
+
+                        yield return new WaitForSeconds(1f);
+
+                        bool isDead1 = Starter.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier);
+                        bool isDead2 = MiddleReliever.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier);
+                        bool isDead3 = SetUp.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier);
+                        bool isDead4 = Closer.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier);
+
+                        if (!isDead1)
+                        {
+                            yield return new WaitForSeconds(.5f);
+                            StarterAnim.Play("Armature|Oof");
+
+                            GameManager.StarterEnergy -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier;
+                            StarterDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
+                            StarterEnergy.value = (GameManager.StarterEnergy / GameManager.StarterEnergyMax);
+                        }
+
+                        if (!isDead2)
+                        {
+                            yield return new WaitForSeconds(.5f);
+                            MidRelAnim.Play("Armature|Oof");
+
+                            GameManager.MidRelivEnergy -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier;
+                            MiddleDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
+                            MiddleEnergy.value = (GameManager.MidRelivEnergy / GameManager.MidRelievEnergyMax);
+                        }
+
+                        if (!isDead3)
+                        {
+                            yield return new WaitForSeconds(.5f);
+                            SetUpAnim.Play("Armature|Oof");
+
+                            GameManager.SetUpEnergy -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier;
+                            SetUpDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
+                            SetUpEnergy.value = (GameManager.SetUpEnergy / GameManager.SetUpEnergyMax);
+                        }
+
+                        if (!isDead4)
+                        {
+                            yield return new WaitForSeconds(.5f);
+                            CloserAnim.Play("Armature|Oof");
+
+                            GameManager.CloserEnergy -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier;
+                            CloserDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
+                            CloserEnergy.value = (GameManager.CloserEnergy / GameManager.CloserEnergyMax);
+                        }
+                        Unit.energyAll = false;
+                        yield return new WaitForSeconds(1f);
+                        StartCoroutine(TurnOffDamageUI());
+                        //NextPlayerTurnAfterEnemyTurn(enemyIndex);
+                    }
+
+                    */
+                #endregion
+                // else
+                // {
+                int RandomAttack = Random.Range(0, 100);
+
+                //attack animation
+
+                //Choosing Who To Attack
+                //happens at least once, if it is true, it does it again. (keep going until valid)
+                int safteyCounter = 1000;
+
+                bool viableTarget = false;
+
+                do
+                {
+                    WhoToAttack = Random.Range(0, 6);
+                    if (safteyCounter-- < 0)
+                    {
+                        Debug.LogError("Couldn't find a living WhoToAttack, is the Whole Team Dead?");
+                        break;
+                        //bails us out of the do while
+                    }
+                    if (isPlayerIndexDead(WhoToAttack) == false)
+                    {
+                        if (WhoToAttack == 0 && !MCDead)
+                        {
+                            viableTarget = true;
+                        }
+
+                        else if (WhoToAttack == 1 && GameManager.RhysInParty && !RhysDead)
+                        {
+                            viableTarget = true;
+                        }
+                        else if (WhoToAttack == 2 && GameManager.JameelInParty && !JameelDead)
+                        {
+                            viableTarget = true;
+                        }
+                        else if (WhoToAttack == 3 && GameManager.HarperInParty && !HarperDead)
+                        {
+                            viableTarget = true;
+                        }
+                        else if (WhoToAttack == 4 && GameManager.SkyeInParty && !SkyeDead)
+                        {
+                            viableTarget = true;
+                        }
+                        else if (WhoToAttack == 5 && GameManager.SullivanInParty && !SullivanDead)
+                        {
+                            viableTarget = true;
+                        }
+                    }//Player not dead
+                } while (viableTarget == false);
+
+                yield return new WaitForSeconds(1.5f);
+
+                enemyAnim[enemyIndex].Play("Armature|Attack");
 
                 yield return new WaitForSeconds(.5f);
-                StartCoroutine(TurnOffDamageUI());
-            }
-            else if (WhoToAttack == 4 && !SkyeDead && GameManager.SkyeInParty)
-            {
-                enemyUnit[enemyIndex].transform.LookAt(Skye.transform.position);
 
-                Camera.transform.LookAt(Skye.transform.position);
-
-                if ((GameManager.SkyeDodge * EvasionModifier) >= RandomAttack)
+                if (WhoToAttack == 0 && !MCDead)
                 {
-                    dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks Skye with " + enemyUnit[enemyUnitSelected].attackName + "!";
-                    yield return new WaitForSeconds(.5f);
-                    SkyeAnim.Play("Armature|Dodge");
-                    dialogueText.text = "Skye Dodges!";
-                    yield return new WaitForSeconds(1f);
+                    enemyUnit[enemyIndex].transform.LookAt(MC.transform.position);
 
-                }
-                else
-                {
-                    dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks Skye with " + enemyUnit[enemyUnitSelected].attackName + "!";
-
-                    yield return new WaitForSeconds(1f);
-                    bool isDead = Skye.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier);
-
-                    SkyeDamageUI.text = "".ToString();
-
-                    if (isDead)
+                    Camera.transform.LookAt(MC.transform.position);
+                    //Dodge
+                    if ((GameManager.MCDodge * EvasionModifier) >= RandomAttack)
                     {
-                        GameManager.SkyeHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier;
-                        SkyeHealth.value = GameManager.SkyeHealth;
-                        SkyeDead = true;
-
-                        playerTurnOrder.Remove(CharacterIdentifier.Skye);
-
-                        SkyeAnim.SetBool("isDead", true);
-                        yield return new WaitForSeconds(3f);
+                        dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks " + GameManager.MCFirstName + " with " + enemyUnit[enemyUnitSelected].attackName + "!";
+                        yield return new WaitForSeconds(.5f);
+                        dialogueText.text = "[PLAYER NAME] Dodges!";
+                        MCAnim.Play("Armature|Dodge");
+                        yield return new WaitForSeconds(1f);
 
                     }
-
+                    //Attack
                     else
                     {
-                        yield return new WaitForSeconds(.5f);
-                        SkyeAnim.Play("Armature|TakeDamage");
-                        SkyeDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
-                        GameManager.SkyeHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier;
-                        SkyeHealth.value = GameManager.SkyeHealth;
+                        dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks " + GameManager.MCFirstName + " with " + enemyUnit[enemyUnitSelected].attackName + "!";
+
                         yield return new WaitForSeconds(2f);
 
+                        bool isDead = MC.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier);
+
+                        MCDamageUI.text = "".ToString();
+
+                        //Dead
+                        if (isDead)
+                        {
+                            GameManager.MCHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier;
+                            MCHealth.value = GameManager.MCHealth;
+                            MCDead = true;
+                            MCAnim.SetBool("isDead", true);
+                            Debug.Log("Game Over because Main Character died");
+                            state = BattleState.LOST;
+                            yield return new WaitForSeconds(3f);
+                            EndBattle();
+                        }
+                        //Not dead, but hurt
+                        else
+                        {
+                            yield return new WaitForSeconds(.5f);
+                            MCAnim.Play("Armature|TakeDamage");
+                            MCDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
+                            GameManager.MCHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier;
+                            MCHealth.value = GameManager.MCHealth;
+                            yield return new WaitForSeconds(2f);
+
+                        }
                     }
+                    StartCoroutine(TurnOffDamageUI());
                 }
 
-                yield return new WaitForSeconds(.5f);
-                StartCoroutine(TurnOffDamageUI());
-            }
-            else if (WhoToAttack == 5 && !SullivanDead && GameManager.SullivanInParty)
-            {
-                enemyUnit[enemyIndex].transform.LookAt(Sullivan.transform.position);
-
-                Camera.transform.LookAt(Sullivan.transform.position);
-
-                if ((GameManager.SullivanDodge * EvasionModifier) >= RandomAttack)
+                else if (WhoToAttack == 1 && !RhysDead && GameManager.RhysInParty)
                 {
-                    dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks Sullivan with " + enemyUnit[enemyUnitSelected].attackName + "!";
-                    yield return new WaitForSeconds(.5f);
-                    SullivanAnim.Play("Armature|Dodge");
-                    dialogueText.text = "Sullivan Dodges!";
-                    yield return new WaitForSeconds(1f);
+                    enemyUnit[enemyIndex].transform.LookAt(Rhys.transform.position);
 
-                }
-                else
-                {
-                    dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks Sullivan with " + enemyUnit[enemyUnitSelected].attackName + "!";
+                    Camera.transform.LookAt(Rhys.transform.position);
 
-                    yield return new WaitForSeconds(1f);
-                    bool isDead = Sullivan.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier);
-
-                    SullivanDamageUI.text = "".ToString();
-
-                    if (isDead)
+                    if ((GameManager.RhysDodge * EvasionModifier) >= RandomAttack)
                     {
-                        GameManager.SullivanHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier;
-                        SullivanHealth.value = GameManager.SullivanHealth;
-                        SullivanDead = true;
-
-                        playerTurnOrder.Remove(CharacterIdentifier.Sullivan);
-
-                        SullivanAnim.SetBool("isDead", true);
-                        yield return new WaitForSeconds(3f);
+                        dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks Rhys with " + enemyUnit[enemyUnitSelected].attackName + "!";
+                        yield return new WaitForSeconds(.5f);
+                        RhysAnim.Play("Armature|Dodge");
+                        dialogueText.text = "Rhys Dodges!";
+                        yield return new WaitForSeconds(1f);
 
                     }
-
                     else
                     {
+                        dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks Rhys with " + enemyUnit[enemyUnitSelected].attackName + "!";
+
+                        yield return new WaitForSeconds(1f);
+                        bool isDead = Rhys.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier);
+
+                        RhysDamageUI.text = "".ToString();
+
+                        if (isDead)
+                        {
+                            GameManager.RhysHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier;
+                            RhysHealth.value = GameManager.RhysHealth;
+                            playerTurnOrder.Remove(CharacterIdentifier.Rhys);
+
+                            RhysAnim.SetBool("isDead", true);
+                            RhysDead = true;
+                            yield return new WaitForSeconds(3f);
+
+                        }
+
+                        else
+                        {
+                            yield return new WaitForSeconds(.5f);
+                            RhysAnim.Play("Armature|TakeDamage");
+                            RhysDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
+                            GameManager.RhysHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier;
+                            RhysHealth.value = GameManager.RhysHealth;
+                            yield return new WaitForSeconds(2f);
+
+                        }
+                    }
+
+                    yield return new WaitForSeconds(.5f);
+                    StartCoroutine(TurnOffDamageUI());
+                }
+                else if (WhoToAttack == 2 && !JameelDead && GameManager.JameelInParty)
+                {
+                    enemyUnit[enemyIndex].transform.LookAt(Jameel.transform.position);
+
+                    Camera.transform.LookAt(Jameel.transform.position);
+
+                    if ((GameManager.JameelDodge * EvasionModifier) >= RandomAttack)
+                    {
+                        dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks Jameel with " + enemyUnit[enemyUnitSelected].attackName + "!";
                         yield return new WaitForSeconds(.5f);
-                        SullivanAnim.Play("Armature|TakeDamage");
-                        SullivanDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
-                        GameManager.SullivanHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier;
-                        SullivanHealth.value = GameManager.SullivanHealth;
-                        yield return new WaitForSeconds(2f);
+                        JameelAnim.Play("Armature|Dodge");
+                        dialogueText.text = "Jameel Dodges!";
+                        yield return new WaitForSeconds(1f);
 
                     }
+                    else
+                    {
+                        dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks Jameel with " + enemyUnit[enemyUnitSelected].attackName + "!";
+
+                        yield return new WaitForSeconds(1f);
+                        bool isDead = Jameel.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier);
+
+                        JameelDamageUI.text = "".ToString();
+
+                        if (isDead)
+                        {
+                            GameManager.JameelHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier;
+                            JameelHealth.value = GameManager.JameelHealth;
+                            JameelDead = true;
+
+                            playerTurnOrder.Remove(CharacterIdentifier.Jameel);
+
+                            JameelAnim.SetBool("isDead", true);
+                            yield return new WaitForSeconds(3f);
+
+                        }
+
+                        else
+                        {
+                            yield return new WaitForSeconds(.5f);
+                            JameelAnim.Play("Armature|TakeDamage");
+                            JameelDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
+                            GameManager.JameelHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier;
+                            JameelHealth.value = GameManager.JameelHealth;
+                            yield return new WaitForSeconds(2f);
+
+                        }
+                    }
+
+                    yield return new WaitForSeconds(.5f);
+                    StartCoroutine(TurnOffDamageUI());
                 }
+                else if (WhoToAttack == 3 && !HarperDead && GameManager.HarperInParty)
+                {
+                    enemyUnit[enemyIndex].transform.LookAt(Harper.transform.position);
 
-                yield return new WaitForSeconds(.5f);
-                StartCoroutine(TurnOffDamageUI());
-            }
+                    Camera.transform.LookAt(Harper.transform.position);
 
+                    if ((GameManager.HarperDodge * EvasionModifier) >= RandomAttack)
+                    {
+                        dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks Harper with " + enemyUnit[enemyUnitSelected].attackName + "!";
+                        yield return new WaitForSeconds(.5f);
+                        HarperAnim.Play("Armature|Dodge");
+                        dialogueText.text = "Harper Dodges!";
+                        yield return new WaitForSeconds(1f);
+
+                    }
+                    else
+                    {
+                        dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks Harper with " + enemyUnit[enemyUnitSelected].attackName + "!";
+
+                        yield return new WaitForSeconds(1f);
+                        bool isDead = Harper.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier);
+
+                        HarperDamageUI.text = "".ToString();
+
+                        if (isDead)
+                        {
+                            GameManager.HarperHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier;
+                            HarperHealth.value = GameManager.HarperHealth;
+                            HarperDead = true;
+
+                            playerTurnOrder.Remove(CharacterIdentifier.Harper);
+
+                            HarperAnim.SetBool("isDead", true);
+                            yield return new WaitForSeconds(3f);
+
+                        }
+
+                        else
+                        {
+                            yield return new WaitForSeconds(.5f);
+                            HarperAnim.Play("Armature|TakeDamage");
+                            HarperDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
+                            GameManager.HarperHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier;
+                            HarperHealth.value = GameManager.HarperHealth;
+
+
+                            //Harper's Counter
+                            float CounterChance = Random.Range(0, 100);
+                            if ((CounterChance < (GameManager.HarperFriendship * 10)) && GameManager.HarperFriendship > 3)
+                            {
+                                //Counter
+                                yield return new WaitForSeconds(2f);
+                                dialogueText.text = "Harper is countering with Deflector Impetum!";
+                                HarperAnim.Play("Armature|Attack");
+                                yield return new WaitForSeconds(2f);
+
+                                isDead = enemyUnit[enemyUnitSelected].HarperDeflectorImpetum(Harper.HarperSpell3Damage * AttackModifier);
+
+                                EnemyAnim();
+                                yield return new WaitForSeconds(2f);
+
+                                //This checks to see if the Enemy is Dead or has HP remaining
+                                if (isDead)
+                                {
+                                    RemoveCurrentEnemy();
+                                }
+                            }
+                            else
+                            {
+                                yield return new WaitForSeconds(2f);
+                            }
+                        }
+                    }
+
+                    yield return new WaitForSeconds(.5f);
+                    StartCoroutine(TurnOffDamageUI());
+                }
+                else if (WhoToAttack == 4 && !SkyeDead && GameManager.SkyeInParty)
+                {
+                    enemyUnit[enemyIndex].transform.LookAt(Skye.transform.position);
+
+                    Camera.transform.LookAt(Skye.transform.position);
+
+                    if ((GameManager.SkyeDodge * EvasionModifier) >= RandomAttack)
+                    {
+                        dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks Skye with " + enemyUnit[enemyUnitSelected].attackName + "!";
+                        yield return new WaitForSeconds(.5f);
+                        SkyeAnim.Play("Armature|Dodge");
+                        dialogueText.text = "Skye Dodges!";
+                        yield return new WaitForSeconds(1f);
+
+                    }
+                    else
+                    {
+                        dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks Skye with " + enemyUnit[enemyUnitSelected].attackName + "!";
+
+                        yield return new WaitForSeconds(1f);
+                        bool isDead = Skye.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier);
+
+                        SkyeDamageUI.text = "".ToString();
+
+                        if (isDead)
+                        {
+                            GameManager.SkyeHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier;
+                            SkyeHealth.value = GameManager.SkyeHealth;
+                            SkyeDead = true;
+
+                            playerTurnOrder.Remove(CharacterIdentifier.Skye);
+
+                            SkyeAnim.SetBool("isDead", true);
+                            yield return new WaitForSeconds(3f);
+
+                        }
+
+                        else
+                        {
+                            yield return new WaitForSeconds(.5f);
+                            SkyeAnim.Play("Armature|TakeDamage");
+                            SkyeDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
+                            GameManager.SkyeHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier;
+                            SkyeHealth.value = GameManager.SkyeHealth;
+                            yield return new WaitForSeconds(2f);
+
+                        }
+                    }
+
+                    yield return new WaitForSeconds(.5f);
+                    StartCoroutine(TurnOffDamageUI());
+                }
+                else if (WhoToAttack == 5 && !SullivanDead && GameManager.SullivanInParty)
+                {
+                    enemyUnit[enemyIndex].transform.LookAt(Sullivan.transform.position);
+
+                    Camera.transform.LookAt(Sullivan.transform.position);
+
+                    if ((GameManager.SullivanDodge * EvasionModifier) >= RandomAttack)
+                    {
+                        dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks Sullivan with " + enemyUnit[enemyUnitSelected].attackName + "!";
+                        yield return new WaitForSeconds(.5f);
+                        SullivanAnim.Play("Armature|Dodge");
+                        dialogueText.text = "Sullivan Dodges!";
+                        yield return new WaitForSeconds(1f);
+
+                    }
+                    else
+                    {
+                        dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks Sullivan with " + enemyUnit[enemyUnitSelected].attackName + "!";
+
+                        yield return new WaitForSeconds(1f);
+                        bool isDead = Sullivan.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier);
+
+                        SullivanDamageUI.text = "".ToString();
+
+                        if (isDead)
+                        {
+                            GameManager.SullivanHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier;
+                            SullivanHealth.value = GameManager.SullivanHealth;
+                            SullivanDead = true;
+
+                            playerTurnOrder.Remove(CharacterIdentifier.Sullivan);
+
+                            SullivanAnim.SetBool("isDead", true);
+                            yield return new WaitForSeconds(3f);
+
+                        }
+
+                        else
+                        {
+                            yield return new WaitForSeconds(.5f);
+                            SullivanAnim.Play("Armature|TakeDamage");
+                            SullivanDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
+                            GameManager.SullivanHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier;
+                            SullivanHealth.value = GameManager.SullivanHealth;
+                            yield return new WaitForSeconds(2f);
+
+                        }
+                    }
+
+                    yield return new WaitForSeconds(.5f);
+                    StartCoroutine(TurnOffDamageUI());
+                }
+           // }
         }
         NextTurn();
     }

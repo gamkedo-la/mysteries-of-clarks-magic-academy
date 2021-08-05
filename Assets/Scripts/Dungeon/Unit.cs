@@ -237,7 +237,7 @@ public class Unit : MonoBehaviour
     public Slider Health;
 
     public bool isEnemy;
-    bool imStunned;
+    public bool imStunned;
 
     public bool weakRed, weakBlue, weakYellow, weakGreen, weakPhys;
     public bool strRed, strBlue, strYellow, strGreen, strPhys;
@@ -277,11 +277,30 @@ public class Unit : MonoBehaviour
 
     public bool HasBeenStunned(bool stunned)
     {
-        print("youve stunned me");
-        if (currentHP >= 0)
+        imStunned = true;
+        stunned = imStunned;
+
+        if (stunned)
         {
             return true;
         }
+
+        else
+        {
+            return false;
+        }
+    }
+
+    public bool HasBeenUnStunned(bool stunned)
+    {
+        imStunned = false;
+        stunned = imStunned;
+
+        if (stunned)
+        {
+            return true;
+        }
+
         else
         {
             return false;
