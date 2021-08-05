@@ -42,6 +42,8 @@ public class ClassroomDialogueManager : MonoBehaviour
     public Vector3 LocationToSpawnInRoomYoureGoingTo;
     public Quaternion RotationToSpawnInRoomYoureGoingTo;
 
+    public bool isGreatHall;
+
     private void Start()
     {
         sentences = new Queue<string>();
@@ -202,7 +204,10 @@ public class ClassroomDialogueManager : MonoBehaviour
             Debug.Log("endOfConversation");
             GameManager.Intelligence += EndOfLessonLearning ;
             //Since there is only one gamemanager, we can reference the instance of the CanvasForStats to turn on or off
-            GameManager.instance.CanvasForStats.SetActive(true);
+            if (!isGreatHall)
+            {
+                GameManager.instance.CanvasForStats.SetActive(true);
+            }
             GameManager.IncreaseStatLevel();
             StartCoroutine(StatsWaiting());
            // GameManager.ProgressDay();
