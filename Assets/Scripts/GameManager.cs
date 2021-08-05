@@ -1054,21 +1054,39 @@ public class GameManager : MonoBehaviour
                 {
                     print("Progress Day");
                     GameManager.instance.DatePlay();
-                    //  ProgressDay();
+                    //Load Outside of Charms
+                    SceneManager.LoadScene("SecondFloor");
+                    playerSpawn = new Vector3(-9.02f, 1.58f, 22.94f);
+                    playerRotation = new Quaternion(0,90,0,0);
                 }
 
                 else if (month == 5 && (day == 2 || day == 3 || day == 5 || day == 6 || day == 10 || day == 16 || day == 20))
                 {
-                    print("Progress Day");
                     GameManager.instance.DatePlay();
-                    //   ProgressDay();
+                    if (day == 2 || day == 3 || day == 6 || day == 10 || day == 16 || day == 20)
+                    {
+                        //Load Outside of Charms
+                        SceneManager.LoadScene("SecondFloor");
+                        playerSpawn = new Vector3(-9.02f, 1.58f, 22.94f);
+                        playerRotation = new Quaternion(0, 90, 0, 0);
+                    }
+                    else
+                    {
+                        //Load Outside of DADA (5)
+                        SceneManager.LoadScene("FourthFloor");
+                        playerSpawn = new Vector3(-22.74f, 27.21f, 81.97f);
+                        playerRotation = new Quaternion(0, 0, 0, 0);
+                    }
+                    print("Progress Day");
                 }
 
                 else
                 {
+                    //Load in dorm at start of day
                     freePeriod = true;
                     playerSpawn = new Vector3(-21.18f, 31.78f, -70.54f);
                     playerRotation = new Quaternion(0, 0, 0, 0);
+                    SceneManager.LoadScene("FourthFloor");
                     player.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
                     player.transform.position = GameManager.playerSpawn;
                     player.transform.rotation = GameManager.playerRotation;
@@ -1129,22 +1147,53 @@ public class GameManager : MonoBehaviour
 
                 else if (month == 4 && (day == 18 || day == 20 || day == 21 || day == 25 || day == 28 || day == 29))
                 {
-                    print("Progress Day");
                     GameManager.instance.DatePlay();
-                  //  ProgressDay();
+                    print("Progress Day");                    
+                    if (day == 18 || day == 20 || day == 25 || day == 29)
+                    {
+                        //Trans 18, 20, 25, 29
+                        SceneManager.LoadScene("ThirdFloor");
+                        playerSpawn = new Vector3(-47.55f, 21.15f, -11.96f);
+                        playerRotation = new Quaternion(0, 270, 0, 0);
+                    }
+                    else
+                    {
+                        //Load Outside of DADA (21, 28)
+                        SceneManager.LoadScene("FourthFloor");
+                        playerSpawn = new Vector3(-22.74f, 27.21f, 81.97f);
+                        playerRotation = new Quaternion(0, 0, 0, 0);
+                    }
+                 
                 }
 
                 else if (month == 5 && (day == 4 || day == 9 || day == 13 || day == 16 || day == 18 || day == 19))
                 {
-                    print("Progress Day");
                     GameManager.instance.DatePlay();
-                  //  ProgressDay();
+                    print("Progress Day");
+                    //Trans 4, 9, 13, 16, 18
+                    if (day == 4 || day == 9 || day == 13 || day == 16 || day == 18)
+                    {
+                        //Trans 18, 20, 25, 29
+                        SceneManager.LoadScene("ThirdFloor");
+                        playerSpawn = new Vector3(-47.55f, 21.15f, -11.96f);
+                        playerRotation = new Quaternion(0, 270, 0, 0);
+                    }
+                    else
+                    {
+                        //Load Outside of DADA (19)
+                        SceneManager.LoadScene("FourthFloor");
+                        playerSpawn = new Vector3(-22.74f, 27.21f, 81.97f);
+                        playerRotation = new Quaternion(0, 0, 0, 0);
+                    }
                 }
 
                 else
                 {
                     freePeriod = true;
-                    print("Load a generic room outside of classroom");
+                    SceneManager.LoadScene("GroundFloor");
+                    playerSpawn = new Vector3(-15.32f, -6.6f, 35.85f);
+                    playerRotation = new Quaternion(0, 90, 0, 0);
+                    print("Load outside Great Hall after lunch");
                 }
             }
             //Weekday evenings
@@ -1166,14 +1215,20 @@ public class GameManager : MonoBehaviour
                 {
                     print("Progress Day");
                     GameManager.instance.DatePlay();
-                    //  ProgressDay();
+                    //Potions
+                    SceneManager.LoadScene("Dungeons");
+                    playerSpawn = new Vector3(54.09f, 1.6f, 23.76f);
+                    playerRotation = new Quaternion(0, 90, 0, 0);
                 }
 
                 else if (month == 5 && (day == 11 || day == 17))
                 {
                     print("Progress Day");
                     GameManager.instance.DatePlay();
-                    //  ProgressDay();
+                    // Potions
+                    SceneManager.LoadScene("Dungeons");
+                    playerSpawn = new Vector3(54.09f, 1.6f, 23.76f);
+                    playerRotation = new Quaternion(0, 90, 0, 0);
                 }
 
                 else if (month == 4 && (day == 18 ||day == 25))
@@ -1235,6 +1290,14 @@ public class GameManager : MonoBehaviour
                 {
                     ProgressDay();
                 }
+                playerSpawn = new Vector3(-21.18f, 31.78f, -70.54f);
+                playerRotation = new Quaternion(0, 0, 0, 0);
+                SceneManager.LoadScene("FourthFloor");
+                player.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
+                player.transform.position = GameManager.playerSpawn;
+                player.transform.rotation = GameManager.playerRotation;
+                player.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = true;
+                print("Load a dorm for free period at start of day");
             }
         }
     }
