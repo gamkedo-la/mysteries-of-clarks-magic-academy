@@ -1574,7 +1574,6 @@ public class BattleSystem : MonoBehaviour
                 yield return new WaitForSeconds(2f);
                 MCMagic.value = GameManager.MCMagic;
                 GameManager.MCMagic -= MC.MCSpell8MagicConsumed;
-                print(enemyUnit.Count);
                 GameManager.isRed = true;
 
                 for (int i = 0; i < enemyUnit.Count; i++)
@@ -2866,35 +2865,34 @@ public class BattleSystem : MonoBehaviour
 
         if (jameelHiemsImpetus)
         {
-            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+            JameelAnim.Play("Armature|Attack");
+            yield return new WaitForSeconds(2f);
+            JameelMagic.value = GameManager.JameelMagic;
+            GameManager.JameelMagic -= Jameel.JameelSpell7MagicConsumed;
+            GameManager.isBlue = true;
+
+            for (int i = 0; i < enemyUnit.Count; i++)
             {
-                jameelHiemsImpetus = false;
-                dialogueText.text = "Enemy is knocked out, select another target.";
-                yield return new WaitForSeconds(1f);
-                dialogueText.text = "Select someone to attack!";
-                JameelMenu.SetActive(true);
-                JameelSpells.SetActive(false);
-            }
-            else
-            {
-                GameManager.JameelMagic -= Jameel.JameelSpell7MagicConsumed;
-                JameelMagic.value = GameManager.JameelMagic;
-                JameelAnim.Play("Armature|Attack");
-                yield return new WaitForSeconds(2f);
+                isDead = enemyUnit[i].JameelHiemsImpetus(Jameel.JameelSpell7Damage * AttackModifier + GameManager.JameelCharms);
 
-                GameManager.isBlue = true;
-                isDead = enemyUnit[enemyUnitSelected].JameelHiemsImpetus(Jameel.JameelSpell7Damage * AttackModifier + GameManager.JameelCharms);
-
-                EnemyAnim();
-                TurnOffAttackBools();
-                yield return new WaitForSeconds(2f);
-
+                if (!isDead)
+                {
+                    enemyAnim[i].Play("Armature|TakeDamage");
+                }
                 if (isDead)
                 {
-                    RemoveCurrentEnemy();
+                    yield return new WaitForSeconds(1f);
+                    enemyAnim[i].SetBool("isDead", true);
+                    enemyTurnOrder.Remove(enemyUnit[i].myEnumValue);
+                    totalExp += enemyUnit[i].ExperienceToDistribute;
+                    totalExp += enemyUnit[i].ExperienceToDistribute;
+                    enemyCount--;
                 }
-                NextTurn();
             }
+            yield return new WaitForSeconds(2f);
+            TurnOffAttackBools();
+
+            NextTurn();
         }
 
         if (jameelBombarda)
@@ -4147,35 +4145,34 @@ public class BattleSystem : MonoBehaviour
 
         if (sullivanUltimumChao)
         {
-            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
-            {
-                sullivanUltimumChao = false;
-                dialogueText.text = "Enemy is knocked out, select another target.";
-                yield return new WaitForSeconds(1f);
-                dialogueText.text = "Select someone to attack!";
-                SullivanMenu.SetActive(true);
-                SullivanSpells.SetActive(false);
-            }
-            else
-            {
-                GameManager.SullivanHealth -= Sullivan.SullivanSpell9MagicConsumed;
-                SullivanHealth.value = GameManager.SullivanHealth;
-                SullivanAnim.Play("Armature|Attack");
-                yield return new WaitForSeconds(2f);
+            SullivanAnim.Play("Armature|Attack");
+            yield return new WaitForSeconds(2f);
+            SullivanMagic.value = GameManager.SullivanMagic;
+            GameManager.SullivanMagic -= Sullivan.SullivanSpell7MagicConsumed;
+            GameManager.isPhysical = true;
 
-                GameManager.isPhysical = true;
-                isDead = enemyUnit[enemyUnitSelected].SullivanUltimumChao(Sullivan.SullivanSpell9Damage * AttackModifier + GameManager.SullivanDodge);
-                EnemyAnim();
-                TurnOffAttackBools();
-                yield return new WaitForSeconds(2f);
+            for (int i = 0; i < enemyUnit.Count; i++)
+            {
+                isDead = enemyUnit[i].SullivanUltimumChao(Sullivan.SullivanSpell9Damage * AttackModifier + GameManager.SullivanDodge);
 
-                //This checks to see if the Enemy is Dead or has HP remaining
+                if (!isDead)
+                {
+                    enemyAnim[i].Play("Armature|TakeDamage");
+                }
                 if (isDead)
                 {
-                    RemoveCurrentEnemy();
+                    yield return new WaitForSeconds(1f);
+                    enemyAnim[i].SetBool("isDead", true);
+                    enemyTurnOrder.Remove(enemyUnit[i].myEnumValue);
+                    totalExp += enemyUnit[i].ExperienceToDistribute;
+                    totalExp += enemyUnit[i].ExperienceToDistribute;
+                    enemyCount--;
                 }
-                NextTurn();
             }
+            yield return new WaitForSeconds(2f);
+            TurnOffAttackBools();
+
+            NextTurn();
         }
 
         if (sullivanMutareStatum)
