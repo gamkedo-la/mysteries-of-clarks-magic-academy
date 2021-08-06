@@ -1674,7 +1674,7 @@ public class BattleSystem : MonoBehaviour
                     GameManager.JameelHealth += GameManager.JameelMaxHealth * .2f + GameManager.MCPotions;
                 }
 
-                if (playerTurnOrder[playerUnitSelected - 1].ToString() == GameManager.MCFirstName)
+                if (playerTurnOrder[playerUnitSelected - 1].ToString() == "MC")
                 {
                     GameManager.MCHealth += GameManager.MCMaxHealth * .2f + GameManager.MCPotions;
                     
@@ -1721,7 +1721,7 @@ public class BattleSystem : MonoBehaviour
                     DefenseJameelTurn = 3;
                 }
 
-                if (playerTurnOrder[playerUnitSelected - 1].ToString() == GameManager.MCFirstName)
+                if (playerTurnOrder[playerUnitSelected - 1].ToString() == "MC")
                 {
                     DefenseMC = .5f;
                     DefenseMCTurn = 3;
@@ -2557,7 +2557,7 @@ public class BattleSystem : MonoBehaviour
                 DefenseJameelTurn = 3;
             }
 
-            if (playerTurnOrder[playerUnitSelected - 1].ToString() == GameManager.MCFirstName)
+            if (playerTurnOrder[playerUnitSelected - 1].ToString() == "MC")
             {
                 DefenseMC = .5f;
                 DefenseMCTurn = 3;
@@ -2726,7 +2726,7 @@ public class BattleSystem : MonoBehaviour
                 GameManager.JameelHealth += GameManager.JameelMaxHealth * .2f;
             }
 
-            if (playerTurnOrder[playerUnitSelected - 1].ToString() == GameManager.MCFirstName)
+            if (playerTurnOrder[playerUnitSelected - 1].ToString() == "MC")
             {
                 GameManager.MCHealth += GameManager.MCMaxHealth * .2f;
 
@@ -2768,7 +2768,7 @@ public class BattleSystem : MonoBehaviour
                 GameManager.JameelHealth += GameManager.JameelMaxHealth * .6f;
             }
 
-            if (playerTurnOrder[playerUnitSelected - 1].ToString() == GameManager.MCFirstName)
+            if (playerTurnOrder[playerUnitSelected - 1].ToString() == "MC")
             {
                 GameManager.MCHealth += GameManager.MCMaxHealth * .6f;
 
@@ -2974,7 +2974,7 @@ public class BattleSystem : MonoBehaviour
                 playerName = "Jameel";
             }
 
-            if (playerTurnOrder[playerUnitSelected+1].ToString() == GameManager.MCFirstName)
+            if (playerTurnOrder[playerUnitSelected+1].ToString() == "MC")
             {
                 playerName = GameManager.MCFirstName;
             }
@@ -3089,7 +3089,7 @@ public class BattleSystem : MonoBehaviour
                 DefenseJameelTurn = 3;
             }
 
-            if (playerTurnOrder[playerUnitSelected - 1].ToString() == GameManager.MCFirstName)
+            if (playerTurnOrder[playerUnitSelected - 1].ToString() == "MC")
             {
                 DefenseMC = .5f;
                 DefenseMCTurn = 3;
@@ -3651,7 +3651,7 @@ public class BattleSystem : MonoBehaviour
                 GameManager.JameelHealth += GameManager.JameelMaxHealth * .2f;
             }
 
-            if (playerTurnOrder[playerUnitSelected - 1].ToString() == GameManager.MCFirstName)
+            if (playerTurnOrder[playerUnitSelected - 1].ToString() == "MC")
             {
                 GameManager.MCHealth += GameManager.MCMaxHealth * .2f;
 
@@ -3693,7 +3693,7 @@ public class BattleSystem : MonoBehaviour
                 GameManager.JameelHealth += GameManager.JameelMaxHealth * .6f;
             }
 
-            if (playerTurnOrder[playerUnitSelected - 1].ToString() == GameManager.MCFirstName)
+            if (playerTurnOrder[playerUnitSelected - 1].ToString() == "MC")
             {
                 GameManager.MCHealth += GameManager.MCMaxHealth * .6f;
 
@@ -4158,35 +4158,70 @@ public class BattleSystem : MonoBehaviour
 
         if (sullivanEngorgement)
         {
-            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
-            {
-                sullivanEngorgement = false;
-                dialogueText.text = "Enemy is knocked out, select another target.";
-                yield return new WaitForSeconds(1f);
-                dialogueText.text = "Select someone to attack!";
-                SullivanMenu.SetActive(true);
-                SullivanSpells.SetActive(false);
-            }
-            else
-            {
-                GameManager.SullivanMagic -= Sullivan.SullivanSpell11MagicConsumed;
-                SullivanMagic.value = GameManager.SullivanMagic;
-                SullivanAnim.Play("Armature|Attack");
-                yield return new WaitForSeconds(2f);
+            GameManager.SullivanMagic -= Sullivan.SullivanSpell11MagicConsumed;
+            SullivanMagic.value = GameManager.SullivanMagic;
+            SullivanAnim.Play("Armature|Attack");
+            yield return new WaitForSeconds(2f);
 
-                GameManager.isRed = true;
-                isDead = enemyUnit[enemyUnitSelected].SullivanEngorgement(Sullivan.SullivanSpell11Damage * AttackModifier + GameManager.SullivanTrans);
-                EnemyAnim();
-                TurnOffAttackBools();
-                yield return new WaitForSeconds(2f);
-
-                //This checks to see if the Enemy is Dead or has HP remaining
-                if (isDead)
+            if (playerTurnOrder[playerUnitSelected + 1].ToString() == "Rhys")
+            {
+                GameManager.RhysHealth *= 2;
+                if (GameManager.RhysHealth > GameManager.RhysMaxHealth)
                 {
-                    RemoveCurrentEnemy();
+                    GameManager.RhysHealth = GameManager.RhysMaxHealth;
                 }
-                NextTurn();
             }
+
+            if (playerTurnOrder[playerUnitSelected + 1].ToString() == "Skye")
+            {
+                GameManager.SkyeHealth *= 2;
+                if (GameManager.SkyeHealth > GameManager.SkyeMaxHealth)
+                {
+                    GameManager.SkyeHealth = GameManager.SkyeMaxHealth;
+                }
+            }
+
+            if (playerTurnOrder[playerUnitSelected + 1].ToString() == "Harper")
+            {
+                GameManager.HarperHealth *= 2;
+                if (GameManager.HarperHealth > GameManager.HarperMaxHealth)
+                {
+                    GameManager.HarperHealth = GameManager.HarperMaxHealth;
+                }
+            }
+
+            if (playerTurnOrder[playerUnitSelected + 1].ToString() == "Sullivan")
+            {
+                print(GameManager.SullivanHealth);
+                GameManager.SullivanHealth *= 2;
+                if (GameManager.SullivanHealth > GameManager.SullivanMaxHealth)
+                {
+                    GameManager.SullivanHealth = GameManager.SullivanMaxHealth;
+                }
+                print(GameManager.SullivanHealth);
+            }
+
+            if (playerTurnOrder[playerUnitSelected + 1].ToString() == "Jameel")
+            {
+                GameManager.JameelHealth *= 2;
+                if (GameManager.JameelHealth > GameManager.JameelMaxHealth)
+                {
+                    GameManager.JameelHealth = GameManager.JameelMaxHealth;
+                }
+            }
+
+            if (playerTurnOrder[playerUnitSelected + 1].ToString() == "MC")
+            {
+                GameManager.MCHealth *= 2;
+                if (GameManager.MCHealth > GameManager.MCMaxHealth)
+                {
+                    GameManager.MCHealth = GameManager.MCMaxHealth;
+                }
+            }
+
+            UpdateLifeUI();
+            TurnOffAttackBools();
+            NextTurn();
         }
 
         if (sullivanStatuamLocomotion)
@@ -4630,7 +4665,7 @@ public class BattleSystem : MonoBehaviour
                             MCDamageUI.text = "".ToString();
 
                             //reflect attack
-                            if (repelAttack && playerName == GameManager.MCFirstName)
+                            if (repelAttack && playerName == "MC")
                             {
                                 bool isDead = enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyUnitSelected].enemyDamage);
                                 enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyUnitSelected].enemyDamage);
@@ -7514,7 +7549,7 @@ public class BattleSystem : MonoBehaviour
 
                 SullivanMenu.SetActive(true);
                 SullivanSpells.SetActive(false);
-                enemySelect = true;
+                playerSelect = true;
                 SullivanConfirmMenu.SetActive(true);
                 SullivanSpells.SetActive(false);
                 SullivanMenu.SetActive(false);
