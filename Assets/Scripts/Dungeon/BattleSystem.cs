@@ -1399,15 +1399,23 @@ public class BattleSystem : MonoBehaviour
                     MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
                     GameManager.isYellow = true;
-                    hasBeenStunned = true;
 
+                    float randChance = Random.Range(0, 100);
+
+                    if ((randChance + GameManager.MCDADA) > 70)
+                    {
+                        hasBeenStunned = true;
+                    }
                     if (hasBeenStunned)
                     {
                         stunnedName = enemyUnit[enemyUnitSelected].name;
+                        EnemyAnim();
+                        TurnOffAttackBools();
                     }
-
-                    EnemyAnim();
-                    TurnOffAttackBools();
+                    else
+                    {
+                        dialogueText.text = "The attack missed!";
+                    }
                     yield return new WaitForSeconds(2f);
 
                     //This checks to see if the Enemy is Dead or has HP remaining
@@ -1433,18 +1441,26 @@ public class BattleSystem : MonoBehaviour
                     MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
                     GameManager.isYellow = true;
-                    isDead = enemyUnit[enemyUnitSelected].Stupefaciunt(MC.MCSpell4Damage * AttackModifier + GameManager.MCDADA);
 
-                    EnemyAnim();
+                    float randChance = Random.Range(0, 100);
 
-                    TurnOffAttackBools();
+                    if ((randChance + GameManager.MCDADA) > 10)
+                    {
+                        hasBeenStunned = true;
+                    }
+                    if (hasBeenStunned)
+                    {
+                        stunnedName = enemyUnit[enemyUnitSelected].name;
+                        EnemyAnim();
+                        TurnOffAttackBools();
+                    }
+                    else
+                    {
+                        dialogueText.text = "The attack missed!";
+                    }
                     yield return new WaitForSeconds(2f);
 
                     //This checks to see if the Enemy is Dead or has HP remaining
-                    if (isDead)
-                    {
-                        RemoveCurrentEnemy();
-                    }
                     NextTurn();
                 }
             }
@@ -3457,7 +3473,7 @@ public class BattleSystem : MonoBehaviour
         {
             if (enemyUnit[enemyUnitSelected].currentHP <= 0)
             {
-                harperPulsateSunt = false;
+                pulsateSunt = false;
                 dialogueText.text = "Enemy is knocked out, select another target.";
                 yield return new WaitForSeconds(1f);
                 dialogueText.text = "Select someone to attack!";
@@ -3470,19 +3486,27 @@ public class BattleSystem : MonoBehaviour
                 HarperMagic.value = GameManager.HarperMagic;
                 HarperAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
-
                 GameManager.isYellow = true;
-                isDead = enemyUnit[enemyUnitSelected].HarperPulsateSunt(Harper.HarperSpell11Damage * AttackModifier + GameManager.HarperDADA);
 
-                EnemyAnim();
-                TurnOffAttackBools();
+                float randChance = Random.Range(0, 100);
+
+                if ((randChance + GameManager.HarperDADA) > 70)
+                {
+                    hasBeenStunned = true;
+                }
+                if (hasBeenStunned)
+                {
+                    stunnedName = enemyUnit[enemyUnitSelected].name;
+                    EnemyAnim();
+                    TurnOffAttackBools();
+                }
+                else
+                {
+                    dialogueText.text = "The attack missed!";
+                }
                 yield return new WaitForSeconds(2f);
 
                 //This checks to see if the Enemy is Dead or has HP remaining
-                if (isDead)
-                {
-                    RemoveCurrentEnemy();
-                }
                 NextTurn();
             }
         }
