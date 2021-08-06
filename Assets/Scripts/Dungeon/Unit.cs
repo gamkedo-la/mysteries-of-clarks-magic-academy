@@ -1798,7 +1798,7 @@ public class Unit : MonoBehaviour
         StartCoroutine(WaitingForText());
 
         Health.value = (currentHP / maxHP);
-        StartCoroutine(ClearText());
+        StartCoroutine(ClearTextIra());
 
         if (currentHP <= 0)
         {
@@ -3271,7 +3271,7 @@ public class Unit : MonoBehaviour
         StartCoroutine(WaitingForText());
 
         Health.value = (currentHP / maxHP);
-        StartCoroutine(ClearText());
+        StartCoroutine(ClearTextIra());
 
         if (currentHP <= 0)
         {
@@ -3892,6 +3892,12 @@ public class Unit : MonoBehaviour
     IEnumerator ClearText()
     {
         yield return new WaitForSeconds(2f);
+        DamageUI.text = "".ToString();
+    }
+
+    IEnumerator ClearTextIra()
+    {
+        yield return new WaitForSeconds(.5f);
         DamageUI.text = "".ToString();
     }
 

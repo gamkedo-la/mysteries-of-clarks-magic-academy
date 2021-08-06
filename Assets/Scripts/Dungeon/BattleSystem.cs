@@ -2591,13 +2591,20 @@ public class BattleSystem : MonoBehaviour
 
                 EnemyAnim();
 
-                TurnOffAttackBools();
-                yield return new WaitForSeconds(2f);
+                yield return new WaitForSeconds(1f);
+
+                isDead = enemyUnit[enemyUnitSelected].RhysIraUolueris(Rhys.RhysSpell13Damage * AttackModifier + GameManager.RhysDADA);
+
+                EnemyAnim();
+
+                yield return new WaitForSeconds(1f);
 
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
                 }
+
+                TurnOffAttackBools();
                 NextTurn();
             }
         }
@@ -3696,39 +3703,6 @@ public class BattleSystem : MonoBehaviour
             NextTurn();
         }
 
-        if (skyeReanimatePotion)
-        {
-            if (enemyUnit[enemyUnitSelected].currentHP <= 0)
-            {
-                skyeReanimatePotion = false;
-                dialogueText.text = "Enemy is knocked out, select another target.";
-                yield return new WaitForSeconds(1f);
-                dialogueText.text = "Select someone to attack!";
-                SkyeMenu.SetActive(true);
-                SkyeSpells.SetActive(false);
-            }
-            else
-            {
-                GameManager.SkyeMagic -= Skye.SkyeSpell6MagicConsumed;
-                SkyeMagic.value = GameManager.SkyeMagic;
-                SkyeAnim.Play("Armature|Attack");
-                yield return new WaitForSeconds(2f);
-
-                GameManager.isGreen = true;
-                isDead = enemyUnit[enemyUnitSelected].SkyeReanimatePotion(Skye.SkyeSpell6Damage * AttackModifier + GameManager.SkyePotions);
-                EnemyAnim();
-                TurnOffAttackBools();
-                yield return new WaitForSeconds(2f);
-
-                //This checks to see if the Enemy is Dead or has HP remaining
-                if (isDead)
-                {
-                    RemoveCurrentEnemy();
-                }
-                NextTurn();
-            }
-        }
-
         if (skyeAntidoteToCommonPoisons)
         {
             if (enemyUnit[enemyUnitSelected].currentHP <= 0)
@@ -3819,14 +3793,20 @@ public class BattleSystem : MonoBehaviour
                 GameManager.isYellow = true;
                 isDead = enemyUnit[enemyUnitSelected].SkyeIraUolueris(Skye.SkyeSpell11Damage * AttackModifier + GameManager.SkyeDADA);
                 EnemyAnim();
-                TurnOffAttackBools();
-                yield return new WaitForSeconds(2f);
+
+                yield return new WaitForSeconds(1f);
+
+                isDead = enemyUnit[enemyUnitSelected].SkyeIraUolueris(Skye.SkyeSpell11Damage * AttackModifier + GameManager.SkyeDADA);
+                EnemyAnim();
+
+                yield return new WaitForSeconds(1f);
 
                 //This checks to see if the Enemy is Dead or has HP remaining
                 if (isDead)
                 {
                     RemoveCurrentEnemy();
                 }
+                TurnOffAttackBools();
                 NextTurn();
             }
         }
@@ -7103,16 +7083,52 @@ public class BattleSystem : MonoBehaviour
             {
                 skyeReanimatePotion = true;
 
-                SkyeMenu.SetActive(true);
-                SkyeSpells.SetActive(false);
-                enemySelect = true;
-                SkyeConfirmMenu.SetActive(true);
-                SkyeSpells.SetActive(false);
                 SkyeMenu.SetActive(false);
+                SkyeSpells.SetActive(false);
+                SkyeConfirmMenu.SetActive(false);
+                GameManager.SkyeMagic -= Skye.SkyeSpell5MagicConsumed;
+                SkyeMagic.value = GameManager.SkyeMagic;
+                SkyeAnim.Play("Armature|Attack");
+                StartCoroutine(Reanimate());
             }
             else
                 dialogueText.text = "Not enough energy!";
         }
+    }
+
+    IEnumerator Reanimate()
+    {
+        yield return new WaitForSeconds(2f);
+
+        if (GameManager.RhysInParty && RhysDead)
+        {
+            GameManager.RhysHealth = GameManager.RhysMaxHealth * .5f;
+            RhysDead = false;
+            playerTurnOrder.Add(CharacterIdentifier.Rhys);
+
+        }
+        if (GameManager.JameelInParty && JameelDead)
+        {
+            GameManager.JameelHealth = GameManager.JameelMaxHealth * .5f;
+            JameelDead = false;
+            playerTurnOrder.Add(CharacterIdentifier.Rhys);
+        }
+        if (GameManager.HarperInParty && HarperDead)
+        {
+            GameManager.HarperHealth = GameManager.HarperMaxHealth * .5f;
+            HarperDead = false;
+            playerTurnOrder.Add(CharacterIdentifier.Rhys);
+        }
+        if (GameManager.SullivanInParty && SullivanDead)
+        {
+            GameManager.SullivanHealth = GameManager.SullivanMaxHealth * .5f;
+            SullivanDead = false;
+            playerTurnOrder.Add(CharacterIdentifier.Sullivan);
+        }
+
+        UpdateLifeUI();
+        TurnOffAttackBools();
+        NextTurn();
     }
 
     public void SkyeSanaCoetusPotion()
