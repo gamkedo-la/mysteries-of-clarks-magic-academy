@@ -261,6 +261,30 @@ public class Unit : MonoBehaviour
         }
     }
 
+    public bool TakeDamageReflected(float dmg)
+    {
+        currentHP -= dmg;
+        DamageUI.text = "-" + dmg.ToString();
+
+        StartCoroutine(WaitingForText());
+        Health.value = (currentHP / maxHP);
+        Debug.Log(Health.value);
+        Debug.Log(currentHP + "/" + maxHP);
+        StartCoroutine(ClearText());
+
+        if (currentHP <= 0)
+        {
+            //  anim.Play("Armature|Downed");
+            return true;
+        }
+
+        else
+        {
+            //  anim.Play("Armature|Damage");
+            return false;
+        }
+    }
+
     public bool TakeDamage(float dmg)
     {
         StartCoroutine(WaitingForText());

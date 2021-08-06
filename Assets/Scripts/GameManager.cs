@@ -184,11 +184,11 @@ public class GameManager : MonoBehaviour
 
         //MC is always in the party
         PartyCount++;
-          SkyeInParty = true;
-          RhysInParty = true;
+          //SkyeInParty = true;
+          JameelInParty = true;
         //  SullivanInParty = true;
       //    PartyCount++;
-          PartyCount++;
+         // PartyCount++;
           PartyCount++;
 
         GracieMayAvailable = true;
