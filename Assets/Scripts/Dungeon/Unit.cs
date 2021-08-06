@@ -2837,20 +2837,22 @@ public class Unit : MonoBehaviour
 
         if ((GameManager.isBlue && weakBlue) || (GameManager.isRed && weakRed) || (GameManager.isGreen && weakGreen) || (GameManager.isYellow && weakYellow) || (GameManager.isPhysical && weakPhys))
         {
-            currentHP -= (dmg * 2);
-            DamageUI.text = "-" + (dmg * 2).ToString();
+            dmg = currentHP * .5f;
+            currentHP -= (dmg);
+            DamageUI.text = "-" + (dmg).ToString();
             Summary.text = "Critical Hit!";
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
-            currentHP -= (dmg * .5f);
-            DamageUI.text = "-" + (dmg * .5f).ToString();
+            dmg = 0;
+            DamageUI.text = "-" + (dmg).ToString();
             Summary.text = "Resist!";
         }
 
         else
         {
+            dmg = 0;
             currentHP -= dmg;
             DamageUI.text = "-" + dmg.ToString();
         }
