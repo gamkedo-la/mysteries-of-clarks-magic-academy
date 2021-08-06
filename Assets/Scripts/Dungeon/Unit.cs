@@ -237,7 +237,6 @@ public class Unit : MonoBehaviour
     public Slider Health;
 
     public bool isEnemy;
-    public bool imStunned;
 
     public bool weakRed, weakBlue, weakYellow, weakGreen, weakPhys;
     public bool strRed, strBlue, strYellow, strGreen, strPhys;
@@ -273,38 +272,6 @@ public class Unit : MonoBehaviour
         }
         else
             return false;
-    }
-
-    public bool HasBeenStunned(bool stunned)
-    {
-        imStunned = true;
-        stunned = imStunned;
-
-        if (stunned)
-        {
-            return true;
-        }
-
-        else
-        {
-            return false;
-        }
-    }
-
-    public bool HasBeenUnStunned(bool stunned)
-    {
-        imStunned = false;
-        stunned = imStunned;
-
-        if (stunned)
-        {
-            return true;
-        }
-
-        else
-        {
-            return false;
-        }
     }
 
     IEnumerator WaitingForText()

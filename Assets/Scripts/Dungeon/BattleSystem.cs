@@ -317,6 +317,8 @@ public class BattleSystem : MonoBehaviour
     bool enemyStunned;
 
     public GameObject GracieMaySpell1, GracieMaySpell2, GracieMaySpell3, GracieMaySpell4;
+
+    string stunnedName;
     private void Start()
     {
         if (GameObject.Find("GameManager") == null)
@@ -1397,9 +1399,13 @@ public class BattleSystem : MonoBehaviour
                     MCAnim.Play("Armature|Attack");
                     yield return new WaitForSeconds(2f);
                     GameManager.isYellow = true;
-                    hasBeenStunned = enemyUnit[enemyUnitSelected].HasBeenStunned(enemyUnit[enemyUnitSelected].imStunned);
-                    print(enemyUnit[enemyUnitSelected].name + " " + enemyUnit[enemyUnitSelected].imStunned);
-                    print(enemyUnit[0].name + " " + enemyUnit[0].imStunned);
+                    hasBeenStunned = true;
+
+                    if (hasBeenStunned)
+                    {
+                        stunnedName = enemyUnit[enemyUnitSelected].name;
+                    }
+
                     EnemyAnim();
                     TurnOffAttackBools();
                     yield return new WaitForSeconds(2f);
@@ -4297,16 +4303,15 @@ public class BattleSystem : MonoBehaviour
         }
         else
         {
-           /* if (enemyUnit[enemyIndex].HasBeenStunned(enemyUnit[enemyIndex].imStunned))
+            if (stunnedName == enemyUnit[enemyIndex].name)
             {
-                dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " has been stunned!";
-                yield return new WaitForSeconds(4f);
-                print("look at that, ive been stunned");
-                enemyUnit[enemyIndex].HasBeenStunned(enemyUnit[enemyIndex].imStunned);
-                NextTurn();
+                dialogueText.text = enemyUnit[enemyIndex].unitName + " is stunned!";
+                yield return new WaitForSeconds(2f);
+                // NextTurn();
+                stunnedName = "";
             }
             else
-            {*/
+            {
                 enemyUnit[enemyUnitSelected].DetermineAttack();
 
                 //This is attacking all the players - a little buggy from Stike Out so commenting out for now. 
@@ -4896,7 +4901,7 @@ public class BattleSystem : MonoBehaviour
                     yield return new WaitForSeconds(.5f);
                     StartCoroutine(TurnOffDamageUI());
                 }
-           // }
+            }
         }
         NextTurn();
     }
