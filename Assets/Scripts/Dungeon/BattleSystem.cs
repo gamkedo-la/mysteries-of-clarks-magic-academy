@@ -1570,35 +1570,35 @@ public class BattleSystem : MonoBehaviour
 
             if (avisMaxima)
             {
-                if (enemyUnit[enemyUnitSelected].currentHP <= 0)
+                MCAnim.Play("Armature|Attack");
+                yield return new WaitForSeconds(2f);
+                MCMagic.value = GameManager.MCMagic;
+                GameManager.MCMagic -= MC.MCSpell8MagicConsumed;
+                print(enemyUnit.Count);
+                GameManager.isRed = true;
+
+                for (int i = 0; i < enemyUnit.Count; i++)
                 {
-                    avisMaxima = false;
-                    dialogueText.text = "Enemy is knocked out, select another target.";
-                    yield return new WaitForSeconds(1f);
-                    dialogueText.text = "Select someone to attack!";
-                    MCMenu.SetActive(true);
-                    MCSpells.SetActive(false);
-                }
-                else
-                {
-                    GameManager.MCMagic -= MC.MCSpell8MagicConsumed;
-                    MCMagic.value = GameManager.MCMagic;
-                    MCAnim.Play("Armature|Attack");
-                    yield return new WaitForSeconds(2f);
-                    GameManager.isRed = true;
-                    isDead = enemyUnit[enemyUnitSelected].AvisMaxima(MC.MCSpell8Damage * AttackModifier + GameManager.MCTrans);
+                    isDead = enemyUnit[i].AvisMaxima(MC.MCSpell8Damage * AttackModifier + GameManager.MCTrans);
 
-                    EnemyAnim();
-
-                    TurnOffAttackBools();
-                    yield return new WaitForSeconds(2f);
-
+                    if (!isDead)
+                    {
+                        enemyAnim[i].Play("Armature|TakeDamage");
+                    }
                     if (isDead)
                     {
-                        RemoveCurrentEnemy();
+                        yield return new WaitForSeconds(1.5f);
+                        enemyAnim[i].SetBool("isDead", true);
+                        enemyTurnOrder.Remove(enemyUnit[i].myEnumValue);
+                        totalExp += enemyUnit[i].ExperienceToDistribute;
+                        totalExp += enemyUnit[i].ExperienceToDistribute;
+                        enemyCount--;
                     }
-                    NextTurn();
                 }
+                yield return new WaitForSeconds(2f);
+                TurnOffAttackBools();
+                
+                NextTurn(); 
             }
 
 
@@ -5654,7 +5654,6 @@ public class BattleSystem : MonoBehaviour
 
                 MCMenu.SetActive(true);
                 MCSpells.SetActive(false);
-                enemySelect = true;
                 MCConfirmMenu.SetActive(true);
                 MCSpells.SetActive(false);
                 MCMenu.SetActive(false);
