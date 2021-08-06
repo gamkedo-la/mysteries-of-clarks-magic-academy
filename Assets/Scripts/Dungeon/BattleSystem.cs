@@ -323,6 +323,7 @@ public class BattleSystem : MonoBehaviour
     string stunnedName;
 
     bool isConfused;
+    bool isSkyeConfused;
     string EnemyThatIsConfusedHarper, EnemyThatIsConfusedSkye;
     private void Start()
     {
@@ -3780,16 +3781,19 @@ public class BattleSystem : MonoBehaviour
                 yield return new WaitForSeconds(2f);
 
                 GameManager.isBlue = true;
-                isDead = enemyUnit[enemyUnitSelected].SkyeConfundus(Skye.SkyeSpell10Damage * AttackModifier + GameManager.SkyeCharms);
-                EnemyAnim();
+
+                int ConfusedRandom = Random.Range(0, 100);
+                ConfusedRandom = 100;
+
+                if (ConfusedRandom > 50 || enemyUnit[enemyUnitSelected].weakBlue)
+                {
+                    isSkyeConfused = true;
+                    EnemyThatIsConfusedSkye = enemyUnit[enemyUnitSelected].name;
+                }
+
                 TurnOffAttackBools();
                 yield return new WaitForSeconds(2f);
 
-                //This checks to see if the Enemy is Dead or has HP remaining
-                if (isDead)
-                {
-                    RemoveCurrentEnemy();
-                }
                 NextTurn();
             }
         }
@@ -4282,46 +4286,91 @@ public class BattleSystem : MonoBehaviour
             else
             {
                 enemyUnit[enemyUnitSelected].DetermineAttack();
-                if (isConfused && EnemyThatIsConfusedHarper == enemyUnit[enemyIndex].name)
+                if (isConfused || isSkyeConfused)
                 {
-                    int WhatEnemyDoing = Random.Range(0, 100);
-
-                    if (WhatEnemyDoing < 34)
+                    if (EnemyThatIsConfusedHarper == enemyUnit[enemyIndex].name)
                     {
-                        int moneyAmount = Random.Range(20, 40);
-                        dialogueText.text = enemyUnit[enemyIndex].unitName + " has given" + GameManager.MCFirstName + " W$" + moneyAmount + "!";
-                        yield return new WaitForSeconds(3f);
-                        //Give player money
-                    }
+                        int WhatEnemyDoing = Random.Range(0, 100);
 
-                    else if (WhatEnemyDoing > 67)
-                    {
-                        //Do nothing
-                        dialogueText.text = enemyUnit[enemyIndex].unitName + " is looking confused!";
-                        yield return new WaitForSeconds(3f);
-                    }
-
-                    else
-                    {
-                        dialogueText.text = enemyUnit[enemyIndex].unitName + " has hurt itself in confusion!";
-                        yield return new WaitForSeconds(1.5f);
-                        //Attack enemy
-
-                        //ChooseWho To Attack
-                        enemyAnim[enemyIndex].Play("Armature|Attack");
-                        yield return new WaitForSeconds(2f);
-
-                        bool isDead = enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyIndex].enemyDamage);
-                        enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyIndex].enemyDamage);
-
-                        if (isDead)
+                        if (WhatEnemyDoing < 34)
                         {
-                            RemoveCurrentEnemy();
+                            int moneyAmount = Random.Range(20, 40);
+                            dialogueText.text = enemyUnit[enemyIndex].unitName + " has given" + GameManager.MCFirstName + " W$" + moneyAmount + "!";
+                            yield return new WaitForSeconds(3f);
+                            //Give player money
                         }
-                        yield return new WaitForSeconds(2f);
+
+                        else if (WhatEnemyDoing > 67)
+                        {
+                            //Do nothing
+                            dialogueText.text = enemyUnit[enemyIndex].unitName + " is looking confused!";
+                            yield return new WaitForSeconds(3f);
+                        }
+
+                        else
+                        {
+                            dialogueText.text = enemyUnit[enemyIndex].unitName + " has hurt itself in confusion!";
+                            yield return new WaitForSeconds(1.5f);
+                            //Attack enemy
+
+                            //ChooseWho To Attack
+                            enemyAnim[enemyIndex].Play("Armature|Attack");
+                            yield return new WaitForSeconds(2f);
+
+                            bool isDead = enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyIndex].enemyDamage);
+                            enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyIndex].enemyDamage);
+
+                            if (isDead)
+                            {
+                                RemoveCurrentEnemy();
+                            }
+                            yield return new WaitForSeconds(2f);
+                        }
+                        isConfused = false;
+                        EnemyThatIsConfusedHarper = "";
                     }
-                    isConfused = false;
-                    EnemyThatIsConfusedHarper = "";
+
+                    if (EnemyThatIsConfusedSkye == enemyUnit[enemyIndex].name)
+                    {
+                        int WhatEnemyDoing = Random.Range(0, 100);
+
+                        if (WhatEnemyDoing < 34)
+                        {
+                            int moneyAmount = Random.Range(20, 40);
+                            dialogueText.text = enemyUnit[enemyIndex].unitName + " has given" + GameManager.MCFirstName + " W$" + moneyAmount + "!";
+                            yield return new WaitForSeconds(3f);
+                            //Give player money
+                        }
+
+                        else if (WhatEnemyDoing > 67)
+                        {
+                            //Do nothing
+                            dialogueText.text = enemyUnit[enemyIndex].unitName + " is looking confused!";
+                            yield return new WaitForSeconds(3f);
+                        }
+
+                        else
+                        {
+                            dialogueText.text = enemyUnit[enemyIndex].unitName + " has hurt itself in confusion!";
+                            yield return new WaitForSeconds(1.5f);
+                            //Attack enemy
+
+                            //ChooseWho To Attack
+                            enemyAnim[enemyIndex].Play("Armature|Attack");
+                            yield return new WaitForSeconds(2f);
+
+                            bool isDead = enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyIndex].enemyDamage);
+                            enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyIndex].enemyDamage);
+
+                            if (isDead)
+                            {
+                                RemoveCurrentEnemy();
+                            }
+                            yield return new WaitForSeconds(2f);
+                        }
+                        isSkyeConfused = false;
+                        EnemyThatIsConfusedSkye = "";
+                    }
                 }
 
                 else
