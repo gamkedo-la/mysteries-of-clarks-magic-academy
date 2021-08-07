@@ -2,17 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Numerics;
+using UnityEngine.AI;
+using Quaternion = UnityEngine.Quaternion;
+using Vector2 = UnityEngine.Vector2;
+using Vector3 = UnityEngine.Vector3;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public CharacterController controller;
     public Transform cam;
     public Animator anim;
 
     public float speed = 5f;
-    public float smoothingForTurn;
     float turnSmoothTime = 0.1f;
-    float turnSmooothVelocity;
+    float _turnSmooothVelocity;
+
+    private Vector3 heightOffset = new Vector3(0, 0.9f, 0);
 
     private void Start()
     {
@@ -21,35 +26,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        #region PlayerMovement
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
+        Vector2 inputDirection = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
-        if (Input.GetAxisRaw("Vertical") > -.05f && Input.GetAxisRaw("Vertical") < .05f && Input.GetAxisRaw("Horizontal") > -.05f && Input.GetAxisRaw("Horizontal") < .05f)
-        {
-            anim.SetBool("isWalking", false);
-        }
-
-        else
-        {
-            anim.SetBool("isWalking", true);
-        }
-
-        Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
-
-        if (direction.magnitude >= 0.1f)
-        {
-            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
-            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmooothVelocity, turnSmoothTime);
-            transform.rotation = Quaternion.Euler(0f, angle, 0f);
-
-            Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-            controller.Move(moveDir.normalized * speed * Time.deltaTime);
-        }
-        #endregion
+        HandleWalkAnimation(inputDirection);
+        HandleWalk(inputDirection);
+ 
 
         #region Cursor Locked in Screen
-
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (Cursor.lockState == CursorLockMode.Confined)
@@ -58,5 +41,33 @@ public class PlayerMovement : MonoBehaviour
             }
         }
         #endregion
+    }
+
+
+    void HandleWalkAnimation(Vector2 input)
+    {
+        anim.SetBool("isWalking", input.sqrMagnitude > 0.05f);
+    }
+
+    void HandleWalk(Vector2 input)
+    {
+        Vector3 direction = new Vector3(input.x, 0f, input.y).normalized;
+        
+        // If the input is small enough, don't do anything.
+        if (direction.magnitude <= 0.05f) return;
+        
+        float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+        float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _turnSmooothVelocity, turnSmoothTime);
+        transform.rotation = Quaternion.Euler(0f, angle, 0f);
+
+        Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+        Vector3 newPosition = transform.position + moveDir.normalized * speed * Time.deltaTime;
+
+        // Check if the desired next point is on the navmesh.
+        bool isValid = NavMesh.SamplePosition(newPosition, out NavMeshHit hit, 2f, NavMesh.AllAreas);
+        if (isValid)
+        {
+            transform.position = hit.position + heightOffset;
+        }
     }
 }
