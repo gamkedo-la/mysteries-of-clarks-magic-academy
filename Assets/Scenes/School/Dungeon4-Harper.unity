@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -400,6 +400,60 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 644249467}
   m_CullTransparentMesh: 1
+--- !u!1 &702410673
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 702410675}
+  - component: {fileID: 702410674}
+  m_Layer: 0
+  m_Name: Room Generator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &702410674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 702410673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4e5e336e963cb14894aedb26a873617, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dungeonNumber: 4
+  currentLevel: 0
+  specialLevels: []
+  levelIsSpecial: 0
+  gridScale: 15
+  enemy: {fileID: 3850822852890711762, guid: 60ebbc643f5f01743ba0a0238ebdca78, type: 3}
+  treasure: {fileID: 8197017496622106850, guid: 93a888ffe9bb83648b5261f04ac62e15,
+    type: 3}
+  exit: {fileID: 932652461484532558, guid: a262b168e0bacd644b6573966a15609c, type: 3}
+  player: {fileID: 4132115396440224977, guid: 6e911099bdbece546a41a5342e0731d8, type: 3}
+  currentRooms: []
+--- !u!4 &702410675
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 702410673}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &901406076
 GameObject:
   m_ObjectHideFlags: 0
