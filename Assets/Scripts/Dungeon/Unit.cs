@@ -3913,14 +3913,18 @@ public class Unit : MonoBehaviour
         maxDamage = 25;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
-        attackName = "Follow Through".ToString();
+        attackName = "Heavy Pounding".ToString();
     }
 
     void ThrustedFist()
     {
+        attackName = "Thrusted Fist".ToString();
+        print(attackName);
+
         int confusionChance;
         maxChance = 90;
         confusionChance = Random.Range(0, 100);
+
         if (confusionChance <= maxChance)
         {
             BattleSystem.confusionChance = true;
@@ -3930,7 +3934,7 @@ public class Unit : MonoBehaviour
         maxDamage = 15;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
-        attackName = "Thrusted Fist".ToString();
+
     }
 
     void HeadButt()

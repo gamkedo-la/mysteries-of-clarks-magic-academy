@@ -4546,196 +4546,7 @@ public class BattleSystem : MonoBehaviour
                 {
                     //This is attacking all the players - a little buggy from Stike Out so commenting out for now. 
                     #region Attack all or take Magic from All
-                    /* if (Unit.attackAll)
-                        {
-                            dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks Everyone with " + enemyUnit[enemyUnitSelected].attackName + "!";
 
-                            enemyAnim[enemyIndex].Play("Armature|Swing");
-
-                            if (Announcer)
-                            {
-                                yield return new WaitForSeconds(3.5f);
-                            }
-                            else
-                            {
-                                yield return new WaitForSeconds(2f);
-                            }
-
-                            int RandomAttack = Random.Range(0, 100);
-
-                            if (GameManager.MiddleAgil >= RandomAttack)
-                            {
-                                dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks Mid Reliever with " + enemyUnit[enemyUnitSelected].attackName + "!";
-                                yield return new WaitForSeconds(.5f);
-                                dialogueText.text = "Mid Reliever Dodges!";
-                                yield return new WaitForSeconds(1f);
-
-                            }
-
-                            bool isDead1 = Starter.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier);
-                            bool isDead2 = MiddleReliever.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier);
-                            bool isDead3 = SetUp.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier);
-                            bool isDead4 = Closer.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier);
-
-                            if (isDead1 && GameManager.StarterAgil < RandomAttack)
-                            {
-                                GameManager.StarterMorale -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier;
-                                StarterMorale.value = (GameManager.StarterMorale / GameManager.StarterMoraleMax);
-                                starterDead = true;
-                                StarterDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
-                                //
-                                playerTurnOrder.Remove(CharacterIdentifier.Starter);
-                                //   Debug.Log("Removing Starter");
-
-                                //
-                                StarterAnim.SetBool("isDead", true);
-                            }
-                            if (isDead2 && GameManager.MiddleAgil < RandomAttack)
-                            {
-                                GameManager.MidRelivMorale -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier;
-                                MiddleMorale.value = (GameManager.MidRelivMorale / GameManager.MidRelivMoraleMax);
-                                middleDead = true;
-                                MiddleDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
-
-                                playerTurnOrder.Remove(CharacterIdentifier.Middle);
-                                //  Debug.Log("Removing Middle");
-
-
-                                MidRelAnim.SetBool("isDead", true);
-
-                            }
-                            if (isDead3 && GameManager.SetUpAgil < RandomAttack)
-                            {
-                                GameManager.SetUpMorale -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier;
-                                SetUpMorale.value = (GameManager.SetUpMorale / GameManager.SetUpMoraleMax);
-                                setupDead = true;
-                                SetUpDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
-
-                                playerTurnOrder.Remove(CharacterIdentifier.SetUp);
-                                //   Debug.Log("Removing SetUp");
-
-
-                                SetUpAnim.SetBool("isDead", true);
-                            }
-                            if (isDead4 && GameManager.CloserAgil < RandomAttack)
-                            {
-                                GameManager.CloserMorale -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier;
-                                CloserMorale.value = (GameManager.CloserMorale / GameManager.CloserMoraleMax);
-                                closerDead = true;
-                                CloserDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
-
-                                playerTurnOrder.Remove(CharacterIdentifier.Closer);
-                                //    Debug.Log("Removing Closer");
-
-
-                                CloserAnim.SetBool("isDead", true);
-
-                            }
-
-                            if (!isDead1 && GameManager.StarterAgil < RandomAttack)
-                            {
-                                yield return new WaitForSeconds(.5f);
-                                StarterAnim.Play("Armature|Oof");
-
-                                GameManager.StarterMorale -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier;
-                                StarterDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
-                                StarterMorale.value = (GameManager.StarterMorale / GameManager.StarterMoraleMax);
-                            }
-
-                            if (!isDead2 && GameManager.MiddleAgil < RandomAttack)
-                            {
-                                yield return new WaitForSeconds(.5f);
-                                MidRelAnim.Play("Armature|Oof");
-
-                                GameManager.MidRelivMorale -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier;
-                                MiddleDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
-                                MiddleMorale.value = (GameManager.MidRelivMorale / GameManager.MidRelivMoraleMax);
-                            }
-
-                            if (!isDead3 && GameManager.SetUpAgil < RandomAttack)
-                            {
-                                yield return new WaitForSeconds(.5f);
-                                SetUpAnim.Play("Armature|Oof");
-
-                                GameManager.SetUpMorale -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier;
-                                SetUpDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
-                                SetUpMorale.value = (GameManager.SetUpMorale / GameManager.SetUpMoraleMax);
-                            }
-
-                            if (!isDead4 && GameManager.CloserAgil < RandomAttack)
-                            {
-                                yield return new WaitForSeconds(.5f);
-                                CloserAnim.Play("Armature|Oof");
-
-                                GameManager.CloserMorale -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier;
-                                CloserDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
-                                CloserMorale.value = (GameManager.CloserMorale / GameManager.CloserMoraleMax);
-                            }
-                            Unit.attackAll = false;
-                            yield return new WaitForSeconds(2f);
-                            StartCoroutine(TurnOffDamageUI());
-                            // NextPlayerTurnAfterEnemyTurn(enemyIndex);
-                        }
-
-                        else if (Unit.energyAll)
-                        {
-                            dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " tires the Pitchers with " + enemyUnit[enemyUnitSelected].attackName + "!";
-
-                            enemyAnim[enemyIndex].Play("Armature|Swing");
-
-                            yield return new WaitForSeconds(1f);
-
-                            bool isDead1 = Starter.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier);
-                            bool isDead2 = MiddleReliever.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier);
-                            bool isDead3 = SetUp.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier);
-                            bool isDead4 = Closer.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier);
-
-                            if (!isDead1)
-                            {
-                                yield return new WaitForSeconds(.5f);
-                                StarterAnim.Play("Armature|Oof");
-
-                                GameManager.StarterEnergy -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier;
-                                StarterDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
-                                StarterEnergy.value = (GameManager.StarterEnergy / GameManager.StarterEnergyMax);
-                            }
-
-                            if (!isDead2)
-                            {
-                                yield return new WaitForSeconds(.5f);
-                                MidRelAnim.Play("Armature|Oof");
-
-                                GameManager.MidRelivEnergy -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier;
-                                MiddleDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
-                                MiddleEnergy.value = (GameManager.MidRelivEnergy / GameManager.MidRelievEnergyMax);
-                            }
-
-                            if (!isDead3)
-                            {
-                                yield return new WaitForSeconds(.5f);
-                                SetUpAnim.Play("Armature|Oof");
-
-                                GameManager.SetUpEnergy -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier;
-                                SetUpDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
-                                SetUpEnergy.value = (GameManager.SetUpEnergy / GameManager.SetUpEnergyMax);
-                            }
-
-                            if (!isDead4)
-                            {
-                                yield return new WaitForSeconds(.5f);
-                                CloserAnim.Play("Armature|Oof");
-
-                                GameManager.CloserEnergy -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier;
-                                CloserDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
-                                CloserEnergy.value = (GameManager.CloserEnergy / GameManager.CloserEnergyMax);
-                            }
-                            Unit.energyAll = false;
-                            yield return new WaitForSeconds(1f);
-                            StartCoroutine(TurnOffDamageUI());
-                            //NextPlayerTurnAfterEnemyTurn(enemyIndex);
-                        }
-
-                        */
                     #endregion
                     // else
                     // {
@@ -4803,6 +4614,7 @@ public class BattleSystem : MonoBehaviour
                         if (singleBlock && playerToBlock == "MC")
                         {
                             dialogueText.text = enemyUnit[enemyIndex].unitName + " attacks " + GameManager.MCFirstName + " with " + enemyUnit[enemyIndex].attackName + "!";
+                            
                             yield return new WaitForSeconds(2f);
                             dialogueText.text = "The attack was blocked!";
                             yield return new WaitForSeconds(2f);
@@ -5027,6 +4839,7 @@ public class BattleSystem : MonoBehaviour
                         yield return new WaitForSeconds(.5f);
                         StartCoroutine(TurnOffDamageUI());
                     }
+
                     else if (WhoToAttack == 2 && !JameelDead && GameManager.JameelInParty)
                     {
                         enemyUnit[enemyIndex].transform.LookAt(Jameel.transform.position);
@@ -5606,6 +5419,7 @@ public class BattleSystem : MonoBehaviour
                 {
                     int MoneyThrown = Random.Range(20, 40);
                     GameManager.Money -= MoneyThrown;
+                    MCAnim.Play("Armature|Attack");
                     dialogueText.text = GameManager.MCFirstName + " threw away W$" + MoneyThrown;
                 }
 
@@ -5814,6 +5628,7 @@ public class BattleSystem : MonoBehaviour
                 int MoneyThrown = Random.Range(20, 40);
                 GameManager.Money -= MoneyThrown;
                 dialogueText.text = "Rhys threw away W$" + MoneyThrown;
+                RhysAnim.Play("Armature|Attack");
             }
 
             RhysConfused = false;
@@ -5907,6 +5722,7 @@ public class BattleSystem : MonoBehaviour
                 int MoneyThrown = Random.Range(20, 40);
                 GameManager.Money -= MoneyThrown;
                 dialogueText.text = "Jameel threw away W$" + MoneyThrown;
+                JameelAnim.Play("Armature|Attack");
             }
 
             JameelConfused = false;
@@ -6003,6 +5819,7 @@ public class BattleSystem : MonoBehaviour
                 int MoneyThrown = Random.Range(20, 40);
                 GameManager.Money -= MoneyThrown;
                 dialogueText.text = "Harper threw away W$" + MoneyThrown;
+                HarperAnim.Play("Armature|Attack");
             }
 
             HarperConfused = false;
@@ -6103,6 +5920,7 @@ public class BattleSystem : MonoBehaviour
                 int MoneyThrown = Random.Range(20, 40);
                 GameManager.Money -= MoneyThrown;
                 dialogueText.text = "Skye threw away W$" + MoneyThrown;
+                SkyeAnim.Play("Armature|Attack");
             }
 
             SkyeConfused = false;
@@ -6196,6 +6014,7 @@ public class BattleSystem : MonoBehaviour
                 int MoneyThrown = Random.Range(20, 40);
                 GameManager.Money -= MoneyThrown;
                 dialogueText.text = "Sullivan threw away W$" + MoneyThrown;
+                SullivanAnim.Play("Armature|Attack");
             }
 
             SullivanConfused = false;
