@@ -3818,12 +3818,12 @@ public class Unit : MonoBehaviour
 
         else if (enemyAttacks[AttackToDo].ToString() == "JabJabJab();")
         {
-            FollowThrough();
+            JabJabJab();
         }
 
         else if (enemyAttacks[AttackToDo].ToString() == "HeavyPounding();")
         {
-            FollowThrough();
+            HeavyPounding();
         }
     }
 
@@ -3866,8 +3866,8 @@ public class Unit : MonoBehaviour
     void FollowThrough()
     {
         BattleSystem.secondaryAttack = true;
-        minDamage = 7;
-        maxDamage = 12;
+        minDamage = 10;
+        maxDamage = 20;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Follow Through".ToString();

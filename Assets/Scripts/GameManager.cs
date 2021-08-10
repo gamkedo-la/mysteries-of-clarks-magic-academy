@@ -185,7 +185,7 @@ public class GameManager : MonoBehaviour
         //MC is always in the party
         PartyCount++;
        RhysInParty = true;
-          JameelInParty = true;
+          SkyeInParty = true;
          SullivanInParty = true;
         PartyCount++;
           PartyCount++;
@@ -240,12 +240,12 @@ public class GameManager : MonoBehaviour
         SkyeMaxHealth = 20;
         SullivanMaxHealth = 20;
 
-        MCHealth = 10;
-        RhysHealth = 10;
-        JameelHealth =10;
-        HarperHealth = 10;
-        SkyeHealth = 10;
-        SullivanHealth = 10;
+        MCHealth = 20;
+        RhysHealth = 20;
+        JameelHealth =20;
+        HarperHealth = 20;
+        SkyeHealth = 20;
+        SullivanHealth = 20;
 
         MCMaxMagic = 20;
         RhysMaxMagic = 20;

@@ -4985,6 +4985,7 @@ public class BattleSystem : MonoBehaviour
                                             RhysHealth.value = GameManager.RhysHealth;
                                             RhysDead = true;
                                             playerTurnOrder.Remove(CharacterIdentifier.Rhys);
+                                            RhysAnim.Play("Armature|Dead");
                                             RhysAnim.SetBool("isDead", true);
                                             yield return new WaitForSeconds(2.5f);
                                         }
@@ -5087,15 +5088,19 @@ public class BattleSystem : MonoBehaviour
 
                                     if (secondaryAttack)
                                     {
-                                        bool isDead2 = Jameel.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseJameel);
-                                        if (isDead2 || Jameel.currentHP <= 0)
+
+                                        Jameel.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseJameel);
+                                        print("here");
+                                        print(Jameel.currentHP);
+                                        if (Jameel.currentHP <= 0)
                                         {
-                                            print("should be dead");
+                                           
                                             JameelDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
                                             GameManager.JameelHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseJameel;
                                             JameelHealth.value = GameManager.JameelHealth;
                                             JameelDead = true;
                                             playerTurnOrder.Remove(CharacterIdentifier.Jameel);
+                                            JameelAnim.Play("Armature|Dead");
                                             JameelAnim.SetBool("isDead", true);
                                             yield return new WaitForSeconds(2.5f);
                                         }
@@ -5208,6 +5213,7 @@ public class BattleSystem : MonoBehaviour
                                             HarperHealth.value = GameManager.HarperHealth;
                                             HarperDead = true;
                                             playerTurnOrder.Remove(CharacterIdentifier.Harper);
+                                            HarperAnim.Play("Armature|Dead");
                                             HarperAnim.SetBool("isDead", true);
                                             yield return new WaitForSeconds(2.5f);
                                         }
@@ -5319,6 +5325,7 @@ public class BattleSystem : MonoBehaviour
                                             SkyeHealth.value = GameManager.SkyeHealth;
                                             SkyeDead = true;
                                             playerTurnOrder.Remove(CharacterIdentifier.Skye);
+                                            SkyeAnim.Play("Armature|Dead");
                                             SkyeAnim.SetBool("isDead", true);
                                             yield return new WaitForSeconds(2.5f);
                                         }
@@ -5425,11 +5432,13 @@ public class BattleSystem : MonoBehaviour
                                         bool isDead2 = Sullivan.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseSullivan);
                                         if (isDead2 || Sullivan.currentHP <= 0)
                                         {
+                                            print(Sullivan.currentHP);
                                             SullivanDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
                                             GameManager.SullivanHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseSullivan;
                                             SullivanHealth.value = GameManager.SullivanHealth;
                                             SullivanDead = true;
                                             playerTurnOrder.Remove(CharacterIdentifier.Sullivan);
+                                            SullivanAnim.Play("Armature|Dead");
                                             SullivanAnim.SetBool("isDead", true);
                                             yield return new WaitForSeconds(2.5f);
                                         }
@@ -5458,6 +5467,7 @@ public class BattleSystem : MonoBehaviour
             }
         }
         NextTurn();
+        UpdateLifeUI();
     }
 
     bool isPlayerIndexDead(int playerID)
