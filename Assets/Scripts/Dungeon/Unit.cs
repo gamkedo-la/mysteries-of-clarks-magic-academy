@@ -3815,6 +3815,16 @@ public class Unit : MonoBehaviour
         {
             FollowThrough();
         }
+
+        else if (enemyAttacks[AttackToDo].ToString() == "JabJabJab();")
+        {
+            FollowThrough();
+        }
+
+        else if (enemyAttacks[AttackToDo].ToString() == "HeavyPounding();")
+        {
+            FollowThrough();
+        }
     }
 
     void SoftPunch()
@@ -3824,7 +3834,6 @@ public class Unit : MonoBehaviour
 
         enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Soft Punch".ToString();
-        print(enemyDamage);
     }
 
     void HeftyHook()
@@ -3834,7 +3843,6 @@ public class Unit : MonoBehaviour
 
         enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Hefty Hook".ToString();
-        print(enemyDamage);
     }
 
     void HeavyAssault()
@@ -3844,7 +3852,6 @@ public class Unit : MonoBehaviour
 
         enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Hefty Hook".ToString();
-        print(enemyDamage);
     }
 
     void GodsHand()
@@ -3854,18 +3861,36 @@ public class Unit : MonoBehaviour
 
         enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Hefty Hook".ToString();
-        print(enemyDamage);
     }
 
     void FollowThrough()
     {
         BattleSystem.secondaryAttack = true;
-        minDamage = 8;
-        maxDamage = 9;
+        minDamage = 7;
+        maxDamage = 12;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Follow Through".ToString();
-        print(enemyDamage);
+    }
+
+    void JabJabJab()
+    {
+        BattleSystem.secondaryAttack = true;
+        minDamage = 3;
+        maxDamage = 7;
+
+        enemyDamage = Random.Range(minDamage, maxDamage);
+        attackName = "Follow Through".ToString();
+    }
+
+    void HeavyPounding()
+    {
+        BattleSystem.secondaryAttack = true;
+        minDamage = 15;
+        maxDamage = 25;
+
+        enemyDamage = Random.Range(minDamage, maxDamage);
+        attackName = "Follow Through".ToString();
     }
 
     IEnumerator ClearText()
