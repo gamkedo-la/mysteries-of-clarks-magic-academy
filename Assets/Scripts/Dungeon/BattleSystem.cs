@@ -5554,7 +5554,8 @@ public class BattleSystem : MonoBehaviour
     #region Player Turns (button select)
     IEnumerator WaitingForConfusion()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(2.5f);
+        NextTurn();
     }
 
     void MCTurn()
@@ -5574,7 +5575,6 @@ public class BattleSystem : MonoBehaviour
                 dialogueText.text = GameManager.MCFirstName + ": is confused!";
 
                 int RandOptions = Random.Range(0, 100);
-                StartCoroutine(WaitingForConfusion());
                 if (RandOptions < 40)
                 {
                     dialogueText.text = GameManager.MCFirstName + " is staring off into space!";
@@ -5610,7 +5610,7 @@ public class BattleSystem : MonoBehaviour
                 }
 
                 MCConfused = false;
-                NextTurn();
+                StartCoroutine(WaitingForConfusion());
             }
 
             else
@@ -5781,7 +5781,7 @@ public class BattleSystem : MonoBehaviour
             dialogueText.text = "Rhys: is confused!";
 
             int RandOptions = Random.Range(0, 100);
-            StartCoroutine(WaitingForConfusion());
+
             if (RandOptions < 40)
             {
                 dialogueText.text = "Rhys is staring off into space!";
@@ -5817,7 +5817,7 @@ public class BattleSystem : MonoBehaviour
             }
 
             RhysConfused = false;
-            NextTurn();
+            StartCoroutine(WaitingForConfusion());
         }
 
         else
@@ -5874,7 +5874,7 @@ public class BattleSystem : MonoBehaviour
             dialogueText.text = "Jameel: is confused!";
 
             int RandOptions = Random.Range(0, 100);
-            StartCoroutine(WaitingForConfusion());
+
             if (RandOptions < 40)
             {
                 dialogueText.text = "Jameel is staring off into space!";
@@ -5910,7 +5910,7 @@ public class BattleSystem : MonoBehaviour
             }
 
             JameelConfused = false;
-            NextTurn();
+            StartCoroutine(WaitingForConfusion());
         }
 
         else
@@ -5970,7 +5970,7 @@ public class BattleSystem : MonoBehaviour
             dialogueText.text = "Harper: is confused!";
 
             int RandOptions = Random.Range(0, 100);
-            StartCoroutine(WaitingForConfusion());
+
             if (RandOptions < 40)
             {
                 dialogueText.text = "Harper is staring off into space!";
@@ -6006,7 +6006,7 @@ public class BattleSystem : MonoBehaviour
             }
 
             HarperConfused = false;
-            NextTurn();
+            StartCoroutine(WaitingForConfusion());
         }
 
         else
@@ -6070,7 +6070,7 @@ public class BattleSystem : MonoBehaviour
             dialogueText.text = "Skye: is confused!";
 
             int RandOptions = Random.Range(0, 100);
-            StartCoroutine(WaitingForConfusion());
+
             if (RandOptions < 40)
             {
                 dialogueText.text = "Skye is staring off into space!";
@@ -6106,7 +6106,7 @@ public class BattleSystem : MonoBehaviour
             }
 
             SkyeConfused = false;
-            NextTurn();
+            StartCoroutine(WaitingForConfusion());
         }
 
         else
@@ -6163,7 +6163,7 @@ public class BattleSystem : MonoBehaviour
             dialogueText.text = "Sullivan: is confused!";
 
             int RandOptions = Random.Range(0, 100);
-            StartCoroutine(WaitingForConfusion());
+
             if (RandOptions < 40)
             {
                 dialogueText.text = "Sullivan is staring off into space!";
@@ -6199,7 +6199,7 @@ public class BattleSystem : MonoBehaviour
             }
 
             SullivanConfused = false;
-            NextTurn();
+            StartCoroutine(WaitingForConfusion());
         }
 
         else
