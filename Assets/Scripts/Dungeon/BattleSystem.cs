@@ -4559,9 +4559,9 @@ public class BattleSystem : MonoBehaviour
                         {
                             dialogueText.text = enemyUnit[enemyIndex].unitName + " attacks " + GameManager.MCFirstName + " with " + enemyUnit[enemyIndex].attackName + "!";
 
-                            yield return new WaitForSeconds(2f);
+                            yield return new WaitForSeconds(.25f);
                             dialogueText.text = "The attack was blocked!";
-                            yield return new WaitForSeconds(2f);
+                            yield return new WaitForSeconds(.25f);
                             singleBlock = false;
                             playerToBlock = "";
                         }
@@ -4569,16 +4569,16 @@ public class BattleSystem : MonoBehaviour
                         else if ((GameManager.MCDodge * EvasionModifier) >= RandomGroupAttack)
                         {
                             dialogueText.text = enemyUnit[enemyIndex].unitName + " attacks " + GameManager.MCFirstName + " with " + enemyUnit[enemyIndex].attackName + "!";
-                            yield return new WaitForSeconds(.5f);
+                            yield return new WaitForSeconds(.25f);
                             dialogueText.text = GameManager.MCFirstName + " Dodges!";
                             MCAnim.Play("Armature|Dodge");
-                            yield return new WaitForSeconds(1f);
+                            yield return new WaitForSeconds(.25f);
 
                         }
                         //Attack
                         else
                         {
-                            yield return new WaitForSeconds(2f);
+                            yield return new WaitForSeconds(.25f);
 
                             MCDamageUI.text = "".ToString();
 
@@ -4589,7 +4589,7 @@ public class BattleSystem : MonoBehaviour
                                 enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyIndex].enemyDamage);
                                 dialogueText.text = "The attack is reflected!";
                                 EnemyAnim();
-                                yield return new WaitForSeconds(2f);
+                                yield return new WaitForSeconds(.25f);
 
                                 //This checks to see if the Enemy is Dead or has HP remaining
                                 if (isDead)
@@ -4613,7 +4613,7 @@ public class BattleSystem : MonoBehaviour
                                     MCAnim.SetBool("isDead", true);
                                     Debug.Log("Game Over because Main Character died");
                                     state = BattleState.LOST;
-                                    yield return new WaitForSeconds(1f);
+                                    yield return new WaitForSeconds(.25f);
                                     EndBattle();
                                 }
                                 //Not dead, but hurt
@@ -4629,12 +4629,12 @@ public class BattleSystem : MonoBehaviour
 
                                     if (secondaryAttack)
                                     {
-                                        yield return new WaitForSeconds(.5f);
+                                        yield return new WaitForSeconds(.25f);
                                         MCAnim.Play("Armature|TakeDamage");
                                         MCDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseMC).ToString();
                                         GameManager.MCHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseMC;
                                         MCHealth.value = GameManager.MCHealth;
-                                        yield return new WaitForSeconds(.5f);
+                                        yield return new WaitForSeconds(.25f);
                                         MCDamageUI.text = "";
                                         if (isDead)
                                         {
@@ -4642,13 +4642,13 @@ public class BattleSystem : MonoBehaviour
                                             MCAnim.SetBool("isDead", true);
                                             Debug.Log("Game Over because Main Character died");
                                             state = BattleState.LOST;
-                                            yield return new WaitForSeconds(1f);
+                                            yield return new WaitForSeconds(.25f);
                                             EndBattle();
                                         }
                                         secondaryAttack = false;
                                     }
 
-                                    yield return new WaitForSeconds(.5f);
+                                    yield return new WaitForSeconds(.25f);
                                     MCAnim.Play("Armature|TakeDamage");
                                     MCDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseMC).ToString();
                                     GameManager.MCHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseMC;
@@ -4666,21 +4666,21 @@ public class BattleSystem : MonoBehaviour
                             //Block
                             if (singleBlock && playerToBlock == "Rhys")
                             {
-                                yield return new WaitForSeconds(1f);
+                                yield return new WaitForSeconds(.25f);
                                 singleBlock = false;
                                 playerToBlock = "";
                             }
                             //Dodge
                             else if ((GameManager.RhysDodge * EvasionModifier) >= RandomAttack)
                             {
-                                yield return new WaitForSeconds(.5f);
+                                yield return new WaitForSeconds(.25f);
                                 RhysAnim.Play("Armature|Dodge");
-                                yield return new WaitForSeconds(1f);
+                                yield return new WaitForSeconds(.25f);
 
                             }
                             else
                             {
-                                yield return new WaitForSeconds(1f);
+                                yield return new WaitForSeconds(.25f);
 
 
                                 RhysDamageUI.text = "".ToString();
@@ -4692,7 +4692,7 @@ public class BattleSystem : MonoBehaviour
                                     enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyIndex].enemyDamage);
                                     dialogueText.text = "The attack is reflected!";
                                     EnemyAnim();
-                                    yield return new WaitForSeconds(1f);
+                                    yield return new WaitForSeconds(.25f);
 
                                     //This checks to see if the Enemy is Dead or has HP remaining
                                     if (isDead)
@@ -4716,13 +4716,13 @@ public class BattleSystem : MonoBehaviour
                                         playerTurnOrder.Remove(CharacterIdentifier.Rhys);
 
                                         RhysAnim.SetBool("isDead", true);
-                                        yield return new WaitForSeconds(1f);
+                                        yield return new WaitForSeconds(.25f);
 
                                     }
 
                                     else
                                     {
-                                        yield return new WaitForSeconds(.5f);
+                                        yield return new WaitForSeconds(.25f);
                                         RhysAnim.Play("Armature|TakeDamage");
                                         RhysDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
                                         GameManager.RhysHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseRhys;
@@ -4733,7 +4733,7 @@ public class BattleSystem : MonoBehaviour
                                             RhysConfused = true;
                                             confusionChance = false;
                                             dialogueText.text = "Rhys is confused!";
-                                            yield return new WaitForSeconds(1f);
+                                            yield return new WaitForSeconds(.25f);
                                         }
 
                                         if (secondaryAttack)
@@ -4748,16 +4748,16 @@ public class BattleSystem : MonoBehaviour
                                                 playerTurnOrder.Remove(CharacterIdentifier.Rhys);
                                                 RhysAnim.Play("Armature|Dead");
                                                 RhysAnim.SetBool("isDead", true);
-                                                yield return new WaitForSeconds(1f);
+                                                yield return new WaitForSeconds(.25f);
                                             }
                                             else
                                             {
-                                                yield return new WaitForSeconds(.5f);
+                                                yield return new WaitForSeconds(.25f);
                                                 RhysAnim.Play("Armature|TakeDamage");
                                                 RhysDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
                                                 GameManager.RhysHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseRhys;
                                                 RhysHealth.value = GameManager.RhysHealth;
-                                                yield return new WaitForSeconds(.5f);
+                                                yield return new WaitForSeconds(.25f);
                                                 RhysDamageUI.text = "";
                                             }
                                             secondaryAttack = false;
@@ -4776,21 +4776,21 @@ public class BattleSystem : MonoBehaviour
                             //Block
                             if (singleBlock && playerToBlock == "Jameel")
                             {
-                                yield return new WaitForSeconds(.5f);
+                                yield return new WaitForSeconds(.25f);
                                 singleBlock = false;
                                 playerToBlock = "";
                             }
                             //Dodge
                             else if ((GameManager.JameelDodge * EvasionModifier) >= RandomAttack)
                             {
-                                yield return new WaitForSeconds(.5f);
+                                yield return new WaitForSeconds(.25f);
                                 JameelAnim.Play("Armature|Dodge");
-                                yield return new WaitForSeconds(1f);
+                                yield return new WaitForSeconds(.25f);
 
                             }
                             else
                             {
-                                yield return new WaitForSeconds(1f);
+                                yield return new WaitForSeconds(.25f);
 
 
                                 JameelDamageUI.text = "".ToString();
@@ -4802,7 +4802,7 @@ public class BattleSystem : MonoBehaviour
                                     enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyIndex].enemyDamage);
                                     dialogueText.text = "The attack is reflected!";
                                     EnemyAnim();
-                                    yield return new WaitForSeconds(.5f);
+                                    yield return new WaitForSeconds(.25f);
 
                                     //This checks to see if the Enemy is Dead or has HP remaining
                                     if (isDead)
@@ -4832,7 +4832,7 @@ public class BattleSystem : MonoBehaviour
 
                                     else
                                     {
-                                        yield return new WaitForSeconds(.5f);
+                                        yield return new WaitForSeconds(.25f);
                                         JameelAnim.Play("Armature|TakeDamage");
                                         JameelDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
                                         GameManager.JameelHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseJameel;
@@ -4843,7 +4843,7 @@ public class BattleSystem : MonoBehaviour
                                             JameelConfused = true;
                                             confusionChance = false;
                                             dialogueText.text = "Jameel is confused!";
-                                            yield return new WaitForSeconds(1f);
+                                            yield return new WaitForSeconds(.25f);
                                         }
 
                                         if (secondaryAttack)
@@ -4858,16 +4858,16 @@ public class BattleSystem : MonoBehaviour
                                                 playerTurnOrder.Remove(CharacterIdentifier.Jameel);
                                                 JameelAnim.Play("Armature|Dead");
                                                 JameelAnim.SetBool("isDead", true);
-                                                yield return new WaitForSeconds(1f);
+                                                yield return new WaitForSeconds(.25f);
                                             }
                                             else
                                             {
-                                                yield return new WaitForSeconds(.5f);
+                                                yield return new WaitForSeconds(.25f);
                                                 JameelAnim.Play("Armature|TakeDamage");
                                                 JameelDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
                                                 GameManager.JameelHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseJameel;
                                                 JameelHealth.value = GameManager.JameelHealth;
-                                                yield return new WaitForSeconds(.5f);
+                                                yield return new WaitForSeconds(.25f);
                                                 JameelDamageUI.text = "";
                                             }
                                             secondaryAttack = false;
@@ -4886,21 +4886,21 @@ public class BattleSystem : MonoBehaviour
                             //Block
                             if (singleBlock && playerToBlock == "Harper")
                             {
-                                yield return new WaitForSeconds(1f);
+                                yield return new WaitForSeconds(.25f);
                                 singleBlock = false;
                                 playerToBlock = "";
                             }
                             //Dodge
                             else if ((GameManager.HarperDodge * EvasionModifier) >= RandomAttack)
                             {
-                                yield return new WaitForSeconds(.5f);
+                                yield return new WaitForSeconds(.25f);
                                 HarperAnim.Play("Armature|Dodge");
-                                yield return new WaitForSeconds(1f);
+                                yield return new WaitForSeconds(.25f);
 
                             }
                             else
                             {
-                                yield return new WaitForSeconds(1f);
+                                yield return new WaitForSeconds(.25f);
 
 
                                 HarperDamageUI.text = "".ToString();
@@ -4912,7 +4912,7 @@ public class BattleSystem : MonoBehaviour
                                     enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyIndex].enemyDamage);
                                     dialogueText.text = "The attack is reflected!";
                                     EnemyAnim();
-                                    yield return new WaitForSeconds(1f);
+                                    yield return new WaitForSeconds(.25f);
 
                                     //This checks to see if the Enemy is Dead or has HP remaining
                                     if (isDead)
@@ -4936,13 +4936,13 @@ public class BattleSystem : MonoBehaviour
                                         playerTurnOrder.Remove(CharacterIdentifier.Harper);
 
                                         HarperAnim.SetBool("isDead", true);
-                                        yield return new WaitForSeconds(1f);
+                                        yield return new WaitForSeconds(.25f);
 
                                     }
 
                                     else
                                     {
-                                        yield return new WaitForSeconds(.5f);
+                                        yield return new WaitForSeconds(.25f);
                                         HarperAnim.Play("Armature|TakeDamage");
                                         HarperDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
                                         GameManager.HarperHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseHarper;
@@ -4953,7 +4953,7 @@ public class BattleSystem : MonoBehaviour
                                             HarperConfused = true;
                                             confusionChance = false;
                                             dialogueText.text = "Harper is confused!";
-                                            yield return new WaitForSeconds(1f);
+                                            yield return new WaitForSeconds(.25f);
                                         }
 
                                         if (secondaryAttack)
@@ -4968,16 +4968,16 @@ public class BattleSystem : MonoBehaviour
                                                 playerTurnOrder.Remove(CharacterIdentifier.Harper);
                                                 HarperAnim.Play("Armature|Dead");
                                                 HarperAnim.SetBool("isDead", true);
-                                                yield return new WaitForSeconds(.5f);
+                                                yield return new WaitForSeconds(.25f);
                                             }
                                             else
                                             {
-                                                yield return new WaitForSeconds(.5f);
+                                                yield return new WaitForSeconds(.25f);
                                                 HarperAnim.Play("Armature|TakeDamage");
                                                 HarperDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
                                                 GameManager.HarperHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseHarper;
                                                 HarperHealth.value = GameManager.HarperHealth;
-                                                yield return new WaitForSeconds(.5f);
+                                                yield return new WaitForSeconds(.25f);
                                                 HarperDamageUI.text = "";
                                             }
                                             secondaryAttack = false;
@@ -4996,21 +4996,21 @@ public class BattleSystem : MonoBehaviour
                             //Block
                             if (singleBlock && playerToBlock == "Skye")
                             {
-                                yield return new WaitForSeconds(1f);
+                                yield return new WaitForSeconds(.25f);
                                 singleBlock = false;
                                 playerToBlock = "";
                             }
                             //Dodge
                             else if ((GameManager.SkyeDodge * EvasionModifier) >= RandomAttack)
                             {
-                                yield return new WaitForSeconds(.5f);
+                                yield return new WaitForSeconds(.25f);
                                 SkyeAnim.Play("Armature|Dodge");
-                                yield return new WaitForSeconds(1f);
+                                yield return new WaitForSeconds(.25f);
 
                             }
                             else
                             {
-                                yield return new WaitForSeconds(1f);
+                                yield return new WaitForSeconds(.25f);
 
 
                                 SkyeDamageUI.text = "".ToString();
@@ -5022,7 +5022,7 @@ public class BattleSystem : MonoBehaviour
                                     enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyIndex].enemyDamage);
                                     dialogueText.text = "The attack is reflected!";
                                     EnemyAnim();
-                                    yield return new WaitForSeconds(.5f);
+                                    yield return new WaitForSeconds(.25f);
 
                                     //This checks to see if the Enemy is Dead or has HP remaining
                                     if (isDead)
@@ -5046,13 +5046,13 @@ public class BattleSystem : MonoBehaviour
                                         playerTurnOrder.Remove(CharacterIdentifier.Skye);
 
                                         SkyeAnim.SetBool("isDead", true);
-                                        yield return new WaitForSeconds(1f);
+                                        yield return new WaitForSeconds(.25f);
 
                                     }
 
                                     else
                                     {
-                                        yield return new WaitForSeconds(.5f);
+                                        yield return new WaitForSeconds(.25f);
                                         SkyeAnim.Play("Armature|TakeDamage");
                                         SkyeDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
                                         GameManager.SkyeHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseSkye;
@@ -5063,7 +5063,7 @@ public class BattleSystem : MonoBehaviour
                                             SkyeConfused = true;
                                             confusionChance = false;
                                             dialogueText.text = "Skye is confused!";
-                                            yield return new WaitForSeconds(1f);
+                                            yield return new WaitForSeconds(.25f);
                                         }
 
                                         if (secondaryAttack)
@@ -5078,16 +5078,16 @@ public class BattleSystem : MonoBehaviour
                                                 playerTurnOrder.Remove(CharacterIdentifier.Skye);
                                                 SkyeAnim.Play("Armature|Dead");
                                                 SkyeAnim.SetBool("isDead", true);
-                                                yield return new WaitForSeconds(1f);
+                                                yield return new WaitForSeconds(.25f);
                                             }
                                             else
                                             {
-                                                yield return new WaitForSeconds(.5f);
+                                                yield return new WaitForSeconds(.25f);
                                                 SkyeAnim.Play("Armature|TakeDamage");
                                                 SkyeDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
                                                 GameManager.SkyeHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseSkye;
                                                 SkyeHealth.value = GameManager.SkyeHealth;
-                                                yield return new WaitForSeconds(.5f);
+                                                yield return new WaitForSeconds(.25f);
                                                 SkyeDamageUI.text = "";
                                             }
                                             secondaryAttack = false;
@@ -5106,21 +5106,21 @@ public class BattleSystem : MonoBehaviour
                             //Block
                             if (singleBlock && playerToBlock == "Sullivan")
                             {
-                                yield return new WaitForSeconds(1f);
+                                yield return new WaitForSeconds(.25f);
                                 singleBlock = false;
                                 playerToBlock = "";
                             }
                             //Dodge
                             else if ((GameManager.SullivanDodge * EvasionModifier) >= RandomAttack)
                             {
-                                yield return new WaitForSeconds(.5f);
+                                yield return new WaitForSeconds(.25f);
                                 SullivanAnim.Play("Armature|Dodge");
-                                yield return new WaitForSeconds(1f);
+                                yield return new WaitForSeconds(.25f);
 
                             }
                             else
                             {
-                                yield return new WaitForSeconds(1f);
+                                yield return new WaitForSeconds(.25f);
 
 
                                 SullivanDamageUI.text = "".ToString();
@@ -5132,7 +5132,7 @@ public class BattleSystem : MonoBehaviour
                                     enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyIndex].enemyDamage);
                                     dialogueText.text = "The attack is reflected!";
                                     EnemyAnim();
-                                    yield return new WaitForSeconds(1f);
+                                    yield return new WaitForSeconds(.25f);
 
                                     //This checks to see if the Enemy is Dead or has HP remaining
                                     if (isDead)
@@ -5156,13 +5156,13 @@ public class BattleSystem : MonoBehaviour
                                         playerTurnOrder.Remove(CharacterIdentifier.Sullivan);
 
                                         SullivanAnim.SetBool("isDead", true);
-                                        yield return new WaitForSeconds(1f);
+                                        yield return new WaitForSeconds(.25f);
 
                                     }
 
                                     else
                                     {
-                                        yield return new WaitForSeconds(.5f);
+                                        yield return new WaitForSeconds(.25f);
                                         SullivanAnim.Play("Armature|TakeDamage");
                                         SullivanDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
                                         GameManager.SullivanHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseSullivan;
@@ -5173,7 +5173,7 @@ public class BattleSystem : MonoBehaviour
                                             SullivanConfused = true;
                                             confusionChance = false;
                                             dialogueText.text = "Sullivan is confused!";
-                                            yield return new WaitForSeconds(1f);
+                                            yield return new WaitForSeconds(.25f);
                                         }
 
                                         if (secondaryAttack)
@@ -5188,16 +5188,16 @@ public class BattleSystem : MonoBehaviour
                                                 playerTurnOrder.Remove(CharacterIdentifier.Sullivan);
                                                 SullivanAnim.Play("Armature|Dead");
                                                 SullivanAnim.SetBool("isDead", true);
-                                                yield return new WaitForSeconds(1f);
+                                                yield return new WaitForSeconds(.25f);
                                             }
                                             else
                                             {
-                                                yield return new WaitForSeconds(.5f);
+                                                yield return new WaitForSeconds(.25f);
                                                 SullivanAnim.Play("Armature|TakeDamage");
                                                 SullivanDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
                                                 GameManager.SullivanHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseSullivan;
                                                 SullivanHealth.value = GameManager.SullivanHealth;
-                                                yield return new WaitForSeconds(.5f);
+                                                yield return new WaitForSeconds(.25f);
                                                 SullivanDamageUI.text = "";
                                             }
                                             secondaryAttack = false;
