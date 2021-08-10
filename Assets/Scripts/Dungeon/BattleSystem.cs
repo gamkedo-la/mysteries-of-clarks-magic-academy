@@ -4955,54 +4955,53 @@ public class BattleSystem : MonoBehaviour
                                 bool isDead = Rhys.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseRhys);
                                 if (isDead)
                                 {
-                                    RhysDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseRhys).ToString();
+                                    RhysDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
                                     GameManager.RhysHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseRhys;
                                     RhysHealth.value = GameManager.RhysHealth;
+                                    RhysDead = true;
+
                                     playerTurnOrder.Remove(CharacterIdentifier.Rhys);
 
                                     RhysAnim.SetBool("isDead", true);
-                                    RhysDead = true;
                                     yield return new WaitForSeconds(3f);
 
                                 }
 
                                 else
                                 {
+                                    yield return new WaitForSeconds(.5f);
+                                    RhysAnim.Play("Armature|TakeDamage");
+                                    RhysDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
+                                    GameManager.RhysHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseRhys;
+                                    RhysHealth.value = GameManager.RhysHealth;
+
                                     if (secondaryAttack)
                                     {
-                                        yield return new WaitForSeconds(.5f);
-                                        RhysAnim.Play("Armature|TakeDamage");
                                         bool isDead2 = Rhys.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseRhys);
-                                        RhysDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseRhys).ToString();
-                                        GameManager.RhysHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseRhys;
-                                        RhysHealth.value = GameManager.RhysHealth;
-                                        yield return new WaitForSeconds(.5f);
-                                        RhysDamageUI.text = "";
-                                        if (isDead2)
+                                        if (isDead2 || Rhys.currentHP <= 0)
                                         {
-                                            RhysDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseRhys).ToString();
+                                            RhysDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
                                             GameManager.RhysHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseRhys;
                                             RhysHealth.value = GameManager.RhysHealth;
-                                            playerTurnOrder.Remove(CharacterIdentifier.Rhys);
-
-                                            RhysAnim.SetBool("isDead", true);
-                                            print("Im dead");
                                             RhysDead = true;
-                                            yield return new WaitForSeconds(3f);
+                                            playerTurnOrder.Remove(CharacterIdentifier.Rhys);
+                                            RhysAnim.SetBool("isDead", true);
+                                            yield return new WaitForSeconds(2.5f);
+                                        }
+                                        else
+                                        {
+                                            yield return new WaitForSeconds(.5f);
+                                            RhysAnim.Play("Armature|TakeDamage");
+                                            RhysDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
+                                            GameManager.RhysHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseRhys;
+                                            RhysHealth.value = GameManager.RhysHealth;
+                                            yield return new WaitForSeconds(.5f);
+                                            RhysDamageUI.text = "";
                                         }
                                         secondaryAttack = false;
                                     }
 
-                                    yield return new WaitForSeconds(.5f);
-                                    if (!isDead)
-                                    {
-                                        RhysAnim.Play("Armature|TakeDamage");
-                                    }
-                                    RhysDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseRhys).ToString();
-                                    GameManager.RhysHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseRhys;
-                                    RhysHealth.value = GameManager.RhysHealth;
                                     yield return new WaitForSeconds(2f);
-
                                 }
                             }
                         }
@@ -5080,46 +5079,35 @@ public class BattleSystem : MonoBehaviour
 
                                 else
                                 {
-
                                     yield return new WaitForSeconds(.5f);
                                     JameelAnim.Play("Armature|TakeDamage");
                                     JameelDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
                                     GameManager.JameelHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseJameel;
                                     JameelHealth.value = GameManager.JameelHealth;
 
-                                    if (isDead)
-                                    {
-                                        JameelDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
-                                        GameManager.JameelHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseJameel;
-                                        JameelHealth.value = GameManager.JameelHealth;
-                                        JameelDead = true;
-
-                                        playerTurnOrder.Remove(CharacterIdentifier.Jameel);
-                                        print("Im dead");
-                                        JameelAnim.SetBool("isDead", true);
-                                        yield return new WaitForSeconds(2.5f);
-                                    }
-
                                     if (secondaryAttack)
                                     {
-                                        yield return new WaitForSeconds(.5f);
-                                        JameelAnim.Play("Armature|TakeDamage");
-                                        JameelDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
-                                        GameManager.JameelHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseJameel;
-                                        JameelHealth.value = GameManager.JameelHealth;
-                                        yield return new WaitForSeconds(.5f);
-                                        JameelDamageUI.text = "";
-                                        if (isDead)
+                                        bool isDead2 = Jameel.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseJameel);
+                                        if (isDead2 || Jameel.currentHP <= 0)
                                         {
+                                            print("should be dead");
                                             JameelDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
                                             GameManager.JameelHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseJameel;
                                             JameelHealth.value = GameManager.JameelHealth;
                                             JameelDead = true;
-
                                             playerTurnOrder.Remove(CharacterIdentifier.Jameel);
-                                            print("Im dead");
                                             JameelAnim.SetBool("isDead", true);
                                             yield return new WaitForSeconds(2.5f);
+                                        }
+                                        else
+                                        {
+                                            yield return new WaitForSeconds(.5f);
+                                            JameelAnim.Play("Armature|TakeDamage");
+                                            JameelDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
+                                            GameManager.JameelHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseJameel;
+                                            JameelHealth.value = GameManager.JameelHealth;
+                                            yield return new WaitForSeconds(.5f);
+                                            JameelDamageUI.text = "";
                                         }
                                         secondaryAttack = false;
                                     }
@@ -5190,7 +5178,7 @@ public class BattleSystem : MonoBehaviour
                                 bool isDead = Harper.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseHarper);
                                 if (isDead)
                                 {
-                                    HarperDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseHarper).ToString();
+                                    HarperDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
                                     GameManager.HarperHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseHarper;
                                     HarperHealth.value = GameManager.HarperHealth;
                                     HarperDead = true;
@@ -5204,66 +5192,39 @@ public class BattleSystem : MonoBehaviour
 
                                 else
                                 {
+                                    yield return new WaitForSeconds(.5f);
+                                    HarperAnim.Play("Armature|TakeDamage");
+                                    HarperDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
+                                    GameManager.HarperHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseHarper;
+                                    HarperHealth.value = GameManager.HarperHealth;
+
                                     if (secondaryAttack)
                                     {
-                                        yield return new WaitForSeconds(.5f);
-                                        HarperAnim.Play("Armature|TakeDamage");
-                                        HarperDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseHarper).ToString();
-                                        GameManager.HarperHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseHarper;
-                                        HarperHealth.value = GameManager.HarperHealth;
-                                        yield return new WaitForSeconds(.5f);
-                                        HarperDamageUI.text = "";
-                                        if (isDead)
+                                        bool isDead2 = Harper.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseHarper);
+                                        if (isDead2 || Harper.currentHP <= 0)
                                         {
-                                            HarperDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseHarper).ToString();
+                                            HarperDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
                                             GameManager.HarperHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseHarper;
                                             HarperHealth.value = GameManager.HarperHealth;
                                             HarperDead = true;
-
                                             playerTurnOrder.Remove(CharacterIdentifier.Harper);
-
                                             HarperAnim.SetBool("isDead", true);
-                                            yield return new WaitForSeconds(3f);
+                                            yield return new WaitForSeconds(2.5f);
+                                        }
+                                        else
+                                        {
+                                            yield return new WaitForSeconds(.5f);
+                                            HarperAnim.Play("Armature|TakeDamage");
+                                            HarperDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
+                                            GameManager.HarperHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseHarper;
+                                            HarperHealth.value = GameManager.HarperHealth;
+                                            yield return new WaitForSeconds(.5f);
+                                            HarperDamageUI.text = "";
                                         }
                                         secondaryAttack = false;
                                     }
 
-                                    yield return new WaitForSeconds(.5f);
-                                    if (!isDead)
-                                    {
-                                        HarperAnim.Play("Armature|TakeDamage");
-                                    }
-                                    
-                                    HarperDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseHarper).ToString();
-                                    GameManager.HarperHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseHarper;
-                                    HarperHealth.value = GameManager.HarperHealth;
-
-
-                                    //Harper's Counter
-                                    float CounterChance = Random.Range(0, 100);
-                                    if ((CounterChance < (GameManager.HarperFriendship * 10)) && GameManager.HarperFriendship > 3)
-                                    {
-                                        //Counter
-                                        yield return new WaitForSeconds(2f);
-                                        dialogueText.text = "Harper is countering with Deflector Impetum!";
-                                        HarperAnim.Play("Armature|Attack");
-                                        yield return new WaitForSeconds(2f);
-
-                                        isDead = enemyUnit[enemyUnitSelected].HarperDeflectorImpetum(Harper.HarperSpell3Damage * AttackModifier);
-
-                                        EnemyAnim();
-                                        yield return new WaitForSeconds(2f);
-
-                                        //This checks to see if the Enemy is Dead or has HP remaining
-                                        if (isDead)
-                                        {
-                                            RemoveCurrentEnemy();
-                                        }
-                                    }
-                                    else
-                                    {
-                                        yield return new WaitForSeconds(2f);
-                                    }
+                                    yield return new WaitForSeconds(2f);
                                 }
                             }
                         }
@@ -5328,7 +5289,7 @@ public class BattleSystem : MonoBehaviour
                                 bool isDead = Skye.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseSkye);
                                 if (isDead)
                                 {
-                                    SkyeDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseSkye).ToString();
+                                    SkyeDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
                                     GameManager.SkyeHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseSkye;
                                     SkyeHealth.value = GameManager.SkyeHealth;
                                     SkyeDead = true;
@@ -5342,41 +5303,39 @@ public class BattleSystem : MonoBehaviour
 
                                 else
                                 {
+                                    yield return new WaitForSeconds(.5f);
+                                    SkyeAnim.Play("Armature|TakeDamage");
+                                    SkyeDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
+                                    GameManager.SkyeHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseSkye;
+                                    SkyeHealth.value = GameManager.SkyeHealth;
+
                                     if (secondaryAttack)
                                     {
-                                        yield return new WaitForSeconds(.5f);
-                                        SkyeAnim.Play("Armature|TakeDamage");
-                                        SkyeDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseSkye).ToString();
-                                        GameManager.SkyeHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseSkye;
-                                        SkyeHealth.value = GameManager.SkyeHealth;
-                                        yield return new WaitForSeconds(.5f);
-                                        SkyeDamageUI.text = "";
-                                        if (isDead)
+                                        bool isDead2 = Skye.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseSkye);
+                                        if (isDead2 || Skye.currentHP <= 0)
                                         {
-                                            SkyeDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseSkye).ToString();
+                                            SkyeDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
                                             GameManager.SkyeHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseSkye;
                                             SkyeHealth.value = GameManager.SkyeHealth;
                                             SkyeDead = true;
-
                                             playerTurnOrder.Remove(CharacterIdentifier.Skye);
-
                                             SkyeAnim.SetBool("isDead", true);
-                                            yield return new WaitForSeconds(3f);
+                                            yield return new WaitForSeconds(2.5f);
+                                        }
+                                        else
+                                        {
+                                            yield return new WaitForSeconds(.5f);
+                                            SkyeAnim.Play("Armature|TakeDamage");
+                                            SkyeDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
+                                            GameManager.SkyeHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseSkye;
+                                            SkyeHealth.value = GameManager.SkyeHealth;
+                                            yield return new WaitForSeconds(.5f);
+                                            SkyeDamageUI.text = "";
                                         }
                                         secondaryAttack = false;
                                     }
 
-                                    yield return new WaitForSeconds(.5f);
-                                    if (!isDead)
-                                    {
-                                        SkyeAnim.Play("Armature|TakeDamage");
-                                    }
-                                    
-                                    SkyeDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseSkye).ToString();
-                                    GameManager.SkyeHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseSkye;
-                                    SkyeHealth.value = GameManager.SkyeHealth;
                                     yield return new WaitForSeconds(2f);
-
                                 }
                             }
                         }
@@ -5441,7 +5400,7 @@ public class BattleSystem : MonoBehaviour
                                 bool isDead = Sullivan.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseSullivan);
                                 if (isDead)
                                 {
-                                    SullivanDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseSullivan).ToString();
+                                    SullivanDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
                                     GameManager.SullivanHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseSullivan;
                                     SullivanHealth.value = GameManager.SullivanHealth;
                                     SullivanDead = true;
@@ -5455,40 +5414,39 @@ public class BattleSystem : MonoBehaviour
 
                                 else
                                 {
+                                    yield return new WaitForSeconds(.5f);
+                                    SullivanAnim.Play("Armature|TakeDamage");
+                                    SullivanDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
+                                    GameManager.SullivanHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseSullivan;
+                                    SullivanHealth.value = GameManager.SullivanHealth;
+
                                     if (secondaryAttack)
                                     {
-                                        yield return new WaitForSeconds(.5f);
-                                        SullivanAnim.Play("Armature|TakeDamage");
-                                        SullivanDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseSullivan).ToString();
-                                        GameManager.SullivanHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseSullivan;
-                                        SullivanHealth.value = GameManager.SullivanHealth;
-                                        yield return new WaitForSeconds(.5f);
-                                        SullivanDamageUI.text = "";
-                                        if (isDead)
+                                        bool isDead2 = Sullivan.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseSullivan);
+                                        if (isDead2 || Sullivan.currentHP <= 0)
                                         {
-                                            SullivanDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseSullivan).ToString();
+                                            SullivanDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
                                             GameManager.SullivanHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseSullivan;
                                             SullivanHealth.value = GameManager.SullivanHealth;
                                             SullivanDead = true;
-
                                             playerTurnOrder.Remove(CharacterIdentifier.Sullivan);
-
                                             SullivanAnim.SetBool("isDead", true);
-                                            yield return new WaitForSeconds(3f);
+                                            yield return new WaitForSeconds(2.5f);
+                                        }
+                                        else
+                                        {
+                                            yield return new WaitForSeconds(.5f);
+                                            SullivanAnim.Play("Armature|TakeDamage");
+                                            SullivanDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
+                                            GameManager.SullivanHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseSullivan;
+                                            SullivanHealth.value = GameManager.SullivanHealth;
+                                            yield return new WaitForSeconds(.5f);
+                                            SullivanDamageUI.text = "";
                                         }
                                         secondaryAttack = false;
                                     }
 
-                                    yield return new WaitForSeconds(.5f);
-                                    if (!isDead)
-                                    {
-                                        SullivanAnim.Play("Armature|TakeDamage");
-                                    }
-                                    SullivanDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseSullivan).ToString();
-                                    GameManager.SullivanHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseSullivan;
-                                    SullivanHealth.value = GameManager.SullivanHealth;
                                     yield return new WaitForSeconds(2f);
-
                                 }
                             }
                         }
