@@ -242,6 +242,8 @@ public class Unit : MonoBehaviour
     public bool strRed, strBlue, strYellow, strGreen, strPhys;
     public Text Summary;
 
+    public string[] enemyAttacks;
+
     private void Start()
     {
         if (isEnemy)
@@ -3787,106 +3789,67 @@ public class Unit : MonoBehaviour
     //This is for the Enemys to reference for their choice of attack (start of the AI system)
     public void DetermineAttack()
     {
-        SoftPunch();
-        /*
-        attackToDo = Random.Range(minAttackAvil, maxAttackAvil);
+        int AttackToDo = Random.Range(0, enemyAttacks.Length);
 
-        if (attackToDo == 0)
-            //using this as an example
-        { SoftPunch(); }*/
-        #region Attacks from Strike Out - To Be Replaced
-        /*
-                if (attackToDo == 1)
-                { SeeingEye(); AttackVO(attackToDo); }
+        if (enemyAttacks[AttackToDo].ToString() == "SoftPunch();")
+        {
+            SoftPunch();
+        }
 
-                if (attackToDo == 2)
-                { PopUp(); AttackVO(attackToDo); }
+        else if (enemyAttacks[AttackToDo].ToString() == "HeftyHook();")
+        {
+            HeftyHook();
+        }
 
-                if (attackToDo == 3)
-                { LineDrive(); AttackVO(attackToDo); }
+        else if(enemyAttacks[AttackToDo].ToString() == "HeavyAssault();")
+        {
+            HeavyAssault();
+        }
 
-                if (attackToDo == 4)
-                { Shagging(); AttackVO(attackToDo); }
-
-                if (attackToDo == 5)
-                { GroundRule(); AttackVO(attackToDo); }
-
-                if (attackToDo == 6)
-                { TakingPitch(); AttackVO(attackToDo); }
-
-                if (attackToDo == 7)
-                { DeepFoul(); AttackVO(attackToDo); }
-
-                if (attackToDo == 8)
-                { CircusPlay(); AttackVO(attackToDo); }
-
-                if (attackToDo == 9)
-                { Grandstanding(); AttackVO(attackToDo); }
-
-                if (attackToDo == 10)
-                { TheCall(); AttackVO(attackToDo); }
-
-                if (attackToDo == 11)
-                { DucksOnPond(); AttackVO(attackToDo); }
-
-                if (attackToDo == 12)
-                { SouvenirDay(); AttackVO(attackToDo); }
-
-                if (attackToDo == 13)
-                { DeadBall(); AttackVO(attackToDo); }
-
-                if (attackToDo == 14)
-                { Balk(); AttackVO(attackToDo); }
-
-                if (attackToDo == 15)
-                { Walk(); AttackVO(attackToDo); }
-
-                if (attackToDo == 16)
-                { OverTurnedCall(); AttackVO(attackToDo); }
-
-                if (attackToDo == 17)
-                { StrikeOut(); AttackVO(attackToDo); }
-
-                if (attackToDo == 18)
-                { Ejection(); AttackVO(attackToDo); }
-
-                if (attackToDo == 19)
-                { TightStrikeZone(); AttackVO(attackToDo); }
-
-
-
-                if (attackToDo == 20)
-                { Clutch(); AttackVO(attackToDo); }
-
-                if (attackToDo == 21)
-                { GrandSlam(); AttackVO(attackToDo); }
-
-                if (attackToDo == 22)
-                { CalledShot(); AttackVO(attackToDo); }
-
-                if (attackToDo == 23)
-                { Rally(); AttackVO(attackToDo); }
-
-                if (attackToDo == 24)
-                { Double(); AttackVO(attackToDo); }
-
-                if (attackToDo == 25)
-                { RBIMachine(); AttackVO(attackToDo); }
-
-                if (attackToDo == 26)
-                { DeepDrive(); AttackVO(attackToDo); }
-        */
-        #endregion
+        else if(enemyAttacks[AttackToDo].ToString() == "GodsHand();")
+        {
+            GodsHand();
+        }
     }
 
     void SoftPunch()
     {
-        minDamage = 1;
-        maxDamage = 5;
+        minDamage = 3;
+        maxDamage = 8;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
-        //  DamageUI.text = "-" + enemyDamage.ToString();
         attackName = "Soft Punch".ToString();
+        print(enemyDamage);
+    }
+
+    void HeftyHook()
+    {
+        minDamage = 10;
+        maxDamage = 20;
+
+        enemyDamage = Random.Range(minDamage, maxDamage);
+        attackName = "Hefty Hook".ToString();
+        print(enemyDamage);
+    }
+
+    void HeavyAssault()
+    {
+        minDamage = 25;
+        maxDamage = 40;
+
+        enemyDamage = Random.Range(minDamage, maxDamage);
+        attackName = "Hefty Hook".ToString();
+        print(enemyDamage);
+    }
+
+    void GodsHand()
+    {
+        minDamage = 60;
+        maxDamage = 85;
+
+        enemyDamage = Random.Range(minDamage, maxDamage);
+        attackName = "Hefty Hook".ToString();
+        print(enemyDamage);
     }
 
     IEnumerator ClearText()

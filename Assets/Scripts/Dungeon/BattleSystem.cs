@@ -311,7 +311,7 @@ public class BattleSystem : MonoBehaviour
     float DefenseModifier = 1.0f;
     float EvasionModifier = 1.0f;
 
-    float DefenseMC, DefenseRhys, DefenseJameel, DefenseSkye, DefenseHarper, DefenseSullivan;
+    float DefenseMC = 1, DefenseRhys = 1, DefenseJameel = 1, DefenseSkye = 1, DefenseHarper = 1, DefenseSullivan = 1;
     int DefenseMCTurn, DefenseRhysTurn, DefenseJameelTurn, DefenseSkyeTurn, DefenseHarperTurn, DefenseSullivanTurn;
 
     bool enemyStunned;
@@ -4849,6 +4849,7 @@ public class BattleSystem : MonoBehaviour
                                 if (isDead)
                                 {
                                     GameManager.MCHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseMC;
+                                    MCDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseMC).ToString();
                                     MCHealth.value = GameManager.MCHealth;
                                     MCDead = true;
                                     MCAnim.SetBool("isDead", true);
@@ -4930,6 +4931,7 @@ public class BattleSystem : MonoBehaviour
                                 bool isDead = Rhys.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseRhys);
                                 if (isDead)
                                 {
+                                    RhysDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseRhys).ToString();
                                     GameManager.RhysHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseRhys;
                                     RhysHealth.value = GameManager.RhysHealth;
                                     playerTurnOrder.Remove(CharacterIdentifier.Rhys);
@@ -5012,6 +5014,7 @@ public class BattleSystem : MonoBehaviour
                                 bool isDead = Jameel.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseJameel);
                                 if (isDead)
                                 {
+                                    JameelDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
                                     GameManager.JameelHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseJameel;
                                     JameelHealth.value = GameManager.JameelHealth;
                                     JameelDead = true;
@@ -5097,6 +5100,7 @@ public class BattleSystem : MonoBehaviour
                                 bool isDead = Harper.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseHarper);
                                 if (isDead)
                                 {
+                                    HarperDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseHarper).ToString();
                                     GameManager.HarperHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseHarper;
                                     HarperHealth.value = GameManager.HarperHealth;
                                     HarperDead = true;
@@ -5206,6 +5210,7 @@ public class BattleSystem : MonoBehaviour
                                 bool isDead = Skye.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseSkye);
                                 if (isDead)
                                 {
+                                    SkyeDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseSkye).ToString();
                                     GameManager.SkyeHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseSkye;
                                     SkyeHealth.value = GameManager.SkyeHealth;
                                     SkyeDead = true;
@@ -5287,10 +5292,10 @@ public class BattleSystem : MonoBehaviour
 
                             else
                             {
-
+                                bool isDead = Sullivan.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseSullivan);
                                 if (isDead)
                                 {
-                                    bool isDead = Sullivan.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseSullivan);
+                                    SullivanDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseSullivan).ToString();
                                     GameManager.SullivanHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseSullivan;
                                     SullivanHealth.value = GameManager.SullivanHealth;
                                     SullivanDead = true;
@@ -6607,6 +6612,10 @@ public class BattleSystem : MonoBehaviour
                 EvasionGroup();
                 RhysAnim.Play("Armature|Attack");
                 StartCoroutine(ChorusPedes());
+
+                RhysMenu.SetActive(false);
+                RhysSpells.SetActive(false);
+                RhysConfirmMenu.SetActive(false);
             }
             else
                 dialogueText.text = "Not enough energy!";
