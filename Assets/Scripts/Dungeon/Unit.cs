@@ -30,6 +30,8 @@ public class Unit : MonoBehaviour
     public GameObject DADAParticle,TransParticle,CharmsParticle,PotionsParticle;
     bool isDADA, isTrans, isCharms, isPotions;
 
+    bool deathDoor;
+
     //Build these and rename these later based on the player
     #region MC Attacks
     public float MCSpell1Damage;
@@ -3846,6 +3848,21 @@ public class Unit : MonoBehaviour
         {
             SkullCracker();
         }
+
+        else if (enemyAttacks[AttackToDo].ToString() == "ColossalSlam();")
+        {
+            ColossalSlam();
+        }
+
+        else if (enemyAttacks[AttackToDo].ToString() == "Earthquake();")
+        {
+            Earthquake();
+        }
+
+        else if (enemyAttacks[AttackToDo].ToString() == "DeathsDoor();")
+        {
+            DeathsDoor();
+        }
     }
 
     #region Enemy Attacks
@@ -3988,6 +4005,47 @@ public class Unit : MonoBehaviour
 
         enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Skull Cracker".ToString();
+    }
+
+    void ColossalSlam()
+    {
+        BattleSystem.attackAll = true;
+
+        minDamage = 30;
+        maxDamage = 40;
+
+        enemyDamage = Random.Range(minDamage, maxDamage);
+        attackName = "Colossal Slam".ToString();
+    }
+
+    void Earthquake()
+    {
+        BattleSystem.attackAll = true;
+
+        minDamage = 15;
+        maxDamage = 25;
+
+        enemyDamage = Random.Range(minDamage, maxDamage);
+        attackName = "Earthquake".ToString();
+    }
+
+    void DeathsDoor()
+    {
+        BattleSystem.attackAll = true;
+
+        if (!deathDoor)
+        {
+            //Prep
+        }
+        else
+        { 
+        //Attack
+        }
+        minDamage = 30;
+        maxDamage = 40;
+
+        enemyDamage = Random.Range(minDamage, maxDamage);
+        attackName = "Colossal Slam".ToString();
     }
 
     #endregion

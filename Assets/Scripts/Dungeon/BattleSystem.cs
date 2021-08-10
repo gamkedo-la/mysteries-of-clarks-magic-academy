@@ -332,6 +332,7 @@ public class BattleSystem : MonoBehaviour
     public static bool secondaryAttack;
     public static bool MCConfused, RhysConfused, JameelConfused, HarperConfused, SkyeConfused, SullivanConfused;
     public static bool confusionChance;
+    public static bool attackAll;
     private void Start()
     {
         if (GameObject.Find("GameManager") == null)
@@ -4545,76 +4546,19 @@ public class BattleSystem : MonoBehaviour
                 else
                 {
                     //This is attacking all the players - a little buggy from Stike Out so commenting out for now. 
-                    #region Attack all or take Magic from All
-
-                    #endregion
-                    // else
-                    // {
-                    int RandomAttack = Random.Range(0, 100);
-
-                    //attack animation
-
-                    //Choosing Who To Attack
-                    //happens at least once, if it is true, it does it again. (keep going until valid)
-                    int safteyCounter = 1000;
-
-                    bool viableTarget = false;
-
-                    do
+                    #region Attack all 
+                    if (attackAll)
                     {
-                        WhoToAttack = Random.Range(0, 6);
-                        if (safteyCounter-- < 0)
-                        {
-                            Debug.LogError("Couldn't find a living WhoToAttack, is the Whole Team Dead?");
-                            break;
-                            //bails us out of the do while
-                        }
-                        if (isPlayerIndexDead(WhoToAttack) == false)
-                        {
-                            if (WhoToAttack == 0 && !MCDead)
-                            {
-                                viableTarget = true;
-                            }
+                        int RandomAttack = Random.Range(0, 100);
+                        dialogueText.text = enemyUnit[enemyIndex].unitName + " attacks everyone with " + enemyUnit[enemyIndex].attackName + "!";
 
-                            else if (WhoToAttack == 1 && GameManager.RhysInParty && !RhysDead)
-                            {
-                                viableTarget = true;
-                            }
-                            else if (WhoToAttack == 2 && GameManager.JameelInParty && !JameelDead)
-                            {
-                                viableTarget = true;
-                            }
-                            else if (WhoToAttack == 3 && GameManager.HarperInParty && !HarperDead)
-                            {
-                                viableTarget = true;
-                            }
-                            else if (WhoToAttack == 4 && GameManager.SkyeInParty && !SkyeDead)
-                            {
-                                viableTarget = true;
-                            }
-                            else if (WhoToAttack == 5 && GameManager.SullivanInParty && !SullivanDead)
-                            {
-                                viableTarget = true;
-                            }
-                        }//Player not dead
-                    } while (viableTarget == false);
-
-                    yield return new WaitForSeconds(1.5f);
-
-                    enemyAnim[enemyIndex].Play("Armature|Attack");
-
-                    yield return new WaitForSeconds(.5f);
-
-                    if (WhoToAttack == 0 && !MCDead)
-                    {
-                        enemyUnit[enemyIndex].transform.LookAt(MC.transform.position);
-
-                        Camera.transform.LookAt(MC.transform.position);
+                        int RandomGroupAttack = Random.Range(0, 100);
+                        #region MC
                         //Block
                         if (singleBlock && playerToBlock == "MC")
                         {
                             dialogueText.text = enemyUnit[enemyIndex].unitName + " attacks " + GameManager.MCFirstName + " with " + enemyUnit[enemyIndex].attackName + "!";
-                            
+
                             yield return new WaitForSeconds(2f);
                             dialogueText.text = "The attack was blocked!";
                             yield return new WaitForSeconds(2f);
@@ -4622,7 +4566,7 @@ public class BattleSystem : MonoBehaviour
                             playerToBlock = "";
                         }
                         //Dodge
-                        else if ((GameManager.MCDodge * EvasionModifier) >= RandomAttack)
+                        else if ((GameManager.MCDodge * EvasionModifier) >= RandomGroupAttack)
                         {
                             dialogueText.text = enemyUnit[enemyIndex].unitName + " attacks " + GameManager.MCFirstName + " with " + enemyUnit[enemyIndex].attackName + "!";
                             yield return new WaitForSeconds(.5f);
@@ -4634,8 +4578,6 @@ public class BattleSystem : MonoBehaviour
                         //Attack
                         else
                         {
-                            dialogueText.text = enemyUnit[enemyIndex].unitName + " attacks " + GameManager.MCFirstName + " with " + enemyUnit[enemyIndex].attackName + "!";
-
                             yield return new WaitForSeconds(2f);
 
                             MCDamageUI.text = "".ToString();
@@ -4671,7 +4613,7 @@ public class BattleSystem : MonoBehaviour
                                     MCAnim.SetBool("isDead", true);
                                     Debug.Log("Game Over because Main Character died");
                                     state = BattleState.LOST;
-                                    yield return new WaitForSeconds(3f);
+                                    yield return new WaitForSeconds(1f);
                                     EndBattle();
                                 }
                                 //Not dead, but hurt
@@ -4700,7 +4642,7 @@ public class BattleSystem : MonoBehaviour
                                             MCAnim.SetBool("isDead", true);
                                             Debug.Log("Game Over because Main Character died");
                                             state = BattleState.LOST;
-                                            yield return new WaitForSeconds(3f);
+                                            yield return new WaitForSeconds(1f);
                                             EndBattle();
                                         }
                                         secondaryAttack = false;
@@ -4711,619 +4653,1345 @@ public class BattleSystem : MonoBehaviour
                                     MCDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseMC).ToString();
                                     GameManager.MCHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseMC;
                                     MCHealth.value = GameManager.MCHealth;
-                                    yield return new WaitForSeconds(2f);
+                                    yield return new WaitForSeconds(.25f);
 
                                 }
                             }
                         }
-                        StartCoroutine(TurnOffDamageUI());
-                    }
+                        #endregion
 
-                    else if (WhoToAttack == 1 && !RhysDead && GameManager.RhysInParty)
-                    {
-                        enemyUnit[enemyIndex].transform.LookAt(Rhys.transform.position);
-
-                        Camera.transform.LookAt(Rhys.transform.position);
-
-                        //Block
-                        if (singleBlock && playerToBlock == "Rhys")
+                        #region Rhys
+                        if (GameManager.RhysInParty)
                         {
-                            dialogueText.text = enemyUnit[enemyIndex].unitName + " attacks Rhys with " + " with " + enemyUnit[enemyIndex].attackName + "!";
-                            yield return new WaitForSeconds(2f);
-                            dialogueText.text = "The attack was blocked!";
-                            yield return new WaitForSeconds(2f);
-                            singleBlock = false;
-                            playerToBlock = "";
-                        }
-                        //Dodge
-                        else if ((GameManager.RhysDodge * EvasionModifier) >= RandomAttack)
-                        {
-                            dialogueText.text = enemyUnit[enemyIndex].unitName + " attacks Rhys with " + enemyUnit[enemyIndex].attackName + "!";
-                            yield return new WaitForSeconds(.5f);
-                            RhysAnim.Play("Armature|Dodge");
-                            dialogueText.text = "Rhys Dodges!";
-                            yield return new WaitForSeconds(1f);
-
-                        }
-                        else
-                        {
-                            dialogueText.text = enemyUnit[enemyIndex].unitName + " attacks Rhys with " + enemyUnit[enemyIndex].attackName + "!";
-
-                            yield return new WaitForSeconds(1f);
-
-                            RhysDamageUI.text = "".ToString();
-
-                            //reflect attack
-                            if (repelAttack && playerName == "Rhys")
+                            //Block
+                            if (singleBlock && playerToBlock == "Rhys")
                             {
-                                bool isDead = enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyIndex].enemyDamage);
-                                enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyIndex].enemyDamage);
-                                dialogueText.text = "The attack is reflected!";
-                                EnemyAnim();
-                                yield return new WaitForSeconds(2f);
-
-                                //This checks to see if the Enemy is Dead or has HP remaining
-                                if (isDead)
-                                {
-                                    RemoveCurrentEnemy();
-                                }
-                                repelAttack = false;
-                                playerName = "";
+                                yield return new WaitForSeconds(1f);
+                                singleBlock = false;
+                                playerToBlock = "";
                             }
+                            //Dodge
+                            else if ((GameManager.RhysDodge * EvasionModifier) >= RandomAttack)
+                            {
+                                yield return new WaitForSeconds(.5f);
+                                RhysAnim.Play("Armature|Dodge");
+                                yield return new WaitForSeconds(1f);
 
+                            }
                             else
                             {
-                                bool isDead = Rhys.TakeDamage(enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseRhys);
-                                if (isDead)
+                                yield return new WaitForSeconds(1f);
+
+
+                                RhysDamageUI.text = "".ToString();
+
+                                //reflect attack
+                                if (repelAttack && playerName == "Rhys")
                                 {
-                                    RhysDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
-                                    GameManager.RhysHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseRhys;
-                                    RhysHealth.value = GameManager.RhysHealth;
-                                    RhysDead = true;
+                                    bool isDead = enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyIndex].enemyDamage);
+                                    enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyIndex].enemyDamage);
+                                    dialogueText.text = "The attack is reflected!";
+                                    EnemyAnim();
+                                    yield return new WaitForSeconds(1f);
 
-                                    playerTurnOrder.Remove(CharacterIdentifier.Rhys);
-
-                                    RhysAnim.SetBool("isDead", true);
-                                    yield return new WaitForSeconds(3f);
-
+                                    //This checks to see if the Enemy is Dead or has HP remaining
+                                    if (isDead)
+                                    {
+                                        RemoveCurrentEnemy();
+                                    }
+                                    repelAttack = false;
+                                    playerName = "";
                                 }
 
                                 else
                                 {
-                                    yield return new WaitForSeconds(.5f);
-                                    RhysAnim.Play("Armature|TakeDamage");
-                                    RhysDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
-                                    GameManager.RhysHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseRhys;
-                                    RhysHealth.value = GameManager.RhysHealth;
-
-                                    if (confusionChance)
+                                    bool isDead = Rhys.TakeDamage(enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseRhys);
+                                    if (isDead)
                                     {
-                                        RhysConfused = true;
-                                        confusionChance = false;
-                                        dialogueText.text = "Rhys is confused!";
-                                        yield return new WaitForSeconds(1.5f);
+                                        RhysDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
+                                        GameManager.RhysHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseRhys;
+                                        RhysHealth.value = GameManager.RhysHealth;
+                                        RhysDead = true;
+
+                                        playerTurnOrder.Remove(CharacterIdentifier.Rhys);
+
+                                        RhysAnim.SetBool("isDead", true);
+                                        yield return new WaitForSeconds(1f);
+
                                     }
 
-                                    if (secondaryAttack)
+                                    else
                                     {
-                                        bool isDead2 = Rhys.TakeDamage(enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseRhys);
-                                        if (isDead2 || Rhys.currentHP <= 0)
-                                        {
-                                            RhysDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
-                                            GameManager.RhysHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseRhys;
-                                            RhysHealth.value = GameManager.RhysHealth;
-                                            RhysDead = true;
-                                            playerTurnOrder.Remove(CharacterIdentifier.Rhys);
-                                            RhysAnim.Play("Armature|Dead");
-                                            RhysAnim.SetBool("isDead", true);
-                                            yield return new WaitForSeconds(2.5f);
-                                        }
-                                        else
-                                        {
-                                            yield return new WaitForSeconds(.5f);
-                                            RhysAnim.Play("Armature|TakeDamage");
-                                            RhysDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
-                                            GameManager.RhysHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseRhys;
-                                            RhysHealth.value = GameManager.RhysHealth;
-                                            yield return new WaitForSeconds(.5f);
-                                            RhysDamageUI.text = "";
-                                        }
-                                        secondaryAttack = false;
-                                    }
+                                        yield return new WaitForSeconds(.5f);
+                                        RhysAnim.Play("Armature|TakeDamage");
+                                        RhysDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
+                                        GameManager.RhysHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseRhys;
+                                        RhysHealth.value = GameManager.RhysHealth;
 
-                                    yield return new WaitForSeconds(2f);
+                                        if (confusionChance)
+                                        {
+                                            RhysConfused = true;
+                                            confusionChance = false;
+                                            dialogueText.text = "Rhys is confused!";
+                                            yield return new WaitForSeconds(1f);
+                                        }
+
+                                        if (secondaryAttack)
+                                        {
+                                            bool isDead2 = Rhys.TakeDamage(enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseRhys);
+                                            if (isDead2 || Rhys.currentHP <= 0)
+                                            {
+                                                RhysDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
+                                                GameManager.RhysHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseRhys;
+                                                RhysHealth.value = GameManager.RhysHealth;
+                                                RhysDead = true;
+                                                playerTurnOrder.Remove(CharacterIdentifier.Rhys);
+                                                RhysAnim.Play("Armature|Dead");
+                                                RhysAnim.SetBool("isDead", true);
+                                                yield return new WaitForSeconds(1f);
+                                            }
+                                            else
+                                            {
+                                                yield return new WaitForSeconds(.5f);
+                                                RhysAnim.Play("Armature|TakeDamage");
+                                                RhysDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
+                                                GameManager.RhysHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseRhys;
+                                                RhysHealth.value = GameManager.RhysHealth;
+                                                yield return new WaitForSeconds(.5f);
+                                                RhysDamageUI.text = "";
+                                            }
+                                            secondaryAttack = false;
+                                        }
+
+                                        yield return new WaitForSeconds(.25f);
+                                    }
                                 }
                             }
                         }
+                        #endregion
 
-                        yield return new WaitForSeconds(.5f);
-                        StartCoroutine(TurnOffDamageUI());
-                    }
-
-                    else if (WhoToAttack == 2 && !JameelDead && GameManager.JameelInParty)
-                    {
-                        enemyUnit[enemyIndex].transform.LookAt(Jameel.transform.position);
-
-                        Camera.transform.LookAt(Jameel.transform.position);
-
-                        //Block
-                        if (singleBlock && playerToBlock == "Jameel")
+                        #region Jameel
+                        if (GameManager.JameelInParty)
                         {
-                            dialogueText.text = enemyUnit[enemyIndex].unitName + " attacks Jameel with " + " with " + enemyUnit[enemyIndex].attackName + "!";
-                            yield return new WaitForSeconds(2f);
-                            dialogueText.text = "The attack was blocked!";
-                            yield return new WaitForSeconds(2f);
-                            singleBlock = false;
-                            playerToBlock = "";
-                        }
-                        //Dodge
-                        else if ((GameManager.JameelDodge * EvasionModifier) >= RandomAttack)
-                        {
-                            dialogueText.text = enemyUnit[enemyIndex].unitName + " attacks Jameel with " + enemyUnit[enemyIndex].attackName + "!";
-                            yield return new WaitForSeconds(.5f);
-                            JameelAnim.Play("Armature|Dodge");
-                            dialogueText.text = "Jameel Dodges!";
-                            yield return new WaitForSeconds(1f);
-
-                        }
-                        else
-                        {
-                            dialogueText.text = enemyUnit[enemyIndex].unitName + " attacks Jameel with " + enemyUnit[enemyIndex].attackName + "!";
-                            yield return new WaitForSeconds(1f);
-
-
-                            JameelDamageUI.text = "".ToString();
-
-                            //reflect attack
-                            if (repelAttack && playerName == "Jameel")
+                            //Block
+                            if (singleBlock && playerToBlock == "Jameel")
                             {
-                                bool isDead = enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyIndex].enemyDamage);
-                                enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyIndex].enemyDamage);
-                                dialogueText.text = "The attack is reflected!";
-                                yield return new WaitForSeconds(2f);
-
-                                //This checks to see if the Enemy is Dead or has HP remaining
-                                if (isDead)
-                                {
-                                    RemoveCurrentEnemy();
-                                }
-                                repelAttack = false;
-                                playerName = "";
+                                yield return new WaitForSeconds(.5f);
+                                singleBlock = false;
+                                playerToBlock = "";
                             }
+                            //Dodge
+                            else if ((GameManager.JameelDodge * EvasionModifier) >= RandomAttack)
+                            {
+                                yield return new WaitForSeconds(.5f);
+                                JameelAnim.Play("Armature|Dodge");
+                                yield return new WaitForSeconds(1f);
 
+                            }
                             else
                             {
-                                bool isDead = Jameel.TakeDamage(enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseJameel);
-                                if (isDead)
+                                yield return new WaitForSeconds(1f);
+
+
+                                JameelDamageUI.text = "".ToString();
+
+                                //reflect attack
+                                if (repelAttack && playerName == "Jameel")
                                 {
-                                    JameelDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
-                                    GameManager.JameelHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseJameel;
-                                    JameelHealth.value = GameManager.JameelHealth;
-                                    JameelDead = true;
+                                    bool isDead = enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyIndex].enemyDamage);
+                                    enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyIndex].enemyDamage);
+                                    dialogueText.text = "The attack is reflected!";
+                                    EnemyAnim();
+                                    yield return new WaitForSeconds(.5f);
 
-                                    playerTurnOrder.Remove(CharacterIdentifier.Jameel);
-
-                                    JameelAnim.SetBool("isDead", true);
-                                    yield return new WaitForSeconds(3f);
-
+                                    //This checks to see if the Enemy is Dead or has HP remaining
+                                    if (isDead)
+                                    {
+                                        RemoveCurrentEnemy();
+                                    }
+                                    repelAttack = false;
+                                    playerName = "";
                                 }
 
                                 else
                                 {
-                                    yield return new WaitForSeconds(.5f);
-                                    JameelAnim.Play("Armature|TakeDamage");
-                                    JameelDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
-                                    GameManager.JameelHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseJameel;
-                                    JameelHealth.value = GameManager.JameelHealth;
-
-                                    if (confusionChance)
+                                    bool isDead = Jameel.TakeDamage(enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseJameel);
+                                    if (isDead)
                                     {
-                                        JameelConfused = true;
-                                        confusionChance = false;
-                                        dialogueText.text = "Jameel is confused!";
-                                        yield return new WaitForSeconds(1.5f);
+                                        JameelDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
+                                        GameManager.JameelHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseJameel;
+                                        JameelHealth.value = GameManager.JameelHealth;
+                                        JameelDead = true;
+
+                                        playerTurnOrder.Remove(CharacterIdentifier.Jameel);
+
+                                        JameelAnim.SetBool("isDead", true);
+                                        yield return new WaitForSeconds(.25f);
+
                                     }
 
-                                    if (secondaryAttack)
+                                    else
                                     {
+                                        yield return new WaitForSeconds(.5f);
+                                        JameelAnim.Play("Armature|TakeDamage");
+                                        JameelDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
+                                        GameManager.JameelHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseJameel;
+                                        JameelHealth.value = GameManager.JameelHealth;
 
-                                        Jameel.TakeDamage(enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseJameel);
-                                        print("here");
-                                        print(Jameel.currentHP);
-                                        if (Jameel.currentHP <= 0)
+                                        if (confusionChance)
                                         {
-                                           
-                                            JameelDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
-                                            GameManager.JameelHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseJameel;
-                                            JameelHealth.value = GameManager.JameelHealth;
-                                            JameelDead = true;
-                                            playerTurnOrder.Remove(CharacterIdentifier.Jameel);
-                                            JameelAnim.Play("Armature|Dead");
-                                            JameelAnim.SetBool("isDead", true);
-                                            yield return new WaitForSeconds(2.5f);
+                                            JameelConfused = true;
+                                            confusionChance = false;
+                                            dialogueText.text = "Jameel is confused!";
+                                            yield return new WaitForSeconds(1f);
                                         }
-                                        else
+
+                                        if (secondaryAttack)
                                         {
-                                            yield return new WaitForSeconds(.5f);
-                                            JameelAnim.Play("Armature|TakeDamage");
-                                            JameelDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
-                                            GameManager.JameelHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseJameel;
-                                            JameelHealth.value = GameManager.JameelHealth;
-                                            yield return new WaitForSeconds(.5f);
-                                            JameelDamageUI.text = "";
+                                            bool isDead2 = Jameel.TakeDamage(enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseJameel);
+                                            if (isDead2 || Jameel.currentHP <= 0)
+                                            {
+                                                JameelDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
+                                                GameManager.JameelHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseJameel;
+                                                JameelHealth.value = GameManager.JameelHealth;
+                                                JameelDead = true;
+                                                playerTurnOrder.Remove(CharacterIdentifier.Jameel);
+                                                JameelAnim.Play("Armature|Dead");
+                                                JameelAnim.SetBool("isDead", true);
+                                                yield return new WaitForSeconds(1f);
+                                            }
+                                            else
+                                            {
+                                                yield return new WaitForSeconds(.5f);
+                                                JameelAnim.Play("Armature|TakeDamage");
+                                                JameelDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
+                                                GameManager.JameelHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseJameel;
+                                                JameelHealth.value = GameManager.JameelHealth;
+                                                yield return new WaitForSeconds(.5f);
+                                                JameelDamageUI.text = "";
+                                            }
+                                            secondaryAttack = false;
                                         }
-                                        secondaryAttack = false;
+
+                                        yield return new WaitForSeconds(.25f);
                                     }
-
-                                    yield return new WaitForSeconds(2f);
                                 }
                             }
                         }
+                        #endregion
 
-                        yield return new WaitForSeconds(.5f);
-                        StartCoroutine(TurnOffDamageUI());
-                    }
-                    else if (WhoToAttack == 3 && !HarperDead && GameManager.HarperInParty)
-                    {
-                        enemyUnit[enemyIndex].transform.LookAt(Harper.transform.position);
-
-                        Camera.transform.LookAt(Harper.transform.position);
-
-                        //Block
-                        if (singleBlock && playerToBlock == "Harper")
+                        #region Harper
+                        if (GameManager.HarperInParty)
                         {
-                            dialogueText.text = enemyUnit[enemyIndex].unitName + " attacks Harper with " + " with " + enemyUnit[enemyIndex].attackName + "!";
-                            yield return new WaitForSeconds(2f);
-                            dialogueText.text = "The attack was blocked!";
-                            yield return new WaitForSeconds(2f);
-                            singleBlock = false;
-                            playerToBlock = "";
-                        }
-                        //Dodge
-                        else if ((GameManager.HarperDodge * EvasionModifier) >= RandomAttack)
-                        {
-                            dialogueText.text = enemyUnit[enemyIndex].unitName + " attacks Harper with " + enemyUnit[enemyIndex].attackName + "!";
-                            yield return new WaitForSeconds(.5f);
-                            HarperAnim.Play("Armature|Dodge");
-                            dialogueText.text = "Harper Dodges!";
-                            yield return new WaitForSeconds(1f);
-
-                        }
-                        else
-                        {
-                            dialogueText.text = enemyUnit[enemyIndex].unitName + " attacks Harper with " + enemyUnit[enemyIndex].attackName + "!";
-
-                            yield return new WaitForSeconds(1f);
-
-
-                            HarperDamageUI.text = "".ToString();
-
-                            //reflect attack
-                            if (repelAttack && playerName == "Harper")
+                            //Block
+                            if (singleBlock && playerToBlock == "Harper")
                             {
-                                bool isDead = enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyIndex].enemyDamage);
-                                enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyIndex].enemyDamage);
-                                dialogueText.text = "The attack is reflected!";
-                                EnemyAnim();
-                                yield return new WaitForSeconds(2f);
-
-                                //This checks to see if the Enemy is Dead or has HP remaining
-                                if (isDead)
-                                {
-                                    RemoveCurrentEnemy();
-                                }
-                                repelAttack = false;
-                                playerName = "";
+                                yield return new WaitForSeconds(1f);
+                                singleBlock = false;
+                                playerToBlock = "";
                             }
+                            //Dodge
+                            else if ((GameManager.HarperDodge * EvasionModifier) >= RandomAttack)
+                            {
+                                yield return new WaitForSeconds(.5f);
+                                HarperAnim.Play("Armature|Dodge");
+                                yield return new WaitForSeconds(1f);
 
+                            }
                             else
                             {
-                                bool isDead = Harper.TakeDamage(enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseHarper);
-                                if (isDead)
+                                yield return new WaitForSeconds(1f);
+
+
+                                HarperDamageUI.text = "".ToString();
+
+                                //reflect attack
+                                if (repelAttack && playerName == "Harper")
                                 {
-                                    HarperDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
-                                    GameManager.HarperHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseHarper;
-                                    HarperHealth.value = GameManager.HarperHealth;
-                                    HarperDead = true;
+                                    bool isDead = enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyIndex].enemyDamage);
+                                    enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyIndex].enemyDamage);
+                                    dialogueText.text = "The attack is reflected!";
+                                    EnemyAnim();
+                                    yield return new WaitForSeconds(1f);
 
-                                    playerTurnOrder.Remove(CharacterIdentifier.Harper);
-
-                                    HarperAnim.SetBool("isDead", true);
-                                    yield return new WaitForSeconds(3f);
-
+                                    //This checks to see if the Enemy is Dead or has HP remaining
+                                    if (isDead)
+                                    {
+                                        RemoveCurrentEnemy();
+                                    }
+                                    repelAttack = false;
+                                    playerName = "";
                                 }
 
                                 else
                                 {
-                                    yield return new WaitForSeconds(.5f);
-                                    HarperAnim.Play("Armature|TakeDamage");
-                                    HarperDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
-                                    GameManager.HarperHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseHarper;
-                                    HarperHealth.value = GameManager.HarperHealth;
-
-                                    if (confusionChance)
+                                    bool isDead = Harper.TakeDamage(enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseHarper);
+                                    if (isDead)
                                     {
-                                        HarperConfused = true;
-                                        confusionChance = false;
-                                        dialogueText.text = "Harper is confused!";
-                                        yield return new WaitForSeconds(1.5f);
+                                        HarperDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
+                                        GameManager.HarperHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseHarper;
+                                        HarperHealth.value = GameManager.HarperHealth;
+                                        HarperDead = true;
+
+                                        playerTurnOrder.Remove(CharacterIdentifier.Harper);
+
+                                        HarperAnim.SetBool("isDead", true);
+                                        yield return new WaitForSeconds(1f);
+
                                     }
 
-                                    if (secondaryAttack)
+                                    else
                                     {
-                                        bool isDead2 = Harper.TakeDamage(enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseHarper);
-                                        if (isDead2 || Harper.currentHP <= 0)
-                                        {
-                                            HarperDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
-                                            GameManager.HarperHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseHarper;
-                                            HarperHealth.value = GameManager.HarperHealth;
-                                            HarperDead = true;
-                                            playerTurnOrder.Remove(CharacterIdentifier.Harper);
-                                            HarperAnim.Play("Armature|Dead");
-                                            HarperAnim.SetBool("isDead", true);
-                                            yield return new WaitForSeconds(2.5f);
-                                        }
-                                        else
-                                        {
-                                            yield return new WaitForSeconds(.5f);
-                                            HarperAnim.Play("Armature|TakeDamage");
-                                            HarperDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
-                                            GameManager.HarperHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseHarper;
-                                            HarperHealth.value = GameManager.HarperHealth;
-                                            yield return new WaitForSeconds(.5f);
-                                            HarperDamageUI.text = "";
-                                        }
-                                        secondaryAttack = false;
-                                    }
+                                        yield return new WaitForSeconds(.5f);
+                                        HarperAnim.Play("Armature|TakeDamage");
+                                        HarperDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
+                                        GameManager.HarperHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseHarper;
+                                        HarperHealth.value = GameManager.HarperHealth;
 
-                                    yield return new WaitForSeconds(2f);
+                                        if (confusionChance)
+                                        {
+                                            HarperConfused = true;
+                                            confusionChance = false;
+                                            dialogueText.text = "Harper is confused!";
+                                            yield return new WaitForSeconds(1f);
+                                        }
+
+                                        if (secondaryAttack)
+                                        {
+                                            bool isDead2 = Harper.TakeDamage(enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseHarper);
+                                            if (isDead2 || Harper.currentHP <= 0)
+                                            {
+                                                HarperDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
+                                                GameManager.HarperHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseHarper;
+                                                HarperHealth.value = GameManager.HarperHealth;
+                                                HarperDead = true;
+                                                playerTurnOrder.Remove(CharacterIdentifier.Harper);
+                                                HarperAnim.Play("Armature|Dead");
+                                                HarperAnim.SetBool("isDead", true);
+                                                yield return new WaitForSeconds(.5f);
+                                            }
+                                            else
+                                            {
+                                                yield return new WaitForSeconds(.5f);
+                                                HarperAnim.Play("Armature|TakeDamage");
+                                                HarperDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
+                                                GameManager.HarperHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseHarper;
+                                                HarperHealth.value = GameManager.HarperHealth;
+                                                yield return new WaitForSeconds(.5f);
+                                                HarperDamageUI.text = "";
+                                            }
+                                            secondaryAttack = false;
+                                        }
+
+                                        yield return new WaitForSeconds(.25f);
+                                    }
                                 }
                             }
                         }
+                        #endregion
 
-                        yield return new WaitForSeconds(.5f);
-                        StartCoroutine(TurnOffDamageUI());
-                    }
-                    else if (WhoToAttack == 4 && !SkyeDead && GameManager.SkyeInParty)
-                    {
-                        enemyUnit[enemyIndex].transform.LookAt(Skye.transform.position);
-
-                        Camera.transform.LookAt(Skye.transform.position);
-
-                        //Block
-                        if (singleBlock && playerToBlock == "Skye")
+                        #region Skye
+                        if (GameManager.SkyeInParty)
                         {
-                            dialogueText.text = enemyUnit[enemyIndex].unitName + " attacks Skye with " + " with " + enemyUnit[enemyIndex].attackName + "!";
-                            yield return new WaitForSeconds(2f);
-                            dialogueText.text = "The attack was blocked!";
-                            yield return new WaitForSeconds(2f);
-                            singleBlock = false;
-                            playerToBlock = "";
-                        }
-                        //Dodge
-                        else if ((GameManager.SkyeDodge * EvasionModifier) >= RandomAttack)
-                        {
-                            dialogueText.text = enemyUnit[enemyIndex].unitName + " attacks Skye with " + enemyUnit[enemyIndex].attackName + "!";
-                            yield return new WaitForSeconds(.5f);
-                            SkyeAnim.Play("Armature|Dodge");
-                            dialogueText.text = "Skye Dodges!";
-                            yield return new WaitForSeconds(1f);
-
-                        }
-                        else
-                        {
-                            dialogueText.text = enemyUnit[enemyIndex].unitName + " attacks Skye with " + enemyUnit[enemyIndex].attackName + "!";
-
-                            yield return new WaitForSeconds(1f);
-
-                            SkyeDamageUI.text = "".ToString();
-
-                            //reflect attack
-                            if (repelAttack && playerName == "Skye")
+                            //Block
+                            if (singleBlock && playerToBlock == "Skye")
                             {
-                                bool isDead = enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyIndex].enemyDamage);
-                                enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyIndex].enemyDamage);
-                                dialogueText.text = "The attack is reflected!";
-                                EnemyAnim();
-                                yield return new WaitForSeconds(2f);
-
-                                //This checks to see if the Enemy is Dead or has HP remaining
-                                if (isDead)
-                                {
-                                    RemoveCurrentEnemy();
-                                }
-                                repelAttack = false;
-                                playerName = "";
+                                yield return new WaitForSeconds(1f);
+                                singleBlock = false;
+                                playerToBlock = "";
                             }
+                            //Dodge
+                            else if ((GameManager.SkyeDodge * EvasionModifier) >= RandomAttack)
+                            {
+                                yield return new WaitForSeconds(.5f);
+                                SkyeAnim.Play("Armature|Dodge");
+                                yield return new WaitForSeconds(1f);
 
+                            }
                             else
                             {
-                                bool isDead = Skye.TakeDamage(enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseSkye);
-                                if (isDead)
+                                yield return new WaitForSeconds(1f);
+
+
+                                SkyeDamageUI.text = "".ToString();
+
+                                //reflect attack
+                                if (repelAttack && playerName == "Skye")
                                 {
-                                    SkyeDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
-                                    GameManager.SkyeHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseSkye;
-                                    SkyeHealth.value = GameManager.SkyeHealth;
-                                    SkyeDead = true;
+                                    bool isDead = enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyIndex].enemyDamage);
+                                    enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyIndex].enemyDamage);
+                                    dialogueText.text = "The attack is reflected!";
+                                    EnemyAnim();
+                                    yield return new WaitForSeconds(.5f);
 
-                                    playerTurnOrder.Remove(CharacterIdentifier.Skye);
-
-                                    SkyeAnim.SetBool("isDead", true);
-                                    yield return new WaitForSeconds(3f);
-
+                                    //This checks to see if the Enemy is Dead or has HP remaining
+                                    if (isDead)
+                                    {
+                                        RemoveCurrentEnemy();
+                                    }
+                                    repelAttack = false;
+                                    playerName = "";
                                 }
 
                                 else
                                 {
-                                    yield return new WaitForSeconds(.5f);
-                                    SkyeAnim.Play("Armature|TakeDamage");
-                                    SkyeDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
-                                    GameManager.SkyeHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseSkye;
-                                    SkyeHealth.value = GameManager.SkyeHealth;
-
-                                    if (confusionChance)
+                                    bool isDead = Skye.TakeDamage(enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseSkye);
+                                    if (isDead)
                                     {
-                                        SkyeConfused = true;
-                                        confusionChance = false;
-                                        dialogueText.text = "Skye is confused!";
-                                        yield return new WaitForSeconds(1.5f);
+                                        SkyeDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
+                                        GameManager.SkyeHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseSkye;
+                                        SkyeHealth.value = GameManager.SkyeHealth;
+                                        SkyeDead = true;
+
+                                        playerTurnOrder.Remove(CharacterIdentifier.Skye);
+
+                                        SkyeAnim.SetBool("isDead", true);
+                                        yield return new WaitForSeconds(1f);
+
                                     }
 
-                                    if (secondaryAttack)
+                                    else
                                     {
-                                        bool isDead2 = Skye.TakeDamage(enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseSkye);
-                                        if (isDead2 || Skye.currentHP <= 0)
-                                        {
-                                            SkyeDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
-                                            GameManager.SkyeHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseSkye;
-                                            SkyeHealth.value = GameManager.SkyeHealth;
-                                            SkyeDead = true;
-                                            playerTurnOrder.Remove(CharacterIdentifier.Skye);
-                                            SkyeAnim.Play("Armature|Dead");
-                                            SkyeAnim.SetBool("isDead", true);
-                                            yield return new WaitForSeconds(2.5f);
-                                        }
-                                        else
-                                        {
-                                            yield return new WaitForSeconds(.5f);
-                                            SkyeAnim.Play("Armature|TakeDamage");
-                                            SkyeDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
-                                            GameManager.SkyeHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseSkye;
-                                            SkyeHealth.value = GameManager.SkyeHealth;
-                                            yield return new WaitForSeconds(.5f);
-                                            SkyeDamageUI.text = "";
-                                        }
-                                        secondaryAttack = false;
-                                    }
+                                        yield return new WaitForSeconds(.5f);
+                                        SkyeAnim.Play("Armature|TakeDamage");
+                                        SkyeDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
+                                        GameManager.SkyeHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseSkye;
+                                        SkyeHealth.value = GameManager.SkyeHealth;
 
-                                    yield return new WaitForSeconds(2f);
+                                        if (confusionChance)
+                                        {
+                                            SkyeConfused = true;
+                                            confusionChance = false;
+                                            dialogueText.text = "Skye is confused!";
+                                            yield return new WaitForSeconds(1f);
+                                        }
+
+                                        if (secondaryAttack)
+                                        {
+                                            bool isDead2 = Skye.TakeDamage(enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseSkye);
+                                            if (isDead2 || Skye.currentHP <= 0)
+                                            {
+                                                SkyeDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
+                                                GameManager.SkyeHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseSkye;
+                                                SkyeHealth.value = GameManager.SkyeHealth;
+                                                SkyeDead = true;
+                                                playerTurnOrder.Remove(CharacterIdentifier.Skye);
+                                                SkyeAnim.Play("Armature|Dead");
+                                                SkyeAnim.SetBool("isDead", true);
+                                                yield return new WaitForSeconds(1f);
+                                            }
+                                            else
+                                            {
+                                                yield return new WaitForSeconds(.5f);
+                                                SkyeAnim.Play("Armature|TakeDamage");
+                                                SkyeDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
+                                                GameManager.SkyeHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseSkye;
+                                                SkyeHealth.value = GameManager.SkyeHealth;
+                                                yield return new WaitForSeconds(.5f);
+                                                SkyeDamageUI.text = "";
+                                            }
+                                            secondaryAttack = false;
+                                        }
+
+                                        yield return new WaitForSeconds(.25f);
+                                    }
                                 }
                             }
                         }
+                        #endregion
 
-                        yield return new WaitForSeconds(.5f);
-                        StartCoroutine(TurnOffDamageUI());
-                    }
-                    else if (WhoToAttack == 5 && !SullivanDead && GameManager.SullivanInParty)
-                    {
-                        enemyUnit[enemyIndex].transform.LookAt(Sullivan.transform.position);
-
-                        Camera.transform.LookAt(Sullivan.transform.position);
-
-                        //Block
-                        if (singleBlock && playerToBlock == "Sullivan")
+                        #region Sullivan
+                        if (GameManager.SullivanInParty)
                         {
-                            dialogueText.text = enemyUnit[enemyIndex].unitName + " attacks Sullivan with " + " with " + enemyUnit[enemyIndex].attackName + "!";
-                            yield return new WaitForSeconds(2f);
-                            dialogueText.text = "The attack was blocked!";
-                            yield return new WaitForSeconds(2f);
-                            singleBlock = false;
-                            playerToBlock = "";
-                        }
-                        //Dodge
-                        else if ((GameManager.SullivanDodge * EvasionModifier) >= RandomAttack)
-                        {
-                            dialogueText.text = enemyUnit[enemyIndex].unitName + " attacks Sullivan with " + enemyUnit[enemyIndex].attackName + "!";
-                            yield return new WaitForSeconds(.5f);
-                            SullivanAnim.Play("Armature|Dodge");
-                            dialogueText.text = "Sullivan Dodges!";
-                            yield return new WaitForSeconds(1f);
-
-                        }
-                        else
-                        {
-                            dialogueText.text = enemyUnit[enemyIndex].unitName + " attacks Sullivan with " + enemyUnit[enemyIndex].attackName + "!";
-
-                            yield return new WaitForSeconds(1f);
-
-                            SullivanDamageUI.text = "".ToString();
-
-                            //reflect attack
-                            if (repelAttack && playerName == "Sullivan")
+                            //Block
+                            if (singleBlock && playerToBlock == "Sullivan")
                             {
-                                bool isDead = enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyIndex].enemyDamage);
-                                enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyIndex].enemyDamage);
-                                dialogueText.text = "The attack is reflected!";
-                                EnemyAnim();
-                                yield return new WaitForSeconds(2f);
-
-                                //This checks to see if the Enemy is Dead or has HP remaining
-                                if (isDead)
-                                {
-                                    RemoveCurrentEnemy();
-                                }
-                                repelAttack = false;
-                                playerName = "";
+                                yield return new WaitForSeconds(1f);
+                                singleBlock = false;
+                                playerToBlock = "";
                             }
+                            //Dodge
+                            else if ((GameManager.SullivanDodge * EvasionModifier) >= RandomAttack)
+                            {
+                                yield return new WaitForSeconds(.5f);
+                                SullivanAnim.Play("Armature|Dodge");
+                                yield return new WaitForSeconds(1f);
 
+                            }
                             else
                             {
-                                bool isDead = Sullivan.TakeDamage(enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseSullivan);
-                                if (isDead)
+                                yield return new WaitForSeconds(1f);
+
+
+                                SullivanDamageUI.text = "".ToString();
+
+                                //reflect attack
+                                if (repelAttack && playerName == "Sullivan")
                                 {
-                                    SullivanDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
-                                    GameManager.SullivanHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseSullivan;
-                                    SullivanHealth.value = GameManager.SullivanHealth;
-                                    SullivanDead = true;
+                                    bool isDead = enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyIndex].enemyDamage);
+                                    enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyIndex].enemyDamage);
+                                    dialogueText.text = "The attack is reflected!";
+                                    EnemyAnim();
+                                    yield return new WaitForSeconds(1f);
 
-                                    playerTurnOrder.Remove(CharacterIdentifier.Sullivan);
-
-                                    SullivanAnim.SetBool("isDead", true);
-                                    yield return new WaitForSeconds(3f);
-
+                                    //This checks to see if the Enemy is Dead or has HP remaining
+                                    if (isDead)
+                                    {
+                                        RemoveCurrentEnemy();
+                                    }
+                                    repelAttack = false;
+                                    playerName = "";
                                 }
 
                                 else
                                 {
-                                    yield return new WaitForSeconds(.5f);
-                                    SullivanAnim.Play("Armature|TakeDamage");
-                                    SullivanDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
-                                    GameManager.SullivanHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseSullivan;
-                                    SullivanHealth.value = GameManager.SullivanHealth;
-
-                                    if (confusionChance)
+                                    bool isDead = Sullivan.TakeDamage(enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseSullivan);
+                                    if (isDead)
                                     {
-                                        SullivanConfused = true;
-                                        confusionChance = false;
-                                        dialogueText.text = "Sullivan is confused!";
-                                        yield return new WaitForSeconds(1.5f);
+                                        SullivanDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
+                                        GameManager.SullivanHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseSullivan;
+                                        SullivanHealth.value = GameManager.SullivanHealth;
+                                        SullivanDead = true;
+
+                                        playerTurnOrder.Remove(CharacterIdentifier.Sullivan);
+
+                                        SullivanAnim.SetBool("isDead", true);
+                                        yield return new WaitForSeconds(1f);
+
                                     }
 
-                                    if (secondaryAttack)
+                                    else
                                     {
-                                        bool isDead2 = Sullivan.TakeDamage(enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseSullivan);
-                                        if (isDead2 || Sullivan.currentHP <= 0)
-                                        {
-                                            print(Sullivan.currentHP);
-                                            SullivanDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
-                                            GameManager.SullivanHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseSullivan;
-                                            SullivanHealth.value = GameManager.SullivanHealth;
-                                            SullivanDead = true;
-                                            playerTurnOrder.Remove(CharacterIdentifier.Sullivan);
-                                            SullivanAnim.Play("Armature|Dead");
-                                            SullivanAnim.SetBool("isDead", true);
-                                            yield return new WaitForSeconds(2.5f);
-                                        }
-                                        else
-                                        {
-                                            yield return new WaitForSeconds(.5f);
-                                            SullivanAnim.Play("Armature|TakeDamage");
-                                            SullivanDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
-                                            GameManager.SullivanHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseSullivan;
-                                            SullivanHealth.value = GameManager.SullivanHealth;
-                                            yield return new WaitForSeconds(.5f);
-                                            SullivanDamageUI.text = "";
-                                        }
-                                        secondaryAttack = false;
-                                    }
+                                        yield return new WaitForSeconds(.5f);
+                                        SullivanAnim.Play("Armature|TakeDamage");
+                                        SullivanDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
+                                        GameManager.SullivanHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseSullivan;
+                                        SullivanHealth.value = GameManager.SullivanHealth;
 
-                                    yield return new WaitForSeconds(2f);
+                                        if (confusionChance)
+                                        {
+                                            SullivanConfused = true;
+                                            confusionChance = false;
+                                            dialogueText.text = "Sullivan is confused!";
+                                            yield return new WaitForSeconds(1f);
+                                        }
+
+                                        if (secondaryAttack)
+                                        {
+                                            bool isDead2 = Sullivan.TakeDamage(enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseSullivan);
+                                            if (isDead2 || Sullivan.currentHP <= 0)
+                                            {
+                                                SullivanDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
+                                                GameManager.SullivanHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseSullivan;
+                                                SullivanHealth.value = GameManager.SullivanHealth;
+                                                SullivanDead = true;
+                                                playerTurnOrder.Remove(CharacterIdentifier.Sullivan);
+                                                SullivanAnim.Play("Armature|Dead");
+                                                SullivanAnim.SetBool("isDead", true);
+                                                yield return new WaitForSeconds(1f);
+                                            }
+                                            else
+                                            {
+                                                yield return new WaitForSeconds(.5f);
+                                                SullivanAnim.Play("Armature|TakeDamage");
+                                                SullivanDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
+                                                GameManager.SullivanHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseSullivan;
+                                                SullivanHealth.value = GameManager.SullivanHealth;
+                                                yield return new WaitForSeconds(.5f);
+                                                SullivanDamageUI.text = "";
+                                            }
+                                            secondaryAttack = false;
+                                        }
+
+                                        yield return new WaitForSeconds(.25f);
+                                    }
                                 }
                             }
                         }
+                        #endregion
+
+
+                        StartCoroutine(TurnOffDamageUI());
+                        attackAll = false;
+                    }
+                    #endregion
+                    else
+                    {
+                        int RandomAttack = Random.Range(0, 100);
+
+                        //attack animation
+
+                        //Choosing Who To Attack
+                        //happens at least once, if it is true, it does it again. (keep going until valid)
+                        int safteyCounter = 1000;
+
+                        bool viableTarget = false;
+
+                        do
+                        {
+                            WhoToAttack = Random.Range(0, 6);
+                            if (safteyCounter-- < 0)
+                            {
+                                Debug.LogError("Couldn't find a living WhoToAttack, is the Whole Team Dead?");
+                                break;
+                                //bails us out of the do while
+                            }
+                            if (isPlayerIndexDead(WhoToAttack) == false)
+                            {
+                                if (WhoToAttack == 0 && !MCDead)
+                                {
+                                    viableTarget = true;
+                                }
+
+                                else if (WhoToAttack == 1 && GameManager.RhysInParty && !RhysDead)
+                                {
+                                    viableTarget = true;
+                                }
+                                else if (WhoToAttack == 2 && GameManager.JameelInParty && !JameelDead)
+                                {
+                                    viableTarget = true;
+                                }
+                                else if (WhoToAttack == 3 && GameManager.HarperInParty && !HarperDead)
+                                {
+                                    viableTarget = true;
+                                }
+                                else if (WhoToAttack == 4 && GameManager.SkyeInParty && !SkyeDead)
+                                {
+                                    viableTarget = true;
+                                }
+                                else if (WhoToAttack == 5 && GameManager.SullivanInParty && !SullivanDead)
+                                {
+                                    viableTarget = true;
+                                }
+                            }//Player not dead
+                        } while (viableTarget == false);
+
+                        yield return new WaitForSeconds(1.5f);
+
+                        enemyAnim[enemyIndex].Play("Armature|Attack");
 
                         yield return new WaitForSeconds(.5f);
-                        StartCoroutine(TurnOffDamageUI());
+
+                        if (WhoToAttack == 0 && !MCDead)
+                        {
+                            enemyUnit[enemyIndex].transform.LookAt(MC.transform.position);
+
+                            Camera.transform.LookAt(MC.transform.position);
+                            //Block
+                            if (singleBlock && playerToBlock == "MC")
+                            {
+                                dialogueText.text = enemyUnit[enemyIndex].unitName + " attacks " + GameManager.MCFirstName + " with " + enemyUnit[enemyIndex].attackName + "!";
+
+                                yield return new WaitForSeconds(2f);
+                                dialogueText.text = "The attack was blocked!";
+                                yield return new WaitForSeconds(2f);
+                                singleBlock = false;
+                                playerToBlock = "";
+                            }
+                            //Dodge
+                            else if ((GameManager.MCDodge * EvasionModifier) >= RandomAttack)
+                            {
+                                dialogueText.text = enemyUnit[enemyIndex].unitName + " attacks " + GameManager.MCFirstName + " with " + enemyUnit[enemyIndex].attackName + "!";
+                                yield return new WaitForSeconds(.5f);
+                                dialogueText.text = GameManager.MCFirstName + " Dodges!";
+                                MCAnim.Play("Armature|Dodge");
+                                yield return new WaitForSeconds(1f);
+
+                            }
+                            //Attack
+                            else
+                            {
+                                dialogueText.text = enemyUnit[enemyIndex].unitName + " attacks " + GameManager.MCFirstName + " with " + enemyUnit[enemyIndex].attackName + "!";
+
+                                yield return new WaitForSeconds(2f);
+
+                                MCDamageUI.text = "".ToString();
+
+                                //reflect attack
+                                if (repelAttack && playerName == "MC")
+                                {
+                                    bool isDead = enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyIndex].enemyDamage);
+                                    enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyIndex].enemyDamage);
+                                    dialogueText.text = "The attack is reflected!";
+                                    EnemyAnim();
+                                    yield return new WaitForSeconds(2f);
+
+                                    //This checks to see if the Enemy is Dead or has HP remaining
+                                    if (isDead)
+                                    {
+                                        RemoveCurrentEnemy();
+                                    }
+                                    repelAttack = false;
+                                    playerName = "";
+                                }
+
+                                else
+                                {
+                                    bool isDead = MC.TakeDamage(enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseMC);
+                                    //Dead
+                                    if (isDead)
+                                    {
+                                        GameManager.MCHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseMC;
+                                        MCDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseMC).ToString();
+                                        MCHealth.value = GameManager.MCHealth;
+                                        MCDead = true;
+                                        MCAnim.SetBool("isDead", true);
+                                        Debug.Log("Game Over because Main Character died");
+                                        state = BattleState.LOST;
+                                        yield return new WaitForSeconds(3f);
+                                        EndBattle();
+                                    }
+                                    //Not dead, but hurt
+                                    else
+                                    {
+                                        if (confusionChance)
+                                        {
+                                            MCConfused = true;
+                                            confusionChance = false;
+                                            dialogueText.text = GameManager.MCFirstName + " is confused!";
+                                            yield return new WaitForSeconds(1.5f);
+                                        }
+
+                                        if (secondaryAttack)
+                                        {
+                                            yield return new WaitForSeconds(.5f);
+                                            MCAnim.Play("Armature|TakeDamage");
+                                            MCDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseMC).ToString();
+                                            GameManager.MCHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseMC;
+                                            MCHealth.value = GameManager.MCHealth;
+                                            yield return new WaitForSeconds(.5f);
+                                            MCDamageUI.text = "";
+                                            if (isDead)
+                                            {
+                                                MCDead = true;
+                                                MCAnim.SetBool("isDead", true);
+                                                Debug.Log("Game Over because Main Character died");
+                                                state = BattleState.LOST;
+                                                yield return new WaitForSeconds(3f);
+                                                EndBattle();
+                                            }
+                                            secondaryAttack = false;
+                                        }
+
+                                        yield return new WaitForSeconds(.5f);
+                                        MCAnim.Play("Armature|TakeDamage");
+                                        MCDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseMC).ToString();
+                                        GameManager.MCHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseMC;
+                                        MCHealth.value = GameManager.MCHealth;
+                                        yield return new WaitForSeconds(2f);
+
+                                    }
+                                }
+                            }
+                            StartCoroutine(TurnOffDamageUI());
+                        }
+
+                        else if (WhoToAttack == 1 && !RhysDead && GameManager.RhysInParty)
+                        {
+                            enemyUnit[enemyIndex].transform.LookAt(Rhys.transform.position);
+
+                            Camera.transform.LookAt(Rhys.transform.position);
+
+                            //Block
+                            if (singleBlock && playerToBlock == "Rhys")
+                            {
+                                dialogueText.text = enemyUnit[enemyIndex].unitName + " attacks Rhys with " + " with " + enemyUnit[enemyIndex].attackName + "!";
+                                yield return new WaitForSeconds(2f);
+                                dialogueText.text = "The attack was blocked!";
+                                yield return new WaitForSeconds(2f);
+                                singleBlock = false;
+                                playerToBlock = "";
+                            }
+                            //Dodge
+                            else if ((GameManager.RhysDodge * EvasionModifier) >= RandomAttack)
+                            {
+                                dialogueText.text = enemyUnit[enemyIndex].unitName + " attacks Rhys with " + enemyUnit[enemyIndex].attackName + "!";
+                                yield return new WaitForSeconds(.5f);
+                                RhysAnim.Play("Armature|Dodge");
+                                dialogueText.text = "Rhys Dodges!";
+                                yield return new WaitForSeconds(1f);
+
+                            }
+                            else
+                            {
+                                dialogueText.text = enemyUnit[enemyIndex].unitName + " attacks Rhys with " + enemyUnit[enemyIndex].attackName + "!";
+
+                                yield return new WaitForSeconds(1f);
+
+                                RhysDamageUI.text = "".ToString();
+
+                                //reflect attack
+                                if (repelAttack && playerName == "Rhys")
+                                {
+                                    bool isDead = enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyIndex].enemyDamage);
+                                    enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyIndex].enemyDamage);
+                                    dialogueText.text = "The attack is reflected!";
+                                    EnemyAnim();
+                                    yield return new WaitForSeconds(2f);
+
+                                    //This checks to see if the Enemy is Dead or has HP remaining
+                                    if (isDead)
+                                    {
+                                        RemoveCurrentEnemy();
+                                    }
+                                    repelAttack = false;
+                                    playerName = "";
+                                }
+
+                                else
+                                {
+                                    bool isDead = Rhys.TakeDamage(enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseRhys);
+                                    if (isDead)
+                                    {
+                                        RhysDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
+                                        GameManager.RhysHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseRhys;
+                                        RhysHealth.value = GameManager.RhysHealth;
+                                        RhysDead = true;
+
+                                        playerTurnOrder.Remove(CharacterIdentifier.Rhys);
+
+                                        RhysAnim.SetBool("isDead", true);
+                                        yield return new WaitForSeconds(3f);
+
+                                    }
+
+                                    else
+                                    {
+                                        yield return new WaitForSeconds(.5f);
+                                        RhysAnim.Play("Armature|TakeDamage");
+                                        RhysDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
+                                        GameManager.RhysHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseRhys;
+                                        RhysHealth.value = GameManager.RhysHealth;
+
+                                        if (confusionChance)
+                                        {
+                                            RhysConfused = true;
+                                            confusionChance = false;
+                                            dialogueText.text = "Rhys is confused!";
+                                            yield return new WaitForSeconds(1.5f);
+                                        }
+
+                                        if (secondaryAttack)
+                                        {
+                                            bool isDead2 = Rhys.TakeDamage(enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseRhys);
+                                            if (isDead2 || Rhys.currentHP <= 0)
+                                            {
+                                                RhysDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
+                                                GameManager.RhysHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseRhys;
+                                                RhysHealth.value = GameManager.RhysHealth;
+                                                RhysDead = true;
+                                                playerTurnOrder.Remove(CharacterIdentifier.Rhys);
+                                                RhysAnim.Play("Armature|Dead");
+                                                RhysAnim.SetBool("isDead", true);
+                                                yield return new WaitForSeconds(2.5f);
+                                            }
+                                            else
+                                            {
+                                                yield return new WaitForSeconds(.5f);
+                                                RhysAnim.Play("Armature|TakeDamage");
+                                                RhysDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
+                                                GameManager.RhysHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseRhys;
+                                                RhysHealth.value = GameManager.RhysHealth;
+                                                yield return new WaitForSeconds(.5f);
+                                                RhysDamageUI.text = "";
+                                            }
+                                            secondaryAttack = false;
+                                        }
+
+                                        yield return new WaitForSeconds(2f);
+                                    }
+                                }
+                            }
+
+                            yield return new WaitForSeconds(.5f);
+                            StartCoroutine(TurnOffDamageUI());
+                        }
+
+                        else if (WhoToAttack == 2 && !JameelDead && GameManager.JameelInParty)
+                        {
+                            enemyUnit[enemyIndex].transform.LookAt(Jameel.transform.position);
+
+                            Camera.transform.LookAt(Jameel.transform.position);
+
+                            //Block
+                            if (singleBlock && playerToBlock == "Jameel")
+                            {
+                                dialogueText.text = enemyUnit[enemyIndex].unitName + " attacks Jameel with " + " with " + enemyUnit[enemyIndex].attackName + "!";
+                                yield return new WaitForSeconds(2f);
+                                dialogueText.text = "The attack was blocked!";
+                                yield return new WaitForSeconds(2f);
+                                singleBlock = false;
+                                playerToBlock = "";
+                            }
+                            //Dodge
+                            else if ((GameManager.JameelDodge * EvasionModifier) >= RandomAttack)
+                            {
+                                dialogueText.text = enemyUnit[enemyIndex].unitName + " attacks Jameel with " + enemyUnit[enemyIndex].attackName + "!";
+                                yield return new WaitForSeconds(.5f);
+                                JameelAnim.Play("Armature|Dodge");
+                                dialogueText.text = "Jameel Dodges!";
+                                yield return new WaitForSeconds(1f);
+
+                            }
+                            else
+                            {
+                                dialogueText.text = enemyUnit[enemyIndex].unitName + " attacks Jameel with " + enemyUnit[enemyIndex].attackName + "!";
+                                yield return new WaitForSeconds(1f);
+
+
+                                JameelDamageUI.text = "".ToString();
+
+                                //reflect attack
+                                if (repelAttack && playerName == "Jameel")
+                                {
+                                    bool isDead = enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyIndex].enemyDamage);
+                                    enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyIndex].enemyDamage);
+                                    dialogueText.text = "The attack is reflected!";
+                                    yield return new WaitForSeconds(2f);
+
+                                    //This checks to see if the Enemy is Dead or has HP remaining
+                                    if (isDead)
+                                    {
+                                        RemoveCurrentEnemy();
+                                    }
+                                    repelAttack = false;
+                                    playerName = "";
+                                }
+
+                                else
+                                {
+                                    bool isDead = Jameel.TakeDamage(enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseJameel);
+                                    if (isDead)
+                                    {
+                                        JameelDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
+                                        GameManager.JameelHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseJameel;
+                                        JameelHealth.value = GameManager.JameelHealth;
+                                        JameelDead = true;
+
+                                        playerTurnOrder.Remove(CharacterIdentifier.Jameel);
+
+                                        JameelAnim.SetBool("isDead", true);
+                                        yield return new WaitForSeconds(3f);
+
+                                    }
+
+                                    else
+                                    {
+                                        yield return new WaitForSeconds(.5f);
+                                        JameelAnim.Play("Armature|TakeDamage");
+                                        JameelDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
+                                        GameManager.JameelHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseJameel;
+                                        JameelHealth.value = GameManager.JameelHealth;
+
+                                        if (confusionChance)
+                                        {
+                                            JameelConfused = true;
+                                            confusionChance = false;
+                                            dialogueText.text = "Jameel is confused!";
+                                            yield return new WaitForSeconds(1.5f);
+                                        }
+
+                                        if (secondaryAttack)
+                                        {
+
+                                            Jameel.TakeDamage(enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseJameel);
+                                            print("here");
+                                            print(Jameel.currentHP);
+                                            if (Jameel.currentHP <= 0)
+                                            {
+
+                                                JameelDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
+                                                GameManager.JameelHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseJameel;
+                                                JameelHealth.value = GameManager.JameelHealth;
+                                                JameelDead = true;
+                                                playerTurnOrder.Remove(CharacterIdentifier.Jameel);
+                                                JameelAnim.Play("Armature|Dead");
+                                                JameelAnim.SetBool("isDead", true);
+                                                yield return new WaitForSeconds(2.5f);
+                                            }
+                                            else
+                                            {
+                                                yield return new WaitForSeconds(.5f);
+                                                JameelAnim.Play("Armature|TakeDamage");
+                                                JameelDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
+                                                GameManager.JameelHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseJameel;
+                                                JameelHealth.value = GameManager.JameelHealth;
+                                                yield return new WaitForSeconds(.5f);
+                                                JameelDamageUI.text = "";
+                                            }
+                                            secondaryAttack = false;
+                                        }
+
+                                        yield return new WaitForSeconds(2f);
+                                    }
+                                }
+                            }
+
+                            yield return new WaitForSeconds(.5f);
+                            StartCoroutine(TurnOffDamageUI());
+                        }
+                        else if (WhoToAttack == 3 && !HarperDead && GameManager.HarperInParty)
+                        {
+                            enemyUnit[enemyIndex].transform.LookAt(Harper.transform.position);
+
+                            Camera.transform.LookAt(Harper.transform.position);
+
+                            //Block
+                            if (singleBlock && playerToBlock == "Harper")
+                            {
+                                dialogueText.text = enemyUnit[enemyIndex].unitName + " attacks Harper with " + " with " + enemyUnit[enemyIndex].attackName + "!";
+                                yield return new WaitForSeconds(2f);
+                                dialogueText.text = "The attack was blocked!";
+                                yield return new WaitForSeconds(2f);
+                                singleBlock = false;
+                                playerToBlock = "";
+                            }
+                            //Dodge
+                            else if ((GameManager.HarperDodge * EvasionModifier) >= RandomAttack)
+                            {
+                                dialogueText.text = enemyUnit[enemyIndex].unitName + " attacks Harper with " + enemyUnit[enemyIndex].attackName + "!";
+                                yield return new WaitForSeconds(.5f);
+                                HarperAnim.Play("Armature|Dodge");
+                                dialogueText.text = "Harper Dodges!";
+                                yield return new WaitForSeconds(1f);
+
+                            }
+                            else
+                            {
+                                dialogueText.text = enemyUnit[enemyIndex].unitName + " attacks Harper with " + enemyUnit[enemyIndex].attackName + "!";
+
+                                yield return new WaitForSeconds(1f);
+
+
+                                HarperDamageUI.text = "".ToString();
+
+                                //reflect attack
+                                if (repelAttack && playerName == "Harper")
+                                {
+                                    bool isDead = enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyIndex].enemyDamage);
+                                    enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyIndex].enemyDamage);
+                                    dialogueText.text = "The attack is reflected!";
+                                    EnemyAnim();
+                                    yield return new WaitForSeconds(2f);
+
+                                    //This checks to see if the Enemy is Dead or has HP remaining
+                                    if (isDead)
+                                    {
+                                        RemoveCurrentEnemy();
+                                    }
+                                    repelAttack = false;
+                                    playerName = "";
+                                }
+
+                                else
+                                {
+                                    bool isDead = Harper.TakeDamage(enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseHarper);
+                                    if (isDead)
+                                    {
+                                        HarperDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
+                                        GameManager.HarperHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseHarper;
+                                        HarperHealth.value = GameManager.HarperHealth;
+                                        HarperDead = true;
+
+                                        playerTurnOrder.Remove(CharacterIdentifier.Harper);
+
+                                        HarperAnim.SetBool("isDead", true);
+                                        yield return new WaitForSeconds(3f);
+
+                                    }
+
+                                    else
+                                    {
+                                        yield return new WaitForSeconds(.5f);
+                                        HarperAnim.Play("Armature|TakeDamage");
+                                        HarperDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
+                                        GameManager.HarperHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseHarper;
+                                        HarperHealth.value = GameManager.HarperHealth;
+
+                                        if (confusionChance)
+                                        {
+                                            HarperConfused = true;
+                                            confusionChance = false;
+                                            dialogueText.text = "Harper is confused!";
+                                            yield return new WaitForSeconds(1.5f);
+                                        }
+
+                                        if (secondaryAttack)
+                                        {
+                                            bool isDead2 = Harper.TakeDamage(enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseHarper);
+                                            if (isDead2 || Harper.currentHP <= 0)
+                                            {
+                                                HarperDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
+                                                GameManager.HarperHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseHarper;
+                                                HarperHealth.value = GameManager.HarperHealth;
+                                                HarperDead = true;
+                                                playerTurnOrder.Remove(CharacterIdentifier.Harper);
+                                                HarperAnim.Play("Armature|Dead");
+                                                HarperAnim.SetBool("isDead", true);
+                                                yield return new WaitForSeconds(2.5f);
+                                            }
+                                            else
+                                            {
+                                                yield return new WaitForSeconds(.5f);
+                                                HarperAnim.Play("Armature|TakeDamage");
+                                                HarperDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
+                                                GameManager.HarperHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseHarper;
+                                                HarperHealth.value = GameManager.HarperHealth;
+                                                yield return new WaitForSeconds(.5f);
+                                                HarperDamageUI.text = "";
+                                            }
+                                            secondaryAttack = false;
+                                        }
+
+                                        yield return new WaitForSeconds(2f);
+                                    }
+                                }
+                            }
+
+                            yield return new WaitForSeconds(.5f);
+                            StartCoroutine(TurnOffDamageUI());
+                        }
+                        else if (WhoToAttack == 4 && !SkyeDead && GameManager.SkyeInParty)
+                        {
+                            enemyUnit[enemyIndex].transform.LookAt(Skye.transform.position);
+
+                            Camera.transform.LookAt(Skye.transform.position);
+
+                            //Block
+                            if (singleBlock && playerToBlock == "Skye")
+                            {
+                                dialogueText.text = enemyUnit[enemyIndex].unitName + " attacks Skye with " + " with " + enemyUnit[enemyIndex].attackName + "!";
+                                yield return new WaitForSeconds(2f);
+                                dialogueText.text = "The attack was blocked!";
+                                yield return new WaitForSeconds(2f);
+                                singleBlock = false;
+                                playerToBlock = "";
+                            }
+                            //Dodge
+                            else if ((GameManager.SkyeDodge * EvasionModifier) >= RandomAttack)
+                            {
+                                dialogueText.text = enemyUnit[enemyIndex].unitName + " attacks Skye with " + enemyUnit[enemyIndex].attackName + "!";
+                                yield return new WaitForSeconds(.5f);
+                                SkyeAnim.Play("Armature|Dodge");
+                                dialogueText.text = "Skye Dodges!";
+                                yield return new WaitForSeconds(1f);
+
+                            }
+                            else
+                            {
+                                dialogueText.text = enemyUnit[enemyIndex].unitName + " attacks Skye with " + enemyUnit[enemyIndex].attackName + "!";
+
+                                yield return new WaitForSeconds(1f);
+
+                                SkyeDamageUI.text = "".ToString();
+
+                                //reflect attack
+                                if (repelAttack && playerName == "Skye")
+                                {
+                                    bool isDead = enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyIndex].enemyDamage);
+                                    enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyIndex].enemyDamage);
+                                    dialogueText.text = "The attack is reflected!";
+                                    EnemyAnim();
+                                    yield return new WaitForSeconds(2f);
+
+                                    //This checks to see if the Enemy is Dead or has HP remaining
+                                    if (isDead)
+                                    {
+                                        RemoveCurrentEnemy();
+                                    }
+                                    repelAttack = false;
+                                    playerName = "";
+                                }
+
+                                else
+                                {
+                                    bool isDead = Skye.TakeDamage(enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseSkye);
+                                    if (isDead)
+                                    {
+                                        SkyeDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
+                                        GameManager.SkyeHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseSkye;
+                                        SkyeHealth.value = GameManager.SkyeHealth;
+                                        SkyeDead = true;
+
+                                        playerTurnOrder.Remove(CharacterIdentifier.Skye);
+
+                                        SkyeAnim.SetBool("isDead", true);
+                                        yield return new WaitForSeconds(3f);
+
+                                    }
+
+                                    else
+                                    {
+                                        yield return new WaitForSeconds(.5f);
+                                        SkyeAnim.Play("Armature|TakeDamage");
+                                        SkyeDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
+                                        GameManager.SkyeHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseSkye;
+                                        SkyeHealth.value = GameManager.SkyeHealth;
+
+                                        if (confusionChance)
+                                        {
+                                            SkyeConfused = true;
+                                            confusionChance = false;
+                                            dialogueText.text = "Skye is confused!";
+                                            yield return new WaitForSeconds(1.5f);
+                                        }
+
+                                        if (secondaryAttack)
+                                        {
+                                            bool isDead2 = Skye.TakeDamage(enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseSkye);
+                                            if (isDead2 || Skye.currentHP <= 0)
+                                            {
+                                                SkyeDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
+                                                GameManager.SkyeHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseSkye;
+                                                SkyeHealth.value = GameManager.SkyeHealth;
+                                                SkyeDead = true;
+                                                playerTurnOrder.Remove(CharacterIdentifier.Skye);
+                                                SkyeAnim.Play("Armature|Dead");
+                                                SkyeAnim.SetBool("isDead", true);
+                                                yield return new WaitForSeconds(2.5f);
+                                            }
+                                            else
+                                            {
+                                                yield return new WaitForSeconds(.5f);
+                                                SkyeAnim.Play("Armature|TakeDamage");
+                                                SkyeDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
+                                                GameManager.SkyeHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseSkye;
+                                                SkyeHealth.value = GameManager.SkyeHealth;
+                                                yield return new WaitForSeconds(.5f);
+                                                SkyeDamageUI.text = "";
+                                            }
+                                            secondaryAttack = false;
+                                        }
+
+                                        yield return new WaitForSeconds(2f);
+                                    }
+                                }
+                            }
+
+                            yield return new WaitForSeconds(.5f);
+                            StartCoroutine(TurnOffDamageUI());
+                        }
+                        else if (WhoToAttack == 5 && !SullivanDead && GameManager.SullivanInParty)
+                        {
+                            enemyUnit[enemyIndex].transform.LookAt(Sullivan.transform.position);
+
+                            Camera.transform.LookAt(Sullivan.transform.position);
+
+                            //Block
+                            if (singleBlock && playerToBlock == "Sullivan")
+                            {
+                                dialogueText.text = enemyUnit[enemyIndex].unitName + " attacks Sullivan with " + " with " + enemyUnit[enemyIndex].attackName + "!";
+                                yield return new WaitForSeconds(2f);
+                                dialogueText.text = "The attack was blocked!";
+                                yield return new WaitForSeconds(2f);
+                                singleBlock = false;
+                                playerToBlock = "";
+                            }
+                            //Dodge
+                            else if ((GameManager.SullivanDodge * EvasionModifier) >= RandomAttack)
+                            {
+                                dialogueText.text = enemyUnit[enemyIndex].unitName + " attacks Sullivan with " + enemyUnit[enemyIndex].attackName + "!";
+                                yield return new WaitForSeconds(.5f);
+                                SullivanAnim.Play("Armature|Dodge");
+                                dialogueText.text = "Sullivan Dodges!";
+                                yield return new WaitForSeconds(1f);
+
+                            }
+                            else
+                            {
+                                dialogueText.text = enemyUnit[enemyIndex].unitName + " attacks Sullivan with " + enemyUnit[enemyIndex].attackName + "!";
+
+                                yield return new WaitForSeconds(1f);
+
+                                SullivanDamageUI.text = "".ToString();
+
+                                //reflect attack
+                                if (repelAttack && playerName == "Sullivan")
+                                {
+                                    bool isDead = enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyIndex].enemyDamage);
+                                    enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyIndex].enemyDamage);
+                                    dialogueText.text = "The attack is reflected!";
+                                    EnemyAnim();
+                                    yield return new WaitForSeconds(2f);
+
+                                    //This checks to see if the Enemy is Dead or has HP remaining
+                                    if (isDead)
+                                    {
+                                        RemoveCurrentEnemy();
+                                    }
+                                    repelAttack = false;
+                                    playerName = "";
+                                }
+
+                                else
+                                {
+                                    bool isDead = Sullivan.TakeDamage(enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseSullivan);
+                                    if (isDead)
+                                    {
+                                        SullivanDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
+                                        GameManager.SullivanHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseSullivan;
+                                        SullivanHealth.value = GameManager.SullivanHealth;
+                                        SullivanDead = true;
+
+                                        playerTurnOrder.Remove(CharacterIdentifier.Sullivan);
+
+                                        SullivanAnim.SetBool("isDead", true);
+                                        yield return new WaitForSeconds(3f);
+
+                                    }
+
+                                    else
+                                    {
+                                        yield return new WaitForSeconds(.5f);
+                                        SullivanAnim.Play("Armature|TakeDamage");
+                                        SullivanDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
+                                        GameManager.SullivanHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseSullivan;
+                                        SullivanHealth.value = GameManager.SullivanHealth;
+
+                                        if (confusionChance)
+                                        {
+                                            SullivanConfused = true;
+                                            confusionChance = false;
+                                            dialogueText.text = "Sullivan is confused!";
+                                            yield return new WaitForSeconds(1.5f);
+                                        }
+
+                                        if (secondaryAttack)
+                                        {
+                                            bool isDead2 = Sullivan.TakeDamage(enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseSullivan);
+                                            if (isDead2 || Sullivan.currentHP <= 0)
+                                            {
+                                                print(Sullivan.currentHP);
+                                                SullivanDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
+                                                GameManager.SullivanHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseSullivan;
+                                                SullivanHealth.value = GameManager.SullivanHealth;
+                                                SullivanDead = true;
+                                                playerTurnOrder.Remove(CharacterIdentifier.Sullivan);
+                                                SullivanAnim.Play("Armature|Dead");
+                                                SullivanAnim.SetBool("isDead", true);
+                                                yield return new WaitForSeconds(2.5f);
+                                            }
+                                            else
+                                            {
+                                                yield return new WaitForSeconds(.5f);
+                                                SullivanAnim.Play("Armature|TakeDamage");
+                                                SullivanDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
+                                                GameManager.SullivanHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseSullivan;
+                                                SullivanHealth.value = GameManager.SullivanHealth;
+                                                yield return new WaitForSeconds(.5f);
+                                                SullivanDamageUI.text = "";
+                                            }
+                                            secondaryAttack = false;
+                                        }
+
+                                        yield return new WaitForSeconds(2f);
+                                    }
+                                }
+                            }
+
+                            yield return new WaitForSeconds(.5f);
+                            StartCoroutine(TurnOffDamageUI());
+                        }
                     }
                 }
             }
@@ -8199,6 +8867,7 @@ public class BattleSystem : MonoBehaviour
         HarperConfused = false;
         SkyeConfused = false;
         SullivanConfused = false;
+        attackAll = false;
 
 
         secondaryAttack = false;
