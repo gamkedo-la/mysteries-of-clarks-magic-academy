@@ -330,6 +330,8 @@ public class BattleSystem : MonoBehaviour
     string playerToBlock;
 
     public static bool secondaryAttack;
+    public static bool MCConfused, RhysConfused, JameelConfused, HarperConfused, SkyeConfused, SullivanConfused;
+    public static bool confusionChance;
     private void Start()
     {
         if (GameObject.Find("GameManager") == null)
@@ -2030,7 +2032,7 @@ public class BattleSystem : MonoBehaviour
             {
                 if (enemyUnit[enemyUnitSelected].currentHP <= 0)
                 {
-                    flippendo = false;
+                    diffindoMaxima = false;
                     dialogueText.text = "Enemy is knocked out, select another target.";
                     yield return new WaitForSeconds(1f);
                     dialogueText.text = "Select someone to attack!";
@@ -4749,8 +4751,7 @@ public class BattleSystem : MonoBehaviour
 
                     do
                     {
-                        //THIS HAS BEEN TWEAKED, CHANGE RANDOM.RANGE to 0
-                        WhoToAttack = Random.Range(1, 6);
+                        WhoToAttack = Random.Range(0, 6);
                         if (safteyCounter-- < 0)
                         {
                             Debug.LogError("Couldn't find a living WhoToAttack, is the Whole Team Dead?");
@@ -4801,7 +4802,7 @@ public class BattleSystem : MonoBehaviour
                         //Block
                         if (singleBlock && playerToBlock == "MC")
                         {
-                            dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks " + GameManager.MCFirstName + " with " + enemyUnit[enemyUnitSelected].attackName + "!";
+                            dialogueText.text = enemyUnit[enemyIndex].unitName + " attacks " + GameManager.MCFirstName + " with " + enemyUnit[enemyIndex].attackName + "!";
                             yield return new WaitForSeconds(2f);
                             dialogueText.text = "The attack was blocked!";
                             yield return new WaitForSeconds(2f);
@@ -4811,7 +4812,7 @@ public class BattleSystem : MonoBehaviour
                         //Dodge
                         else if ((GameManager.MCDodge * EvasionModifier) >= RandomAttack)
                         {
-                            dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks " + GameManager.MCFirstName + " with " + enemyUnit[enemyUnitSelected].attackName + "!";
+                            dialogueText.text = enemyUnit[enemyIndex].unitName + " attacks " + GameManager.MCFirstName + " with " + enemyUnit[enemyIndex].attackName + "!";
                             yield return new WaitForSeconds(.5f);
                             dialogueText.text = GameManager.MCFirstName + " Dodges!";
                             MCAnim.Play("Armature|Dodge");
@@ -4821,7 +4822,7 @@ public class BattleSystem : MonoBehaviour
                         //Attack
                         else
                         {
-                            dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks " + GameManager.MCFirstName + " with " + enemyUnit[enemyUnitSelected].attackName + "!";
+                            dialogueText.text = enemyUnit[enemyIndex].unitName + " attacks " + GameManager.MCFirstName + " with " + enemyUnit[enemyIndex].attackName + "!";
 
                             yield return new WaitForSeconds(2f);
 
@@ -4830,8 +4831,8 @@ public class BattleSystem : MonoBehaviour
                             //reflect attack
                             if (repelAttack && playerName == "MC")
                             {
-                                bool isDead = enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyUnitSelected].enemyDamage);
-                                enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyUnitSelected].enemyDamage);
+                                bool isDead = enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyIndex].enemyDamage);
+                                enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyIndex].enemyDamage);
                                 dialogueText.text = "The attack is reflected!";
                                 EnemyAnim();
                                 yield return new WaitForSeconds(2f);
@@ -4847,12 +4848,12 @@ public class BattleSystem : MonoBehaviour
 
                             else
                             {
-                                bool isDead = MC.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseMC);
+                                bool isDead = MC.TakeDamage(enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseMC);
                                 //Dead
                                 if (isDead)
                                 {
-                                    GameManager.MCHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseMC;
-                                    MCDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseMC).ToString();
+                                    GameManager.MCHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseMC;
+                                    MCDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseMC).ToString();
                                     MCHealth.value = GameManager.MCHealth;
                                     MCDead = true;
                                     MCAnim.SetBool("isDead", true);
@@ -4864,12 +4865,20 @@ public class BattleSystem : MonoBehaviour
                                 //Not dead, but hurt
                                 else
                                 {
+                                    if (confusionChance)
+                                    {
+                                        MCConfused = true;
+                                        confusionChance = false;
+                                        dialogueText.text = GameManager.MCFirstName + " is confused!";
+                                        yield return new WaitForSeconds(1.5f);
+                                    }
+
                                     if (secondaryAttack)
                                     {
                                         yield return new WaitForSeconds(.5f);
                                         MCAnim.Play("Armature|TakeDamage");
-                                        MCDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseMC).ToString();
-                                        GameManager.MCHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseMC;
+                                        MCDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseMC).ToString();
+                                        GameManager.MCHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseMC;
                                         MCHealth.value = GameManager.MCHealth;
                                         yield return new WaitForSeconds(.5f);
                                         MCDamageUI.text = "";
@@ -4887,8 +4896,8 @@ public class BattleSystem : MonoBehaviour
 
                                     yield return new WaitForSeconds(.5f);
                                     MCAnim.Play("Armature|TakeDamage");
-                                    MCDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseMC).ToString();
-                                    GameManager.MCHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseMC;
+                                    MCDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseMC).ToString();
+                                    GameManager.MCHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseMC;
                                     MCHealth.value = GameManager.MCHealth;
                                     yield return new WaitForSeconds(2f);
 
@@ -4907,7 +4916,7 @@ public class BattleSystem : MonoBehaviour
                         //Block
                         if (singleBlock && playerToBlock == "Rhys")
                         {
-                            dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks Rhys with " + " with " + enemyUnit[enemyUnitSelected].attackName + "!";
+                            dialogueText.text = enemyUnit[enemyIndex].unitName + " attacks Rhys with " + " with " + enemyUnit[enemyIndex].attackName + "!";
                             yield return new WaitForSeconds(2f);
                             dialogueText.text = "The attack was blocked!";
                             yield return new WaitForSeconds(2f);
@@ -4917,7 +4926,7 @@ public class BattleSystem : MonoBehaviour
                         //Dodge
                         else if ((GameManager.RhysDodge * EvasionModifier) >= RandomAttack)
                         {
-                            dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks Rhys with " + enemyUnit[enemyUnitSelected].attackName + "!";
+                            dialogueText.text = enemyUnit[enemyIndex].unitName + " attacks Rhys with " + enemyUnit[enemyIndex].attackName + "!";
                             yield return new WaitForSeconds(.5f);
                             RhysAnim.Play("Armature|Dodge");
                             dialogueText.text = "Rhys Dodges!";
@@ -4926,7 +4935,7 @@ public class BattleSystem : MonoBehaviour
                         }
                         else
                         {
-                            dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks Rhys with " + enemyUnit[enemyUnitSelected].attackName + "!";
+                            dialogueText.text = enemyUnit[enemyIndex].unitName + " attacks Rhys with " + enemyUnit[enemyIndex].attackName + "!";
 
                             yield return new WaitForSeconds(1f);
 
@@ -4935,8 +4944,8 @@ public class BattleSystem : MonoBehaviour
                             //reflect attack
                             if (repelAttack && playerName == "Rhys")
                             {
-                                bool isDead = enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyUnitSelected].enemyDamage);
-                                enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyUnitSelected].enemyDamage);
+                                bool isDead = enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyIndex].enemyDamage);
+                                enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyIndex].enemyDamage);
                                 dialogueText.text = "The attack is reflected!";
                                 EnemyAnim();
                                 yield return new WaitForSeconds(2f);
@@ -4952,11 +4961,11 @@ public class BattleSystem : MonoBehaviour
 
                             else
                             {
-                                bool isDead = Rhys.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseRhys);
+                                bool isDead = Rhys.TakeDamage(enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseRhys);
                                 if (isDead)
                                 {
-                                    RhysDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
-                                    GameManager.RhysHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseRhys;
+                                    RhysDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
+                                    GameManager.RhysHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseRhys;
                                     RhysHealth.value = GameManager.RhysHealth;
                                     RhysDead = true;
 
@@ -4971,17 +4980,25 @@ public class BattleSystem : MonoBehaviour
                                 {
                                     yield return new WaitForSeconds(.5f);
                                     RhysAnim.Play("Armature|TakeDamage");
-                                    RhysDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
-                                    GameManager.RhysHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseRhys;
+                                    RhysDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
+                                    GameManager.RhysHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseRhys;
                                     RhysHealth.value = GameManager.RhysHealth;
+
+                                    if (confusionChance)
+                                    {
+                                        RhysConfused = true;
+                                        confusionChance = false;
+                                        dialogueText.text = "Rhys is confused!";
+                                        yield return new WaitForSeconds(1.5f);
+                                    }
 
                                     if (secondaryAttack)
                                     {
-                                        bool isDead2 = Rhys.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseRhys);
+                                        bool isDead2 = Rhys.TakeDamage(enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseRhys);
                                         if (isDead2 || Rhys.currentHP <= 0)
                                         {
-                                            RhysDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
-                                            GameManager.RhysHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseRhys;
+                                            RhysDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
+                                            GameManager.RhysHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseRhys;
                                             RhysHealth.value = GameManager.RhysHealth;
                                             RhysDead = true;
                                             playerTurnOrder.Remove(CharacterIdentifier.Rhys);
@@ -4993,8 +5010,8 @@ public class BattleSystem : MonoBehaviour
                                         {
                                             yield return new WaitForSeconds(.5f);
                                             RhysAnim.Play("Armature|TakeDamage");
-                                            RhysDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
-                                            GameManager.RhysHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseRhys;
+                                            RhysDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
+                                            GameManager.RhysHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseRhys;
                                             RhysHealth.value = GameManager.RhysHealth;
                                             yield return new WaitForSeconds(.5f);
                                             RhysDamageUI.text = "";
@@ -5019,7 +5036,7 @@ public class BattleSystem : MonoBehaviour
                         //Block
                         if (singleBlock && playerToBlock == "Jameel")
                         {
-                            dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks Jameel with " + " with " + enemyUnit[enemyUnitSelected].attackName + "!";
+                            dialogueText.text = enemyUnit[enemyIndex].unitName + " attacks Jameel with " + " with " + enemyUnit[enemyIndex].attackName + "!";
                             yield return new WaitForSeconds(2f);
                             dialogueText.text = "The attack was blocked!";
                             yield return new WaitForSeconds(2f);
@@ -5029,7 +5046,7 @@ public class BattleSystem : MonoBehaviour
                         //Dodge
                         else if ((GameManager.JameelDodge * EvasionModifier) >= RandomAttack)
                         {
-                            dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks Jameel with " + enemyUnit[enemyUnitSelected].attackName + "!";
+                            dialogueText.text = enemyUnit[enemyIndex].unitName + " attacks Jameel with " + enemyUnit[enemyIndex].attackName + "!";
                             yield return new WaitForSeconds(.5f);
                             JameelAnim.Play("Armature|Dodge");
                             dialogueText.text = "Jameel Dodges!";
@@ -5038,7 +5055,7 @@ public class BattleSystem : MonoBehaviour
                         }
                         else
                         {
-                            dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks Jameel with " + enemyUnit[enemyUnitSelected].attackName + "!";
+                            dialogueText.text = enemyUnit[enemyIndex].unitName + " attacks Jameel with " + enemyUnit[enemyIndex].attackName + "!";
                             yield return new WaitForSeconds(1f);
 
 
@@ -5047,8 +5064,8 @@ public class BattleSystem : MonoBehaviour
                             //reflect attack
                             if (repelAttack && playerName == "Jameel")
                             {
-                                bool isDead = enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyUnitSelected].enemyDamage);
-                                enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyUnitSelected].enemyDamage);
+                                bool isDead = enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyIndex].enemyDamage);
+                                enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyIndex].enemyDamage);
                                 dialogueText.text = "The attack is reflected!";
                                 yield return new WaitForSeconds(2f);
 
@@ -5063,11 +5080,11 @@ public class BattleSystem : MonoBehaviour
 
                             else
                             {
-                                bool isDead = Jameel.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseJameel);
+                                bool isDead = Jameel.TakeDamage(enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseJameel);
                                 if (isDead)
                                 {
-                                    JameelDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
-                                    GameManager.JameelHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseJameel;
+                                    JameelDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
+                                    GameManager.JameelHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseJameel;
                                     JameelHealth.value = GameManager.JameelHealth;
                                     JameelDead = true;
 
@@ -5082,21 +5099,29 @@ public class BattleSystem : MonoBehaviour
                                 {
                                     yield return new WaitForSeconds(.5f);
                                     JameelAnim.Play("Armature|TakeDamage");
-                                    JameelDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
-                                    GameManager.JameelHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseJameel;
+                                    JameelDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
+                                    GameManager.JameelHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseJameel;
                                     JameelHealth.value = GameManager.JameelHealth;
+
+                                    if (confusionChance)
+                                    {
+                                        JameelConfused = true;
+                                        confusionChance = false;
+                                        dialogueText.text = "Jameel is confused!";
+                                        yield return new WaitForSeconds(1.5f);
+                                    }
 
                                     if (secondaryAttack)
                                     {
 
-                                        Jameel.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseJameel);
+                                        Jameel.TakeDamage(enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseJameel);
                                         print("here");
                                         print(Jameel.currentHP);
                                         if (Jameel.currentHP <= 0)
                                         {
                                            
-                                            JameelDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
-                                            GameManager.JameelHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseJameel;
+                                            JameelDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
+                                            GameManager.JameelHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseJameel;
                                             JameelHealth.value = GameManager.JameelHealth;
                                             JameelDead = true;
                                             playerTurnOrder.Remove(CharacterIdentifier.Jameel);
@@ -5108,8 +5133,8 @@ public class BattleSystem : MonoBehaviour
                                         {
                                             yield return new WaitForSeconds(.5f);
                                             JameelAnim.Play("Armature|TakeDamage");
-                                            JameelDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
-                                            GameManager.JameelHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseJameel;
+                                            JameelDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
+                                            GameManager.JameelHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseJameel;
                                             JameelHealth.value = GameManager.JameelHealth;
                                             yield return new WaitForSeconds(.5f);
                                             JameelDamageUI.text = "";
@@ -5134,7 +5159,7 @@ public class BattleSystem : MonoBehaviour
                         //Block
                         if (singleBlock && playerToBlock == "Harper")
                         {
-                            dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks Harper with " + " with " + enemyUnit[enemyUnitSelected].attackName + "!";
+                            dialogueText.text = enemyUnit[enemyIndex].unitName + " attacks Harper with " + " with " + enemyUnit[enemyIndex].attackName + "!";
                             yield return new WaitForSeconds(2f);
                             dialogueText.text = "The attack was blocked!";
                             yield return new WaitForSeconds(2f);
@@ -5144,7 +5169,7 @@ public class BattleSystem : MonoBehaviour
                         //Dodge
                         else if ((GameManager.HarperDodge * EvasionModifier) >= RandomAttack)
                         {
-                            dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks Harper with " + enemyUnit[enemyUnitSelected].attackName + "!";
+                            dialogueText.text = enemyUnit[enemyIndex].unitName + " attacks Harper with " + enemyUnit[enemyIndex].attackName + "!";
                             yield return new WaitForSeconds(.5f);
                             HarperAnim.Play("Armature|Dodge");
                             dialogueText.text = "Harper Dodges!";
@@ -5153,7 +5178,7 @@ public class BattleSystem : MonoBehaviour
                         }
                         else
                         {
-                            dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks Harper with " + enemyUnit[enemyUnitSelected].attackName + "!";
+                            dialogueText.text = enemyUnit[enemyIndex].unitName + " attacks Harper with " + enemyUnit[enemyIndex].attackName + "!";
 
                             yield return new WaitForSeconds(1f);
 
@@ -5163,8 +5188,8 @@ public class BattleSystem : MonoBehaviour
                             //reflect attack
                             if (repelAttack && playerName == "Harper")
                             {
-                                bool isDead = enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyUnitSelected].enemyDamage);
-                                enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyUnitSelected].enemyDamage);
+                                bool isDead = enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyIndex].enemyDamage);
+                                enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyIndex].enemyDamage);
                                 dialogueText.text = "The attack is reflected!";
                                 EnemyAnim();
                                 yield return new WaitForSeconds(2f);
@@ -5180,11 +5205,11 @@ public class BattleSystem : MonoBehaviour
 
                             else
                             {
-                                bool isDead = Harper.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseHarper);
+                                bool isDead = Harper.TakeDamage(enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseHarper);
                                 if (isDead)
                                 {
-                                    HarperDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
-                                    GameManager.HarperHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseHarper;
+                                    HarperDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
+                                    GameManager.HarperHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseHarper;
                                     HarperHealth.value = GameManager.HarperHealth;
                                     HarperDead = true;
 
@@ -5199,17 +5224,25 @@ public class BattleSystem : MonoBehaviour
                                 {
                                     yield return new WaitForSeconds(.5f);
                                     HarperAnim.Play("Armature|TakeDamage");
-                                    HarperDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
-                                    GameManager.HarperHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseHarper;
+                                    HarperDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
+                                    GameManager.HarperHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseHarper;
                                     HarperHealth.value = GameManager.HarperHealth;
+
+                                    if (confusionChance)
+                                    {
+                                        HarperConfused = true;
+                                        confusionChance = false;
+                                        dialogueText.text = "Harper is confused!";
+                                        yield return new WaitForSeconds(1.5f);
+                                    }
 
                                     if (secondaryAttack)
                                     {
-                                        bool isDead2 = Harper.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseHarper);
+                                        bool isDead2 = Harper.TakeDamage(enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseHarper);
                                         if (isDead2 || Harper.currentHP <= 0)
                                         {
-                                            HarperDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
-                                            GameManager.HarperHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseHarper;
+                                            HarperDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
+                                            GameManager.HarperHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseHarper;
                                             HarperHealth.value = GameManager.HarperHealth;
                                             HarperDead = true;
                                             playerTurnOrder.Remove(CharacterIdentifier.Harper);
@@ -5221,8 +5254,8 @@ public class BattleSystem : MonoBehaviour
                                         {
                                             yield return new WaitForSeconds(.5f);
                                             HarperAnim.Play("Armature|TakeDamage");
-                                            HarperDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
-                                            GameManager.HarperHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseHarper;
+                                            HarperDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
+                                            GameManager.HarperHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseHarper;
                                             HarperHealth.value = GameManager.HarperHealth;
                                             yield return new WaitForSeconds(.5f);
                                             HarperDamageUI.text = "";
@@ -5247,7 +5280,7 @@ public class BattleSystem : MonoBehaviour
                         //Block
                         if (singleBlock && playerToBlock == "Skye")
                         {
-                            dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks Skye with " + " with " + enemyUnit[enemyUnitSelected].attackName + "!";
+                            dialogueText.text = enemyUnit[enemyIndex].unitName + " attacks Skye with " + " with " + enemyUnit[enemyIndex].attackName + "!";
                             yield return new WaitForSeconds(2f);
                             dialogueText.text = "The attack was blocked!";
                             yield return new WaitForSeconds(2f);
@@ -5257,7 +5290,7 @@ public class BattleSystem : MonoBehaviour
                         //Dodge
                         else if ((GameManager.SkyeDodge * EvasionModifier) >= RandomAttack)
                         {
-                            dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks Skye with " + enemyUnit[enemyUnitSelected].attackName + "!";
+                            dialogueText.text = enemyUnit[enemyIndex].unitName + " attacks Skye with " + enemyUnit[enemyIndex].attackName + "!";
                             yield return new WaitForSeconds(.5f);
                             SkyeAnim.Play("Armature|Dodge");
                             dialogueText.text = "Skye Dodges!";
@@ -5266,7 +5299,7 @@ public class BattleSystem : MonoBehaviour
                         }
                         else
                         {
-                            dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks Skye with " + enemyUnit[enemyUnitSelected].attackName + "!";
+                            dialogueText.text = enemyUnit[enemyIndex].unitName + " attacks Skye with " + enemyUnit[enemyIndex].attackName + "!";
 
                             yield return new WaitForSeconds(1f);
 
@@ -5275,8 +5308,8 @@ public class BattleSystem : MonoBehaviour
                             //reflect attack
                             if (repelAttack && playerName == "Skye")
                             {
-                                bool isDead = enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyUnitSelected].enemyDamage);
-                                enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyUnitSelected].enemyDamage);
+                                bool isDead = enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyIndex].enemyDamage);
+                                enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyIndex].enemyDamage);
                                 dialogueText.text = "The attack is reflected!";
                                 EnemyAnim();
                                 yield return new WaitForSeconds(2f);
@@ -5292,11 +5325,11 @@ public class BattleSystem : MonoBehaviour
 
                             else
                             {
-                                bool isDead = Skye.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseSkye);
+                                bool isDead = Skye.TakeDamage(enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseSkye);
                                 if (isDead)
                                 {
-                                    SkyeDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
-                                    GameManager.SkyeHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseSkye;
+                                    SkyeDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
+                                    GameManager.SkyeHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseSkye;
                                     SkyeHealth.value = GameManager.SkyeHealth;
                                     SkyeDead = true;
 
@@ -5311,17 +5344,25 @@ public class BattleSystem : MonoBehaviour
                                 {
                                     yield return new WaitForSeconds(.5f);
                                     SkyeAnim.Play("Armature|TakeDamage");
-                                    SkyeDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
-                                    GameManager.SkyeHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseSkye;
+                                    SkyeDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
+                                    GameManager.SkyeHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseSkye;
                                     SkyeHealth.value = GameManager.SkyeHealth;
+
+                                    if (confusionChance)
+                                    {
+                                        SkyeConfused = true;
+                                        confusionChance = false;
+                                        dialogueText.text = "Skye is confused!";
+                                        yield return new WaitForSeconds(1.5f);
+                                    }
 
                                     if (secondaryAttack)
                                     {
-                                        bool isDead2 = Skye.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseSkye);
+                                        bool isDead2 = Skye.TakeDamage(enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseSkye);
                                         if (isDead2 || Skye.currentHP <= 0)
                                         {
-                                            SkyeDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
-                                            GameManager.SkyeHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseSkye;
+                                            SkyeDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
+                                            GameManager.SkyeHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseSkye;
                                             SkyeHealth.value = GameManager.SkyeHealth;
                                             SkyeDead = true;
                                             playerTurnOrder.Remove(CharacterIdentifier.Skye);
@@ -5333,8 +5374,8 @@ public class BattleSystem : MonoBehaviour
                                         {
                                             yield return new WaitForSeconds(.5f);
                                             SkyeAnim.Play("Armature|TakeDamage");
-                                            SkyeDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
-                                            GameManager.SkyeHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseSkye;
+                                            SkyeDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
+                                            GameManager.SkyeHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseSkye;
                                             SkyeHealth.value = GameManager.SkyeHealth;
                                             yield return new WaitForSeconds(.5f);
                                             SkyeDamageUI.text = "";
@@ -5359,7 +5400,7 @@ public class BattleSystem : MonoBehaviour
                         //Block
                         if (singleBlock && playerToBlock == "Sullivan")
                         {
-                            dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks Sullivan with " + " with " + enemyUnit[enemyUnitSelected].attackName + "!";
+                            dialogueText.text = enemyUnit[enemyIndex].unitName + " attacks Sullivan with " + " with " + enemyUnit[enemyIndex].attackName + "!";
                             yield return new WaitForSeconds(2f);
                             dialogueText.text = "The attack was blocked!";
                             yield return new WaitForSeconds(2f);
@@ -5369,7 +5410,7 @@ public class BattleSystem : MonoBehaviour
                         //Dodge
                         else if ((GameManager.SullivanDodge * EvasionModifier) >= RandomAttack)
                         {
-                            dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks Sullivan with " + enemyUnit[enemyUnitSelected].attackName + "!";
+                            dialogueText.text = enemyUnit[enemyIndex].unitName + " attacks Sullivan with " + enemyUnit[enemyIndex].attackName + "!";
                             yield return new WaitForSeconds(.5f);
                             SullivanAnim.Play("Armature|Dodge");
                             dialogueText.text = "Sullivan Dodges!";
@@ -5378,7 +5419,7 @@ public class BattleSystem : MonoBehaviour
                         }
                         else
                         {
-                            dialogueText.text = enemyUnit[enemyUnitSelected].unitName + " attacks Sullivan with " + enemyUnit[enemyUnitSelected].attackName + "!";
+                            dialogueText.text = enemyUnit[enemyIndex].unitName + " attacks Sullivan with " + enemyUnit[enemyIndex].attackName + "!";
 
                             yield return new WaitForSeconds(1f);
 
@@ -5387,8 +5428,8 @@ public class BattleSystem : MonoBehaviour
                             //reflect attack
                             if (repelAttack && playerName == "Sullivan")
                             {
-                                bool isDead = enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyUnitSelected].enemyDamage);
-                                enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyUnitSelected].enemyDamage);
+                                bool isDead = enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyIndex].enemyDamage);
+                                enemyUnit[enemyIndex].TakeDamageReflected(enemyUnit[enemyIndex].enemyDamage);
                                 dialogueText.text = "The attack is reflected!";
                                 EnemyAnim();
                                 yield return new WaitForSeconds(2f);
@@ -5404,11 +5445,11 @@ public class BattleSystem : MonoBehaviour
 
                             else
                             {
-                                bool isDead = Sullivan.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseSullivan);
+                                bool isDead = Sullivan.TakeDamage(enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseSullivan);
                                 if (isDead)
                                 {
-                                    SullivanDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
-                                    GameManager.SullivanHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseSullivan;
+                                    SullivanDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
+                                    GameManager.SullivanHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseSullivan;
                                     SullivanHealth.value = GameManager.SullivanHealth;
                                     SullivanDead = true;
 
@@ -5423,18 +5464,26 @@ public class BattleSystem : MonoBehaviour
                                 {
                                     yield return new WaitForSeconds(.5f);
                                     SullivanAnim.Play("Armature|TakeDamage");
-                                    SullivanDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
-                                    GameManager.SullivanHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseSullivan;
+                                    SullivanDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
+                                    GameManager.SullivanHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseSullivan;
                                     SullivanHealth.value = GameManager.SullivanHealth;
+
+                                    if (confusionChance)
+                                    {
+                                        SullivanConfused = true;
+                                        confusionChance = false;
+                                        dialogueText.text = "Sullivan is confused!";
+                                        yield return new WaitForSeconds(1.5f);
+                                    }
 
                                     if (secondaryAttack)
                                     {
-                                        bool isDead2 = Sullivan.TakeDamage(enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseSullivan);
+                                        bool isDead2 = Sullivan.TakeDamage(enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseSullivan);
                                         if (isDead2 || Sullivan.currentHP <= 0)
                                         {
                                             print(Sullivan.currentHP);
-                                            SullivanDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
-                                            GameManager.SullivanHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseSullivan;
+                                            SullivanDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
+                                            GameManager.SullivanHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseSullivan;
                                             SullivanHealth.value = GameManager.SullivanHealth;
                                             SullivanDead = true;
                                             playerTurnOrder.Remove(CharacterIdentifier.Sullivan);
@@ -5446,8 +5495,8 @@ public class BattleSystem : MonoBehaviour
                                         {
                                             yield return new WaitForSeconds(.5f);
                                             SullivanAnim.Play("Armature|TakeDamage");
-                                            SullivanDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier).ToString();
-                                            GameManager.SullivanHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseSullivan;
+                                            SullivanDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
+                                            GameManager.SullivanHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseSullivan;
                                             SullivanHealth.value = GameManager.SullivanHealth;
                                             yield return new WaitForSeconds(.5f);
                                             SullivanDamageUI.text = "";
@@ -5503,10 +5552,16 @@ public class BattleSystem : MonoBehaviour
     #endregion
 
     #region Player Turns (button select)
+    IEnumerator WaitingForConfusion()
+    {
+        yield return new WaitForSeconds(1.5f);
+    }
+
     void MCTurn()
     {
         Camera.transform.position = player1Cam.transform.position;
         Camera.transform.LookAt(enemyCamTarget);
+
         if (MCDead)
         {
             state = BattleState.LOST;
@@ -5514,32 +5569,79 @@ public class BattleSystem : MonoBehaviour
         }
         if (!MCDead)
         {
-            MCMenu.SetActive(true);
-            dialogueText.text = GameManager.MCFirstName + ": Choose an Action.";
+            if (MCConfused)
+            {
+                dialogueText.text = GameManager.MCFirstName + ": is confused!";
 
-            throwRock = false;
-            flippendo = false;
-            pulsateSunt = false;
-            stupefaciunt = false;
-            incendio = false;
-            incendioMaxima = false;
-            avis = false;
-            avisMaxima = false;
-            glacies = false;
-            minorCura = false;
-            impetumSubsisto = false;
-            augamenti = false;
-            mothsDeorsum = false;
-            mothsInteriore = false;
-            internaCombustione = false;
-            bombarda = false;
-            bombardaMaxima = false;
-            bombardaUltima = false;
-            minusSanaCoetus = false;
-            chorusPedes = false;
-            criticaFocus = false;
-            diffindo = false;
-            diffindoMaxima = false;
+                int RandOptions = Random.Range(0, 100);
+                StartCoroutine(WaitingForConfusion());
+                if (RandOptions < 40)
+                {
+                    dialogueText.text = GameManager.MCFirstName + " is staring off into space!";
+                }
+
+                if (RandOptions > 60)
+                {
+                    dialogueText.text = GameManager.MCFirstName + " hurts themself in confusion!";
+                    MC.currentHP -= GameManager.MCDodge;
+                    if (MC.currentHP <= 0)
+                    {
+                        MCDamageUI.text = "-" + (GameManager.MCLevel * DefenseModifier).ToString();
+                        GameManager.MCHealth -= GameManager.MCLevel * DefenseModifier * DefenseMC;
+                        MCHealth.value = GameManager.MCHealth;
+                        EndBattle();
+                        MCAnim.SetBool("isDead", true);
+                    }
+
+                    else
+                    {
+                        MCAnim.Play("Armature|TakeDamage");
+                        MCDamageUI.text = "-" + (GameManager.MCLevel * DefenseModifier).ToString();
+                        GameManager.MCHealth -= GameManager.MCLevel * DefenseModifier * DefenseMC;
+                        MCHealth.value = GameManager.MCHealth;
+                    }
+                }
+
+                else
+                {
+                    int MoneyThrown = Random.Range(20, 40);
+                    GameManager.Money -= MoneyThrown;
+                    dialogueText.text = GameManager.MCFirstName + " threw away W$" + MoneyThrown;
+                }
+
+                MCConfused = false;
+                NextTurn();
+            }
+
+            else
+            {
+                MCMenu.SetActive(true);
+                dialogueText.text = GameManager.MCFirstName + ": Choose an Action.";
+
+                throwRock = false;
+                flippendo = false;
+                pulsateSunt = false;
+                stupefaciunt = false;
+                incendio = false;
+                incendioMaxima = false;
+                avis = false;
+                avisMaxima = false;
+                glacies = false;
+                minorCura = false;
+                impetumSubsisto = false;
+                augamenti = false;
+                mothsDeorsum = false;
+                mothsInteriore = false;
+                internaCombustione = false;
+                bombarda = false;
+                bombardaMaxima = false;
+                bombardaUltima = false;
+                minusSanaCoetus = false;
+                chorusPedes = false;
+                criticaFocus = false;
+                diffindo = false;
+                diffindoMaxima = false;
+            }
         }
     }
 
@@ -5674,29 +5776,77 @@ public class BattleSystem : MonoBehaviour
         Camera.transform.position = player2Cam.transform.position;
         Camera.transform.LookAt(enemyCamTarget);
 
-        if (RhysDead || !GameManager.RhysInParty)
+        if (RhysConfused)
         {
+            dialogueText.text = "Rhys: is confused!";
+
+            int RandOptions = Random.Range(0, 100);
+            StartCoroutine(WaitingForConfusion());
+            if (RandOptions < 40)
+            {
+                dialogueText.text = "Rhys is staring off into space!";
+            }
+
+            if (RandOptions > 60)
+            {
+                dialogueText.text = "Rhys hurts themself in confusion!";
+                Rhys.currentHP -= GameManager.RhysDodge;
+                if (Rhys.currentHP <= 0)
+                {
+                    RhysDamageUI.text = "-" + (GameManager.RhysLevel * DefenseModifier).ToString();
+                    GameManager.RhysHealth -= GameManager.RhysLevel * DefenseModifier * DefenseRhys;
+                    RhysHealth.value = GameManager.RhysHealth;
+                    EndBattle();
+                    RhysAnim.SetBool("isDead", true);
+                }
+
+                else
+                {
+                    RhysAnim.Play("Armature|TakeDamage");
+                    RhysDamageUI.text = "-" + (GameManager.RhysLevel * DefenseModifier).ToString();
+                    GameManager.RhysHealth -= GameManager.RhysLevel * DefenseModifier * DefenseRhys;
+                    RhysHealth.value = GameManager.RhysHealth;
+                }
+            }
+
+            else
+            {
+                int MoneyThrown = Random.Range(20, 40);
+                GameManager.Money -= MoneyThrown;
+                dialogueText.text = "Rhys threw away W$" + MoneyThrown;
+            }
+
+            RhysConfused = false;
             NextTurn();
-
         }
-        if (!RhysDead)
-        {
-            RhysMenu.SetActive(true);
-            dialogueText.text = "Rhys: Choose an Action.";
 
-            rhysThrowRock = false;
-            rhysFlippendo = false;
-            rhysCorpusLiget = false;
-            rhysMothsDeorsum = false;
-            rhysMothInteriore = false;
-            rhysInternumCombustione = false;
-            rhysTenuiLabor = false;
-            rhysIncendio = false;
-            rhysFumos = false;
-            rhysWaddiwasi = false;
-            rhysConjurePugione = false;
-            rhysImpetumSubsisto = false;
-            rhysUolueris = false;
+        else
+        {
+
+            if (RhysDead || !GameManager.RhysInParty)
+            {
+                NextTurn();
+
+            }
+            if (!RhysDead)
+            {
+                RhysMenu.SetActive(true);
+                dialogueText.text = "Rhys: Choose an Action.";
+
+                rhysThrowRock = false;
+                rhysFlippendo = false;
+                rhysCorpusLiget = false;
+                rhysMothsDeorsum = false;
+                rhysMothInteriore = false;
+                rhysInternumCombustione = false;
+                rhysTenuiLabor = false;
+                rhysIncendio = false;
+                rhysFumos = false;
+                rhysWaddiwasi = false;
+                rhysConjurePugione = false;
+                rhysImpetumSubsisto = false;
+                rhysUolueris = false;
+            }
         }
     }
 
@@ -5718,26 +5868,74 @@ public class BattleSystem : MonoBehaviour
             NextTurn();
 
         }
-        if (!JameelDead)
-        {
-            JameelMenu.SetActive(true);
-            dialogueText.text = "Jameel: Choose an Action.";
 
-            jameelThrowRock = false;
-            jameelFlippendo = false;
-            jameelMinusSanaCoetus = false;
-            jameelMinorCura = false;
-            jameelMaiorCura = false;
-            jameelPartumNix = false;
-            jameelHiemsImpetus = false;
-            jameelBombarda = false;
-            jameelBombardaMaxima = false;
-            jameelBombardaUltima = false;
-            jameelRepellere = false;
-            jameelDiffindo = false;
-            jameelDiffindoMaxima = false;
-            jameelImpetumSubsisto = false;
-            jameelChorusPedes = false;
+        if (JameelConfused)
+        {
+            dialogueText.text = "Jameel: is confused!";
+
+            int RandOptions = Random.Range(0, 100);
+            StartCoroutine(WaitingForConfusion());
+            if (RandOptions < 40)
+            {
+                dialogueText.text = "Jameel is staring off into space!";
+            }
+
+            if (RandOptions > 60)
+            {
+                dialogueText.text = "Jameel hurts themself in confusion!";
+                 Jameel.currentHP -= GameManager.JameelDodge;
+                 if (Jameel.currentHP <= 0)
+                 {
+                    JameelDamageUI.text = "-" + (GameManager.JameelLevel * DefenseModifier).ToString();
+                    GameManager.JameelHealth -= GameManager.JameelLevel * DefenseModifier * DefenseJameel;
+                    JameelHealth.value = GameManager.JameelHealth;
+                    EndBattle();
+                    JameelAnim.SetBool("isDead", true);
+                }
+
+                else
+                {
+                    JameelAnim.Play("Armature|TakeDamage");
+                    JameelDamageUI.text = "-" + (GameManager.JameelLevel * DefenseModifier).ToString();
+                    GameManager.JameelHealth -= GameManager.JameelLevel * DefenseModifier * DefenseJameel;
+                    JameelHealth.value = GameManager.JameelHealth;
+                }
+            }
+
+            else
+            {
+                int MoneyThrown = Random.Range(20, 40);
+                GameManager.Money -= MoneyThrown;
+                dialogueText.text = "Jameel threw away W$" + MoneyThrown;
+            }
+
+            JameelConfused = false;
+            NextTurn();
+        }
+
+        else
+        {
+            if (!JameelDead)
+            {
+                JameelMenu.SetActive(true);
+                dialogueText.text = "Jameel: Choose an Action.";
+
+                jameelThrowRock = false;
+                jameelFlippendo = false;
+                jameelMinusSanaCoetus = false;
+                jameelMinorCura = false;
+                jameelMaiorCura = false;
+                jameelPartumNix = false;
+                jameelHiemsImpetus = false;
+                jameelBombarda = false;
+                jameelBombardaMaxima = false;
+                jameelBombardaUltima = false;
+                jameelRepellere = false;
+                jameelDiffindo = false;
+                jameelDiffindoMaxima = false;
+                jameelImpetumSubsisto = false;
+                jameelChorusPedes = false;
+            }
         }
     }
 
@@ -5766,24 +5964,72 @@ public class BattleSystem : MonoBehaviour
             NextTurn();
 
         }
-        if (!HarperDead)
-        {
-            HarperMenu.SetActive(true);
-            dialogueText.text = "Harper: Choose an Action.";
 
-            harperThrowRock = false;
-            harperFlippendo = false;
-            harperDeflectorImpetum = false;
-            harperMinorFortitudinem = false;
-            harperMoserateFortitudinem = false;
-            harperMaiorFortitudinem = false;
-            harperInternumCombustione = false;
-            harperLaedo = false;
-            harperLociPraesidium = false;
-            harperPerturbo = false;
-            harperPulsateSunt = false;
-            harperFumes = false;
-            harperDiminuendo = false;
+        if (HarperConfused)
+        {
+            dialogueText.text = "Harper: is confused!";
+
+            int RandOptions = Random.Range(0, 100);
+            StartCoroutine(WaitingForConfusion());
+            if (RandOptions < 40)
+            {
+                dialogueText.text = "Harper is staring off into space!";
+            }
+
+            if (RandOptions > 60)
+            {
+                dialogueText.text = "Harper hurts themself in confusion!";
+                Harper.currentHP -= GameManager.HarperDodge;
+                if (Harper.currentHP <= 0)
+                {
+                    HarperDamageUI.text = "-" + (GameManager.HarperLevel * DefenseModifier).ToString();
+                    GameManager.HarperHealth -= GameManager.HarperLevel * DefenseModifier * DefenseHarper;
+                    HarperHealth.value = GameManager.HarperHealth;
+                    EndBattle();
+                    HarperAnim.SetBool("isDead", true);
+                }
+
+                else
+                {
+                    HarperAnim.Play("Armature|TakeDamage");
+                    HarperDamageUI.text = "-" + (GameManager.HarperLevel * DefenseModifier).ToString();
+                    GameManager.HarperHealth -= GameManager.HarperLevel * DefenseModifier * DefenseHarper;
+                    HarperHealth.value = GameManager.HarperHealth;
+                }
+            }
+
+            else
+            {
+                int MoneyThrown = Random.Range(20, 40);
+                GameManager.Money -= MoneyThrown;
+                dialogueText.text = "Harper threw away W$" + MoneyThrown;
+            }
+
+            HarperConfused = false;
+            NextTurn();
+        }
+
+        else
+        {
+            if (!HarperDead)
+            {
+                HarperMenu.SetActive(true);
+                dialogueText.text = "Harper: Choose an Action.";
+
+                harperThrowRock = false;
+                harperFlippendo = false;
+                harperDeflectorImpetum = false;
+                harperMinorFortitudinem = false;
+                harperMoserateFortitudinem = false;
+                harperMaiorFortitudinem = false;
+                harperInternumCombustione = false;
+                harperLaedo = false;
+                harperLociPraesidium = false;
+                harperPerturbo = false;
+                harperPulsateSunt = false;
+                harperFumes = false;
+                harperDiminuendo = false;
+            }
         }
     }
 
@@ -5818,22 +6064,71 @@ public class BattleSystem : MonoBehaviour
             NextTurn();
 
         }
-        if (!SkyeDead)
-        {
-            SkyeMenu.SetActive(true);
-            dialogueText.text = "Skye: Choose an Action.";
 
-            skyeThrowRock = false;
-            skyeFlippendo = false;
-            skyeMinorCura = false;
-            skyeMaiorCura = false;
-            skyeSenaPlenaPotion = false;
-            skyeReanimatePotion = false;
-            skyeSanaCoetusPotion = false;
-            skyeAntidoteToCommonPoisons = false;
-            skyeStrengthPotion = false;
-            skyeConfundus = false;
-            skyeIraUolueris = false;
+        if (SkyeConfused)
+        {
+            dialogueText.text = "Skye: is confused!";
+
+            int RandOptions = Random.Range(0, 100);
+            StartCoroutine(WaitingForConfusion());
+            if (RandOptions < 40)
+            {
+                dialogueText.text = "Skye is staring off into space!";
+            }
+
+            if (RandOptions > 60)
+            {
+                dialogueText.text = "Skye hurts themself in confusion!";
+                Skye.currentHP -= GameManager.SkyeDodge;
+                if (Skye.currentHP <= 0)
+                {
+                    SkyeDamageUI.text = "-" + (GameManager.SkyeLevel * DefenseModifier).ToString();
+                    GameManager.SkyeHealth -= GameManager.SkyeLevel * DefenseModifier * DefenseSkye;
+                    SkyeHealth.value = GameManager.SkyeHealth;
+                    EndBattle();
+                    SkyeAnim.SetBool("isDead", true);
+                }
+
+                else
+                {
+                    SkyeAnim.Play("Armature|TakeDamage");
+                    SkyeDamageUI.text = "-" + (GameManager.SkyeLevel * DefenseModifier).ToString();
+                    GameManager.SkyeHealth -= GameManager.SkyeLevel * DefenseModifier * DefenseSkye;
+                    SkyeHealth.value = GameManager.SkyeHealth;
+                }
+            }
+
+            else
+            {
+                int MoneyThrown = Random.Range(20, 40);
+                GameManager.Money -= MoneyThrown;
+                dialogueText.text = "Skye threw away W$" + MoneyThrown;
+            }
+
+            SkyeConfused = false;
+            NextTurn();
+        }
+
+        else
+        {
+
+            if (!SkyeDead)
+            {
+                SkyeMenu.SetActive(true);
+                dialogueText.text = "Skye: Choose an Action.";
+
+                skyeThrowRock = false;
+                skyeFlippendo = false;
+                skyeMinorCura = false;
+                skyeMaiorCura = false;
+                skyeSenaPlenaPotion = false;
+                skyeReanimatePotion = false;
+                skyeSanaCoetusPotion = false;
+                skyeAntidoteToCommonPoisons = false;
+                skyeStrengthPotion = false;
+                skyeConfundus = false;
+                skyeIraUolueris = false;
+            }
         }
     }
 
@@ -5862,26 +6157,74 @@ public class BattleSystem : MonoBehaviour
             NextTurn();
 
         }
-        if (!SullivanDead)
-        {
-            SullivanMenu.SetActive(true);
-            dialogueText.text = "Sullivan: Choose an Action.";
 
-            #region SullivanAttacks
-            sullivanRockThrow = false;
-            sullivanFlippendo = false;
-            sullivanExiling = false;
-            sullivanProtego = false;
-            sullivanIgnusMagnum = false;
-            sullivanSagittaIecit = false;
-            sullivanMonstrumSella = false;
-            sullivanIncarcerous = false;
-            sullivanUltimumChao = false;
-            sullivanMutareStatum = false;
-            sullivanEngorgement = false;
-            sullivanStatuamLocomotion = false;
-            sullivanCriticaFocus = false;
-            #endregion
+        if (SullivanConfused)
+        {
+            dialogueText.text = "Sullivan: is confused!";
+
+            int RandOptions = Random.Range(0, 100);
+            StartCoroutine(WaitingForConfusion());
+            if (RandOptions < 40)
+            {
+                dialogueText.text = "Sullivan is staring off into space!";
+            }
+
+            if (RandOptions > 60)
+            {
+                dialogueText.text = "Sullivan hurts themself in confusion!";
+                Sullivan.currentHP -= GameManager.SullivanDodge;
+                if (Sullivan.currentHP <= 0)
+                {
+                    SullivanDamageUI.text = "-" + (GameManager.SullivanLevel * DefenseModifier).ToString();
+                    GameManager.SullivanHealth -= GameManager.SullivanLevel * DefenseModifier * DefenseSullivan;
+                    SullivanHealth.value = GameManager.SullivanHealth;
+                    EndBattle();
+                    SullivanAnim.SetBool("isDead", true);
+                }
+
+                else
+                {
+                    SullivanAnim.Play("Armature|TakeDamage");
+                    SullivanDamageUI.text = "-" + (GameManager.SullivanLevel * DefenseModifier).ToString();
+                    GameManager.SullivanHealth -= GameManager.SullivanLevel * DefenseModifier * DefenseSullivan;
+                    SullivanHealth.value = GameManager.SullivanHealth;
+                }
+            }
+
+            else
+            {
+                int MoneyThrown = Random.Range(20, 40);
+                GameManager.Money -= MoneyThrown;
+                dialogueText.text = "Sullivan threw away W$" + MoneyThrown;
+            }
+
+            SullivanConfused = false;
+            NextTurn();
+        }
+
+        else
+        {
+            if (!SullivanDead)
+            {
+                SullivanMenu.SetActive(true);
+                dialogueText.text = "Sullivan: Choose an Action.";
+
+                #region SullivanAttacks
+                sullivanRockThrow = false;
+                sullivanFlippendo = false;
+                sullivanExiling = false;
+                sullivanProtego = false;
+                sullivanIgnusMagnum = false;
+                sullivanSagittaIecit = false;
+                sullivanMonstrumSella = false;
+                sullivanIncarcerous = false;
+                sullivanUltimumChao = false;
+                sullivanMutareStatum = false;
+                sullivanEngorgement = false;
+                sullivanStatuamLocomotion = false;
+                sullivanCriticaFocus = false;
+                #endregion
+            }
         }
     }
 
@@ -8030,6 +8373,15 @@ public class BattleSystem : MonoBehaviour
     #region End of Battle States
     void EndBattle()
     {
+        confusionChance = false;
+        MCConfused = false;
+        RhysConfused = false;
+        JameelConfused = false;
+        HarperConfused = false;
+        SkyeConfused = false;
+        SullivanConfused = false;
+
+
         secondaryAttack = false;
         repelAttack = false;
 

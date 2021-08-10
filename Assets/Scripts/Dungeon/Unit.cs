@@ -230,6 +230,7 @@ public class Unit : MonoBehaviour
     public int minAttackAvil, maxAttackAvil;
     int attackToDo;
     int minDamage, maxDamage;
+    int maxChance;
     public float enemyDamage;
     public string attackName;
 
@@ -3825,7 +3826,29 @@ public class Unit : MonoBehaviour
         {
             HeavyPounding();
         }
+
+        else if (enemyAttacks[AttackToDo].ToString() == "ThrustedFist();")
+        {
+            ThrustedFist();
+        }
+
+        else if (enemyAttacks[AttackToDo].ToString() == "HeadButt();")
+        {
+            HeadButt();
+        }
+
+        else if (enemyAttacks[AttackToDo].ToString() == "BrainShake();")
+        {
+            BrainShake();
+        }
+
+        else if (enemyAttacks[AttackToDo].ToString() == "SkullCracker();")
+        {
+            SkullCracker();
+        }
     }
+
+    #region Enemy Attacks
 
     void SoftPunch()
     {
@@ -3892,6 +3915,78 @@ public class Unit : MonoBehaviour
         enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Follow Through".ToString();
     }
+
+    void ThrustedFist()
+    {
+        int confusionChance;
+        maxChance = 90;
+        confusionChance = Random.Range(0, 100);
+        if (confusionChance <= maxChance)
+        {
+            BattleSystem.confusionChance = true;
+        }
+        
+        minDamage = 10;
+        maxDamage = 15;
+
+        enemyDamage = Random.Range(minDamage, maxDamage);
+        attackName = "Thrusted Fist".ToString();
+    }
+
+    void HeadButt()
+    {
+        int confusionChance;
+        maxChance = 20;
+        confusionChance = Random.Range(0, 100);
+        if (confusionChance <= maxChance)
+        {
+            BattleSystem.confusionChance = true;
+        }
+        minDamage = 3;
+        maxDamage = 8;
+
+        enemyDamage = Random.Range(minDamage, maxDamage);
+        attackName = "Head Butt".ToString();
+    }
+
+    void BrainShake()
+    {
+        BattleSystem.confusionChance = true;
+
+        int confusionChance;
+        maxChance = 60;
+        confusionChance = Random.Range(0, 100);
+        if (confusionChance <= maxChance)
+        {
+            BattleSystem.confusionChance = true;
+        }
+        minDamage = 10;
+        maxDamage = 20;
+
+        enemyDamage = Random.Range(minDamage, maxDamage);
+        attackName = "Brain Shake".ToString();
+    }
+
+    void SkullCracker()
+    {
+        BattleSystem.confusionChance = true;
+
+        int confusionChance;
+        maxChance = 90;
+        confusionChance = Random.Range(0, 100);
+        if (confusionChance <= maxChance)
+        {
+            BattleSystem.confusionChance = true;
+        }
+
+        minDamage = 25;
+        maxDamage = 40;
+
+        enemyDamage = Random.Range(minDamage, maxDamage);
+        attackName = "Skull Cracker".ToString();
+    }
+
+    #endregion
 
     IEnumerator ClearText()
     {
