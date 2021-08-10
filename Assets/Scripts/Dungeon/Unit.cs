@@ -3810,6 +3810,11 @@ public class Unit : MonoBehaviour
         {
             GodsHand();
         }
+
+        else if (enemyAttacks[AttackToDo].ToString() == "FollowThrough();")
+        {
+            FollowThrough();
+        }
     }
 
     void SoftPunch()
@@ -3849,6 +3854,17 @@ public class Unit : MonoBehaviour
 
         enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Hefty Hook".ToString();
+        print(enemyDamage);
+    }
+
+    void FollowThrough()
+    {
+        BattleSystem.secondaryAttack = true;
+        minDamage = 8;
+        maxDamage = 9;
+
+        enemyDamage = Random.Range(minDamage, maxDamage);
+        attackName = "Follow Through".ToString();
         print(enemyDamage);
     }
 

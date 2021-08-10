@@ -328,6 +328,8 @@ public class BattleSystem : MonoBehaviour
 
     bool singleBlock;
     string playerToBlock;
+
+    public static bool secondaryAttack;
     private void Start()
     {
         if (GameObject.Find("GameManager") == null)
@@ -4861,6 +4863,27 @@ public class BattleSystem : MonoBehaviour
                                 //Not dead, but hurt
                                 else
                                 {
+                                    if (secondaryAttack)
+                                    {
+                                        yield return new WaitForSeconds(.5f);
+                                        MCAnim.Play("Armature|TakeDamage");
+                                        MCDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseMC).ToString();
+                                        GameManager.MCHealth -= enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseMC;
+                                        MCHealth.value = GameManager.MCHealth;
+                                        yield return new WaitForSeconds(.5f);
+                                        MCDamageUI.text = "";
+                                        if (isDead)
+                                        {
+                                            MCDead = true;
+                                            MCAnim.SetBool("isDead", true);
+                                            Debug.Log("Game Over because Main Character died");
+                                            state = BattleState.LOST;
+                                            yield return new WaitForSeconds(3f);
+                                            EndBattle();
+                                        }
+                                        secondaryAttack = false;
+                                    }
+
                                     yield return new WaitForSeconds(.5f);
                                     MCAnim.Play("Armature|TakeDamage");
                                     MCDamageUI.text = "-" + (enemyUnit[enemyUnitSelected].enemyDamage * DefenseModifier * DefenseMC).ToString();
@@ -7889,6 +7912,7 @@ public class BattleSystem : MonoBehaviour
     #region End of Battle States
     void EndBattle()
     {
+        secondaryAttack = false;
         repelAttack = false;
 
         GameManager.isRed = false;
