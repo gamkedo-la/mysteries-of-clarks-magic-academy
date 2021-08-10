@@ -3792,76 +3792,83 @@ public class Unit : MonoBehaviour
     //This is for the Enemys to reference for their choice of attack (start of the AI system)
     public void DetermineAttack()
     {
-        int AttackToDo = Random.Range(0, enemyAttacks.Length);
-
-        if (enemyAttacks[AttackToDo].ToString() == "SoftPunch();")
-        {
-            SoftPunch();
-        }
-
-        else if (enemyAttacks[AttackToDo].ToString() == "HeftyHook();")
-        {
-            HeftyHook();
-        }
-
-        else if(enemyAttacks[AttackToDo].ToString() == "HeavyAssault();")
-        {
-            HeavyAssault();
-        }
-
-        else if(enemyAttacks[AttackToDo].ToString() == "GodsHand();")
-        {
-            GodsHand();
-        }
-
-        else if (enemyAttacks[AttackToDo].ToString() == "FollowThrough();")
-        {
-            FollowThrough();
-        }
-
-        else if (enemyAttacks[AttackToDo].ToString() == "JabJabJab();")
-        {
-            JabJabJab();
-        }
-
-        else if (enemyAttacks[AttackToDo].ToString() == "HeavyPounding();")
-        {
-            HeavyPounding();
-        }
-
-        else if (enemyAttacks[AttackToDo].ToString() == "ThrustedFist();")
-        {
-            ThrustedFist();
-        }
-
-        else if (enemyAttacks[AttackToDo].ToString() == "HeadButt();")
-        {
-            HeadButt();
-        }
-
-        else if (enemyAttacks[AttackToDo].ToString() == "BrainShake();")
-        {
-            BrainShake();
-        }
-
-        else if (enemyAttacks[AttackToDo].ToString() == "SkullCracker();")
-        {
-            SkullCracker();
-        }
-
-        else if (enemyAttacks[AttackToDo].ToString() == "ColossalSlam();")
-        {
-            ColossalSlam();
-        }
-
-        else if (enemyAttacks[AttackToDo].ToString() == "Earthquake();")
-        {
-            Earthquake();
-        }
-
-        else if (enemyAttacks[AttackToDo].ToString() == "DeathsDoor();")
+        if (BattleSystem.deathDoor)
         {
             DeathsDoor();
+        }
+        else
+        {
+            int AttackToDo = Random.Range(0, enemyAttacks.Length);
+
+            if (enemyAttacks[AttackToDo].ToString() == "SoftPunch();")
+            {
+                SoftPunch();
+            }
+
+            else if (enemyAttacks[AttackToDo].ToString() == "HeftyHook();")
+            {
+                HeftyHook();
+            }
+
+            else if (enemyAttacks[AttackToDo].ToString() == "HeavyAssault();")
+            {
+                HeavyAssault();
+            }
+
+            else if (enemyAttacks[AttackToDo].ToString() == "GodsHand();")
+            {
+                GodsHand();
+            }
+
+            else if (enemyAttacks[AttackToDo].ToString() == "FollowThrough();")
+            {
+                FollowThrough();
+            }
+
+            else if (enemyAttacks[AttackToDo].ToString() == "JabJabJab();")
+            {
+                JabJabJab();
+            }
+
+            else if (enemyAttacks[AttackToDo].ToString() == "HeavyPounding();")
+            {
+                HeavyPounding();
+            }
+
+            else if (enemyAttacks[AttackToDo].ToString() == "ThrustedFist();")
+            {
+                ThrustedFist();
+            }
+
+            else if (enemyAttacks[AttackToDo].ToString() == "HeadButt();")
+            {
+                HeadButt();
+            }
+
+            else if (enemyAttacks[AttackToDo].ToString() == "BrainShake();")
+            {
+                BrainShake();
+            }
+
+            else if (enemyAttacks[AttackToDo].ToString() == "SkullCracker();")
+            {
+                SkullCracker();
+            }
+
+            else if (enemyAttacks[AttackToDo].ToString() == "ColossalSlam();")
+            {
+                ColossalSlam();
+            }
+
+            else if (enemyAttacks[AttackToDo].ToString() == "Earthquake();")
+            {
+                Earthquake();
+            }
+
+            else if (enemyAttacks[AttackToDo].ToString() == "DeathsDoor();")
+            {
+                DeathsDoor();
+            }
         }
     }
 
@@ -4031,21 +4038,27 @@ public class Unit : MonoBehaviour
 
     void DeathsDoor()
     {
+        //Only for bosses
         BattleSystem.attackAll = true;
 
-        if (!deathDoor)
-        {
-            //Prep
-        }
-        else
-        { 
-        //Attack
-        }
-        minDamage = 30;
-        maxDamage = 40;
+        minDamage = 125;
+        maxDamage = 175;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
-        attackName = "Colossal Slam".ToString();
+
+        if (BattleSystem.deathDoor && !BattleSystem.ReaperCalling)
+        {
+
+            attackName = "Reaper's Calling".ToString();
+            BattleSystem.ReaperCalling = true;
+
+        }
+
+        if (!BattleSystem.deathDoor && !BattleSystem.ReaperCalling)
+        {
+            BattleSystem.deathDoor = true;
+        }
+
     }
 
     #endregion
