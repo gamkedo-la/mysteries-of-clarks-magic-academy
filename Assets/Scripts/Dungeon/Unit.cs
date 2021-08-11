@@ -3924,6 +3924,11 @@ public class Unit : MonoBehaviour
             {
                 LifeDrain();
             }
+
+            else if (enemyAttacks[AttackToDo].ToString() == "NeedleBolt();")
+            {
+                NeedleBolt();
+            }
         }
     }
 
@@ -4235,6 +4240,24 @@ public class Unit : MonoBehaviour
         enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
         attackName = "Life Drain".ToString();
 
+    }
+
+    void NeedleBolt()
+    {
+        GameManager.isRed = true;
+
+        int stunnedChance;
+        maxChance = 100;
+        stunnedChance = Random.Range(0, 100);
+        if (stunnedChance <= maxChance)
+        {
+            BattleSystem.stunnedChance = true;
+        }
+        minDamage = 5;
+        maxDamage = 10;
+
+        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
+        attackName = "Needle Bolt".ToString();
     }
 
     #endregion

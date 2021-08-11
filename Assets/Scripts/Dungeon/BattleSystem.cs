@@ -334,6 +334,9 @@ public class BattleSystem : MonoBehaviour
     public static bool confusionChance;
     public static bool attackAll;
     public static bool deathDoor, ReaperCalling;
+
+    public bool MCStunned, RhysStunned, JameelStunned, HarperStunned, SkyeStunned, SullivanStunned;
+    public static bool stunnedChance;
     private void Start()
     {
         if (GameObject.Find("GameManager") == null)
@@ -5247,7 +5250,7 @@ public class BattleSystem : MonoBehaviour
 
                         do
                         {
-                            WhoToAttack = Random.Range(1, 6);
+                            WhoToAttack = Random.Range(0, 6);
                             if (safteyCounter-- < 0)
                             {
                                 Debug.LogError("Couldn't find a living WhoToAttack, is the Whole Team Dead?");
@@ -5362,6 +5365,14 @@ public class BattleSystem : MonoBehaviour
                                     //Not dead, but hurt
                                     else
                                     {
+                                        if (stunnedChance)
+                                        {
+                                            MCStunned = true;
+                                            stunnedChance = false;
+                                            dialogueText.text = GameManager.MCFirstName + " is stunned!";
+                                            yield return new WaitForSeconds(1.5f);
+                                        }
+
                                         if (confusionChance)
                                         {
                                             MCConfused = true;
@@ -5486,6 +5497,14 @@ public class BattleSystem : MonoBehaviour
                                         GameManager.RhysHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseRhys;
                                         RhysHealth.value = GameManager.RhysHealth;
 
+                                        if (stunnedChance)
+                                        {
+                                            RhysStunned = true;
+                                            stunnedChance = false;
+                                            dialogueText.text = "Rhys is stunned!";
+                                            yield return new WaitForSeconds(1.5f);
+                                        }
+
                                         if (confusionChance)
                                         {
                                             RhysConfused = true;
@@ -5605,6 +5624,14 @@ public class BattleSystem : MonoBehaviour
                                         JameelDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
                                         GameManager.JameelHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseJameel;
                                         JameelHealth.value = GameManager.JameelHealth;
+
+                                        if (stunnedChance)
+                                        {
+                                            JameelStunned = true;
+                                            stunnedChance = false;
+                                            dialogueText.text = "Jameel is stunned!";
+                                            yield return new WaitForSeconds(1.5f);
+                                        }
 
                                         if (confusionChance)
                                         {
@@ -5730,6 +5757,13 @@ public class BattleSystem : MonoBehaviour
                                         HarperDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
                                         GameManager.HarperHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseHarper;
                                         HarperHealth.value = GameManager.HarperHealth;
+                                        if (stunnedChance)
+                                        {
+                                            HarperStunned = true;
+                                            stunnedChance = false;
+                                            dialogueText.text = "Harper is stunned!";
+                                            yield return new WaitForSeconds(1.5f);
+                                        }
 
                                         if (confusionChance)
                                         {
@@ -5851,6 +5885,14 @@ public class BattleSystem : MonoBehaviour
                                         GameManager.SkyeHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseSkye;
                                         SkyeHealth.value = GameManager.SkyeHealth;
 
+                                        if (stunnedChance)
+                                        {
+                                            SkyeStunned = true;
+                                            stunnedChance = false;
+                                            dialogueText.text = "Skye is stunned!";
+                                            yield return new WaitForSeconds(1.5f);
+                                        }
+
                                         if (confusionChance)
                                         {
                                             SkyeConfused = true;
@@ -5971,6 +6013,14 @@ public class BattleSystem : MonoBehaviour
                                         GameManager.SullivanHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseSullivan;
                                         SullivanHealth.value = GameManager.SullivanHealth;
 
+                                        if (stunnedChance)
+                                        {
+                                            SullivanStunned = true;
+                                            stunnedChance = false;
+                                            dialogueText.text = "Sullivan is stunned!";
+                                            yield return new WaitForSeconds(1.5f);
+                                        }
+
                                         if (confusionChance)
                                         {
                                             SullivanConfused = true;
@@ -6065,7 +6115,7 @@ public class BattleSystem : MonoBehaviour
     #region Player Turns (button select)
     IEnumerator WaitingForConfusion()
     {
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(2f);
         NextTurn();
     }
 
@@ -6127,32 +6177,44 @@ public class BattleSystem : MonoBehaviour
 
             else
             {
-                MCMenu.SetActive(true);
-                dialogueText.text = GameManager.MCFirstName + ": Choose an Action.";
+                if (MCStunned)
+                {
+                    dialogueText.text = GameManager.MCFirstName + ": is stunned!";
+                    StartCoroutine(WaitingForConfusion());
+                }
 
-                throwRock = false;
-                flippendo = false;
-                pulsateSunt = false;
-                stupefaciunt = false;
-                incendio = false;
-                incendioMaxima = false;
-                avis = false;
-                avisMaxima = false;
-                glacies = false;
-                minorCura = false;
-                impetumSubsisto = false;
-                augamenti = false;
-                mothsDeorsum = false;
-                mothsInteriore = false;
-                internaCombustione = false;
-                bombarda = false;
-                bombardaMaxima = false;
-                bombardaUltima = false;
-                minusSanaCoetus = false;
-                chorusPedes = false;
-                criticaFocus = false;
-                diffindo = false;
-                diffindoMaxima = false;
+                else
+                {
+
+                    MCMenu.SetActive(true);
+                    dialogueText.text = GameManager.MCFirstName + ": Choose an Action.";
+
+                    throwRock = false;
+                    flippendo = false;
+                    pulsateSunt = false;
+                    stupefaciunt = false;
+                    incendio = false;
+                    incendioMaxima = false;
+                    avis = false;
+                    avisMaxima = false;
+                    glacies = false;
+                    minorCura = false;
+                    impetumSubsisto = false;
+                    augamenti = false;
+                    mothsDeorsum = false;
+                    mothsInteriore = false;
+                    internaCombustione = false;
+                    bombarda = false;
+                    bombardaMaxima = false;
+                    bombardaUltima = false;
+                    minusSanaCoetus = false;
+                    chorusPedes = false;
+                    criticaFocus = false;
+                    diffindo = false;
+                    diffindoMaxima = false;
+                }
+
+                MCStunned = false;
             }
         }
     }
@@ -6335,13 +6397,18 @@ public class BattleSystem : MonoBehaviour
 
         else
         {
-
             if (RhysDead || !GameManager.RhysInParty)
             {
                 NextTurn();
-
             }
-            if (!RhysDead)
+
+            if (RhysStunned)
+            {
+                dialogueText.text = "Rhys is stunned!";
+                StartCoroutine(WaitingForConfusion());
+            }
+
+            if (!RhysDead && !RhysStunned)
             {
                 RhysMenu.SetActive(true);
                 dialogueText.text = "Rhys: Choose an Action.";
@@ -6360,6 +6427,8 @@ public class BattleSystem : MonoBehaviour
                 rhysImpetumSubsisto = false;
                 rhysUolueris = false;
             }
+
+            RhysStunned = false;
         }
     }
 
@@ -6429,7 +6498,13 @@ public class BattleSystem : MonoBehaviour
 
         else
         {
-            if (!JameelDead)
+            if (JameelStunned)
+            {
+                dialogueText.text = "Jameel is stunned!";
+                StartCoroutine(WaitingForConfusion());
+            }
+
+            if (!JameelDead && !JameelStunned)
             {
                 JameelMenu.SetActive(true);
                 dialogueText.text = "Jameel: Choose an Action.";
@@ -6450,6 +6525,8 @@ public class BattleSystem : MonoBehaviour
                 jameelImpetumSubsisto = false;
                 jameelChorusPedes = false;
             }
+
+            JameelStunned = false;
         }
     }
 
@@ -6526,7 +6603,12 @@ public class BattleSystem : MonoBehaviour
 
         else
         {
-            if (!HarperDead)
+            if (HarperStunned)
+            {
+                dialogueText.text = "Harper is stunned!";
+                StartCoroutine(WaitingForConfusion());
+            }
+            if (!HarperDead && !HarperStunned)
             {
                 HarperMenu.SetActive(true);
                 dialogueText.text = "Harper: Choose an Action.";
@@ -6545,6 +6627,7 @@ public class BattleSystem : MonoBehaviour
                 harperFumes = false;
                 harperDiminuendo = false;
             }
+            HarperStunned = false;
         }
     }
 
@@ -6627,8 +6710,12 @@ public class BattleSystem : MonoBehaviour
 
         else
         {
-
-            if (!SkyeDead)
+            if (SkyeStunned)
+            {
+                dialogueText.text = "Skye is stunned!";
+                StartCoroutine(WaitingForConfusion());
+            }
+            if (!SkyeDead && !SkyeStunned)
             {
                 SkyeMenu.SetActive(true);
                 dialogueText.text = "Skye: Choose an Action.";
@@ -6645,6 +6732,7 @@ public class BattleSystem : MonoBehaviour
                 skyeConfundus = false;
                 skyeIraUolueris = false;
             }
+            SkyeStunned = false;
         }
     }
 
@@ -6721,7 +6809,13 @@ public class BattleSystem : MonoBehaviour
 
         else
         {
-            if (!SullivanDead)
+            if (SullivanStunned)
+            {
+                dialogueText.text = "Sullivan is stunned!";
+                StartCoroutine(WaitingForConfusion());
+            }
+            if (!SullivanDead && !SullivanStunned
+                )
             {
                 SullivanMenu.SetActive(true);
                 dialogueText.text = "Sullivan: Choose an Action.";
@@ -6742,6 +6836,8 @@ public class BattleSystem : MonoBehaviour
                 sullivanCriticaFocus = false;
                 #endregion
             }
+
+            SullivanStunned = false;
         }
     }
 
@@ -8891,6 +8987,7 @@ public class BattleSystem : MonoBehaviour
     void EndBattle()
     {
         confusionChance = false;
+        stunnedChance = false;
         MCConfused = false;
         RhysConfused = false;
         JameelConfused = false;
