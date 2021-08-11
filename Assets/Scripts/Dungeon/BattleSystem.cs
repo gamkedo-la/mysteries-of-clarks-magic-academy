@@ -4582,6 +4582,7 @@ public class BattleSystem : MonoBehaviour
 
                         if (attackAll)
                         {
+                            print("im here");
                             print(enemyUnit[enemyIndex].name);
                             print(enemyUnit[enemyIndex].enemyDamage);
                             int RandomAttack = Random.Range(0, 100);
@@ -4592,6 +4593,7 @@ public class BattleSystem : MonoBehaviour
                             }
                             else
                             {
+                                print("im here 1");
                                 if (deathDoor && ReaperCalling)
                                 {
                                     dialogueText.text = enemyUnit[enemyIndex].unitName + " attacks everyone with Reaper's Calling!";
@@ -4626,6 +4628,7 @@ public class BattleSystem : MonoBehaviour
                                 //Attack
                                 else
                                 {
+                                    print("im here 2");
                                     yield return new WaitForSeconds(.25f);
 
                                     MCDamageUI.text = "".ToString();
@@ -4650,6 +4653,7 @@ public class BattleSystem : MonoBehaviour
 
                                     else
                                     {
+                                        print("im here 3");
                                         bool isDead = MC.TakeDamage(enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseMC);
                                         //Dead
                                         if (isDead)
@@ -4667,6 +4671,7 @@ public class BattleSystem : MonoBehaviour
                                         //Not dead, but hurt
                                         else
                                         {
+                                            print("im here 4");
                                             if (confusionChance)
                                             {
                                                 MCConfused = true;
@@ -4698,6 +4703,8 @@ public class BattleSystem : MonoBehaviour
 
                                             yield return new WaitForSeconds(.25f);
                                             MCAnim.Play("Armature|TakeDamage");
+
+                                            print("im here 5");
                                             MCDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseMC).ToString();
                                             GameManager.MCHealth -= enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseMC;
                                             MCHealth.value = GameManager.MCHealth;

@@ -298,7 +298,7 @@ public class Unit : MonoBehaviour
 
     public bool TakeDamage(float dmg)
     {
-        if (weakBlue && GameManager.isBlue || weakYellow && GameManager.isYellow || weakRed && GameManager.isRed || weakGreen && GameManager.isGreen || weakPhys && GameManager.isPhysical)
+     /*   if (weakBlue && GameManager.isBlue || weakYellow && GameManager.isYellow || weakRed && GameManager.isRed || weakGreen && GameManager.isGreen || weakPhys && GameManager.isPhysical)
         {
             Summary.text = "Critical!";
             attackModifier *= 2;
@@ -315,7 +315,7 @@ public class Unit : MonoBehaviour
             Summary.text = "";
             attackModifier *= 1f;
         }
-        dmg = secondEnemyDamage;
+        dmg = secondEnemyDamage;*/
     //    print(dmg);
 
         secondEnemyDamage = dmg * attackModifier;
@@ -3936,6 +3936,71 @@ public class Unit : MonoBehaviour
             {
                 Vanishment();
             }
+
+            else if (enemyAttacks[AttackToDo].ToString() == "WinterAir();")
+            {
+                WinterAir();
+            }
+
+            else if (enemyAttacks[AttackToDo].ToString() == "ArcticBlast();")
+            {
+                ArcticBlast();
+            }
+
+            else if (enemyAttacks[AttackToDo].ToString() == "VacuumSeal();")
+            {
+                VacuumSeal();
+            }
+
+            else if (enemyAttacks[AttackToDo].ToString() == "Fireball();")
+            {
+                Fireball();
+            }
+
+            else if (enemyAttacks[AttackToDo].ToString() == "Bonfire();")
+            {
+                Bonfire();
+            }
+
+            else if (enemyAttacks[AttackToDo].ToString() == "LightningRaid();")
+            {
+                LightningRaid();
+            }
+
+            else if (enemyAttacks[AttackToDo].ToString() == "NatureFury();")
+            {
+                NatureFury();
+            }
+
+            else if (enemyAttacks[AttackToDo].ToString() == "Tornado();")
+            {
+                Tornado();
+            }
+
+            else if (enemyAttacks[AttackToDo].ToString() == "ThunderStorm();")
+            {
+                ThunderStorm();
+            }
+
+            else if (enemyAttacks[AttackToDo].ToString() == "Blizzard();")
+            {
+                Blizzard();
+            }
+
+            else if (enemyAttacks[AttackToDo].ToString() == "WallOfFlame();")
+            {
+                WallOfFlame();
+            }
+
+            else if (enemyAttacks[AttackToDo].ToString() == "HellFreezing();")
+            {
+                HellFreezing();
+            }
+
+            else if (enemyAttacks[AttackToDo].ToString() == "IceAge();")
+            {
+                IceAge();
+            }
         }
     }
 
@@ -4289,6 +4354,154 @@ public class Unit : MonoBehaviour
 
         enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
         attackName = "Needle Bolt".ToString();
+    }
+
+    void WinterAir()
+    {
+        GameManager.isBlue = true;
+        minDamage = 5;
+        maxDamage = 10;
+
+        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
+        attackName = "Winter Air".ToString();
+    }
+
+    void ArcticBlast()
+    {
+        GameManager.isBlue = true;
+        minDamage = 15;
+        maxDamage = 25;
+
+        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
+        attackName = "Arctic Blast".ToString();
+    }
+
+    void VacuumSeal()
+    {
+        GameManager.isBlue = true;
+        minDamage = 18;
+        maxDamage = 23;
+
+        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
+        attackName = "Vacummn Seal".ToString();
+    }
+
+    void Fireball()
+    {
+        GameManager.isBlue = true;
+        minDamage = 35;
+        maxDamage = 60;
+
+        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
+        attackName = "Fireball".ToString();
+    }
+
+    void Bonfire()
+    {
+        GameManager.isBlue = true;
+        BattleSystem.attackAll = true;
+
+        minDamage = 5;
+        maxDamage = 15;
+
+        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
+        attackName = "Bonfire".ToString();
+    }
+
+    void LightningRaid()
+    {
+        GameManager.isBlue = true;
+        BattleSystem.attackAll = true;
+
+        minDamage = 7;
+        maxDamage = 14;
+
+        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
+        attackName = "Lightning Raid".ToString();
+    }
+
+    void NatureFury()
+    {
+        GameManager.isBlue = true;
+        BattleSystem.attackAll = true;
+
+        minDamage = 3;
+        maxDamage = 12;
+
+        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
+        attackName = "Nature's Fury".ToString();
+    }
+
+    void Tornado()
+    {
+        GameManager.isBlue = true;
+        BattleSystem.attackAll = true;
+
+        minDamage = 15;
+        maxDamage = 20;
+
+        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
+        attackName = "Tornado".ToString();
+    }
+
+    void ThunderStorm()
+    {
+        GameManager.isBlue = true;
+        BattleSystem.attackAll = true;
+
+        minDamage = 10;
+        maxDamage = 14;
+
+        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
+        attackName = "Thunderstorm".ToString();
+    }
+
+    void Blizzard()
+    {
+        GameManager.isBlue = true;
+        BattleSystem.attackAll = true;
+
+        minDamage = 14;
+        maxDamage = 18;
+
+        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
+        attackName = "Blizzard".ToString();
+    }
+
+    void WallOfFlame()
+    {
+        GameManager.isBlue = true;
+        BattleSystem.attackAll = true;
+
+        minDamage = 20;
+        maxDamage = 40;
+
+        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
+        attackName = "Wall of Flame".ToString();
+    }
+
+    void HellFreezing()
+    {
+        GameManager.isBlue = true;
+        BattleSystem.attackAll = true;
+
+        minDamage = 20;
+        maxDamage = 30;
+
+        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
+        attackName = "Hell Freezing Over".ToString();
+    }
+
+    void IceAge()
+    {
+        GameManager.isBlue = true;
+        BattleSystem.attackAll = true;
+
+        minDamage = 45;
+        maxDamage = 50;
+
+        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
+        attackName = "IceAge".ToString();
     }
 
     #endregion
