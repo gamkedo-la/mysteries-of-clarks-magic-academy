@@ -246,6 +246,7 @@ public class Unit : MonoBehaviour
     public Text Summary;
 
     public string[] enemyAttacks;
+    float attackModifier = 1;
 
     private void Start()
     {
@@ -292,8 +293,29 @@ public class Unit : MonoBehaviour
 
     public bool TakeDamage(float dmg)
     {
+        if (weakBlue && GameManager.isBlue || weakYellow && GameManager.isYellow || weakRed && GameManager.isRed || weakGreen && GameManager.isGreen || weakPhys && GameManager.isPhysical)
+        {
+            Summary.text = "Critical!";
+            attackModifier *= 2;
+        }
+
+        if (strBlue && GameManager.isBlue || strYellow && GameManager.isYellow || strRed && GameManager.isRed || strGreen && GameManager.isGreen || strPhys && GameManager.isPhysical)
+        {
+            Summary.text = "Resist!";
+            attackModifier *= .5f;
+        }
+
+        else
+        {
+            Summary.text = "";
+            attackModifier *= 1f;
+        }
+
+        print(attackModifier);
+
+        currentHP -= dmg * attackModifier;
+
         StartCoroutine(WaitingForText());
-        currentHP -= dmg;
 
         if (currentHP <= 0)
         {
@@ -306,7 +328,7 @@ public class Unit : MonoBehaviour
     IEnumerator WaitingForText()
     {
         yield return new WaitForSeconds(2.5f);
-        Summary.text = "";
+        Summary.text = "".ToString();
     }
 
     public bool TakeDamageSpell1(float dmg)
@@ -379,8 +401,6 @@ public class Unit : MonoBehaviour
         StartCoroutine(WaitingForText());
 
         Health.value = (currentHP / maxHP);
-        Debug.Log(Health.value);
-        Debug.Log(currentHP + "/" + maxHP);
         StartCoroutine(ClearText());
 
         if (currentHP <= 0)
@@ -3872,76 +3892,136 @@ public class Unit : MonoBehaviour
         }
     }
 
+    public void PlayerElementalWeakness()
+    {
+        Summary.text = "Here";
+        if (weakBlue && GameManager.isBlue || weakYellow && GameManager.isYellow || weakRed && GameManager.isRed || weakGreen && GameManager.isGreen || weakPhys && GameManager.isPhysical)
+        {
+            Summary.text = "Critical!";
+            print(Summary.text);
+            attackModifier *= 2;
+        }
+
+        if (strBlue && GameManager.isBlue || strYellow && GameManager.isYellow || strRed && GameManager.isRed || strGreen && GameManager.isGreen || strPhys && GameManager.isPhysical)
+        {
+            Summary.text = "Resist!";
+            attackModifier *= .5f;
+        }
+
+        else 
+        {
+            Summary.text = "";
+            attackModifier *= 1f;
+        }
+        print(weakPhys +" " + GameManager.isPhysical);
+        print(attackModifier);
+
+        StartCoroutine(WaitingForText());
+    }
+
     #region Enemy Attacks
 
     void SoftPunch()
     {
+        GameManager.isPhysical = true;
+
+        if (weakBlue && GameManager.isBlue || weakYellow && GameManager.isYellow || weakRed && GameManager.isRed || weakGreen && GameManager.isGreen || weakPhys && GameManager.isPhysical)
+        {
+            Summary.text = "Critical!";
+            print(Summary.text);
+            attackModifier *= 2;
+
+        }
+
+        if (strBlue && GameManager.isBlue || strYellow && GameManager.isYellow || strRed && GameManager.isRed || strGreen && GameManager.isGreen || strPhys && GameManager.isPhysical)
+        {
+            Summary.text = "Resist!";
+            attackModifier *= .5f;
+        }
+
+        else
+        {
+            Summary.text = "";
+            attackModifier *= 1f;
+        }
+
         minDamage = 3;
         maxDamage = 8;
 
-        enemyDamage = Random.Range(minDamage, maxDamage);
+        print(GameManager.isPhysical + " " + weakPhys);
+        print(enemyDamage * attackModifier);
+        print(enemyDamage);
+
+        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
         attackName = "Soft Punch".ToString();
     }
 
     void HeftyHook()
     {
+        GameManager.isPhysical = true;
         minDamage = 10;
         maxDamage = 20;
 
-        enemyDamage = Random.Range(minDamage, maxDamage);
+        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
         attackName = "Hefty Hook".ToString();
     }
 
     void HeavyAssault()
     {
+        GameManager.isPhysical = true;
         minDamage = 25;
         maxDamage = 40;
 
-        enemyDamage = Random.Range(minDamage, maxDamage);
+        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
         attackName = "Hefty Hook".ToString();
     }
 
     void GodsHand()
     {
+        GameManager.isPhysical = true;
         minDamage = 60;
         maxDamage = 85;
 
-        enemyDamage = Random.Range(minDamage, maxDamage);
+        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
         attackName = "Hefty Hook".ToString();
     }
 
     void FollowThrough()
     {
+        GameManager.isPhysical = true;
         BattleSystem.secondaryAttack = true;
         minDamage = 10;
         maxDamage = 20;
 
-        enemyDamage = Random.Range(minDamage, maxDamage);
+        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
         attackName = "Follow Through".ToString();
     }
 
     void JabJabJab()
     {
+        GameManager.isPhysical = true;
         BattleSystem.secondaryAttack = true;
         minDamage = 3;
         maxDamage = 7;
 
-        enemyDamage = Random.Range(minDamage, maxDamage);
+        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
         attackName = "Follow Through".ToString();
     }
 
     void HeavyPounding()
     {
+        GameManager.isPhysical = true;
         BattleSystem.secondaryAttack = true;
         minDamage = 15;
         maxDamage = 25;
 
-        enemyDamage = Random.Range(minDamage, maxDamage);
+        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
         attackName = "Heavy Pounding".ToString();
     }
 
     void ThrustedFist()
     {
+        GameManager.isPhysical = true;
         attackName = "Thrusted Fist".ToString();
         print(attackName);
 
@@ -3957,7 +4037,7 @@ public class Unit : MonoBehaviour
         minDamage = 10;
         maxDamage = 15;
 
-        enemyDamage = Random.Range(minDamage, maxDamage);
+        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
 
     }
 
@@ -3973,7 +4053,7 @@ public class Unit : MonoBehaviour
         minDamage = 3;
         maxDamage = 8;
 
-        enemyDamage = Random.Range(minDamage, maxDamage);
+        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
         attackName = "Head Butt".ToString();
     }
 
@@ -3991,7 +4071,7 @@ public class Unit : MonoBehaviour
         minDamage = 10;
         maxDamage = 20;
 
-        enemyDamage = Random.Range(minDamage, maxDamage);
+        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
         attackName = "Brain Shake".ToString();
     }
 
@@ -4010,7 +4090,7 @@ public class Unit : MonoBehaviour
         minDamage = 25;
         maxDamage = 40;
 
-        enemyDamage = Random.Range(minDamage, maxDamage);
+        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
         attackName = "Skull Cracker".ToString();
     }
 
@@ -4021,7 +4101,7 @@ public class Unit : MonoBehaviour
         minDamage = 30;
         maxDamage = 40;
 
-        enemyDamage = Random.Range(minDamage, maxDamage);
+        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
         attackName = "Colossal Slam".ToString();
     }
 
@@ -4032,7 +4112,7 @@ public class Unit : MonoBehaviour
         minDamage = 15;
         maxDamage = 25;
 
-        enemyDamage = Random.Range(minDamage, maxDamage);
+        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
         attackName = "Earthquake".ToString();
     }
 
@@ -4044,7 +4124,7 @@ public class Unit : MonoBehaviour
         minDamage = 125;
         maxDamage = 175;
 
-        enemyDamage = Random.Range(minDamage, maxDamage);
+        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
 
         if (BattleSystem.deathDoor && !BattleSystem.ReaperCalling)
         {

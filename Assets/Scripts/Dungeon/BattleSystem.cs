@@ -5247,7 +5247,7 @@ public class BattleSystem : MonoBehaviour
 
                         do
                         {
-                            WhoToAttack = Random.Range(0, 6);
+                            WhoToAttack = Random.Range(1, 6);
                             if (safteyCounter-- < 0)
                             {
                                 Debug.LogError("Couldn't find a living WhoToAttack, is the Whole Team Dead?");
@@ -5433,7 +5433,7 @@ public class BattleSystem : MonoBehaviour
                             else
                             {
                                 dialogueText.text = enemyUnit[enemyIndex].unitName + " attacks Rhys with " + enemyUnit[enemyIndex].attackName + "!";
-
+                              //  Rhys.PlayerElementalWeakness();
                                 yield return new WaitForSeconds(1f);
 
                                 RhysDamageUI.text = "".ToString();
@@ -6012,6 +6012,12 @@ public class BattleSystem : MonoBehaviour
                         }
                     }
 
+
+                    GameManager.isRed = false;
+                    GameManager.isBlue = false;
+                    GameManager.isGreen = false;
+                    GameManager.isYellow = false;
+                    GameManager.isPhysical = false;
                 }
             }
         }
