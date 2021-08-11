@@ -246,6 +246,8 @@ public class Unit : MonoBehaviour
     public bool strRed, strBlue, strYellow, strGreen, strPhys;
     public Text Summary;
 
+    public bool removeFromBattle;
+
     public string[] enemyAttacks;
     float attackModifier = 1;
 
@@ -3929,6 +3931,11 @@ public class Unit : MonoBehaviour
             {
                 NeedleBolt();
             }
+
+            else if (enemyAttacks[AttackToDo].ToString() == "Vanishment();")
+            {
+                Vanishment();
+            }
         }
     }
 
@@ -4247,7 +4254,7 @@ public class Unit : MonoBehaviour
         GameManager.isRed = true;
 
         int stunnedChance;
-        maxChance = 100;
+        maxChance = 80;
         stunnedChance = Random.Range(0, 100);
         if (stunnedChance <= maxChance)
         {
@@ -4255,6 +4262,30 @@ public class Unit : MonoBehaviour
         }
         minDamage = 5;
         maxDamage = 10;
+
+        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
+        attackName = "Needle Bolt".ToString();
+    }
+
+    void Vanishment()
+    {
+        removeFromBattle = true;
+        attackName = "Vanishment".ToString();
+    }
+
+    void ShakenBarrier()
+    {
+        GameManager.isRed = true;
+
+        int stunnedChance;
+        maxChance = 80;
+        stunnedChance = Random.Range(0, 100);
+        if (stunnedChance <= maxChance)
+        {
+            BattleSystem.stunnedChance = true;
+        }
+        minDamage = 25;
+        maxDamage = 40;
 
         enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
         attackName = "Needle Bolt".ToString();
