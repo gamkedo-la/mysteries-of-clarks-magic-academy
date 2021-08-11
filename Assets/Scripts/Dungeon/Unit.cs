@@ -234,6 +234,7 @@ public class Unit : MonoBehaviour
     int minDamage, maxDamage;
     int maxChance;
     public float enemyDamage;
+    float secondEnemyDamage;
     public string attackName;
 
     public Text DamageUI;
@@ -247,6 +248,8 @@ public class Unit : MonoBehaviour
 
     public string[] enemyAttacks;
     float attackModifier = 1;
+
+    public bool increaseEnemyHealth;
 
     private void Start()
     {
@@ -310,10 +313,17 @@ public class Unit : MonoBehaviour
             Summary.text = "";
             attackModifier *= 1f;
         }
+        dmg = secondEnemyDamage;
+    //    print(dmg);
 
-        print(attackModifier);
+        secondEnemyDamage = dmg * attackModifier;
 
-        currentHP -= dmg * attackModifier;
+     //   print(secondEnemyDamage);
+
+        currentHP -= secondEnemyDamage;
+
+    //    print(secondEnemyDamage + "" + attackModifier);
+     //   print(secondEnemyDamage * attackModifier);
 
         StartCoroutine(WaitingForText());
 
@@ -3889,6 +3899,31 @@ public class Unit : MonoBehaviour
             {
                 DeathsDoor();
             }
+
+            else if (enemyAttacks[AttackToDo].ToString() == "ExorcismAmbush();")
+            {
+                ExorcismAmbush();
+            }
+
+            else if (enemyAttacks[AttackToDo].ToString() == "DevilWing();")
+            {
+                DevilWing();
+            }
+
+            else if (enemyAttacks[AttackToDo].ToString() == "DemonicDecree();")
+            {
+                DemonicDecree();
+            }
+
+            else if (enemyAttacks[AttackToDo].ToString() == "CannonOfAura();")
+            {
+                CannonOfAura();
+            }
+
+            else if (enemyAttacks[AttackToDo].ToString() == "LifeDrain();")
+            {
+                LifeDrain();
+            }
         }
     }
 
@@ -3898,7 +3933,7 @@ public class Unit : MonoBehaviour
         if (weakBlue && GameManager.isBlue || weakYellow && GameManager.isYellow || weakRed && GameManager.isRed || weakGreen && GameManager.isGreen || weakPhys && GameManager.isPhysical)
         {
             Summary.text = "Critical!";
-            print(Summary.text);
+         //   print(Summary.text);
             attackModifier *= 2;
         }
 
@@ -3913,8 +3948,8 @@ public class Unit : MonoBehaviour
             Summary.text = "";
             attackModifier *= 1f;
         }
-        print(weakPhys +" " + GameManager.isPhysical);
-        print(attackModifier);
+      //  print(weakPhys +" " + GameManager.isPhysical);
+     //   print(attackModifier);
 
         StartCoroutine(WaitingForText());
     }
@@ -3928,7 +3963,7 @@ public class Unit : MonoBehaviour
         if (weakBlue && GameManager.isBlue || weakYellow && GameManager.isYellow || weakRed && GameManager.isRed || weakGreen && GameManager.isGreen || weakPhys && GameManager.isPhysical)
         {
             Summary.text = "Critical!";
-            print(Summary.text);
+         //   print(Summary.text);
             attackModifier *= 2;
 
         }
@@ -3948,11 +3983,9 @@ public class Unit : MonoBehaviour
         minDamage = 3;
         maxDamage = 8;
 
-        print(GameManager.isPhysical + " " + weakPhys);
-        print(enemyDamage * attackModifier);
-        print(enemyDamage);
-
-        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
+        enemyDamage = Random.Range(minDamage, maxDamage);
+        secondEnemyDamage = enemyDamage;
+     //   print(secondEnemyDamage);
         attackName = "Soft Punch".ToString();
     }
 
@@ -4043,6 +4076,7 @@ public class Unit : MonoBehaviour
 
     void HeadButt()
     {
+        GameManager.isPhysical = true;
         int confusionChance;
         maxChance = 20;
         confusionChance = Random.Range(0, 100);
@@ -4059,6 +4093,7 @@ public class Unit : MonoBehaviour
 
     void BrainShake()
     {
+        GameManager.isPhysical = true;
         BattleSystem.confusionChance = true;
 
         int confusionChance;
@@ -4077,6 +4112,7 @@ public class Unit : MonoBehaviour
 
     void SkullCracker()
     {
+        GameManager.isPhysical = true;
         BattleSystem.confusionChance = true;
 
         int confusionChance;
@@ -4096,6 +4132,7 @@ public class Unit : MonoBehaviour
 
     void ColossalSlam()
     {
+        GameManager.isPhysical = true;
         BattleSystem.attackAll = true;
 
         minDamage = 30;
@@ -4107,6 +4144,7 @@ public class Unit : MonoBehaviour
 
     void Earthquake()
     {
+        GameManager.isPhysical = true;
         BattleSystem.attackAll = true;
 
         minDamage = 15;
@@ -4118,6 +4156,7 @@ public class Unit : MonoBehaviour
 
     void DeathsDoor()
     {
+        GameManager.isPhysical = true;
         //Only for bosses
         BattleSystem.attackAll = true;
 
@@ -4138,6 +4177,63 @@ public class Unit : MonoBehaviour
         {
             BattleSystem.deathDoor = true;
         }
+
+    }
+
+
+    void ExorcismAmbush()
+    {
+        GameManager.isRed = true;
+        minDamage = 5;
+        maxDamage = 15;
+
+        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
+        attackName = "Exorcism Ambush".ToString();
+    }
+
+    void DevilWing()
+    {
+        GameManager.isRed = true;
+        minDamage = 15;
+        maxDamage = 25;
+
+        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
+        attackName = "Devil's Wings".ToString();
+    }
+
+    void DemonicDecree()
+    {
+        GameManager.isRed = true;
+        minDamage = 30;
+        maxDamage = 45;
+
+        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
+        attackName = "Decmonic Decree".ToString();
+    }
+
+    void CannonOfAura()
+    {
+        GameManager.isRed = true;
+        BattleSystem.attackAll = true;
+
+        minDamage = 5;
+        maxDamage = 15;
+
+        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
+        attackName = "Cannon of Aura".ToString();
+    }
+
+    void LifeDrain()
+    {
+        GameManager.isRed = true;
+
+        increaseEnemyHealth = true;
+
+        minDamage = 10;
+        maxDamage = 11;
+
+        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
+        attackName = "Life Drain".ToString();
 
     }
 

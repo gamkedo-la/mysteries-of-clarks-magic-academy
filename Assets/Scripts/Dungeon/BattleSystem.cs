@@ -5459,6 +5459,11 @@ public class BattleSystem : MonoBehaviour
                                 else
                                 {
                                     bool isDead = Rhys.TakeDamage(enemyUnit[enemyIndex].enemyDamage * DefenseModifier * DefenseRhys);
+                                    if (enemyUnit[enemyIndex].increaseEnemyHealth)
+                                    {
+                                        enemyUnit[enemyIndex].currentHP += 10;
+                                    }
+                                    print(Rhys.TakeDamage(enemyUnit[enemyIndex].enemyDamage));
                                     if (isDead)
                                     {
                                         RhysDamageUI.text = "-" + (enemyUnit[enemyIndex].enemyDamage * DefenseModifier).ToString();
