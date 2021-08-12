@@ -9,6 +9,7 @@ public class TurnObjectOnWhenStarting : MonoBehaviour
 
     public bool isTurnoff;
     public GameObject TurnOffOnStart;
+    public GameObject toTurnOnDelay;
 
     void Start()
     {
@@ -25,6 +26,7 @@ public class TurnObjectOnWhenStarting : MonoBehaviour
 
     public void ToStartLater()
     {
-        ToTurnOn.SetActive(true);
+        toTurnOnDelay.SetActive(true);
+      // ToTurnOn.SetActive(true);
     }
 }
