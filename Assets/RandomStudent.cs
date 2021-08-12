@@ -35,7 +35,10 @@ public class RandomStudent : MonoBehaviour
     public Material semiTransparent, Transparent;
     void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
+        if (GetComponent<NavMeshAgent>() != null)
+        {
+            agent = GetComponent<NavMeshAgent>();
+        }
 
         startingPositions = GameObject.FindGameObjectsWithTag("ComeFrom");
         endingPositions = GameObject.FindGameObjectsWithTag("GoTo");

@@ -7,9 +7,20 @@ public class TurnObjectOnWhenStarting : MonoBehaviour
     public GameObject ToTurnOn;
     GameObject toTurnOn2;
 
+    public bool isTurnoff;
+    public GameObject TurnOffOnStart;
+
     void Start()
     {
-        ToTurnOn.SetActive(true);
+        if (isTurnoff)
+        {
+            TurnOffOnStart.SetActive(false);
+        }
+
+        else
+        {
+            ToTurnOn.SetActive(true);
+        }
     }
 
     public void ToStartLater()
