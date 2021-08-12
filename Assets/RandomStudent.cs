@@ -144,53 +144,57 @@ public class RandomStudent : MonoBehaviour
             Destroy(this.gameObject);
         }
 
+
         float distanceToMC = Vector3.Distance(this.transform.position, GameObject.FindWithTag("Player").transform.position);
 
-        if (distanceToMC <= 5 && distanceToMC >1.5f)
-        {
-            GetComponent<BoxCollider>().enabled = true;
-            if (chooseGender == 0)
+        if (GameObject.FindWithTag("Player") != null)
             {
-                maleHairStyle[hairstyle].GetComponent<Renderer>().material = semiTransparent;
-                mats[0] = semiTransparent;
-                maleRenderer.GetComponent<SkinnedMeshRenderer>().material = mats[0];
-                male.SetActive(true);
+            if (distanceToMC <= 5 && distanceToMC >1.5f)
+            {
+                GetComponent<BoxCollider>().enabled = true;
+                if (chooseGender == 0)
+                {
+                    maleHairStyle[hairstyle].GetComponent<Renderer>().material = semiTransparent;
+                    mats[0] = semiTransparent;
+                    maleRenderer.GetComponent<SkinnedMeshRenderer>().material = mats[0];
+                    male.SetActive(true);
+                }
+                if (chooseGender == 1)
+                {
+                    femaleHairStyle[hairstyle].GetComponent<Renderer>().material = semiTransparent;
+                    mats[0] = semiTransparent;
+                    femaleRenderer.GetComponent<SkinnedMeshRenderer>().material = mats[0];
+                    female.SetActive(true);
+                }
             }
-            if (chooseGender == 1)
+            else if (distanceToMC <= 1.5f)
             {
-                femaleHairStyle[hairstyle].GetComponent<Renderer>().material = semiTransparent;
-                mats[0] = semiTransparent;
-                femaleRenderer.GetComponent<SkinnedMeshRenderer>().material = mats[0];
-                female.SetActive(true);
+                GetComponent<BoxCollider>().enabled = false;
+                if (chooseGender == 0)
+                {
+                    male.SetActive(false);
+                }
+                if (chooseGender == 1)
+                {
+                    female.SetActive(false);
+                }
             }
-        }
-        else if (distanceToMC <= 1.5f)
-        {
-            GetComponent<BoxCollider>().enabled = false;
-            if (chooseGender == 0)
+            else
             {
-                male.SetActive(false);
-            }
-            if (chooseGender == 1)
-            {
-                female.SetActive(false);
-            }
-        }
-        else
-        {
-            if (chooseGender == 0)
-            {
-                maleHairStyle[hairstyle].GetComponent<Renderer>().material = hairColor[hairColorChoice];
-                mats[0] = skin[chooseSkin];
-                maleRenderer.GetComponent<SkinnedMeshRenderer>().material = mats[0];
-                male.SetActive(true);
-            }
-            if (chooseGender == 1)
-            {
-                femaleHairStyle[hairstyle].GetComponent<Renderer>().material = hairColor[hairColorChoice];
-                mats[0] = skin[chooseSkin];
-                femaleRenderer.GetComponent<SkinnedMeshRenderer>().material = mats[0];
-                female.SetActive(true);
+                if (chooseGender == 0)
+                {
+                    maleHairStyle[hairstyle].GetComponent<Renderer>().material = hairColor[hairColorChoice];
+                    mats[0] = skin[chooseSkin];
+                    maleRenderer.GetComponent<SkinnedMeshRenderer>().material = mats[0];
+                    male.SetActive(true);
+                }
+                if (chooseGender == 1)
+                {
+                    femaleHairStyle[hairstyle].GetComponent<Renderer>().material = hairColor[hairColorChoice];
+                    mats[0] = skin[chooseSkin];
+                    femaleRenderer.GetComponent<SkinnedMeshRenderer>().material = mats[0];
+                    female.SetActive(true);
+                }
             }
         }
     }
