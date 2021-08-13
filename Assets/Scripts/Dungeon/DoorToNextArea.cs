@@ -62,6 +62,7 @@ public class DoorToNextArea : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            print("here");
             inRange = true;
         }
     }
