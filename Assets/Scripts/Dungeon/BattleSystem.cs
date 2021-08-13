@@ -5285,7 +5285,8 @@ public class BattleSystem : MonoBehaviour
 
                             do
                             {
-                                WhoToAttack = Random.Range(0, 6);
+                                //This was modified to only attack 2nd spot
+                                WhoToAttack = Random.Range(1, 6);
                                 if (safteyCounter-- < 0)
                                 {
                                     Debug.LogError("Couldn't find a living WhoToAttack, is the Whole Team Dead?");
