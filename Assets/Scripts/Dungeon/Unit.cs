@@ -318,18 +318,8 @@ public class Unit : MonoBehaviour
             attackModifier = 1f;
         }
 
-        print(attackModifier);
-        print(dmg);
-        print(attackModifier * dmg);
-
-        // secondEnemyDamage = dmg * attackModifier;
-
-        //   print(secondEnemyDamage);
         totalDamage = dmg * attackModifier;
-           currentHP -= totalDamage;
-
-    //    print(secondEnemyDamage + "" + attackModifier);
-     //   print(secondEnemyDamage * attackModifier);
+        currentHP -= totalDamage;
 
         StartCoroutine(WaitingForText());
 
@@ -3846,6 +3836,7 @@ public class Unit : MonoBehaviour
 
         enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Soft Punch".ToString();
+        NamePrint();
     }
 
     void HeftyHook()
@@ -3897,7 +3888,8 @@ public class Unit : MonoBehaviour
         maxDamage = 7;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
-        attackName = "Follow Through".ToString();
+        attackName = "Jab Jab Jab".ToString();
+        NamePrint();
     }
 
     void HeavyPounding()
@@ -3948,6 +3940,7 @@ public class Unit : MonoBehaviour
 
         enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Head Butt".ToString();
+        NamePrint();
     }
 
     void BrainShake()
@@ -4048,6 +4041,7 @@ public class Unit : MonoBehaviour
 
         enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Exorcism Ambush".ToString();
+        NamePrint();
     }
 
     void DevilWing()
@@ -4188,6 +4182,7 @@ public class Unit : MonoBehaviour
 
         enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Bonfire".ToString();
+        NamePrint();
     }
 
     void LightningRaid()
@@ -4212,6 +4207,7 @@ public class Unit : MonoBehaviour
 
         enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Nature's Fury".ToString();
+        NamePrint();
     }
 
     void Tornado()
@@ -4298,6 +4294,11 @@ public class Unit : MonoBehaviour
     {
         yield return new WaitForSeconds(.5f);
         DamageUI.text = "".ToString();
+    }
+
+    void NamePrint()
+    {
+        print(attackName);
     }
 
     void WandActive()

@@ -4577,7 +4577,6 @@ public class BattleSystem : MonoBehaviour
 
                     else
                     {
-                        //This is attacking all the players - a little buggy from Stike Out so commenting out for now. 
                         #region Attack all 
 
                         if (attackAll)
@@ -4702,14 +4701,14 @@ public class BattleSystem : MonoBehaviour
                                             GameManager.MCHealth -= damageIsDone;
                                             MCHealth.value = GameManager.MCHealth;
                                             yield return new WaitForSeconds(.25f);
-
+                                            print("here");
                                         }
                                     }
                                 }
                                 #endregion
 
                                 #region Rhys
-                                if (GameManager.RhysInParty)
+                                if (GameManager.RhysInParty && !RhysDead)
                                 {
                                     //Block
                                     if (singleBlock && playerToBlock == "Rhys")
@@ -4820,7 +4819,7 @@ public class BattleSystem : MonoBehaviour
                                 #endregion
 
                                 #region Jameel
-                                if (GameManager.JameelInParty)
+                                if (GameManager.JameelInParty && !JameelDead)
                                 {
                                     //Block
                                     if (singleBlock && playerToBlock == "Jameel")
@@ -4931,7 +4930,7 @@ public class BattleSystem : MonoBehaviour
                                 #endregion
 
                                 #region Harper
-                                if (GameManager.HarperInParty)
+                                if (GameManager.HarperInParty && !HarperDead)
                                 {
                                     //Block
                                     if (singleBlock && playerToBlock == "Harper")
@@ -5042,7 +5041,7 @@ public class BattleSystem : MonoBehaviour
                                 #endregion
 
                                 #region Skye
-                                if (GameManager.SkyeInParty)
+                                if (GameManager.SkyeInParty && !SkyeDead)
                                 {
                                     //Block
                                     if (singleBlock && playerToBlock == "Skye")
@@ -5153,7 +5152,7 @@ public class BattleSystem : MonoBehaviour
                                 #endregion
 
                                 #region Sullivan
-                                if (GameManager.SullivanInParty)
+                                if (GameManager.SullivanInParty && !SullivanDead)
                                 {
                                     //Block
                                     if (singleBlock && playerToBlock == "Sullivan")
@@ -5282,7 +5281,7 @@ public class BattleSystem : MonoBehaviour
                             do
                             {
                                 //This was modified to only attack 2nd spot
-                                WhoToAttack = Random.Range(1, 6);
+                                WhoToAttack = Random.Range(0, 6);
                                 if (safteyCounter-- < 0)
                                 {
                                     Debug.LogError("Couldn't find a living WhoToAttack, is the Whole Team Dead?");
