@@ -249,7 +249,6 @@ public class Unit : MonoBehaviour
     public bool removeFromBattle;
 
     public string[] enemyAttacks;
-    float attackModifier = 1;
 
     public bool increaseEnemyHealth;
 
@@ -296,45 +295,45 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public bool TakeDamage(float dmg)
+    public float TakeDamage(float dmg)
     {
-     /*   if (weakBlue && GameManager.isBlue || weakYellow && GameManager.isYellow || weakRed && GameManager.isRed || weakGreen && GameManager.isGreen || weakPhys && GameManager.isPhysical)
+        float attackModifier = 1f;
+        float totalDamage; 
+
+        if ((weakBlue && GameManager.isBlue) || (weakYellow && GameManager.isYellow) || (weakRed && GameManager.isRed) || (weakGreen && GameManager.isGreen) || (weakPhys && GameManager.isPhysical))
         {
             Summary.text = "Critical!";
-            attackModifier *= 2;
+            attackModifier = 2;
         }
 
-        if (strBlue && GameManager.isBlue || strYellow && GameManager.isYellow || strRed && GameManager.isRed || strGreen && GameManager.isGreen || strPhys && GameManager.isPhysical)
+        else if ((strBlue && GameManager.isBlue) || (strYellow && GameManager.isYellow) || (strRed && GameManager.isRed) || (strGreen && GameManager.isGreen) || (strPhys && GameManager.isPhysical))
         {
             Summary.text = "Resist!";
-            attackModifier *= .5f;
+            attackModifier = .5f;
         }
 
         else
         {
             Summary.text = "";
-            attackModifier *= 1f;
+            attackModifier = 1f;
         }
-        dmg = secondEnemyDamage;*/
-    //    print(dmg);
 
-        secondEnemyDamage = dmg * attackModifier;
+        print(attackModifier);
+        print(dmg);
+        print(attackModifier * dmg);
 
-     //   print(secondEnemyDamage);
+        // secondEnemyDamage = dmg * attackModifier;
 
-        currentHP -= secondEnemyDamage;
+        //   print(secondEnemyDamage);
+        totalDamage = dmg * attackModifier;
+           currentHP -= totalDamage;
 
     //    print(secondEnemyDamage + "" + attackModifier);
      //   print(secondEnemyDamage * attackModifier);
 
         StartCoroutine(WaitingForText());
 
-        if (currentHP <= 0)
-        {
-            return true;
-        }
-        else
-            return false;
+        return totalDamage;
     }
 
     IEnumerator WaitingForText()
@@ -3836,65 +3835,16 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public void PlayerElementalWeakness()
-    {
-        Summary.text = "Here";
-        if (weakBlue && GameManager.isBlue || weakYellow && GameManager.isYellow || weakRed && GameManager.isRed || weakGreen && GameManager.isGreen || weakPhys && GameManager.isPhysical)
-        {
-            Summary.text = "Critical!";
-         //   print(Summary.text);
-            attackModifier *= 2;
-        }
-
-        if (strBlue && GameManager.isBlue || strYellow && GameManager.isYellow || strRed && GameManager.isRed || strGreen && GameManager.isGreen || strPhys && GameManager.isPhysical)
-        {
-            Summary.text = "Resist!";
-            attackModifier *= .5f;
-        }
-
-        else 
-        {
-            Summary.text = "";
-            attackModifier *= 1f;
-        }
-      //  print(weakPhys +" " + GameManager.isPhysical);
-     //   print(attackModifier);
-
-        StartCoroutine(WaitingForText());
-    }
-
     #region Enemy Attacks
 
     void SoftPunch()
     {
         GameManager.isPhysical = true;
 
-        if (weakBlue && GameManager.isBlue || weakYellow && GameManager.isYellow || weakRed && GameManager.isRed || weakGreen && GameManager.isGreen || weakPhys && GameManager.isPhysical)
-        {
-            Summary.text = "Critical!";
-         //   print(Summary.text);
-            attackModifier *= 2;
-
-        }
-
-        if (strBlue && GameManager.isBlue || strYellow && GameManager.isYellow || strRed && GameManager.isRed || strGreen && GameManager.isGreen || strPhys && GameManager.isPhysical)
-        {
-            Summary.text = "Resist!";
-            attackModifier *= .5f;
-        }
-
-        else
-        {
-            Summary.text = "";
-            attackModifier *= 1f;
-        }
-
         minDamage = 3;
         maxDamage = 8;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
-        secondEnemyDamage = enemyDamage;
-     //   print(secondEnemyDamage);
         attackName = "Soft Punch".ToString();
     }
 
@@ -3904,7 +3854,7 @@ public class Unit : MonoBehaviour
         minDamage = 10;
         maxDamage = 20;
 
-        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
+        enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Hefty Hook".ToString();
     }
 
@@ -3914,8 +3864,8 @@ public class Unit : MonoBehaviour
         minDamage = 25;
         maxDamage = 40;
 
-        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
-        attackName = "Hefty Hook".ToString();
+        enemyDamage = Random.Range(minDamage, maxDamage);
+        attackName = "Heavy Assault".ToString();
     }
 
     void GodsHand()
@@ -3924,8 +3874,8 @@ public class Unit : MonoBehaviour
         minDamage = 60;
         maxDamage = 85;
 
-        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
-        attackName = "Hefty Hook".ToString();
+        enemyDamage = Random.Range(minDamage, maxDamage);
+        attackName = "God's Hand".ToString();
     }
 
     void FollowThrough()
@@ -3935,7 +3885,7 @@ public class Unit : MonoBehaviour
         minDamage = 10;
         maxDamage = 20;
 
-        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
+        enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Follow Through".ToString();
     }
 
@@ -3946,7 +3896,7 @@ public class Unit : MonoBehaviour
         minDamage = 3;
         maxDamage = 7;
 
-        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
+        enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Follow Through".ToString();
     }
 
@@ -3957,7 +3907,7 @@ public class Unit : MonoBehaviour
         minDamage = 15;
         maxDamage = 25;
 
-        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
+        enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Heavy Pounding".ToString();
     }
 
@@ -3979,7 +3929,7 @@ public class Unit : MonoBehaviour
         minDamage = 10;
         maxDamage = 15;
 
-        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
+        enemyDamage = Random.Range(minDamage, maxDamage);
 
     }
 
@@ -3996,7 +3946,7 @@ public class Unit : MonoBehaviour
         minDamage = 3;
         maxDamage = 8;
 
-        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
+        enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Head Butt".ToString();
     }
 
@@ -4015,7 +3965,7 @@ public class Unit : MonoBehaviour
         minDamage = 10;
         maxDamage = 20;
 
-        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
+        enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Brain Shake".ToString();
     }
 
@@ -4035,7 +3985,7 @@ public class Unit : MonoBehaviour
         minDamage = 25;
         maxDamage = 40;
 
-        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
+        enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Skull Cracker".ToString();
     }
 
@@ -4047,7 +3997,7 @@ public class Unit : MonoBehaviour
         minDamage = 30;
         maxDamage = 40;
 
-        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
+        enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Colossal Slam".ToString();
     }
 
@@ -4059,7 +4009,7 @@ public class Unit : MonoBehaviour
         minDamage = 15;
         maxDamage = 25;
 
-        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
+        enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Earthquake".ToString();
     }
 
@@ -4072,7 +4022,7 @@ public class Unit : MonoBehaviour
         minDamage = 125;
         maxDamage = 175;
 
-        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
+        enemyDamage = Random.Range(minDamage, maxDamage);
 
         if (BattleSystem.deathDoor && !BattleSystem.ReaperCalling)
         {
@@ -4096,7 +4046,7 @@ public class Unit : MonoBehaviour
         minDamage = 5;
         maxDamage = 15;
 
-        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
+        enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Exorcism Ambush".ToString();
     }
 
@@ -4106,7 +4056,7 @@ public class Unit : MonoBehaviour
         minDamage = 15;
         maxDamage = 25;
 
-        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
+        enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Devil's Wings".ToString();
     }
 
@@ -4116,7 +4066,7 @@ public class Unit : MonoBehaviour
         minDamage = 30;
         maxDamage = 45;
 
-        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
+        enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Decmonic Decree".ToString();
     }
 
@@ -4128,7 +4078,7 @@ public class Unit : MonoBehaviour
         minDamage = 5;
         maxDamage = 15;
 
-        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
+        enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Cannon of Aura".ToString();
     }
 
@@ -4141,7 +4091,7 @@ public class Unit : MonoBehaviour
         minDamage = 10;
         maxDamage = 11;
 
-        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
+        enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Life Drain".ToString();
 
     }
@@ -4160,7 +4110,7 @@ public class Unit : MonoBehaviour
         minDamage = 5;
         maxDamage = 10;
 
-        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
+        enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Needle Bolt".ToString();
     }
 
@@ -4184,7 +4134,7 @@ public class Unit : MonoBehaviour
         minDamage = 25;
         maxDamage = 40;
 
-        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
+        enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Needle Bolt".ToString();
     }
 
@@ -4194,7 +4144,7 @@ public class Unit : MonoBehaviour
         minDamage = 5;
         maxDamage = 10;
 
-        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
+        enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Winter Air".ToString();
     }
 
@@ -4204,7 +4154,7 @@ public class Unit : MonoBehaviour
         minDamage = 15;
         maxDamage = 25;
 
-        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
+        enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Arctic Blast".ToString();
     }
 
@@ -4214,7 +4164,7 @@ public class Unit : MonoBehaviour
         minDamage = 18;
         maxDamage = 23;
 
-        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
+        enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Vacummn Seal".ToString();
     }
 
@@ -4224,7 +4174,7 @@ public class Unit : MonoBehaviour
         minDamage = 35;
         maxDamage = 60;
 
-        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
+        enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Fireball".ToString();
     }
 
@@ -4236,7 +4186,7 @@ public class Unit : MonoBehaviour
         minDamage = 5;
         maxDamage = 15;
 
-        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
+        enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Bonfire".ToString();
     }
 
@@ -4248,7 +4198,7 @@ public class Unit : MonoBehaviour
         minDamage = 7;
         maxDamage = 14;
 
-        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
+        enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Lightning Raid".ToString();
     }
 
@@ -4260,7 +4210,7 @@ public class Unit : MonoBehaviour
         minDamage = 3;
         maxDamage = 12;
 
-        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
+        enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Nature's Fury".ToString();
     }
 
@@ -4272,7 +4222,7 @@ public class Unit : MonoBehaviour
         minDamage = 15;
         maxDamage = 20;
 
-        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
+        enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Tornado".ToString();
     }
 
@@ -4284,7 +4234,7 @@ public class Unit : MonoBehaviour
         minDamage = 10;
         maxDamage = 14;
 
-        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
+        enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Thunderstorm".ToString();
     }
 
@@ -4296,7 +4246,7 @@ public class Unit : MonoBehaviour
         minDamage = 14;
         maxDamage = 18;
 
-        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
+        enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Blizzard".ToString();
     }
 
@@ -4308,7 +4258,7 @@ public class Unit : MonoBehaviour
         minDamage = 20;
         maxDamage = 40;
 
-        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
+        enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Wall of Flame".ToString();
     }
 
@@ -4320,7 +4270,7 @@ public class Unit : MonoBehaviour
         minDamage = 20;
         maxDamage = 30;
 
-        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
+        enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Hell Freezing Over".ToString();
     }
 
@@ -4332,8 +4282,8 @@ public class Unit : MonoBehaviour
         minDamage = 45;
         maxDamage = 50;
 
-        enemyDamage = Random.Range(minDamage, maxDamage) * attackModifier;
-        attackName = "IceAge".ToString();
+        enemyDamage = Random.Range(minDamage, maxDamage);
+        attackName = "Ice Age".ToString();
     }
 
     #endregion
