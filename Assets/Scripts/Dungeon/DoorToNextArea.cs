@@ -12,6 +12,8 @@ public class DoorToNextArea : MonoBehaviour
     public string RoomName;
     public Text RoomText;
 
+    public bool isPortal;
+
     public Vector3 LocationToSpawnInRoomYoureGoingTo;
     public Quaternion RotationToSpawnInRoomYoureGoingTo;
 
@@ -42,12 +44,30 @@ public class DoorToNextArea : MonoBehaviour
         if (inRange)
         {
             UIForRoomChange.SetActive(true);
-            RoomText.text = RoomName;
+            if (isPortal)
+            {
+                RoomText.text = "Portal Room";
+            }
+
+            else
+            {
+                RoomText.text = RoomName;
+            }
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                GameManager.playerRotation = RotationToSpawnInRoomYoureGoingTo;
-                GameManager.playerSpawn = LocationToSpawnInRoomYoureGoingTo;
-                SceneManager.LoadScene(RoomToGoTo);
+                if (isPortal)
+                {
+                    GameManager.playerRotation = player.transform.rotation;
+                    GameManager.playerSpawn = player.transform.position;
+                    SceneManager.LoadScene("HoldingRoom");
+                }
+
+                else
+                {
+                    GameManager.playerRotation = RotationToSpawnInRoomYoureGoingTo;
+                    GameManager.playerSpawn = LocationToSpawnInRoomYoureGoingTo;
+                    SceneManager.LoadScene(RoomToGoTo);
+                }
             }
         }
         else
