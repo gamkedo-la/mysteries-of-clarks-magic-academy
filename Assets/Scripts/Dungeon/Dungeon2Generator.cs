@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Unity.AI.Navigation;
 
 public class Dungeon2Generator : MonoBehaviour {
 	public static Dungeon2Generator Instance;
+	public NavMeshSurface surface;
+
 	public int dungeonNumber = 2;
 	public int currentLevel;
 
@@ -472,6 +475,8 @@ public class Dungeon2Generator : MonoBehaviour {
 				enemySpawn.transform.parent = transform;
 			}
 		}
+
+		StartCoroutine(BuildNavMesh());
 	}
 
 	public void Clear() {
@@ -486,6 +491,12 @@ public class Dungeon2Generator : MonoBehaviour {
 		if (GameManager.currentFloor > GameManager.DungeonFloorCount[dungeonNumber]) GameManager.DungeonFloorCount[dungeonNumber] = GameManager.currentFloor;
 		Destroy(gameObject);
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+	}
+
+	IEnumerator BuildNavMesh() {
+		yield return null;
+		
+		surface.BuildNavMesh();
 	}
 }
 

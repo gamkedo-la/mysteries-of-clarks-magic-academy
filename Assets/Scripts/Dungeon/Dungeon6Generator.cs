@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Unity.AI.Navigation;
 using UnityEditor;
 
 public class Dungeon6Generator : MonoBehaviour {
 	public static Dungeon6Generator Instance;
+	public NavMeshSurface surface;
 
 	public int dungeonNumber = 5;
 	public int currentLevel;
@@ -243,6 +245,7 @@ public class Dungeon6Generator : MonoBehaviour {
 		thePlayer.transform.Rotate(0f, Random.Range(0f, 360f), 0f);
 		thePlayer.transform.parent = transform;
 
+		StartCoroutine(BuildNavMesh());
 	}
 
 	public void Clear() {
@@ -257,6 +260,12 @@ public class Dungeon6Generator : MonoBehaviour {
 		if (GameManager.currentFloor > GameManager.DungeonFloorCount[dungeonNumber]) GameManager.DungeonFloorCount[dungeonNumber] = GameManager.currentFloor;
 		Destroy(gameObject);
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+	}
+
+	IEnumerator BuildNavMesh() {
+		yield return null;
+
+		surface.BuildNavMesh();
 	}
 }
 
