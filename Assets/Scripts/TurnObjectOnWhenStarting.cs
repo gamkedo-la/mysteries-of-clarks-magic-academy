@@ -15,12 +15,12 @@ public class TurnObjectOnWhenStarting : MonoBehaviour
     {
         if (isTurnoff)
         {
-            TurnOffOnStart.SetActive(false);
+            TurnOffOnStart?.SetActive(false);
         }
 
         else
         {
-            ToTurnOn.SetActive(true);
+            ToTurnOn?.SetActive(true);
         }
     }
 

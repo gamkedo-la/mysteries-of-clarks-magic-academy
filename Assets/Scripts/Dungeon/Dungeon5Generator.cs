@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Unity.AI.Navigation;
 
 public class Dungeon5Generator : MonoBehaviour {
 	public static Dungeon5Generator Instance;
+	public NavMeshSurface surface;
+
 	public int dungeonNumber = 5;
 	public int currentLevel;
 
@@ -69,6 +72,12 @@ public class Dungeon5Generator : MonoBehaviour {
 		if (GameManager.currentFloor > GameManager.DungeonFloorCount[dungeonNumber]) GameManager.DungeonFloorCount[dungeonNumber] = GameManager.currentFloor;
 		Destroy(gameObject);
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+	}
+
+	IEnumerator BuildNavMesh() {
+		yield return null;
+
+		surface.BuildNavMesh();
 	}
 }
 
