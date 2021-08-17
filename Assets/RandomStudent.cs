@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 public class RandomStudent : MonoBehaviour
 {
+    public bool isIdle;
+
     int chooseGender;
     public GameObject male, female;
 
@@ -40,16 +42,19 @@ public class RandomStudent : MonoBehaviour
             agent = GetComponent<NavMeshAgent>();
         }
 
-        startingPositions = GameObject.FindGameObjectsWithTag("ComeFrom");
-        endingPositions = GameObject.FindGameObjectsWithTag("GoTo");
+        if (!isIdle)
+        {
+            startingPositions = GameObject.FindGameObjectsWithTag("ComeFrom");
+            endingPositions = GameObject.FindGameObjectsWithTag("GoTo");
+            int chooseStart = Random.Range(0, startingPositions.Length);
+            chooseEnd = Random.Range(0, endingPositions.Length);
+            this.GetComponent<NavMeshAgent>().enabled = false;
+            this.GetComponent<BoxCollider>().enabled = false;
+            transform.position = startingPositions[chooseStart].transform.position;
+            this.GetComponent<NavMeshAgent>().enabled = true;
+            this.GetComponent<BoxCollider>().enabled = true;
 
-        int chooseStart = Random.Range(0, startingPositions.Length);
-        chooseEnd = Random.Range(0, endingPositions.Length);
-        this.GetComponent<NavMeshAgent>().enabled = false;
-        this.GetComponent<BoxCollider>().enabled = false;
-        transform.position = startingPositions[chooseStart].transform.position;
-        this.GetComponent<NavMeshAgent>().enabled = true;
-        this.GetComponent<BoxCollider>().enabled = true;
+        }
 
         animationSpeed = Random.Range(.5f, 1.5f);
         this.GetComponent<NavMeshAgent>().speed *= animationSpeed;
@@ -135,66 +140,88 @@ public class RandomStudent : MonoBehaviour
 
     private void Update()
     {
-        agent.SetDestination(endingPositions[chooseEnd].transform.position);
-
-        float distance = Vector3.Distance(this.transform.position, endingPositions[chooseEnd].transform.position);
-
-        if (distance <= 1)
+        if (!isIdle)
         {
-            Destroy(this.gameObject);
+            agent.SetDestination(endingPositions[chooseEnd].transform.position);
+
+            float distance = Vector3.Distance(this.transform.position, endingPositions[chooseEnd].transform.position);
+
+            if (distance <= 1)
+            {
+                Destroy(this.gameObject);
+            }
+
+
+            float distanceToMC = Vector3.Distance(this.transform.position, GameObject.FindWithTag("Player").transform.position);
+
+            if (GameObject.FindWithTag("Player") != null)
+            {
+                if (distanceToMC <= 5 && distanceToMC > 1.5f)
+                {
+                    GetComponent<BoxCollider>().enabled = true;
+                    if (chooseGender == 0)
+                    {
+                        maleHairStyle[hairstyle].GetComponent<Renderer>().material = semiTransparent;
+                        mats[0] = semiTransparent;
+                        maleRenderer.GetComponent<SkinnedMeshRenderer>().material = mats[0];
+                        male.SetActive(true);
+                    }
+                    if (chooseGender == 1)
+                    {
+                        femaleHairStyle[hairstyle].GetComponent<Renderer>().material = semiTransparent;
+                        mats[0] = semiTransparent;
+                        femaleRenderer.GetComponent<SkinnedMeshRenderer>().material = mats[0];
+                        female.SetActive(true);
+                    }
+                }
+                else if (distanceToMC <= 1.5f)
+                {
+                    GetComponent<BoxCollider>().enabled = false;
+                    if (chooseGender == 0)
+                    {
+                        male.SetActive(false);
+                    }
+                    if (chooseGender == 1)
+                    {
+                        female.SetActive(false);
+                    }
+                }
+                else
+                {
+                    if (chooseGender == 0)
+                    {
+                        maleHairStyle[hairstyle].GetComponent<Renderer>().material = hairColor[hairColorChoice];
+                        mats[0] = skin[chooseSkin];
+                        maleRenderer.GetComponent<SkinnedMeshRenderer>().material = mats[0];
+                        male.SetActive(true);
+                    }
+                    if (chooseGender == 1)
+                    {
+                        femaleHairStyle[hairstyle].GetComponent<Renderer>().material = hairColor[hairColorChoice];
+                        mats[0] = skin[chooseSkin];
+                        femaleRenderer.GetComponent<SkinnedMeshRenderer>().material = mats[0];
+                        female.SetActive(true);
+                    }
+                }
+            }
+
         }
 
-
-        float distanceToMC = Vector3.Distance(this.transform.position, GameObject.FindWithTag("Player").transform.position);
-
-        if (GameObject.FindWithTag("Player") != null)
+        else
+        {
+            if (chooseGender == 0)
             {
-            if (distanceToMC <= 5 && distanceToMC >1.5f)
-            {
-                GetComponent<BoxCollider>().enabled = true;
-                if (chooseGender == 0)
-                {
-                    maleHairStyle[hairstyle].GetComponent<Renderer>().material = semiTransparent;
-                    mats[0] = semiTransparent;
-                    maleRenderer.GetComponent<SkinnedMeshRenderer>().material = mats[0];
-                    male.SetActive(true);
-                }
-                if (chooseGender == 1)
-                {
-                    femaleHairStyle[hairstyle].GetComponent<Renderer>().material = semiTransparent;
-                    mats[0] = semiTransparent;
-                    femaleRenderer.GetComponent<SkinnedMeshRenderer>().material = mats[0];
-                    female.SetActive(true);
-                }
+                maleHairStyle[hairstyle].GetComponent<Renderer>().material = hairColor[hairColorChoice];
+                mats[0] = skin[chooseSkin];
+                maleRenderer.GetComponent<SkinnedMeshRenderer>().material = mats[0];
+                male.SetActive(true);
             }
-            else if (distanceToMC <= 1.5f)
+            if (chooseGender == 1)
             {
-                GetComponent<BoxCollider>().enabled = false;
-                if (chooseGender == 0)
-                {
-                    male.SetActive(false);
-                }
-                if (chooseGender == 1)
-                {
-                    female.SetActive(false);
-                }
-            }
-            else
-            {
-                if (chooseGender == 0)
-                {
-                    maleHairStyle[hairstyle].GetComponent<Renderer>().material = hairColor[hairColorChoice];
-                    mats[0] = skin[chooseSkin];
-                    maleRenderer.GetComponent<SkinnedMeshRenderer>().material = mats[0];
-                    male.SetActive(true);
-                }
-                if (chooseGender == 1)
-                {
-                    femaleHairStyle[hairstyle].GetComponent<Renderer>().material = hairColor[hairColorChoice];
-                    mats[0] = skin[chooseSkin];
-                    femaleRenderer.GetComponent<SkinnedMeshRenderer>().material = mats[0];
-                    female.SetActive(true);
-                }
+                femaleHairStyle[hairstyle].GetComponent<Renderer>().material = hairColor[hairColorChoice];
+                mats[0] = skin[chooseSkin];
+                femaleRenderer.GetComponent<SkinnedMeshRenderer>().material = mats[0];
+                female.SetActive(true);
             }
         }
     }
