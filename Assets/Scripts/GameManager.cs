@@ -1291,22 +1291,29 @@ public class GameManager : MonoBehaviour
 
             else
             {
-                if (timeOfDay == 1)
+                if (month == 5 && day == 7)
                 {
-                    ProgressDay();
+                    SceneManager.LoadScene("Footballistics");
                 }
-                if (timeOfDay == 2)
+                else
                 {
-                    ProgressDay();
+                    if (timeOfDay == 1)
+                    {
+                        ProgressDay();
+                    }
+                    if (timeOfDay == 2)
+                    {
+                        ProgressDay();
+                    }
+                    playerSpawn = new Vector3(-21.18f, 31.78f, -70.54f);
+                    playerRotation = new Quaternion(0, 0, 0, 0);
+                    SceneManager.LoadScene("FourthFloor");
+                    player.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
+                    player.transform.position = GameManager.playerSpawn;
+                    player.transform.rotation = GameManager.playerRotation;
+                    player.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = true;
+                    print("Load a dorm for free period at start of day");
                 }
-                playerSpawn = new Vector3(-21.18f, 31.78f, -70.54f);
-                playerRotation = new Quaternion(0, 0, 0, 0);
-                SceneManager.LoadScene("FourthFloor");
-                player.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
-                player.transform.position = GameManager.playerSpawn;
-                player.transform.rotation = GameManager.playerRotation;
-                player.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = true;
-                print("Load a dorm for free period at start of day");
             }
         }
     }
