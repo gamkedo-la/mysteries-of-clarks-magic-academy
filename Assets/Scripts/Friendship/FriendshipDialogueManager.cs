@@ -14,8 +14,6 @@ public class FriendshipDialogueManager : MonoBehaviour
     private Queue<string> sentences;
     private Queue<string> names;
     private Queue<bool> isCalledOn;
-    private Queue<GameObject> cameras;
-    private Queue<Animation> animationsToPlay;
     public Animator player;
     public GameObject friend;
 
@@ -51,8 +49,6 @@ public class FriendshipDialogueManager : MonoBehaviour
         sentences = new Queue<string>();
         names = new Queue<string>();
         isCalledOn = new Queue<bool>();
-        cameras = new Queue<GameObject>();
-        animationsToPlay = new Queue<Animation>();
 
         StartCoroutine(InitialWaiting());
 
@@ -91,8 +87,6 @@ public class FriendshipDialogueManager : MonoBehaviour
         sentences.Clear();
         names.Clear();
         isCalledOn.Clear();
-        cameras.Clear();
-        animationsToPlay.Clear();
 
         foreach (string sentence in dialogue.sentences)
         {
@@ -100,17 +94,10 @@ public class FriendshipDialogueManager : MonoBehaviour
             foreach (bool called in dialogue.isCalledOn)
             {
                 isCalledOn.Enqueue(called);
-                foreach (GameObject camera in dialogue.cameras)
+
+                foreach (string name in dialogue.names)
                 {
-                    cameras.Enqueue(camera);
-                    foreach (Animation animation in dialogue.animationsToPlay)
-                    {
-                        animationsToPlay.Enqueue(animation);
-                        foreach (string name in dialogue.names)
-                        {
-                            names.Enqueue(name);
-                        }
-                    }
+                    names.Enqueue(name);
                 }
             }
         }
@@ -128,8 +115,6 @@ public class FriendshipDialogueManager : MonoBehaviour
         string sentence = sentences.Dequeue();
         string name = names.Dequeue();
         bool called = isCalledOn.Dequeue();
-        GameObject camera = cameras.Dequeue();
-        Animation animation = animationsToPlay.Dequeue();
 
         sentence = sentence.Replace("[MC]", GameManager.MCFirstName);
 

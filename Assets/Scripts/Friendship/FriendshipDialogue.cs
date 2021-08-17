@@ -9,8 +9,8 @@ public class FriendshipDialogue
     public string[] names;
     public string[] sentences;
 
-    public GameObject[] cameras;
-    public Animation[] animationsToPlay;
+  //  public GameObject[] cameras;
+  //  public Animation[] animationsToPlay;
 
     public bool[] isCalledOn;
 }
