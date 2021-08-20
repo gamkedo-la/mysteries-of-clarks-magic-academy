@@ -9370,7 +9370,8 @@ public class BattleSystem : MonoBehaviour
         {
            MCExp(totalExp / GameManager.PartyCount * .8f);
         }
-        
+
+        print(GameManager.Money);
        //  ChooseItem();
     }
 
