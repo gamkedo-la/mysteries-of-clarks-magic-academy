@@ -604,12 +604,6 @@ MonoBehaviour:
     sentences:
     - "I\u2019ll catch up with you in a bit. "
     - You head to class while Rhys goes back to the dorm.
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 0000
   toBeContinued: 0
   isChoice: 0
@@ -624,6 +618,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!1 &85366359
 GameObject:
   m_ObjectHideFlags: 0
@@ -677,20 +674,6 @@ MonoBehaviour:
     - 'I hate them both. '
     - How can you love your kids but put them through this?
     - 'It is not fair! '
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 000000000000
   toBeContinued: 0
   isChoice: 1
@@ -705,6 +688,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!4 &85366361
 Transform:
   m_ObjectHideFlags: 0
@@ -932,12 +918,6 @@ MonoBehaviour:
       a note this morning about it.  "
     - "I don\u2019t know what to do. I don\u2019t know what I can do. I don\u2019t
       want to move between two houses all the time. What should I do? "
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 0000
   toBeContinued: 0
   isChoice: 1
@@ -952,6 +932,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!1 &117881932
 GameObject:
   m_ObjectHideFlags: 0
@@ -1008,12 +991,6 @@ MonoBehaviour:
     sentences:
     - 'We should get going to class. '
     - You leave with Rhys off to your next class.
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 0000
   toBeContinued: 0
   isChoice: 0
@@ -1028,6 +1005,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!1 &126535335
 GameObject:
   m_ObjectHideFlags: 0
@@ -2353,10 +2333,6 @@ MonoBehaviour:
     sentences:
     - "Yes I have. They said it was a grown up thing and I shouldn\u2019t worry myself
       about. "
-    cameras:
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
     isCalledOn: 00
   toBeContinued: 1
   isChoice: 0
@@ -2371,6 +2347,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!4 &257884716
 Transform:
   m_ObjectHideFlags: 0
@@ -2667,18 +2646,6 @@ MonoBehaviour:
     - 'It is too late now. The life I knew shattered on the floor and I have to pick
       up the pieces without getting cut. '
     - 'Stupid analogy, I know, but it is making me feel better. '
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 0000000000
   toBeContinued: 0
   isChoice: 1
@@ -2693,6 +2660,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!4 &273823591
 Transform:
   m_ObjectHideFlags: 0
@@ -2861,10 +2831,6 @@ MonoBehaviour:
     - Rhys
     sentences:
     - How? How could losing half of your family be for the best?
-    cameras:
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
     isCalledOn: 00
   toBeContinued: 1
   isChoice: 0
@@ -2879,6 +2845,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!4 &285902766
 Transform:
   m_ObjectHideFlags: 0
@@ -4448,6 +4417,106 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 474654441}
   m_CullTransparentMesh: 0
+--- !u!1 &479007070
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 479007074}
+  - component: {fileID: 479007073}
+  - component: {fileID: 479007072}
+  - component: {fileID: 479007071}
+  m_Layer: 5
+  m_Name: Canvas-LoadingScreenFadeOut
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &479007071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 479007070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &479007072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 479007070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 1
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
+--- !u!223 &479007073
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 479007070}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 0
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!224 &479007074
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 479007070}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_Children:
+  - {fileID: 1644205531}
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
 --- !u!1 &494031141
 GameObject:
   m_ObjectHideFlags: 0
@@ -4573,16 +4642,6 @@ MonoBehaviour:
     - 'But I still feel like I need to do something to fix things. '
     - 'Maybe I should talk to the Headmaster about letting me stay over the summer.  '
     - 'Or, I can fail and go to summer school. '
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 00000000
   toBeContinued: 0
   isChoice: 1
@@ -4597,6 +4656,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!4 &501640570
 Transform:
   m_ObjectHideFlags: 0
@@ -5797,16 +5859,6 @@ MonoBehaviour:
     - "I\u2019ll keep thinking..."
     - 'Thanks again for talking with me. It is nice to be able to vent to someone.  '
     - You feel like you understand Rhys situation better.
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 00000000
   toBeContinued: 1
   isChoice: 0
@@ -5821,6 +5873,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 1
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!4 &685513521
 Transform:
   m_ObjectHideFlags: 0
@@ -6569,14 +6624,6 @@ MonoBehaviour:
     - "I know I haven\u2019t been the best student, I\u2019m not a great athlete,
       I\u2019m not very social. I\u2019m nothing like my siblings."
     - "Maybe I\u2019m the reason my parents are getting a divorce. "
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 000000
   toBeContinued: 0
   isChoice: 1
@@ -6591,6 +6638,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!1 &797174167
 GameObject:
   m_ObjectHideFlags: 0
@@ -6647,12 +6697,6 @@ MonoBehaviour:
     sentences:
     - 'We should get to class. '
     - 'You walk with Rhys off to class. '
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 0000
   toBeContinued: 0
   isChoice: 0
@@ -6667,6 +6711,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!1 &800024383
 GameObject:
   m_ObjectHideFlags: 0
@@ -6711,14 +6758,6 @@ MonoBehaviour:
     - "I don\u2019t have many apart from you."
     - ' I was the loner.'
     - "...Now I\u2019m more alone. "
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 00
   toBeContinued: 1
   isChoice: 0
@@ -6733,6 +6772,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!4 &800024385
 Transform:
   m_ObjectHideFlags: 0
@@ -7062,18 +7104,6 @@ MonoBehaviour:
       things like that that make it feel weird.  "
     - "That is why I like coming to this school. There is no shouting, no yelling,
       and I don\u2019t feel the cloud of unhappiness when I walk in a room. "
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 0000000000
   toBeContinued: 0
   isChoice: 1
@@ -7088,6 +7118,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!4 &842814571
 Transform:
   m_ObjectHideFlags: 0
@@ -7131,6 +7164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb42345c0d8d56a469aa5b42cafc3287, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGreatHall: 0
   Convo:
   - {fileID: 199210344}
   - {fileID: 807032354}
@@ -7366,14 +7400,6 @@ MonoBehaviour:
       it will get better. "
     - "Let\u2019s head off to class. "
     - You walk to class with Rhys.
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 000000
   toBeContinued: 0
   isChoice: 0
@@ -7388,6 +7414,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!1 &881800547
 GameObject:
   m_ObjectHideFlags: 0
@@ -7594,20 +7623,6 @@ MonoBehaviour:
     - Why now?
     - ...
     - 'Rhys fell into silence. You should probably say something. '
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 000000000000
   toBeContinued: 0
   isChoice: 1
@@ -7622,6 +7637,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!4 &932606906
 Transform:
   m_ObjectHideFlags: 0
@@ -7686,18 +7704,6 @@ MonoBehaviour:
     - 'Thank you. '
     - 'You sense a deep gratitude from Rhys. '
     - 'He looks hurt, but he seems like he will make it through. '
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 0000000000
   toBeContinued: 1
   isChoice: 0
@@ -7712,6 +7718,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 1
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!4 &965249665
 Transform:
   m_ObjectHideFlags: 0
@@ -8014,20 +8023,6 @@ MonoBehaviour:
     - "And now they want a divorce? When I\u2019m the only one at home?"
     - Maybe me living at home caused this.
     - "If I just don\u2019t go home, it solves everything.  "
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 000000000000
   toBeContinued: 0
   isChoice: 1
@@ -8042,6 +8037,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!4 &984431790
 Transform:
   m_ObjectHideFlags: 0
@@ -8485,20 +8483,6 @@ MonoBehaviour:
     - Thanks for listening to me.
     - ' I know I can count on you. '
     - You can tell Rhys is depressed, but he does seem thankful for the company.
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 000000000000
   toBeContinued: 1
   isChoice: 0
@@ -8513,6 +8497,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 1
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!4 &1112788744
 Transform:
   m_ObjectHideFlags: 0
@@ -8567,10 +8554,6 @@ MonoBehaviour:
     - Rhys
     sentences:
     - "It\u2019ll all be fine. They have always resolved their issues before. "
-    cameras:
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
     isCalledOn: 00
   toBeContinued: 1
   isChoice: 0
@@ -8585,6 +8568,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 1
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!4 &1121398983
 Transform:
   m_ObjectHideFlags: 0
@@ -8978,12 +8964,6 @@ MonoBehaviour:
       the world pull you down?
     - 'It just feels like there is so much negativity going on in the world, people
       are disappearing, finals are coming up - it is all so much. How do you do it? '
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 000000
   toBeContinued: 0
   isChoice: 1
@@ -8998,6 +8978,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!1 &1302500831
 GameObject:
   m_ObjectHideFlags: 0
@@ -11348,6 +11331,101 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1641103004}
   m_CullTransparentMesh: 0
+--- !u!1 &1644205530
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1644205531}
+  - component: {fileID: 1644205534}
+  - component: {fileID: 1644205533}
+  - component: {fileID: 1644205532}
+  m_Layer: 5
+  m_Name: LoadingScreenCover
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1644205531
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1644205530}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 479007074}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &1644205532
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1644205530}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 84282bba44aee894aa5bc5b4e0b79621, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1644205533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1644205530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1644205534
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1644205530}
+  m_CullTransparentMesh: 1
 --- !u!1 &1649259511
 GameObject:
   m_ObjectHideFlags: 0
@@ -11596,12 +11674,6 @@ MonoBehaviour:
     - "They\u2019ve been writing to me quite a bit these last couple of months. It
       sounds like there are more problems at home than usual, but I\u2019m sure it
       is nothing they can\u2019t work out. "
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 0000
   toBeContinued: 0
   isChoice: 1
@@ -11616,6 +11688,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!1 &1675009899
 GameObject:
   m_ObjectHideFlags: 0
@@ -11864,12 +11939,6 @@ MonoBehaviour:
     sentences:
     - 'Hey are you going to eat that? '
     - 'You feel like you understand Rhys a little more. '
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 0000
   toBeContinued: 1
   isChoice: 0
@@ -11884,6 +11953,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 1
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!1 &1697953880
 GameObject:
   m_ObjectHideFlags: 0
@@ -12198,12 +12270,6 @@ MonoBehaviour:
     sentences:
     - "No, they all moved on. They don\u2019t talk to the family anymore."
     - 'They are too busy with their careers and their own families.  '
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 0000
   toBeContinued: 1
   isChoice: 0
@@ -12218,6 +12284,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!4 &1721801188
 Transform:
   m_ObjectHideFlags: 0
@@ -13210,12 +13279,6 @@ MonoBehaviour:
     - "I\u2019m sorry, I know you\u2019re trying to help, but I think I need to think
       on this more. "
     - 'You feel like you understand Rhys a little more. '
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 0000
   toBeContinued: 1
   isChoice: 0
@@ -13230,6 +13293,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 1
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!4 &1834013453
 Transform:
   m_ObjectHideFlags: 0
@@ -13646,20 +13712,6 @@ MonoBehaviour:
     - "If my parents aren\u2019t fighting in their letters or calls, then I feel
       myself fighting against myself. I just want things to go back to the way they
       were before. "
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 000000000000
   toBeContinued: 0
   isChoice: 1
@@ -13674,6 +13726,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!4 &1913140213
 Transform:
   m_ObjectHideFlags: 0
@@ -14415,20 +14470,6 @@ MonoBehaviour:
     - "but that isn\u2019t in my control. "
     - 'I just have to live with it and hopefully I come out on the other end of it
       a better person. '
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 000000000000
   toBeContinued: 0
   isChoice: 1
@@ -14443,6 +14484,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!1 &2090416340
 GameObject:
   m_ObjectHideFlags: 0
@@ -14731,12 +14775,6 @@ MonoBehaviour:
     sentences:
     - 'I think the bell is about to ring. We should go. '
     - You walk with Rhys to your next class.
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 0000
   toBeContinued: 0
   isChoice: 0
@@ -14751,6 +14789,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!1 &2136479426
 GameObject:
   m_ObjectHideFlags: 0

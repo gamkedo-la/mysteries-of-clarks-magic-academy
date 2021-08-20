@@ -1580,6 +1580,101 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &88835307
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 88835308}
+  - component: {fileID: 88835311}
+  - component: {fileID: 88835310}
+  - component: {fileID: 88835309}
+  m_Layer: 5
+  m_Name: LoadingScreenCover
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &88835308
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 88835307}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 825687527}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &88835309
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 88835307}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 84282bba44aee894aa5bc5b4e0b79621, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &88835310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 88835307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &88835311
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 88835307}
+  m_CullTransparentMesh: 1
 --- !u!1 &97696250
 GameObject:
   m_ObjectHideFlags: 0
@@ -3082,12 +3177,6 @@ MonoBehaviour:
     sentences:
     - Could we just... I don't know, hang out until class?
     - 'You spend time together talking before going to your next class. '
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 00
   toBeContinued: 0
   isChoice: 0
@@ -3564,24 +3653,6 @@ MonoBehaviour:
       you."
     - Skye is working through her guilt. You feel like you are understanding her
       better.
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 00
   toBeContinued: 1
   isChoice: 0
@@ -5781,14 +5852,6 @@ MonoBehaviour:
     - "I\u2019m tired. Let\u2019s pick this up again another time."
     - You appreciate Skye's abilities to open up about her past. You feel more connected
       to her now.
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 00000000000000000000
   toBeContinued: 1
   isChoice: 0
@@ -7749,10 +7812,6 @@ MonoBehaviour:
     - Skye
     sentences:
     - 'But I... '
-    cameras:
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
     isCalledOn: 00
   toBeContinued: 0
   isChoice: 1
@@ -9401,12 +9460,6 @@ MonoBehaviour:
     sentences:
     - Would you want to walk to class with me today?
     - Together, you walked to her class before going to yours.
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 0000
   toBeContinued: 0
   isChoice: 0
@@ -11190,10 +11243,6 @@ MonoBehaviour:
     - Skye
     sentences:
     - "No silly! I\u2019m happy again, and it\u2019s all your fault!"
-    cameras:
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
     isCalledOn: 00
   toBeContinued: 1
   isChoice: 0
@@ -11617,10 +11666,6 @@ MonoBehaviour:
     - You
     sentences:
     - You think it is best to leave her alone right now.
-    cameras:
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
     isCalledOn: 00
   toBeContinued: 0
   isChoice: 0
@@ -14542,10 +14587,6 @@ MonoBehaviour:
     - Skye
     sentences:
     - Yes! And I have you to thank for it!
-    cameras:
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
     isCalledOn: 00
   toBeContinued: 1
   isChoice: 0
@@ -16272,18 +16313,6 @@ MonoBehaviour:
       time employee go, we couldn\u2019t afford to pay him. "
     - What have I ever done to deserve that sacrifice?!
     - ' I am no miracle. I am a curse.'
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 0000000000
   toBeContinued: 0
   isChoice: 1
@@ -19312,10 +19341,6 @@ MonoBehaviour:
     sentences:
     - You sit in silence with Skye, just being there for her until you both have
       to leave for class.
-    cameras:
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
     isCalledOn: 00
   toBeContinued: 0
   isChoice: 0
@@ -20913,6 +20938,106 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 817675041}
   m_CullTransparentMesh: 0
+--- !u!1 &825687523
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 825687527}
+  - component: {fileID: 825687526}
+  - component: {fileID: 825687525}
+  - component: {fileID: 825687524}
+  m_Layer: 5
+  m_Name: Canvas-LoadingScreenFadeOut
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &825687524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 825687523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &825687525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 825687523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 1
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
+--- !u!223 &825687526
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 825687523}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 0
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!224 &825687527
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 825687523}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_Children:
+  - {fileID: 88835308}
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
 --- !u!43 &825822791
 Mesh:
   m_ObjectHideFlags: 0
@@ -21129,16 +21254,6 @@ MonoBehaviour:
       what she would do when she got out of the hospital.
     - "I was a prisoner of the moment. I couldn\u2019t see past my own pain, my own
       family\u2019s suffering. She was a light for me."
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 00000000
   toBeContinued: 0
   isChoice: 1
@@ -21743,18 +21858,6 @@ MonoBehaviour:
       specialist they could find.
     - 'Finally, the verdict came back: Cancer. Non-Hodgkin''s Lymphoma. I remember
       because the doctors repeated it so many times to my parents.'
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 0000000000
   toBeContinued: 0
   isChoice: 1
@@ -24863,10 +24966,6 @@ MonoBehaviour:
     sentences:
     - "Hmph. If that\u2019s your attitude maybe I\u2019d rather you not have come
       along. "
-    cameras:
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
     isCalledOn: 00
   toBeContinued: 1
   isChoice: 0
@@ -28788,14 +28887,6 @@ MonoBehaviour:
     - "It\u2019s funny you should mention, my brother\u2019s doing better as well. "
     - "He\u2019s taking online courses at one of the local colleges, while he bakes."
     - "It might take him an extra year, but he\u2019s still going to get that degree."
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 000000
   toBeContinued: 1
   isChoice: 0
@@ -29109,28 +29200,6 @@ MonoBehaviour:
       chance to live.
     - "And maybe I would have been lost, would have given up after the first or second
       round of chemo, if I hadn\u2019t met Amelie. "
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 00000000000000000000
   toBeContinued: 0
   isChoice: 1
@@ -29358,12 +29427,6 @@ MonoBehaviour:
       was crushed. I could tell. He stayed in our small town."
     - "He had to start working at the bakery because we had to let our only full
       time employee go, we couldn\u2019t afford to pay him. "
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 0000
   toBeContinued: 0
   isChoice: 1
@@ -32549,12 +32612,6 @@ MonoBehaviour:
     - ... But she didn't make it. She died two weeks before I was discharged.
     - I was there when they changed the bedsheets, took down her file. It was like
       she was never even there.
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 0000
   toBeContinued: 0
   isChoice: 1
@@ -33367,18 +33424,6 @@ MonoBehaviour:
     - 'Why would they pick me though? '
     - Recently, I thought I was strong, but I've always had a chip on my shoulder.
     - 'When I was a kid, the other kids all thought I was weak. '
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 0000000000
   toBeContinued: 0
   isChoice: 1
@@ -34449,10 +34494,6 @@ MonoBehaviour:
     sentences:
     - 'Hey. Thanks for saving  me back there. I don''t know what I would have done
       if you hadn''t come.  '
-    cameras:
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
     isCalledOn: 00
   toBeContinued: 0
   isChoice: 1
@@ -35819,22 +35860,6 @@ MonoBehaviour:
       they resent me."
     - 'I am not a miracle. I am a curse. '
     - That is the bargain Death made, when he spared my life.
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 00000000000000000000
   toBeContinued: 0
   isChoice: 1
@@ -36668,14 +36693,6 @@ MonoBehaviour:
       miracle was I now?"
     - "Sorry, this is just a touchy subject for me. Let\u2019s talk more another
       time."
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 000000
   toBeContinued: 1
   isChoice: 0
@@ -37901,10 +37918,6 @@ MonoBehaviour:
     sentences:
     - She made it better.
     - 'I still visit her sometimes. She saved me at a bad time. '
-    cameras:
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
     isCalledOn: 00
   toBeContinued: 1
   isChoice: 0
@@ -44616,10 +44629,6 @@ MonoBehaviour:
     - Skye
     sentences:
     - 'You respect Skye''s wishes and end the conversation. '
-    cameras:
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
     isCalledOn: 00000000000000000000
   toBeContinued: 0
   isChoice: 0
@@ -45460,22 +45469,6 @@ MonoBehaviour:
       up inside.
     - I talked to the Headmaster about lining up therapy to keep working through
       it.
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 00000000000000
   toBeContinued: 0
   isChoice: 1
@@ -49245,12 +49238,6 @@ MonoBehaviour:
     sentences:
     - Rather abruptly, Skye ends the conversation.
     - 'You are thankful she has started opening up to you. '
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 0000
   toBeContinued: 1
   isChoice: 0
@@ -49534,10 +49521,6 @@ MonoBehaviour:
     sentences:
     - 'She was. '
     - 'I still visit her sometimes. She saved me at a bad time. '
-    cameras:
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
     isCalledOn: 00
   toBeContinued: 1
   isChoice: 0
@@ -51778,22 +51761,6 @@ MonoBehaviour:
     - 'My treatments wiped out all of that. All my parents'' savings were gone. '
     - 'Not only that, they had to take out a second mortgage on the bakery, just
       to start to pay the bills for my treatment. '
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 00000000000000000000
   toBeContinued: 0
   isChoice: 1
@@ -52082,18 +52049,6 @@ MonoBehaviour:
     - " I can\u2019t\u2026 I just can\u2019t right now... "
     - Skye is starting to clam up. Perhaps it is best to leave the conversation here.
     - You feel like you understand Skye a little better now.
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 0000000000
   toBeContinued: 1
   isChoice: 0
@@ -52983,10 +52938,6 @@ MonoBehaviour:
     - Skye
     sentences:
     - Do you notice anything different about me today?
-    cameras:
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
     isCalledOn: 00
   toBeContinued: 0
   isChoice: 1
@@ -54221,24 +54172,6 @@ MonoBehaviour:
     - "I have friends now, and I\u2019m so happy to be one of you, and feel accepted
       by all of you.  "
     - You sense a new breath of life from Skye. Your friendship seems unbreakable.
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 0000000000000000
   toBeContinued: 1
   isChoice: 0
@@ -54310,10 +54243,6 @@ MonoBehaviour:
     - Skye
     sentences:
     - "Thanks, I really do appreciate it. It\u2019s been hard meeting people here."
-    cameras:
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
     isCalledOn: 00
   toBeContinued: 1
   isChoice: 0

@@ -893,26 +893,6 @@ MonoBehaviour:
     - "No - I\u2019m not -"
     - "\u2026 "
     - 'Okay. Love you too. '
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 000000000000000000
   toBeContinued: 0
   isChoice: 1
@@ -5374,14 +5354,6 @@ MonoBehaviour:
     - When I was 5, I sold socks to my classmates for candy after taking them off
       of them at nap time.
     - Unethical? Yes. But - it was my first look at problem solving for people.
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 000000
   toBeContinued: 1
   isChoice: 0
@@ -6728,10 +6700,6 @@ MonoBehaviour:
     - "You\u2019re right! Better location and I put a spell on it that only people
       under the age of 17 can see it. To anyone over that age, we look invisible.
       That should buy us some more time."
-    cameras:
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
     isCalledOn: 00
   toBeContinued: 1
   isChoice: 0
@@ -6839,6 +6807,101 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 151003816}
   m_CullTransparentMesh: 0
+--- !u!1 &160732148
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 160732149}
+  - component: {fileID: 160732152}
+  - component: {fileID: 160732151}
+  - component: {fileID: 160732150}
+  m_Layer: 5
+  m_Name: LoadingScreenCover
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &160732149
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 160732148}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1677849901}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &160732150
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 160732148}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 84282bba44aee894aa5bc5b4e0b79621, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &160732151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 160732148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &160732152
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 160732148}
+  m_CullTransparentMesh: 1
 --- !u!1 &162371340
 GameObject:
   m_ObjectHideFlags: 0
@@ -7881,10 +7944,6 @@ MonoBehaviour:
     - Manraj
     sentences:
     - "That\u2019s how it is done! So what do you think - do you like the new location? "
-    cameras:
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
     isCalledOn: 00
   toBeContinued: 0
   isChoice: 1
@@ -10455,14 +10514,6 @@ MonoBehaviour:
     - ...
     - 'Now, please pack up. This is the 3rd time this semester. I will have to notify
       your parents now. '
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 000000
   toBeContinued: 1
   isChoice: 0
@@ -10550,10 +10601,6 @@ MonoBehaviour:
     - Manraj
     sentences:
     - "I mean, they sell it in magical shops, why can\u2019t I sell it here? "
-    cameras:
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
     isCalledOn: 00
   toBeContinued: 1
   isChoice: 0
@@ -10648,18 +10695,6 @@ MonoBehaviour:
       it can\u2019t remember what you don\u2019t know.  "
     - "Urgh, fine, I guess I\u2019ll go study.  "
     - 'Great! Come again.  '
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 0000000000
   toBeContinued: 1
   isChoice: 0
@@ -11536,14 +11571,6 @@ MonoBehaviour:
       W$11.43."
     - 'Sweet! Thanks! '
     - 'No problem! Good luck on finals!  '
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 000000
   toBeContinued: 0
   isChoice: 1
@@ -11893,10 +11920,6 @@ MonoBehaviour:
     - Manraj
     sentences:
     - 'Oh, another customer - '
-    cameras:
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
     isCalledOn: 00
   toBeContinued: 1
   isChoice: 0
@@ -13429,6 +13452,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 758f95b51c0d7264c9e9f8578f343b20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isIdle: 0
   male: {fileID: 1275654930}
   female: {fileID: 435641228}
   skin:
@@ -14650,6 +14674,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 758f95b51c0d7264c9e9f8578f343b20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isIdle: 0
   male: {fileID: 590990036}
   female: {fileID: 130728233}
   skin:
@@ -15086,6 +15111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 758f95b51c0d7264c9e9f8578f343b20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isIdle: 0
   male: {fileID: 7004815}
   female: {fileID: 616676837}
   skin:
@@ -19452,6 +19478,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 758f95b51c0d7264c9e9f8578f343b20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isIdle: 0
   male: {fileID: 1700918844}
   female: {fileID: 314827509}
   skin:
@@ -19916,10 +19943,6 @@ MonoBehaviour:
     - You
     sentences:
     - 'His charm is quite impressive as you watch him all afternoon.  '
-    cameras:
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
     isCalledOn: 00
   toBeContinued: 0
   isChoice: 0
@@ -20360,12 +20383,6 @@ MonoBehaviour:
     - What can I help you with today?
     - "You can feel Manraj\u2019s emotions bottled up inside him. You feel like you
       know him better. "
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 0000
   toBeContinued: 1
   isChoice: 0
@@ -21336,14 +21353,6 @@ MonoBehaviour:
     - "We\u2019ve done research into the area both the magical and non-magical population,
       put down a deposit, ordered inventory, and started marketing. "
     - "We\u2019re going to try it. "
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 000000
   toBeContinued: 1
   isChoice: 0
@@ -25167,6 +25176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 758f95b51c0d7264c9e9f8578f343b20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isIdle: 0
   male: {fileID: 1370496881}
   female: {fileID: 335053872}
   skin:
@@ -26607,6 +26617,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 758f95b51c0d7264c9e9f8578f343b20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isIdle: 0
   male: {fileID: 553566987}
   female: {fileID: 471579515}
   skin:
@@ -27625,12 +27636,6 @@ MonoBehaviour:
       punish them for practicing potions."
     - "I love business. I love selling. Why can\u2019t I do that here? It is a more
       valuable life skill than writing some stupid essay for some stupid class. "
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 0000
   toBeContinued: 0
   isChoice: 1
@@ -30423,14 +30428,6 @@ MonoBehaviour:
       your head. "
     - "Okay, that\u2019s fine.  "
     - 'Great! That is W$4.77. '
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 000000
   toBeContinued: 1
   isChoice: 0
@@ -33230,12 +33227,6 @@ MonoBehaviour:
       people with a magical barrier at the front of the store to transform the store
       based on the level of magical traces of who walks in. "
     - "I\u2019m really excited for it! "
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 0000
   toBeContinued: 0
   isChoice: 1
@@ -35319,12 +35310,6 @@ MonoBehaviour:
       need it.  "
     - "Selling them stuff they don\u2019t need or want isn\u2019t good for long term
       business health."
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 0000
   toBeContinued: 1
   isChoice: 0
@@ -36472,14 +36457,6 @@ MonoBehaviour:
       a store front, marketing, and for rent. '
     - The minor stuff I can figure out on my own, but the challenge is appealing.
     - 'I even have money for an employee if things get too busy. '
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 000000
   toBeContinued: 1
   isChoice: 0
@@ -37559,10 +37536,6 @@ MonoBehaviour:
     - You
     sentences:
     - His charm is quite impressive as you watch him all afternoon.
-    cameras:
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
     isCalledOn: 00
   toBeContinued: 0
   isChoice: 0
@@ -43962,6 +43935,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 758f95b51c0d7264c9e9f8578f343b20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isIdle: 0
   male: {fileID: 1834585949}
   female: {fileID: 559006827}
   skin:
@@ -45619,6 +45593,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 758f95b51c0d7264c9e9f8578f343b20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isIdle: 0
   male: {fileID: 1967277448}
   female: {fileID: 1853945387}
   skin:
@@ -50348,20 +50323,6 @@ MonoBehaviour:
       learn about inventory, employees, management, finances, and soft skills. '
     - That was fun for me. I learned more from the hands on learning there than I
       have ever learned in a classroom.
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 000000000000
   toBeContinued: 0
   isChoice: 1
@@ -51832,10 +51793,6 @@ MonoBehaviour:
     - Manraj
     sentences:
     - "Urg\u2026 I was afraid of this. "
-    cameras:
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
     isCalledOn: 00
   toBeContinued: 1
   isChoice: 0
@@ -52833,10 +52790,6 @@ MonoBehaviour:
     sentences:
     - 'He handles logistics for wand manufacturing. He created a wand wood farm in
       Agra. '
-    cameras:
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
     isCalledOn: 00
   toBeContinued: 1
   isChoice: 0
@@ -57099,12 +57052,6 @@ MonoBehaviour:
     - 'The only thing a well rounded education is good for is working for someone
       else in a middle of the road job. '
     - "If you want to be the best, you have to go all in.\t"
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 0000
   toBeContinued: 1
   isChoice: 0
@@ -57671,6 +57618,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 758f95b51c0d7264c9e9f8578f343b20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isIdle: 0
   male: {fileID: 1632009726}
   female: {fileID: 870272736}
   skin:
@@ -60266,6 +60214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 758f95b51c0d7264c9e9f8578f343b20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isIdle: 0
   male: {fileID: 1761980934}
   female: {fileID: 1439545247}
   skin:
@@ -61012,10 +60961,6 @@ MonoBehaviour:
     - Manraj
     sentences:
     - 'Thank you for always having my back. '
-    cameras:
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
     isCalledOn: 00
   toBeContinued: 1
   isChoice: 0
@@ -61467,16 +61412,6 @@ MonoBehaviour:
       what I want to do in the real world, then why am I here?
     - "This school doesn\u2019t value business. They don\u2019t value my talents.
       Why stay in a place that doesn\u2019t value you? "
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 00000000
   toBeContinued: 0
   isChoice: 1
@@ -61590,6 +61525,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 758f95b51c0d7264c9e9f8578f343b20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isIdle: 0
   male: {fileID: 1523461387}
   female: {fileID: 1398688465}
   skin:
@@ -63677,10 +63613,6 @@ MonoBehaviour:
     sentences:
     - "Thanks. I\u2019ve been thinking about it for a while and I think now is the
       time.  "
-    cameras:
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
     isCalledOn: 00
   toBeContinued: 1
   isChoice: 0
@@ -64912,12 +64844,6 @@ MonoBehaviour:
       next step! "
     - 'You feel Manraj has made peace with himself. He has found his place in the
       world and is ready to try his luck at it.  '
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 0000
   toBeContinued: 0
   isChoice: 0
@@ -65425,20 +65351,6 @@ MonoBehaviour:
     - "\u2026 "
     - " Yes,if they are here by tomorrow, that\u2019s fine.  "
     - 'Go ahead and send me the paperwork, I can take care of it. '
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 000000000000
   toBeContinued: 0
   isChoice: 1
@@ -65920,12 +65832,6 @@ MonoBehaviour:
       punish them for practicing potions."
     - "I love business. I love selling. Why can\u2019t I do that here? It is a more
       valuable life skill than writing some stupid essay for some stupid class. "
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 0000
   toBeContinued: 1
   isChoice: 0
@@ -67239,12 +67145,6 @@ MonoBehaviour:
       punish them for practicing potions."
     - "I love business. I love selling. Why can\u2019t I do that here? It is a more
       valuable life skill than writing some stupid essay for some stupid class. "
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 0000
   toBeContinued: 1
   isChoice: 0
@@ -67675,24 +67575,6 @@ MonoBehaviour:
       My parents want me to focus on school. I can\u2019t do all of that here. "
     - 'I want to get out there and prove myself. '
     - Do you think it is a ridiculous idea?
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 0000000000000000
   toBeContinued: 0
   isChoice: 1
@@ -69136,18 +69018,6 @@ MonoBehaviour:
     - "I\u2019m dropping out after June 1st. "
     - 'A friend of mine set me up with a store front in Texas that we have been looking
       at. '
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 0000000000
   toBeContinued: 0
   isChoice: 1
@@ -75633,10 +75503,6 @@ MonoBehaviour:
     - Manraj
     sentences:
     - "I have, but I\u2019d rather be on my own.  "
-    cameras:
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
     isCalledOn: 00
   toBeContinued: 1
   isChoice: 0
@@ -76079,22 +75945,6 @@ MonoBehaviour:
     - "I\u2019m just trying to - "
     - ...
     - "\u2026 Fine. Goodbye."
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 00000000000000
   toBeContinued: 0
   isChoice: 1
@@ -78632,10 +78482,6 @@ MonoBehaviour:
     - Manraj
     sentences:
     - "That\u2019ll be W$10.22."
-    cameras:
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
     isCalledOn: 00
   toBeContinued: 1
   isChoice: 0
@@ -78951,16 +78797,6 @@ MonoBehaviour:
       me tear down?
     - "You spend some time helping tear down Manraj\u2019s shop."
     - 'You feel like you are starting to know him better. '
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 00000000
   toBeContinued: 1
   isChoice: 0
@@ -79704,10 +79540,6 @@ MonoBehaviour:
     - Manraj
     sentences:
     - That is a stupid rule.
-    cameras:
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
     isCalledOn: 00
   toBeContinued: 0
   isChoice: 1
@@ -80920,16 +80752,6 @@ MonoBehaviour:
       to stay sharp for those practicals. Is W$22 worth a better career for more
       money?  '
     - 'I guess so... '
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 00000000
   toBeContinued: 1
   isChoice: 0
@@ -83121,6 +82943,106 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1309788585}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1677849897
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1677849901}
+  - component: {fileID: 1677849900}
+  - component: {fileID: 1677849899}
+  - component: {fileID: 1677849898}
+  m_Layer: 5
+  m_Name: Canvas-LoadingScreenFadeOut
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1677849898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1677849897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &1677849899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1677849897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 1
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
+--- !u!223 &1677849900
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1677849897}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 0
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!224 &1677849901
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1677849897}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_Children:
+  - {fileID: 160732149}
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
 --- !u!1 &1679648068
 GameObject:
   m_ObjectHideFlags: 0
@@ -84200,16 +84122,6 @@ MonoBehaviour:
     - "If I\u2019m working for myself, I don\u2019t need a piece of paper. "
     - Traditional wizard school education has failed me.
     - 'It is time for me to create my own education. '
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 00000000
   toBeContinued: 1
   isChoice: 0
@@ -85141,6 +85053,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 758f95b51c0d7264c9e9f8578f343b20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isIdle: 0
   male: {fileID: 1742961833}
   female: {fileID: 1530697294}
   skin:
@@ -87244,12 +87157,6 @@ MonoBehaviour:
     sentences:
     - The sooner I get out of here, the better.
     - "Oh, I\u2019ve got another customer. "
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 0000
   toBeContinued: 1
   isChoice: 0
@@ -88309,12 +88216,6 @@ MonoBehaviour:
     - "This inventory has got to move - I don\u2019t want to bring this stuff to
       Texas with me. "
     - 'You help Manraj sell until it was late and you returned to your dorm. '
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 0000
   toBeContinued: 1
   isChoice: 0
@@ -90803,14 +90704,6 @@ MonoBehaviour:
     - "Uh oh. I\u2019ve got to take this. "
     - Tell you what - this is on the house today.
     - 'Thanks! '
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 000000
   toBeContinued: 1
   isChoice: 0
@@ -90901,10 +90794,6 @@ MonoBehaviour:
     - Manraj
     sentences:
     - "I\u2019ve got to take this. "
-    cameras:
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
     isCalledOn: 00
   toBeContinued: 1
   isChoice: 0
@@ -94386,12 +94275,6 @@ MonoBehaviour:
     - 'Want to help me take inventory? '
     - 'You spend the afternoon counting bottles, boxes, and candies until it was
       time to leave. '
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 0000000000000000
   toBeContinued: 0
   isChoice: 0
@@ -95574,10 +95457,6 @@ MonoBehaviour:
     sentences:
     - 'Once I get the new shop up, feel free to swing by, I can give you the friends
       discount. '
-    cameras:
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
     isCalledOn: 00
   toBeContinued: 0
   isChoice: 0
@@ -95801,10 +95680,6 @@ MonoBehaviour:
     sentences:
     - "Thanks! I couldn\u2019t have done it without you helping me talk it through
       out loud."
-    cameras:
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
     isCalledOn: 00
   toBeContinued: 1
   isChoice: 0
@@ -95896,12 +95771,6 @@ MonoBehaviour:
     - "I\u2019ll keep doing some thinking on it, but for now, I\u2019ll keep my head
       down and do business as usual.  "
     - 'You feel renewed determination in Manraj.  '
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 0000000000000000
   toBeContinued: 1
   isChoice: 0
@@ -98125,10 +97994,6 @@ MonoBehaviour:
     sentences:
     - "I don\u2019t know why they think magic will solve all their problems. Each
       product has their own purpose."
-    cameras:
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
     isCalledOn: 00
   toBeContinued: 0
   isChoice: 1
@@ -99255,10 +99120,6 @@ MonoBehaviour:
     - Manraj
     sentences:
     - "No! I\u2019m not that smart. I know the product works so I sell it.  "
-    cameras:
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
     isCalledOn: 00
   toBeContinued: 1
   isChoice: 0
@@ -103829,10 +103690,6 @@ MonoBehaviour:
     - You
     sentences:
     - 'You feel like you understand Manraj a little better.  '
-    cameras:
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
     isCalledOn: 00
   toBeContinued: 1
   isChoice: 0
@@ -104973,6 +104830,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 758f95b51c0d7264c9e9f8578f343b20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isIdle: 0
   male: {fileID: 1930468975}
   female: {fileID: 777754827}
   skin:

@@ -214,10 +214,6 @@ MonoBehaviour:
     sentences:
     - " I\u2019m going to ask Trinity out. I have had a crush on her for two years.
       I don\u2019t know what she will say, but I won\u2019t know unless I ask. "
-    cameras:
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
     isCalledOn: 00
   toBeContinued: 0
   isChoice: 1
@@ -232,6 +228,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!1 &44245817
 GameObject:
   m_ObjectHideFlags: 0
@@ -306,10 +305,6 @@ MonoBehaviour:
     - Harper
     sentences:
     - 'It feels weird to have that be in the open. '
-    cameras:
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
     isCalledOn: 00
   toBeContinued: 0
   isChoice: 1
@@ -324,6 +319,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!4 &53238724
 Transform:
   m_ObjectHideFlags: 0
@@ -610,14 +608,6 @@ MonoBehaviour:
       you\u2019ve liked for a long time. "
     - "Haha, ha \u2026 ha\u2026"
     - 'You walk her back to her dorm and leave for your classes. '
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 000000
   toBeContinued: 0
   isChoice: 0
@@ -632,6 +622,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!1001 &108033322
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1091,12 +1084,6 @@ MonoBehaviour:
     sentences:
     - 'We should probably get going to class. The lunch hour is almost up. '
     - You say goodbye to Harper and head off to class.
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 0000
   toBeContinued: 0
   isChoice: 0
@@ -1111,6 +1098,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!1 &178127804
 GameObject:
   m_ObjectHideFlags: 0
@@ -1168,12 +1158,6 @@ MonoBehaviour:
     - "I should start studying for exams. We can\u2019t let relationships get in
       the way of graduating. "
     - 'You and Harper spend most of your afternoon studying. '
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 0000
   toBeContinued: 0
   isChoice: 0
@@ -1188,6 +1172,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!1 &181104023
 GameObject:
   m_ObjectHideFlags: 0
@@ -1756,14 +1743,6 @@ MonoBehaviour:
       my chest."
     - 'You feel honored that Harper confided in you. You feel closer to her as a
       friend. '
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 0000
   toBeContinued: 1
   isChoice: 0
@@ -1778,6 +1757,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 1
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!4 &259925018
 Transform:
   m_ObjectHideFlags: 0
@@ -2546,12 +2528,6 @@ MonoBehaviour:
     sentences:
     - "Thanks! I don\u2019t think I could do it without your help. "
     - 'Here she comes. '
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 0000
   toBeContinued: 1
   isChoice: 0
@@ -2566,6 +2542,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!4 &376933162
 Transform:
   m_ObjectHideFlags: 0
@@ -2934,10 +2913,6 @@ MonoBehaviour:
     - Harper
     sentences:
     - Haha, I don't think that's needed.
-    cameras:
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
     isCalledOn: 00
   toBeContinued: 1
   isChoice: 0
@@ -2952,6 +2927,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!4 &514280365
 Transform:
   m_ObjectHideFlags: 0
@@ -3191,28 +3169,6 @@ MonoBehaviour:
       hatred and resentment. '
     - That was not the life she wanted and she wished she could do it over again,
       but it was too late.
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 00000000000000000000
   toBeContinued: 0
   isChoice: 1
@@ -3227,6 +3183,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!4 &551159701
 Transform:
   m_ObjectHideFlags: 0
@@ -3910,18 +3869,6 @@ MonoBehaviour:
     - ' I - I understand. I had to try, right?'
     - ' Of course.'
     - Come on, gals, we need to go to Transfiguration.
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 0000000000
   toBeContinued: 0
   isChoice: 1
@@ -3936,6 +3883,9 @@ MonoBehaviour:
   TimerOnChoice: 1
   WaitForChoice: 3
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!4 &643249748
 Transform:
   m_ObjectHideFlags: 0
@@ -4226,14 +4176,6 @@ MonoBehaviour:
       can be a lesson for us."
     - 'Her lesson to me is to not live with regret. '
     - "So - I\u2019m going to do it. "
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 000000
   toBeContinued: 0
   isChoice: 1
@@ -4248,6 +4190,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!4 &666705383
 Transform:
   m_ObjectHideFlags: 0
@@ -4542,14 +4487,6 @@ MonoBehaviour:
     - "\u2026"
     - "I feel like there should\u2019ve been more fanfare based on how much I spun
       it up in my head."
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 000000
   toBeContinued: 0
   isChoice: 1
@@ -4564,6 +4501,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!4 &691680146
 Transform:
   m_ObjectHideFlags: 0
@@ -4687,6 +4627,201 @@ Transform:
   m_Father: {fileID: 1762790025}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &720427572
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 720427573}
+  - component: {fileID: 720427576}
+  - component: {fileID: 720427575}
+  - component: {fileID: 720427574}
+  m_Layer: 5
+  m_Name: LoadingScreenCover
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &720427573
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 720427572}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 722782530}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &720427574
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 720427572}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 84282bba44aee894aa5bc5b4e0b79621, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &720427575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 720427572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &720427576
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 720427572}
+  m_CullTransparentMesh: 1
+--- !u!1 &722782526
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 722782530}
+  - component: {fileID: 722782529}
+  - component: {fileID: 722782528}
+  - component: {fileID: 722782527}
+  m_Layer: 5
+  m_Name: Canvas-LoadingScreenFadeOut
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &722782527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 722782526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &722782528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 722782526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 1
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
+--- !u!223 &722782529
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 722782526}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 0
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!224 &722782530
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 722782526}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_Children:
+  - {fileID: 720427573}
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
 --- !u!1 &723696641
 GameObject:
   m_ObjectHideFlags: 0
@@ -4969,14 +5104,6 @@ MonoBehaviour:
     - "Well probably the worst she can say is - \u201CAh, get away from me, you\u2019re
       scaring me!\u201D, but the odds of that are low."
     - 'I was wondering if you would be willing to be there with me - like a wingman. '
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 000000
   toBeContinued: 0
   isChoice: 1
@@ -4991,6 +5118,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!4 &767399302
 Transform:
   m_ObjectHideFlags: 0
@@ -5560,18 +5690,6 @@ MonoBehaviour:
       deathbed wishing I would\u2019ve told someone sooner. "
     - Thanks for listening to me ramble. I wanted to talk to someone about it.
     - 'You can feel Harper opening up to you. '
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 0000000000
   toBeContinued: 1
   isChoice: 0
@@ -5586,6 +5704,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 1
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!4 &803281129
 Transform:
   m_ObjectHideFlags: 0
@@ -6851,6 +6972,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb42345c0d8d56a469aa5b42cafc3287, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGreatHall: 0
   Convo:
   - {fileID: 1653197098}
   - {fileID: 14004476}
@@ -7522,16 +7644,6 @@ MonoBehaviour:
     - "If down the road something clicks and I\u2019m not into women anymore, then
       I\u2019ll learn more about myself, but for now, this is who I am and I need
       to be true to that. "
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 00000000
   toBeContinued: 1
   isChoice: 0
@@ -7546,6 +7658,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!4 &1044008084
 Transform:
   m_ObjectHideFlags: 0
@@ -7991,12 +8106,6 @@ MonoBehaviour:
       buried in me for a long time. "
     - "I got a letter from my parents last week - my grandma isn\u2019t doing well.
       I don\u2019t think I will be able to see her before her time is up."
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 0000
   toBeContinued: 0
   isChoice: 1
@@ -8011,6 +8120,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!1 &1094124823
 GameObject:
   m_ObjectHideFlags: 0
@@ -8130,12 +8242,6 @@ MonoBehaviour:
     - "I\u2019m going to put myself out there and ask out a classmate of mine - Trinity."
     - "I\u2019ve had a crush on her since 3rd year. She\u2019s single, funny, popular,
       and very smart. "
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 000000
   toBeContinued: 0
   isChoice: 1
@@ -8150,6 +8256,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!4 &1101224084
 Transform:
   m_ObjectHideFlags: 0
@@ -8450,10 +8559,6 @@ MonoBehaviour:
     sentences:
     - "My grandma\u2019s letter is still resonating with me. My mom sent another
       letter saying she passed away."
-    cameras:
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
     isCalledOn: 00
   toBeContinued: 0
   isChoice: 1
@@ -8468,6 +8573,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!1 &1160076608
 GameObject:
   m_ObjectHideFlags: 0
@@ -8702,14 +8810,6 @@ MonoBehaviour:
       rejected. '
     - "Thanks for being here with me. I couldn\u2019t have done it without you. "
     - 'Despite rejection, Harper is trying to keep her spirits up. '
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 000000
   toBeContinued: 1
   isChoice: 0
@@ -8724,6 +8824,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 1
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!4 &1188160134
 Transform:
   m_ObjectHideFlags: 0
@@ -9824,10 +9927,6 @@ MonoBehaviour:
     - Harper
     sentences:
     - "I don\u2019t think I want to. "
-    cameras:
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
     isCalledOn: 00
   toBeContinued: 1
   isChoice: 0
@@ -9842,6 +9941,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!4 &1308059311
 Transform:
   m_ObjectHideFlags: 0
@@ -10382,12 +10484,6 @@ MonoBehaviour:
     - "I\u2019m glad i asked our Trinity. I didn\u2019t hide who I was and I\u2019m
       learning more about myself. "
     - 'At the end of the day, that is all we can ask ourselves. '
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 0000
   toBeContinued: 0
   isChoice: 1
@@ -10402,6 +10498,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!1 &1345477731
 GameObject:
   m_ObjectHideFlags: 0
@@ -11378,14 +11477,6 @@ MonoBehaviour:
       it is making my palms sweaty, but I want to try.
     - I need to do it.
     - ' You feel determination from Harper. You feel like she trusts you more. '
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 000000
   toBeContinued: 1
   isChoice: 0
@@ -11400,6 +11491,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 1
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!4 &1424315943
 Transform:
   m_ObjectHideFlags: 0
@@ -11506,14 +11600,6 @@ MonoBehaviour:
     - "I\u2019ll let you know when I\u2019m ready."
     - What should I say? What should I wear?
     - 'She gets up and leaves in a cloud of thought. '
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 000000
   toBeContinued: 0
   isChoice: 0
@@ -11528,6 +11614,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!1 &1438341590
 GameObject:
   m_ObjectHideFlags: 0
@@ -13222,24 +13311,6 @@ MonoBehaviour:
       for us. "
     - "Oh, I didn\u2019t know. I\u2019m sorry. Okay, have a good day then. "
     - Thanks Cecil.
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 0000000000000000
   toBeContinued: 1
   isChoice: 0
@@ -13254,6 +13325,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!4 &1609315089
 Transform:
   m_ObjectHideFlags: 0
@@ -13597,12 +13671,6 @@ MonoBehaviour:
     - " I don\u2019t really know how to talk about this. This is the first time I\u2019ve
       brought this up to someone. "
     - ' Do you remember the castle and the clouds that I was stuck in?'
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 0000
   toBeContinued: 0
   isChoice: 1
@@ -13617,6 +13685,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!1 &1678624999
 GameObject:
   m_ObjectHideFlags: 0
@@ -13946,14 +14017,6 @@ MonoBehaviour:
     - Maybe we could talk more later, but I need to process this now.
     - Someone is coming, we should leave.
     - The two of you say goodbye and head off to afternoon classes.
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 000000
   toBeContinued: 0
   isChoice: 0
@@ -13968,6 +14031,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!1 &1723892764
 GameObject:
   m_ObjectHideFlags: 0
@@ -15336,14 +15402,6 @@ MonoBehaviour:
     - "If we can\u2019t be true to ourselves, who can we be true to?"
     - Thanks for everything [MC], I could not ask for a better friend
     - 'You feel a deep friendship has been formed with Harper. '
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 000000
   toBeContinued: 1
   isChoice: 0
@@ -15358,6 +15416,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 1
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!4 &1858483290
 Transform:
   m_ObjectHideFlags: 0
@@ -15706,14 +15767,6 @@ MonoBehaviour:
     - "Hi Harper! How is it going? Hi Harper\u2019s friend. "
     - Hi Trinity! Er -
     - " \u2026 "
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 000000
   toBeContinued: 0
   isChoice: 1
@@ -15728,6 +15781,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!4 &1884806237
 Transform:
   m_ObjectHideFlags: 0
@@ -15860,12 +15916,6 @@ MonoBehaviour:
     - "I think\u2026 This sounds weird saying it outloud but, I think - I like girls. "
     - "I\u2019ve never said that out loud before. I understand if you don\u2019t
       want to be friends. "
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 0000
   toBeContinued: 0
   isChoice: 1
@@ -15880,6 +15930,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!4 &1887797056
 Transform:
   m_ObjectHideFlags: 0
@@ -16540,10 +16593,6 @@ MonoBehaviour:
     - Harper
     sentences:
     - 'It is okay, really it is. '
-    cameras:
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
     isCalledOn: 00
   toBeContinued: 1
   isChoice: 0
@@ -16558,6 +16607,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!4 &1971346683
 Transform:
   m_ObjectHideFlags: 0
@@ -16777,16 +16829,6 @@ MonoBehaviour:
     - 'Trinity, I have had a crush on you for a while. Would you like to go on a
       date with me sometime? '
     - Oh! Well -
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 00000000
   toBeContinued: 1
   isChoice: 0
@@ -16801,6 +16843,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!4 &2005003764
 Transform:
   m_ObjectHideFlags: 0
@@ -16857,12 +16902,6 @@ MonoBehaviour:
     sentences:
     - Do you remember how there were rainbows that appeared after I was rescued?
     - 'I think that is symbolism for me. '
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 0000
   toBeContinued: 0
   isChoice: 1
@@ -16877,6 +16916,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!4 &2010327215
 Transform:
   m_ObjectHideFlags: 0

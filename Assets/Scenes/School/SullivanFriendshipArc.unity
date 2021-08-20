@@ -459,10 +459,6 @@ MonoBehaviour:
     - You
     sentences:
     - You should go back to your dorm
-    cameras:
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
     isCalledOn: 00
   toBeContinued: 0
   isChoice: 0
@@ -477,6 +473,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 1
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!1 &103588224
 GameObject:
   m_ObjectHideFlags: 0
@@ -574,10 +573,6 @@ MonoBehaviour:
     - Sullivan
     sentences:
     - "I don\u2019t think a lot of people know.  "
-    cameras:
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
     isCalledOn: 00
   toBeContinued: 1
   isChoice: 0
@@ -592,6 +587,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!4 &114651970
 Transform:
   m_ObjectHideFlags: 0
@@ -850,10 +848,6 @@ MonoBehaviour:
     - Sullivan
     sentences:
     - "I have to thank you - If it wasn\u2019t for you, I would still be swamped. "
-    cameras:
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
     isCalledOn: 00
   toBeContinued: 0
   isChoice: 1
@@ -868,6 +862,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!1 &138303759
 GameObject:
   m_ObjectHideFlags: 0
@@ -1079,10 +1076,6 @@ MonoBehaviour:
     sentences:
     - "Sorry about all this. I\u2019ve been trying to apply to a wizard law school
       out east. They are very strict on their credentials."
-    cameras:
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
     isCalledOn: 00
   toBeContinued: 0
   isChoice: 1
@@ -1097,6 +1090,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!1 &181279867
 GameObject:
   m_ObjectHideFlags: 0
@@ -1192,6 +1188,101 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &198990897
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 198990898}
+  - component: {fileID: 198990901}
+  - component: {fileID: 198990900}
+  - component: {fileID: 198990899}
+  m_Layer: 5
+  m_Name: LoadingScreenCover
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &198990898
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 198990897}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 385249066}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &198990899
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 198990897}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 84282bba44aee894aa5bc5b4e0b79621, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &198990900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 198990897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &198990901
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 198990897}
+  m_CullTransparentMesh: 1
 --- !u!1 &202056602
 GameObject:
   m_ObjectHideFlags: 0
@@ -1892,10 +1983,6 @@ MonoBehaviour:
     - You
     sentences:
     - 'You feel like you know Sullivan a little better.  '
-    cameras:
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
     isCalledOn: 00
   toBeContinued: 1
   isChoice: 0
@@ -1910,6 +1997,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 1
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!1 &354908025
 GameObject:
   m_ObjectHideFlags: 0
@@ -2297,6 +2387,106 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 380371102}
   m_CullTransparentMesh: 0
+--- !u!1 &385249062
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 385249066}
+  - component: {fileID: 385249065}
+  - component: {fileID: 385249064}
+  - component: {fileID: 385249063}
+  m_Layer: 5
+  m_Name: Canvas-LoadingScreenFadeOut
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &385249063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 385249062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &385249064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 385249062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 1
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
+--- !u!223 &385249065
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 385249062}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 0
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!224 &385249066
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 385249062}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_Children:
+  - {fileID: 198990898}
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
 --- !u!1 &385583123
 GameObject:
   m_ObjectHideFlags: 0
@@ -2326,6 +2516,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb42345c0d8d56a469aa5b42cafc3287, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGreatHall: 0
   Convo:
   - {fileID: 1247095238}
   - {fileID: 182452248}
@@ -2401,10 +2592,6 @@ MonoBehaviour:
     sentences:
     - "Uh oh- I\u2019ve got to go, the headmaster needs me. Thanks for listening
       to me ramble. "
-    cameras:
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
     isCalledOn: 00
   toBeContinued: 1
   isChoice: 0
@@ -2419,6 +2606,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!1 &424805077
 GameObject:
   m_ObjectHideFlags: 0
@@ -3355,14 +3545,6 @@ MonoBehaviour:
     - ' Here is that transfiguration assignment you asked for'
     - 'I expect my detention to be revoked.  '
     - "I\u2019ll clear it. "
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 00000000
   toBeContinued: 1
   isChoice: 0
@@ -3377,6 +3559,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!4 &554849448
 Transform:
   m_ObjectHideFlags: 0
@@ -3909,10 +4094,6 @@ MonoBehaviour:
     - Sullivan
     sentences:
     - "I\u2019m sorry you had to see that."
-    cameras:
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
     isCalledOn: 00000000
   toBeContinued: 0
   isChoice: 1
@@ -3927,6 +4108,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!4 &615580474
 Transform:
   m_ObjectHideFlags: 0
@@ -4382,16 +4566,6 @@ MonoBehaviour:
       6th year. If I have to do this a whole other year, I won\u2019t make it.  "
     - '*sigh*... Fine. '
     - "I\u2019ll figure something out.  "
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 000000000000000000000000
   toBeContinued: 1
   isChoice: 0
@@ -4406,6 +4580,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!4 &667380889
 Transform:
   m_ObjectHideFlags: 0
@@ -4460,10 +4637,6 @@ MonoBehaviour:
     - You
     sentences:
     - 'You feel like you know Sullivan a little better.  '
-    cameras:
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
     isCalledOn: 00
   toBeContinued: 1
   isChoice: 0
@@ -4478,6 +4651,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 1
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!4 &672178457
 Transform:
   m_ObjectHideFlags: 0
@@ -4852,10 +5028,6 @@ MonoBehaviour:
     - You
     sentences:
     - 'You feel like you know Sullivan a little better.  '
-    cameras:
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
     isCalledOn: 00
   toBeContinued: 1
   isChoice: 0
@@ -4870,6 +5042,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 1
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!4 &748308058
 Transform:
   m_ObjectHideFlags: 0
@@ -5004,10 +5179,6 @@ MonoBehaviour:
     sentences:
     - 'Ha, sure. I was asked to figure out these magical corridors, I was expected
       to do it by myself, but I was wrong. '
-    cameras:
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
     isCalledOn: 00000000000000
   toBeContinued: 0
   isChoice: 1
@@ -5022,6 +5193,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!4 &759063809
 Transform:
   m_ObjectHideFlags: 0
@@ -5323,12 +5497,6 @@ MonoBehaviour:
       for wizard law, one for transfiguration, a potion on strength for potions,
       and six seedlings to plant for herbology.  '
     - 'There is never enough time in the day. '
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 0000
   toBeContinued: 1
   isChoice: 0
@@ -5343,6 +5511,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!1 &831425585
 GameObject:
   m_ObjectHideFlags: 0
@@ -5397,10 +5568,6 @@ MonoBehaviour:
     - You
     sentences:
     - You should go back to your dorm
-    cameras:
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
     isCalledOn: 00
   toBeContinued: 0
   isChoice: 0
@@ -5415,6 +5582,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 1
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!1 &880313109
 GameObject:
   m_ObjectHideFlags: 0
@@ -5572,13 +5742,6 @@ MonoBehaviour:
     - Urgh!
     - "That\u2019s fine. I didn\u2019t want to do my homework anyway. "
     - 'Could we keep this between us for now? '
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 0000
   toBeContinued: 1
   isChoice: 0
@@ -5593,6 +5756,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!4 &900095136
 Transform:
   m_ObjectHideFlags: 0
@@ -5866,12 +6032,6 @@ MonoBehaviour:
       people will think I\u2019m not cut out for it. Instead of being the hero, I\u2019m
       another victim. "
     - "It wasn\u2019t supposed to happen to me.  "
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 00000000000000
   toBeContinued: 1
   isChoice: 0
@@ -5886,6 +6046,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!4 &922301327
 Transform:
   m_ObjectHideFlags: 0
@@ -6504,10 +6667,6 @@ MonoBehaviour:
     - You
     sentences:
     - 'You feel like you have a deep friendship with Sullivan.  '
-    cameras:
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
     isCalledOn: 00
   toBeContinued: 1
   isChoice: 0
@@ -6522,6 +6681,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 1
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!1 &1056639881
 GameObject:
   m_ObjectHideFlags: 0
@@ -6812,16 +6974,6 @@ MonoBehaviour:
     - 'That is the third law school to reject me this week based on my test scores. '
     - Hey, MC, could I ask you a question - do you know what you want to be when
       you graduate?
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 00
   toBeContinued: 0
   isChoice: 1
@@ -6836,6 +6988,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!1 &1101700302
 GameObject:
   m_ObjectHideFlags: 0
@@ -6879,12 +7034,6 @@ MonoBehaviour:
     - "No, someone else will take care of it. Now, let\u2019s focus. We\u2019ve got
       finals around the corner. "
     - 'You feel like you know Sullivan a little better.  '
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 00
   toBeContinued: 1
   isChoice: 0
@@ -6899,6 +7048,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 1
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!4 &1101700304
 Transform:
   m_ObjectHideFlags: 0
@@ -7722,10 +7874,6 @@ MonoBehaviour:
     - Sullivan
     sentences:
     - I envy you.
-    cameras:
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
     isCalledOn: 00
   toBeContinued: 1
   isChoice: 0
@@ -7740,6 +7888,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!4 &1295768897
 Transform:
   m_ObjectHideFlags: 0
@@ -7881,16 +8032,6 @@ MonoBehaviour:
     - "Don\u2019t tell me you forgot. That\u2019s three times this project Sullivan
       - come on, we need you on this. "
     - "I\u2019ll - I\u2019ll figure something out. "
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 000000000000000000000000
   toBeContinued: 1
   isChoice: 0
@@ -7905,6 +8046,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!4 &1299991163
 Transform:
   m_ObjectHideFlags: 0
@@ -8315,14 +8459,6 @@ MonoBehaviour:
       of the most successful law firms in the region.  "
     - 'It has been pounded into me since I was a kid that I would take over their
       law office once I graduated.  '
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 00
   toBeContinued: 0
   isChoice: 1
@@ -8337,6 +8473,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!4 &1375005717
 Transform:
   m_ObjectHideFlags: 0
@@ -9007,14 +9146,6 @@ MonoBehaviour:
       just be a prefect instead which is a lot less of a headache.  '
     - "I\u2019m able to breathe easier and I\u2019m actually sleeping through the
       night. "
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 00
   toBeContinued: 1
   isChoice: 0
@@ -9029,6 +9160,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!1 &1453647097
 GameObject:
   m_ObjectHideFlags: 0
@@ -9158,10 +9292,6 @@ MonoBehaviour:
     - You
     sentences:
     - You should go back to your dorm
-    cameras:
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
     isCalledOn: 00
   toBeContinued: 0
   isChoice: 0
@@ -9176,6 +9306,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 1
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!1 &1514314298
 GameObject:
   m_ObjectHideFlags: 0
@@ -9737,22 +9870,6 @@ MonoBehaviour:
     - "Honestly, I have no idea what I\u2019d do instead. I\u2019ve been so blinded
       by going to law school that I never thought of anything else. I\u2019ll do
       some thinking on it. "
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 00
   toBeContinued: 0
   isChoice: 1
@@ -9767,6 +9884,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!4 &1577453884
 Transform:
   m_ObjectHideFlags: 0
@@ -9822,10 +9942,6 @@ MonoBehaviour:
     sentences:
     - 'Uh oh- There is a fight on the 3rd floor with a couple 2nd years. I need to
       attend to it. Thanks for talking. '
-    cameras:
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
     isCalledOn: 00
   toBeContinued: 1
   isChoice: 0
@@ -9840,6 +9956,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!4 &1595179248
 Transform:
   m_ObjectHideFlags: 0
@@ -10409,22 +10528,6 @@ MonoBehaviour:
     - I am the prisoner waiting for my guilty verdict with the sentencing coming
       once I graduate.
     - "I\u2019m going to live a life where I have no freedom. "
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 00000000000000
   toBeContinued: 0
   isChoice: 1
@@ -10439,6 +10542,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!1 &1675667941
 GameObject:
   m_ObjectHideFlags: 0
@@ -11045,30 +11151,6 @@ MonoBehaviour:
       do them better than trying to do everything for everyone."
     - "By doing everything for everyone, I\u2019m not thinking of myself.  "
     - 'It is so nice having a friend like you. '
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 00
   toBeContinued: 1
   isChoice: 0
@@ -11083,6 +11165,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!4 &1747049211
 Transform:
   m_ObjectHideFlags: 0
@@ -11181,10 +11266,6 @@ MonoBehaviour:
     - Sullivan
     sentences:
     - "Thanks for coming, I just needed someone here so I don\u2019t go insane. "
-    cameras:
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
     isCalledOn: 00
   toBeContinued: 0
   isChoice: 1
@@ -11199,6 +11280,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!1 &1758442419
 GameObject:
   m_ObjectHideFlags: 0
@@ -11552,12 +11636,6 @@ MonoBehaviour:
     sentences:
     - "Ah, Mr Parkes, don\u2019t forget about the prefect meeting this afternoon."
     - "I had forgotten. I\u2019ll be there. "
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 000000000000000000000000
   toBeContinued: 1
   isChoice: 0
@@ -11572,6 +11650,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!4 &1847215963
 Transform:
   m_ObjectHideFlags: 0
@@ -11929,20 +12010,6 @@ MonoBehaviour:
     - "So, I keep my head down and keep working and I\u2019m going to keep working
       until I get it. "
     - 'That is the only way.  '
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 00
   toBeContinued: 1
   isChoice: 0
@@ -11957,6 +12024,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!4 &1901582040
 Transform:
   m_ObjectHideFlags: 0
@@ -12313,10 +12383,6 @@ MonoBehaviour:
     - Sullivan
     sentences:
     - 'Anyway, we should wrap up here and get some sleep before exams start. '
-    cameras:
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
     isCalledOn: 00
   toBeContinued: 0
   isChoice: 0
@@ -12331,6 +12397,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!4 &1998885998
 Transform:
   m_ObjectHideFlags: 0
@@ -12475,10 +12544,6 @@ MonoBehaviour:
     - You
     sentences:
     - You study the rest of the evening with Sullivan.
-    cameras:
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
     isCalledOn: 00
   toBeContinued: 0
   isChoice: 0
@@ -12493,6 +12558,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 1
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!1 &2043178994
 GameObject:
   m_ObjectHideFlags: 0
@@ -12969,18 +13037,6 @@ MonoBehaviour:
       into law school. I\u2019m buying assignments. I\u2019m not sleepingI just can\u2019t
       do it. I\u2019m a failure. I\u2019m not going to make it into law school. I\u2019m
       buying assignments. I\u2019m not sleeping - I just can\u2019t do it.  "
-    cameras:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    animationsToPlay:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
     isCalledOn: 000000000000000000000000
   toBeContinued: 0
   isChoice: 1
@@ -12995,6 +13051,9 @@ MonoBehaviour:
   TimerOnChoice: 0
   WaitForChoice: 0
   LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
 --- !u!4 &2061154774
 Transform:
   m_ObjectHideFlags: 0
