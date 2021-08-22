@@ -123,6 +123,8 @@ public class GameManager : MonoBehaviour
 
     public static bool isRed, isBlue, isYellow, isGreen, isPhysical;
 
+    [SerializeField] GameObject NameSettingCanvas;
+
     private void Awake()
     {
         if (instance == null)
@@ -347,20 +349,24 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         //Turn this off when done testing
-        if (Input.GetKeyDown(KeyCode.C))
+        if (!NameSettingCanvas.activeSelf)//temp workaround for typing in names
         {
-            SceneManager.LoadScene("ClassroomDialogueTest");
-        }
+            if (Input.GetKeyDown(KeyCode.C))
+            {
+                SceneManager.LoadScene("ClassroomDialogueTest");
+            }
 
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            ProgressDay();
-        }
+            if (Input.GetKeyDown(KeyCode.M))
+            {
+                ProgressDay();
+            }
 
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            UpdateLevels();
+            if (Input.GetKeyDown(KeyCode.L))
+            {
+                UpdateLevels();
+            }
         }
+        
         //
         if (timeOfDay == 0)
         {
@@ -700,6 +706,7 @@ public class GameManager : MonoBehaviour
     #region FriendshipLevelUp
     public void UpdateLevels()
     {
+        Debug.Log("friendship canvas check");
         CanvasForFriendship.SetActive(true);
         if (RhysTalk)
         {
