@@ -13,6 +13,7 @@ public class SetPlayerName : MonoBehaviour
         if (other.tag == "Player")
         {
             NameMenu.SetActive(true);
+            Time.timeScale = 0;
         }
     }
 
@@ -31,6 +32,7 @@ public class SetPlayerName : MonoBehaviour
         {
             NameMenu.SetActive(false);
             print(GameManager.MCFirstName + " " + GameManager.MCLastName);
+            Time.timeScale = 1;
         }
         else
         {

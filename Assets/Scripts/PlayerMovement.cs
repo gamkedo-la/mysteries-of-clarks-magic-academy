@@ -19,6 +19,8 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector3 heightOffset = new Vector3(0, 0.9f, 0);
 
+    [SerializeField] GameObject NameSettingCanvas;
+
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Confined;
@@ -28,9 +30,11 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector2 inputDirection = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
-        HandleWalkAnimation(inputDirection);
-        HandleWalk(inputDirection);
- 
+        if (!NameSettingCanvas.activeSelf)
+        {
+            HandleWalkAnimation(inputDirection);
+            HandleWalk(inputDirection);
+        }
 
         #region Cursor Locked in Screen
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -46,7 +50,10 @@ public class PlayerMovement : MonoBehaviour
 
     void HandleWalkAnimation(Vector2 input)
     {
-        anim.SetBool("isWalking", input.sqrMagnitude > 0.05f);
+        if (!NameSettingCanvas.activeSelf)
+        {
+            anim.SetBool("isWalking", input.sqrMagnitude > 0.05f);
+        }
     }
 
     void HandleWalk(Vector2 input)
