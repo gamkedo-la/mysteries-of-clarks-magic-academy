@@ -82,6 +82,9 @@ public class Dungeon4Generator : MonoBehaviour {
 			}
 		}
 
+
+
+		StartCoroutine(BuildNavMesh());
 	}
 
 	public void Clear() {
