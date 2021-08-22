@@ -57,6 +57,30 @@ public class Dungeon4Generator : MonoBehaviour {
 	}
 
 	public void Generate() {
+		Clear();
+
+		currentLevel = GameManager.currentFloor;
+
+		FMODUnity.RuntimeManager.StudioSystem.setParameterByName("GameState", 0);
+		FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Dungeon", dungeonNumber);
+		FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Floor", currentLevel % 5);
+
+		//Check for special levels
+		foreach (PrefabLevelPair floor in specialLevels) {
+			if (currentLevel == floor.levelNumber) {
+				GameObject specialLevel = null;
+				if (floor.levelPrefab.scene.rootCount == 0) {
+					specialLevel = Instantiate(floor.levelPrefab);
+				} else {
+					specialLevel = floor.levelPrefab;
+				}
+
+				specialLevel.SetActive(true);
+				levelIsSpecial = true;
+				StartCoroutine(BuildNavMesh());
+				return;
+			}
+		}
 
 	}
 

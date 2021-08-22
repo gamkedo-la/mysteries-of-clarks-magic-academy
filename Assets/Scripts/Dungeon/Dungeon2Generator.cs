@@ -93,6 +93,7 @@ public class Dungeon2Generator : MonoBehaviour {
 
 				specialLevel.SetActive(true);
 				levelIsSpecial = true;
+				StartCoroutine(BuildNavMesh());
 				return;
 			}
 		}
