@@ -30,11 +30,11 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector2 inputDirection = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
-        if (!NameSettingCanvas.activeSelf)
-        {
+       // if (!NameSettingCanvas.activeSelf)
+      //  {
             HandleWalkAnimation(inputDirection);
             HandleWalk(inputDirection);
-        }
+       // }
 
         #region Cursor Locked in Screen
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -50,10 +50,10 @@ public class PlayerMovement : MonoBehaviour
 
     void HandleWalkAnimation(Vector2 input)
     {
-        if (!NameSettingCanvas.activeSelf)
-        {
+       // if (!NameSettingCanvas.activeSelf)
+      //  {
             anim.SetBool("isWalking", input.sqrMagnitude > 0.05f);
-        }
+       // }
     }
 
     void HandleWalk(Vector2 input)
