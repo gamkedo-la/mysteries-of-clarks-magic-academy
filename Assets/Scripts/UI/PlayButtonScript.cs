@@ -7,6 +7,16 @@ public class PlayButtonScript : MonoBehaviour
 {
     public void LoadTestScene()
     {
-        SceneManager.LoadScene("Test");
+        SceneManager.LoadScene("Intro");
+    }
+
+    public void LoadGame()
+    {
+        //SceneManager.LoadScene("Test");
+    }
+
+    public void Credits()
+    {
+        //SceneManager.LoadScene("Test");
     }
 }

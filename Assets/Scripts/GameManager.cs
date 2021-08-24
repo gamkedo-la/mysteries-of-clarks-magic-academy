@@ -348,26 +348,22 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        //Turn this off when done testing
-        if (!NameSettingCanvas.activeSelf)//temp workaround for typing in names
+        //Turn off when done testing
+        if (Input.GetKeyDown(KeyCode.C))
         {
-            if (Input.GetKeyDown(KeyCode.C))
-            {
-                SceneManager.LoadScene("ClassroomDialogueTest");
-            }
-
-            if (Input.GetKeyDown(KeyCode.M))
-            {
-                ProgressDay();
-            }
-
-            if (Input.GetKeyDown(KeyCode.L))
-            {
-                UpdateLevels();
-            }
+            SceneManager.LoadScene("ClassroomDialogueTest");
         }
-        
-        //
+
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            ProgressDay();
+        }
+
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            UpdateLevels();
+        }
+
         if (timeOfDay == 0)
         {
             RenderSettings.skybox = skyBox[0];
