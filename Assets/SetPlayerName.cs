@@ -6,29 +6,14 @@ using TMPro;
 
 public class SetPlayerName : MonoBehaviour
 {
-    public GameObject NameMenu;
     public InputField first, last;
-    private TMP_Text playersSetNameTextComponent;
+    [SerializeField] Text playersSavedNameTextComponent;
+    [SerializeField] GameObject welcomeTextCanvas;
 
-    private void OnTriggerEnter(Collider other)
+    public void SaveName()
     {
-        if (other.tag == "Player")
-        {
-            NameMenu.SetActive(true);
-            playersSetNameTextComponent = GameObject.FindGameObjectWithTag("NameText").GetComponent<TMP_Text>();
-            Time.timeScale = 0;
-        }
-    }
-
-    public void SaveFirst()
-    {
-
-        playersSetNameTextComponent.text = first.text + " " + last.text;
+        playersSavedNameTextComponent.text = "Your saved name is: " + first.text + " " + last.text;
         GameManager.MCFirstName = first.text;
-    }
-    public void SaveLast()
-    {
-        playersSetNameTextComponent.text = first.text + " " + last.text;
         GameManager.MCLastName = last.text;
     }
 
@@ -36,22 +21,22 @@ public class SetPlayerName : MonoBehaviour
     {
         if (first.text != "" && last.text != "")
         {
-            NameMenu.SetActive(false);
+            gameObject.SetActive(false);
+            welcomeTextCanvas.SetActive(true);
             print(GameManager.MCFirstName + " " + GameManager.MCLastName);
             Time.timeScale = 1;
         }
         else if (first.text != "" && last.text == "")
         {
-            playersSetNameTextComponent.text = "Please enter and save a last name";
+            playersSavedNameTextComponent.text = "Please enter a last name, then save ";
         }
         else if (first.text == "" && last.text != "")
         {
-            playersSetNameTextComponent.text = "Please enter and save a first name";
+            playersSavedNameTextComponent.text = "Please enter a first name, then save";
         }
         else
         {
-            playersSetNameTextComponent.text = "Please enter and save a first and last name";
-            Debug.Log("Please enter and save a first and last name");
+            playersSavedNameTextComponent.text = "Please enter and save a first and last name";
         }
     }
 }

@@ -359,10 +359,10 @@ public class GameManager : MonoBehaviour
             ProgressDay();
         }
 
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            UpdateLevels();
-        }
+        //if (Input.GetKeyDown(KeyCode.L))
+        //{
+        //    UpdateLevels();
+        //}
 
         if (timeOfDay == 0)
         {
