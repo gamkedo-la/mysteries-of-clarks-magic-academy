@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44338638, g: 0.49265873, b: 0.57229304, a: 1}
+  m_IndirectSpecularColor: {r: 0.44338697, g: 0.49265927, b: 0.57229424, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -9484,6 +9484,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03472655074e4f04cbb2a43c82a11f22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mc: {fileID: 700206524}
 --- !u!114 &635908480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10431,6 +10432,25 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!95 &700206524
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 700206522}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0282eb86810c2fd45a86ef8d6d2797df, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!43 &711473814
 Mesh:
   m_ObjectHideFlags: 0
@@ -21594,7 +21614,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1568207188}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.0086088}
+  m_LocalPosition: {x: 0, y: 0, z: -0.0057187}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 1557881742}
@@ -21602,8 +21622,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -33.99704, y: 100.00171}
-  m_SizeDelta: {x: 346.6, y: 58.1}
+  m_AnchoredPosition: {x: -34, y: 101.8}
+  m_SizeDelta: {x: 346.6, y: 135.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1568207190
 MonoBehaviour:
@@ -21655,18 +21675,18 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: e3de53fd20508bc4b817e4d786133659, type: 3}
-    m_FontSize: 20
+    m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
-    m_MaxSize: 40
+    m_MaxSize: 50
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Please enter your first and last name, then press Save
+  m_Text: tne character long name is the longest name
 --- !u!222 &1568207193
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -24920,7 +24940,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1777287559}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.0051185}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 994933295}
@@ -24928,8 +24948,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -2.2, y: -6.401306}
-  m_SizeDelta: {x: 402.7, y: -12.799}
+  m_AnchoredPosition: {x: -12, y: -6.399994}
+  m_SizeDelta: {x: 422.2, y: -12.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1777287561
 MonoBehaviour:
