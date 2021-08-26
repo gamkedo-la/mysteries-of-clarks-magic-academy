@@ -30,7 +30,7 @@ public class ToggleFriend : MonoBehaviour
                     friend.SetActive(false);
             }
 
-            if (GameManager.month >= month && GameManager.day <= day)
+            if (GameManager.month > month && GameManager.day <= day)
             {
                 if (GameManager.dayOfWeek == DayOfWeek1 || GameManager.dayOfWeek == DayOfWeek2 || GameManager.dayOfWeek == DayOfWeek3 || GameManager.dayOfWeek == DayOfWeek4)
                 {
