@@ -27285,22 +27285,10 @@ MonoBehaviour:
   - {fileID: 1538119616}
   - {fileID: 1598155097}
   enemyPrefab:
-  - {fileID: 1101564268099574559, guid: 2b0e78bbecf127c46b27df2698f4162e, type: 3}
-  - {fileID: 2552752094400333911, guid: f5f365dc6556b9c4bb24933fb81f6a1d, type: 3}
-  - {fileID: 1240287130341685014, guid: 1df4df30a2b6f694f821a5a3890c5b49, type: 3}
-  - {fileID: 85030071966216092, guid: 09ae6be1eae0f3343ba64eb8ba0f2b0d, type: 3}
-  - {fileID: 1903695596470062089, guid: d97f5082988621a4eac80da735aed9ad, type: 3}
-  - {fileID: 4417225902453764239, guid: 6d3ff65d9af97d642a376c9d10192281, type: 3}
-  - {fileID: 5837520367339431860, guid: bd950ee0738bbba47b6902a29950ca31, type: 3}
-  - {fileID: 983912097880465758, guid: e386b302e2b533a459ace31c20e695f4, type: 3}
-  - {fileID: 2928498850172066106, guid: fcc92fc70b77b9c46b74843ae868b115, type: 3}
   - {fileID: 942447856761996665, guid: e6d9e2f1033d47d49831c09fe85a1d30, type: 3}
-  - {fileID: 3853674402809175629, guid: c9ac4839f34183f428cb7a9df6fb33be, type: 3}
-  - {fileID: 3332784257574665405, guid: a841b88b2eb7d77458a94206e8b18240, type: 3}
-  - {fileID: 1946350095811316993, guid: d2c89daa400de0a4eaeb6c520e2cb455, type: 3}
-  - {fileID: 8152007779224527345, guid: 63ba136f38ab1594ab147fcc8380dbf7, type: 3}
+  - {fileID: 4417225902453764239, guid: 6d3ff65d9af97d642a376c9d10192281, type: 3}
+  - {fileID: 85030071966216092, guid: 09ae6be1eae0f3343ba64eb8ba0f2b0d, type: 3}
   - {fileID: 3271107352669485469, guid: 1bf18a9aefc03044fb97418c5f6c6cdd, type: 3}
-  - {fileID: 1485744624544157219, guid: 346578b454e48a440b175fb480318787, type: 3}
   enemyUnit: []
   enemyAnim: []
   dialogueText: {fileID: 1462961207}
@@ -63141,6 +63129,197 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &1675300474
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1675300476}
+  - component: {fileID: 1675300475}
+  m_Layer: 0
+  m_Name: Boss - BattleSystem (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1675300475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1675300474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd62437f0abacb7429a77a9186bea146, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 0
+  MCPrefab: {fileID: 7748223850218607189, guid: 8dc70492817ba5a41993262b918fd720,
+    type: 3}
+  RhysPrefab: {fileID: 4226304267557498029, guid: 1013867593fc34f43bbd8a9ee7feb73a,
+    type: 3}
+  JameelPrefab: {fileID: 5719191469586337266, guid: 449de8890537af342a37cf3374ae82be,
+    type: 3}
+  HarperPrefab: {fileID: 8540547450291592499, guid: a7232af83c0cb404d8739b0d2920e5e5,
+    type: 3}
+  SkyePrefab: {fileID: 1434914509272576801, guid: d18477aa3b069ca418b75f8d2698b39c,
+    type: 3}
+  SullivanPrefab: {fileID: 7240245691869911789, guid: dd20898e17f3030469f25dc6028179c0,
+    type: 3}
+  MCBattleStation: {fileID: 1144101770}
+  SecondBattleStation: {fileID: 1752264619}
+  ThirdBattleStation: {fileID: 224097541}
+  FourthBattleStation: {fileID: 1678134613}
+  MCMenu: {fileID: 2142727170}
+  MCSpells: {fileID: 1573510417}
+  MCConfirmMenu: {fileID: 402973005}
+  RhysMenu: {fileID: 134086917}
+  RhysSpells: {fileID: 1155167136}
+  RhysConfirmMenu: {fileID: 1896025084}
+  JameelMenu: {fileID: 57162316}
+  JameelSpells: {fileID: 106803148}
+  JameelConfirmMenu: {fileID: 1741412738}
+  HarperMenu: {fileID: 334946762}
+  HarperSpells: {fileID: 1189971079}
+  HarperConfirmMenu: {fileID: 442945119}
+  SkyeMenu: {fileID: 1143550}
+  SkyeSpells: {fileID: 992558207}
+  SkyeConfirmMenu: {fileID: 2024299513}
+  SullivanMenu: {fileID: 76484743}
+  SullivanSpells: {fileID: 924806422}
+  SullivanConfirmMenu: {fileID: 1308357190}
+  EndingMenu: {fileID: 2083659504}
+  Inventory: {fileID: 203590900}
+  InventoryContainer: {fileID: 0}
+  InventorySelectedItem: 0
+  MCHealth: {fileID: 1673820645}
+  MCMagic: {fileID: 764572113}
+  RhysHealth: {fileID: 1414769967}
+  RhysMagic: {fileID: 539166171}
+  JameelHealth: {fileID: 2070874075}
+  JameelMagic: {fileID: 1914129038}
+  HarperHealth: {fileID: 1001740758}
+  HarperMagic: {fileID: 545734961}
+  SkyeHealth: {fileID: 1840876890}
+  SkyeMagic: {fileID: 1322213702}
+  SullivanHealth: {fileID: 297342697}
+  SullivanMagic: {fileID: 2047106238}
+  staminaBaseColor: {r: 1, g: 0, b: 0.010321617, a: 0}
+  energyBaseColor: {r: 0, g: 0.9400835, b: 1, a: 0}
+  downedColor: {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 1}
+  MCTrans: {fileID: 1766780067}
+  MCCharms: {fileID: 1719753430}
+  MCPotions: {fileID: 609979489}
+  MCDADA: {fileID: 1104700946}
+  MCDodge: {fileID: 194633167}
+  RhysTrans: {fileID: 337342928}
+  RhysCharms: {fileID: 1156081334}
+  RhysPotions: {fileID: 2077955562}
+  RhysDADA: {fileID: 2064112702}
+  RhysDodge: {fileID: 458401127}
+  JameelTrans: {fileID: 337251198}
+  JameelCharms: {fileID: 1455282023}
+  JameelPotions: {fileID: 1119815450}
+  JameelDADA: {fileID: 752209106}
+  JameelDodge: {fileID: 339107045}
+  HarperTrans: {fileID: 832211286}
+  HarperCharms: {fileID: 1515459679}
+  HarperPotions: {fileID: 399502884}
+  HarperDADA: {fileID: 1178128944}
+  HarperDodge: {fileID: 1851402735}
+  SkyeTrans: {fileID: 1435376142}
+  SkyeCharms: {fileID: 1176835139}
+  SkyePotions: {fileID: 204968286}
+  SkyeDADA: {fileID: 1733943936}
+  SkyeDodge: {fileID: 1631574587}
+  SullivanTrans: {fileID: 1710387015}
+  SullivanCharms: {fileID: 879401615}
+  SullivanPotions: {fileID: 1505317866}
+  SullivanDADA: {fileID: 1452904286}
+  SullivanDodge: {fileID: 1364493783}
+  GracieMayTrans: {fileID: 866089302}
+  GracieMayCharms: {fileID: 767005349}
+  GracieMayPotions: {fileID: 60641916}
+  GracieMayDADA: {fileID: 843161273}
+  GracieMayDodge: {fileID: 425315847}
+  MoneyText: {fileID: 1807796621}
+  enemySelectionParticle: {fileID: 2079501730}
+  playerSelectionParticle: {fileID: 1639720022}
+  enemyUnitSelected: 0
+  playerUnitSelected: 0
+  playerBattleStationLocations:
+  - {fileID: 1144101770}
+  - {fileID: 1752264619}
+  - {fileID: 224097541}
+  - {fileID: 1678134613}
+  enemyBattleStationLocations:
+  - {fileID: 507031086}
+  - {fileID: 144333115}
+  - {fileID: 1092518508}
+  - {fileID: 1538119616}
+  - {fileID: 1598155097}
+  enemyPrefab:
+  - {fileID: 5837520367339431860, guid: bd950ee0738bbba47b6902a29950ca31, type: 3}
+  enemyUnit: []
+  enemyAnim: []
+  dialogueText: {fileID: 1462961207}
+  playerStations: []
+  backButtonItem: {fileID: 0}
+  Camera: {fileID: 142183567}
+  cutsceneCam: {fileID: 49401776}
+  player1Cam: {fileID: 748781230}
+  player2Cam: {fileID: 1276739199}
+  player3Cam: {fileID: 763626794}
+  player4Cam: {fileID: 425408193}
+  enemyCam: {fileID: 1820359641}
+  battleCam: {fileID: 1398012968}
+  enemyCamTarget: {fileID: 1496216285}
+  Boss: 1
+  cutSceneCamAnim: {fileID: 49401778}
+  cutSceneCamSecond: {fileID: 0}
+  MCDamageUI: {fileID: 703549100}
+  RhysDamageUI: {fileID: 1147722403}
+  JameelDamageUI: {fileID: 931669737}
+  HarperDamageUI: {fileID: 1143687752}
+  SkyeDamageUI: {fileID: 74484602}
+  SullivanDamageUI: {fileID: 690346918}
+  playerTurnOrder: 
+  enemyTurnOrder: 
+  isPlayerTurn: 0
+  Next: {fileID: 1163973512}
+  DungeonRoomToLoad: Dungeon1-Skye
+  LosingScreenToLoad: HoldingRoom
+  gracieMaySet: {fileID: 1867977848}
+  gracieMayAnim: {fileID: 1229711720}
+  GracieMaySpell1: {fileID: 48964899}
+  GracieMaySpell2: {fileID: 299018719}
+  GracieMaySpell3: {fileID: 1600691519}
+  GracieMaySpell4: {fileID: 87762501}
+  MCStunned: 0
+  RhysStunned: 0
+  JameelStunned: 0
+  HarperStunned: 0
+  SkyeStunned: 0
+  SullivanStunned: 0
+--- !u!4 &1675300476
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1675300474}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 533.67487, y: 364.6253, z: 320.56543}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 18
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1677054839
 GameObject:
   m_ObjectHideFlags: 0
@@ -70943,6 +71122,197 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1959235892
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1959235894}
+  - component: {fileID: 1959235893}
+  m_Layer: 0
+  m_Name: MiniBoss - BattleSystem (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1959235893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1959235892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd62437f0abacb7429a77a9186bea146, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 0
+  MCPrefab: {fileID: 7748223850218607189, guid: 8dc70492817ba5a41993262b918fd720,
+    type: 3}
+  RhysPrefab: {fileID: 4226304267557498029, guid: 1013867593fc34f43bbd8a9ee7feb73a,
+    type: 3}
+  JameelPrefab: {fileID: 5719191469586337266, guid: 449de8890537af342a37cf3374ae82be,
+    type: 3}
+  HarperPrefab: {fileID: 8540547450291592499, guid: a7232af83c0cb404d8739b0d2920e5e5,
+    type: 3}
+  SkyePrefab: {fileID: 1434914509272576801, guid: d18477aa3b069ca418b75f8d2698b39c,
+    type: 3}
+  SullivanPrefab: {fileID: 7240245691869911789, guid: dd20898e17f3030469f25dc6028179c0,
+    type: 3}
+  MCBattleStation: {fileID: 1144101770}
+  SecondBattleStation: {fileID: 1752264619}
+  ThirdBattleStation: {fileID: 224097541}
+  FourthBattleStation: {fileID: 1678134613}
+  MCMenu: {fileID: 2142727170}
+  MCSpells: {fileID: 1573510417}
+  MCConfirmMenu: {fileID: 402973005}
+  RhysMenu: {fileID: 134086917}
+  RhysSpells: {fileID: 1155167136}
+  RhysConfirmMenu: {fileID: 1896025084}
+  JameelMenu: {fileID: 57162316}
+  JameelSpells: {fileID: 106803148}
+  JameelConfirmMenu: {fileID: 1741412738}
+  HarperMenu: {fileID: 334946762}
+  HarperSpells: {fileID: 1189971079}
+  HarperConfirmMenu: {fileID: 442945119}
+  SkyeMenu: {fileID: 1143550}
+  SkyeSpells: {fileID: 992558207}
+  SkyeConfirmMenu: {fileID: 2024299513}
+  SullivanMenu: {fileID: 76484743}
+  SullivanSpells: {fileID: 924806422}
+  SullivanConfirmMenu: {fileID: 1308357190}
+  EndingMenu: {fileID: 2083659504}
+  Inventory: {fileID: 203590900}
+  InventoryContainer: {fileID: 0}
+  InventorySelectedItem: 0
+  MCHealth: {fileID: 1673820645}
+  MCMagic: {fileID: 764572113}
+  RhysHealth: {fileID: 1414769967}
+  RhysMagic: {fileID: 539166171}
+  JameelHealth: {fileID: 2070874075}
+  JameelMagic: {fileID: 1914129038}
+  HarperHealth: {fileID: 1001740758}
+  HarperMagic: {fileID: 545734961}
+  SkyeHealth: {fileID: 1840876890}
+  SkyeMagic: {fileID: 1322213702}
+  SullivanHealth: {fileID: 297342697}
+  SullivanMagic: {fileID: 2047106238}
+  staminaBaseColor: {r: 1, g: 0, b: 0.010321617, a: 0}
+  energyBaseColor: {r: 0, g: 0.9400835, b: 1, a: 0}
+  downedColor: {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 1}
+  MCTrans: {fileID: 1766780067}
+  MCCharms: {fileID: 1719753430}
+  MCPotions: {fileID: 609979489}
+  MCDADA: {fileID: 1104700946}
+  MCDodge: {fileID: 194633167}
+  RhysTrans: {fileID: 337342928}
+  RhysCharms: {fileID: 1156081334}
+  RhysPotions: {fileID: 2077955562}
+  RhysDADA: {fileID: 2064112702}
+  RhysDodge: {fileID: 458401127}
+  JameelTrans: {fileID: 337251198}
+  JameelCharms: {fileID: 1455282023}
+  JameelPotions: {fileID: 1119815450}
+  JameelDADA: {fileID: 752209106}
+  JameelDodge: {fileID: 339107045}
+  HarperTrans: {fileID: 832211286}
+  HarperCharms: {fileID: 1515459679}
+  HarperPotions: {fileID: 399502884}
+  HarperDADA: {fileID: 1178128944}
+  HarperDodge: {fileID: 1851402735}
+  SkyeTrans: {fileID: 1435376142}
+  SkyeCharms: {fileID: 1176835139}
+  SkyePotions: {fileID: 204968286}
+  SkyeDADA: {fileID: 1733943936}
+  SkyeDodge: {fileID: 1631574587}
+  SullivanTrans: {fileID: 1710387015}
+  SullivanCharms: {fileID: 879401615}
+  SullivanPotions: {fileID: 1505317866}
+  SullivanDADA: {fileID: 1452904286}
+  SullivanDodge: {fileID: 1364493783}
+  GracieMayTrans: {fileID: 866089302}
+  GracieMayCharms: {fileID: 767005349}
+  GracieMayPotions: {fileID: 60641916}
+  GracieMayDADA: {fileID: 843161273}
+  GracieMayDodge: {fileID: 425315847}
+  MoneyText: {fileID: 1807796621}
+  enemySelectionParticle: {fileID: 2079501730}
+  playerSelectionParticle: {fileID: 1639720022}
+  enemyUnitSelected: 0
+  playerUnitSelected: 0
+  playerBattleStationLocations:
+  - {fileID: 1144101770}
+  - {fileID: 1752264619}
+  - {fileID: 224097541}
+  - {fileID: 1678134613}
+  enemyBattleStationLocations:
+  - {fileID: 507031086}
+  - {fileID: 144333115}
+  - {fileID: 1092518508}
+  - {fileID: 1538119616}
+  - {fileID: 1598155097}
+  enemyPrefab:
+  - {fileID: 3332784257574665405, guid: a841b88b2eb7d77458a94206e8b18240, type: 3}
+  enemyUnit: []
+  enemyAnim: []
+  dialogueText: {fileID: 1462961207}
+  playerStations: []
+  backButtonItem: {fileID: 0}
+  Camera: {fileID: 142183567}
+  cutsceneCam: {fileID: 49401776}
+  player1Cam: {fileID: 748781230}
+  player2Cam: {fileID: 1276739199}
+  player3Cam: {fileID: 763626794}
+  player4Cam: {fileID: 425408193}
+  enemyCam: {fileID: 1820359641}
+  battleCam: {fileID: 1398012968}
+  enemyCamTarget: {fileID: 1496216285}
+  Boss: 1
+  cutSceneCamAnim: {fileID: 49401778}
+  cutSceneCamSecond: {fileID: 0}
+  MCDamageUI: {fileID: 703549100}
+  RhysDamageUI: {fileID: 1147722403}
+  JameelDamageUI: {fileID: 931669737}
+  HarperDamageUI: {fileID: 1143687752}
+  SkyeDamageUI: {fileID: 74484602}
+  SullivanDamageUI: {fileID: 690346918}
+  playerTurnOrder: 
+  enemyTurnOrder: 
+  isPlayerTurn: 0
+  Next: {fileID: 1163973512}
+  DungeonRoomToLoad: Dungeon1-Skye
+  LosingScreenToLoad: HoldingRoom
+  gracieMaySet: {fileID: 1867977848}
+  gracieMayAnim: {fileID: 1229711720}
+  GracieMaySpell1: {fileID: 48964899}
+  GracieMaySpell2: {fileID: 299018719}
+  GracieMaySpell3: {fileID: 1600691519}
+  GracieMaySpell4: {fileID: 87762501}
+  MCStunned: 0
+  RhysStunned: 0
+  JameelStunned: 0
+  HarperStunned: 0
+  SkyeStunned: 0
+  SullivanStunned: 0
+--- !u!4 &1959235894
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1959235892}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 533.67487, y: 364.6253, z: 320.56543}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1961250234
 GameObject:
   m_ObjectHideFlags: 0
