@@ -141,15 +141,10 @@ public class GameManager : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
 
-        /* Test player names
-        MCFirstName = "Sara";
-        MCLastName = "Lee";
-        */
-
         //Start game here
         dayOfWeek = 0;
         month = 4;
-        day =17;
+        day =30;
 
         /*// Finals Testing
         dayOfWeek = 1;
@@ -317,6 +312,21 @@ public class GameManager : MonoBehaviour
         monthAndDay.text = month + "/" + day;
     }
 
+    public static IEnumerator FlipName()
+    {
+        yield return new WaitForSeconds(2f);
+        print("tickle");
+        if ((month == 4 && day == 30) || (month == 5 && day == 1))
+        {
+            GameManager.instance.monthSlide.text = "May";
+        }
+
+        if ((month == 5 && day == 31) || (month == 6 && day == 1))
+        {
+            GameManager.instance.monthSlide.text = "June";
+        }
+    }
+
     public static void CalculateTimeOfDay()
     {
         if (timeOfDay == 0)
@@ -358,11 +368,6 @@ public class GameManager : MonoBehaviour
         {
             ProgressDay();
         }
-
-        //if (Input.GetKeyDown(KeyCode.L))
-        //{
-        //    UpdateLevels();
-        //}
 
         if (timeOfDay == 0)
         {
@@ -413,27 +418,28 @@ public class GameManager : MonoBehaviour
 
             if (month == 4 && day == 26)
             {
-                GameManager.instance.dateSlide.text = (day - 3) + "     " + (day - 2) + "     " + (day - 1) + "     " + day + "     " + (day + 1) + "     " + (day + 2) + "     " + (day + 3) + "      " + "1";
+                GameManager.instance.dateSlide.text = (day - 3) + "     " + (day - 2) + "     " + (day - 1) + "       " + day + "       " + (day + 1) + "     " + (day + 2) + "     " + (day + 3) + "      " + "1";
             }
 
             else if (month == 4 && day == 27)
             {
-                GameManager.instance.dateSlide.text = (day - 3) + "     " + (day - 2) + "     " + (day - 1) + "     " + day + "     " + (day + 1) + "     " + (day + 2) + "     " + (day + 3) + "      " + "1";
+                GameManager.instance.dateSlide.text = (day - 3) + "     " + (day - 2) + "     " + (day - 1) + "       " + day + "       " + (day + 1) + "     " + (day + 2) + "     " + (day + 3) + "      " + "1";
             }
 
             else if(month == 4 && day == 28)
             {
-                GameManager.instance.dateSlide.text = (day - 3) + "     " + (day - 2) + "     " + (day - 1) + "     " + day + "     " + (day + 1) + "     " + (day + 2) + "     " + "1" + "      " + "2";
+                GameManager.instance.dateSlide.text = (day - 3) + "     " + (day - 2) + "     " + (day - 1) + "       " + day + "       " + (day + 1) + "     " + (day + 2) + "     " + "1" + "      " + "2";
             }
 
             else if (month == 4 && day == 29)
             {
-                GameManager.instance.dateSlide.text = (day - 3) + "     " + (day - 2) + "     " + (day - 1) + "     " + day + "     " + (day + 1) + "     " + "1" + "     " + "2" + "     " + "3";
+                GameManager.instance.dateSlide.text = (day - 3) + "     " + (day - 2) + "     " + (day - 1) + "       " + day + "       " + (day + 1) + "     " + "1" + "     " + "2" + "     " + "3";
             }
 
             else if (month == 4 && day == 30)
             {
-                GameManager.instance.dateSlide.text = (day - 3) + "     " + (day - 2) + "     " + (day - 1) + "     " + day + "     " + "1" + "     " + "2" + "     " + "3" + "     " + "4";
+                GameManager.instance.dateSlide.text = (day - 3) + "     " + (day - 2) + "    " + (day - 1) + "     " + day + "     " + "1" + "      " + "2" + "       " + "3" + "      " + "4";
+                GameManager.instance.StartCoroutine(FlipName());
             }
 
             else if (month == 5 && day == 1)
@@ -469,6 +475,7 @@ public class GameManager : MonoBehaviour
             else if (month == 5 && day == 31)
             {
                 GameManager.instance.dateSlide.text = (day - 3) + "     " + (day - 2) + "     " + (day - 1) + "     " + day + "     " + "1" + "     " + "2" + "     " + "3" + "     " + "4";
+                GameManager.instance.StartCoroutine(FlipName());
             }
 
             else if (month == 6 && day == 1)
