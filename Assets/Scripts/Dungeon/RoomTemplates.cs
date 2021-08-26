@@ -20,8 +20,15 @@ public class RoomTemplates : MonoBehaviour {
 	public List<GameObject> rooms;
 
 	public float waitTime;
+
 	private bool exitRoom;
 	public GameObject staircase;
+
+
+	public GameObject portal;
+	private bool portalPlaced;
+	public float percentChanceToSpawnPortal = 50;
+	float PortalSpawnPercent;
 
 	private bool treasurePlaced;
 	public float percentChanceToSpawnTreasure = 50;
@@ -38,7 +45,7 @@ public class RoomTemplates : MonoBehaviour {
 
 	GameObject parented;
 	GameObject playerSpawn;
-	GameObject staircaseSpawn, enemySpawn, treasureSpawn;
+	GameObject staircaseSpawn, enemySpawn, treasureSpawn, portalSpawn;
 
 	public GameObject StartingPointRoom;
 	GameObject startingP;
@@ -120,7 +127,18 @@ public class RoomTemplates : MonoBehaviour {
 			if (!playerPlaced) {
 				if (!exitRoom) {
 					for (int i = 0; i < rooms.Count; i++) {
-						if (i == rooms.Count - 1) {
+						if (i == rooms.Count - 2)
+						{
+							if (!portalPlaced && percentChanceToSpawnPortal >= PortalSpawnPercent)
+							{
+								portalSpawn = Instantiate(portal, rooms[Random.Range(1, rooms.Count - 2)].transform.position, Quaternion.identity) as GameObject;
+								portalPlaced = true;
+							}
+							portalSpawn.transform.parent = parented.transform;
+
+						}
+						if (i == rooms.Count - 1) 
+						{
 							staircaseSpawn = Instantiate(staircase, rooms[i].transform.position, Quaternion.identity) as GameObject;
 
 							if (!treasurePlaced && percentChanceToSpawnTreasure >= TreasureSpawnPercent) {
@@ -185,5 +203,13 @@ public class RoomTemplates : MonoBehaviour {
 
 	public void StayOnFloor() {
 		turnOffMenu.SetActive(false);
+	}
+
+	public void ReturnToPortal()
+	{
+		GameManager.currentFloor = 0;
+		if (GameManager.currentFloor > GameManager.DungeonFloorCount[dungeonNumber]) GameManager.DungeonFloorCount[dungeonNumber] = GameManager.currentFloor;
+		Destroy(gameObject);
+		SceneManager.LoadScene("HoldingRoom");
 	}
 }
