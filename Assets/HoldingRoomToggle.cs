@@ -6,7 +6,7 @@ public class HoldingRoomToggle : MonoBehaviour
 {
     public GameObject[] Rooms;
 
-    private void Update()
+    private void Start()
     {
         if (GameManager.month == 4 && (GameManager.day >= 21 && GameManager.day <= 25))
         {
