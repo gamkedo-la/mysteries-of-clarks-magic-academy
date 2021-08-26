@@ -10,7 +10,8 @@ public class BackButtonScript : MonoBehaviour
 
     public void ReturnToTitleScren()
     {
-
+        titleScreenCanvas.SetActive(true);
+        controlsMenuCanvas.SetActive(false);
     }
 
 }
