@@ -13,5 +13,4 @@ public class BackButtonScript : MonoBehaviour
         titleScreenCanvas.SetActive(true);
         controlsMenuCanvas.SetActive(false);
     }
-
 }
