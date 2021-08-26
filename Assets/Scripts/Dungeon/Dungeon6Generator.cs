@@ -23,11 +23,13 @@ public class Dungeon6Generator : MonoBehaviour {
 	public float maxRadius = 7f;
 
 	public float percentChanceToSpawnTreasure = 50f;
+	public float percentChanceToSpawnPortal = 50f;
 	public int enemiesSpawnedPerClearingeMin = 3, enemiesSpawnedPerClearingMax = 10;
 
 	public GameObject enemy;
 	public GameObject treasure;
 	public GameObject exit;
+	public GameObject portal;
 	public GameObject player;
 
 	public List<GameObject> currentRooms = new List<GameObject>();
@@ -213,6 +215,32 @@ public class Dungeon6Generator : MonoBehaviour {
 				break;
 			}
 		}
+
+		//Spawn Exit Portal
+	/*	foreach (KeyValuePair<Vector2, float> room in clearings)
+		{
+			if (room.Key == new Vector2(0f, 0f)) continue;
+			if (room.Key == farthestClearing) continue;
+
+			if (percentChanceToSpawnPortal >= Random.Range(0f, 100f))
+			{
+				GameObject thePortal = null;
+				if (exit.scene.rootCount == 0)
+				{
+					thePortal = Instantiate(portal);
+				}
+				else
+				{
+					thePortal = portal;
+				}
+				newPosition = new Vector3(room.Key.x, 0f, room.Key.y);
+				thePortal.transform.position = newPosition * gridScale;
+				thePortal.transform.Rotate(0f, Random.Range(0f, 360f), 0f);
+				thePortal.transform.parent = transform;
+
+				break;
+			}
+		}*/
 
 		//Spawn Enemies
 		int enemiesToSpawn = Random.Range((clearings.Count-1) * enemiesSpawnedPerClearingeMin, (clearings.Count-1)  * enemiesSpawnedPerClearingMax);
