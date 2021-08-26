@@ -142,9 +142,12 @@ public class GameManager : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
 
         //Start game here
+
+        //Game start is at - month 4 day 17 time of day 4
+
         dayOfWeek = 0;
         month = 4;
-        day =30;
+        day =17;
 
         /*// Finals Testing
         dayOfWeek = 1;
@@ -1267,23 +1270,24 @@ public class GameManager : MonoBehaviour
                     SceneManager.LoadScene("GreatHall");
                     print("Load Great Hall");
                 }
+            }
 
-                //Weekday night
-                if (timeOfDay == 4)
+            //Weekday night
+            if (timeOfDay == 4)
+            {
+                if (month == 4 && (day == 20 || day == 27))
                 {
-                    if (month == 4 && (day == 20 || day == 27))
-                    {
-                        SceneManager.LoadScene("GreatHall");
-                        print("Load Great Hall");
-                    }
+                    SceneManager.LoadScene("GreatHall");
+                    print("Load Great Hall");
+                }
 
-                    else
-                    {
-                        freePeriod = true;
-                        print("Load outside of potions room or great hall for free period");
-                    }
+                else
+                {
+                    freePeriod = true;
+                    print("Load outside of potions room or great hall for free period");
                 }
             }
+
             else
             {
                 freePeriod = true;
