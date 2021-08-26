@@ -35,6 +35,7 @@ public class Dungeon2Generator : MonoBehaviour {
 
 	public GameObject enemy;
 	public GameObject treasure;
+	public GameObject portal;
 	public GameObject exit;
 	public GameObject player;
 	
@@ -465,6 +466,20 @@ public class Dungeon2Generator : MonoBehaviour {
 		theTreasure.transform.Rotate(0f, Random.Range(0f, 360f), 0f);
 		theTreasure.transform.parent = transform;
 
+		//Spawn Portal
+		GameObject thePortal = null;
+		if (portal.scene.rootCount == 0)
+		{
+			thePortal = Instantiate(portal);
+		}
+		else
+		{
+			thePortal = portal;
+		}
+		thePortal.transform.position = currentRooms[Random.Range(0, currentRooms.Count)].transform.position;
+		thePortal.transform.Rotate(0f, Random.Range(0f, 360f), 0f);
+		thePortal.transform.parent = transform;
+
 		//Spawn Enemies
 		int enemiesToSpawn = Random.Range(currentRooms.Count * enemiesSpawnedPerTileMin / 100, currentRooms.Count  * enemiesSpawnedPerTileMax/100);
 		//Debug.Log(enemiesToSpawn);
@@ -492,6 +507,15 @@ public class Dungeon2Generator : MonoBehaviour {
 		if (GameManager.currentFloor > GameManager.DungeonFloorCount[dungeonNumber]) GameManager.DungeonFloorCount[dungeonNumber] = GameManager.currentFloor;
 		Destroy(gameObject);
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+	}
+
+	public void ReturnPortal()
+	{
+		GameManager.currentFloor = 0;
+		if (GameManager.currentFloor < 0) GameManager.currentFloor = 0;
+		if (GameManager.currentFloor > GameManager.DungeonFloorCount[dungeonNumber]) GameManager.DungeonFloorCount[dungeonNumber] = GameManager.currentFloor;
+		Destroy(gameObject);
+		SceneManager.LoadScene("HoldingRoom");
 	}
 
 	IEnumerator BuildNavMesh() {
