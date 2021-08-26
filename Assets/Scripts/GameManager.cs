@@ -125,6 +125,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] GameObject NameSettingCanvas;
 
+    public static bool pauseMenuTutorialTipHasBeenShown = false;
+
     private void Awake()
     {
         if (instance == null)
