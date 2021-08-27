@@ -9,9 +9,9 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private GameObject DefaultButton;
     [SerializeField] private GameObject MainButtons;
     [SerializeField] private GameObject InventoryPanel;
+    [SerializeField] private GameObject ControlsPanel;
     [SerializeField] private GameObject InventoryContents;
     [SerializeField] private GameObject PartyFrames;
-    [SerializeField] private GameObject controlsCanvasPrefab;
 
     public Slider MCHealth, MCMagic, RhysHealth, RhysMagic, JameelHealth, JameelMagic, HarperHealth, HarperMagic, SkyeHealth, SkyeMagic, SullivanHealth, SullivanMagic;
 
@@ -77,7 +77,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Controls()
     {
-        Instantiate(controlsCanvasPrefab);
+        ControlsPanel.SetActive(!InventoryPanel.activeSelf);
     }
 
     public void ClickItem (int index) {
