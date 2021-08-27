@@ -15,11 +15,13 @@ public class Dungeon4Generator : MonoBehaviour {
 	public List<PrefabLevelPair> specialLevels;
 	public bool levelIsSpecial = false;
 
-	public float gridScale = 15f;
+	public float gridScale = 45f;
+	public FourSidedTileGenerator tileTemplate;
 
 	public GameObject enemy;
 	public GameObject treasure;
 	public GameObject exit;
+	public GameObject portal;
 	public GameObject player;
 
 	public List<GameObject> currentRooms = new List<GameObject>();

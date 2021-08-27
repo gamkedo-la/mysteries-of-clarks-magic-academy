@@ -5,6 +5,7 @@ using UnityEngine;
 public class RandomOffset : MonoBehaviour {
 	public Vector3 positionOffsetRange;
 	public Vector3 rotationOffsetRange;
+	public Vector3 scaleOffsetRange;
 
 	void Start() {
 		Vector3 newPositionOffset = new Vector3();
@@ -19,7 +20,14 @@ public class RandomOffset : MonoBehaviour {
 		newRotationOffset.y = rotationOffsetRange.y * Random.Range(-1f, 1f);
 		newRotationOffset.z = rotationOffsetRange.z * Random.Range(-1f, 1f);
 
-		transform.Rotate(rotationOffsetRange);
+		transform.Rotate(newRotationOffset);
+
+		Vector3 newScaleOffset = new Vector3();
+		newScaleOffset.x = scaleOffsetRange.x * Random.Range(-1f, 1f);
+		newScaleOffset.y = scaleOffsetRange.y * Random.Range(-1f, 1f);
+		newScaleOffset.z = scaleOffsetRange.z * Random.Range(-1f, 1f);
+
+		transform.localScale += newScaleOffset;
 
 
 	}
