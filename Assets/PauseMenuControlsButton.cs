@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class PauseMenuControlsButton : MonoBehaviour
 {
-    [SerializeField] GameObject controlsCanvasPrefab;
+    [SerializeField] GameObject controlsCanvas;
     [SerializeField] GameObject pauseMenu;
 
     public void TurnOnControlsCanvasPrefab()
     {
-        controlsCanvasPrefab.SetActive(true);
-        pauseMenu.SetActive(false);
+        Debug.Log("controls button click recognized");
+        Debug.Log("controlsCanvas: " + controlsCanvas);
+        controlsCanvas.SetActive(true);
+       // pauseMenu.SetActive(false);
     }
 }
