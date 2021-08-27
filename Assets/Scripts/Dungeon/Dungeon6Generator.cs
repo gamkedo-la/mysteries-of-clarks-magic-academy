@@ -21,9 +21,7 @@ public class Dungeon6Generator : MonoBehaviour {
 
 	public float minRadius = 3f;
 	public float maxRadius = 7f;
-
-	public float percentChanceToSpawnTreasure = 50f;
-	public float percentChanceToSpawnPortal = 50f;
+	
 	public int enemiesSpawnedPerClearingeMin = 3, enemiesSpawnedPerClearingMax = 10;
 
 	public GameObject enemy;
@@ -195,52 +193,42 @@ public class Dungeon6Generator : MonoBehaviour {
 		theExit.transform.Rotate(0f, Random.Range(0f, 360f), 0f);
 		theExit.transform.parent = transform;
 
-		//Spawn Treasure
+		//Spawn Treasure and Portal
+		bool treasureSpawned = false;
+		bool portalSpawned = false;
+		Debug.Log("Odds: " + 1f/clearings.Count);
 		foreach (KeyValuePair<Vector2, float> room in clearings) {
 			if (room.Key == new Vector2(0f, 0f)) continue;
 			if (room.Key == farthestClearing) continue;
 
-			if (percentChanceToSpawnTreasure >= Random.Range(0f, 100f)) {
-				GameObject theTreasure = null;
-				if (exit.scene.rootCount == 0) {
-					theTreasure = Instantiate(treasure);
+			float percentRange = Random.Range(0f, 1f);
+			Debug.Log(percentRange);
+			if (1f/clearings.Count >= percentRange && !portalSpawned) {
+				GameObject theSpawn = null;
+				if (!treasureSpawned) {
+					if (exit.scene.rootCount == 0) {
+						theSpawn = Instantiate(treasure);
+					} else {
+						theSpawn = treasure;
+					}
+					treasureSpawned = true;
+					Debug.Log("Spawned treasure");
 				} else {
-					theTreasure = treasure;
+					if (exit.scene.rootCount == 0) {
+						theSpawn = Instantiate(portal);
+					} else {
+						theSpawn = portal;
+					}
+					portalSpawned = true;
+					Debug.Log("Spawned portal");
 				}
-				newPosition = new Vector3(room.Key.x, 0f, room.Key.y);
-				theTreasure.transform.position = newPosition * gridScale;
-				theTreasure.transform.Rotate(0f, Random.Range(0f, 360f), 0f);
-				theTreasure.transform.parent = transform;
 
-				break;
+				newPosition = new Vector3(room.Key.x, 0f, room.Key.y);
+				theSpawn.transform.position = newPosition * gridScale;
+				theSpawn.transform.Rotate(0f, Random.Range(0f, 360f), 0f);
+				theSpawn.transform.parent = transform;
 			}
 		}
-
-		//Spawn Exit Portal
-	/*	foreach (KeyValuePair<Vector2, float> room in clearings)
-		{
-			if (room.Key == new Vector2(0f, 0f)) continue;
-			if (room.Key == farthestClearing) continue;
-
-			if (percentChanceToSpawnPortal >= Random.Range(0f, 100f))
-			{
-				GameObject thePortal = null;
-				if (exit.scene.rootCount == 0)
-				{
-					thePortal = Instantiate(portal);
-				}
-				else
-				{
-					thePortal = portal;
-				}
-				newPosition = new Vector3(room.Key.x, 0f, room.Key.y);
-				thePortal.transform.position = newPosition * gridScale;
-				thePortal.transform.Rotate(0f, Random.Range(0f, 360f), 0f);
-				thePortal.transform.parent = transform;
-
-				break;
-			}
-		}*/
 
 		//Spawn Enemies
 		int enemiesToSpawn = Random.Range((clearings.Count-1) * enemiesSpawnedPerClearingeMin, (clearings.Count-1)  * enemiesSpawnedPerClearingMax);

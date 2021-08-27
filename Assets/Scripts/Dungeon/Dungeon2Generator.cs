@@ -468,12 +468,9 @@ public class Dungeon2Generator : MonoBehaviour {
 
 		//Spawn Portal
 		GameObject thePortal = null;
-		if (portal.scene.rootCount == 0)
-		{
+		if (portal.scene.rootCount == 0) {
 			thePortal = Instantiate(portal);
-		}
-		else
-		{
+		} else {
 			thePortal = portal;
 		}
 		thePortal.transform.position = currentRooms[Random.Range(0, currentRooms.Count)].transform.position;
