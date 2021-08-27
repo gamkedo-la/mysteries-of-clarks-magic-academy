@@ -26,7 +26,7 @@ public class TurnObjectOnWhenStarting : MonoBehaviour
 
     public void ToStartLater()
     {
-        toTurnOnDelay.SetActive(true);
+        toTurnOnDelay?.SetActive(true);
       // ToTurnOn.SetActive(true);
     }
 }
