@@ -2172,6 +2172,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ToTurnOn: {fileID: 1959158737}
+  isTurnoff: 0
+  TurnOffOnStart: {fileID: 0}
+  toTurnOnDelay: {fileID: 0}
 --- !u!4 &356801177
 Transform:
   m_ObjectHideFlags: 0
@@ -6304,6 +6307,8 @@ MonoBehaviour:
   waitTime: 2
   staircase: {fileID: 932652461484532558, guid: a262b168e0bacd644b6573966a15609c,
     type: 3}
+  portal: {fileID: 1187842919219273850, guid: 910ef95a076e1b741a7cadc7629c1693, type: 3}
+  percentChanceToSpawnPortal: 99
   percentChanceToSpawnTreasure: 99
   treasure: {fileID: 8197017496622106850, guid: 93a888ffe9bb83648b5261f04ac62e15,
     type: 3}
@@ -6321,6 +6326,7 @@ MonoBehaviour:
   levelIsSpecial: 0
   currentLevel: 0
   startHasRun: 0
+  currentFloorText: {fileID: 0}
 --- !u!4 &1176001436
 Transform:
   m_ObjectHideFlags: 0
@@ -11218,12 +11224,12 @@ PrefabInstance:
     - target: {fileID: 4132115395053139388, guid: 6e911099bdbece546a41a5342e0731d8,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000017066634
+      value: 0.00000001706663
       objectReference: {fileID: 0}
     - target: {fileID: 4132115395053139388, guid: 6e911099bdbece546a41a5342e0731d8,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000021885216
+      value: -0.0000000021885211
       objectReference: {fileID: 0}
     - target: {fileID: 4132115395053139391, guid: 6e911099bdbece546a41a5342e0731d8,
         type: 3}
@@ -11248,12 +11254,12 @@ PrefabInstance:
     - target: {fileID: 4132115395060652181, guid: 6e911099bdbece546a41a5342e0731d8,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000032966827
+      value: -0.000000032966824
       objectReference: {fileID: 0}
     - target: {fileID: 4132115395060652181, guid: 6e911099bdbece546a41a5342e0731d8,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000048385016
+      value: 0.000000004838501
       objectReference: {fileID: 0}
     - target: {fileID: 4132115395299435648, guid: 6e911099bdbece546a41a5342e0731d8,
         type: 3}
@@ -11268,12 +11274,12 @@ PrefabInstance:
     - target: {fileID: 4132115395299435648, guid: 6e911099bdbece546a41a5342e0731d8,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00000001762991
+      value: 0.000000017629906
       objectReference: {fileID: 0}
     - target: {fileID: 4132115395299435648, guid: 6e911099bdbece546a41a5342e0731d8,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000019363626
+      value: -0.0000000019363622
       objectReference: {fileID: 0}
     - target: {fileID: 4132115395299435651, guid: 6e911099bdbece546a41a5342e0731d8,
         type: 3}
@@ -11373,12 +11379,12 @@ PrefabInstance:
     - target: {fileID: 4132115396718831984, guid: 6e911099bdbece546a41a5342e0731d8,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000034133265
+      value: 0.00000003413326
       objectReference: {fileID: 0}
     - target: {fileID: 4132115396718831984, guid: 6e911099bdbece546a41a5342e0731d8,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000043770436
+      value: -0.000000004377043
       objectReference: {fileID: 0}
     - target: {fileID: 6964173571347612296, guid: 6e911099bdbece546a41a5342e0731d8,
         type: 3}
