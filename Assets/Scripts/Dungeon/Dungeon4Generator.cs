@@ -132,8 +132,112 @@ public class Dungeon4Generator : MonoBehaviour {
 					decoration.transform.parent = floor.transform;
 				}
 			}
+
+			currentRooms.Add(floor);
 		}
 
+		//Spawn Player
+		GameObject thePlayer = null;
+		if (player.scene.rootCount == 0) {
+			thePlayer = Instantiate(player);
+		} else {
+			thePlayer = player;
+		}
+		thePlayer.transform.position = new Vector3(0f, 1.4f, 0f);
+		thePlayer.transform.Rotate(0f, Random.Range(0f, 360f), 0f);
+		thePlayer.transform.parent = transform;
+		
+		//Spawn Exit
+		GameObject theExit = null;
+		if (exit.scene.rootCount == 0) {
+			theExit = Instantiate(exit);
+		} else {
+			theExit = exit;
+		}
+		Vector2 farthestRoom = new Vector2(0f, 0f);
+		foreach (Vector2 room in roomsVec2) {
+			if (Vector2.Distance(room, new Vector2(0f, 0f)) > Vector2.Distance(farthestRoom, new Vector2(0f, 0f))) {
+				farthestRoom = room;
+			}
+		}
+		Vector3 newPosition = new Vector3(farthestRoom.x, 0f, farthestRoom.y);
+		theExit.transform.position = newPosition * gridScale;
+		theExit.transform.Rotate(0f, Random.Range(0f, 360f), 0f);
+		theExit.transform.parent = transform;
+
+		//Spawn Treasure and Portal
+		Vector2 portalRoom = new Vector2();
+		if (currentRooms.Count > 2) {
+			int newIndex = Random.Range(1, roomsVec2.Count);
+			portalRoom = roomsVec2[newIndex];
+			while (portalRoom == farthestRoom) {
+				newIndex = Random.Range(1, roomsVec2.Count);
+				portalRoom = roomsVec2[newIndex];
+			}
+
+			GameObject thePortal = null;
+			if (portal.scene.rootCount == 0) {
+				thePortal = Instantiate(portal);
+			} else {
+				thePortal = portal;
+			}
+			thePortal.transform.position = portalRoom * gridScale;
+			thePortal.transform.Rotate(0f, Random.Range(0f, 360f), 0f);
+			thePortal.transform.parent = transform;
+		}
+		Vector2 treasureRoom = new Vector2();
+		if (currentRooms.Count > 4) {
+			int newIndex = Random.Range(1, roomsVec2.Count);
+			treasureRoom = roomsVec2[newIndex];
+			while (treasureRoom == farthestRoom || treasureRoom == portalRoom) {
+				newIndex = Random.Range(1, roomsVec2.Count);
+				treasureRoom = roomsVec2[newIndex];
+			}
+
+			GameObject theTreasure = null;
+			if (treasure.scene.rootCount == 0) {
+				theTreasure = Instantiate(treasure);
+			} else {
+				theTreasure = treasure;
+			}
+			theTreasure.transform.position = treasureRoom * gridScale;
+			theTreasure.transform.Rotate(0f, Random.Range(0f, 360f), 0f);
+			theTreasure.transform.parent = transform;
+		}
+
+
+		bool treasureSpawned = false;
+		bool portalSpawned = false;
+		foreach (Vector2 room in roomsVec2) {
+			if (room == new Vector2(0f, 0f)) continue;
+			if (room == farthestRoom) continue;
+
+			float percentRange = Random.Range(0f, 1f);
+			Debug.Log(percentRange);
+			if (1f/roomsVec2.Count >= percentRange && !portalSpawned) {
+				GameObject theSpawn = null;
+				if (!treasureSpawned) {
+					if (exit.scene.rootCount == 0) {
+						theSpawn = Instantiate(treasure);
+					} else {
+						theSpawn = treasure;
+					}
+					treasureSpawned = true;
+				} else {
+					if (exit.scene.rootCount == 0) {
+						theSpawn = Instantiate(portal);
+					} else {
+						theSpawn = portal;
+					}
+					portalSpawned = true;
+				}
+
+				newPosition = new Vector3(room.x, 0f, room.y);
+				theSpawn.transform.position = newPosition * gridScale;
+				theSpawn.transform.Rotate(0f, Random.Range(0f, 360f), 0f);
+				theSpawn.transform.parent = transform;
+			}
+		}
 
 		StartCoroutine(BuildNavMesh());
 	}

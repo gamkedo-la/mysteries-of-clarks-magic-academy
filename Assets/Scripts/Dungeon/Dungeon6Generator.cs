@@ -196,7 +196,6 @@ public class Dungeon6Generator : MonoBehaviour {
 		//Spawn Treasure and Portal
 		bool treasureSpawned = false;
 		bool portalSpawned = false;
-		Debug.Log("Odds: " + 1f/clearings.Count);
 		foreach (KeyValuePair<Vector2, float> room in clearings) {
 			if (room.Key == new Vector2(0f, 0f)) continue;
 			if (room.Key == farthestClearing) continue;
@@ -212,7 +211,6 @@ public class Dungeon6Generator : MonoBehaviour {
 						theSpawn = treasure;
 					}
 					treasureSpawned = true;
-					Debug.Log("Spawned treasure");
 				} else {
 					if (exit.scene.rootCount == 0) {
 						theSpawn = Instantiate(portal);
@@ -220,7 +218,6 @@ public class Dungeon6Generator : MonoBehaviour {
 						theSpawn = portal;
 					}
 					portalSpawned = true;
-					Debug.Log("Spawned portal");
 				}
 
 				newPosition = new Vector3(room.Key.x, 0f, room.Key.y);
@@ -232,7 +229,6 @@ public class Dungeon6Generator : MonoBehaviour {
 
 		//Spawn Enemies
 		int enemiesToSpawn = Random.Range((clearings.Count-1) * enemiesSpawnedPerClearingeMin, (clearings.Count-1)  * enemiesSpawnedPerClearingMax);
-		Debug.Log(enemiesToSpawn);
 		while (enemiesToSpawn > 0) {
 			foreach (KeyValuePair<Vector2, float> room in clearings) {
 				if (room.Key == new Vector2(0f, 0f)) continue;
