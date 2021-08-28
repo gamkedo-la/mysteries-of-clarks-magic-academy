@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviour
     //
 
     //Money that the player has collected and can spend
-    public static int Money;
+    public static int Money = 250;
     public InventoryObject inventory;
     public static PauseMenu pauseMenu;
     //
