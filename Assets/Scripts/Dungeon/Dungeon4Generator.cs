@@ -85,29 +85,32 @@ public class Dungeon4Generator : MonoBehaviour {
 		}
 
 		//Initialize map abstraction
-		SortedList<Vector2, bool[]> rooms = new SortedList<Vector2, bool[]>();
+		List<Vector2> roomsVec2 = new List<Vector2>();
+		List<bool[]> roomsbool = new List<bool[]>();
 		List<Vector2> dir = new List<Vector2>() {Vector2.up, Vector2.right, Vector2.down, Vector2.left};
-		rooms.Add(Vector2.zero, new bool[] {false, false, false, false});
-		
+		roomsVec2.Add(Vector2.zero);
+		roomsbool.Add(new bool[] { false, false, false, false });
+
 		//Generate map
-		while (rooms.Count <= currentLevel + 1) {
-			int newIndex = Random.Range(0, rooms.Count);
+		while (roomsVec2.Count <= currentLevel + 1) {
+			int newIndex = Random.Range(0, roomsVec2.Count);
 			int newDir = Random.Range(0, 4);
-			Vector2 oldPos = rooms.Keys[newIndex];
+			Vector2 oldPos = roomsVec2[newIndex];
 			Vector2 newPos = oldPos + dir[newDir];
-			if (rooms.IndexOfKey(newPos) < 0) {
-				rooms.Add(newPos, new bool[] { false, false, false, false });
+			if (!roomsVec2.Contains(newPos)) {
+				roomsVec2.Add(newPos);
+				roomsbool.Add(new bool[] { false, false, false, false });
 			}
-			rooms[oldPos][newDir] = true;
-			rooms[newPos][(newDir + 2) % 4] = true;
+			roomsbool[newIndex][newDir] = true;
+			roomsbool[roomsbool.Count-1][(newDir + 2) % 4] = true;
 		}
 
 		//Instanciate map
-		foreach (KeyValuePair<Vector2, bool[]> room in rooms) {
+		for (int i = 0; i < roomsVec2.Count; i++) {
 			GameObject floor = Instantiate(floorTemplate.gameObject);
 			List<GameObject> targetTransforms = floor.GetComponent<FourSidedTileGenerator>().targetTransforms;
 
-			floor.transform.position = new Vector3(room.Key.x, 0f, room.Key.y) * gridScale;
+			floor.transform.position = new Vector3(roomsVec2[i].x, 0f, roomsVec2[i].y) * gridScale;
 			floor.transform.parent = transform;
 		}
 
