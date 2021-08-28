@@ -16,7 +16,7 @@ public class Dungeon4Generator : MonoBehaviour {
 	public bool levelIsSpecial = false;
 
 	public float gridScale = 45f;
-	public FourSidedTileGenerator tileTemplate;
+	public FourSidedTileGenerator floorTemplate;
 
 	public GameObject enemy;
 	public GameObject treasure;
@@ -84,6 +84,32 @@ public class Dungeon4Generator : MonoBehaviour {
 			}
 		}
 
+		//Initialize map abstraction
+		SortedList<Vector2, bool[]> rooms = new SortedList<Vector2, bool[]>();
+		List<Vector2> dir = new List<Vector2>() {Vector2.up, Vector2.right, Vector2.down, Vector2.left};
+		rooms.Add(Vector2.zero, new bool[] {false, false, false, false});
+		
+		//Generate map
+		while (rooms.Count <= currentLevel + 1) {
+			int newIndex = Random.Range(0, rooms.Count);
+			int newDir = Random.Range(0, 4);
+			Vector2 oldPos = rooms.Keys[newIndex];
+			Vector2 newPos = oldPos + dir[newDir];
+			if (rooms.IndexOfKey(newPos) < 0) {
+				rooms.Add(newPos, new bool[] { false, false, false, false });
+			}
+			rooms[oldPos][newDir] = true;
+			rooms[newPos][(newDir + 2) % 4] = true;
+		}
+
+		//Instanciate map
+		foreach (KeyValuePair<Vector2, bool[]> room in rooms) {
+			GameObject floor = Instantiate(floorTemplate.gameObject);
+			List<GameObject> targetTransforms = floor.GetComponent<FourSidedTileGenerator>().targetTransforms;
+
+			floor.transform.position = new Vector3(room.Key.x, 0f, room.Key.y) * gridScale;
+			floor.transform.parent = transform;
+		}
 
 
 		StartCoroutine(BuildNavMesh());
