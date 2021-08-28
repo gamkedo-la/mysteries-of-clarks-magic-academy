@@ -112,6 +112,26 @@ public class Dungeon4Generator : MonoBehaviour {
 
 			floor.transform.position = new Vector3(roomsVec2[i].x, 0f, roomsVec2[i].y) * gridScale;
 			floor.transform.parent = transform;
+
+			//Instanciate walls and bridges
+			for (int j = 0; j < 4; j++) {
+				if (roomsbool[i][j]) {
+					GameObject openSide = Instantiate(floorTemplate.openSide[Random.Range(0, floorTemplate.openSide.Count)]);
+					openSide.transform.position = targetTransforms[j].transform.position;
+					openSide.transform.rotation = targetTransforms[j].transform.rotation;
+					openSide.transform.parent = floor.transform;
+				} else {
+					GameObject closedSide = Instantiate(floorTemplate.closedSide[Random.Range(0, floorTemplate.closedSide.Count)]);
+					closedSide.transform.position = targetTransforms[j].transform.position;
+					closedSide.transform.rotation = targetTransforms[j].transform.rotation;
+					closedSide.transform.parent = floor.transform;
+
+					GameObject decoration = Instantiate(floorTemplate.decorations[Random.Range(0, floorTemplate.decorations.Count)]);
+					decoration.transform.position = targetTransforms[j].transform.position;
+					decoration.transform.rotation = targetTransforms[j].transform.rotation;
+					decoration.transform.parent = floor.transform;
+				}
+			}
 		}
 
 
