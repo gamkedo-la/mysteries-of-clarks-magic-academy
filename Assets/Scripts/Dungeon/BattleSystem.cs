@@ -2072,10 +2072,12 @@ public class BattleSystem : MonoBehaviour
             if (mcUsingItem) {
                 ItemObject item = InventoryContainer.Container[InventorySelectedItem].item;
                 if (item.type == ItemType.Support) {
+                    // TODO: Add revival items functionality
                     if (item.multiTarget == true) {
                         GameManager.instance.UseItem(item, "all");
                     } else {
-                        GameManager.instance.UseItem(item, "MC");
+                        // TODO: Fix playerUnitSelected issue
+                        GameManager.instance.UseItem(item, playerTurnOrder[playerUnitSelected].ToString());
                     }
                 } else if (item.type == ItemType.Offensive) {
                     OffensiveItem oItem = (OffensiveItem)item;
@@ -7182,6 +7184,10 @@ public class BattleSystem : MonoBehaviour
         ItemObject item = GameManager.instance.inventory.Container[index].item;
         Inventory.SetActive(false);
         InventorySelectedItem = index;
+
+        if(!item.multiTarget) {
+            playerSelect = true;
+        }
 
         if (state == BattleState.MCTURN)
         {

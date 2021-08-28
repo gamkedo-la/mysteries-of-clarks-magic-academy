@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviour
     //
 
     //Money that the player has collected and can spend
-    public static int Money = 250;
+    public static int Money;
     public InventoryObject inventory;
     public static PauseMenu pauseMenu;
     //
@@ -638,76 +638,104 @@ public class GameManager : MonoBehaviour
         switch (sItem.property)
         {
             case SupportProperty.Health:
-                Debug.Log("Add Health");
-                ModifyHealth(sItem.itemUseValue, target);
+                ModifyHealth(sItem.itemUseValue, target, sItem.isPercentage);
                 break;
             case SupportProperty.Magic:
-                Debug.Log("Add Magic");
-                ModifyMagic(sItem.itemUseValue, target);
+                ModifyMagic(sItem.itemUseValue, target, sItem.isPercentage);
+                break;
+            case SupportProperty.Composite:
+                ModifyHealth(sItem.itemUseValue, target, sItem.isPercentage);
+                ModifyMagic(sItem.itemUseValue, target, sItem.isPercentage);
                 break;
         }
     }
 
-    public void ModifyHealth (int amount, string target) {
+    public void ModifyHealth (int amount, string target, bool isPercentage) {
+        int extraLife;
         switch (target)
         {
             case "all":
-                MCHealth = MCHealth + amount > MCMaxHealth ? MCMaxHealth : MCHealth + amount;
-                RhysHealth = RhysHealth + amount > RhysMaxHealth ? RhysMaxHealth : RhysHealth + amount;
-                JameelHealth = JameelHealth + amount > JameelMaxHealth ? JameelMaxHealth : JameelHealth + amount;
-                HarperHealth = HarperHealth + amount > HarperMaxHealth ? HarperMaxHealth : HarperHealth + amount;
-                SkyeHealth = SkyeHealth + amount > SkyeMaxHealth ? SkyeMaxHealth : SkyeHealth + amount;
-                SullivanHealth = SullivanHealth + amount > SullivanMaxHealth ? SullivanMaxHealth : SullivanHealth + amount;
+                extraLife = isPercentage ? (int) (MCMaxHealth * amount/100) : amount;
+                MCHealth = MCHealth + extraLife > MCMaxHealth ? MCMaxHealth : MCHealth + extraLife;
+                extraLife = isPercentage ? (int) (RhysMaxHealth * amount/100) : amount;
+                RhysHealth = RhysHealth + extraLife > RhysMaxHealth ? RhysMaxHealth : RhysHealth + extraLife;
+                extraLife = isPercentage ? (int) (JameelMaxHealth * amount/100) : amount;
+                JameelHealth = JameelHealth + extraLife > JameelMaxHealth ? JameelMaxHealth : JameelHealth + extraLife;
+                extraLife = isPercentage ? (int) (HarperMaxHealth * amount/100) : amount;
+                HarperHealth = HarperHealth + extraLife > HarperMaxHealth ? HarperMaxHealth : HarperHealth + extraLife;
+                extraLife = isPercentage ? (int) (SkyeMaxHealth * amount/100) : amount;
+                SkyeHealth = SkyeHealth + extraLife > SkyeMaxHealth ? SkyeMaxHealth : SkyeHealth + extraLife;
+                extraLife = isPercentage ? (int) (SullivanMaxHealth * amount/100) : amount;
+                SullivanHealth = SullivanHealth + extraLife > SullivanMaxHealth ? SullivanMaxHealth : SullivanHealth + extraLife;
                 break;
             case "MC":
-                MCHealth = MCHealth + amount > MCMaxHealth ? MCMaxHealth : MCHealth + amount;
+                extraLife = isPercentage ? (int) (MCMaxHealth * amount/100) : amount;
+                MCHealth = MCHealth + extraLife > MCMaxHealth ? MCMaxHealth : MCHealth + extraLife;
                 break;
             case "Rhys":
-                RhysHealth = RhysHealth + amount > RhysMaxHealth ? RhysMaxHealth : RhysHealth + amount;
+                extraLife = isPercentage ? (int) (RhysMaxHealth * amount/100) : amount;
+                RhysHealth = RhysHealth + extraLife > RhysMaxHealth ? RhysMaxHealth : RhysHealth + extraLife;
                 break;
             case "Jameel":
-                JameelHealth = JameelHealth + amount > JameelMaxHealth ? JameelMaxHealth : JameelHealth + amount;
+                extraLife = isPercentage ? (int) (JameelMaxHealth * amount/100) : amount;
+                JameelHealth = JameelHealth + extraLife > JameelMaxHealth ? JameelMaxHealth : JameelHealth + extraLife;
                 break;
             case "Harper":
-                HarperHealth = HarperHealth + amount > HarperMaxHealth ? HarperMaxHealth : HarperHealth + amount;
+                extraLife = isPercentage ? (int) (HarperMaxHealth * amount/100) : amount;
+                HarperHealth = HarperHealth + extraLife > HarperMaxHealth ? HarperMaxHealth : HarperHealth + extraLife;
                 break;
             case "Skye":
-                SkyeHealth = SkyeHealth + amount > SkyeMaxHealth ? SkyeMaxHealth : SkyeHealth + amount;
+                extraLife = isPercentage ? (int) (SkyeMaxHealth * amount/100) : amount;
+                SkyeHealth = SkyeHealth + extraLife > SkyeMaxHealth ? SkyeMaxHealth : SkyeHealth + extraLife;
                 break;
             case "Sullivan":
-                SullivanHealth = SullivanHealth + amount > SullivanMaxHealth ? SullivanMaxHealth : SullivanHealth + amount;
+                extraLife = isPercentage ? (int) (SullivanMaxHealth * amount/100) : amount;
+                SullivanHealth = SullivanHealth + extraLife > SullivanMaxHealth ? SullivanMaxHealth : SullivanHealth + extraLife;
                 break;
         }
     }
 
-    public void ModifyMagic (int amount, string target) {
+    public void ModifyMagic (int amount, string target, bool isPercentage) {
+        int extraMagic;
         switch (target)
         {
             case "all":
-                MCMagic = MCMagic + amount > MCMaxMagic ? MCMaxMagic : MCMagic + amount;
-                RhysMagic = RhysMagic + amount > RhysMaxMagic ? RhysMaxMagic : RhysMagic + amount;
-                JameelMagic = JameelMagic + amount > JameelMaxMagic ? JameelMaxMagic : JameelMagic + amount;
-                HarperMagic = HarperMagic + amount > HarperMaxMagic ? HarperMaxMagic : HarperMagic + amount;
-                SkyeMagic = SkyeMagic + amount > SkyeMaxMagic ? SkyeMaxMagic : SkyeMagic + amount;
-                SullivanMagic = SullivanMagic + amount > SullivanMaxMagic ? SullivanMaxMagic : SullivanMagic + amount;
+                extraMagic = isPercentage ? (int) (MCMaxMagic * amount/100) : amount;
+                MCMagic = MCMagic + extraMagic > MCMaxMagic ? MCMaxMagic : MCMagic + extraMagic;
+                extraMagic = isPercentage ? (int) (RhysMaxMagic * amount/100) : amount;
+                RhysMagic = RhysMagic + extraMagic > RhysMaxMagic ? RhysMaxMagic : RhysMagic + extraMagic;
+                extraMagic = isPercentage ? (int) (JameelMaxMagic * amount/100) : amount;
+                JameelMagic = JameelMagic + extraMagic > JameelMaxMagic ? JameelMaxMagic : JameelMagic + extraMagic;
+                extraMagic = isPercentage ? (int) (HarperMaxMagic * amount/100) : amount;
+                HarperMagic = HarperMagic + extraMagic > HarperMaxMagic ? HarperMaxMagic : HarperMagic + extraMagic;
+                extraMagic = isPercentage ? (int) (SkyeMaxMagic * amount/100) : amount;
+                SkyeMagic = SkyeMagic + extraMagic > SkyeMaxMagic ? SkyeMaxMagic : SkyeMagic + extraMagic;
+                extraMagic = isPercentage ? (int) (SullivanMaxMagic * amount/100) : amount;
+                SullivanMagic = SullivanMagic + extraMagic > SullivanMaxMagic ? SullivanMaxMagic : SullivanMagic + extraMagic;
                 break;
             case "MC":
-                MCMagic = MCMagic + amount > MCMaxMagic ? MCMaxMagic : MCMagic + amount;
+                extraMagic = isPercentage ? (int) (MCMaxMagic * amount/100) : amount;
+                MCMagic = MCMagic + extraMagic > MCMaxMagic ? MCMaxMagic : MCMagic + extraMagic;
                 break;
             case "Rhys":
-                RhysMagic = RhysMagic + amount > RhysMaxMagic ? RhysMaxMagic : RhysMagic + amount;
+                extraMagic = isPercentage ? (int) (RhysMaxMagic * amount/100) : amount;
+                RhysMagic = RhysMagic + extraMagic > RhysMaxMagic ? RhysMaxMagic : RhysMagic + extraMagic;
                 break;
             case "Jameel":
-                JameelMagic = JameelMagic + amount > JameelMaxMagic ? JameelMaxMagic : JameelMagic + amount;
+                extraMagic = isPercentage ? (int) (JameelMaxMagic * amount/100) : amount;
+                JameelMagic = JameelMagic + extraMagic > JameelMaxMagic ? JameelMaxMagic : JameelMagic + extraMagic;
                 break;
             case "Harper":
-                HarperMagic = HarperMagic + amount > HarperMaxMagic ? HarperMaxMagic : HarperMagic + amount;
+                extraMagic = isPercentage ? (int) (HarperMaxMagic * amount/100) : amount;
+                HarperMagic = HarperMagic + extraMagic > HarperMaxMagic ? HarperMaxMagic : HarperMagic + extraMagic;
                 break;
             case "Skye":
-                SkyeMagic = SkyeMagic + amount > SkyeMaxMagic ? SkyeMaxMagic : SkyeMagic + amount;
+                extraMagic = isPercentage ? (int) (SkyeMaxMagic * amount/100) : amount;
+                SkyeMagic = SkyeMagic + extraMagic > SkyeMaxMagic ? SkyeMaxMagic : SkyeMagic + extraMagic;
                 break;
             case "Sullivan":
-                SullivanMagic = SullivanMagic + amount > SullivanMaxMagic ? SullivanMaxMagic : SullivanMagic + amount;
+                extraMagic = isPercentage ? (int) (SullivanMaxMagic * amount/100) : amount;
+                SullivanMagic = SullivanMagic + extraMagic > SullivanMaxMagic ? SullivanMaxMagic : SullivanMagic + extraMagic;
                 break;
         }
     }
