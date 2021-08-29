@@ -191,16 +191,8 @@ public class ClassroomDialogueManager : MonoBehaviour
         {
             if (isFinal)
             {
-                if (isMorningFinal)
-                {
-                    GameManager.timeOfDay = 1;
-                }
-                if (isEveningFinal)
-                {
-                    GameManager.timeOfDay = 4;
-                    datePlay.SetBool("ToPlay", true);
-                    StartCoroutine(WaitingFinals());
-                }
+                StartCoroutine(StatsWaitingFinals());
+                GameManager.IncreaseStatLevel();
             }
 
             Debug.Log("endOfConversation");
@@ -210,8 +202,11 @@ public class ClassroomDialogueManager : MonoBehaviour
             {
                 GameManager.instance.CanvasForStats.SetActive(true);
             }
-            GameManager.IncreaseStatLevel();
-            StartCoroutine(StatsWaiting());
+            if (!isFinal)
+            {
+                GameManager.IncreaseStatLevel();
+                StartCoroutine(StatsWaiting());
+            }
            // GameManager.ProgressDay();
         }
     }
@@ -219,11 +214,23 @@ public class ClassroomDialogueManager : MonoBehaviour
     IEnumerator WaitingFinals()
     {
         yield return new WaitForSeconds(2.1f);
+        if (isMorningFinal)
+        {
+            datePlay.SetBool("ToPlay", false);
+            GameManager.timeOfDay = 2;
+            GameManager.timeOfDay++;
+            GameManager.ProgressDay();
+        }
 
-        datePlay.SetBool("ToPlay", false);
-        GameManager.timeOfDay++;
-        datePlay.SetBool("ToPlay", true);
-        StartCoroutine(LoadRoomWaitFinals());
+        if (isEveningFinal)
+        {
+            datePlay.SetBool("ToPlay", false);
+            GameManager.timeOfDay = 4;
+            GameManager.timeOfDay++;
+            GameManager.ProgressDay();
+        }
+
+        StartCoroutine(LoadRoomWait());
     }
     IEnumerator StatsWaiting()
     {
@@ -231,6 +238,14 @@ public class ClassroomDialogueManager : MonoBehaviour
         GameManager.instance.CanvasForStats.SetActive(false);
         datePlay.SetBool("ToPlay", true);
         StartCoroutine(Waiting());
+    }
+
+    IEnumerator StatsWaitingFinals()
+    {
+        yield return new WaitForSeconds(3f);
+        GameManager.instance.CanvasForStats.SetActive(false);
+        datePlay.SetBool("ToPlay", true);
+        StartCoroutine(WaitingFinals());
     }
 
     IEnumerator Waiting()
@@ -251,14 +266,6 @@ public class ClassroomDialogueManager : MonoBehaviour
     IEnumerator LoadRoomWait()
     {
         yield return new WaitForSeconds(.1f);
-        SceneManager.LoadScene(RoomToGoTo);
-    }
-
-    IEnumerator LoadRoomWaitFinals()
-    {
-        yield return new WaitForSeconds(.1f);
-        GameManager.timeOfDay++;
-        datePlay.SetBool("ToPlay", false);
         SceneManager.LoadScene(RoomToGoTo);
     }
 }

@@ -403,6 +403,7 @@ public class GameManager : MonoBehaviour
         {
             timeOfDay++;
         }
+
         CalculateTimeOfDay();
         if (timeOfDay > 4)
         {
