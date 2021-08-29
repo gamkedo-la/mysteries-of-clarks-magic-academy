@@ -46,6 +46,12 @@ public class ClassroomDialogueManager : MonoBehaviour
 
     private void Start()
     {
+        print(GameManager.month + " " + GameManager.day + " " + GameManager.timeOfDay);
+        if (isMorningFinal)
+        {
+            GameManager.timeOfDay = 1;
+        }
+
         sentences = new Queue<string>();
         isCalledOn = new Queue<bool>();
         isWandMotion = new Queue<bool>();
@@ -191,6 +197,7 @@ public class ClassroomDialogueManager : MonoBehaviour
         {
             if (isFinal)
             {
+                print("here?");
                 StartCoroutine(StatsWaitingFinals());
                 GameManager.IncreaseStatLevel();
             }
@@ -214,21 +221,20 @@ public class ClassroomDialogueManager : MonoBehaviour
     IEnumerator WaitingFinals()
     {
         yield return new WaitForSeconds(2.1f);
+
         if (isMorningFinal)
         {
-            datePlay.SetBool("ToPlay", false);
             GameManager.timeOfDay = 2;
-            GameManager.timeOfDay++;
-            GameManager.ProgressDay();
         }
 
         if (isEveningFinal)
         {
-            datePlay.SetBool("ToPlay", false);
             GameManager.timeOfDay = 4;
-            GameManager.timeOfDay++;
-            GameManager.ProgressDay();
         }
+        datePlay.SetBool("ToPlay", false);
+        GameManager.timeOfDay++;
+        GameManager.ProgressDay();
+        print("am i even here");
 
         StartCoroutine(LoadRoomWait());
     }
@@ -245,6 +251,7 @@ public class ClassroomDialogueManager : MonoBehaviour
         yield return new WaitForSeconds(3f);
         GameManager.instance.CanvasForStats.SetActive(false);
         datePlay.SetBool("ToPlay", true);
+        print("how about here?");
         StartCoroutine(WaitingFinals());
     }
 
