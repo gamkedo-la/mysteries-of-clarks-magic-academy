@@ -41,19 +41,14 @@ public class TurnLessonOn : MonoBehaviour
                 Lessons[5].SetActive(true);
             }
 
-            if (GameManager.day == 17 && GameManager.month == 5)
+            if (GameManager.day == 24 && GameManager.month == 5)
             {
                 Lessons[6].SetActive(true);
             }
 
-            if (GameManager.day == 24 && GameManager.month == 5)
-            {
-                Lessons[7].SetActive(true);
-            }
-
             if (GameManager.day == 26 && GameManager.month == 5)
             {
-                Lessons[8].SetActive(true);
+                Lessons[7].SetActive(true);
             }
         }
 

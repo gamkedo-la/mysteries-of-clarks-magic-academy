@@ -193,11 +193,13 @@ public class ClassroomDialogueManager : MonoBehaviour
             {
                 if (isMorningFinal)
                 {
-                    GameManager.timeOfDay = 2;
+                    GameManager.timeOfDay = 1;
                 }
                 if (isEveningFinal)
                 {
                     GameManager.timeOfDay = 4;
+                    datePlay.SetBool("ToPlay", true);
+                    StartCoroutine(WaitingFinals());
                 }
             }
 
@@ -212,6 +214,16 @@ public class ClassroomDialogueManager : MonoBehaviour
             StartCoroutine(StatsWaiting());
            // GameManager.ProgressDay();
         }
+    }
+
+    IEnumerator WaitingFinals()
+    {
+        yield return new WaitForSeconds(2.1f);
+
+        datePlay.SetBool("ToPlay", false);
+        GameManager.timeOfDay++;
+        datePlay.SetBool("ToPlay", true);
+        StartCoroutine(LoadRoomWaitFinals());
     }
     IEnumerator StatsWaiting()
     {
@@ -239,6 +251,14 @@ public class ClassroomDialogueManager : MonoBehaviour
     IEnumerator LoadRoomWait()
     {
         yield return new WaitForSeconds(.1f);
+        SceneManager.LoadScene(RoomToGoTo);
+    }
+
+    IEnumerator LoadRoomWaitFinals()
+    {
+        yield return new WaitForSeconds(.1f);
+        GameManager.timeOfDay++;
+        datePlay.SetBool("ToPlay", false);
         SceneManager.LoadScene(RoomToGoTo);
     }
 }
