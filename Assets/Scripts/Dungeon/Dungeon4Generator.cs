@@ -85,24 +85,28 @@ public class Dungeon4Generator : MonoBehaviour {
 		}
 
 		//Initialize map abstraction
-		List<Vector2> roomsVec2 = new List<Vector2>();
+		List<Vector2Int> roomsVec2 = new List<Vector2Int>();
 		List<bool[]> roomsbool = new List<bool[]>();
-		List<Vector2> dir = new List<Vector2>() {Vector2.up, Vector2.right, Vector2.down, Vector2.left};
-		roomsVec2.Add(Vector2.zero);
+		List<Vector2Int> dir = new List<Vector2Int>() { Vector2Int.up, Vector2Int.right, Vector2Int.down, Vector2Int.left};
+		roomsVec2.Add(Vector2Int.zero);
 		roomsbool.Add(new bool[] { false, false, false, false });
+		Debug.Log("``````````````````````````````````````````````````````````````");
 
 		//Generate map
 		while (roomsVec2.Count <= currentLevel + 1) {
 			int newIndex = Random.Range(0, roomsVec2.Count);
 			int newDir = Random.Range(0, 4);
-			Vector2 oldPos = roomsVec2[newIndex];
-			Vector2 newPos = oldPos + dir[newDir];
+			Vector2Int oldPos = roomsVec2[newIndex];
+			Vector2Int newPos = oldPos + dir[newDir];
+			Debug.Log(oldPos + " " + newPos);
 			if (!roomsVec2.Contains(newPos)) {
 				roomsVec2.Add(newPos);
 				roomsbool.Add(new bool[] { false, false, false, false });
+				Debug.Log("New room!");
 			}
 			roomsbool[newIndex][newDir] = true;
 			roomsbool[roomsbool.Count-1][(newDir + 2) % 4] = true;
+			Debug.Log(newDir + " " + ((newDir + 2) % 4));
 		}
 
 		//Instanciate map
@@ -111,6 +115,7 @@ public class Dungeon4Generator : MonoBehaviour {
 			List<GameObject> targetTransforms = floor.GetComponent<FourSidedTileGenerator>().targetTransforms;
 
 			floor.transform.position = new Vector3(roomsVec2[i].x, 0f, roomsVec2[i].y) * gridScale;
+			floor.gameObject.name = roomsVec2[i].ToString();
 			floor.transform.parent = transform;
 
 			//Instanciate walls and bridges
@@ -154,9 +159,9 @@ public class Dungeon4Generator : MonoBehaviour {
 		} else {
 			theExit = exit;
 		}
-		Vector2 farthestRoom = new Vector2(0f, 0f);
-		foreach (Vector2 room in roomsVec2) {
-			if (Vector2.Distance(room, new Vector2(0f, 0f)) > Vector2.Distance(farthestRoom, new Vector2(0f, 0f))) {
+		Vector2Int farthestRoom = Vector2Int.zero;
+		foreach (Vector2Int room in roomsVec2) {
+			if (Vector2Int.Distance(room, Vector2Int.zero) > Vector2Int.Distance(farthestRoom, Vector2Int.zero)) {
 				farthestRoom = room;
 			}
 		}
@@ -166,7 +171,7 @@ public class Dungeon4Generator : MonoBehaviour {
 		theExit.transform.parent = transform;
 
 		//Spawn Treasure and Portal
-		Vector2 portalRoom = new Vector2();
+		Vector2Int portalRoom = new Vector2Int();
 		if (currentRooms.Count > 2) {
 			int newIndex = Random.Range(1, roomsVec2.Count);
 			portalRoom = roomsVec2[newIndex];
@@ -181,12 +186,12 @@ public class Dungeon4Generator : MonoBehaviour {
 			} else {
 				thePortal = portal;
 			}
-			thePortal.transform.position = portalRoom * gridScale;
+			thePortal.transform.position = new Vector3(portalRoom.x, 0f, portalRoom.y) * gridScale;
 			thePortal.transform.Rotate(0f, Random.Range(0f, 360f), 0f);
 			thePortal.transform.parent = transform;
 		}
-		Vector2 treasureRoom = new Vector2();
-		if (currentRooms.Count > 4) {
+		Vector2Int treasureRoom = new Vector2Int();
+		if (currentRooms.Count > 3) {
 			int newIndex = Random.Range(1, roomsVec2.Count);
 			treasureRoom = roomsVec2[newIndex];
 			while (treasureRoom == farthestRoom || treasureRoom == portalRoom) {
@@ -200,7 +205,7 @@ public class Dungeon4Generator : MonoBehaviour {
 			} else {
 				theTreasure = treasure;
 			}
-			theTreasure.transform.position = treasureRoom * gridScale;
+			theTreasure.transform.position = new Vector3(treasureRoom.x, 0f, treasureRoom.y) * gridScale;
 			theTreasure.transform.Rotate(0f, Random.Range(0f, 360f), 0f);
 			theTreasure.transform.parent = transform;
 		}
@@ -213,7 +218,6 @@ public class Dungeon4Generator : MonoBehaviour {
 			if (room == farthestRoom) continue;
 
 			float percentRange = Random.Range(0f, 1f);
-			Debug.Log(percentRange);
 			if (1f/roomsVec2.Count >= percentRange && !portalSpawned) {
 				GameObject theSpawn = null;
 				if (!treasureSpawned) {
