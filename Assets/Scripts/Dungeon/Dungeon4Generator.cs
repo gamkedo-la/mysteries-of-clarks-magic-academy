@@ -90,7 +90,6 @@ public class Dungeon4Generator : MonoBehaviour {
 		List<Vector2Int> dir = new List<Vector2Int>() { Vector2Int.up, Vector2Int.right, Vector2Int.down, Vector2Int.left};
 		roomsVec2.Add(Vector2Int.zero);
 		roomsbool.Add(new bool[] { false, false, false, false });
-		Debug.Log("``````````````````````````````````````````````````````````````");
 
 		//Generate map
 		while (roomsVec2.Count <= currentLevel + 1) {
@@ -98,15 +97,15 @@ public class Dungeon4Generator : MonoBehaviour {
 			int newDir = Random.Range(0, 4);
 			Vector2Int oldPos = roomsVec2[newIndex];
 			Vector2Int newPos = oldPos + dir[newDir];
-			Debug.Log(oldPos + " " + newPos);
 			if (!roomsVec2.Contains(newPos)) {
 				roomsVec2.Add(newPos);
 				roomsbool.Add(new bool[] { false, false, false, false });
-				Debug.Log("New room!");
+				roomsbool[newIndex][newDir] = true;
+				roomsbool[roomsbool.Count-1][(newDir + 2) % 4] = true;
+			} else {
+				roomsbool[newIndex][newDir] = true;
+				roomsbool[roomsVec2.IndexOf(newPos)][(newDir + 2) % 4] = true;
 			}
-			roomsbool[newIndex][newDir] = true;
-			roomsbool[roomsbool.Count-1][(newDir + 2) % 4] = true;
-			Debug.Log(newDir + " " + ((newDir + 2) % 4));
 		}
 
 		//Instanciate map
