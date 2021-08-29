@@ -46,7 +46,6 @@ public class ClassroomDialogueManager : MonoBehaviour
 
     private void Start()
     {
-        print(GameManager.month + " " + GameManager.day + " " + GameManager.timeOfDay);
         if (isMorningFinal)
         {
             GameManager.timeOfDay = 1;
