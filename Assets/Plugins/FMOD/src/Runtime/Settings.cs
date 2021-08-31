@@ -691,14 +691,19 @@ namespace FMODUnity
         {
             get
             {
-                if (PlatformForBuildTarget.ContainsKey(EditorUserBuildSettings.activeBuildTarget))
-                {
-                    return PlatformForBuildTarget[EditorUserBuildSettings.activeBuildTarget];
-                }
-                else
-                {
-                    return defaultPlatform;
-                }
+                return GetPlatform(EditorUserBuildSettings.activeBuildTarget);
+            }
+        }
+
+        public Platform GetPlatform(BuildTarget buildTarget)
+        {
+            if (PlatformForBuildTarget.ContainsKey(buildTarget))
+            {
+                return PlatformForBuildTarget[buildTarget];
+            }
+            else
+            {
+                return defaultPlatform;
             }
         }
 #endif
@@ -1106,7 +1111,9 @@ namespace FMODUnity
 
         public static void DeleteTemporaryFile(string assetPath)
         {
-            if (AssetDatabase.DeleteAsset(assetPath))
+            bool assetExists = !string.IsNullOrEmpty(AssetDatabase.AssetPathToGUID(assetPath));
+
+            if (assetExists && AssetDatabase.DeleteAsset(assetPath))
             {
                 Debug.LogFormat("FMOD: Removed temporary file {0}", assetPath);
             }

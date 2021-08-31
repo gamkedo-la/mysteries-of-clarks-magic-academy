@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections;
 using System.IO;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using UnityEngine;
@@ -23,6 +24,7 @@ namespace FMODUnity
         static RuntimeManager instance;
 
         Platform currentPlatform;
+        FMOD.DEBUG_CALLBACK debugCallback;
         FMOD.SYSTEM_CALLBACK errorCallback;
 
         [AOT.MonoPInvokeCallback(typeof(FMOD.DEBUG_CALLBACK))]
@@ -44,6 +46,22 @@ namespace FMODUnity
             {
                 Debug.Log(string.Format(("[FMOD] {0} : {1}"), (string)func, (string)message));
             }
+            return FMOD.RESULT.OK;
+        }
+
+        [AOT.MonoPInvokeCallback(typeof(FMOD.SYSTEM_CALLBACK))]
+        static FMOD.RESULT ERROR_CALLBACK(IntPtr system, FMOD.SYSTEM_CALLBACK_TYPE type, IntPtr commanddata1, IntPtr commanddata2, IntPtr userdata)
+        {
+            FMOD.ERRORCALLBACK_INFO callbackInfo = (FMOD.ERRORCALLBACK_INFO)FMOD.MarshalHelper.PtrToStructure(commanddata1, typeof(FMOD.ERRORCALLBACK_INFO));
+
+            // Filter out benign expected errors.
+            if ((callbackInfo.instancetype == FMOD.ERRORCALLBACK_INSTANCETYPE.CHANNEL || callbackInfo.instancetype == FMOD.ERRORCALLBACK_INSTANCETYPE.CHANNELCONTROL) && callbackInfo.result == FMOD.RESULT.ERR_INVALID_HANDLE)
+            {
+                return FMOD.RESULT.OK;
+            }
+
+            Debug.LogError(string.Format("[FMOD] {0}({1}) returned {2} for {3} (0x{4}).",
+                (string)callbackInfo.functionname, (string)callbackInfo.functionparams, callbackInfo.result, callbackInfo.instancetype, callbackInfo.instance.ToString("X")));
             return FMOD.RESULT.OK;
         }
 
@@ -213,7 +231,8 @@ namespace FMODUnity
             currentPlatform.PreSystemCreate(CheckInitResult);
 
             #if UNITY_EDITOR || DEVELOPMENT_BUILD
-            result = FMOD.Debug.Initialize(fmodSettings.LoggingLevel, FMOD.DEBUG_MODE.CALLBACK, DEBUG_CALLBACK, null);
+            debugCallback = new FMOD.DEBUG_CALLBACK(DEBUG_CALLBACK);
+            result = FMOD.Debug.Initialize(fmodSettings.LoggingLevel, FMOD.DEBUG_MODE.CALLBACK, debugCallback, null);
             if(result == FMOD.RESULT.ERR_UNSUPPORTED)
             {
                 Debug.LogWarning("[FMOD] Unable to initialize debug logging: Logging will be disabled.\nCheck the Import Settings of the FMOD libs to enable the logging library.");
@@ -258,7 +277,7 @@ retry:
 
             if (fmodSettings.EnableErrorCallback)
             {
-                errorCallback = new FMOD.SYSTEM_CALLBACK(ErrorCallback);
+                errorCallback = new FMOD.SYSTEM_CALLBACK(ERROR_CALLBACK);
                 result = coreSystem.setCallback(errorCallback, FMOD.SYSTEM_CALLBACK_TYPE.ERROR);
                 CheckInitResult(result, "FMOD.System.setCallback");
             }
@@ -323,16 +342,6 @@ retry:
             return initResult;
         }
 
-
-        [AOT.MonoPInvokeCallback(typeof(FMOD.SYSTEM_CALLBACK))]
-        static FMOD.RESULT ErrorCallback(IntPtr system, FMOD.SYSTEM_CALLBACK_TYPE type, IntPtr commanddata1, IntPtr commanddata2, IntPtr userdata)
-        {
-            FMOD.ERRORCALLBACK_INFO callbackInfo = (FMOD.ERRORCALLBACK_INFO)FMOD.MarshalHelper.PtrToStructure(commanddata1, typeof(FMOD.ERRORCALLBACK_INFO));
-            Debug.LogError(string.Format("[FMOD] {0}({1}) returned {2} for {3} (0x{4}).",
-                (string)callbackInfo.functionname, (string)callbackInfo.functionparams, callbackInfo.result, callbackInfo.instancetype, callbackInfo.instance.ToString("X")));
-            return FMOD.RESULT.OK;
-        }
-
         private static void SetThreadAffinities(Platform platform)
         {
             foreach (ThreadAffinityGroup group in platform.ThreadAffinities)
@@ -374,7 +383,7 @@ retry:
             {
                 if (Listeners[i] != null && listener.gameObject == Listeners[i].gameObject)
                 {
-                    //Debug.LogWarning(string.Format(("[FMOD] Listener has already been added at index {0}."), i));
+                    Debug.LogWarning(string.Format(("[FMOD] Listener has already been added at index {0}."), i));
                     return i;
                 }
             }
@@ -724,6 +733,7 @@ retry:
 
         void OnDestroy()
         {
+            coreSystem.setCallback(null, 0);
             ReleaseStudioSystem();
 
             initException = null;
@@ -891,7 +901,7 @@ retry:
 #if !UNITY_EDITOR
                 if (!string.IsNullOrEmpty(Settings.Instance.TargetSubFolder))
                 {
-                    bankFolder = Path.Combine(bankFolder, Settings.Instance.TargetSubFolder);
+                    bankFolder = RuntimeUtils.GetCommonPlatformPath(Path.Combine(bankFolder, Settings.Instance.TargetSubFolder));
                 }
 #endif
 
@@ -946,6 +956,8 @@ retry:
             }
         }
 
+        public const string BankStubPrefix = "bank stub:";
+
         public static void LoadBank(TextAsset asset, bool loadSamples = false)
         {
             string bankName = asset.name;
@@ -961,6 +973,15 @@ retry:
             }
             else
             {
+#if UNITY_EDITOR
+                if (asset.text.StartsWith(BankStubPrefix))
+                {
+                    string name = asset.text.Substring(BankStubPrefix.Length);
+                    LoadBank(name, loadSamples);
+                    return;
+                }
+#endif
+
                 LoadedBank loadedBank = new LoadedBank();
                 FMOD.RESULT loadResult = Instance.studioSystem.loadBankMemory(asset.bytes, FMOD.Studio.LOAD_BANK_FLAGS.NORMAL, out loadedBank.Bank);
 
