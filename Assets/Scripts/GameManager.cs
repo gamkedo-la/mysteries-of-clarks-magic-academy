@@ -147,7 +147,8 @@ public class GameManager : MonoBehaviour
 
         //Game start is at - month 4 day 17 time of day 4
 
-        
+        Money = 100;
+
         dayOfWeek = 0;
         month = 4;
         day =17;
