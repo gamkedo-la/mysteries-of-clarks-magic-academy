@@ -5,7 +5,7 @@
 			<value>StoneSteps</value>
 		</property>
 		<property name="outputFormat">
-			<value>2</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{868e13b6-ba95-4bf2-ba5a-c3b263260af4}</destination>
@@ -80,6 +80,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{5f3e5646-2c21-4099-ad6e-79be9964bf70}">
+		<property name="volume">
+			<value>-17.5</value>
+		</property>
 		<relationship name="effectChain">
 			<destination>{a2533668-cf11-4991-b070-bdce59a2ca3c}</destination>
 		</relationship>
@@ -118,7 +121,6 @@
 	<object class="MixerBusEffectChain" id="{a2533668-cf11-4991-b070-bdce59a2ca3c}">
 		<relationship name="effects">
 			<destination>{c056fa80-7bdb-45b2-b9d5-bc30ca4c2242}</destination>
-			<destination>{c00cc277-bf53-4279-b1a6-46b36efc07ab}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{ad9a3b0a-8878-439a-ac43-78cad1935824}" />
@@ -141,7 +143,6 @@
 	</object>
 	<object class="MixerBusPanner" id="{370af9f1-a5e3-4fc6-a39b-ac7df6d2fc66}" />
 	<object class="MixerBusFader" id="{c056fa80-7bdb-45b2-b9d5-bc30ca4c2242}" />
-	<object class="SpatialiserEffect" id="{c00cc277-bf53-4279-b1a6-46b36efc07ab}" />
 	<object class="SingleSound" id="{3367e821-f7c1-4037-8555-bfe50f19e596}">
 		<relationship name="audioFile">
 			<destination>{9d9352e3-3e82-48b6-9b19-71b4b3e90754}</destination>

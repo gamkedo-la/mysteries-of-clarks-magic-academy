@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayFootStepScript : MonoBehaviour
+public class PlayFootstepScript : MonoBehaviour
 {
     
-    
+    public void PlayFootstepSound()
+    {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/StoneSteps");
+    }
 }
