@@ -5,6 +5,8 @@ using UnityEngine;
 public class TurnOffAfterPeriodOfTime : MonoBehaviour
 {
     public float TimeToTurnOff;
+    public bool TurnDiffObjOn;
+    public GameObject toTurnOn;
 
     private void Update()
     {
@@ -12,6 +14,10 @@ public class TurnOffAfterPeriodOfTime : MonoBehaviour
 
         if (TimeToTurnOff <= 0)
         {
+            if (TurnDiffObjOn)
+            {
+                toTurnOn.SetActive(true);
+            }
             this.gameObject.SetActive(false);
         }
     }
