@@ -43,6 +43,7 @@ public class PauseMenu : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Escape)){
             TogglePause();
+            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/UIButtonClick");
         }
     }
 
@@ -68,6 +69,7 @@ public class PauseMenu : MonoBehaviour
     }
     public void Party() {
         Debug.Log("Pressed Party Button");
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/UIButtonClick");
     }
 
     public void Inventory() {
