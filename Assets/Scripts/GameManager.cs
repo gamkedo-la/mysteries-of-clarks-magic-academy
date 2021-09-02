@@ -127,6 +127,8 @@ public class GameManager : MonoBehaviour
 
     public static bool pauseMenuTutorialTipHasBeenShown = false;
 
+    public GameObject canvasForDateGA;
+
     private void Awake()
     {
         if (instance == null)
@@ -366,6 +368,16 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            canvasForDateGA.SetActive(false);
+        }
+
+        else
+        {
+            canvasForDateGA.SetActive(true);
+        }
+
         //Turn off when done testing
         if (Input.GetKeyDown(KeyCode.C))
         {
@@ -1372,4 +1384,21 @@ public class GameManager : MonoBehaviour
     }
 
     #endregion
+
+    public void SaveGame()
+    {
+        SaveSystem.SaveGame(this);
+
+        print("Game Saved");
+    }
+
+    public void LoadGame()
+    {
+        SaveGameData data = SaveSystem.LoadData();
+        MCFirstName = data.MCFirstName;
+        MCLastName = data.MCLastName;
+
+        print(data.MCFirstName);
+        print(data.MCLastName);
+    }
 }
