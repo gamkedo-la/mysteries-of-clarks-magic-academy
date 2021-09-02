@@ -60,6 +60,7 @@ public class DoorToNextArea : MonoBehaviour
                     GameManager.playerRotation = player.transform.rotation;
                     GameManager.playerSpawn = player.transform.position;
                     SceneManager.LoadScene("HoldingRoom");
+                    FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/DoorOpenShut");
                 }
 
                 else
@@ -67,6 +68,7 @@ public class DoorToNextArea : MonoBehaviour
                     GameManager.playerRotation = RotationToSpawnInRoomYoureGoingTo;
                     GameManager.playerSpawn = LocationToSpawnInRoomYoureGoingTo;
                     SceneManager.LoadScene(RoomToGoTo);
+                    FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/DoorOpenShut");
                 }
             }
         }
