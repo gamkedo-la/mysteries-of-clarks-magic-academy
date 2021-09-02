@@ -1,12 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Unity.AI.Navigation;
 
 public class RoomTemplates : MonoBehaviour {
 	public static RoomTemplates Instance;
 	//If you want a room to have a higher % chance to get pulled, add multiple instances in the array
+
+	public NavMeshSurface surface;
 
 	public int dungeonNumber = 0;
 
@@ -124,6 +128,7 @@ public class RoomTemplates : MonoBehaviour {
 		}
 
 		if (waitTime <= 0) {
+			print("here");
 			if (!playerPlaced) {
 				if (!exitRoom) {
 					for (int i = 0; i < rooms.Count; i++) {
@@ -166,10 +171,17 @@ public class RoomTemplates : MonoBehaviour {
 					enemySpawn.transform.parent = parented.transform;
 				}
 			}
-		} else {
+			StartCoroutine(BuildNavMesh());
+			print("here 1");
+		} 
+		
+		else 
+		
+		{
 			waitTime -= Time.deltaTime;
+			print("here 2");
 		}
-
+		print("here 3");
 	}
 
 	public void RunStartOfScene() {
@@ -212,4 +224,36 @@ public class RoomTemplates : MonoBehaviour {
 		Destroy(gameObject);
 		SceneManager.LoadScene("HoldingRoom");
 	}
+
+
+
+	IEnumerator BuildNavMesh()
+	{
+		yield return null;
+
+		surface.BuildNavMesh();
+	}
 }
+
+
+/*
+#if UNITY_EDITOR
+[CustomEditor(typeof(Dungeon5Generator))]
+public class Dungeon5GeneratorEditor : Editor
+{
+	public override void OnInspectorGUI()
+	{
+		base.OnInspectorGUI();
+
+		if (GUILayout.Button("Generate"))
+		{
+			(target as Dungeon5Generator).Generate();
+		}
+
+		if (GUILayout.Button("Clear"))
+		{
+			(target as Dungeon5Generator).Clear();
+		}
+	}
+}
+#endif*/
