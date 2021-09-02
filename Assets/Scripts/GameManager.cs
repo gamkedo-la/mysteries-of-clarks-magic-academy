@@ -1395,10 +1395,155 @@ public class GameManager : MonoBehaviour
     public void LoadGame()
     {
         SaveGameData data = SaveSystem.LoadData();
+
+        //Save Player name
         MCFirstName = data.MCFirstName;
         MCLastName = data.MCLastName;
 
-        print(data.MCFirstName);
-        print(data.MCLastName);
+        //Save date, time
+        month = data.month;
+        day = data.day;
+        dayOfWeek = data.dayOfWeek;
+        timeOfDay = data.timeOfDay;
+
+        //Save unlocked party members
+        RhysAvailable = data.RhysAvailable;
+        JameelAvailable = data.JameelAvailable;
+        GracieMayAvailable = data.GracieMayAvailable;
+        HarperAvailable = data.HarperAvailable;
+        SkyeAvailable = data.SkyeAvailable;
+        SullivanAvailable = data.SullivanAvailable;
+
+        RhysInParty = data.RhysInParty;
+        JameelInParty = data.JameelInParty;
+        HarperInParty = data.HarperInParty;
+        SkyeInParty = data.SkyeInParty;
+        SullivanInParty = data.SullivanInParty;
+        PartyCount = data.PartyCount;
+
+        //Items/Money
+        Money = data.Money;
+
+        //Friendship levels
+        RhysFriendship = data.RhysFriendship;
+        JameelFriendship = data.JameelFriendship;
+        HarperFriendship = data.HarperFriendship;
+        SullivanFriendship = data.SullivanFriendship;
+        SkyeFriendship = data.SkyeFriendship;
+        GracieMayFriendship = data.GracieMayFriendship;
+        AtornFriendship = data.AtornFriendship;
+        ManrajFriendship = data.ManrajFriendship;
+        SpecterFriendship = data.SpecterFriendship;
+
+        //Player stats
+        Intelligence = data.Intelligence;
+        Charisma = data.Charisma;
+        Courage = data.Courage;
+        Proficiency = data.Proficiency;
+        IntelligenceLevel = data.IntelligenceLevel;
+        CharismaLevel = data.CharismaLevel;
+        CourageLevel = data.CourageLevel;
+        ProficiencyLevel = data.ProficiencyLevel;
+
+        //Party levels
+        MCTrans = data.MCTrans;
+        MCCharms = data.MCCharms;
+        MCPotions = data.MCPotions;
+        MCDADA = data.MCDADA;
+        MCDodge = data.MCDodge;
+
+        RhysTrans = data.RhysTrans;
+        RhysCharms = data.RhysCharms;
+        RhysPotions = data.RhysPotions;
+        RhysDADA = data.RhysDADA;
+        RhysDodge = data.RhysDodge;
+
+        JameelTrans = data.JameelTrans;
+        JameelCharms = data.JameelCharms;
+        JameelPotions = data.JameelPotions;
+        JameelDADA = data.JameelDADA;
+        JameelDodge = data.JameelDodge;
+
+        HarperTrans = data.HarperTrans;
+        HarperCharms = data.HarperCharms;
+        HarperPotions = data.HarperPotions;
+        HarperDADA = data.HarperDADA;
+        HarperDodge = data.HarperDodge;
+
+        SkyeTrans = data.SkyeTrans;
+        SkyeCharms = data.SkyeCharms;
+        SkyePotions = data.SkyePotions;
+        SkyeDADA = data.SkyeDADA;
+        SkyeDodge = data.SkyeDodge;
+
+        SullivanTrans = data.SullivanTrans;
+        SullivanCharms = data.SullivanCharms;
+        SullivanPotions = data.SullivanPotions;
+        SullivanDADA = data.SullivanDADA;
+        SullivanDodge = data.SullivanDodge;
+
+        GracieMayTrans = data.GracieMayTrans;
+        GracieMayCharms = data.GracieMayCharms;
+        GracieMayPotions = data.GracieMayPotions;
+        GracieMayDADA = data.GracieMayDADA;
+        GracieMayDodge = data.GracieMayDodge;
+
+        //Experience in battle - level, amount to next level
+        MCExp = data.MCExp;
+        RhysExp = data.RhysExp;
+        JameelExp = data.JameelExp;
+        HarperExp = data.HarperExp;
+        SkyeExp = data.SkyeExp;
+        SullivanExp = data.SullivanExp;
+        GracieMayExp = data.GracieMayExp;
+
+        MCTargetExp = data.MCTargetExp;
+        RhysTargetExp = data.RhysTargetExp;
+        JameelTargetExp = data.JameelTargetExp;
+        HarperTargetExp = data.HarperTargetExp;
+        SkyeTargetExp = data.SkyeTargetExp;
+        SullivanTargetExp = data.SullivanTargetExp;
+        GracieMayTargetExp = data.GracieMayTargetExp;
+
+        MCLevel = data.MCLevel;
+        RhysLevel = data.RhysLevel;
+        JameelLevel = data.JameelLevel;
+        HarperLevel = data.HarperLevel;
+        SkyeLevel = data.SkyeLevel;
+        SullivanLevel = data.SullivanLevel;
+        GracieMayLevel = data.GracieMayLevel;
+
+        //Health and Mana for each party member (current, max)
+        MCHealth = data.MCHealth;
+        RhysHealth = data.RhysHealth;
+        JameelHealth = data.JameelHealth;
+        HarperHealth = data.HarperHealth;
+        SkyeHealth = data.SkyeHealth;
+        SullivanHealth = data.SullivanHealth;
+
+        MCMagic = data.MCMagic;
+        RhysMagic = data.RhysMagic;
+        JameelMagic = data.JameelMagic;
+        HarperMagic = data.HarperMagic;
+        SkyeMagic = data.SkyeMagic;
+        SullivanMagic = data.SullivanMagic;
+
+        MCMaxHealth = data.MCMaxHealth;
+        RhysMaxHealth = data.RhysMaxHealth;
+        JameelMaxHealth = data.JameelMaxHealth;
+        HarperMaxHealth = data.HarperMaxHealth;
+        SkyeMaxHealth = data.SkyeMaxHealth;
+        SullivanMaxHealth = data.SullivanMaxHealth;
+
+        MCMaxMagic = data.MCMaxMagic;
+        RhysMaxMagic = data.RhysMaxMagic;
+        JameelMaxMagic = data.JameelMaxMagic;
+        HarperMaxMagic = data.HarperMaxMagic;
+        SkyeMaxMagic = data.SkyeMaxMagic;
+        SullivanMaxMagic = data.SullivanMaxMagic;
+
+        int floorCountName = data.floorCountName;
+
+        SceneManager.LoadScene(floorCountName);
     }
 }
