@@ -44,6 +44,8 @@ public class ClassroomDialogueManager : MonoBehaviour
 
     public bool isGreatHall;
 
+    private FMOD.Studio.EventInstance professorWahSound;
+
     private void Start()
     {
         if (isMorningFinal)
@@ -68,6 +70,8 @@ public class ClassroomDialogueManager : MonoBehaviour
         StartCoroutine(InitialWaiting());
 
         datePlay = GameObject.Find("CanvasForDate").GetComponent<Animator>();
+
+        professorWahSound = FMODUnity.RuntimeManager.CreateInstance("event:/SFX/ProfessorWahs");
     }
 
     IEnumerator InitialWaiting()
@@ -80,6 +84,7 @@ public class ClassroomDialogueManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            professorWahSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             DisplayNextSentence();
         }
     }
@@ -129,6 +134,7 @@ public class ClassroomDialogueManager : MonoBehaviour
 
         StopAllCoroutines();
         StartCoroutine(TypeSentence(sentence));
+        professorWahSound.start();
 
         if (!isWriting)
         {
@@ -171,6 +177,9 @@ public class ClassroomDialogueManager : MonoBehaviour
             dialogueText.text += letter;
             yield return null;
         }
+        Debug.Log("anything");
+        professorWahSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+
     }
 
     void EndDialogue()
