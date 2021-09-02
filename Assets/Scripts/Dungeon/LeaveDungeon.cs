@@ -15,7 +15,6 @@ public class LeaveDungeon : MonoBehaviour
 
     private void Start()
     {
-
         datePlay = GameObject.Find("CanvasForDate").GetComponent<Animator>();
     }
     private void Update()
@@ -29,6 +28,11 @@ public class LeaveDungeon : MonoBehaviour
                 canLeaveIcon.SetActive(false);
                 leaveStay.SetActive(true);
             }
+        }
+
+        else
+        {
+            canLeaveIcon.SetActive(false);
         }
     }
 
@@ -50,16 +54,17 @@ public class LeaveDungeon : MonoBehaviour
     }
     public void Leave()
     {
+        GameManager.ProgressDay();
         canLeaveIcon.SetActive(false);
         leaveStay.SetActive(false);
-        datePlay.SetBool("ToPlay", true);
+       // datePlay.SetBool("ToPlay", true);
         StartCoroutine(Waiting());
     }
 
     IEnumerator Waiting()
     {
         yield return new WaitForSeconds(2.1f);
-        datePlay.SetBool("ToPlay", false);
+       // datePlay.SetBool("ToPlay", false);
         StartCoroutine(LoadRoomWait());
     }
 

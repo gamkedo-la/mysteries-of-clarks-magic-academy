@@ -23,6 +23,11 @@ public class EnterDungeon : MonoBehaviour
                 leaveStay.SetActive(true);
             }
         }
+
+        else
+        {
+            canLeaveIcon.SetActive(false);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -41,19 +46,17 @@ public class EnterDungeon : MonoBehaviour
             canLeave = false;
         }
     }
-    public void Enter()
+    public void Leave()
     {
+        GameManager.ProgressDay();
         canLeaveIcon.SetActive(false);
         leaveStay.SetActive(false);
-        // This is where you'd play animations to load dungeon
-        //datePlay.SetBool("ToPlay", true);
         StartCoroutine(Waiting());
     }
 
     IEnumerator Waiting()
     {
         yield return new WaitForSeconds(2.1f);
-      //  datePlay.SetBool("ToPlay", false);
         StartCoroutine(LoadRoomWait());
     }
 
