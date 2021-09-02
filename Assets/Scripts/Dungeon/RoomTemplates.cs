@@ -128,7 +128,6 @@ public class RoomTemplates : MonoBehaviour {
 		}
 
 		if (waitTime <= 0) {
-			print("here");
 			if (!playerPlaced) {
 				if (!exitRoom) {
 					for (int i = 0; i < rooms.Count; i++) {
@@ -171,17 +170,15 @@ public class RoomTemplates : MonoBehaviour {
 					enemySpawn.transform.parent = parented.transform;
 				}
 			}
+
 			StartCoroutine(BuildNavMesh());
-			print("here 1");
 		} 
 		
 		else 
 		
 		{
 			waitTime -= Time.deltaTime;
-			print("here 2");
 		}
-		print("here 3");
 	}
 
 	public void RunStartOfScene() {
