@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
@@ -8,7 +8,8 @@ using Unity.AI.Navigation;
 
 public class RoomTemplates : MonoBehaviour {
 
-    public bool spawnedRoomsAreStatic = true; // not allowed to move, but they draw faster
+    public bool specialRoomsAreStatic = true; // not allowed to move, but they draw faster
+    private bool navMeshCreatedAlready = false; // we only create it once after the dungeon has been created
 
 	public static RoomTemplates Instance;
 	//If you want a room to have a higher % chance to get pulled, add multiple instances in the array
@@ -76,6 +77,8 @@ public class RoomTemplates : MonoBehaviour {
 	private void Start() {
 		if (startHasRun) return;
 
+        navMeshCreatedAlready = false; // we need to generate one
+
 		if (Instance != null) {
 			Destroy(gameObject);
 			return;
@@ -108,7 +111,7 @@ public class RoomTemplates : MonoBehaviour {
 
 				specialLevel.SetActive(true);
 				specialLevel.transform.parent = gameObject.transform;
-                if (spawnedRoomsAreStatic) specialLevel.isStatic = true; // static prefabs draw faster but can't move
+                if (specialRoomsAreStatic) specialLevel.isStatic = true; // static prefabs draw faster but can't move
 				levelIsSpecial = true;
 
 				break;
@@ -119,7 +122,7 @@ public class RoomTemplates : MonoBehaviour {
 			Debug.Log("Instanciating first room");
 			startingP = Instantiate(StartingPointRoom, transform.position, Quaternion.identity) as GameObject;
 			startingP.transform.parent = parented.transform;
-            if (spawnedRoomsAreStatic) startingP.isStatic = true; // static prefabs draw faster but can't move
+            if (specialRoomsAreStatic) startingP.isStatic = true; // static prefabs draw faster but can't move
 
 			StartCoroutine(Waiting());
 			TreasureSpawnPercent = Random.Range(0, 100);
@@ -132,6 +135,7 @@ public class RoomTemplates : MonoBehaviour {
 	private void Update() {
 		if (Input.GetKey(KeyCode.Q)) {
 			ClearTheRooms();
+            navMeshCreatedAlready = false; // we need to generate a new one
 		}
 
 		if (waitTime <= 0) {
@@ -146,7 +150,7 @@ public class RoomTemplates : MonoBehaviour {
 								portalPlaced = true;
 							}
 							portalSpawn.transform.parent = parented.transform;
-                            if (spawnedRoomsAreStatic) portalSpawn.isStatic = true; // static prefabs draw faster but can't move
+                            if (specialRoomsAreStatic) portalSpawn.isStatic = true; // static prefabs draw faster but can't move
 
 						}
 						if (i == rooms.Count - 1) 
@@ -161,7 +165,7 @@ public class RoomTemplates : MonoBehaviour {
 							playerPlaced = true;
 
 							staircaseSpawn.transform.parent = parented.transform;
-                            if (spawnedRoomsAreStatic) staircaseSpawn.isStatic = true; // static prefabs draw faster but can't move
+                            if (specialRoomsAreStatic) staircaseSpawn.isStatic = true; // static prefabs draw faster but can't move
 							treasureSpawn.transform.parent = parented.transform;
                             // if (spawnedRoomsAreStatic) treasureSpawn.isStatic = true; // static prefabs draw faster but can't move
 
@@ -181,7 +185,8 @@ public class RoomTemplates : MonoBehaviour {
 				}
 			}
 
-			StartCoroutine(BuildNavMesh());
+			// StartCoroutine(BuildNavMesh()); // start buinding new nav meshes every frame
+            
 		} 
 		
 		else 
@@ -189,6 +194,15 @@ public class RoomTemplates : MonoBehaviour {
 		{
 			waitTime -= Time.deltaTime;
 		}
+
+        if (exitRoom && playerPlaced && !navMeshCreatedAlready) {
+            // bugfix: just run this once after generation is complete
+            Debug.Log("World generation complete. Building navmesh... (this should only run once)");
+            surface.BuildNavMesh(); 
+            // assume the world will not change from now on
+            // thus increasing the framerate tremendously
+            navMeshCreatedAlready = true; 
+        }
 	}
 
 	public void RunStartOfScene() {
@@ -234,11 +248,15 @@ public class RoomTemplates : MonoBehaviour {
 
 
 
+    // this runs every frame
+    // (for every room? I think... not sure)
+    // and lowers framerate significatly.
+    // FIXME - optimize out / cache
 	IEnumerator BuildNavMesh()
 	{
 		yield return null;
-
-		surface.BuildNavMesh();
+        Debug.Log("Building navmesh...");
+		surface.BuildNavMesh(); 
 	}
 }
 
