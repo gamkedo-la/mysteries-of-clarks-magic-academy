@@ -7,6 +7,9 @@ using UnityEngine.UI;
 using Unity.AI.Navigation;
 
 public class RoomTemplates : MonoBehaviour {
+
+    public bool spawnedRoomsAreStatic = true; // not allowed to move, but they draw faster
+
 	public static RoomTemplates Instance;
 	//If you want a room to have a higher % chance to get pulled, add multiple instances in the array
 
@@ -105,7 +108,9 @@ public class RoomTemplates : MonoBehaviour {
 
 				specialLevel.SetActive(true);
 				specialLevel.transform.parent = gameObject.transform;
+                if (spawnedRoomsAreStatic) specialLevel.isStatic = true; // static prefabs draw faster but can't move
 				levelIsSpecial = true;
+
 				break;
 			}
 		}
@@ -114,6 +119,8 @@ public class RoomTemplates : MonoBehaviour {
 			Debug.Log("Instanciating first room");
 			startingP = Instantiate(StartingPointRoom, transform.position, Quaternion.identity) as GameObject;
 			startingP.transform.parent = parented.transform;
+            if (spawnedRoomsAreStatic) startingP.isStatic = true; // static prefabs draw faster but can't move
+
 			StartCoroutine(Waiting());
 			TreasureSpawnPercent = Random.Range(0, 100);
 			//  print(TreasureSpawnPercent + " " + percentChanceToSpawnTreasure);
@@ -139,6 +146,7 @@ public class RoomTemplates : MonoBehaviour {
 								portalPlaced = true;
 							}
 							portalSpawn.transform.parent = parented.transform;
+                            if (spawnedRoomsAreStatic) portalSpawn.isStatic = true; // static prefabs draw faster but can't move
 
 						}
 						if (i == rooms.Count - 1) 
@@ -153,7 +161,9 @@ public class RoomTemplates : MonoBehaviour {
 							playerPlaced = true;
 
 							staircaseSpawn.transform.parent = parented.transform;
+                            if (spawnedRoomsAreStatic) staircaseSpawn.isStatic = true; // static prefabs draw faster but can't move
 							treasureSpawn.transform.parent = parented.transform;
+                            // if (spawnedRoomsAreStatic) treasureSpawn.isStatic = true; // static prefabs draw faster but can't move
 
 						}
 					}

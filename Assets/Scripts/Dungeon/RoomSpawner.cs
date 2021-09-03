@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RoomSpawner : MonoBehaviour
 {
+    public bool spawnedRoomsAreStatic = true; // not allowed to move, but they draw faster
     public int openingDirection;
     // 1 --> need bottom door
     // 2 --> need top door
@@ -67,6 +68,9 @@ public class RoomSpawner : MonoBehaviour
                 thisCreatedGameObject.transform.parent = parented.transform;
             }
             spawned = true;
+
+            if (spawnedRoomsAreStatic) thisCreatedGameObject.isStatic = true; // static prefabs draw faster but can't move
+
         }
     }
 
@@ -79,6 +83,7 @@ public class RoomSpawner : MonoBehaviour
                 //spawn walls blocking off any openings
                 thisCreatedGameObject2 = Instantiate(templates.closedRooms, transform.position, Quaternion.identity) as GameObject;
                 thisCreatedGameObject2.transform.parent = parented.transform;
+                //if (spawnedRoomsAreStatic) thisCreatedGameObject2.isStatic = true; // static prefabs draw faster but can't move
                 Destroy(gameObject);
             }
             spawned = true;
