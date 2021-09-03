@@ -69,7 +69,14 @@ public class RoomSpawner : MonoBehaviour
             }
             spawned = true;
 
-            if (spawnedRoomsAreStatic) thisCreatedGameObject.isStatic = true; // static prefabs draw faster but can't move
+            // an optimization
+            if (spawnedRoomsAreStatic) {
+                Debug.Log("making a new room static");
+                thisCreatedGameObject.isStatic = true; // static prefabs draw faster but can't move
+                foreach (Transform child in thisCreatedGameObject.transform) {
+                    child.gameObject.isStatic = true;
+                }
+            }
 
         }
     }
