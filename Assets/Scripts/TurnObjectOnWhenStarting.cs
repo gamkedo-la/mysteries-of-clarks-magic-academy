@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class TurnObjectOnWhenStarting : MonoBehaviour
 {
@@ -10,6 +8,7 @@ public class TurnObjectOnWhenStarting : MonoBehaviour
     public bool isTurnoff;
     public GameObject TurnOffOnStart;
     public GameObject toTurnOnDelay;
+    [SerializeField] int sentenceOnWhichToTurnOnGameObject = 0;
 
     void Start()
     {
@@ -28,5 +27,15 @@ public class TurnObjectOnWhenStarting : MonoBehaviour
     {
         toTurnOnDelay?.SetActive(true);
       // ToTurnOn.SetActive(true);
+    }
+
+    public bool IsStartingLate()
+    {
+        return sentenceOnWhichToTurnOnGameObject > 0;
+    }
+
+    public int GetStartingSentence()
+    {
+        return sentenceOnWhichToTurnOnGameObject;
     }
 }
