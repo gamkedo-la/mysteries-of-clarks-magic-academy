@@ -44,6 +44,9 @@ public class FriendshipDialogueManager : MonoBehaviour
     public bool isAtornFinal;
     public GameObject AtornBelow4, Atorn4;
 
+    public int sentenceOnWhichToTurnOnGameObject = -1;
+    private int currentSentence = 0;
+
     private void Start()
     {
         sentences = new Queue<string>();
@@ -118,11 +121,24 @@ public class FriendshipDialogueManager : MonoBehaviour
 
         sentence = sentence.Replace("[MC]", GameManager.MCFirstName);
 
+        if (currentSentence == sentenceOnWhichToTurnOnGameObject)
+        {
+
+            TurnObjectOnWhenStarting turnOn = GetComponent<TurnObjectOnWhenStarting>();
+            if (turnOn != null)
+            {
+                turnOn.ToStartLater();
+            }
+        }
+
         //  friend.GetComponent<Animation>().Play(animationsToPlay);
 
         StopAllCoroutines();
         StartCoroutine(TypeSentence(sentence));
         StartCoroutine(TypeSentence2(name));
+
+        currentSentence++;
+
     }
     IEnumerator TypeBool(bool called)
     {
@@ -299,5 +315,10 @@ public class FriendshipDialogueManager : MonoBehaviour
             AtornBelow4.SetActive(true);
             thisConversation.SetActive(false);
         }
+    }
+
+    public int GetCurrentSentence()
+    {
+        return currentSentence;
     }
 }
