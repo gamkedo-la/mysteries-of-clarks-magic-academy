@@ -13,6 +13,8 @@ public class EnterDungeon : MonoBehaviour
 
     public GameObject ChoiceBox;
 
+    public GameObject EnterDungeonAnim;
+
     private void Update()
     {
         if (canLeave)
@@ -53,6 +55,7 @@ public class EnterDungeon : MonoBehaviour
     {
         canLeaveIcon.SetActive(false);
         leaveStay.SetActive(false);
+        EnterDungeonAnim.SetActive(true);
         StartCoroutine(Waiting());
     }
 
