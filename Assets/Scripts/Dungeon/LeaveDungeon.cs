@@ -13,6 +13,8 @@ public class LeaveDungeon : MonoBehaviour
 
     Animator datePlay;
 
+    public GameObject choiceBox;
+
     private void Start()
     {
         datePlay = GameObject.Find("CanvasForDate").GetComponent<Animator>();
@@ -50,6 +52,7 @@ public class LeaveDungeon : MonoBehaviour
         if (other.tag == "Player")
         {
             canLeave = false;
+            choiceBox.SetActive(false);
         }
     }
     public void Leave()

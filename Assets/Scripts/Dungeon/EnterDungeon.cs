@@ -11,6 +11,8 @@ public class EnterDungeon : MonoBehaviour
 
     public string LevelToLoad;
 
+    public GameObject ChoiceBox;
+
     private void Update()
     {
         if (canLeave)
@@ -44,11 +46,11 @@ public class EnterDungeon : MonoBehaviour
         if (other.tag == "Player")
         {
             canLeave = false;
+            ChoiceBox.SetActive(false);
         }
     }
-    public void Leave()
+    public void Enter()
     {
-        GameManager.ProgressDay();
         canLeaveIcon.SetActive(false);
         leaveStay.SetActive(false);
         StartCoroutine(Waiting());
