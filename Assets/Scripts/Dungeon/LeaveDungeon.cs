@@ -15,6 +15,8 @@ public class LeaveDungeon : MonoBehaviour
 
     public GameObject choiceBox;
 
+    public GameObject leaveDungeonAnim;
+
     private void Start()
     {
         datePlay = GameObject.Find("CanvasForDate").GetComponent<Animator>();
@@ -57,6 +59,7 @@ public class LeaveDungeon : MonoBehaviour
     }
     public void Leave()
     {
+        leaveDungeonAnim.SetActive(true);
         GameManager.ProgressDay();
         canLeaveIcon.SetActive(false);
         leaveStay.SetActive(false);
