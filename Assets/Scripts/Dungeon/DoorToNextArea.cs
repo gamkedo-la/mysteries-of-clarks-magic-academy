@@ -72,12 +72,6 @@ public class DoorToNextArea : MonoBehaviour
                 }
             }
         }
-        else
-        {
-            UIForRoomChange.SetActive(false);
-            RoomText.text = "";
-
-        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -94,6 +88,7 @@ public class DoorToNextArea : MonoBehaviour
         if (other.tag == "Player")
         {
             inRange = false;
+            UIForRoomChange.SetActive(false);
             RoomText.text = "";
         }
     }
