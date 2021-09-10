@@ -516,6 +516,24 @@ public class GameManager : MonoBehaviour
         {
             GameManager.instance.DetermineSchedule();
         }
+
+        MCHealth = MCMaxHealth;
+        MCMagic = MCMaxMagic;
+
+        RhysHealth = RhysMaxHealth;
+        RhysMagic = RhysMaxMagic;
+
+        JameelHealth = JameelMaxHealth;
+        JameelMagic = JameelMaxMagic;
+
+        SkyeHealth = SkyeMaxHealth;
+        SkyeMagic = SkyeMaxMagic;
+
+        SullivanHealth = SullivanMaxHealth;
+        SullivanMagic = SullivanMaxMagic;
+
+        HarperHealth = HarperMaxHealth;
+        HarperMagic = HarperMaxMagic;
     }
 
     public static IEnumerator DateWait()
