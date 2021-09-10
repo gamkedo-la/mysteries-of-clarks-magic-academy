@@ -22,8 +22,9 @@ public class LoadNewFloor : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 //Prompt Dialogue
-                turnObjectOn.ToStartLater();
                 dialogueToGoToNextLevel.GetComponent<TurnObjectOnWhenStarting>().enabled = true;
+                turnObjectOn.ToStartLater();
+
                 nextLevelOption.SetActive(false);
             }
         }
