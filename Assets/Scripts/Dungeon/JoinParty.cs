@@ -18,11 +18,15 @@ public class JoinParty : MonoBehaviour
 
     public Text addLeaveParty;
 
+    public string characterName;
+    public Text nameOfCharacter;
+
     private void Update()
     {
         if (canTalk)
         {
             TalkingIcon.SetActive(true);
+            nameOfCharacter.text = characterName.ToString();
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 canTalk = false;
@@ -125,7 +129,6 @@ public class JoinParty : MonoBehaviour
                 addLeaveParty.text = "Join Party";
             }
         }
-
     }
 
 
@@ -134,6 +137,9 @@ public class JoinParty : MonoBehaviour
         if (other.tag == "Player")
         {
             canTalk = false;
+            TalkingIcon.SetActive(false);
+            nameOfCharacter.text = "";
+            leaveStay.SetActive(false);
         }
     }
 
