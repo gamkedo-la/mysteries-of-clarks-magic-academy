@@ -6,9 +6,12 @@ using UnityEngine.UI;
 public class UpdateProfile : MonoBehaviour
 {
     public GameObject Rhys, Skye, Jameel, Harper, Sullivan;
+    public Slider MCHealth, RhysHealth, SkyeHealth, JameelHealth, HarperHealth, SullivanHealth;
+    public Slider MCMagic, RhysMagic, SkyeMagic, JameelMagic, HarperMagic, SullivanMagic;
 
     private void Update()
     {
+        #region IsAvailable
         if (GameManager.RhysAvailable)
         {
             Rhys.SetActive(true);
@@ -50,7 +53,8 @@ public class UpdateProfile : MonoBehaviour
         {
             Sullivan.SetActive(false);
         }
-
+        #endregion
+        #region InParty
         if (GameManager.RhysInParty)
         {            
             Rhys.GetComponent<Image>().color = Color.cyan;
@@ -95,6 +99,23 @@ public class UpdateProfile : MonoBehaviour
         {
             Sullivan.GetComponent<Image>().color = Color.gray;
         }
+        #endregion
+        #region Health
+        MCHealth.value = GameManager.MCHealth / GameManager.MCMaxHealth;
+        RhysHealth.value = GameManager.RhysHealth / GameManager.RhysMaxHealth;
+        JameelHealth.value = GameManager.JameelHealth / GameManager.JameelMaxHealth;
+        HarperHealth.value = GameManager.HarperHealth / GameManager.HarperMaxHealth;
+        SkyeHealth.value = GameManager.SkyeHealth / GameManager.SkyeMaxHealth;
+        SullivanHealth.value = GameManager.SullivanHealth / GameManager.SullivanMaxHealth;
+        #endregion
 
+        #region Magic
+        MCMagic.value = GameManager.MCMagic / GameManager.MCMaxMagic;
+        RhysMagic.value = GameManager.RhysMagic / GameManager.RhysMaxMagic;
+        JameelMagic.value = GameManager.JameelMagic / GameManager.JameelMaxMagic;
+        HarperMagic.value = GameManager.HarperMagic / GameManager.HarperMaxMagic;
+        SkyeMagic.value = GameManager.SkyeMagic / GameManager.SkyeMaxMagic;
+        SullivanMagic.value = GameManager.SullivanMagic / GameManager.SullivanMaxMagic;
+        #endregion
     }
 }
