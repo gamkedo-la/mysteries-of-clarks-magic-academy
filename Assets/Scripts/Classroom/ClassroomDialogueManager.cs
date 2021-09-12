@@ -177,7 +177,7 @@ public class ClassroomDialogueManager : MonoBehaviour
             dialogueText.text += letter;
             yield return null;
         }
-        Debug.Log("anything");
+        //Debug.Log("anything");
         professorWahSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 
     }
