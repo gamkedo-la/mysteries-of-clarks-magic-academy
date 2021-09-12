@@ -34,6 +34,11 @@ public class FriendIntro : MonoBehaviour
     public bool acceptConvo;
     public bool Rhys, Jameel, Harper, Skye, Sullivan, GracieMay, Atorn, Specter, Manraj;
 
+    public bool Courage, Charisma, Proficiency, Intelligence;
+    public int levelToUnlockAt;
+    public GameObject CantUnlockUntil;
+    public Text ReasonWhy;
+
     private void Start()
     {
         sentences = new Queue<string>();
@@ -143,8 +148,68 @@ public class FriendIntro : MonoBehaviour
         }
         if (isChoice)
         {
-            choicesMenu.SetActive(true);
-            thisConversation.SetActive(false);
+            if (Courage)
+            {
+                if (GameManager.CourageLevel >= levelToUnlockAt)
+                {
+                    choicesMenu.SetActive(true);
+                }
+                else
+                {
+                    CantUnlockUntil.SetActive(true);
+                    ReasonWhy.text = "You cannot hangout with this friend unless your Courage is at level " + levelToUnlockAt;
+                }
+                thisConversation.SetActive(false);
+            }
+
+            else if (Proficiency)
+            {
+                if (GameManager.ProficiencyLevel >= levelToUnlockAt)
+                {
+                    choicesMenu.SetActive(true);
+                }
+                else
+                {
+                    CantUnlockUntil.SetActive(true);
+                    ReasonWhy.text = "You cannot hangout with this friend unless your Proficiency is at level " + levelToUnlockAt;
+                }
+                thisConversation.SetActive(false);
+            }
+
+            else if (Intelligence)
+            {
+                if (GameManager.IntelligenceLevel >= levelToUnlockAt)
+                {
+                    choicesMenu.SetActive(true);
+                }
+                else
+                {
+                    CantUnlockUntil.SetActive(true);
+                    ReasonWhy.text = "You cannot hangout with this friend unless your Intelligence is at level " + levelToUnlockAt;
+                }
+                thisConversation.SetActive(false);
+            }
+
+            else if (Charisma)
+            {
+                if (GameManager.CharismaLevel >= levelToUnlockAt)
+                {
+                    choicesMenu.SetActive(true);
+                }
+                else
+                {
+                    CantUnlockUntil.SetActive(true);
+                    ReasonWhy.text = "You cannot hangout with this friend unless your Charisma is at level " + levelToUnlockAt;
+                }
+                thisConversation.SetActive(false);
+            }
+
+            else
+            {
+                choicesMenu.SetActive(true);
+                thisConversation.SetActive(false);
+            }
+
         }
 
         if (isFinished)
