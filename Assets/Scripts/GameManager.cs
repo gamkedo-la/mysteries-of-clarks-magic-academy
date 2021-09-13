@@ -119,6 +119,9 @@ public class GameManager : MonoBehaviour
     public GameObject notificationPanel;
     public Text notificationText;
 
+    //Tutorial Menus
+    public static bool hasSeenTutorial;
+
     GameObject player;
 
     public static bool isRed, isBlue, isYellow, isGreen, isPhysical;
@@ -1559,6 +1562,8 @@ public class GameManager : MonoBehaviour
         HarperMaxMagic = data.HarperMaxMagic;
         SkyeMaxMagic = data.SkyeMaxMagic;
         SullivanMaxMagic = data.SullivanMaxMagic;
+
+        hasSeenTutorial = data.hasSeenTutorial;
 
         int floorCountName = data.floorCountName;
 
