@@ -15,6 +15,16 @@ public class Dungeon5Generator : MonoBehaviour {
 	public List<PrefabLevelPair> specialLevels;
 	public bool levelIsSpecial = false;
 
+	public List<GameObject> roomWith1Door;
+	public List<GameObject> roomWith2DoorsI;
+	public List<GameObject> roomWith2DoorsL;
+	public List<GameObject> roomWith3Doors;
+
+	public List<GameObject> hallWith2OpenI;
+	public List<GameObject> hallWith2OpenL;
+	public List<GameObject> hallWith3Open;
+	public List<GameObject> hallWith4Open;
+
 	public float gridScale = 15f;
 
 	public GameObject enemy;
