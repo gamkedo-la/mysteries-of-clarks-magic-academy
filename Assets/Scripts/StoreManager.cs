@@ -31,9 +31,6 @@ public class StoreManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.P)){
-            ToggleStore();
-        }
         if(Input.GetKeyUp(KeyCode.Mouse0)){
             buyingItem = false;
         }
@@ -67,13 +64,9 @@ public class StoreManager : MonoBehaviour
         playerMoney.text = "$ " + GameManager.Money;
     }
 
-	public void ToggleStore() {
-        if(Time.timeScale == 1){
-            Time.timeScale = 0;
-            storePanel.SetActive(true);
-        } else {
-            Time.timeScale = 1;
-				storePanel.SetActive(false);
-        }
+    public void LeaveStore()
+    {
+        storePanel.SetActive(false);
+        Time.timeScale = 1;
     }
 }
