@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -66,7 +67,7 @@ public class PauseMenu : MonoBehaviour
     }
 
     public void MainMenu() {
-        Debug.Log("Pressed Main Menu Button");
+        SceneManager.LoadScene("Title");
     }
     public void Party() {
         Debug.Log("Pressed Party Button");
