@@ -6,11 +6,9 @@ public class FreeTimeTutorial : MonoBehaviour
 {
     public GameObject FirstScreen, SecondScreen, ThirdScreen;
 
-    public static bool hasSeenTutorial;
-
     public void Start()
     {
-        if (!hasSeenTutorial)
+        if (!GameManager.hasSeenTutorial)
         {
             FirstScreen.SetActive(true);
         }
@@ -30,7 +28,7 @@ public class FreeTimeTutorial : MonoBehaviour
 
     public void Third()
     {
-        hasSeenTutorial = true;
+        GameManager.hasSeenTutorial = true;
         ThirdScreen.SetActive(false);
     }
 }

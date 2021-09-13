@@ -51,6 +51,8 @@ public class SaveGameData
     //Floor Saved in
     public int floorCountName;
 
+    public bool hasSeenTutorial;
+
     public SaveGameData(GameManager gameManager)
     {
         //Save Player name
@@ -198,6 +200,8 @@ public class SaveGameData
         HarperMaxMagic = GameManager.HarperMaxMagic;
         SkyeMaxMagic = GameManager.SkyeMaxMagic;
         SullivanMaxMagic = GameManager.SullivanMaxMagic;
+
+        hasSeenTutorial = GameManager.hasSeenTutorial;
 
         floorCountName = SceneManager.GetActiveScene().buildIndex;
     }
