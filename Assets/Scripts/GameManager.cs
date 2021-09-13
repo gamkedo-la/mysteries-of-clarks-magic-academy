@@ -154,16 +154,16 @@ public class GameManager : MonoBehaviour
 
         Money = 100;
 
-        dayOfWeek = 0;
+      /*  dayOfWeek = 0;
         month = 4;
         day =17;
-        
+        */
         // Finals Testing
-        /*
+        
         dayOfWeek = 1;
         month = 5;
-        day = 23;
-        */
+        day = 29;
+        
         directionalLight = GameObject.Find("Sun");
 
         timeOfDay = 4;
