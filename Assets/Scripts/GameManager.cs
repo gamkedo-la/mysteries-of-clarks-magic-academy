@@ -24,8 +24,11 @@ public class GameManager : MonoBehaviour
 
     public static int Friend1Experience, Friend1Level;
 
+	//ToDetermine the Current Floor of the Dungeon you are in
 	public static int currentFloor = 0;
+	//Stores the highest count floor reached in a dungeon
 	public static int[] DungeonFloorCount = { 0, 0, 0, 0, 0, 0 };
+	//
 
     public static bool freePeriod;
 
@@ -60,10 +63,6 @@ public class GameManager : MonoBehaviour
     public static float MCExp, RhysExp, JameelExp, HarperExp, SkyeExp, SullivanExp, GracieMayExp;
     public static float MCTargetExp, RhysTargetExp, JameelTargetExp, HarperTargetExp, SkyeTargetExp, SullivanTargetExp, GracieMayTargetExp;
     public static int MCLevel = 1, RhysLevel = 1, JameelLevel = 1, HarperLevel = 1, SkyeLevel = 1, SullivanLevel = 1, GracieMayLevel = 1;
-    //
-
-    //ToDetermine the Current Floor of the Dungeon you are in
-    public static int CurrentFloor;
     //
 
     //To determine if the Enemy Attacked the player in the Dungeon

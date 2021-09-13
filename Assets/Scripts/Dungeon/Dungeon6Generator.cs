@@ -50,11 +50,13 @@ public class Dungeon6Generator : MonoBehaviour {
 		}
 		if (Input.GetKey(KeyCode.O)) {
 			GameManager.currentFloor--;
+			if (GameManager.currentFloor < 0) GameManager.currentFloor = 0;
 			AdvanceFloor();
 		}
 		if (Input.GetKey(KeyCode.I)) {
 			GameManager.currentFloor--;
 			GameManager.currentFloor--;
+			if (GameManager.currentFloor < 0) GameManager.currentFloor = 0;
 			AdvanceFloor();
 		}
 	}
@@ -74,6 +76,7 @@ public class Dungeon6Generator : MonoBehaviour {
 		Clear();
 
 		currentLevel = GameManager.currentFloor;
+		if (GameManager.currentFloor > GameManager.DungeonFloorCount[dungeonNumber]) GameManager.DungeonFloorCount[dungeonNumber] = GameManager.currentFloor;
 
 		FMODUnity.RuntimeManager.StudioSystem.setParameterByName("GameState", 0);
 		FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Dungeon", dungeonNumber);
@@ -265,12 +268,11 @@ public class Dungeon6Generator : MonoBehaviour {
 		for (int i = transform.childCount-1; i >= 0; i--) {
 			DestroyImmediate(transform.GetChild(i).gameObject);
 		}
+		currentRooms = new List<GameObject>();
 	}
 
 	public void AdvanceFloor() {
 		GameManager.currentFloor++;
-		if (GameManager.currentFloor < 0) GameManager.currentFloor = 0;
-		if (GameManager.currentFloor > GameManager.DungeonFloorCount[dungeonNumber]) GameManager.DungeonFloorCount[dungeonNumber] = GameManager.currentFloor;
 		Destroy(gameObject);
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
