@@ -2094,6 +2094,7 @@ public class BattleSystem : MonoBehaviour
 
                 bool outOfStock = InventoryContainer.Container[InventorySelectedItem].RemoveAmount(1);
                 if (outOfStock) {
+                    GameManager.instance.inventory.RemoveItem(InventorySelectedItem);
                     Inventory.GetComponent<BattleInventory>().RemoveItem(InventorySelectedItem);
                 } else {
                     Inventory.GetComponent<BattleInventory>().UpdateItem(InventorySelectedItem);
