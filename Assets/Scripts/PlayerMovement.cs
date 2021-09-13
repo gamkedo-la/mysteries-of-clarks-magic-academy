@@ -24,6 +24,9 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Confined;
+
+        this.gameObject.transform.rotation = GameManager.playerRotation;
+        this.gameObject.transform.position = GameManager.playerSpawn;
     }
 
     private void Update()
