@@ -9,4 +9,9 @@ public class PlayFootstepScript : MonoBehaviour
     {
         FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/StoneSteps");
     }
+
+    public void PlayWandSFXFromFMOD()
+    {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/WandSFX");
+    }
 }
