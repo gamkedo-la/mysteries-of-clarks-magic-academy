@@ -13,4 +13,14 @@ public class Takuhe_SFX : MonoBehaviour
     {
         FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Enemy_Takuhe_Death");
     }
+
+    public void PlayTakuheDamageSFXFromFMOD () //Calls the Enemy_Takuhe_Damage event in FMOD that plays one of three damage SFX randomly.
+    {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Enemy_Takuhe_Damage");
+    }
+
+    public void PlayTakuhePowerupSFXFromFMOD () //Calls the Enemy_Takuhe_Powerup event in FMOD that plays one of three powerup SFX randomly.
+    {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Enemy_Takuhe_Powerup");
+    }
 }
