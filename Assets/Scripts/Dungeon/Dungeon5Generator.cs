@@ -25,7 +25,10 @@ public class Dungeon5Generator : MonoBehaviour {
 	public List<GameObject> hallWith3Open;
 	public List<GameObject> hallWith4Open;
 
+	public List<GameObject> bigRoom;
+
 	public float gridScale = 15f;
+	public float oddsOfBigRoom = 0.05f;
 
 	public GameObject enemy;
 	public GameObject treasure;
@@ -95,6 +98,12 @@ public class Dungeon5Generator : MonoBehaviour {
 				return;
 			}
 		}
+
+		List<Vector2> location = new List<Vector2>();
+		List<GameObject> roomsToPlace = new List<GameObject>();
+		List<float> placementRotation = new List<float>();
+		List<string> availability = new List<string>();
+
 
 	}
 
