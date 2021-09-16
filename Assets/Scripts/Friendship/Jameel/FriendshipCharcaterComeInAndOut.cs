@@ -9,9 +9,13 @@ public class FriendshipCharcaterComeInAndOut : MonoBehaviour
     [SerializeField] FriendshipDialogueManager dialogueToExitScene = null;
     [SerializeField] Transform lookAt = null;
 
+    [Header("Specific to moment 3-4")]
+    [SerializeField] FriendshipDialogueManager dialogueToSitDown = null;
+
     private NavMeshAgent navMeshAgent;
     private Animator animator;
-    private bool isEnteringScene = true;
+    private bool isEnteringScene = false;
+    private bool isSitting = false;
 
     private void Awake()
     {
@@ -23,6 +27,7 @@ public class FriendshipCharcaterComeInAndOut : MonoBehaviour
     void Start()
     {
         navMeshAgent.isStopped = true;
+        animator.ResetTrigger("sitDown");
     }
 
     // Update is called once per frame
@@ -33,14 +38,27 @@ public class FriendshipCharcaterComeInAndOut : MonoBehaviour
         if (isEnteringScene)
         {
             StopIfDestinationReached();
-            transform.LookAt(lookAt);
         }
+
+        SitDownIfNeeded();
 
         ExitTheSceneAtCorrectDialogue();
     }
 
+    private void SitDownIfNeeded()
+    {
+        if (dialogueToSitDown == null) return;
+        if (isSitting) return;
+        if (!dialogueToSitDown.isActiveAndEnabled) return;
+
+        animator.SetTrigger("sitDown");
+        
+    }
+
     private void EnterTheSceneAtCorrectDialogue()
     {
+        if (isEnteringScene) return;
+
         if (dialogueToEnterScene.isActiveAndEnabled && navMeshAgent.isStopped)
         {
             navMeshAgent.isStopped = false;
@@ -74,6 +92,8 @@ public class FriendshipCharcaterComeInAndOut : MonoBehaviour
                 navMeshAgent.isStopped = true;
                 animator.SetBool("isWalking", false);
                 isEnteringScene = false;
+                
+                transform.LookAt(lookAt);
             }
         }
     }
