@@ -25,18 +25,17 @@ public class DoorToNextArea : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
 
+        player.GetComponent<NavMeshAgent>().enabled = false;
         if (GameManager.playerSpawn == new Vector3(0, 0, 0))
         {
             print("first iteration");
         }
-
         else
         {
-            player.GetComponent<NavMeshAgent>().enabled = false;
             player.transform.position = GameManager.playerSpawn;
-            player.transform.rotation = GameManager.playerRotation;
-            player.GetComponent<NavMeshAgent>().enabled = true;
         }
+        player.transform.rotation = GameManager.playerRotation;
+        player.GetComponent<NavMeshAgent>().enabled = true;
     }
 
     private void Update()

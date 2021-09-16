@@ -12,22 +12,7 @@ public class PortalToggle : MonoBehaviour
     {
         if (dungeonSkye)
         {
-            if (GameManager.month == 4 && (GameManager.day >= 21 && GameManager.day <= 25))
-            {
-                portal.SetActive(true);
-                door.SetActive(false);
-            }
-
-            else
-            {
-                portal.SetActive(false);
-                door.SetActive(door);
-            }
-        }
-
-        else if (dungeonJameel)
-        {
-            if (GameManager.month == 4 && (GameManager.day >= 28 && GameManager.day <= 30))
+            if (GameManager.month == 4 && (GameManager.day >= 21 && GameManager.day <= 25) && !GameManager.SkyeSaved)
             {
                 portal.SetActive(true);
                 door.SetActive(false);
@@ -42,7 +27,22 @@ public class PortalToggle : MonoBehaviour
 
         else if (dungeonJameel)
         {
-            if (GameManager.month == 5 && (GameManager.day >= 1 && GameManager.day <= 2))
+            if (GameManager.month == 4 && (GameManager.day >= 28 && GameManager.day <= 30) && !GameManager.JameelSaved)
+            {
+                portal.SetActive(true);
+                door.SetActive(false);
+            }
+
+            else
+            {
+                portal.SetActive(false);
+                door.SetActive(true);
+            }
+        }
+
+        else if (dungeonJameel)
+        {
+            if (GameManager.month == 5 && (GameManager.day >= 1 && GameManager.day <= 2) && !GameManager.JameelSaved)
             {
                 portal.SetActive(true);
                 door.SetActive(false);
@@ -57,7 +57,7 @@ public class PortalToggle : MonoBehaviour
 
         else if (dungeonGracieMay)
         {
-            if (GameManager.month == 5 && (GameManager.day >= 5 && GameManager.day <= 9))
+            if (GameManager.month == 5 && (GameManager.day >= 5 && GameManager.day <= 9) && !GameManager.GracieMaySaved)
             {
                 portal.SetActive(true);
                 door.SetActive(false);
@@ -72,7 +72,7 @@ public class PortalToggle : MonoBehaviour
 
         else if (dungeonHarper)
         {
-            if (GameManager.month == 5 && (GameManager.day >= 10 && GameManager.day <= 16))
+            if (GameManager.month == 5 && (GameManager.day >= 10 && GameManager.day <= 16) && !GameManager.HarperSaved)
             {
                 portal.SetActive(true);
                 door.SetActive(false);
@@ -87,7 +87,7 @@ public class PortalToggle : MonoBehaviour
 
         else if (dungeonSullivan)
         {
-            if (GameManager.month == 5 && (GameManager.day >= 18 && GameManager.day <= 22))
+            if (GameManager.month == 5 && (GameManager.day >= 18 && GameManager.day <= 22) && !GameManager.SullivanSaved)
             {
                 portal.SetActive(true);
                 door.SetActive(false);
@@ -102,7 +102,7 @@ public class PortalToggle : MonoBehaviour
 
         else if (dungeonGrounds)
         {
-        if (GameManager.month == 5 && (GameManager.day >= 29 && GameManager.day <= 31))
+        if (GameManager.month == 5 && (GameManager.day >= 29 && GameManager.day <= 31) && !GameManager.AtornSaved)
             {
                 portal.SetActive(true);
                 door.SetActive(false);

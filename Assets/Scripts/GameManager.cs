@@ -163,8 +163,8 @@ public class GameManager : MonoBehaviour
         // Finals Testing
         
         dayOfWeek = 1;
-        month = 5;
-        day = 29;
+        month = 4;
+        day = 23;
         
         directionalLight = GameObject.Find("Sun");
 
@@ -373,6 +373,8 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+       // SkyeSaved = true;
+
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
             canvasForDateGA.SetActive(false);
