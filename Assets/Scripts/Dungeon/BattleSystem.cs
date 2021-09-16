@@ -9262,12 +9262,10 @@ public class BattleSystem : MonoBehaviour
         Camera.transform.LookAt(enemyCamTarget);
         if (state == BattleState.WON)
         {
-            /* if (If this is a boss fight, put them here)
+             if (Boss)
               {
-                  mark the bool here
-                  HOEGameManager.UmpireDefeated = true;
+                  
               }
-            */
 
             dialogueText.text = "You won the Battle!";
             EndingMenu.SetActive(true);
@@ -10080,8 +10078,15 @@ public class BattleSystem : MonoBehaviour
 
     public void WinningScreen()
     {
-        SceneManager.LoadScene(DungeonRoomToLoad);
-        Debug.Log(DungeonRoomToLoad);
+        if (Boss)
+        {
+            SceneManager.LoadScene("RescueRoom");
+        }
+        else
+        {
+            SceneManager.LoadScene(DungeonRoomToLoad);
+            Debug.Log(DungeonRoomToLoad);
+        }
     }
 
 

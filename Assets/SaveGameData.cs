@@ -51,6 +51,9 @@ public class SaveGameData
     //Floor Saved in
     public int floorCountName;
 
+    //Save Dungeon Progress
+    public bool SkyeSaved, JameelSaved, GracieMaySaved, HarperSaved, SullivanSaved, AtornSaved;
+
     public bool hasSeenTutorial;
 
     public SaveGameData(GameManager gameManager)
@@ -200,6 +203,13 @@ public class SaveGameData
         HarperMaxMagic = GameManager.HarperMaxMagic;
         SkyeMaxMagic = GameManager.SkyeMaxMagic;
         SullivanMaxMagic = GameManager.SullivanMaxMagic;
+
+        SkyeSaved = GameManager.SkyeSaved;
+        JameelSaved = GameManager.JameelSaved;
+        GracieMaySaved = GameManager.GracieMaySaved;
+        HarperSaved = GameManager.HarperSaved;
+        SullivanSaved = GameManager.SullivanSaved;
+        AtornSaved = GameManager.AtornSaved;
 
         hasSeenTutorial = GameManager.hasSeenTutorial;
 

@@ -131,6 +131,9 @@ public class GameManager : MonoBehaviour
 
     public GameObject canvasForDateGA;
 
+    //Save markers for who has been saved
+    public static bool SkyeSaved, JameelSaved, GracieMaySaved, HarperSaved, SullivanSaved, AtornSaved;
+
     private void Awake()
     {
         if (instance == null)
@@ -1561,6 +1564,15 @@ public class GameManager : MonoBehaviour
         HarperMaxMagic = data.HarperMaxMagic;
         SkyeMaxMagic = data.SkyeMaxMagic;
         SullivanMaxMagic = data.SullivanMaxMagic;
+
+        //Save of save progress
+        SkyeSaved = data.SkyeSaved;
+        JameelSaved = data.JameelSaved;
+        GracieMaySaved = data.GracieMaySaved;
+        HarperSaved = data.HarperSaved;
+        SullivanSaved = data.SullivanSaved;
+        AtornSaved = data.AtornSaved;
+
 
         hasSeenTutorial = data.hasSeenTutorial;
 
