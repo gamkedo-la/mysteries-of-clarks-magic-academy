@@ -134,6 +134,9 @@ public class GameManager : MonoBehaviour
     //Save markers for who has been saved
     public static bool SkyeSaved, JameelSaved, GracieMaySaved, HarperSaved, SullivanSaved, AtornSaved;
 
+    //FinalsScore
+    public static int FinalsScore;
+
     private void Awake()
     {
         if (instance == null)
