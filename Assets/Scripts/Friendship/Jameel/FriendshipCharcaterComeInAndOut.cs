@@ -11,11 +11,16 @@ public class FriendshipCharcaterComeInAndOut : MonoBehaviour
 
     [Header("Specific to moment 3-4")]
     [SerializeField] FriendshipDialogueManager dialogueToSitDown = null;
+    [SerializeField] Transform sittingLocation = null;
 
     private NavMeshAgent navMeshAgent;
     private Animator animator;
     private bool isEnteringScene = false;
+    private bool isSittingDown = false;
     private bool isSitting = false;
+
+    private float sittingSpeed = 1.0f;
+    // private float is
 
     private void Awake()
     {
@@ -48,11 +53,33 @@ public class FriendshipCharcaterComeInAndOut : MonoBehaviour
     private void SitDownIfNeeded()
     {
         if (dialogueToSitDown == null) return;
+        TriggerSitDownAnimation();
+        GoToSittingLocation();
+    }
+
+    private void GoToSittingLocation()
+    {
+        if (!isSittingDown) return;
         if (isSitting) return;
+
+        transform.position = Vector3.MoveTowards(transform.position,
+                                                 sittingLocation.position,
+                                                 sittingSpeed*Time.deltaTime);
+
+        if (Vector3.Distance(transform.position, sittingLocation.position) < 1.0e-5)
+        {
+            isSitting = true;
+        }
+    }
+
+    private void TriggerSitDownAnimation()
+    {
+        if (isSittingDown) return;
         if (!dialogueToSitDown.isActiveAndEnabled) return;
 
         animator.SetTrigger("sitDown");
-        
+        isSittingDown = true;
+        navMeshAgent.enabled = false;
     }
 
     private void EnterTheSceneAtCorrectDialogue()
@@ -71,13 +98,17 @@ public class FriendshipCharcaterComeInAndOut : MonoBehaviour
 
     private void ExitTheSceneAtCorrectDialogue()
     {
-        if (dialogueToExitScene.isActiveAndEnabled && navMeshAgent.isStopped)
+        if (dialogueToExitScene.isActiveAndEnabled)
         {
-            navMeshAgent.isStopped = false;
-            navMeshAgent.SetDestination(exitDestination.position);
+            if (!navMeshAgent.enabled) navMeshAgent.enabled = true;
+            if (navMeshAgent.isStopped) navMeshAgent.isStopped = false;
 
-            animator.SetBool("isWalking", true);
-            Destroy(gameObject, 10.0f);
+            if (!animator.GetBool("isWalking"))
+            {
+                animator.SetBool("isWalking", true);
+                navMeshAgent.SetDestination(exitDestination.position);
+                Destroy(gameObject, 10.0f);
+            }
         }
     }
 
