@@ -154,21 +154,20 @@ public class GameManager : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
 
         //Start game here
+        Money = 100;
 
         //Game start is at - month 4 day 17 time of day 4
 
-        Money = 100;
-
-      /*  dayOfWeek = 0;
+        dayOfWeek = 0;
         month = 4;
         day =17;
+        
+        // Testing Date
+        
+      /*  dayOfWeek = 5;
+        month = 5;
+        day = 2;
         */
-        // Finals Testing
-        
-        dayOfWeek = 5;
-        month = 4;
-        day = 22;
-        
         directionalLight = GameObject.Find("Sun");
 
         timeOfDay = 4;
