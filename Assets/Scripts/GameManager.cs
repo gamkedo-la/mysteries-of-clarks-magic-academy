@@ -1777,8 +1777,13 @@ public class GameManager : MonoBehaviour
 
         hasSeenTutorial = data.hasSeenTutorial;
 
-        int floorCountName = data.floorCountName;
+        playerSpawn = new Vector3(-21.18f, 31.78f, -70.54f);
+        playerRotation = new Quaternion(0, 0, 0, 0);
+        SceneManager.LoadScene("FourthFloor");
 
-        SceneManager.LoadScene(floorCountName);
+        CalculateTimeOfDay();
+        CalculateDayOfWeek();
+        CalculateCalendarDay();
+        GameManager.instance.DetermineSchedule();
     }
 }
