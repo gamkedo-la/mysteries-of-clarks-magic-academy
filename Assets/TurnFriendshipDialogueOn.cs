@@ -23,11 +23,6 @@ public class TurnFriendshipDialogueOn : MonoBehaviour
                     Convo[1].SetActive(true);
                 }
 
-                if (GameManager.day == 25)
-                {
-                    Convo[2].SetActive(true);
-                }
-
                 if (GameManager.day == 27)
                 {
                     Convo[3].SetActive(true);
@@ -36,10 +31,6 @@ public class TurnFriendshipDialogueOn : MonoBehaviour
 
             if (GameManager.month == 5)
             {
-                if (GameManager.day == 2)
-                {
-                    Convo[4].SetActive(true);
-                }
 
                 if (GameManager.day == 15)
                 {
@@ -49,11 +40,6 @@ public class TurnFriendshipDialogueOn : MonoBehaviour
                 if (GameManager.day == 18)
                 {
                     Convo[6].SetActive(true);
-                }
-
-                if (GameManager.day == 23)
-                {
-                    Convo[7].SetActive(true);
                 }
 
                 if (GameManager.day == 29)
