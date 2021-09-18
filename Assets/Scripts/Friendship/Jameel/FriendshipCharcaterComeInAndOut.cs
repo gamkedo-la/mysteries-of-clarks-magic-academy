@@ -12,6 +12,8 @@ public class FriendshipCharcaterComeInAndOut : MonoBehaviour
     [Header("Specific to moment 3-4")]
     [SerializeField] FriendshipDialogueManager dialogueToSitDown = null;
     [SerializeField] Transform sittingLocation = null;
+    [SerializeField] Transform chair = null;
+    [SerializeField] Transform chairLocationWhenSitting = null;
 
     private NavMeshAgent navMeshAgent;
     private Animator animator;
@@ -65,8 +67,16 @@ public class FriendshipCharcaterComeInAndOut : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position,
                                                  sittingLocation.position,
                                                  sittingSpeed*Time.deltaTime);
+        
+        if (chair != null)
+        {
+            chair.position = Vector3.MoveTowards(chair.position,
+                                                chairLocationWhenSitting.position,
+                                                sittingSpeed*Time.deltaTime);
+        }
 
-        if (Vector3.Distance(transform.position, sittingLocation.position) < 1.0e-5)
+        if (Vector3.Distance(transform.position, sittingLocation.position) < 1.0e-5 && 
+            (chair == null || Vector3.Distance(chair.position, chairLocationWhenSitting.position) < 1.0e-5 ))
         {
             isSitting = true;
         }
