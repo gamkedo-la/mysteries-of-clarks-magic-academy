@@ -11,6 +11,9 @@ public class ToggleFriend : MonoBehaviour
     public int month, day;
     public GameObject friend;
 
+    public bool isSpecter;
+    public GameObject SpecterGrimorium;
+
     private void Update()
     {
         if (GameManager.month >= month)
@@ -48,7 +51,14 @@ public class ToggleFriend : MonoBehaviour
 
         else
         {
-            friend.SetActive(false);
+            if (isSpecter)
+            {
+                SpecterGrimorium.SetActive(true);
+            }
+            else
+            {
+                friend.SetActive(false);
+            }
         }
     }
 }

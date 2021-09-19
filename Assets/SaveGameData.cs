@@ -56,6 +56,9 @@ public class SaveGameData
 
     public bool hasSeenTutorial;
 
+    //Grimorium
+    public bool Bigfoot, Chessie, Chupacabra, Jackalope, JerseyDevil, LovelandFrog, Menehune, Mothman, Passagoula, SalemWitches, Squonk, TakuHe, VanMeterMonster, Wendigo;
+
     public SaveGameData(GameManager gameManager)
     {
         //Save Player name
@@ -210,6 +213,22 @@ public class SaveGameData
         HarperSaved = GameManager.HarperSaved;
         SullivanSaved = GameManager.SullivanSaved;
         AtornSaved = GameManager.AtornSaved;
+
+        //Grimorium
+        Bigfoot = GameManager.Bigfoot;
+        Chessie = GameManager.Chessie;
+        Chupacabra = GameManager.Chupacabra;
+        Jackalope = GameManager.Jackalope;
+        JerseyDevil = GameManager.JerseyDevil;
+        LovelandFrog = GameManager.LovelandFrog;
+        Menehune = GameManager.Menehune;
+        Mothman = GameManager.Mothman;
+        Passagoula = GameManager.Passagoula;
+        SalemWitches = GameManager.SalemWitches;
+        Squonk = GameManager.Squonk;
+        TakuHe = GameManager.TakuHe;
+        VanMeterMonster = GameManager.VanMeterMonster;
+        Wendigo = GameManager.Wendigo;
 
         hasSeenTutorial = GameManager.hasSeenTutorial;
 

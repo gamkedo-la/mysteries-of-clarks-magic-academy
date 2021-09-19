@@ -137,6 +137,9 @@ public class GameManager : MonoBehaviour
     //FinalsScore
     public static int FinalsScore;
 
+    //Grimorium
+    public static bool Bigfoot, Chessie, Chupacabra, Jackalope, JerseyDevil, LovelandFrog, Menehune, Mothman, Passagoula, SalemWitches, Squonk, TakuHe, VanMeterMonster, Wendigo;
+
     private void Awake()
     {
         if (instance == null)
@@ -1607,6 +1610,22 @@ public class GameManager : MonoBehaviour
         SullivanSaved = data.SullivanSaved;
         AtornSaved = data.AtornSaved;
 
+        //Grimorium
+        Bigfoot = data.Bigfoot;
+        Chessie = data.Chessie;
+        Chupacabra = data.Chupacabra;
+        Jackalope = data.Jackalope;
+        JerseyDevil = data.JerseyDevil;
+        LovelandFrog = data.LovelandFrog;
+        Menehune = data.Menehune;
+        Mothman = data.Mothman;
+        Passagoula = data.Passagoula;
+        SalemWitches = data.SalemWitches;
+        Squonk = data.Squonk;
+        TakuHe = data.TakuHe;
+        VanMeterMonster = data.VanMeterMonster;
+        Wendigo = data.Wendigo;
+
 
         hasSeenTutorial = data.hasSeenTutorial;
 
@@ -1764,6 +1783,22 @@ public class GameManager : MonoBehaviour
         HarperMaxMagic = data.HarperMaxMagic;
         SkyeMaxMagic = data.SkyeMaxMagic;
         SullivanMaxMagic = data.SullivanMaxMagic;
+
+        //Grimorium
+        Bigfoot = data.Bigfoot;
+        Chessie = data.Chessie;
+        Chupacabra = data.Chupacabra;
+        Jackalope = data.Jackalope;
+        JerseyDevil = data.JerseyDevil;
+        LovelandFrog = data.LovelandFrog;
+        Menehune = data.Menehune;
+        Mothman = data.Mothman;
+        Passagoula = data.Passagoula;
+        SalemWitches = data.SalemWitches;
+        Squonk = data.Squonk;
+        TakuHe = data.TakuHe;
+        VanMeterMonster = data.VanMeterMonster;
+        Wendigo = data.Wendigo;
 
         //Save of save progress
         SkyeSaved = data.SkyeSaved;
