@@ -140,6 +140,9 @@ public class GameManager : MonoBehaviour
     //Grimorium
     public static bool Bigfoot, Chessie, Chupacabra, Jackalope, JerseyDevil, LovelandFrog, Menehune, Mothman, Passagoula, SalemWitches, Squonk, TakuHe, VanMeterMonster, Wendigo;
 
+    //Grimorium
+    public static bool BigfootSeen, ChessieSeen, ChupacabraSeen, JackalopeSeen, JerseyDevilSeen, LovelandFrogSeen, MenehuneSeen, MothmanSeen, PassagoulaSeen, SalemWitchesSeen, SquonkSeen, TakuHeSeen, VanMeterMonsterSeen, WendigoSeen;
+
     private void Awake()
     {
         if (instance == null)
@@ -1626,6 +1629,22 @@ public class GameManager : MonoBehaviour
         VanMeterMonster = data.VanMeterMonster;
         Wendigo = data.Wendigo;
 
+        //Grimorium Seen
+        BigfootSeen = data.BigfootSeen;
+        ChessieSeen = data.ChessieSeen;
+        ChupacabraSeen = data.ChupacabraSeen;
+        JackalopeSeen = data.JackalopeSeen;
+        JerseyDevilSeen = data.JerseyDevilSeen;
+        LovelandFrogSeen = data.LovelandFrogSeen;
+        MenehuneSeen = data.MenehuneSeen;
+        MothmanSeen = data.MothmanSeen;
+        PassagoulaSeen = data.PassagoulaSeen;
+        SalemWitchesSeen = data.SalemWitchesSeen;
+        SquonkSeen = data.SquonkSeen;
+        TakuHeSeen = data.TakuHeSeen;
+        VanMeterMonsterSeen = data.VanMeterMonsterSeen;
+        WendigoSeen = data.WendigoSeen;
+
 
         hasSeenTutorial = data.hasSeenTutorial;
 
@@ -1799,6 +1818,22 @@ public class GameManager : MonoBehaviour
         TakuHe = data.TakuHe;
         VanMeterMonster = data.VanMeterMonster;
         Wendigo = data.Wendigo;
+
+        //Grimorium Seen
+        BigfootSeen = data.BigfootSeen;
+        ChessieSeen = data.ChessieSeen;
+        ChupacabraSeen = data.ChupacabraSeen;
+        JackalopeSeen = data.JackalopeSeen;
+        JerseyDevilSeen = data.JerseyDevilSeen;
+        LovelandFrogSeen = data.LovelandFrogSeen;
+        MenehuneSeen = data.MenehuneSeen;
+        MothmanSeen = data.MothmanSeen;
+        PassagoulaSeen = data.PassagoulaSeen;
+        SalemWitchesSeen = data.SalemWitchesSeen;
+        SquonkSeen = data.SquonkSeen;
+        TakuHeSeen = data.TakuHeSeen;
+        VanMeterMonsterSeen = data.VanMeterMonsterSeen;
+        WendigoSeen = data.WendigoSeen;
 
         //Save of save progress
         SkyeSaved = data.SkyeSaved;

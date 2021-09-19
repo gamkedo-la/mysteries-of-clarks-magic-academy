@@ -13,6 +13,8 @@ public class BuyGrimorium : MonoBehaviour
     //Grimorium
     public bool Bigfoot, Chessie, Chupacabra, Jackalope, JerseyDevil, LovelandFrog, Menehune, Mothman, Passagoula, SalemWitches, Squonk, TakuHe, VanMeterMonster, Wendigo;
 
+    public GameObject covering;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +26,11 @@ public class BuyGrimorium : MonoBehaviour
     {
         if (Bigfoot)
         {
+            if(GameManager.BigfootSeen)
+            {
+                covering.SetActive(false);    
+            }
+
             if (GameManager.Bigfoot)
             {
                 Purchase.interactable = false;
@@ -32,6 +39,12 @@ public class BuyGrimorium : MonoBehaviour
 
         if (Chessie)
         {
+
+            if (GameManager.ChessieSeen)
+            {
+                covering.SetActive(false);
+            }
+
             if (GameManager.Chessie)
             {
                 Purchase.interactable = false;
@@ -40,6 +53,12 @@ public class BuyGrimorium : MonoBehaviour
 
         if (Chupacabra)
         {
+            if (GameManager.ChupacabraSeen)
+            {
+                covering.SetActive(false);
+            }
+
+
             if (GameManager.Chupacabra)
             {
                 Purchase.interactable = false;
@@ -48,6 +67,12 @@ public class BuyGrimorium : MonoBehaviour
 
         if (Jackalope)
         {
+            if (GameManager.JackalopeSeen)
+            {
+                covering.SetActive(false);
+            }
+
+
             if (GameManager.Jackalope)
             {
                 Purchase.interactable = false;
@@ -56,6 +81,11 @@ public class BuyGrimorium : MonoBehaviour
 
         if (JerseyDevil)
         {
+            if (GameManager.JerseyDevilSeen)
+            {
+                covering.SetActive(false);
+            }
+
             if (GameManager.JerseyDevil)
             {
                 Purchase.interactable = false;
@@ -64,6 +94,11 @@ public class BuyGrimorium : MonoBehaviour
 
         if (LovelandFrog)
         {
+            if (GameManager.LovelandFrogSeen)
+            {
+                covering.SetActive(false);
+            }
+
             if (GameManager.LovelandFrog)
             {
                 Purchase.interactable = false;
@@ -72,6 +107,11 @@ public class BuyGrimorium : MonoBehaviour
 
         if (Menehune)
         {
+            if (GameManager.MenehuneSeen)
+            {
+                covering.SetActive(false);
+            }
+
             if (GameManager.Menehune)
             {
                 Purchase.interactable = false;
@@ -80,6 +120,12 @@ public class BuyGrimorium : MonoBehaviour
 
         if (Mothman)
         {
+            if (GameManager.MothmanSeen)
+            {
+                covering.SetActive(false);
+            }
+
+
             if (GameManager.Mothman)
             {
                 Purchase.interactable = false;
@@ -88,6 +134,12 @@ public class BuyGrimorium : MonoBehaviour
 
         if (Passagoula)
         {
+            if (GameManager.PassagoulaSeen)
+            {
+                covering.SetActive(false);
+            }
+
+
             if (GameManager.Passagoula)
             {
                 Purchase.interactable = false;
@@ -96,6 +148,12 @@ public class BuyGrimorium : MonoBehaviour
 
         if (SalemWitches)
         {
+            if (GameManager.SalemWitchesSeen)
+            {
+                covering.SetActive(false);
+            }
+
+
             if (GameManager.SalemWitches)
             {
                 Purchase.interactable = false;
@@ -104,6 +162,11 @@ public class BuyGrimorium : MonoBehaviour
 
         if (Squonk)
         {
+            if (GameManager.SquonkSeen)
+            {
+                covering.SetActive(false);
+            }
+
             if (GameManager.Squonk)
             {
                 Purchase.interactable = false;
@@ -112,6 +175,11 @@ public class BuyGrimorium : MonoBehaviour
 
         if (TakuHe)
         {
+            if (GameManager.TakuHeSeen)
+            {
+                covering.SetActive(false);
+            }
+
             if (GameManager.TakuHe)
             {
                 Purchase.interactable = false;
@@ -120,6 +188,11 @@ public class BuyGrimorium : MonoBehaviour
 
         if (VanMeterMonster)
         {
+            if (GameManager.VanMeterMonsterSeen)
+            {
+                covering.SetActive(false);
+            }
+
             if (GameManager.VanMeterMonster)
             {
                 Purchase.interactable = false;
@@ -128,6 +201,11 @@ public class BuyGrimorium : MonoBehaviour
 
         if (Wendigo)
         {
+            if (GameManager.WendigoSeen)
+            {
+                covering.SetActive(false);
+            }
+
             if (GameManager.Wendigo)
             {
                 Purchase.interactable = false;

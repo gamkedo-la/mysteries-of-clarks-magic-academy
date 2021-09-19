@@ -60,6 +60,9 @@ public class SoftSaveGameData
     //Grimorium
     public bool Bigfoot, Chessie, Chupacabra, Jackalope, JerseyDevil, LovelandFrog, Menehune, Mothman, Passagoula, SalemWitches, Squonk, TakuHe, VanMeterMonster, Wendigo;
 
+    //Grimorium
+    public bool BigfootSeen, ChessieSeen, ChupacabraSeen, JackalopeSeen, JerseyDevilSeen, LovelandFrogSeen, MenehuneSeen, MothmanSeen, PassagoulaSeen, SalemWitchesSeen, SquonkSeen, TakuHeSeen, VanMeterMonsterSeen, WendigoSeen;
+
     public SoftSaveGameData(GameManager gameManager)
     {
         //Save Player name
@@ -232,6 +235,22 @@ public class SoftSaveGameData
         TakuHe = GameManager.TakuHe;
         VanMeterMonster = GameManager.VanMeterMonster;
         Wendigo = GameManager.Wendigo;
+
+        //GrimoriumSeen
+        BigfootSeen = GameManager.BigfootSeen;
+        ChessieSeen = GameManager.ChessieSeen;
+        ChupacabraSeen = GameManager.ChupacabraSeen;
+        JackalopeSeen = GameManager.JackalopeSeen;
+        JerseyDevilSeen = GameManager.JerseyDevilSeen;
+        LovelandFrogSeen = GameManager.LovelandFrogSeen;
+        MenehuneSeen = GameManager.MenehuneSeen;
+        MothmanSeen = GameManager.MothmanSeen;
+        PassagoulaSeen = GameManager.PassagoulaSeen;
+        SalemWitchesSeen = GameManager.SalemWitchesSeen;
+        SquonkSeen = GameManager.SquonkSeen;
+        TakuHeSeen = GameManager.TakuHeSeen;
+        VanMeterMonsterSeen = GameManager.VanMeterMonsterSeen;
+        WendigoSeen = GameManager.WendigoSeen;
 
         floorCountName = SceneManager.GetActiveScene().buildIndex;
     }
