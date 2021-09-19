@@ -20,6 +20,7 @@ public class Grimorium : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             dialogueOption.SetActive(false);
+            GirmoriumQuestion.SetActive(true);
         }
         if (isInRange)
         {
@@ -54,7 +55,8 @@ public class Grimorium : MonoBehaviour
 
     public void OpenGrimorium()
     {
-        GirmoriumQuestion.SetActive(true);
+        GirmoriumQuestion.SetActive(false);
+        GrimoriumBacklog.SetActive(true);
     }
 
     public void Nevermind()
