@@ -14,6 +14,7 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private GameObject InventoryContents;
     [SerializeField] private GameObject PartyFrames;
     [SerializeField] private GameObject MainPauseMenu;
+    [SerializeField] private GameObject MapPanel;
 
     public Slider MCHealth, MCMagic, RhysHealth, RhysMagic, JameelHealth, JameelMagic, HarperHealth, HarperMagic, SkyeHealth, SkyeMagic, SullivanHealth, SullivanMagic;
 
@@ -71,6 +72,8 @@ public class PauseMenu : MonoBehaviour
     }
     public void Party() {
         Debug.Log("Pressed Party Button");
+        MapPanel.SetActive(!MapPanel.activeSelf);
+        MainPauseMenu.SetActive(!MainPauseMenu.activeSelf);
         FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/UIButtonClick");
        // MainPauseMenu.SetActive(!MainPauseMenu.activeSelf);
     }
