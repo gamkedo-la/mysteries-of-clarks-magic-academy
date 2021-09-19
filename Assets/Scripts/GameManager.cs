@@ -262,14 +262,14 @@ public class GameManager : MonoBehaviour
         MCHealth = 10;
         RhysHealth = 20;
         JameelHealth =20;
-        HarperHealth = 20;
+        HarperHealth = 10;
         SkyeHealth = 20;
         SullivanHealth = 20;
 
         MCMaxMagic = 20;
         RhysMaxMagic = 20;
         JameelMaxMagic = 20;
-        HarperMaxMagic = 20;
+        HarperMaxMagic = 10;
         SkyeMaxMagic = 20;
         SullivanMaxMagic = 20;
 
