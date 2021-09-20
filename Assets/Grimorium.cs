@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Grimorium : MonoBehaviour
 {
@@ -15,8 +16,12 @@ public class Grimorium : MonoBehaviour
 
     public GameObject FirstPage, SecondPage;
 
+    public Text money;
+
     private void Update()
     {
+        money.text = "W$ " + GameManager.Money.ToString();
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             dialogueOption.SetActive(false);
