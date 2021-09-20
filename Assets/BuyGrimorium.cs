@@ -11,7 +11,7 @@ public class BuyGrimorium : MonoBehaviour
     public Button Purchase;
 
     //Grimorium
-    public bool Bigfoot, Chessie, Chupacabra, Jackalope, JerseyDevil, LovelandFrog, Menehune, Mothman, Passagoula, SalemWitches, Squonk, TakuHe, VanMeterMonster, Wendigo;
+    public bool Bigfoot, Chessie, Chupacabra, Jackalope, JerseyDevil, LovelandFrog, Menehune, Mothman, Passagoula, Pukwudgie, SalemWitches, Squonk, TakuHe, Thunderbird, VanMeterMonster, Wendigo;
 
     public GameObject covering;
 
@@ -146,6 +146,20 @@ public class BuyGrimorium : MonoBehaviour
             }
         }
 
+        if (Pukwudgie)
+        {
+            if (GameManager.PukwudgieSeen)
+            {
+                covering.SetActive(false);
+            }
+
+
+            if (GameManager.Pukwudgie)
+            {
+                Purchase.interactable = false;
+            }
+        }
+
         if (SalemWitches)
         {
             if (GameManager.SalemWitchesSeen)
@@ -181,6 +195,19 @@ public class BuyGrimorium : MonoBehaviour
             }
 
             if (GameManager.TakuHe)
+            {
+                Purchase.interactable = false;
+            }
+        }
+
+        if (Thunderbird)
+        {
+            if (GameManager.ThunderbirdSeen)
+            {
+                covering.SetActive(false);
+            }
+
+            if (GameManager.Thunderbird)
             {
                 Purchase.interactable = false;
             }
@@ -321,6 +348,18 @@ public class BuyGrimorium : MonoBehaviour
         }
     }
 
+    public void PukwudgieBuy()
+    {
+        if (!GameManager.Pukwudgie)
+        {
+            if (GameManager.Money >= price)
+            {
+                GameManager.Money -= price;
+                GameManager.Pukwudgie = true;
+            }
+        }
+    }
+
     public void SalemWitchesBuy()
     {
         if (!GameManager.SalemWitches)
@@ -353,6 +392,18 @@ public class BuyGrimorium : MonoBehaviour
             {
                 GameManager.Money -= price;
                 GameManager.TakuHe = true;
+            }
+        }
+    }
+
+    public void ThunderbirdBuy()
+    {
+        if (!GameManager.Thunderbird)
+        {
+            if (GameManager.Money >= price)
+            {
+                GameManager.Money -= price;
+                GameManager.Thunderbird = true;
             }
         }
     }

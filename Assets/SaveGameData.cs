@@ -57,10 +57,10 @@ public class SaveGameData
     public bool hasSeenTutorial;
 
     //Grimorium
-    public bool Bigfoot, Chessie, Chupacabra, Jackalope, JerseyDevil, LovelandFrog, Menehune, Mothman, Passagoula, SalemWitches, Squonk, TakuHe, VanMeterMonster, Wendigo;
+    public bool Bigfoot, Chessie, Chupacabra, Jackalope, JerseyDevil, LovelandFrog, Menehune, Mothman, Passagoula, Pukwudgie, SalemWitches, Squonk, TakuHe, Thunderbird, VanMeterMonster, Wendigo;
 
     //GrimoriumSeen
-    public bool BigfootSeen, ChessieSeen, ChupacabraSeen, JackalopeSeen, JerseyDevilSeen, LovelandFrogSeen, MenehuneSeen, MothmanSeen, PassagoulaSeen, SalemWitchesSeen, SquonkSeen, TakuHeSeen, VanMeterMonsterSeen, WendigoSeen;
+    public bool BigfootSeen, ChessieSeen, ChupacabraSeen, JackalopeSeen, JerseyDevilSeen, LovelandFrogSeen, MenehuneSeen, MothmanSeen, PassagoulaSeen, PukwudgieSeen, SalemWitchesSeen, SquonkSeen, TakuHeSeen, ThunderbirdSeen, VanMeterMonsterSeen, WendigoSeen;
 
     public SaveGameData(GameManager gameManager)
     {
@@ -232,6 +232,8 @@ public class SaveGameData
         TakuHe = GameManager.TakuHe;
         VanMeterMonster = GameManager.VanMeterMonster;
         Wendigo = GameManager.Wendigo;
+        Pukwudgie = GameManager.Pukwudgie;
+        Thunderbird = GameManager.Thunderbird;
 
 
         //GrimoriumSeen
@@ -249,6 +251,8 @@ public class SaveGameData
         TakuHeSeen = GameManager.TakuHeSeen;
         VanMeterMonsterSeen = GameManager.VanMeterMonsterSeen;
         WendigoSeen = GameManager.WendigoSeen;
+        PukwudgieSeen = GameManager.PukwudgieSeen;
+        ThunderbirdSeen = GameManager.ThunderbirdSeen;
 
         hasSeenTutorial = GameManager.hasSeenTutorial;
 

@@ -58,10 +58,10 @@ public class SoftSaveGameData
     public bool hasSeenTutorial;
 
     //Grimorium
-    public bool Bigfoot, Chessie, Chupacabra, Jackalope, JerseyDevil, LovelandFrog, Menehune, Mothman, Passagoula, SalemWitches, Squonk, TakuHe, VanMeterMonster, Wendigo;
+    public bool Bigfoot, Chessie, Chupacabra, Jackalope, JerseyDevil, LovelandFrog, Menehune, Mothman, Passagoula, Pukwudgie, SalemWitches, Squonk, TakuHe, Thunderbird, VanMeterMonster, Wendigo;
 
-    //Grimorium
-    public bool BigfootSeen, ChessieSeen, ChupacabraSeen, JackalopeSeen, JerseyDevilSeen, LovelandFrogSeen, MenehuneSeen, MothmanSeen, PassagoulaSeen, SalemWitchesSeen, SquonkSeen, TakuHeSeen, VanMeterMonsterSeen, WendigoSeen;
+    //GrimoriumSeen
+    public bool BigfootSeen, ChessieSeen, ChupacabraSeen, JackalopeSeen, JerseyDevilSeen, LovelandFrogSeen, MenehuneSeen, MothmanSeen, PassagoulaSeen, PukwudgieSeen, SalemWitchesSeen, SquonkSeen, TakuHeSeen, ThunderbirdSeen, VanMeterMonsterSeen, WendigoSeen;
 
     public SoftSaveGameData(GameManager gameManager)
     {
@@ -235,6 +235,8 @@ public class SoftSaveGameData
         TakuHe = GameManager.TakuHe;
         VanMeterMonster = GameManager.VanMeterMonster;
         Wendigo = GameManager.Wendigo;
+        Pukwudgie = GameManager.Pukwudgie;
+        Thunderbird = GameManager.Thunderbird;
 
         //GrimoriumSeen
         BigfootSeen = GameManager.BigfootSeen;
@@ -251,6 +253,8 @@ public class SoftSaveGameData
         TakuHeSeen = GameManager.TakuHeSeen;
         VanMeterMonsterSeen = GameManager.VanMeterMonsterSeen;
         WendigoSeen = GameManager.WendigoSeen;
+        PukwudgieSeen = GameManager.PukwudgieSeen;
+        ThunderbirdSeen = GameManager.ThunderbirdSeen;
 
         floorCountName = SceneManager.GetActiveScene().buildIndex;
     }

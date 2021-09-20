@@ -228,6 +228,8 @@ public class Unit : MonoBehaviour
     public float SullivanSpell13Damage;
     public float SullivanSpell13MagicConsumed;
     #endregion
+
+    public bool BigfootSeen, ChessieSeen, ChupacabraSeen, JackalopeSeen, JerseyDevilSeen, LovelandFrogSeen, MenehuneSeen, MothmanSeen, PassagoulaSeen, PukwudgieSeen, SalemWitchesSeen, SquonkSeen, TakuHeSeen, ThunderbirdSeen, VanMeterMonsterSeen, WendigoSeen;
     //enemyAttack
     public int minAttackAvil, maxAttackAvil;
     int attackToDo;
@@ -261,6 +263,88 @@ public class Unit : MonoBehaviour
 
         ExperienceToDistribute = Random.Range(minExperience, maxExperience);
         MoneyToDistribute = Random.Range(minMoney, maxMoney);
+
+        #region Enemy has been seen
+        if (BigfootSeen)
+        {
+            GameManager.BigfootSeen = true;
+        }
+
+        if (ChessieSeen)
+        {
+            GameManager.ChessieSeen = true;
+        }
+
+        if (ChupacabraSeen)
+        {
+            GameManager.ChupacabraSeen = true;
+        }
+
+        if (JackalopeSeen)
+        {
+            GameManager.JackalopeSeen = true;
+        }
+
+        if (JerseyDevilSeen)
+        {
+            GameManager.JerseyDevilSeen = true;
+        }
+
+        if (LovelandFrogSeen)
+        {
+            GameManager.LovelandFrogSeen = true;
+        }
+
+        if (MenehuneSeen)
+        {
+            GameManager.MenehuneSeen = true;
+        }
+
+        if (MothmanSeen)
+        {
+            GameManager.MothmanSeen = true;
+        }
+
+        if (PassagoulaSeen)
+        {
+            GameManager.PassagoulaSeen = true;
+        }
+
+        if (PukwudgieSeen)
+        {
+            GameManager.PukwudgieSeen = true;
+        }
+
+        if (SalemWitchesSeen)
+        {
+            GameManager.SalemWitchesSeen = true;
+        }
+
+        if (SquonkSeen)
+        {
+            GameManager.SquonkSeen = true;
+        }
+
+        if (TakuHeSeen)
+        {
+            GameManager.TakuHeSeen = true;
+        }
+
+        if (ThunderbirdSeen)
+        {
+            GameManager.ThunderbirdSeen = true;
+        }
+
+        if (VanMeterMonsterSeen)
+        {
+            GameManager.VanMeterMonsterSeen = true;
+        }
+
+        if (WendigoSeen)
+        {
+            GameManager.WendigoSeen = true;
+        }
+        #endregion
     }
 
     private void Update()
