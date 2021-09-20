@@ -5304,6 +5304,7 @@ public class BattleSystem : MonoBehaviour
                                 {
                                     if (WhoToAttack == 0 && !MCDead)
                                     {
+                                        Debug.Log("attacking player");
                                         viableTarget = true;
                                     }
 
@@ -5338,6 +5339,7 @@ public class BattleSystem : MonoBehaviour
 
                             if (WhoToAttack == 0 && !MCDead)
                             {
+                                Debug.Log("attack player with damage");
                                 enemyUnit[enemyIndex].transform.LookAt(MC.transform.position);
 
                                 Camera.transform.LookAt(MC.transform.position);
@@ -5469,7 +5471,7 @@ public class BattleSystem : MonoBehaviour
                                         }
                                     }
                                 }
-
+                                Debug.Log("turn off damage UI");
                                 yield return new WaitForSeconds(.5f);
                                 StartCoroutine(TurnOffDamageUI());
                             }
@@ -10062,6 +10064,7 @@ public class BattleSystem : MonoBehaviour
     }
 
     void UpdateLifeUI() {
+        Debug.Log("Update life ui");
         MCHealth.value = GameManager.MCHealth ;
         RhysHealth.value = GameManager.RhysHealth ;
         JameelHealth.value = GameManager.JameelHealth ;

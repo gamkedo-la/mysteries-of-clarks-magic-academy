@@ -470,19 +470,28 @@ public class Unit : MonoBehaviour
 
         if ((weakBlue && GameManager.isBlue) || (weakYellow && GameManager.isYellow) || (weakRed && GameManager.isRed) || (weakGreen && GameManager.isGreen) || (weakPhys && GameManager.isPhysical))
         {
-            Summary.text = "Critical!";
+            if (Summary != null)
+            {
+                Summary.text = "Critical!";
+            }         
             attackModifier = 2;
         }
 
         else if ((strBlue && GameManager.isBlue) || (strYellow && GameManager.isYellow) || (strRed && GameManager.isRed) || (strGreen && GameManager.isGreen) || (strPhys && GameManager.isPhysical))
         {
-            Summary.text = "Resist!";
+            if (Summary != null)
+            {
+                Summary.text = "Resist!";
+            }
             attackModifier = .5f;
         }
 
         else
         {
-            Summary.text = "";
+            if (Summary != null)
+            {
+                Summary.text = "";
+            }
             attackModifier = 1f;
         }
 
@@ -497,7 +506,10 @@ public class Unit : MonoBehaviour
     IEnumerator WaitingForText()
     {
         yield return new WaitForSeconds(2.5f);
-        Summary.text = "".ToString();
+        if (Summary != null)
+        {
+            Summary.text = "".ToString();
+        }
     }
 
     public bool TakeDamageSpell1(float dmg)

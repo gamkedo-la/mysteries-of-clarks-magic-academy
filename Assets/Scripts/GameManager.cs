@@ -157,6 +157,8 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
+        MCFirstName = "Kari";
+        MCLastName = "Ford";
         player = GameObject.FindGameObjectWithTag("Player");
 
         //Start game here
@@ -204,11 +206,11 @@ public class GameManager : MonoBehaviour
 
         //MC is always in the party
         PartyCount++;
-        RhysInParty = true;
-        SkyeInParty = true;
+       // RhysInParty = true;
+       // SkyeInParty = true;
        // HarperInParty = true;
-        PartyCount++;
-        PartyCount++;
+       // PartyCount++;
+       // PartyCount++;
        // PartyCount++;
         RhysAvailable = true;
         SkyeAvailable = true;
