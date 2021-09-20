@@ -254,6 +254,8 @@ public class Unit : MonoBehaviour
 
     public bool increaseEnemyHealth;
 
+    public GameObject StrWeak;
+
     private void Start()
     {
         if (isEnemy)
@@ -343,6 +345,88 @@ public class Unit : MonoBehaviour
         if (WendigoSeen)
         {
             GameManager.WendigoSeen = true;
+        }
+        #endregion
+
+        #region Enemy has been bought
+        if (GameManager.Bigfoot && BigfootSeen)
+        {
+            StrWeak.SetActive(true);
+        }
+
+        if (GameManager.Chessie && ChessieSeen)
+        {
+            StrWeak.SetActive(true);
+        }
+
+        if (GameManager.Chupacabra && ChupacabraSeen)
+        {
+            StrWeak.SetActive(true);
+        }
+
+        if (GameManager.Jackalope && JackalopeSeen)
+        {
+            StrWeak.SetActive(true);
+        }
+
+        if (GameManager.JerseyDevil && JerseyDevilSeen)
+        {
+            StrWeak.SetActive(true);
+        }
+
+        if (GameManager.LovelandFrog && LovelandFrogSeen)
+        {
+            StrWeak.SetActive(true);
+        }
+
+        if (GameManager.Menehune && MenehuneSeen)
+        {
+            StrWeak.SetActive(true);
+        }
+
+        if (GameManager.Mothman && MothmanSeen)
+        {
+            StrWeak.SetActive(true);
+        }
+
+        if (GameManager.Passagoula && PassagoulaSeen)
+        {
+            StrWeak.SetActive(true);
+        }
+
+        if (GameManager.Pukwudgie && PukwudgieSeen)
+        {
+            StrWeak.SetActive(true);
+        }
+
+        if (GameManager.SalemWitches && SalemWitchesSeen)
+        {
+            StrWeak.SetActive(true);
+        }
+
+        if (GameManager.Squonk && SquonkSeen)
+        {
+            StrWeak.SetActive(true);
+        }
+
+        if (GameManager.TakuHe && TakuHeSeen)
+        {
+            StrWeak.SetActive(true);
+        }
+
+        if (GameManager.Thunderbird && ThunderbirdSeen)
+        {
+            StrWeak.SetActive(true);
+        }
+
+        if (GameManager.VanMeterMonster && VanMeterMonsterSeen)
+        {
+            StrWeak.SetActive(true);
+        }
+
+        if (GameManager.Wendigo && WendigoSeen)
+        {
+            StrWeak.SetActive(true);
         }
         #endregion
     }
