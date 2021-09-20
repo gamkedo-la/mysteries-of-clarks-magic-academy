@@ -18,6 +18,8 @@ public class Grimorium : MonoBehaviour
 
     public Text money;
 
+    public GameObject mainCam, grimCam;
+
     private void Update()
     {
         money.text = "W$ " + GameManager.Money.ToString();
@@ -62,6 +64,8 @@ public class Grimorium : MonoBehaviour
     {
         GirmoriumQuestion.SetActive(false);
         GrimoriumBacklog.SetActive(true);
+        mainCam.SetActive(false);
+        grimCam.SetActive(true);
     }
 
     public void Nevermind()
@@ -69,6 +73,8 @@ public class Grimorium : MonoBehaviour
         GirmoriumQuestion.SetActive(false);
         GrimoriumBacklog.SetActive(false);
         dialogueOption.SetActive(false);
+        mainCam.SetActive(true);
+        grimCam.SetActive(false);
     }
 
 
