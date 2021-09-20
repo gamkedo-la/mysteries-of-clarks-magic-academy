@@ -508,7 +508,7 @@ public class Unit : MonoBehaviour
         yield return new WaitForSeconds(2.5f);
         if (Summary != null)
         {
-            Summary.text = "".ToString();
+            Summary.text = "";
         }
     }
 
@@ -520,14 +520,21 @@ public class Unit : MonoBehaviour
         {
             currentHP -= (dmg * 2);
             DamageUI.text = "-" + (dmg * 2).ToString();
-            Summary.text = "Critical Hit!";
+            if (Summary != null)
+            {
+                Summary.text = "Critical Hit!";
+            }
+            
         }
 
         else if ((GameManager.isBlue && strBlue) || (GameManager.isRed && strRed) || (GameManager.isGreen && strGreen) || (GameManager.isYellow && strYellow) || (GameManager.isPhysical && strPhys))
         {
             currentHP -= (dmg * .5f);
             DamageUI.text = "-" + (dmg * .5f).ToString();
-            Summary.text = "Resist!";
+            if (Summary != null)
+            {
+                Summary.text = "Resist!";
+            }
         }
 
         else
@@ -4000,7 +4007,7 @@ public class Unit : MonoBehaviour
         else
         {
             int AttackToDo = Random.Range(0, enemyAttacks.Length);
-
+            Debug.Log(enemyAttacks[AttackToDo] + " " + unitName);
             gameObject.SendMessage(enemyAttacks[AttackToDo], SendMessageOptions.RequireReceiver);
         }
     }
@@ -4015,7 +4022,7 @@ public class Unit : MonoBehaviour
         maxDamage = 8;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
-        attackName = "Soft Punch".ToString();
+        attackName = "Soft Punch";
         NamePrint();
     }
 
@@ -4026,7 +4033,7 @@ public class Unit : MonoBehaviour
         maxDamage = 20;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
-        attackName = "Hefty Hook".ToString();
+        attackName = "Hefty Hook";
     }
 
     void HeavyAssault()
@@ -4036,7 +4043,7 @@ public class Unit : MonoBehaviour
         maxDamage = 40;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
-        attackName = "Heavy Assault".ToString();
+        attackName = "Heavy Assault";
     }
 
     void GodsHand()
@@ -4046,7 +4053,7 @@ public class Unit : MonoBehaviour
         maxDamage = 85;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
-        attackName = "God's Hand".ToString();
+        attackName = "God's Hand";
     }
 
     void FollowThrough()
@@ -4057,7 +4064,7 @@ public class Unit : MonoBehaviour
         maxDamage = 20;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
-        attackName = "Follow Through".ToString();
+        attackName = "Follow Through";
     }
 
     void JabJabJab()
@@ -4068,7 +4075,7 @@ public class Unit : MonoBehaviour
         maxDamage = 7;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
-        attackName = "Jab Jab Jab".ToString();
+        attackName = "Jab Jab Jab";
         NamePrint();
     }
 
@@ -4080,13 +4087,13 @@ public class Unit : MonoBehaviour
         maxDamage = 25;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
-        attackName = "Heavy Pounding".ToString();
+        attackName = "Heavy Pounding";
     }
 
     void ThrustedFist()
     {
         GameManager.isPhysical = true;
-        attackName = "Thrusted Fist".ToString();
+        attackName = "Thrusted Fist";
         print(attackName);
 
         int confusionChance;
@@ -4119,7 +4126,7 @@ public class Unit : MonoBehaviour
         maxDamage = 8;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
-        attackName = "Head Butt".ToString();
+        attackName = "Head Butt";
         NamePrint();
     }
 
@@ -4139,7 +4146,7 @@ public class Unit : MonoBehaviour
         maxDamage = 20;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
-        attackName = "Brain Shake".ToString();
+        attackName = "Brain Shake";
     }
 
     void SkullCracker()
@@ -4159,7 +4166,7 @@ public class Unit : MonoBehaviour
         maxDamage = 40;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
-        attackName = "Skull Cracker".ToString();
+        attackName = "Skull Cracker";
     }
 
     void ColossalSlam()
@@ -4171,7 +4178,7 @@ public class Unit : MonoBehaviour
         maxDamage = 40;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
-        attackName = "Colossal Slam".ToString();
+        attackName = "Colossal Slam";
     }
 
     void Earthquake()
@@ -4183,7 +4190,7 @@ public class Unit : MonoBehaviour
         maxDamage = 25;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
-        attackName = "Earthquake".ToString();
+        attackName = "Earthquake";
     }
 
     void DeathsDoor()
@@ -4200,7 +4207,7 @@ public class Unit : MonoBehaviour
         if (BattleSystem.deathDoor && !BattleSystem.ReaperCalling)
         {
 
-            attackName = "Reaper's Calling".ToString();
+            attackName = "Reaper's Calling";
             BattleSystem.ReaperCalling = true;
 
         }
@@ -4220,7 +4227,7 @@ public class Unit : MonoBehaviour
         maxDamage = 15;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
-        attackName = "Exorcism Ambush".ToString();
+        attackName = "Exorcism Ambush";
         NamePrint();
     }
 
@@ -4231,7 +4238,7 @@ public class Unit : MonoBehaviour
         maxDamage = 25;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
-        attackName = "Devil's Wings".ToString();
+        attackName = "Devil's Wings";
     }
 
     void DemonicDecree()
@@ -4241,7 +4248,7 @@ public class Unit : MonoBehaviour
         maxDamage = 45;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
-        attackName = "Decmonic Decree".ToString();
+        attackName = "Decmonic Decree";
     }
 
     void CannonOfAura()
@@ -4253,7 +4260,7 @@ public class Unit : MonoBehaviour
         maxDamage = 15;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
-        attackName = "Cannon of Aura".ToString();
+        attackName = "Cannon of Aura";
     }
 
     void LifeDrain()
@@ -4266,7 +4273,7 @@ public class Unit : MonoBehaviour
         maxDamage = 11;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
-        attackName = "Life Drain".ToString();
+        attackName = "Life Drain";
 
     }
 
@@ -4285,13 +4292,13 @@ public class Unit : MonoBehaviour
         maxDamage = 10;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
-        attackName = "Needle Bolt".ToString();
+        attackName = "Needle Bolt";
     }
 
     void Vanishment()
     {
         removeFromBattle = true;
-        attackName = "Vanishment".ToString();
+        attackName = "Vanishment";
     }
 
     void ShakenBarrier()
@@ -4309,7 +4316,7 @@ public class Unit : MonoBehaviour
         maxDamage = 40;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
-        attackName = "Needle Bolt".ToString();
+        attackName = "Needle Bolt";
     }
 
     void WinterAir()
@@ -4319,7 +4326,7 @@ public class Unit : MonoBehaviour
         maxDamage = 10;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
-        attackName = "Winter Air".ToString();
+        attackName = "Winter Air";
     }
 
     void ArcticBlast()
@@ -4329,7 +4336,7 @@ public class Unit : MonoBehaviour
         maxDamage = 25;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
-        attackName = "Arctic Blast".ToString();
+        attackName = "Arctic Blast";
     }
 
     void VacuumSeal()
@@ -4339,7 +4346,7 @@ public class Unit : MonoBehaviour
         maxDamage = 23;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
-        attackName = "Vacummn Seal".ToString();
+        attackName = "Vacummn Seal";
     }
 
     void Fireball()
@@ -4349,7 +4356,7 @@ public class Unit : MonoBehaviour
         maxDamage = 60;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
-        attackName = "Fireball".ToString();
+        attackName = "Fireball";
     }
 
     void Bonfire()
@@ -4361,7 +4368,7 @@ public class Unit : MonoBehaviour
         maxDamage = 15;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
-        attackName = "Bonfire".ToString();
+        attackName = "Bonfire";
         NamePrint();
     }
 
@@ -4374,7 +4381,7 @@ public class Unit : MonoBehaviour
         maxDamage = 14;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
-        attackName = "Lightning Raid".ToString();
+        attackName = "Lightning Raid";
     }
 
     void NatureFury()
@@ -4386,7 +4393,7 @@ public class Unit : MonoBehaviour
         maxDamage = 12;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
-        attackName = "Nature's Fury".ToString();
+        attackName = "Nature's Fury";
         NamePrint();
     }
 
@@ -4399,7 +4406,7 @@ public class Unit : MonoBehaviour
         maxDamage = 20;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
-        attackName = "Tornado".ToString();
+        attackName = "Tornado";
     }
 
     void ThunderStorm()
@@ -4411,7 +4418,7 @@ public class Unit : MonoBehaviour
         maxDamage = 14;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
-        attackName = "Thunderstorm".ToString();
+        attackName = "Thunderstorm";
     }
 
     void Blizzard()
@@ -4423,7 +4430,7 @@ public class Unit : MonoBehaviour
         maxDamage = 18;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
-        attackName = "Blizzard".ToString();
+        attackName = "Blizzard";
     }
 
     void WallOfFlame()
@@ -4435,7 +4442,7 @@ public class Unit : MonoBehaviour
         maxDamage = 40;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
-        attackName = "Wall of Flame".ToString();
+        attackName = "Wall of Flame";
     }
 
     void HellFreezing()
@@ -4447,7 +4454,7 @@ public class Unit : MonoBehaviour
         maxDamage = 30;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
-        attackName = "Hell Freezing Over".ToString();
+        attackName = "Hell Freezing Over";
     }
 
     void IceAge()
@@ -4459,7 +4466,7 @@ public class Unit : MonoBehaviour
         maxDamage = 50;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
-        attackName = "Ice Age".ToString();
+        attackName = "Ice Age";
     }
 
     #endregion
@@ -4467,13 +4474,13 @@ public class Unit : MonoBehaviour
     IEnumerator ClearText()
     {
         yield return new WaitForSeconds(2f);
-        DamageUI.text = "".ToString();
+        DamageUI.text = "";
     }
 
     IEnumerator ClearTextIra()
     {
         yield return new WaitForSeconds(.5f);
-        DamageUI.text = "".ToString();
+        DamageUI.text = "";
     }
 
     void NamePrint()

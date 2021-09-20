@@ -843,9 +843,40 @@ public class BattleSystem : MonoBehaviour
         {
             if (enemyCount > 0)
             {
-                upRightNow = enemyTurnOrder[0];
-                enemyTurnOrder.RemoveAt(0);
-                enemyTurnOrder.Add(upRightNow);
+                float upNextHealth = 0;
+
+                do
+                {
+                    upRightNow = enemyTurnOrder[0];
+                    enemyTurnOrder.RemoveAt(0);
+                    enemyTurnOrder.Add(upRightNow);
+
+                    switch (upRightNow)
+                    {
+                        case CharacterIdentifier.Enemy1:
+                            upNextHealth = enemyUnit[0].currentHP;
+                            break;
+                        case CharacterIdentifier.Enemy2:
+                            upNextHealth = enemyUnit[1].currentHP;
+                            break;
+                        case CharacterIdentifier.Enemy3:
+                            upNextHealth = enemyUnit[2].currentHP;
+                            break;
+                        case CharacterIdentifier.Enemy4:
+                            upNextHealth = enemyUnit[3].currentHP;
+                            break;
+                        case CharacterIdentifier.Enemy5:
+                            upNextHealth = enemyUnit[4].currentHP;
+                            break;
+
+                        default:
+                            Debug.LogError("This should only be handeling enemy turns");
+                            upNextHealth = 0; 
+                            break;
+                    }
+
+                } while (upNextHealth <= 0);
+                
             }
             else
             {
@@ -1182,7 +1213,7 @@ public class BattleSystem : MonoBehaviour
 
     void RemoveCurrentEnemy()
     {
-        enemyTurnOrder.Remove(enemyUnit[enemyUnitSelected].myEnumValue);
+        ////enemyTurnOrder.Remove(enemyUnit[enemyUnitSelected].myEnumValue);
         totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
         totalExp += enemyUnit[enemyUnitSelected].ExperienceToDistribute;
         enemyCount--;
@@ -1615,7 +1646,7 @@ public class BattleSystem : MonoBehaviour
                     {
                         yield return new WaitForSeconds(1.5f);
                         enemyAnim[i].SetBool("isDead", true);
-                        enemyTurnOrder.Remove(enemyUnit[i].myEnumValue);
+                       // enemyTurnOrder.Remove(enemyUnit[i].myEnumValue);
                         totalExp += enemyUnit[i].ExperienceToDistribute;
                         totalExp += enemyUnit[i].ExperienceToDistribute;
                         enemyCount--;
@@ -1994,7 +2025,7 @@ public class BattleSystem : MonoBehaviour
                     {
                         yield return new WaitForSeconds(1.5f);
                         enemyAnim[i].SetBool("isDead", true);
-                        enemyTurnOrder.Remove(enemyUnit[i].myEnumValue);
+                        //enemyTurnOrder.Remove(enemyUnit[i].myEnumValue);
                         totalExp += enemyUnit[i].ExperienceToDistribute;
                         totalExp += enemyUnit[i].ExperienceToDistribute;
                         enemyCount--;
@@ -2875,7 +2906,7 @@ public class BattleSystem : MonoBehaviour
                 {
                     yield return new WaitForSeconds(1f);
                     enemyAnim[i].SetBool("isDead", true);
-                    enemyTurnOrder.Remove(enemyUnit[i].myEnumValue);
+                    //enemyTurnOrder.Remove(enemyUnit[i].myEnumValue);
                     totalExp += enemyUnit[i].ExperienceToDistribute;
                     totalExp += enemyUnit[i].ExperienceToDistribute;
                     enemyCount--;
@@ -2974,7 +3005,7 @@ public class BattleSystem : MonoBehaviour
                 {
                     yield return new WaitForSeconds(1.5f);
                     enemyAnim[i].SetBool("isDead", true);
-                    enemyTurnOrder.Remove(enemyUnit[i].myEnumValue);
+                    //enemyTurnOrder.Remove(enemyUnit[i].myEnumValue);
                     totalExp += enemyUnit[i].ExperienceToDistribute;
                     totalExp += enemyUnit[i].ExperienceToDistribute;
                     enemyCount--;
@@ -3559,7 +3590,7 @@ public class BattleSystem : MonoBehaviour
                 {
                     yield return new WaitForSeconds(1.5f);
                     enemyAnim[i].SetBool("isDead", true);
-                    enemyTurnOrder.Remove(enemyUnit[i].myEnumValue);
+                    //enemyTurnOrder.Remove(enemyUnit[i].myEnumValue);
                     totalExp += enemyUnit[i].ExperienceToDistribute;
                     totalExp += enemyUnit[i].ExperienceToDistribute;
                     enemyCount--;
@@ -4182,7 +4213,7 @@ public class BattleSystem : MonoBehaviour
                 {
                     yield return new WaitForSeconds(1f);
                     enemyAnim[i].SetBool("isDead", true);
-                    enemyTurnOrder.Remove(enemyUnit[i].myEnumValue);
+                    //enemyTurnOrder.Remove(enemyUnit[i].myEnumValue);
                     totalExp += enemyUnit[i].ExperienceToDistribute;
                     totalExp += enemyUnit[i].ExperienceToDistribute;
                     enemyCount--;
@@ -4369,7 +4400,7 @@ public class BattleSystem : MonoBehaviour
         enemyUnit[enemyUnitSelected].GetComponent<Unit>().enabled = false;
         
 
-        enemyTurnOrder.Remove(enemyUnit[enemyUnitSelected].myEnumValue);
+        //enemyTurnOrder.Remove(enemyUnit[enemyUnitSelected].myEnumValue);
         enemyCount--;
 
         enemySelectionParticle.transform.position = enemyBattleStationLocations[enemyUnitSelected].transform.position;
@@ -4407,9 +4438,9 @@ public class BattleSystem : MonoBehaviour
             }
             else
             {
-                enemyUnit[enemyUnitSelected].DetermineAttack();
+                enemyUnit[enemyIndex].DetermineAttack();
 
-                if (enemyUnit[enemyUnitSelected].removeFromBattle)
+                if (enemyUnit[enemyIndex].removeFromBattle)
                 {
                     Camera.transform.LookAt(MC.transform.position);
                     StartCoroutine(WaitingToBeACoward());
@@ -5366,6 +5397,7 @@ public class BattleSystem : MonoBehaviour
                                 }
                                 else
                                 {
+                                    Debug.Log(enemyUnit[enemyIndex].unitName + " " + enemyUnit[enemyIndex].attackName);
                                     dialogueText.text = enemyUnit[enemyIndex].unitName + " attacks " + GameManager.MCFirstName + " with " + enemyUnit[enemyIndex].attackName + "!";
 
                                     yield return new WaitForSeconds(1f);
