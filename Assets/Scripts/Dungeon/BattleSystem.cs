@@ -117,7 +117,8 @@ public class BattleSystem : MonoBehaviour
     //text informing the player what is going on
     public Text dialogueText;
 
-
+    //GracieMay Unlock
+    public bool isDungeons123;
     //PlayerSpellChoice
 
     //This needs to be determined later - right now, it is a placeholder from Strike Out
@@ -990,86 +991,94 @@ public class BattleSystem : MonoBehaviour
 
     public void RunAway()
     {
-        /*  if (THIS IS A BOSS)
+          if (Boss)
           {
               dialogueText.text = "You can't run from this fight!";
-              StartCoroutine(WaitingForCall());
-          }
-        */
-        //   else
-        //   {
-        //Build into this system a little - add their Dodge score
-        int Rand = Random.Range(0, 2);
-        if (Rand == 0)
-        {
-            if (GameManager.GracieMayAvailable)
-            {
-                dialogueText.text = "Gracie May: You can't leave now! I'll look for an opening!";
-            }
-            else
-            {
-                dialogueText.text = "You don't see an opening.";
-            }
             MCMenu.SetActive(false);
+            RhysMenu.SetActive(false);
+            JameelMenu.SetActive(false);
+            SkyeMenu.SetActive(false);
+            SullivanMenu.SetActive(false);
+            HarperMenu.SetActive(false);
             NextTurn();
         }
-        if (Rand == 1)
+        else
         {
-            if (GameManager.GracieMayAvailable)
+            int Rand = Random.Range(0, 2);
+            if (Rand == 0)
             {
-                dialogueText.text = "Gracie May: I found an opening! You can run!";
-                MCAnim.Play("Armature|Run");
-                if (GameManager.RhysInParty && !RhysDead)
+                if (GameManager.GracieMayAvailable)
                 {
-                    RhysAnim.Play("Armature|Run");
+                    dialogueText.text = "Gracie May: You can't leave now! I'll look for an opening!";
                 }
-                if (GameManager.JameelInParty && !JameelDead)
+                else
                 {
-                    JameelAnim.Play("Armature|Run");
+                    dialogueText.text = "You don't see an opening.";
                 }
-                if (GameManager.HarperInParty && !HarperDead)
-                {
-                    HarperAnim.Play("Armature|Run");
-                }
-                if (GameManager.SkyeInParty && !SkyeDead)
-                {
-                    SkyeAnim.Play("Armature|Run");
-                }
-                if (GameManager.SullivanInParty && !SullivanDead)
-                {
-                    SullivanAnim.Play("Armature|Run");
-                }
+                MCMenu.SetActive(false);
+                RhysMenu.SetActive(false);
+                JameelMenu.SetActive(false);
+                SkyeMenu.SetActive(false);
+                SullivanMenu.SetActive(false);
+                HarperMenu.SetActive(false);
+                NextTurn();
             }
-            else
+            if (Rand == 1)
             {
-                dialogueText.text = "You think you can get away";
+                if (GameManager.GracieMayAvailable)
+                {
+                    dialogueText.text = "Gracie May: I found an opening! You can run!";
+                    MCAnim.Play("Armature|Run");
+                    if (GameManager.RhysInParty && !RhysDead)
+                    {
+                        RhysAnim.Play("Armature|Run");
+                    }
+                    if (GameManager.JameelInParty && !JameelDead)
+                    {
+                        JameelAnim.Play("Armature|Run");
+                    }
+                    if (GameManager.HarperInParty && !HarperDead)
+                    {
+                        HarperAnim.Play("Armature|Run");
+                    }
+                    if (GameManager.SkyeInParty && !SkyeDead)
+                    {
+                        SkyeAnim.Play("Armature|Run");
+                    }
+                    if (GameManager.SullivanInParty && !SullivanDead)
+                    {
+                        SullivanAnim.Play("Armature|Run");
+                    }
+                }
+                else
+                {
+                    dialogueText.text = "You think you can get away";
 
-                MCAnim.Play("Armature|Run");
-                if (GameManager.RhysInParty && !RhysDead)
-                {
-                    RhysAnim.Play("Armature|Run");
+                    MCAnim.Play("Armature|Run");
+                    if (GameManager.RhysInParty && !RhysDead)
+                    {
+                        RhysAnim.Play("Armature|Run");
+                    }
+                    if (GameManager.JameelInParty && !JameelDead)
+                    {
+                        JameelAnim.Play("Armature|Run");
+                    }
+                    if (GameManager.HarperInParty && !HarperDead)
+                    {
+                        HarperAnim.Play("Armature|Run");
+                    }
+                    if (GameManager.SkyeInParty && !SkyeDead)
+                    {
+                        SkyeAnim.Play("Armature|Run");
+                    }
+                    if (GameManager.SullivanInParty && !SullivanDead)
+                    {
+                        SullivanAnim.Play("Armature|Run");
+                    }
                 }
-                if (GameManager.JameelInParty && !JameelDead)
-                {
-                    JameelAnim.Play("Armature|Run");
-                }
-                if (GameManager.HarperInParty && !HarperDead)
-                {
-                    HarperAnim.Play("Armature|Run");
-                }
-                if (GameManager.SkyeInParty && !SkyeDead)
-                {
-                    SkyeAnim.Play("Armature|Run");
-                }
-                if (GameManager.SullivanInParty && !SullivanDead)
-                {
-                    SullivanAnim.Play("Armature|Run");
-                }
-
+                StartCoroutine(WaitingAtEndOfBattle());
             }
-            StartCoroutine(WaitingAtEndOfBattle());
         }
-        //  }
     }
 
     public void ConfirmAttack()
@@ -6442,114 +6451,121 @@ public class BattleSystem : MonoBehaviour
 
     void GracieMay()
     {
-        float chance = Random.Range(0, 100);
-
-        float gracieSpawnChance = (GameManager.GracieMayFriendship / 10) * chance;
-
-        chance = 100f;
-
-        if (chance > .5f)
+        if (GameManager.GracieMayAvailable)
         {
-            int spell = Random.Range(0, 5);
-            if (spell == 0)
+            float chance = Random.Range(0, 100);
+
+            float gracieSpawnChance = (GameManager.GracieMayFriendship / 10) * chance;
+
+            chance = 100f;
+
+            if (chance > .5f)
             {
-                GameManager.MCHealth *= 1.5f;
-                if (GameManager.MCHealth > GameManager.MCMaxHealth)
+                int spell = Random.Range(0, 5);
+                if (spell == 0)
                 {
-                    GameManager.MCHealth = GameManager.MCMaxHealth;
+                    GameManager.MCHealth *= 1.5f;
+                    if (GameManager.MCHealth > GameManager.MCMaxHealth)
+                    {
+                        GameManager.MCHealth = GameManager.MCMaxHealth;
+                    }
+
+                    if (GameManager.RhysInParty && !RhysDead)
+                    {
+                        GameManager.RhysHealth *= 1.5f;
+                        if (GameManager.RhysHealth > GameManager.RhysMaxHealth)
+                        {
+                            GameManager.RhysHealth = GameManager.RhysMaxHealth;
+                        }
+                    }
+
+                    if (GameManager.JameelInParty && !JameelDead)
+                    {
+                        GameManager.JameelHealth *= 1.5f;
+                        if (GameManager.JameelHealth > GameManager.JameelMaxHealth)
+                        {
+                            GameManager.JameelHealth = GameManager.JameelMaxHealth;
+                        }
+                    }
+
+                    if (GameManager.HarperInParty && !HarperDead)
+                    {
+                        GameManager.HarperHealth *= 1.5f;
+                        if (GameManager.HarperHealth > GameManager.HarperMaxHealth)
+                        {
+                            GameManager.HarperHealth = GameManager.HarperMaxHealth;
+                        }
+                    }
+
+                    if (GameManager.SkyeInParty && !SkyeDead)
+                    {
+                        GameManager.SkyeHealth *= 1.5f;
+                        if (GameManager.SkyeHealth > GameManager.SkyeMaxHealth)
+                        {
+                            GameManager.SkyeHealth = GameManager.SkyeMaxHealth;
+                        }
+                    }
+
+                    if (GameManager.SullivanInParty && !SullivanDead)
+                    {
+                        GameManager.SullivanHealth *= 1.5f;
+                        if (GameManager.SullivanHealth > GameManager.SullivanMaxHealth)
+                        {
+                            GameManager.SullivanHealth = GameManager.SullivanMaxHealth;
+                        }
+                    }
+                    dialogueText.text = "Gracie May: Here is a little health for you!";
+                    GracieMaySpell1.SetActive(true);
+                    UpdateLifeUI();
                 }
 
-                if (GameManager.RhysInParty && !RhysDead)
+                if (spell == 1)
                 {
-                    GameManager.RhysHealth *= 1.5f;
-                    if (GameManager.RhysHealth > GameManager.RhysMaxHealth)
-                    {
-                        GameManager.RhysHealth = GameManager.RhysMaxHealth;
-                    }
+                    GameManager.MCMagic += Mathf.RoundToInt(GameManager.MCMaxMagic * .3f);
+                    GameManager.RhysMagic += Mathf.RoundToInt(GameManager.RhysMaxMagic * .3f);
+                    GameManager.JameelMagic += Mathf.RoundToInt(GameManager.JameelMaxMagic * .3f);
+                    GameManager.HarperMagic += Mathf.RoundToInt(GameManager.HarperMaxMagic * .3f);
+                    GameManager.SkyeMagic += Mathf.RoundToInt(GameManager.SkyeMaxMagic * .3f);
+                    GameManager.SullivanMagic += Mathf.RoundToInt(GameManager.SullivanMaxMagic * .3f);
+                    dialogueText.text = "Gracie May: Here is a little stamina for you!";
+                    GracieMaySpell2.SetActive(true);
+                    UpdateMagicUI();
                 }
 
-                if (GameManager.JameelInParty && !JameelDead)
+                if (spell == 2)
                 {
-                    GameManager.JameelHealth *= 1.5f;
-                    if (GameManager.JameelHealth > GameManager.JameelMaxHealth)
-                    {
-                        GameManager.JameelHealth = GameManager.JameelMaxHealth;
-                    }
+                    IncreaseAttack();
+                    dialogueText.text = "Attack up!";
+                    GracieMaySpell3.SetActive(true);
                 }
 
-                if (GameManager.HarperInParty && !HarperDead)
+                if (spell == 3)
                 {
-                    GameManager.HarperHealth *= 1.5f;
-                    if (GameManager.HarperHealth > GameManager.HarperMaxHealth)
-                    {
-                        GameManager.HarperHealth = GameManager.HarperMaxHealth;
-                    }
+                    IncreaseDefense();
+                    dialogueText.text = "Defense up!";
+                    GracieMaySpell4.SetActive(true);
                 }
 
-                if (GameManager.SkyeInParty && !SkyeDead)
+                if (spell == 4)
                 {
-                    GameManager.SkyeHealth *= 1.5f;
-                    if (GameManager.SkyeHealth > GameManager.SkyeMaxHealth)
-                    {
-                        GameManager.SkyeHealth = GameManager.SkyeMaxHealth;
-                    }
+                    EvasionGroup();
+                    dialogueText.text = "Evasion Rase up!";
                 }
 
-                if (GameManager.SullivanInParty && !SullivanDead)
-                {
-                    GameManager.SullivanHealth *= 1.5f;
-                    if (GameManager.SullivanHealth > GameManager.SullivanMaxHealth)
-                    {
-                        GameManager.SullivanHealth = GameManager.SullivanMaxHealth;
-                    }
-                }
-                dialogueText.text = "Gracie May: Here is a little health for you!";
-                GracieMaySpell1.SetActive(true);
-                UpdateLifeUI();
             }
-
-            if (spell == 1)
+            else
             {
-                GameManager.MCMagic += Mathf.RoundToInt(GameManager.MCMaxMagic * .3f);
-                GameManager.RhysMagic += Mathf.RoundToInt(GameManager.RhysMaxMagic * .3f);
-                GameManager.JameelMagic += Mathf.RoundToInt(GameManager.JameelMaxMagic * .3f);
-                GameManager.HarperMagic += Mathf.RoundToInt(GameManager.HarperMaxMagic * .3f);
-                GameManager.SkyeMagic += Mathf.RoundToInt(GameManager.SkyeMaxMagic * .3f);
-                GameManager.SullivanMagic += Mathf.RoundToInt(GameManager.SullivanMaxMagic * .3f);
-                dialogueText.text = "Gracie May: Here is a little stamina for you!";
-                GracieMaySpell2.SetActive(true);
-                UpdateMagicUI();
+                NextTurn();
             }
+            gracieMaySet.SetActive(true);
+            gracieMayAnim.SetBool("isAttack", true);
 
-            if (spell == 2)
-            {
-                IncreaseAttack();
-                dialogueText.text = "Attack up!";
-                GracieMaySpell3.SetActive(true);
-            }
-
-            if (spell == 3)
-            {
-                IncreaseDefense();
-                dialogueText.text = "Defense up!";
-                GracieMaySpell4.SetActive(true);
-            }
-
-            if (spell == 4)
-            {
-                EvasionGroup();
-                dialogueText.text = "Evasion Rase up!";
-            }
-
+            StartCoroutine(GracieWaiting());
         }
         else
         {
             NextTurn();
         }
-        gracieMaySet.SetActive(true);
-        gracieMayAnim.SetBool("isAttack", true);
-
-        StartCoroutine(GracieWaiting());
     }
 
     IEnumerator GracieWaiting()
