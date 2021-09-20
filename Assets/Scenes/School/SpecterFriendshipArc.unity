@@ -218,6 +218,79 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3381151}
   m_CullTransparentMesh: 1
+--- !u!1 &11218467
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 11218469}
+  - component: {fileID: 11218468}
+  m_Layer: 0
+  m_Name: FriendshipDialogue (11)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &11218468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 11218467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72ccc3c8e84825149b25ad0f51c6ee34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameText: {fileID: 2091601909}
+  dialogueText: {fileID: 283004320}
+  animator: {fileID: 1630474238}
+  player: {fileID: 0}
+  friend: {fileID: 0}
+  WaitTimeSec: 3
+  dialogue:
+    names:
+    - Lyle
+    - Lyle
+    sentences:
+    - 'You should head off to your next class. '
+    - I'll be here.
+    isCalledOn: 0000
+  toBeContinued: 0
+  isChoice: 0
+  isFinished: 1
+  thisConversation: {fileID: 11218467}
+  nextConversation: {fileID: 0}
+  choicesMenu: {fileID: 1658149313}
+  RoomToGoTo: 
+  EndOfLessonLearning: 0
+  isTransfigurationDemonstration: 0
+  TransfiguredDemonstration: {fileID: 0}
+  TimerOnChoice: 0
+  WaitForChoice: 0
+  LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
+--- !u!4 &11218469
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 11218467}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -578.1532, y: -398.39017, z: -347.45825}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 103430531}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &28578734
 GameObject:
   m_ObjectHideFlags: 0
@@ -555,6 +628,7 @@ Transform:
   - {fileID: 28578735}
   - {fileID: 1503584476}
   - {fileID: 702424193}
+  - {fileID: 11218469}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -589,6 +663,7 @@ Transform:
   - {fileID: 2007194152}
   - {fileID: 144681943}
   - {fileID: 618016735}
+  - {fileID: 163188647}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -964,11 +1039,11 @@ MonoBehaviour:
     - I have probably prattled on enough, I'll let you get on with doing the things
       of the living. I'll be here if you want to chat.
     isCalledOn: 0000000000
-  toBeContinued: 0
+  toBeContinued: 1
   isChoice: 0
-  isFinished: 1
+  isFinished: 0
   thisConversation: {fileID: 144681941}
-  nextConversation: {fileID: 0}
+  nextConversation: {fileID: 163188645}
   choicesMenu: {fileID: 1610291102}
   RoomToGoTo: FourthFloor
   EndOfLessonLearning: 0
@@ -993,6 +1068,77 @@ Transform:
   m_Children: []
   m_Father: {fileID: 107367052}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &163188645
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 163188647}
+  - component: {fileID: 163188646}
+  m_Layer: 0
+  m_Name: FriendshipDialogue (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &163188646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 163188645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72ccc3c8e84825149b25ad0f51c6ee34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameText: {fileID: 2091601909}
+  dialogueText: {fileID: 283004320}
+  animator: {fileID: 1630474238}
+  player: {fileID: 0}
+  friend: {fileID: 0}
+  WaitTimeSec: 1.5
+  dialogue:
+    names:
+    - You
+    sentences:
+    - You feel like you know the Specter a little better now.
+    isCalledOn: 00
+  toBeContinued: 0
+  isChoice: 0
+  isFinished: 1
+  thisConversation: {fileID: 163188645}
+  nextConversation: {fileID: 0}
+  choicesMenu: {fileID: 1610291102}
+  RoomToGoTo: FourthFloor
+  EndOfLessonLearning: 0
+  isTransfigurationDemonstration: 0
+  TransfiguredDemonstration: {fileID: 0}
+  TimerOnChoice: 0
+  WaitForChoice: 0
+  LevelUp: 0
+  isAtornFinal: 0
+  AtornBelow4: {fileID: 0}
+  Atorn4: {fileID: 0}
+--- !u!4 &163188647
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 163188645}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -578.1532, y: -398.39017, z: -347.45825}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 107367052}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &185008484
 GameObject:
@@ -3491,13 +3637,13 @@ MonoBehaviour:
     - You leave Lyle in his contemplative silence.
     - You feel like you know him a little better.
     isCalledOn: 000000
-  toBeContinued: 0
+  toBeContinued: 1
   isChoice: 0
-  isFinished: 1
+  isFinished: 0
   thisConversation: {fileID: 702424191}
-  nextConversation: {fileID: 0}
+  nextConversation: {fileID: 11218467}
   choicesMenu: {fileID: 1658149313}
-  RoomToGoTo: FourthFloor
+  RoomToGoTo: 
   EndOfLessonLearning: 0
   isTransfigurationDemonstration: 0
   TransfiguredDemonstration: {fileID: 0}
