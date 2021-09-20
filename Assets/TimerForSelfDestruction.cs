@@ -18,8 +18,8 @@ public class TimerForSelfDestruction : MonoBehaviour
         {
             Debug.Log("Showing tooltip!");
             //startPos = transform.position; // doesn't work for UI
-            myRectTransform = GetComponent<RectTransform>();
-            startPos = myRectTransform.localPosition;
+            //myRectTransform = GetComponent<RectTransform>();
+            //startPos = myRectTransform.localPosition;
             gameObject.SetActive(true);
         }
     }

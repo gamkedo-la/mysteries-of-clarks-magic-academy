@@ -88,10 +88,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9184963941812476080}
+  - component: {fileID: 9184963941812476083}
   - component: {fileID: 9184963941812476081}
   - component: {fileID: 9184963941812476086}
   - component: {fileID: 9184963941812476087}
-  - component: {fileID: 9184963941812476083}
   m_Layer: 0
   m_Name: Tutorial
   m_TagString: Untagged
@@ -119,6 +119,35 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &9184963941812476083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9184963941812476084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1aebece6dcde1a46820c41a79198f4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Title: Tutorial - Free Time!
+  TXT1: "You have just made it through your first class at Clarks! There is plenty
+    more knowledge to learn at this school. \n\nBut what about in the meantime? After
+    all, a student's life isn't only attending classes. \n\nThere are many ways you
+    can spend your free time."
+  TXT2: 'First off is by spending time with your friends. As you learn more about
+    the school, you will meet new people.
+
+
+    Talk to them, learn about them, who
+    knows - what you learn may come in handy later!'
+  TXT3: "You can also work on yourself! \n\nAround the castle are various clubs and
+    activites you can participate in to level up your personal stats\n\nGo explore
+    and find what secrets the castle has in store!"
+  FirstScreen: {fileID: 9184963943722247525}
+  SecondScreen: {fileID: 9184963943847417156}
+  ThirdScreen: {fileID: 9184963942927155276}
 --- !u!223 &9184963941812476081
 Canvas:
   m_ObjectHideFlags: 0
@@ -138,7 +167,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: -10
+  m_SortingOrder: 999
   m_TargetDisplay: 0
 --- !u!114 &9184963941812476086
 MonoBehaviour:
@@ -180,21 +209,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &9184963941812476083
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9184963941812476084}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1aebece6dcde1a46820c41a79198f4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  FirstScreen: {fileID: 9184963943722247525}
-  SecondScreen: {fileID: 9184963943847417156}
-  ThirdScreen: {fileID: 9184963942927155276}
 --- !u!1 &9184963941852711324
 GameObject:
   m_ObjectHideFlags: 0
@@ -577,7 +591,7 @@ GameObject:
   - component: {fileID: 9184963942342744839}
   - component: {fileID: 9184963942342744836}
   m_Layer: 0
-  m_Name: Tutorial2
+  m_Name: TXT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -643,12 +657,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'First off is by spending time with your friends. As you learn more about
-    the school, you will meet new people.
-
-
-    Talk to them, learn about them, who
-    knows - what you learn may come in handy later!'
+  m_Text: Tutorial Text 2
 --- !u!1 &9184963942714091878
 GameObject:
   m_ObjectHideFlags: 0
@@ -851,7 +860,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Tutorial - Free Time!
+  m_Text: Tutorial Title
 --- !u!1 &9184963942927155276
 GameObject:
   m_ObjectHideFlags: 0
@@ -1297,7 +1306,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Tutorial - Free Time!
+  m_Text: Tutorial Title
 --- !u!1 &9184963943644826030
 GameObject:
   m_ObjectHideFlags: 0
@@ -1443,7 +1452,7 @@ GameObject:
   - component: {fileID: 9184963943710056204}
   - component: {fileID: 9184963943710056205}
   m_Layer: 0
-  m_Name: Tutorial1
+  m_Name: TXT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1509,10 +1518,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "You have just made it through your first class at Clarks! There is plenty
-    more knowledge to learn at this school. \n\nBut what about in the meantime? After
-    all, a student's life isn't only attending classes. \n\nThere are many ways you
-    can spend your free time."
+  m_Text: Tutorial Text 1
 --- !u!1 &9184963943722247525
 GameObject:
   m_ObjectHideFlags: 0
@@ -1604,7 +1610,7 @@ GameObject:
   - component: {fileID: 9184963943780902333}
   - component: {fileID: 9184963943780902306}
   m_Layer: 0
-  m_Name: Tutorial3
+  m_Name: TXT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1670,9 +1676,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "You can also work on yourself! \n\nAround the castle are various clubs
-    and activites you can participate in to level up your personal stats\n\nGo explore
-    and find what secrets the castle has in store!"
+  m_Text: Tutorial Text 3
 --- !u!1 &9184963943837272518
 GameObject:
   m_ObjectHideFlags: 0
@@ -1751,7 +1755,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Tutorial - Free Time!
+  m_Text: Tutorial Title
 --- !u!1 &9184963943847417156
 GameObject:
   m_ObjectHideFlags: 0
