@@ -240,10 +240,15 @@ public class Dungeon5Generator : MonoBehaviour {
 				//roomWith4Doors
 				if (roomsBool[i][0] && roomsBool[i][1] && roomsBool[i][2] && roomsBool[i][3]) {
 					toSpawn = hallWith4Open[Random.Range(0, hallWith4Open.Count)];
+					roomRotation[i] = Random.Range(0, 4);
+					roomType[i] = RoomType.Hall;
 				}
 			}
 			else if (roomType[i] == RoomType.Big) {
 				toSpawn = bigRoom[Random.Range(0, bigRoom.Count)];
+			}
+			else if (roomType[i] == RoomType.Hall) {
+				toSpawn = hallWith4Open[Random.Range(0, hallWith4Open.Count)];
 			}
 
 			if (!toSpawn) continue;
