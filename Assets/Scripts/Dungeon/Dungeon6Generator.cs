@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Unity.AI.Navigation;
+using UnityEngine.UI;
 using UnityEditor;
 
 public class Dungeon6Generator : MonoBehaviour {
@@ -11,6 +12,7 @@ public class Dungeon6Generator : MonoBehaviour {
 
 	public int dungeonNumber = 5;
 	public int currentLevel;
+	public Text currentFloorText;
 
 	public List<PrefabLevelPair> specialLevels;
 	public bool levelIsSpecial = false;
@@ -69,18 +71,19 @@ public class Dungeon6Generator : MonoBehaviour {
 		Instance = this;
 		DontDestroyOnLoad(gameObject);
 
+		currentLevel = GameManager.currentFloor;
+		if (GameManager.currentFloor > GameManager.DungeonFloorCount[dungeonNumber]) GameManager.DungeonFloorCount[dungeonNumber] = GameManager.currentFloor;
+		currentFloorText.text = (currentLevel + 1).ToString();
+
+		FMODUnity.RuntimeManager.StudioSystem.setParameterByName("GameState", 0);
+		FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Dungeon", dungeonNumber);
+		FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Floor", currentLevel % 5);
+
 		Generate();
 	}
 
 	public void Generate() {
 		Clear();
-
-		currentLevel = GameManager.currentFloor;
-		if (GameManager.currentFloor > GameManager.DungeonFloorCount[dungeonNumber]) GameManager.DungeonFloorCount[dungeonNumber] = GameManager.currentFloor;
-
-		FMODUnity.RuntimeManager.StudioSystem.setParameterByName("GameState", 0);
-		FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Dungeon", dungeonNumber);
-		FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Floor", currentLevel % 5);
 
 		//Check for special levels
 		foreach (PrefabLevelPair floor in specialLevels) {
