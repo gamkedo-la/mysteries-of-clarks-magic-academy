@@ -29,6 +29,9 @@ public class Dungeon5Generator : MonoBehaviour {
 
 	public float gridScale = 15f;
 	public float oddsOfBigRoom = 0.05f;
+	public float oddsOfHall = 0.15f;
+	public int minLengthOfHall = 2;
+	public int maxLengthOfHall = 5;
 
 	public GameObject enemy;
 	public GameObject treasure;
@@ -42,6 +45,13 @@ public class Dungeon5Generator : MonoBehaviour {
 	public class PrefabLevelPair {
 		public GameObject levelPrefab;
 		public int levelNumber;
+	}
+
+	public enum RoomType {
+		Room,
+		Hall,
+		Big,
+		Empty
 	}
 
 	void Update() {
@@ -99,10 +109,15 @@ public class Dungeon5Generator : MonoBehaviour {
 			}
 		}
 
-		List<Vector2> location = new List<Vector2>();
-		List<GameObject> roomsToPlace = new List<GameObject>();
-		List<float> placementRotation = new List<float>();
-		List<string> availability = new List<string>();
+		List<Vector2Int> location = new List<Vector2Int>();
+		List<bool[]> roomsBool = new List<bool[]>();
+		List<RoomType> roomType = new List<RoomType>();
+		List<Vector2Int> dir = new List<Vector2Int>() { Vector2Int.up, Vector2Int.right, Vector2Int.down, Vector2Int.left };
+		//Generate first room
+		location.Add(Vector2Int.zero);
+		roomsBool.Add(new bool[] { false, false, false, false });
+		roomType.Add(RoomType.Room);
+
 
 
 	}
