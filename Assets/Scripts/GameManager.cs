@@ -165,9 +165,9 @@ public class GameManager : MonoBehaviour
         // Testing Date
 
          dayOfWeek = 5;
-         month = 4;
-         day = 18;
-          
+         month = 5;
+         day = 4;
+        timeOfDay = 3;
 
 
         player = GameObject.FindGameObjectWithTag("Player");
@@ -180,11 +180,12 @@ public class GameManager : MonoBehaviour
         dayOfWeek = 0;
         month = 4;
         day =17;
+        timeOfDay = 4;
         */
 
         directionalLight = GameObject.Find("Sun");
 
-        timeOfDay = 4;
+        
         displayDayOfWeek = GameObject.Find("DayOfWeek").GetComponent<Text>();
         displayTimeOfDay = GameObject.Find("TimeOfDay").GetComponent<Text>();
         monthAndDay = GameObject.Find("CalendarDay").GetComponent<Text>();
