@@ -257,11 +257,11 @@ public class FriendshipDialogueManager : MonoBehaviour
         if (isFinished)
         {
             Debug.Log("endOfConversation");
-            GameManager.Intelligence += EndOfLessonLearning;
+          //  GameManager.Intelligence += EndOfLessonLearning;
             //Since there is only one gamemanager, we can reference the instance of the CanvasForStats to turn on or off
-            GameManager.instance.CanvasForStats.SetActive(true);
+          //  GameManager.instance.CanvasForStats.SetActive(true);
 
-            GameManager.IncreaseStatLevel();
+          //  GameManager.IncreaseStatLevel();
             StartCoroutine(StatsWaiting());
             // GameManager.ProgressDay();
 
@@ -278,8 +278,8 @@ public class FriendshipDialogueManager : MonoBehaviour
     }
     IEnumerator StatsWaiting()
     {
-        yield return new WaitForSeconds(3f);
-        GameManager.instance.CanvasForStats.SetActive(false);
+        yield return new WaitForSeconds(1f);
+      //  GameManager.instance.CanvasForStats.SetActive(false);
         datePlay.SetBool("ToPlay", true);
         StartCoroutine(Waiting());
     }
