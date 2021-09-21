@@ -157,25 +157,31 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
+        //Testing
         MCFirstName = "Kari";
         MCLastName = "Ford";
+        SkyeSaved = true;
+
+        // Testing Date
+
+         dayOfWeek = 5;
+         month = 4;
+         day = 18;
+          
+
+
         player = GameObject.FindGameObjectWithTag("Player");
 
         //Start game here
         Money = 100;
 
         //Game start is at - month 4 day 17 time of day 4
-
+        /*
         dayOfWeek = 0;
         month = 4;
         day =17;
-        
-        // Testing Date
-        
-      /*  dayOfWeek = 5;
-        month = 5;
-        day = 2;
         */
+
         directionalLight = GameObject.Find("Sun");
 
         timeOfDay = 4;
