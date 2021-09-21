@@ -33,7 +33,7 @@ public class Dungeon5Generator : MonoBehaviour {
 	public float oddsOfBigRoom = 0.5f;
 	public float oddsOfHall = 0.15f;
 	public int minLengthOfHall = 2;
-	public int maxLengthOfHall = 5;
+	public int maxLengthOfHall = 4;
 
 	public GameObject enemy;
 	public GameObject treasure;
@@ -165,8 +165,37 @@ public class Dungeon5Generator : MonoBehaviour {
 				numberOfRooms++;
 
 			} else if (newRoomType <= oddsOfHall + oddsOfBigRoom) { //Hallway
+				int hallLength = Random.Range(minLengthOfHall, maxLengthOfHall+1);
+				for (int i =0; i < hallLength; i++) {
+					if (!roomsVec2.Contains(newPos)) {
+						roomsVec2.Add(newPos);
+						roomsBool.Add(new bool[] { false, false, false, false });
+						roomRotation.Add(0);
+						roomType.Add(RoomType.Hall);
+						
+						roomsBool[roomsVec2.IndexOf(oldPos)][newDir] = true;
+						roomsBool[roomsVec2.IndexOf(newPos)][(newDir + 2) % 4] = true;
+						oldPos = newPos;
+						newPos = newPos + dir[newDir];
+					} else {
+						i = hallLength;
+						roomsBool[roomsVec2.IndexOf(oldPos)][newDir] = true;
+						roomsBool[roomsVec2.IndexOf(newPos)][(newDir + 2) % 4] = true;
+					}
+				}
 
-				
+				if (!roomsVec2.Contains(newPos)) {
+					roomsVec2.Add(newPos);
+					roomsBool.Add(new bool[] { false, false, false, false });
+					roomRotation.Add(0);
+					roomType.Add(RoomType.Room);
+
+					roomsBool[roomsVec2.IndexOf(oldPos)][newDir] = true;
+					roomsBool[roomsVec2.IndexOf(newPos)][(newDir + 2) % 4] = true;
+
+					numberOfRooms++;
+				}
+
 
 			} else if (!roomsVec2.Contains(newPos)) { //New room
 				roomsVec2.Add(newPos);
@@ -179,7 +208,7 @@ public class Dungeon5Generator : MonoBehaviour {
 
 				numberOfRooms++;
 
-			} else if (roomType[roomsVec2.IndexOf(newPos)] == RoomType.Room) { //Connect old room
+			} else if (roomType[roomsVec2.IndexOf(newPos)] == RoomType.Room || roomType[roomsVec2.IndexOf(newPos)] == RoomType.Hall) { //Connect old room
 				roomsBool[newIndex][newDir] = true;
 				roomsBool[roomsVec2.IndexOf(newPos)][(newDir + 2) % 4] = true;
 			}
@@ -193,6 +222,7 @@ public class Dungeon5Generator : MonoBehaviour {
 				//roomWith1Door
 				if (roomsBool[i][0]) {
 					toSpawn = roomWith1Door[Random.Range(0, roomWith1Door.Count)];
+					roomRotation[i] = 0;
 				} else if (roomsBool[i][1]) {
 					toSpawn = roomWith1Door[Random.Range(0, roomWith1Door.Count)];
 					roomRotation[i] = 1;
@@ -214,6 +244,7 @@ public class Dungeon5Generator : MonoBehaviour {
 				//roomWith2DoorsL
 				if (roomsBool[i][0] && roomsBool[i][1]) {
 					toSpawn = roomWith2DoorsL[Random.Range(0, roomWith2DoorsL.Count)];
+					roomRotation[i] = 0;
 				} else if (roomsBool[i][1] && roomsBool[i][2]) {
 					toSpawn = roomWith2DoorsL[Random.Range(0, roomWith2DoorsL.Count)];
 					roomRotation[i] = 1;
@@ -227,6 +258,7 @@ public class Dungeon5Generator : MonoBehaviour {
 				//roomWith3Doors
 				if (roomsBool[i][0] && roomsBool[i][1] && roomsBool[i][2]) {
 					toSpawn = roomWith3Doors[Random.Range(0, roomWith3Doors.Count)];
+					roomRotation[i] = 0;
 				} else if (roomsBool[i][1] && roomsBool[i][2] && roomsBool[i][3]) {
 					toSpawn = roomWith3Doors[Random.Range(0, roomWith3Doors.Count)];
 					roomRotation[i] = 1;
@@ -248,7 +280,65 @@ public class Dungeon5Generator : MonoBehaviour {
 				toSpawn = bigRoom[Random.Range(0, bigRoom.Count)];
 			}
 			else if (roomType[i] == RoomType.Hall) {
-				toSpawn = hallWith4Open[Random.Range(0, hallWith4Open.Count)];
+				//hallWith1Door
+				if (roomsBool[i][0]) {
+					toSpawn = roomWith1Door[Random.Range(0, roomWith1Door.Count)];
+					roomRotation[i] = 0;
+					roomType[i] = RoomType.Room;
+				} else if (roomsBool[i][1]) {
+					toSpawn = roomWith1Door[Random.Range(0, roomWith1Door.Count)];
+					roomRotation[i] = 1;
+					roomType[i] = RoomType.Room;
+				} else if (roomsBool[i][2]) {
+					toSpawn = roomWith1Door[Random.Range(0, roomWith1Door.Count)];
+					roomRotation[i] = 2;
+					roomType[i] = RoomType.Room;
+				} else if (roomsBool[i][3]) {
+					toSpawn = roomWith1Door[Random.Range(0, roomWith1Door.Count)];
+					roomRotation[i] = 3;
+					roomType[i] = RoomType.Room;
+				}
+				//hallWith2OpenI
+				if (roomsBool[i][0] && roomsBool[i][2]) {
+					toSpawn = hallWith2OpenI[Random.Range(0, hallWith2OpenI.Count)];
+					roomRotation[i] = Random.Range(0f, 1f) > 0.5f ? 0 : 2;
+				} else if (roomsBool[i][1] && roomsBool[i][3]) {
+					toSpawn = hallWith2OpenI[Random.Range(0, hallWith2OpenI.Count)];
+					roomRotation[i] = Random.Range(0f, 1f) > 0.5f ? 1 : 3;
+				}
+				//hallWith2OpenL
+				if (roomsBool[i][0] && roomsBool[i][1]) {
+					toSpawn = hallWith2OpenL[Random.Range(0, hallWith2OpenL.Count)];
+					roomRotation[i] = 0;
+				} else if (roomsBool[i][1] && roomsBool[i][2]) {
+					toSpawn = hallWith2OpenL[Random.Range(0, hallWith2OpenL.Count)];
+					roomRotation[i] = 1;
+				} else if (roomsBool[i][2] && roomsBool[i][3]) {
+					toSpawn = hallWith2OpenL[Random.Range(0, hallWith2OpenL.Count)];
+					roomRotation[i] = 2;
+				} else if (roomsBool[i][3] && roomsBool[i][0]) {
+					toSpawn = hallWith2OpenL[Random.Range(0, hallWith2OpenL.Count)];
+					roomRotation[i] = 3;
+				}
+				//hallWith3Open
+				if (roomsBool[i][0] && roomsBool[i][1] && roomsBool[i][2]) {
+					toSpawn = hallWith3Open[Random.Range(0, hallWith3Open.Count)];
+					roomRotation[i] = 0;
+				} else if (roomsBool[i][1] && roomsBool[i][2] && roomsBool[i][3]) {
+					toSpawn = hallWith3Open[Random.Range(0, hallWith3Open.Count)];
+					roomRotation[i] = 1;
+				} else if (roomsBool[i][2] && roomsBool[i][3] && roomsBool[i][0]) {
+					toSpawn = hallWith3Open[Random.Range(0, hallWith3Open.Count)];
+					roomRotation[i] = 2;
+				} else if (roomsBool[i][3] && roomsBool[i][0] && roomsBool[i][1]) {
+					toSpawn = hallWith3Open[Random.Range(0, hallWith3Open.Count)];
+					roomRotation[i] = 3;
+				}
+				//hallWith4Open
+				if (roomsBool[i][0] && roomsBool[i][1] && roomsBool[i][2] && roomsBool[i][3]) {
+					toSpawn = hallWith4Open[Random.Range(0, hallWith4Open.Count)];
+					roomRotation[i] = Random.Range(0, 4);
+				}
 			}
 
 			if (!toSpawn) continue;
@@ -258,9 +348,40 @@ public class Dungeon5Generator : MonoBehaviour {
 			toSpawn.transform.Rotate(0f, roomRotation[i] * 90f, 0f);
 			toSpawn.transform.parent = transform;
 			toSpawn.name = roomsVec2[i].ToString();
+			if (roomType[i] == RoomType.Room || roomType[i] == RoomType.Big) currentRooms.Add(toSpawn);
 		}
-		
 
+		//Spawn Player
+		GameObject thePlayer = null;
+		if (player.scene.rootCount == 0) {
+			thePlayer = Instantiate(player);
+		} else {
+			thePlayer = player;
+		}
+		thePlayer.transform.position = new Vector3(0f, 1.4f, 0f);
+		thePlayer.transform.Rotate(0f, Random.Range(0f, 360f), 0f);
+		thePlayer.transform.parent = transform;
+
+		//Spawn Exit
+		GameObject theExit = null;
+		if (exit.scene.rootCount == 0) {
+			theExit = Instantiate(exit);
+		} else {
+			theExit = exit;
+		}
+		Vector2Int farthestRoom = Vector2Int.zero;
+		foreach (Vector2Int room in roomsVec2) {
+			if (Vector2Int.Distance(room, Vector2Int.zero) > Vector2Int.Distance(farthestRoom, Vector2Int.zero)) {
+				farthestRoom = room;
+			}
+		}
+		Vector3 newPosition = new Vector3(farthestRoom.x, 0f, farthestRoom.y);
+		theExit.transform.position = newPosition * gridScale;
+		theExit.transform.Rotate(0f, Random.Range(0f, 360f), 0f);
+		theExit.transform.parent = transform;
+
+
+		StartCoroutine(BuildNavMesh());
 	}
 
 	public void Clear() {
