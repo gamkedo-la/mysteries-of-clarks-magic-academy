@@ -126,8 +126,9 @@ public class Dungeon5Generator : MonoBehaviour {
 
 		//Generate map
 		int numberOfRooms = 1;
+		int newIndex = 0;
 		while (numberOfRooms <= currentLevel + 3) {
-			int newIndex = Random.Range(0, roomsVec2.Count);
+			newIndex = Random.Range(0, roomsVec2.Count);
 			int newDir = Random.Range(0, 4);
 			float newRoomType = Random.Range(0f, 1f);
 			Vector2Int oldPos = roomsVec2[newIndex];
@@ -215,6 +216,7 @@ public class Dungeon5Generator : MonoBehaviour {
 		}
 
 		//Assign tiles and Instanciate Map
+		List<Vector2Int> roomsForSpawning = new List<Vector2Int>();
 		for (int i = 0; i < roomsVec2.Count; i++) {
 			GameObject toSpawn = null;
 
@@ -348,7 +350,8 @@ public class Dungeon5Generator : MonoBehaviour {
 			toSpawn.transform.Rotate(0f, roomRotation[i] * 90f, 0f);
 			toSpawn.transform.parent = transform;
 			toSpawn.name = roomsVec2[i].ToString();
-			if (roomType[i] == RoomType.Room || roomType[i] == RoomType.Big) currentRooms.Add(toSpawn);
+			if (roomType[i] == RoomType.Room || roomType[i] == RoomType.Big) roomsForSpawning.Add(roomsVec2[i]);
+			currentRooms.Add(toSpawn);
 		}
 
 		//Spawn Player
@@ -361,6 +364,7 @@ public class Dungeon5Generator : MonoBehaviour {
 		thePlayer.transform.position = new Vector3(0f, 1.4f, 0f);
 		thePlayer.transform.Rotate(0f, Random.Range(0f, 360f), 0f);
 		thePlayer.transform.parent = transform;
+		roomsForSpawning.Remove(Vector2Int.zero);
 
 		//Spawn Exit
 		GameObject theExit = null;
@@ -370,7 +374,7 @@ public class Dungeon5Generator : MonoBehaviour {
 			theExit = exit;
 		}
 		Vector2Int farthestRoom = Vector2Int.zero;
-		foreach (Vector2Int room in roomsVec2) {
+		foreach (Vector2Int room in roomsForSpawning) {
 			if (Vector2Int.Distance(room, Vector2Int.zero) > Vector2Int.Distance(farthestRoom, Vector2Int.zero)) {
 				farthestRoom = room;
 			}
@@ -379,9 +383,41 @@ public class Dungeon5Generator : MonoBehaviour {
 		theExit.transform.position = newPosition * gridScale;
 		theExit.transform.Rotate(0f, Random.Range(0f, 360f), 0f);
 		theExit.transform.parent = transform;
+		roomsForSpawning.Remove(farthestRoom);
+
+		//Spawn Portal
+		Vector2Int portalRoom = new Vector2Int();
+		newIndex = Random.Range(1, roomsForSpawning.Count);
+		portalRoom = roomsForSpawning[newIndex];
+		GameObject thePortal = null;
+		if (portal.scene.rootCount == 0) {
+			thePortal = Instantiate(portal);
+		} else {
+			thePortal = portal;
+		}
+		thePortal.transform.position = new Vector3(portalRoom.x, 0f, portalRoom.y) * gridScale;
+		thePortal.transform.Rotate(0f, Random.Range(0f, 360f), 0f);
+		thePortal.transform.parent = transform;
+		roomsForSpawning.Remove(portalRoom);
+
+		//Spawn Treasure
+		Vector2Int treasureRoom = new Vector2Int();
+		newIndex = Random.Range(1, roomsForSpawning.Count);
+		treasureRoom = roomsForSpawning[newIndex];
+		GameObject theTreasure = null;
+		if (treasure.scene.rootCount == 0) {
+			theTreasure = Instantiate(treasure);
+		} else {
+			theTreasure = treasure;
+		}
+		theTreasure.transform.position = new Vector3(treasureRoom.x, 0f, treasureRoom.y) * gridScale;
+		theTreasure.transform.Rotate(0f, Random.Range(0f, 360f), 0f);
+		theTreasure.transform.parent = transform;
+		roomsForSpawning.Remove(treasureRoom);
 
 
 		StartCoroutine(BuildNavMesh());
+
 	}
 
 	public void Clear() {
