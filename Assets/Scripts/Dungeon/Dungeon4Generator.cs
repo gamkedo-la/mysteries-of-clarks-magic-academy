@@ -174,7 +174,7 @@ public class Dungeon4Generator : MonoBehaviour {
 		theExit.transform.position = newPosition * gridScale;
 		theExit.transform.Rotate(0f, Random.Range(0f, 360f), 0f);
 		theExit.transform.parent = transform;
-
+		
 		//Spawn Treasure and Portal
 		Vector2Int portalRoom = new Vector2Int();
 		if (currentRooms.Count > 2) {
@@ -213,39 +213,6 @@ public class Dungeon4Generator : MonoBehaviour {
 			theTreasure.transform.position = new Vector3(treasureRoom.x, 0f, treasureRoom.y) * gridScale;
 			theTreasure.transform.Rotate(0f, Random.Range(0f, 360f), 0f);
 			theTreasure.transform.parent = transform;
-		}
-
-
-		bool treasureSpawned = false;
-		bool portalSpawned = false;
-		foreach (Vector2 room in roomsVec2) {
-			if (room == new Vector2(0f, 0f)) continue;
-			if (room == farthestRoom) continue;
-
-			float percentRange = Random.Range(0f, 1f);
-			if (1f/roomsVec2.Count >= percentRange && !portalSpawned) {
-				GameObject theSpawn = null;
-				if (!treasureSpawned) {
-					if (exit.scene.rootCount == 0) {
-						theSpawn = Instantiate(treasure);
-					} else {
-						theSpawn = treasure;
-					}
-					treasureSpawned = true;
-				} else {
-					if (exit.scene.rootCount == 0) {
-						theSpawn = Instantiate(portal);
-					} else {
-						theSpawn = portal;
-					}
-					portalSpawned = true;
-				}
-
-				newPosition = new Vector3(room.x, 0f, room.y);
-				theSpawn.transform.position = newPosition * gridScale;
-				theSpawn.transform.Rotate(0f, Random.Range(0f, 360f), 0f);
-				theSpawn.transform.parent = transform;
-			}
 		}
 
 		StartCoroutine(BuildNavMesh());
