@@ -453,6 +453,13 @@ public class Dungeon5Generator : MonoBehaviour {
 		currentRooms = new List<GameObject>();
 	}
 
+	public void ReturnPortal()
+	{
+		GameManager.currentFloor = 0;
+		Destroy(gameObject);
+		SceneManager.LoadScene("HoldingRoom");
+	}
+
 	public void AdvanceFloor() {
 		GameManager.currentFloor++;
 		Destroy(gameObject);
