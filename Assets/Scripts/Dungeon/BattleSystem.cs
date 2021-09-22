@@ -446,7 +446,7 @@ public class BattleSystem : MonoBehaviour
             }
         }
 
-        enemyStartCount = 2;
+       // enemyStartCount = 2;
 
         enemyTurnOrder.Add(CharacterIdentifier.Enemy1);
 
