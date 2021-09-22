@@ -378,7 +378,7 @@ public class Dungeon1Generator : MonoBehaviour {
 		} else {
 			thePlayer = player;
 		}
-		thePlayer.transform.position = new Vector3(0f, 1.4f, 0f);
+		thePlayer.transform.position = new Vector3(0f, 4f, 0f);
 		thePlayer.transform.Rotate(0f, Random.Range(0f, 360f), 0f);
 		thePlayer.transform.parent = transform;
 		roomsForSpawning.Remove(Vector2Int.zero);
