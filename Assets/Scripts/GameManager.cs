@@ -165,8 +165,8 @@ public class GameManager : MonoBehaviour
         // Testing Date
 
          dayOfWeek = 1;
-         month = 4;
-         day = 30;
+         month = 5;
+         day = 13;
          timeOfDay = 0;
 
 
