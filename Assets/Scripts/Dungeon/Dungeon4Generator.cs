@@ -20,6 +20,8 @@ public class Dungeon4Generator : MonoBehaviour {
 	public float gridScale = 45f;
 	public FourSidedTileGenerator floorTemplate;
 
+	public float oddsOfEnemyPerRoom = 0.5f;
+
 	public GameObject enemy;
 	public GameObject treasure;
 	public GameObject exit;
@@ -98,7 +100,7 @@ public class Dungeon4Generator : MonoBehaviour {
 		roomsbool.Add(new bool[] { false, false, false, false });
 
 		//Generate map
-		while (roomsVec2.Count <= currentLevel + 1) {
+		while (roomsVec2.Count <= currentLevel + 5) {
 			int newIndex = Random.Range(0, roomsVec2.Count);
 			int newDir = Random.Range(0, 4);
 			Vector2Int oldPos = roomsVec2[newIndex];
@@ -214,6 +216,18 @@ public class Dungeon4Generator : MonoBehaviour {
 			theTreasure.transform.Rotate(0f, Random.Range(0f, 360f), 0f);
 			theTreasure.transform.parent = transform;
 		}
+
+		//Spawn Enemies
+		foreach (Vector2Int thisRoom in roomsVec2) {
+			if (thisRoom == Vector2Int.zero || thisRoom == farthestRoom || thisRoom == portalRoom || thisRoom == treasureRoom) continue;
+
+			if (Random.Range(0f, 1f) < oddsOfEnemyPerRoom) {
+				Vector3 offset = new Vector3(0, 1.25f, 0);
+				GameObject enemySpawn = Instantiate(enemy, new Vector3(thisRoom.x, 0f, thisRoom.y) * gridScale + offset, Quaternion.identity);
+				enemySpawn.transform.parent = transform;
+			}
+		}
+
 
 		StartCoroutine(BuildNavMesh());
 	}

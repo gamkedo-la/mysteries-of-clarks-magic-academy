@@ -35,6 +35,8 @@ public class Dungeon5Generator : MonoBehaviour {
 	public int minLengthOfHall = 2;
 	public int maxLengthOfHall = 4;
 
+	public float oddsOfEnemyPerRoom = 0.5f;
+
 	public GameObject enemy;
 	public GameObject treasure;
 	public GameObject exit;
@@ -182,6 +184,8 @@ public class Dungeon5Generator : MonoBehaviour {
 						i = hallLength;
 						roomsBool[roomsVec2.IndexOf(oldPos)][newDir] = true;
 						roomsBool[roomsVec2.IndexOf(newPos)][(newDir + 2) % 4] = true;
+						oldPos = newPos;
+						newPos = newPos + dir[newDir];
 					}
 				}
 
@@ -304,42 +308,53 @@ public class Dungeon5Generator : MonoBehaviour {
 				if (roomsBool[i][0] && roomsBool[i][2]) {
 					toSpawn = hallWith2OpenI[Random.Range(0, hallWith2OpenI.Count)];
 					roomRotation[i] = Random.Range(0f, 1f) > 0.5f ? 0 : 2;
+					roomType[i] = RoomType.Hall;
 				} else if (roomsBool[i][1] && roomsBool[i][3]) {
 					toSpawn = hallWith2OpenI[Random.Range(0, hallWith2OpenI.Count)];
 					roomRotation[i] = Random.Range(0f, 1f) > 0.5f ? 1 : 3;
+					roomType[i] = RoomType.Hall;
 				}
 				//hallWith2OpenL
 				if (roomsBool[i][0] && roomsBool[i][1]) {
 					toSpawn = hallWith2OpenL[Random.Range(0, hallWith2OpenL.Count)];
 					roomRotation[i] = 0;
+					roomType[i] = RoomType.Hall;
 				} else if (roomsBool[i][1] && roomsBool[i][2]) {
 					toSpawn = hallWith2OpenL[Random.Range(0, hallWith2OpenL.Count)];
 					roomRotation[i] = 1;
+					roomType[i] = RoomType.Hall;
 				} else if (roomsBool[i][2] && roomsBool[i][3]) {
 					toSpawn = hallWith2OpenL[Random.Range(0, hallWith2OpenL.Count)];
 					roomRotation[i] = 2;
+					roomType[i] = RoomType.Hall;
 				} else if (roomsBool[i][3] && roomsBool[i][0]) {
 					toSpawn = hallWith2OpenL[Random.Range(0, hallWith2OpenL.Count)];
 					roomRotation[i] = 3;
+					roomType[i] = RoomType.Hall;
 				}
 				//hallWith3Open
 				if (roomsBool[i][0] && roomsBool[i][1] && roomsBool[i][2]) {
 					toSpawn = hallWith3Open[Random.Range(0, hallWith3Open.Count)];
 					roomRotation[i] = 0;
+					roomType[i] = RoomType.Hall;
 				} else if (roomsBool[i][1] && roomsBool[i][2] && roomsBool[i][3]) {
 					toSpawn = hallWith3Open[Random.Range(0, hallWith3Open.Count)];
 					roomRotation[i] = 1;
+					roomType[i] = RoomType.Hall;
 				} else if (roomsBool[i][2] && roomsBool[i][3] && roomsBool[i][0]) {
 					toSpawn = hallWith3Open[Random.Range(0, hallWith3Open.Count)];
 					roomRotation[i] = 2;
+					roomType[i] = RoomType.Hall;
 				} else if (roomsBool[i][3] && roomsBool[i][0] && roomsBool[i][1]) {
 					toSpawn = hallWith3Open[Random.Range(0, hallWith3Open.Count)];
 					roomRotation[i] = 3;
+					roomType[i] = RoomType.Hall;
 				}
 				//hallWith4Open
 				if (roomsBool[i][0] && roomsBool[i][1] && roomsBool[i][2] && roomsBool[i][3]) {
 					toSpawn = hallWith4Open[Random.Range(0, hallWith4Open.Count)];
 					roomRotation[i] = Random.Range(0, 4);
+					roomType[i] = RoomType.Hall;
 				}
 			}
 
@@ -350,10 +365,14 @@ public class Dungeon5Generator : MonoBehaviour {
 			toSpawn.transform.Rotate(0f, roomRotation[i] * 90f, 0f);
 			toSpawn.transform.parent = transform;
 			toSpawn.name = roomsVec2[i].ToString();
-			if (roomType[i] == RoomType.Room || roomType[i] == RoomType.Big) roomsForSpawning.Add(roomsVec2[i]);
+			if (roomType[i] == RoomType.Room || roomType[i] == RoomType.Big) { roomsForSpawning.Add(roomsVec2[i]); }
 			currentRooms.Add(toSpawn);
 		}
 
+		foreach (Vector2Int item in roomsForSpawning) {
+			Debug.Log(item.ToString());
+		}
+		
 		//Spawn Player
 		GameObject thePlayer = null;
 		if (player.scene.rootCount == 0) {
@@ -384,11 +403,10 @@ public class Dungeon5Generator : MonoBehaviour {
 		theExit.transform.Rotate(0f, Random.Range(0f, 360f), 0f);
 		theExit.transform.parent = transform;
 		roomsForSpawning.Remove(farthestRoom);
-
+		
 		//Spawn Portal
-		Vector2Int portalRoom = new Vector2Int();
-		newIndex = Random.Range(1, roomsForSpawning.Count);
-		portalRoom = roomsForSpawning[newIndex];
+		newIndex = Random.Range(0, roomsForSpawning.Count);
+		Vector2Int portalRoom = roomsForSpawning[newIndex];
 		GameObject thePortal = null;
 		if (portal.scene.rootCount == 0) {
 			thePortal = Instantiate(portal);
@@ -399,11 +417,10 @@ public class Dungeon5Generator : MonoBehaviour {
 		thePortal.transform.Rotate(0f, Random.Range(0f, 360f), 0f);
 		thePortal.transform.parent = transform;
 		roomsForSpawning.Remove(portalRoom);
-
+		
 		//Spawn Treasure
-		Vector2Int treasureRoom = new Vector2Int();
-		newIndex = Random.Range(1, roomsForSpawning.Count);
-		treasureRoom = roomsForSpawning[newIndex];
+		newIndex = Random.Range(0, roomsForSpawning.Count);
+		Vector2Int treasureRoom = roomsForSpawning[newIndex];
 		GameObject theTreasure = null;
 		if (treasure.scene.rootCount == 0) {
 			theTreasure = Instantiate(treasure);
@@ -414,6 +431,15 @@ public class Dungeon5Generator : MonoBehaviour {
 		theTreasure.transform.Rotate(0f, Random.Range(0f, 360f), 0f);
 		theTreasure.transform.parent = transform;
 		roomsForSpawning.Remove(treasureRoom);
+		
+		//Spawn Enemies
+		foreach (Vector2Int thisRoom in roomsForSpawning) {
+			if (Random.Range(0f, 1f) < oddsOfEnemyPerRoom) {
+				Vector3 offset = new Vector3(0, 1.25f, 0);
+				GameObject enemySpawn = Instantiate(enemy, new Vector3(thisRoom.x, 0f, thisRoom.y) * gridScale + offset, Quaternion.identity);
+				enemySpawn.transform.parent = transform;
+			}
+		}
 
 
 		StartCoroutine(BuildNavMesh());
