@@ -456,6 +456,12 @@ public class Dungeon1Generator : MonoBehaviour {
 		Destroy(gameObject);
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
+	public void ReturnPortal()
+	{
+		GameManager.currentFloor = 0;
+		Destroy(gameObject);
+		SceneManager.LoadScene("HoldingRoom");
+	}
 
 	IEnumerator BuildNavMesh() {
 		yield return null;
