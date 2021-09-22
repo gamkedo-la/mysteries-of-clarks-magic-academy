@@ -164,10 +164,10 @@ public class GameManager : MonoBehaviour
 
         // Testing Date
 
-         dayOfWeek = 5;
+         dayOfWeek = 0;
          month = 5;
-         day = 4;
-        timeOfDay = 3;
+         day = 29;
+         timeOfDay = 1;
 
 
         player = GameObject.FindGameObjectWithTag("Player");
@@ -1208,6 +1208,12 @@ public class GameManager : MonoBehaviour
             //Week day lunch
             if (timeOfDay == 1)
             {
+                if (month == 5 && day == 10)
+                {
+                    SceneManager.LoadScene("SpecterFriendshipArc");
+                    print("Load SpecterFriendshipArc");
+                }
+
                 if (month == 5 && (day == 15 || day == 18 || day == 29))
                 {
                     SceneManager.LoadScene("GreatHall");
@@ -1258,7 +1264,7 @@ public class GameManager : MonoBehaviour
                 else if (month == 4 && (day == 18 || day == 20 || day == 21 || day == 25 || day == 28 || day == 29))
                 {
                     GameManager.instance.DatePlay();
-                    print("Progress Day");                    
+                    print("Progress Day");
                     if (day == 18 || day == 20 || day == 25 || day == 29)
                     {
                         //Trans 18, 20, 25, 29
@@ -1273,7 +1279,7 @@ public class GameManager : MonoBehaviour
                         playerSpawn = new Vector3(-22.74f, 27.21f, 81.97f);
                         playerRotation = new Quaternion(0, 0, 0, 0);
                     }
-                 
+
                 }
 
                 else if (month == 5 && (day == 4 || day == 9 || day == 13 || day == 16 || day == 18 || day == 19))
@@ -1296,7 +1302,14 @@ public class GameManager : MonoBehaviour
                         playerRotation = new Quaternion(0, 0, 0, 0);
                     }
                 }
-
+/*
+                else if (month == 5 && day == 29)
+                {
+                    SceneManager.LoadScene("SpecterFriendshipArc");
+                    playerSpawn = new Vector3(-22.74f, 27.21f, 81.97f);
+                    playerRotation = new Quaternion(0, 0, 0, 0);
+                }
+*/
                 else
                 {
                     freePeriod = true;
