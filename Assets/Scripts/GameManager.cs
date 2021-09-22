@@ -164,10 +164,10 @@ public class GameManager : MonoBehaviour
 
         // Testing Date
 
-         dayOfWeek = 0;
-         month = 5;
-         day = 29;
-         timeOfDay = 1;
+         dayOfWeek = 1;
+         month = 4;
+         day = 18;
+         timeOfDay = 0;
 
 
         player = GameObject.FindGameObjectWithTag("Player");
