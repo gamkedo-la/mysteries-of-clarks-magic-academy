@@ -146,70 +146,120 @@ public class FriendIntro : MonoBehaviour
             nextConversation.SetActive(true);
             thisConversation.SetActive(false);
         }
+
         if (isChoice)
         {
-            if (Courage)
+            if (Skye && GameManager.SkyeFriendship >= 5)
             {
-                if (GameManager.CourageLevel >= levelToUnlockAt)
-                {
-                    choicesMenu.SetActive(true);
-                }
-                else
-                {
-                    CantUnlockUntil.SetActive(true);
-                    ReasonWhy.text = "You cannot hangout with this friend unless your Courage is at level " + levelToUnlockAt;
-                }
-                thisConversation.SetActive(false);
+                print("here");
+                CantUnlockUntil.SetActive(true);
+                ReasonWhy.text = "Your friendship with Skye is already strong. Perhaps you should spend time with another friend.";
             }
-
-            else if (Proficiency)
+            else if (Rhys && GameManager.RhysFriendship >= 5)
             {
-                if (GameManager.ProficiencyLevel >= levelToUnlockAt)
-                {
-                    choicesMenu.SetActive(true);
-                }
-                else
-                {
-                    CantUnlockUntil.SetActive(true);
-                    ReasonWhy.text = "You cannot hangout with this friend unless your Proficiency is at level " + levelToUnlockAt;
-                }
-                thisConversation.SetActive(false);
+                CantUnlockUntil.SetActive(true);
+                ReasonWhy.text = "Your friendship with Rhys is already strong. Perhaps you should spend time with another friend.";
             }
-
-            else if (Intelligence)
+            else if (Jameel && GameManager.JameelFriendship >= 5)
             {
-                if (GameManager.IntelligenceLevel >= levelToUnlockAt)
-                {
-                    choicesMenu.SetActive(true);
-                }
-                else
-                {
-                    CantUnlockUntil.SetActive(true);
-                    ReasonWhy.text = "You cannot hangout with this friend unless your Intelligence is at level " + levelToUnlockAt;
-                }
-                thisConversation.SetActive(false);
+                CantUnlockUntil.SetActive(true);
+                ReasonWhy.text = "Your friendship with Jameel is already strong. Perhaps you should spend time with another friend.";
             }
-
-            else if (Charisma)
+            else if (Harper && GameManager.HarperFriendship >= 5)
             {
-                if (GameManager.CharismaLevel >= levelToUnlockAt)
-                {
-                    choicesMenu.SetActive(true);
-                }
-                else
-                {
-                    CantUnlockUntil.SetActive(true);
-                    ReasonWhy.text = "You cannot hangout with this friend unless your Charisma is at level " + levelToUnlockAt;
-                }
-                thisConversation.SetActive(false);
+                CantUnlockUntil.SetActive(true);
+                ReasonWhy.text = "Your friendship with Harper is already strong. Perhaps you should spend time with another friend.";
+            }
+            else if (Sullivan && GameManager.SullivanFriendship >= 5)
+            {
+                CantUnlockUntil.SetActive(true);
+                ReasonWhy.text = "Your friendship with Sullivan is already strong. Perhaps you should spend time with another friend.";
+            }
+            else if (GracieMay && GameManager.GracieMayFriendship >= 5)
+            {
+                CantUnlockUntil.SetActive(true);
+                ReasonWhy.text = "Your friendship with Skye is already strong. Perhaps you should spend time with another friend.";
+            }
+            else if (Atorn && GameManager.AtornFriendship >= 4)
+            {
+                CantUnlockUntil.SetActive(true);
+                ReasonWhy.text = "Your friendship with Atorn is already strong. Perhaps you should spend time with another friend.";
+            }
+            else if (Specter && GameManager.SpecterFriendship >= 5)
+            {
+                CantUnlockUntil.SetActive(true);
+                ReasonWhy.text = "Your friendship with Specter is already strong. Perhaps you should spend time with another friend.";
+            }
+            else if (Manraj && GameManager.ManrajFriendship >= 5)
+            {
+                CantUnlockUntil.SetActive(true);
+                ReasonWhy.text = "Your friendship with Manraj is already strong. Perhaps you should spend time with another friend.";
             }
 
             else
             {
-                choicesMenu.SetActive(true);
-                thisConversation.SetActive(false);
-            }
+                if (Courage)
+                {
+                    if (GameManager.CourageLevel >= levelToUnlockAt)
+                    {
+                        choicesMenu.SetActive(true);
+                    }
+                    else
+                    {
+                        CantUnlockUntil.SetActive(true);
+                        ReasonWhy.text = "You cannot hangout with this friend unless your Courage is at level " + levelToUnlockAt;
+                    }
+                    thisConversation.SetActive(false);
+                }
 
+                else if (Proficiency)
+                {
+                    if (GameManager.ProficiencyLevel >= levelToUnlockAt)
+                    {
+                        choicesMenu.SetActive(true);
+                    }
+                    else
+                    {
+                        CantUnlockUntil.SetActive(true);
+                        ReasonWhy.text = "You cannot hangout with this friend unless your Proficiency is at level " + levelToUnlockAt;
+                    }
+                    thisConversation.SetActive(false);
+                }
+
+                else if (Intelligence)
+                {
+                    if (GameManager.IntelligenceLevel >= levelToUnlockAt)
+                    {
+                        choicesMenu.SetActive(true);
+                    }
+                    else
+                    {
+                        CantUnlockUntil.SetActive(true);
+                        ReasonWhy.text = "You cannot hangout with this friend unless your Intelligence is at level " + levelToUnlockAt;
+                    }
+                    thisConversation.SetActive(false);
+                }
+
+                else if (Charisma)
+                {
+                    if (GameManager.CharismaLevel >= levelToUnlockAt)
+                    {
+                        choicesMenu.SetActive(true);
+                    }
+                    else
+                    {
+                        CantUnlockUntil.SetActive(true);
+                        ReasonWhy.text = "You cannot hangout with this friend unless your Charisma is at level " + levelToUnlockAt;
+                    }
+                    thisConversation.SetActive(false);
+                }
+
+                else
+                {
+                    choicesMenu.SetActive(true);
+                    thisConversation.SetActive(false);
+                }
+            }
         }
 
         if (isFinished)
