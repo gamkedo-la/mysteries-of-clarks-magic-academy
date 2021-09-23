@@ -46,6 +46,8 @@ public class FriendshipDialogueManager : MonoBehaviour
 
     private int currentSentence = 0;
 
+    private bool isKeyInputActivated = false;
+
     private void Start()
     {
         sentences = new Queue<string>();
@@ -59,7 +61,10 @@ public class FriendshipDialogueManager : MonoBehaviour
 
     IEnumerator InitialWaiting()
     {
+        isKeyInputActivated = false;
         yield return new WaitForSeconds(WaitTimeSec);
+
+        isKeyInputActivated = true;
         StartDialogue(dialogue);
     }
 
@@ -67,7 +72,10 @@ public class FriendshipDialogueManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            DisplayNextSentence();
+            if (isKeyInputActivated)
+            {
+                DisplayNextSentence();
+            }
         }
 
         if (startCountdown)
