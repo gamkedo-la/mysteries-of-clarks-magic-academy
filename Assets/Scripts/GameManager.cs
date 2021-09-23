@@ -143,6 +143,9 @@ public class GameManager : MonoBehaviour
     //Grimorium
     public static bool BigfootSeen, ChessieSeen, ChupacabraSeen, JackalopeSeen, JerseyDevilSeen, LovelandFrogSeen, MenehuneSeen, MothmanSeen, PassagoulaSeen, PukwudgieSeen, SalemWitchesSeen, SquonkSeen, TakuHeSeen, ThunderbirdSeen, VanMeterMonsterSeen, WendigoSeen;
 
+    //Boss States
+    public static bool isMiniBoss, isBigBoss;
+
     private void Awake()
     {
         if (instance == null)

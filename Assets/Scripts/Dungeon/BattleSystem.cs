@@ -112,6 +112,8 @@ public class BattleSystem : MonoBehaviour
     public List<Transform> playerBattleStationLocations;
     public List<Transform> enemyBattleStationLocations;
     public List<GameObject> enemyPrefab;
+    public List<GameObject> enemyPrefabMiniBoss;
+    public List<GameObject> enemyPrefabBigBoss;
     public List<Unit> enemyUnit;
     public List<Animator> enemyAnim;
     //text informing the player what is going on
@@ -276,6 +278,8 @@ public class BattleSystem : MonoBehaviour
 
     //bools to determine enemy count
     public bool Boss;
+    public bool isBigBoss, isMiniBoss;
+    public int bossEnemyStartCount;
     int enemyStartCount = 0;
 
     //cutscene cam anim 
@@ -340,6 +344,8 @@ public class BattleSystem : MonoBehaviour
     public static bool stunnedChance;
     private void Start()
     {
+       // GameManager.isBigBoss = true;
+
         if (GameObject.Find("GameManager") == null)
         {
             Debug.LogWarning("The GameManager needs to be in this scene for everything to work");
@@ -414,8 +420,17 @@ public class BattleSystem : MonoBehaviour
             GameManager.SullivanHealth = 1;
         }
 
-        if (Boss)
+        if (GameManager.isMiniBoss || GameManager.isBigBoss)
         {
+            Boss = true;
+            if (GameManager.isMiniBoss)
+            {
+                isMiniBoss = true;
+            }
+            if (GameManager.isBigBoss)
+            {
+                isBigBoss = true;
+            }
             enemyStartCount = 1;
         }
 
@@ -556,6 +571,13 @@ public class BattleSystem : MonoBehaviour
             Harper = playerGO3.GetComponent<Unit>();
             HarperAnim = playerGO3.GetComponentInChildren<Animator>();
         }
+        if (GameManager.PartyCount == 3 && GameManager.RhysInParty && GameManager.SkyeInParty)
+        {
+            playerGO3 = Instantiate(SkyePrefab, ThirdBattleStation);
+            Skye = playerGO3.GetComponent<Unit>();
+            SkyeAnim = playerGO3.GetComponentInChildren<Animator>();
+        }
+
         if (GameManager.PartyCount == 3 && GameManager.SkyeInParty && !GameManager.SullivanInParty)
         {
             playerGO3 = Instantiate(SkyePrefab, ThirdBattleStation);
@@ -596,30 +618,92 @@ public class BattleSystem : MonoBehaviour
         }
         #endregion Enemies
 
-        for (int i = 0; i < enemyStartCount; i++)
+
+        if (isBigBoss)
         {
-            int RandEnemy = Random.Range(0, enemyPrefab.Count);
-            GameObject enemyGO = Instantiate(enemyPrefab[RandEnemy], enemyBattleStationLocations[i]);
-            enemyUnit.Add(enemyGO.GetComponent<Unit>());
-            enemyAnim.Add(enemyGO.GetComponentInChildren<Animator>());
-            enemyUnit[i].transform.rotation = Quaternion.Euler(0, 180, 0);
+            for (int i = 0; i < enemyStartCount; i++)
+            {
+                int RandEnemy = Random.Range(0, enemyPrefabBigBoss.Count);
+                GameObject enemyGO = Instantiate(enemyPrefabBigBoss[RandEnemy], enemyBattleStationLocations[i]);
+                enemyUnit.Add(enemyGO.GetComponent<Unit>());
+                enemyAnim.Add(enemyGO.GetComponentInChildren<Animator>());
+                enemyUnit[i].transform.rotation = Quaternion.Euler(0, 180, 0);
+            }
+            enemyUnit[0].GetComponent<Unit>().myEnumValue = CharacterIdentifier.Enemy1;
+            if (enemyStartCount >= 2)
+            {
+                enemyUnit[1].GetComponent<Unit>().myEnumValue = CharacterIdentifier.Enemy2;
+            }
+            if (enemyStartCount >= 3)
+            {
+                enemyUnit[2].GetComponent<Unit>().myEnumValue = CharacterIdentifier.Enemy3;
+            }
+            if (enemyStartCount >= 4)
+            {
+                enemyUnit[3].GetComponent<Unit>().myEnumValue = CharacterIdentifier.Enemy4;
+            }
+            if (enemyStartCount >= 5)
+            {
+                enemyUnit[4].GetComponent<Unit>().myEnumValue = CharacterIdentifier.Enemy5;
+            }
         }
-        enemyUnit[0].GetComponent<Unit>().myEnumValue = CharacterIdentifier.Enemy1;
-        if (enemyStartCount >= 2)
+
+        else if (isMiniBoss)
         {
-            enemyUnit[1].GetComponent<Unit>().myEnumValue = CharacterIdentifier.Enemy2;
+            for (int i = 0; i < enemyStartCount; i++)
+            {
+                int RandEnemy = Random.Range(0, enemyPrefabMiniBoss.Count);
+                GameObject enemyGO = Instantiate(enemyPrefabMiniBoss[RandEnemy], enemyBattleStationLocations[i]);
+                enemyUnit.Add(enemyGO.GetComponent<Unit>());
+                enemyAnim.Add(enemyGO.GetComponentInChildren<Animator>());
+                enemyUnit[i].transform.rotation = Quaternion.Euler(0, 180, 0);
+            }
+            enemyUnit[0].GetComponent<Unit>().myEnumValue = CharacterIdentifier.Enemy1;
+            if (enemyStartCount >= 2)
+            {
+                enemyUnit[1].GetComponent<Unit>().myEnumValue = CharacterIdentifier.Enemy2;
+            }
+            if (enemyStartCount >= 3)
+            {
+                enemyUnit[2].GetComponent<Unit>().myEnumValue = CharacterIdentifier.Enemy3;
+            }
+            if (enemyStartCount >= 4)
+            {
+                enemyUnit[3].GetComponent<Unit>().myEnumValue = CharacterIdentifier.Enemy4;
+            }
+            if (enemyStartCount >= 5)
+            {
+                enemyUnit[4].GetComponent<Unit>().myEnumValue = CharacterIdentifier.Enemy5;
+            }
         }
-        if (enemyStartCount >= 3)
+
+        else
         {
-            enemyUnit[2].GetComponent<Unit>().myEnumValue = CharacterIdentifier.Enemy3;
-        }
-        if (enemyStartCount >= 4)
-        {
-            enemyUnit[3].GetComponent<Unit>().myEnumValue = CharacterIdentifier.Enemy4;
-        }
-        if (enemyStartCount >= 5)
-        {
-            enemyUnit[4].GetComponent<Unit>().myEnumValue = CharacterIdentifier.Enemy5;
+            for (int i = 0; i < enemyStartCount; i++)
+            {
+                int RandEnemy = Random.Range(0, enemyPrefab.Count);
+                GameObject enemyGO = Instantiate(enemyPrefab[RandEnemy], enemyBattleStationLocations[i]);
+                enemyUnit.Add(enemyGO.GetComponent<Unit>());
+                enemyAnim.Add(enemyGO.GetComponentInChildren<Animator>());
+                enemyUnit[i].transform.rotation = Quaternion.Euler(0, 180, 0);
+            }
+            enemyUnit[0].GetComponent<Unit>().myEnumValue = CharacterIdentifier.Enemy1;
+            if (enemyStartCount >= 2)
+            {
+                enemyUnit[1].GetComponent<Unit>().myEnumValue = CharacterIdentifier.Enemy2;
+            }
+            if (enemyStartCount >= 3)
+            {
+                enemyUnit[2].GetComponent<Unit>().myEnumValue = CharacterIdentifier.Enemy3;
+            }
+            if (enemyStartCount >= 4)
+            {
+                enemyUnit[3].GetComponent<Unit>().myEnumValue = CharacterIdentifier.Enemy4;
+            }
+            if (enemyStartCount >= 5)
+            {
+                enemyUnit[4].GetComponent<Unit>().myEnumValue = CharacterIdentifier.Enemy5;
+            }
         }
 
         yield return new WaitForSeconds(3f);
@@ -1022,9 +1106,9 @@ public class BattleSystem : MonoBehaviour
 
     public void RunAway()
     {
-          if (Boss)
-          {
-              dialogueText.text = "You can't run from this fight!";
+        if (Boss)
+        {
+            dialogueText.text = "You can't run from this fight!";
             MCMenu.SetActive(false);
             RhysMenu.SetActive(false);
             JameelMenu.SetActive(false);
@@ -10131,7 +10215,16 @@ public class BattleSystem : MonoBehaviour
     {
         if (Boss)
         {
-            SceneManager.LoadScene("RescueRoom");
+            if (isMiniBoss)
+            {
+                Debug.Log("Reload room without the barrier");
+                GameManager.isMiniBoss = false;
+            }
+            if (isBigBoss)
+            {
+                SceneManager.LoadScene("RescueRoom");
+                GameManager.isBigBoss = false;
+            }
         }
         else
         {
