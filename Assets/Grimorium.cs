@@ -26,8 +26,11 @@ public class Grimorium : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            dialogueOption.SetActive(false);
-            GirmoriumQuestion.SetActive(true);
+            if (isInRange)
+            {
+                dialogueOption.SetActive(false);
+                GirmoriumQuestion.SetActive(true);
+            }
         }
         if (isInRange)
         {
@@ -57,6 +60,7 @@ public class Grimorium : MonoBehaviour
         {
             isInRange = false;
             dialogueOption.SetActive(false);
+            GirmoriumQuestion.SetActive(false);
         }
     }
 
@@ -66,6 +70,33 @@ public class Grimorium : MonoBehaviour
         GrimoriumBacklog.SetActive(true);
         mainCam.SetActive(false);
         grimCam.SetActive(true);
+    }
+
+    public void Healing()
+    {
+        GameManager.MCHealth = GameManager.MCMaxHealth;
+        GameManager.MCMagic = GameManager.MCMaxMagic;
+
+        GameManager.RhysHealth = GameManager.RhysMaxHealth;
+        GameManager.RhysMagic = GameManager.RhysMaxMagic;
+
+        GameManager.SkyeHealth = GameManager.SkyeMaxHealth;
+        GameManager.SkyeMagic = GameManager.SkyeMaxMagic;
+
+        GameManager.JameelHealth = GameManager.JameelMaxHealth;
+        GameManager.JameelMagic = GameManager.JameelMaxMagic;
+
+        GameManager.HarperHealth = GameManager.HarperMaxHealth;
+        GameManager.HarperMagic = GameManager.HarperMaxMagic;
+
+        GameManager.SullivanHealth = GameManager.SullivanMaxHealth;
+        GameManager.SullivanMagic = GameManager.SullivanMaxMagic;
+
+        GirmoriumQuestion.SetActive(false);
+        GrimoriumBacklog.SetActive(false);
+        dialogueOption.SetActive(false);
+        mainCam.SetActive(true);
+        grimCam.SetActive(false);
     }
 
     public void Nevermind()

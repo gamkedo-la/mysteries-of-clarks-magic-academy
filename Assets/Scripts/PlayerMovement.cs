@@ -17,6 +17,8 @@ public class PlayerMovement : MonoBehaviour
     float turnSmoothTime = 0.1f;
     float _turnSmooothVelocity;
 
+    public bool isHoldingRoom;
+
     private Vector3 heightOffset = new Vector3(0, 0.9f, 0);
 
     [SerializeField] GameObject NameSettingCanvas;
@@ -24,9 +26,11 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Confined;
-
-        this.gameObject.transform.rotation = GameManager.playerRotation;
-        this.gameObject.transform.position = GameManager.playerSpawn;
+        if (!isHoldingRoom)
+        {
+            this.gameObject.transform.rotation = GameManager.playerRotation;
+            this.gameObject.transform.position = GameManager.playerSpawn;
+        }
     }
 
     private void Update()

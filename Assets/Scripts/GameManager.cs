@@ -169,7 +169,7 @@ public class GameManager : MonoBehaviour
 
          dayOfWeek = 1;
          month = 5;
-         day = 13;
+         day = 30;
          timeOfDay = 0;
 
 
