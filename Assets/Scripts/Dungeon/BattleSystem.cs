@@ -9478,6 +9478,9 @@ public class BattleSystem : MonoBehaviour
         }
         if (state == BattleState.LOST)
         {
+            GameManager.isMiniBoss = false;
+            GameManager.isBigBoss = false;
+
             if (!gameOverToPreventDuplicates)
             {
                 dialogueText.text = "You lost the battle...";
