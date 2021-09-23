@@ -291,7 +291,7 @@ public class GameManager : MonoBehaviour
         SkyeMaxMagic = 20;
         SullivanMaxMagic = 20;
 
-        MCMagic = 15;
+        MCMagic = 1;
         RhysMagic = 10;
         JameelMagic = 10;
         HarperMagic = 10;
