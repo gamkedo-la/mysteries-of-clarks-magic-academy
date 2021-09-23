@@ -114,6 +114,9 @@ MonoBehaviour:
   RoomToGoTo: ThirdFloor
   RoomName: Third Floor
   RoomText: {fileID: 0}
+  isPortal: 0
+  LocationToSpawnInRoomYoureGoingTo: {x: 0, y: 0, z: 0}
+  RotationToSpawnInRoomYoureGoingTo: {x: 0, y: 0, z: 0, w: 0}
   UIForRoomChange: {fileID: 0}
 --- !u!65 &2535525764947553595
 BoxCollider:
@@ -209,6 +212,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: door
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4fb23f0836d54864ebb65950620b7cd4,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4fb23f0836d54864ebb65950620b7cd4, type: 3}
