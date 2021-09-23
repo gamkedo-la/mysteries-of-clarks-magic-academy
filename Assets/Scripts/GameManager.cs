@@ -147,6 +147,8 @@ public class GameManager : MonoBehaviour
     //Boss States
     public static bool isMiniBoss, isBigBoss;
 
+    //Boss Tracking
+    public static bool Dungeon1Mini, Dungeon2Mini, Dungeon3Mini, Dungeon4Mini, Dungeon5Mini, Dungeon6Mini;
     private void Awake()
     {
         if (instance == null)

@@ -121,6 +121,8 @@ public class BattleSystem : MonoBehaviour
 
     //GracieMay Unlock
     public bool isDungeons123;
+    // Track Dungeon
+    public bool Dungeon1, Dungeon2, Dungeon3, Dungeon4, Dungeon5, Dungeon6;
     //PlayerSpellChoice
 
     //This needs to be determined later - right now, it is a placeholder from Strike Out
@@ -9396,10 +9398,33 @@ public class BattleSystem : MonoBehaviour
         Camera.transform.LookAt(enemyCamTarget);
         if (state == BattleState.WON)
         {
-             if (Boss)
-              {
-                  
-              }
+            if (isMiniBoss)
+            {
+                if (Dungeon1)
+                {
+                    GameManager.Dungeon1Mini = true;
+                }
+                if (Dungeon2)
+                {
+                    GameManager.Dungeon2Mini = true;
+                }
+                if (Dungeon3)
+                {
+                    GameManager.Dungeon3Mini = true;
+                }
+                if (Dungeon4)
+                {
+                    GameManager.Dungeon4Mini = true;
+                }
+                if (Dungeon5)
+                {
+                    GameManager.Dungeon5Mini = true;
+                }
+                if (Dungeon6)
+                {
+                    GameManager.Dungeon6Mini = true;
+                }
+            }
 
             dialogueText.text = "You won the Battle!";
             EndingMenu.SetActive(true);
@@ -10220,8 +10245,8 @@ public class BattleSystem : MonoBehaviour
         {
             if (isMiniBoss)
             {
-                Debug.Log("Reload room without the barrier");
                 GameManager.isMiniBoss = false;
+                SceneManager.LoadScene(DungeonRoomToLoad);
             }
             if (isBigBoss)
             {
