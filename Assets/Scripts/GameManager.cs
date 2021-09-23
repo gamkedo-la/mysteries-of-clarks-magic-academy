@@ -50,19 +50,20 @@ public class GameManager : MonoBehaviour
     //
 
     //PlayerMagicStats
+    //Starting party
     public static int MCTrans = 3, MCCharms = 3, MCPotions = 3, MCDADA = 3, MCDodge = 3;
     public static int RhysTrans = 3, RhysCharms = 3, RhysPotions = 3, RhysDADA = 3, RhysDodge = 3;
-    public static int JameelTrans = 3, JameelCharms = 3, JameelPotions = 3, JameelDADA = 3, JameelDodge = 3;
-    public static int HarperTrans = 3, HarperCharms = 3, HarperPotions = 3, HarperDADA = 3, HarperDodge = 3;
-    public static int SkyeTrans = 3, SkyeCharms = 3, SkyePotions = 3, SkyeDADA = 3, SkyeDodge = 3;
-    public static int SullivanTrans = 3, SullivanCharms = 3, SullivanPotions = 3, SullivanDADA = 3, SullivanDodge = 3;
-    public static int GracieMayTrans = 3, GracieMayCharms = 3, GracieMayPotions = 3, GracieMayDADA = 3, GracieMayDodge = 3;
+    public static int SkyeTrans = 4, SkyeCharms = 5, SkyePotions = 13, SkyeDADA = 6, SkyeDodge = 11;
+    public static int JameelTrans = 12, JameelCharms = 23, JameelPotions = 9, JameelDADA = 4, JameelDodge = 21;
+    public static int GracieMayTrans = 22, GracieMayCharms = 24, GracieMayPotions = 22, GracieMayDADA = 23, GracieMayDodge = 8;
+    public static int HarperTrans = 11, HarperCharms = 13, HarperPotions = 21, HarperDADA = 43, HarperDodge = 38;
+    public static int SullivanTrans = 63, SullivanCharms = 28, SullivanPotions = 11, SullivanDADA = 11, SullivanDodge = 43;
     //
 
     // Experience System
     public static float MCExp, RhysExp, JameelExp, HarperExp, SkyeExp, SullivanExp, GracieMayExp;
     public static float MCTargetExp, RhysTargetExp, JameelTargetExp, HarperTargetExp, SkyeTargetExp, SullivanTargetExp, GracieMayTargetExp;
-    public static int MCLevel = 1, RhysLevel = 1, JameelLevel = 1, HarperLevel = 1, SkyeLevel = 1, SullivanLevel = 1, GracieMayLevel = 1;
+    public static int MCLevel = 1, RhysLevel = 1, SkyeLevel = 8, JameelLevel = 18, GracieMayLevel = 28, HarperLevel = 37,  SullivanLevel = 47;
     //
 
     //To determine if the Enemy Attacked the player in the Dungeon
@@ -216,17 +217,17 @@ public class GameManager : MonoBehaviour
 
         //MC is always in the party
         PartyCount++;
-        RhysInParty = true;
-        SkyeInParty = true;
+      //  RhysInParty = true;
+      //  SkyeInParty = true;
        // HarperInParty = true;
       //  PartyCount++;
-        PartyCount++;
+      //  PartyCount++;
        // PartyCount++;
         RhysAvailable = true;
-        SkyeAvailable = true;
-        JameelAvailable = true;
-        HarperAvailable = true;
-        SullivanAvailable = false;
+       // SkyeAvailable = true;
+       // JameelAvailable = true;
+      //  HarperAvailable = true;
+      //  SullivanAvailable = false;
 
         HarperHealth = 0;
 
@@ -261,42 +262,48 @@ public class GameManager : MonoBehaviour
 
 
         // Starting Experience Level
+
+        //Target experience goes up by 1.25 per level
+        //Max HP and Magic are increased by 5 at each level
+        //Initial settings for      Skye, Jameel, Harper, and Sullivan are as follows per level -
+        //Calculating HP * Level    6       4.25      6.25        5
+        //Calculating MP * Level    4       5.75      3.75        5
+        //                              (glass cannon)(tank)
         MCTargetExp = 5;
         RhysTargetExp = 5;
-        JameelTargetExp = 5;
-        SkyeTargetExp = 5;
-        HarperTargetExp = 5;
-        SullivanTargetExp = 5;
-        GracieMayTargetExp = 5;
+        SkyeTargetExp = 24;
+        JameelTargetExp = 222;
+        GracieMayTargetExp = 2068;
+        HarperTargetExp = 15407;
+        SullivanTargetExp = 143492;
         //
+        MCHealth = 19;
+        RhysHealth = 22;
+        SkyeHealth = 48;
+        JameelHealth = 92;
+        HarperHealth = 245;
+        SullivanHealth = 250;
 
-        MCMaxHealth = 20;
-        RhysMaxHealth = 20;
-        JameelMaxHealth = 20;
-        HarperMaxHealth = 20;
-        SkyeMaxHealth = 20;
-        SullivanMaxHealth = 20;
+        MCMaxHealth = 19;
+        RhysMaxHealth = 22;
+        SkyeMaxHealth = 48;
+        JameelMaxHealth = 92;
+        HarperMaxHealth = 245;
+        SullivanMaxHealth = 250;
 
-        MCHealth = 10;
-        RhysHealth = 20;
-        JameelHealth =20;
-        HarperHealth = 10;
-        SkyeHealth = 20;
-        SullivanHealth = 20;
+        MCMagic = 21;
+        RhysMagic = 18;
+        SkyeMagic = 62;
+        JameelMagic = 118;
+        HarperMagic = 155;
+        SullivanMagic = 250;
 
-        MCMaxMagic = 20;
-        RhysMaxMagic = 20;
-        JameelMaxMagic = 20;
-        HarperMaxMagic = 10;
-        SkyeMaxMagic = 20;
-        SullivanMaxMagic = 20;
-
-        MCMagic = 1;
-        RhysMagic = 10;
-        JameelMagic = 10;
-        HarperMagic = 10;
-        SkyeMagic = 10;
-        SullivanMagic = 10;
+        MCMaxMagic = 21;
+        RhysMaxMagic = 18;
+        SkyeMaxMagic = 62;
+        JameelMaxMagic = 118;
+        HarperMaxMagic = 155;
+        SullivanMaxMagic = 250;
     }
 
     public static void CalculateDayOfWeek()
