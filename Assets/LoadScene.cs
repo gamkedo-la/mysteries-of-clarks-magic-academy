@@ -9,6 +9,7 @@ public class LoadScene : MonoBehaviour
 
     public string RoomToLoad;
 
+    public bool isFatherTimeFight;
     private void Start()
     {
         FadeOut.SetActive(true);
@@ -18,6 +19,11 @@ public class LoadScene : MonoBehaviour
     IEnumerator Waiting()
     {
         yield return new WaitForSeconds(2);
+
+        if (isFatherTimeFight)
+        {
+            GameManager.isBigBoss = true;
+        }
         SceneManager.LoadScene(RoomToLoad);
     }
 }
