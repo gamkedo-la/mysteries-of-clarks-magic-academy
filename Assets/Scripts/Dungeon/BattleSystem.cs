@@ -10268,6 +10268,30 @@ public class BattleSystem : MonoBehaviour
             if (isMiniBoss)
             {
                 GameManager.isMiniBoss = false;
+                if (Dungeon1)
+                {
+                    GameObject.Find("Room Generator").GetComponent<Dungeon1Generator>().AdvanceFloor();
+                }
+                if (Dungeon2)
+                {
+                    GameObject.Find("Room Generator").GetComponent<Dungeon2Generator>().AdvanceFloor();
+                }
+                if (Dungeon3)
+                {
+                    GameObject.Find("Room Generator").GetComponent<Dungeon3Generator>().AdvanceFloor();
+                }
+                if (Dungeon4)
+                {
+                    GameObject.Find("Room Generator").GetComponent<Dungeon4Generator>().AdvanceFloor();
+                }
+                if (Dungeon5)
+                {
+                    GameObject.Find("Room Generator").GetComponent<Dungeon5Generator>().AdvanceFloor();
+                }
+                if (Dungeon6)
+                {
+                    GameObject.Find("Room Generator").GetComponent<Dungeon6Generator>().AdvanceFloor();
+                }
                 SceneManager.LoadScene(DungeonRoomToLoad);
             }
             if (isBigBoss)
