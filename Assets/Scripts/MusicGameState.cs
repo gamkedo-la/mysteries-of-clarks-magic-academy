@@ -13,7 +13,10 @@ public class MusicGameState : MonoBehaviour {
 	}
 
 	public enum gameState {
-		dungeon,
-		school
+		Dungeon,
+		Castle,
+		Class,
+		Freetime,
+		Friendship
 	}
 }
