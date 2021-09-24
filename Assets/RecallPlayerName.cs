@@ -7,8 +7,18 @@ public class RecallPlayerName : MonoBehaviour
 {
     public Text playerName;
 
+    public bool justFirstName;
+
     private void Start()
     {
-        playerName.text = GameManager.MCFirstName + " " + GameManager.MCLastName;
+        if (justFirstName)
+        {
+            playerName.text = GameManager.MCFirstName;
+        }
+
+        else
+        {
+            playerName.text = GameManager.MCFirstName + " " + GameManager.MCLastName;
+        }
     }
 }
