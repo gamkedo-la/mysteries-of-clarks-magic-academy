@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44338697, g: 0.49265927, b: 0.57229424, a: 1}
+  m_IndirectSpecularColor: {r: 0.44338676, g: 0.4926588, b: 0.57229334, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4806,7 +4806,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 17.59, y: -20.265, z: 2.656}
 --- !u!1001 &354710396
 PrefabInstance:
@@ -5920,7 +5920,7 @@ RectTransform:
   m_Children:
   - {fileID: 515115775}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -7351,7 +7351,7 @@ Transform:
   m_Children:
   - {fileID: 977675975}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &461399442
 Mesh:
@@ -7617,7 +7617,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: f138c1a65a8eb084da6f09796a5f757b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f138c1a65a8eb084da6f09796a5f757b,
         type: 3}
@@ -9555,7 +9555,7 @@ Transform:
   - {fileID: 19098004}
   - {fileID: 698225013}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &639706622
 PrefabInstance:
@@ -11022,7 +11022,7 @@ PrefabInstance:
     - target: {fileID: 1771164847240579453, guid: ca588341c6a70234484b3b33a73d5e2c,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 9.9314575
+      value: 9.931473
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca588341c6a70234484b3b33a73d5e2c, type: 3}
@@ -14471,7 +14471,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 16.444, y: 10.354, z: 0.992}
 --- !u!43 &912022643
 Mesh:
@@ -15070,6 +15070,65 @@ Transform:
   m_Children: []
   m_Father: {fileID: 637451007}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &938995226
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 938995229}
+  - component: {fileID: 938995228}
+  - component: {fileID: 938995227}
+  m_Layer: 0
+  m_Name: Music
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &938995227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 938995226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dab8fc29ea5cceb4e93e26b364b693b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicEvent: event:/Music
+--- !u!114 &938995228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 938995226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b37b766919139934db58bb6436b861dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parameter: GameState
+  value: 3
+--- !u!4 &938995229
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 938995226}
+  m_LocalRotation: {x: -0.08110164, y: -0.5728377, z: 0.05703143, w: -0.81365037}
+  m_LocalPosition: {x: -6.961, y: -16.763607, z: -18.626}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &958257342
 Mesh:
@@ -16708,7 +16767,7 @@ Transform:
   - {fileID: 1409385130}
   - {fileID: 1147227421}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1045805003 stripped
 Transform:
@@ -23937,7 +23996,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 10.238, y: 0.443, z: -0.172}
 --- !u!43 &1579458233
 Mesh:
