@@ -3108,7 +3108,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 195.55557, y: -150.1}
+  m_AnchoredPosition: {x: 195.55557, y: -178}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &117102588
@@ -10450,6 +10450,7 @@ GameObject:
   - component: {fileID: 329950942}
   - component: {fileID: 329950941}
   - component: {fileID: 329950940}
+  - component: {fileID: 329950944}
   m_Layer: 5
   m_Name: 'Sena plena Potion  '
   m_TagString: Untagged
@@ -10522,7 +10523,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 0.47843137, g: 0.8784314, b: 0.4862745, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -10595,6 +10596,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 329950938}
   m_CullTransparentMesh: 0
+--- !u!114 &329950944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 329950938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da1e1314fb9df6b45a84c0f77b887608, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MC: 0
+  Rhys: 0
+  Skye: 1
+  Jameel: 0
+  Harper: 0
+  Sullivan: 0
+  level: 30
 --- !u!1 &330960957
 GameObject:
   m_ObjectHideFlags: 0
@@ -17524,6 +17544,7 @@ GameObject:
   - component: {fileID: 412237531}
   - component: {fileID: 412237530}
   - component: {fileID: 412237529}
+  - component: {fileID: 412237533}
   m_Layer: 5
   m_Name: 'Confundus  '
   m_TagString: Untagged
@@ -17548,7 +17569,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 519.00006, y: -315}
+  m_AnchoredPosition: {x: 519.00006, y: -223.8}
   m_SizeDelta: {x: 120, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &412237529
@@ -17596,7 +17617,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 0.49411765, g: 0.8862745, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -17669,6 +17690,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 412237527}
   m_CullTransparentMesh: 0
+--- !u!114 &412237533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 412237527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da1e1314fb9df6b45a84c0f77b887608, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MC: 0
+  Rhys: 0
+  Skye: 1
+  Jameel: 0
+  Harper: 0
+  Sullivan: 0
+  level: 10
 --- !u!1 &417020887
 GameObject:
   m_ObjectHideFlags: 0
@@ -17682,6 +17722,7 @@ GameObject:
   - component: {fileID: 417020891}
   - component: {fileID: 417020890}
   - component: {fileID: 417020889}
+  - component: {fileID: 417020893}
   m_Layer: 5
   m_Name: 'Strength Potion  '
   m_TagString: Untagged
@@ -17706,7 +17747,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 519.00006, y: -268.29}
+  m_AnchoredPosition: {x: 172.5, y: -347.8}
   m_SizeDelta: {x: 120, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &417020889
@@ -17722,7 +17763,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   descriptionBox: {fileID: 186127949}
-  descrption: 'Attack up and Defense up for one member '
+  descrption: Attack up and Defense up for party
   cost: 20
   HP: 0
   DADA: 0
@@ -17754,7 +17795,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 0.47843137, g: 0.8784314, b: 0.4862745, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -17827,6 +17868,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 417020887}
   m_CullTransparentMesh: 0
+--- !u!114 &417020893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417020887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da1e1314fb9df6b45a84c0f77b887608, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MC: 0
+  Rhys: 0
+  Skye: 1
+  Jameel: 0
+  Harper: 0
+  Sullivan: 0
+  level: 1
 --- !u!1 &423204547
 GameObject:
   m_ObjectHideFlags: 0
@@ -35983,6 +36043,7 @@ GameObject:
   - component: {fileID: 982722034}
   - component: {fileID: 982722033}
   - component: {fileID: 982722032}
+  - component: {fileID: 982722036}
   m_Layer: 5
   m_Name: 'Flippendo  '
   m_TagString: Untagged
@@ -36055,7 +36116,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 1, g: 0.68235296, b: 0.6666667, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -36128,6 +36189,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 982722030}
   m_CullTransparentMesh: 0
+--- !u!114 &982722036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 982722030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da1e1314fb9df6b45a84c0f77b887608, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MC: 0
+  Rhys: 0
+  Skye: 1
+  Jameel: 0
+  Harper: 0
+  Sullivan: 0
+  level: 1
 --- !u!1 &983299345
 GameObject:
   m_ObjectHideFlags: 0
@@ -43283,13 +43363,14 @@ GameObject:
   - component: {fileID: 1181594223}
   - component: {fileID: 1181594222}
   - component: {fileID: 1181594221}
+  - component: {fileID: 1181594225}
   m_Layer: 5
   m_Name: 'Antidote to Common Poisons  '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1181594220
 RectTransform:
   m_ObjectHideFlags: 0
@@ -43355,7 +43436,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 0.47843137, g: 0.8784314, b: 0.4862745, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -43428,6 +43509,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1181594219}
   m_CullTransparentMesh: 0
+--- !u!114 &1181594225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1181594219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da1e1314fb9df6b45a84c0f77b887608, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MC: 0
+  Rhys: 0
+  Skye: 1
+  Jameel: 0
+  Harper: 0
+  Sullivan: 0
+  level: 0
 --- !u!1 &1181755102
 GameObject:
   m_ObjectHideFlags: 0
@@ -48448,6 +48548,7 @@ GameObject:
   - component: {fileID: 1394037229}
   - component: {fileID: 1394037228}
   - component: {fileID: 1394037227}
+  - component: {fileID: 1394037231}
   m_Layer: 5
   m_Name: 'Sana Coetus Potion  '
   m_TagString: Untagged
@@ -48472,7 +48573,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 357, y: -315}
+  m_AnchoredPosition: {x: 357, y: -309.1}
   m_SizeDelta: {x: 120, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1394037227
@@ -48520,7 +48621,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 0.47843137, g: 0.8784314, b: 0.4862745, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -48593,6 +48694,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1394037225}
   m_CullTransparentMesh: 0
+--- !u!114 &1394037231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1394037225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da1e1314fb9df6b45a84c0f77b887608, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MC: 0
+  Rhys: 0
+  Skye: 1
+  Jameel: 0
+  Harper: 0
+  Sullivan: 0
+  level: 18
 --- !u!1 &1396153589
 GameObject:
   m_ObjectHideFlags: 0
@@ -49842,6 +49962,7 @@ GameObject:
   - component: {fileID: 1436502340}
   - component: {fileID: 1436502339}
   - component: {fileID: 1436502338}
+  - component: {fileID: 1436502342}
   m_Layer: 5
   m_Name: 'Minor Cura  '
   m_TagString: Untagged
@@ -49914,7 +50035,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 0.47843137, g: 0.8784314, b: 0.4862745, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -49987,6 +50108,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1436502336}
   m_CullTransparentMesh: 0
+--- !u!114 &1436502342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1436502336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da1e1314fb9df6b45a84c0f77b887608, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MC: 0
+  Rhys: 0
+  Skye: 1
+  Jameel: 0
+  Harper: 0
+  Sullivan: 0
+  level: 1
 --- !u!1 &1438256627
 GameObject:
   m_ObjectHideFlags: 0
@@ -56204,7 +56344,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 519.00006, y: -356}
+  m_AnchoredPosition: {x: 519.00006, y: -347.1}
   m_SizeDelta: {x: 120, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1486010801
@@ -56253,7 +56393,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 444730373}
         m_TargetAssemblyTypeName: BattleSystem, Assembly-CSharp
-        m_MethodName: OnSpell1Button
+        m_MethodName: CancelAttack
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -58133,6 +58273,7 @@ GameObject:
   - component: {fileID: 1551482946}
   - component: {fileID: 1551482945}
   - component: {fileID: 1551482944}
+  - component: {fileID: 1551482948}
   m_Layer: 5
   m_Name: "Maior Cura \_ "
   m_TagString: Untagged
@@ -58157,7 +58298,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 172, y: -315}
+  m_AnchoredPosition: {x: 172, y: -311}
   m_SizeDelta: {x: 120, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1551482944
@@ -58205,7 +58346,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 0.47843137, g: 0.8784314, b: 0.4862745, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -58278,6 +58419,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1551482942}
   m_CullTransparentMesh: 0
+--- !u!114 &1551482948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1551482942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da1e1314fb9df6b45a84c0f77b887608, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MC: 0
+  Rhys: 0
+  Skye: 1
+  Jameel: 0
+  Harper: 0
+  Sullivan: 0
+  level: 28
 --- !u!1 &1552864412
 GameObject:
   m_ObjectHideFlags: 0
@@ -67206,6 +67366,7 @@ GameObject:
   - component: {fileID: 1698261046}
   - component: {fileID: 1698261045}
   - component: {fileID: 1698261044}
+  - component: {fileID: 1698261048}
   m_Layer: 5
   m_Name: 'Ira Uolueris  '
   m_TagString: Untagged
@@ -67230,7 +67391,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 356.7563, y: -356.7474}
+  m_AnchoredPosition: {x: 356.7563, y: -346.8}
   m_SizeDelta: {x: 120, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1698261044
@@ -67278,7 +67439,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 1, g: 0.9529412, b: 0.47058824, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -67351,6 +67512,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1698261042}
   m_CullTransparentMesh: 0
+--- !u!114 &1698261048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1698261042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da1e1314fb9df6b45a84c0f77b887608, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MC: 0
+  Rhys: 0
+  Skye: 1
+  Jameel: 0
+  Harper: 0
+  Sullivan: 0
+  level: 28
 --- !u!1 &1698624882
 GameObject:
   m_ObjectHideFlags: 0
@@ -86843,6 +87023,7 @@ GameObject:
   - component: {fileID: 2049838471}
   - component: {fileID: 2049838470}
   - component: {fileID: 2049838469}
+  - component: {fileID: 2049838473}
   m_Layer: 5
   m_Name: 'Reanimate Potion   '
   m_TagString: Untagged
@@ -86915,7 +87096,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 0.47843137, g: 0.8784314, b: 0.4862745, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -86988,6 +87169,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2049838467}
   m_CullTransparentMesh: 0
+--- !u!114 &2049838473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2049838467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da1e1314fb9df6b45a84c0f77b887608, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MC: 0
+  Rhys: 0
+  Skye: 1
+  Jameel: 0
+  Harper: 0
+  Sullivan: 0
+  level: 35
 --- !u!1 &2050889124
 GameObject:
   m_ObjectHideFlags: 0
