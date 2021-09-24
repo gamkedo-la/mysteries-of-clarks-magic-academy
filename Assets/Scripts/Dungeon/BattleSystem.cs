@@ -1144,11 +1144,12 @@ public class BattleSystem : MonoBehaviour
             {
                 if (GameManager.GracieMayAvailable)
                 {
+                    for (int i = 0; i < playerBattleStationLocations.Count; i++)
+                    {
+                        playerBattleStationLocations[i].transform.rotation = Quaternion.Euler(0, 180, 0);
+                    }
                     dialogueText.text = "Gracie May: I found an opening! You can run!";
-                    Vector3 rotationVector = new Vector3(0, 180, 0);
-                    Quaternion rotation = Quaternion.Euler(rotationVector);
 
-                    MCPrefab.transform.rotation = rotation;
                     MCAnim.Play("Armature|Run");
                     if (GameManager.RhysInParty && !RhysDead)
                     {
@@ -1177,6 +1178,11 @@ public class BattleSystem : MonoBehaviour
                 {
                     dialogueText.text = "You think you can get away";
 
+                    for (int i = 0; i < playerBattleStationLocations.Count; i++)
+                    {
+                        playerBattleStationLocations[i].transform.rotation = Quaternion.Euler(0, 180, 0);
+                    }
+                   
                     MCAnim.Play("Armature|Run");
                     if (GameManager.RhysInParty && !RhysDead)
                     {
