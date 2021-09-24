@@ -594,10 +594,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 6d8a2c0835fce284e803048063a9b8e4, type: 3}
-    m_FontSize: 14
+    m_FontSize: 12
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -4471,6 +4471,7 @@ GameObject:
   - component: {fileID: 149964486}
   - component: {fileID: 149964485}
   - component: {fileID: 149964484}
+  - component: {fileID: 149964488}
   m_Layer: 5
   m_Name: Flippendo
   m_TagString: Untagged
@@ -4543,7 +4544,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 1, g: 0.68235296, b: 0.6666667, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -4616,6 +4617,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 149964482}
   m_CullTransparentMesh: 0
+--- !u!114 &149964488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 149964482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da1e1314fb9df6b45a84c0f77b887608, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MC: 1
+  Rhys: 0
+  Skye: 0
+  Jameel: 0
+  Harper: 0
+  Sullivan: 0
+  level: 1
 --- !u!1 &150063692
 GameObject:
   m_ObjectHideFlags: 0
@@ -5341,6 +5361,7 @@ GameObject:
   - component: {fileID: 173873453}
   - component: {fileID: 173873452}
   - component: {fileID: 173873451}
+  - component: {fileID: 173873456}
   m_Layer: 5
   m_Name: 'Incendio maxima   '
   m_TagString: Untagged
@@ -5442,7 +5463,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 1, g: 0.9529412, b: 0.47058824, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -5515,6 +5536,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 173873449}
   m_CullTransparentMesh: 0
+--- !u!114 &173873456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173873449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da1e1314fb9df6b45a84c0f77b887608, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MC: 1
+  Rhys: 0
+  Skye: 0
+  Jameel: 0
+  Harper: 0
+  Sullivan: 0
+  level: 28
 --- !u!1 &176820769
 GameObject:
   m_ObjectHideFlags: 0
@@ -8973,13 +9013,14 @@ GameObject:
   - component: {fileID: 268786122}
   - component: {fileID: 268786121}
   - component: {fileID: 268786120}
+  - component: {fileID: 268786125}
   m_Layer: 5
   m_Name: 'Impetum Subsisto  '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &268786119
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9147,6 +9188,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 268786118}
   m_CullTransparentMesh: 0
+--- !u!114 &268786125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 268786118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da1e1314fb9df6b45a84c0f77b887608, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MC: 1
+  Rhys: 0
+  Skye: 0
+  Jameel: 0
+  Harper: 0
+  Sullivan: 0
+  level: 0
 --- !u!1 &270080270
 GameObject:
   m_ObjectHideFlags: 0
@@ -10531,6 +10591,7 @@ GameObject:
   - component: {fileID: 307346095}
   - component: {fileID: 307346094}
   - component: {fileID: 307346093}
+  - component: {fileID: 307346098}
   m_Layer: 5
   m_Name: 'Incendio  '
   m_TagString: Untagged
@@ -10632,7 +10693,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 1, g: 0.9529412, b: 0.47058824, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -10705,6 +10766,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 307346091}
   m_CullTransparentMesh: 0
+--- !u!114 &307346098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 307346091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da1e1314fb9df6b45a84c0f77b887608, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MC: 1
+  Rhys: 0
+  Skye: 0
+  Jameel: 0
+  Harper: 0
+  Sullivan: 0
+  level: 15
 --- !u!1 &313031968
 GameObject:
   m_ObjectHideFlags: 0
@@ -10970,6 +11050,7 @@ GameObject:
   - component: {fileID: 315552718}
   - component: {fileID: 315552717}
   - component: {fileID: 315552716}
+  - component: {fileID: 315552721}
   m_Layer: 5
   m_Name: 'Glacies  '
   m_TagString: Untagged
@@ -11071,7 +11152,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 0.49411765, g: 0.8862745, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -11144,6 +11225,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 315552714}
   m_CullTransparentMesh: 0
+--- !u!114 &315552721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 315552714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da1e1314fb9df6b45a84c0f77b887608, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MC: 1
+  Rhys: 0
+  Skye: 0
+  Jameel: 0
+  Harper: 0
+  Sullivan: 0
+  level: 16
 --- !u!1 &318176979
 GameObject:
   m_ObjectHideFlags: 0
@@ -11701,6 +11801,7 @@ GameObject:
   - component: {fileID: 343286061}
   - component: {fileID: 343286060}
   - component: {fileID: 343286059}
+  - component: {fileID: 343286064}
   m_Layer: 5
   m_Name: 'Diffindo maxima '
   m_TagString: Untagged
@@ -11725,7 +11826,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 581.01404, y: -271.30515}
+  m_AnchoredPosition: {x: 409.4, y: -271.30515}
   m_SizeDelta: {x: 80, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &343286059
@@ -11802,7 +11903,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 0.49411765, g: 0.8862745, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -11875,6 +11976,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 343286057}
   m_CullTransparentMesh: 0
+--- !u!114 &343286064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 343286057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da1e1314fb9df6b45a84c0f77b887608, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MC: 1
+  Rhys: 0
+  Skye: 0
+  Jameel: 0
+  Harper: 0
+  Sullivan: 0
+  level: 22
 --- !u!1 &346615609
 GameObject:
   m_ObjectHideFlags: 0
@@ -15810,6 +15930,7 @@ GameObject:
   - component: {fileID: 442814791}
   - component: {fileID: 442814790}
   - component: {fileID: 442814789}
+  - component: {fileID: 442814794}
   m_Layer: 5
   m_Name: 'Chorus pedes  '
   m_TagString: Untagged
@@ -15911,7 +16032,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 0.49411765, g: 0.8862745, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -15984,6 +16105,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 442814787}
   m_CullTransparentMesh: 0
+--- !u!114 &442814794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 442814787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da1e1314fb9df6b45a84c0f77b887608, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MC: 1
+  Rhys: 0
+  Skye: 0
+  Jameel: 0
+  Harper: 0
+  Sullivan: 0
+  level: 38
 --- !u!1 &444773654
 GameObject:
   m_ObjectHideFlags: 0
@@ -30829,6 +30969,7 @@ GameObject:
   - component: {fileID: 775588459}
   - component: {fileID: 775588458}
   - component: {fileID: 775588457}
+  - component: {fileID: 775588462}
   m_Layer: 5
   m_Name: 'Bombarda maxima '
   m_TagString: Untagged
@@ -30930,7 +31071,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 1, g: 0.68235296, b: 0.6666667, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -31003,6 +31144,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 775588455}
   m_CullTransparentMesh: 0
+--- !u!114 &775588462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 775588455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da1e1314fb9df6b45a84c0f77b887608, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MC: 1
+  Rhys: 0
+  Skye: 0
+  Jameel: 0
+  Harper: 0
+  Sullivan: 0
+  level: 15
 --- !u!1 &785344931
 GameObject:
   m_ObjectHideFlags: 0
@@ -31062,10 +31222,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 6d8a2c0835fce284e803048063a9b8e4, type: 3}
-    m_FontSize: 14
+    m_FontSize: 10
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -31073,7 +31233,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Chorus pedes \r\n"
+  m_Text: "Chorus pedes \r"
 --- !u!222 &785344934
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -37681,6 +37841,7 @@ GameObject:
   - component: {fileID: 832263735}
   - component: {fileID: 832263734}
   - component: {fileID: 832263733}
+  - component: {fileID: 832263738}
   m_Layer: 5
   m_Name: Stupefaciunt
   m_TagString: Untagged
@@ -37782,7 +37943,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 1, g: 0.9529412, b: 0.47058824, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -37855,6 +38016,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 832263731}
   m_CullTransparentMesh: 0
+--- !u!114 &832263738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 832263731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da1e1314fb9df6b45a84c0f77b887608, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MC: 1
+  Rhys: 0
+  Skye: 0
+  Jameel: 0
+  Harper: 0
+  Sullivan: 0
+  level: 21
 --- !u!1 &834469107
 GameObject:
   m_ObjectHideFlags: 0
@@ -39850,6 +40030,7 @@ GameObject:
   - component: {fileID: 888558299}
   - component: {fileID: 888558298}
   - component: {fileID: 888558297}
+  - component: {fileID: 888558302}
   m_Layer: 5
   m_Name: 'Avis   '
   m_TagString: Untagged
@@ -39951,7 +40132,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 0.7372549, g: 0.7372549, b: 0.7372549, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -40024,6 +40205,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 888558295}
   m_CullTransparentMesh: 0
+--- !u!114 &888558302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 888558295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da1e1314fb9df6b45a84c0f77b887608, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MC: 1
+  Rhys: 0
+  Skye: 0
+  Jameel: 0
+  Harper: 0
+  Sullivan: 0
+  level: 10
 --- !u!1 &896051674
 GameObject:
   m_ObjectHideFlags: 0
@@ -40681,10 +40881,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 6d8a2c0835fce284e803048063a9b8e4, type: 3}
-    m_FontSize: 14
+    m_FontSize: 10
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -40692,7 +40892,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Moth interiore \r\n"
+  m_Text: 'Moth interiore '
 --- !u!222 &936478422
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -42321,10 +42521,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 6d8a2c0835fce284e803048063a9b8e4, type: 3}
-    m_FontSize: 14
+    m_FontSize: 10
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -42332,7 +42532,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Moths deorsum  \r\n"
+  m_Text: 'Moths deorsum '
 --- !u!222 &965189036
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -42434,6 +42634,7 @@ GameObject:
   - component: {fileID: 967461199}
   - component: {fileID: 967461198}
   - component: {fileID: 967461197}
+  - component: {fileID: 967461202}
   m_Layer: 5
   m_Name: 'Diffindo '
   m_TagString: Untagged
@@ -42458,7 +42659,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 581.01404, y: -308.48825}
+  m_AnchoredPosition: {x: 322.6, y: -271.4}
   m_SizeDelta: {x: 80, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &967461197
@@ -42535,7 +42736,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 0.49411765, g: 0.8862745, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -42608,6 +42809,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 967461195}
   m_CullTransparentMesh: 0
+--- !u!114 &967461202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 967461195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da1e1314fb9df6b45a84c0f77b887608, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MC: 1
+  Rhys: 0
+  Skye: 0
+  Jameel: 0
+  Harper: 0
+  Sullivan: 0
+  level: 14
 --- !u!1 &975725198
 GameObject:
   m_ObjectHideFlags: 0
@@ -44887,6 +45107,7 @@ GameObject:
   - component: {fileID: 1036260062}
   - component: {fileID: 1036260061}
   - component: {fileID: 1036260060}
+  - component: {fileID: 1036260065}
   m_Layer: 5
   m_Name: 'Minus Sana Coetus '
   m_TagString: Untagged
@@ -44988,7 +45209,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 0.5137255, g: 1, b: 0.5254902, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -45061,6 +45282,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1036260058}
   m_CullTransparentMesh: 0
+--- !u!114 &1036260065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1036260058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da1e1314fb9df6b45a84c0f77b887608, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MC: 1
+  Rhys: 0
+  Skye: 0
+  Jameel: 0
+  Harper: 0
+  Sullivan: 0
+  level: 6
 --- !u!1 &1038889534
 GameObject:
   m_ObjectHideFlags: 0
@@ -45551,6 +45791,7 @@ GameObject:
   - component: {fileID: 1057939580}
   - component: {fileID: 1057939579}
   - component: {fileID: 1057939578}
+  - component: {fileID: 1057939583}
   m_Layer: 5
   m_Name: 'Interna combustione '
   m_TagString: Untagged
@@ -45652,7 +45893,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 1, g: 0.68235296, b: 0.6666667, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -45725,6 +45966,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1057939576}
   m_CullTransparentMesh: 0
+--- !u!114 &1057939583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1057939576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da1e1314fb9df6b45a84c0f77b887608, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MC: 1
+  Rhys: 0
+  Skye: 0
+  Jameel: 0
+  Harper: 0
+  Sullivan: 0
+  level: 12
 --- !u!1 &1061488412
 GameObject:
   m_ObjectHideFlags: 0
@@ -47099,6 +47359,7 @@ GameObject:
   - component: {fileID: 1096360711}
   - component: {fileID: 1096360710}
   - component: {fileID: 1096360709}
+  - component: {fileID: 1096360714}
   m_Layer: 5
   m_Name: 'Moth interiore  '
   m_TagString: Untagged
@@ -47123,7 +47384,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 409.74646, y: -271.30515}
+  m_AnchoredPosition: {x: 323.5, y: -345.8}
   m_SizeDelta: {x: 80, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1096360709
@@ -47200,7 +47461,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 1, g: 0.68235296, b: 0.6666667, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -47273,6 +47534,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1096360707}
   m_CullTransparentMesh: 0
+--- !u!114 &1096360714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096360707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da1e1314fb9df6b45a84c0f77b887608, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MC: 1
+  Rhys: 0
+  Skye: 0
+  Jameel: 0
+  Harper: 0
+  Sullivan: 0
+  level: 10
 --- !u!1 &1096678593
 GameObject:
   m_ObjectHideFlags: 0
@@ -59511,6 +59791,7 @@ GameObject:
   - component: {fileID: 1200088017}
   - component: {fileID: 1200088016}
   - component: {fileID: 1200088015}
+  - component: {fileID: 1200088020}
   m_Layer: 5
   m_Name: 'Augmenti  '
   m_TagString: Untagged
@@ -59612,7 +59893,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 0.49411765, g: 0.8862745, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -59685,6 +59966,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1200088013}
   m_CullTransparentMesh: 0
+--- !u!114 &1200088020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1200088013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da1e1314fb9df6b45a84c0f77b887608, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MC: 1
+  Rhys: 0
+  Skye: 0
+  Jameel: 0
+  Harper: 0
+  Sullivan: 0
+  level: 18
 --- !u!43 &1203146648
 Mesh:
   m_ObjectHideFlags: 0
@@ -60268,10 +60568,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 6d8a2c0835fce284e803048063a9b8e4, type: 3}
-    m_FontSize: 14
+    m_FontSize: 10
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -60279,9 +60579,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Minus Sana Coetus
-
-'
+  m_Text: Minus Sana Coetus
 --- !u!222 &1216243859
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -64156,10 +64454,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 6d8a2c0835fce284e803048063a9b8e4, type: 3}
-    m_FontSize: 14
+    m_FontSize: 10
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -64167,9 +64465,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Bombarda maxima
-
-'
+  m_Text: Bombarda maxima
 --- !u!222 &1341363537
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -67141,6 +67437,7 @@ GameObject:
   - component: {fileID: 1458661699}
   - component: {fileID: 1458661698}
   - component: {fileID: 1458661697}
+  - component: {fileID: 1458661702}
   m_Layer: 5
   m_Name: PulsateSunt
   m_TagString: Untagged
@@ -67242,7 +67539,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 1, g: 0.9529412, b: 0.47058824, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -67315,6 +67612,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1458661695}
   m_CullTransparentMesh: 0
+--- !u!114 &1458661702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1458661695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da1e1314fb9df6b45a84c0f77b887608, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MC: 1
+  Rhys: 0
+  Skye: 0
+  Jameel: 0
+  Harper: 0
+  Sullivan: 0
+  level: 11
 --- !u!1 &1459214646
 GameObject:
   m_ObjectHideFlags: 0
@@ -72675,10 +72991,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 6d8a2c0835fce284e803048063a9b8e4, type: 3}
-    m_FontSize: 14
+    m_FontSize: 10
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -73014,6 +73330,7 @@ GameObject:
   - component: {fileID: 1480643083}
   - component: {fileID: 1480643082}
   - component: {fileID: 1480643081}
+  - component: {fileID: 1480643086}
   m_Layer: 5
   m_Name: 'Moths deorsum   '
   m_TagString: Untagged
@@ -73115,7 +73432,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 1, g: 0.68235296, b: 0.6666667, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -73188,6 +73505,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1480643079}
   m_CullTransparentMesh: 0
+--- !u!114 &1480643086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1480643079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da1e1314fb9df6b45a84c0f77b887608, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MC: 1
+  Rhys: 0
+  Skye: 0
+  Jameel: 0
+  Harper: 0
+  Sullivan: 0
+  level: 3
 --- !u!1 &1484121349
 GameObject:
   m_ObjectHideFlags: 0
@@ -75563,10 +75899,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 6d8a2c0835fce284e803048063a9b8e4, type: 3}
-    m_FontSize: 14
+    m_FontSize: 10
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -75599,13 +75935,14 @@ GameObject:
   - component: {fileID: 1530524224}
   - component: {fileID: 1530524223}
   - component: {fileID: 1530524222}
+  - component: {fileID: 1530524227}
   m_Layer: 5
   m_Name: 'Minor Cura '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1530524221
 RectTransform:
   m_ObjectHideFlags: 0
@@ -75773,6 +76110,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1530524220}
   m_CullTransparentMesh: 0
+--- !u!114 &1530524227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530524220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da1e1314fb9df6b45a84c0f77b887608, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MC: 1
+  Rhys: 0
+  Skye: 0
+  Jameel: 0
+  Harper: 0
+  Sullivan: 0
+  level: 0
 --- !u!1 &1531661487
 GameObject:
   m_ObjectHideFlags: 0
@@ -77189,6 +77545,7 @@ GameObject:
   - component: {fileID: 1573753991}
   - component: {fileID: 1573753990}
   - component: {fileID: 1573753989}
+  - component: {fileID: 1573753994}
   m_Layer: 5
   m_Name: "\_Bombarda   "
   m_TagString: Untagged
@@ -77290,7 +77647,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 1, g: 0.68235296, b: 0.6666667, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -77363,6 +77720,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1573753987}
   m_CullTransparentMesh: 0
+--- !u!114 &1573753994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1573753987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da1e1314fb9df6b45a84c0f77b887608, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MC: 1
+  Rhys: 0
+  Skye: 0
+  Jameel: 0
+  Harper: 0
+  Sullivan: 0
+  level: 7
 --- !u!1 &1575168786
 GameObject:
   m_ObjectHideFlags: 0
@@ -86611,6 +86987,7 @@ GameObject:
   - component: {fileID: 1741173176}
   - component: {fileID: 1741173175}
   - component: {fileID: 1741173174}
+  - component: {fileID: 1741173179}
   m_Layer: 5
   m_Name: 'Avis maxima  '
   m_TagString: Untagged
@@ -86712,7 +87089,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 0.7372549, g: 0.7372549, b: 0.7372549, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -86785,6 +87162,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1741173172}
   m_CullTransparentMesh: 0
+--- !u!114 &1741173179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1741173172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da1e1314fb9df6b45a84c0f77b887608, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MC: 1
+  Rhys: 0
+  Skye: 0
+  Jameel: 0
+  Harper: 0
+  Sullivan: 0
+  level: 14
 --- !u!43 &1749477554
 Mesh:
   m_ObjectHideFlags: 0
@@ -93496,6 +93892,7 @@ GameObject:
   - component: {fileID: 1972207569}
   - component: {fileID: 1972207568}
   - component: {fileID: 1972207567}
+  - component: {fileID: 1972207572}
   m_Layer: 5
   m_Name: 'Critica focus '
   m_TagString: Untagged
@@ -93597,7 +93994,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 0.7372549, g: 0.7372549, b: 0.7372549, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -93670,6 +94067,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1972207565}
   m_CullTransparentMesh: 0
+--- !u!114 &1972207572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1972207565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da1e1314fb9df6b45a84c0f77b887608, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MC: 1
+  Rhys: 0
+  Skye: 0
+  Jameel: 0
+  Harper: 0
+  Sullivan: 0
+  level: 8
 --- !u!1 &1976229283
 GameObject:
   m_ObjectHideFlags: 0
@@ -94303,9 +94719,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Diffindo maxima
-
-'
+  m_Text: Diffindo maxima
 --- !u!222 &1984758008
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -96046,6 +96460,7 @@ GameObject:
   - component: {fileID: 2058918544}
   - component: {fileID: 2058918543}
   - component: {fileID: 2058918542}
+  - component: {fileID: 2058918547}
   m_Layer: 5
   m_Name: 'Bombarda ultima   '
   m_TagString: Untagged
@@ -96147,7 +96562,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 1, g: 0.68235296, b: 0.6666667, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -96220,6 +96635,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2058918540}
   m_CullTransparentMesh: 0
+--- !u!114 &2058918547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2058918540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da1e1314fb9df6b45a84c0f77b887608, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MC: 1
+  Rhys: 0
+  Skye: 0
+  Jameel: 0
+  Harper: 0
+  Sullivan: 0
+  level: 25
 --- !u!1 &2061906232
 GameObject:
   m_ObjectHideFlags: 0
