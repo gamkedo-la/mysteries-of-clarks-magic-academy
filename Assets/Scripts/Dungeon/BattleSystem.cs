@@ -8056,7 +8056,7 @@ public class BattleSystem : MonoBehaviour
             {
                 rhysTenuiLabor = true;
 
-                RhysMenu.SetActive(true);
+                RhysMenu.SetActive(false);
                 RhysSpells.SetActive(false);
                 RhysConfirmMenu.SetActive(false);
 
@@ -8103,7 +8103,7 @@ public class BattleSystem : MonoBehaviour
                 RhysSpells.SetActive(false);
                 RhysConfirmMenu.SetActive(false);
 
-                GameManager.RhysMagic -= Rhys.RhysSpell7MagicConsumed;
+                GameManager.RhysMagic -= Rhys.RhysSpell9MagicConsumed;
                 RhysMagic.value = GameManager.RhysMagic;
                 dialogueText.text = "Evasion Rate up for the party!";
                 EvasionGroup();

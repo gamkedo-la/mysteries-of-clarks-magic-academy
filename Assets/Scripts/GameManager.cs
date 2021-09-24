@@ -220,13 +220,13 @@ public class GameManager : MonoBehaviour
         //MC is always in the party
         PartyCount++;
         RhysInParty = true;
-        SkyeInParty = true;
+       // SkyeInParty = true;
        // HarperInParty = true;
       //  PartyCount++;
       //  PartyCount++;
        // PartyCount++;
         RhysAvailable = true;
-        SkyeAvailable = true;
+      //  SkyeAvailable = true;
        // JameelAvailable = true;
       //  HarperAvailable = true;
       //  SullivanAvailable = false;
@@ -278,7 +278,7 @@ public class GameManager : MonoBehaviour
         //
         //    MCHealth = 19;
         MCHealth = 150;
-        RhysHealth = 22;
+        RhysHealth = 150;
         SkyeHealth = 48;
         JameelHealth = 92;
         HarperHealth = 245;
@@ -286,7 +286,7 @@ public class GameManager : MonoBehaviour
 
         //    MCMaxHealth = 19;
         MCMaxHealth = 200;
-        RhysMaxHealth = 22;
+        RhysMaxHealth = 200;
         SkyeMaxHealth = 48;
         JameelMaxHealth = 92;
         HarperMaxHealth = 245;
