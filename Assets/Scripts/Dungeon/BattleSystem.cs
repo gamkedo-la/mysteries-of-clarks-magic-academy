@@ -1121,7 +1121,7 @@ public class BattleSystem : MonoBehaviour
         }
         else
         {
-            int Rand = Random.Range(0, 2);
+            int Rand = Random.Range(1, 2);
             if (Rand == 0)
             {
                 if (GameManager.GracieMayAvailable)
@@ -1145,6 +1145,10 @@ public class BattleSystem : MonoBehaviour
                 if (GameManager.GracieMayAvailable)
                 {
                     dialogueText.text = "Gracie May: I found an opening! You can run!";
+                    Vector3 rotationVector = new Vector3(0, 180, 0);
+                    Quaternion rotation = Quaternion.Euler(rotationVector);
+
+                    MCPrefab.transform.rotation = rotation;
                     MCAnim.Play("Armature|Run");
                     if (GameManager.RhysInParty && !RhysDead)
                     {
@@ -1166,6 +1170,8 @@ public class BattleSystem : MonoBehaviour
                     {
                         SullivanAnim.Play("Armature|Run");
                     }
+
+                    //End Battle move on
                 }
                 else
                 {
@@ -1193,9 +1199,19 @@ public class BattleSystem : MonoBehaviour
                         SullivanAnim.Play("Armature|Run");
                     }
                 }
-                StartCoroutine(WaitingAtEndOfBattle());
+                StartCoroutine(Running());
             }
         }
+    }
+
+    IEnumerator Running()
+    {
+        GameManager.enemyAttackedPlayer = false;
+
+        yield return new WaitForSeconds(1.5f);
+        state = BattleState.START;
+
+        SceneManager.LoadScene(DungeonRoomToLoad);
     }
 
     public void ConfirmAttack()

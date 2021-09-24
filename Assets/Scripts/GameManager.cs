@@ -230,10 +230,7 @@ public class GameManager : MonoBehaviour
        // JameelAvailable = true;
       //  HarperAvailable = true;
       //  SullivanAvailable = false;
-
-        HarperHealth = 0;
-
-        GracieMayAvailable = true;
+       //GracieMayAvailable = true;
 
         if (PartyCount > 4)
         {
