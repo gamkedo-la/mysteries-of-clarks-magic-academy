@@ -3852,32 +3852,32 @@ public class BattleSystem : MonoBehaviour
             SkyeAnim.Play("Armature|Attack");
             yield return new WaitForSeconds(2f);
 
-            if (playerTurnOrder[playerUnitSelected - 1].ToString() == "Rhys")
+            if (playerTurnOrder[playerUnitSelected ].ToString() == "Rhys")
             {
                 GameManager.RhysHealth += GameManager.RhysMaxHealth * .2f;
             }
 
-            if (playerTurnOrder[playerUnitSelected - 1].ToString() == "Skye")
+            if (playerTurnOrder[playerUnitSelected ].ToString() == "Skye")
             {
                 GameManager.SkyeHealth += GameManager.SkyeMaxHealth * .2f;
             }
 
-            if (playerTurnOrder[playerUnitSelected - 1].ToString() == "Harper")
+            if (playerTurnOrder[playerUnitSelected ].ToString() == "Harper")
             {
                 GameManager.HarperHealth += GameManager.HarperMaxHealth * .2f;
             }
 
-            if (playerTurnOrder[playerUnitSelected - 1].ToString() == "Sullivan")
+            if (playerTurnOrder[playerUnitSelected ].ToString() == "Sullivan")
             {
                 GameManager.SullivanHealth += GameManager.SullivanMaxHealth * .2f;
             }
 
-            if (playerTurnOrder[playerUnitSelected - 1].ToString() == "Jameel")
+            if (playerTurnOrder[playerUnitSelected ].ToString() == "Jameel")
             {
                 GameManager.JameelHealth += GameManager.JameelMaxHealth * .2f;
             }
 
-            if (playerTurnOrder[playerUnitSelected - 1].ToString() == "MC")
+            if (playerTurnOrder[playerUnitSelected ].ToString() == "MC")
             {
                 GameManager.MCHealth += GameManager.MCMaxHealth * .2f;
 
@@ -3894,32 +3894,32 @@ public class BattleSystem : MonoBehaviour
             SkyeAnim.Play("Armature|Attack");
             yield return new WaitForSeconds(2f);
 
-            if (playerTurnOrder[playerUnitSelected - 1].ToString() == "Rhys")
+            if (playerTurnOrder[playerUnitSelected ].ToString() == "Rhys")
             {
                 GameManager.RhysHealth += GameManager.RhysMaxHealth * .6f;
             }
 
-            if (playerTurnOrder[playerUnitSelected - 1].ToString() == "Skye")
+            if (playerTurnOrder[playerUnitSelected ].ToString() == "Skye")
             {
                 GameManager.SkyeHealth += GameManager.SkyeMaxHealth * .6f;
             }
 
-            if (playerTurnOrder[playerUnitSelected - 1].ToString() == "Harper")
+            if (playerTurnOrder[playerUnitSelected].ToString() == "Harper")
             {
                 GameManager.HarperHealth += GameManager.HarperMaxHealth * .6f;
             }
 
-            if (playerTurnOrder[playerUnitSelected - 1].ToString() == "Sullivan")
+            if (playerTurnOrder[playerUnitSelected].ToString() == "Sullivan")
             {
                 GameManager.SullivanHealth += GameManager.SullivanMaxHealth * .6f;
             }
 
-            if (playerTurnOrder[playerUnitSelected - 1].ToString() == "Jameel")
+            if (playerTurnOrder[playerUnitSelected].ToString() == "Jameel")
             {
                 GameManager.JameelHealth += GameManager.JameelMaxHealth * .6f;
             }
 
-            if (playerTurnOrder[playerUnitSelected - 1].ToString() == "MC")
+            if (playerTurnOrder[playerUnitSelected].ToString() == "MC")
             {
                 GameManager.MCHealth += GameManager.MCMaxHealth * .6f;
 
@@ -5514,7 +5514,7 @@ public class BattleSystem : MonoBehaviour
                                     dialogueText.text = enemyUnit[enemyIndex].unitName + " attacks" + GameManager.MCFirstName + " with " + enemyUnit[enemyIndex].attackName + "!";
                                     yield return new WaitForSeconds(.5f);
                                     MCAnim.Play("Armature|Dodge");
-                                    dialogueText.text = "MC Dodges!";
+                                    dialogueText.text = GameManager.MCFirstName.ToString() + " Dodges!";
                                     yield return new WaitForSeconds(1f);
 
                                 }
@@ -8825,7 +8825,9 @@ public class BattleSystem : MonoBehaviour
 
     IEnumerator SenaPlena()
     {
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(2f);
+        UpdateLifeUI();
+        yield return new WaitForSeconds(2f);
         skyeSenaPlenaPotion = false;
         TurnOffAttackBools();
         NextTurn();
@@ -8867,13 +8869,13 @@ public class BattleSystem : MonoBehaviour
         {
             GameManager.JameelHealth = GameManager.JameelMaxHealth * .5f;
             JameelDead = false;
-            playerTurnOrder.Add(CharacterIdentifier.Rhys);
+            playerTurnOrder.Add(CharacterIdentifier.Jameel);
         }
         if (GameManager.HarperInParty && HarperDead)
         {
             GameManager.HarperHealth = GameManager.HarperMaxHealth * .5f;
             HarperDead = false;
-            playerTurnOrder.Add(CharacterIdentifier.Rhys);
+            playerTurnOrder.Add(CharacterIdentifier.Harper);
         }
         if (GameManager.SullivanInParty && SullivanDead)
         {
@@ -8964,7 +8966,9 @@ public class BattleSystem : MonoBehaviour
 
     IEnumerator SanaCoetus()
     {
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(2f);
+        UpdateLifeUI();
+        yield return new WaitForSeconds(2f);
         skyeSanaCoetusPotion = false;
         TurnOffAttackBools();
         NextTurn();
