@@ -727,13 +727,13 @@ public class BattleSystem : MonoBehaviour
     private void Update()
     {
         //Cheat Code to Win Battle
-        {
+      /*  {
             if (Input.GetKeyDown(KeyCode.E))
             {
                 CheatToInstantlyWin();
             }
         }
-
+      */
         //If MC Health <= 0, game is over (at the bottom of this function)
         if (GameManager.RhysHealth <= 0)
         {
@@ -891,8 +891,9 @@ public class BattleSystem : MonoBehaviour
             {
                 if (playerUnitSelected <= 0)
                 {
-                    playerUnitSelected = membersInParty - 1;
+                    playerUnitSelected = membersInParty;
                 }
+                print(playerUnitSelected);
                 playerUnitSelected--;           
                 playerSelectionParticle.transform.position = playerBattleStationLocations[playerUnitSelected].transform.position;
                 Camera.transform.LookAt(playerBattleStationLocations[playerUnitSelected]);
@@ -901,11 +902,11 @@ public class BattleSystem : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.D))
             {
                 playerUnitSelected++;
-                if (playerUnitSelected >= membersInParty -1)
+                if (playerUnitSelected >= membersInParty)
                 {
                     playerUnitSelected = 0;
                 }
-
+                print(playerUnitSelected);
                 playerSelectionParticle.transform.position = playerBattleStationLocations[playerUnitSelected].transform.position;
                 Camera.transform.LookAt(playerBattleStationLocations[playerUnitSelected]);
             }
@@ -1809,33 +1810,45 @@ public class BattleSystem : MonoBehaviour
                 MCAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
-                if (playerTurnOrder[playerUnitSelected - 1].ToString() == "Rhys")
+                if (playerTurnOrder[playerUnitSelected - 1] <= 0)
                 {
+                    print("Heal MC Here");
+                    GameManager.MCHealth += GameManager.MCMaxHealth * .2f + GameManager.MCPotions;
+                }
+
+                if (playerTurnOrder[playerUnitSelected -1].ToString() == "Rhys")
+                {
+                    print("Heal Rhys Here");
                     GameManager.RhysHealth += GameManager.RhysMaxHealth * .2f +GameManager.MCPotions;
                 }
 
                 if (playerTurnOrder[playerUnitSelected - 1].ToString() == "Skye")
                 {
+                    print("Heal Skye Here");
                     GameManager.SkyeHealth += GameManager.SkyeMaxHealth * .2f + GameManager.MCPotions;
                 }
 
                 if (playerTurnOrder[playerUnitSelected - 1].ToString() == "Harper")
                 {
+                    print("Heal Harper Here");
                     GameManager.HarperHealth += GameManager.HarperMaxHealth * .2f + GameManager.MCPotions;
                 }
 
                 if (playerTurnOrder[playerUnitSelected - 1].ToString() == "Sullivan")
                 {
+                    print("Heal Sullivan Here");
                     GameManager.SullivanHealth += GameManager.SullivanMaxHealth * .2f + GameManager.MCPotions;
                 }
 
                 if (playerTurnOrder[playerUnitSelected - 1].ToString() == "Jameel")
                 {
+                    print("Heal Jameel Here");
                     GameManager.JameelHealth += GameManager.JameelMaxHealth * .2f + GameManager.MCPotions;
                 }
 
                 if (playerTurnOrder[playerUnitSelected - 1].ToString() == "MC")
                 {
+                    print("Heal MC Second");
                     GameManager.MCHealth += GameManager.MCMaxHealth * .2f + GameManager.MCPotions;
                     
                 }
@@ -1851,37 +1864,39 @@ public class BattleSystem : MonoBehaviour
                 MCAnim.Play("Armature|Attack");
                 yield return new WaitForSeconds(2f);
 
-                if (playerTurnOrder[playerUnitSelected - 1].ToString() == "Rhys")
+                print(playerTurnOrder[playerUnitSelected]);
+
+                if (playerTurnOrder[playerUnitSelected].ToString() == "Rhys")
                 {
                     DefenseRhys = .5f;
                     DefenseRhysTurn = 3;
                 }
 
-                if (playerTurnOrder[playerUnitSelected - 1].ToString() == "Skye")
+                if (playerTurnOrder[playerUnitSelected].ToString() == "Skye")
                 {
                     DefenseSkye = .5f;
                     DefenseSkyeTurn = 3;
                 }
 
-                if (playerTurnOrder[playerUnitSelected - 1].ToString() == "Harper")
+                if (playerTurnOrder[playerUnitSelected].ToString() == "Harper")
                 {
                     DefenseHarper = .5f;
                     DefenseHarperTurn = 3;
                 }
 
-                if (playerTurnOrder[playerUnitSelected - 1].ToString() == "Sullivan")
+                if (playerTurnOrder[playerUnitSelected].ToString() == "Sullivan")
                 {
                     DefenseSullivan = .5f;
                     DefenseSullivanTurn = 3;
                 }
 
-                if (playerTurnOrder[playerUnitSelected - 1].ToString() == "Jameel")
+                if (playerTurnOrder[playerUnitSelected].ToString() == "Jameel")
                 {
                     DefenseJameel = .5f;
                     DefenseJameelTurn = 3;
                 }
 
-                if (playerTurnOrder[playerUnitSelected - 1].ToString() == "MC")
+                if (playerTurnOrder[playerUnitSelected].ToString() == "MC")
                 {
                     DefenseMC = .5f;
                     DefenseMCTurn = 3;
@@ -4541,7 +4556,7 @@ public class BattleSystem : MonoBehaviour
             {
                 dialogueText.text = enemyUnit[enemyIndex].unitName + " is stunned!";
                 yield return new WaitForSeconds(2f);
-                // NextTurn();
+                NextTurn();
                 stunnedName = "";
             }
             else
@@ -7818,7 +7833,9 @@ public class BattleSystem : MonoBehaviour
                 GameManager.SullivanHealth = GameManager.SullivanMaxHealth;
             }
         }
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(2f);
+        UpdateLifeUI();
+        yield return new WaitForSeconds(2f);
         minusSanaCoetus = false;
         jameelMinusSanaCoetus = false;
         TurnOffAttackBools();
