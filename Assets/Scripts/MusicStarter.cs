@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MusicStarter : MonoBehaviour {
 	[FMODUnity.EventRef]
-	public string musicEvent = "";
+	public string musicEvent = "event:/Music";
 	public static FMOD.Studio.EventInstance instance;
 
 	void Start() {
