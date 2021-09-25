@@ -219,7 +219,7 @@ public class Dungeon4Generator : MonoBehaviour {
 
 		//Spawn Enemies
 		foreach (Vector2Int thisRoom in roomsVec2) {
-			if (thisRoom == Vector2Int.zero || thisRoom == farthestRoom || thisRoom == portalRoom || thisRoom == treasureRoom) continue;
+			if (thisRoom == Vector2Int.zero || thisRoom == farthestRoom) continue;
 
 			if (Random.Range(0f, 1f) < oddsOfEnemyPerRoom) {
 				Vector3 offset = new Vector3(0, 1.25f, 0);

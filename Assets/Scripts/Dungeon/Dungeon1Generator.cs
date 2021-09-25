@@ -414,7 +414,6 @@ public class Dungeon1Generator : MonoBehaviour {
 		thePortal.transform.position = new Vector3(portalRoom.x, 0f, portalRoom.y) * gridScale;
 		thePortal.transform.Rotate(0f, Random.Range(0f, 360f), 0f);
 		thePortal.transform.parent = transform;
-		roomsForSpawning.Remove(portalRoom);
 
 		//Spawn Treasure
 		newIndex = Random.Range(0, roomsForSpawning.Count);
@@ -428,7 +427,6 @@ public class Dungeon1Generator : MonoBehaviour {
 		theTreasure.transform.position = new Vector3(treasureRoom.x, 0f, treasureRoom.y) * gridScale;
 		theTreasure.transform.Rotate(0f, Random.Range(0f, 360f), 0f);
 		theTreasure.transform.parent = transform;
-		roomsForSpawning.Remove(treasureRoom);
 
 		//Spawn Enemies
 		foreach (Vector2Int thisRoom in roomsForSpawning) {
