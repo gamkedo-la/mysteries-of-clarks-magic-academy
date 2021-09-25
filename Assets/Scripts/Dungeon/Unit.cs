@@ -4617,6 +4617,137 @@ public class Unit : MonoBehaviour
         attackName = "Psycho Blast";
     }
 
+    void AtomicFlare()
+    {
+        GameManager.isGreen = true;
+
+        minDamage = 3;
+        maxDamage = 8;
+
+        enemyDamage = Random.Range(minDamage, maxDamage);
+        attackName = "Atomic Flare";
+        NamePrint();
+    }
+
+    void PoisonMist()
+    {
+        GameManager.isGreen = true;
+        BattleSystem.attackAll = true;
+
+        minDamage = 45;
+        maxDamage = 50;
+
+        enemyDamage = Random.Range(minDamage, maxDamage);
+        attackName = "Poison Mist";
+    }
+
+    void PoisonCloud()
+    {
+        GameManager.isGreen = true;
+        BattleSystem.attackAll = true;
+
+        minDamage = 45;
+        maxDamage = 50;
+
+        enemyDamage = Random.Range(minDamage, maxDamage);
+        attackName = "Poison Cloud";
+    }
+
+    void CosmicFlare()
+    {
+        GameManager.isGreen = true;
+        BattleSystem.attackAll = true;
+
+        minDamage = 45;
+        maxDamage = 50;
+
+        enemyDamage = Random.Range(minDamage, maxDamage);
+        attackName = "Cosmic Flare";
+    }
+
+    void CosmicIntervention()
+    {
+        GameManager.isGreen = true;
+        BattleSystem.attackAll = true;
+
+        minDamage = 45;
+        maxDamage = 50;
+
+        enemyDamage = Random.Range(minDamage, maxDamage);
+        attackName = "Cosmic Intervention";
+    }
+
+    void ForgetMeNot()
+    {
+        GameManager.isGreen = true;
+
+        int stunnedChance;
+        maxChance = 99;
+        stunnedChance = Random.Range(0, 100);
+        if (stunnedChance <= maxChance)
+        {
+            BattleSystem.stunnedChance = true;
+        }
+        minDamage = 0;
+        maxDamage = 1;
+
+        enemyDamage = Random.Range(minDamage, maxDamage);
+        attackName = "Forget-Me-Not";
+    }
+
+    void Dormina()
+    {
+        GameManager.isGreen = true;
+
+        int stunnedChance;
+        maxChance = 80;
+        stunnedChance = Random.Range(0, 100);
+        if (stunnedChance <= maxChance)
+        {
+            BattleSystem.stunnedChance = true;
+        }
+        minDamage = 10;
+        maxDamage = 20;
+
+        enemyDamage = Random.Range(minDamage, maxDamage);
+        attackName = "Dormina";
+    }
+
+    void BrainJack()
+    {
+        GameManager.isGreen = true;
+
+        int stunnedChance;
+        maxChance = 60;
+        stunnedChance = Random.Range(0, 100);
+        if (stunnedChance <= maxChance)
+        {
+            BattleSystem.stunnedChance = true;
+        }
+        minDamage = 5;
+        maxDamage = 10;
+
+        enemyDamage = Random.Range(minDamage, maxDamage);
+        attackName = "Brain Jack";
+    }
+
+    void DoorwayEffect()
+    {
+        GameManager.isGreen = true;
+
+        int stunnedChance;
+        maxChance = 20;
+        stunnedChance = Random.Range(0, 100);
+        if (stunnedChance <= maxChance)
+        {
+            BattleSystem.stunnedChance = true;
+        }
+        minDamage = 0;
+        maxDamage = 5;
+
+        enemyDamage = Random.Range(minDamage, maxDamage);
+        attackName = "Doorway Effect";
+    }
     #endregion
 
     IEnumerator ClearText()
