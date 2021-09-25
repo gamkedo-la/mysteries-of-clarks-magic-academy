@@ -4469,6 +4469,154 @@ public class Unit : MonoBehaviour
         attackName = "Ice Age";
     }
 
+    //Attack One
+    /* void SoftPunch()
+     {
+         GameManager.isPhysical = true;
+
+         minDamage = 3;
+         maxDamage = 8;
+
+         enemyDamage = Random.Range(minDamage, maxDamage);
+         attackName = "Soft Punch";
+         NamePrint();
+     }*/
+
+    //attack multiple
+    /*    void JabJabJab()
+    {
+        GameManager.isPhysical = true;
+        BattleSystem.secondaryAttack = true;
+        minDamage = 3;
+        maxDamage = 7;
+
+        enemyDamage = Random.Range(minDamage, maxDamage);
+        attackName = "Jab Jab Jab";
+        NamePrint();
+    }
+    */
+
+    //Attack All
+    /* void IceAge()
+     {
+         GameManager.isBlue = true;
+         BattleSystem.attackAll = true;
+
+         minDamage = 45;
+         maxDamage = 50;
+
+         enemyDamage = Random.Range(minDamage, maxDamage);
+         attackName = "Ice Age";
+     }*/
+
+    void DivineJudgement()
+    {
+        GameManager.isYellow = true;
+
+        minDamage = 3;
+        maxDamage = 8;
+
+        enemyDamage = Random.Range(minDamage, maxDamage);
+        attackName = "Divine Judgement";
+        NamePrint();
+    }
+
+    void DivineArrows()
+    {
+        GameManager.isYellow = true;
+        BattleSystem.secondaryAttack = true;
+        minDamage = 3;
+        maxDamage = 7;
+
+        enemyDamage = Random.Range(minDamage, maxDamage);
+        attackName = "Divine Arrows";
+        NamePrint();
+    }
+
+    void HadesDoor()
+    {
+        GameManager.isYellow = true;
+
+        minDamage = 3;
+        maxDamage = 8;
+
+        enemyDamage = Random.Range(minDamage, maxDamage);
+        attackName = "Hades' Door";
+        NamePrint();
+    }
+
+    void JawBinding()
+    {
+        GameManager.isYellow = true;
+
+        minDamage = 3;
+        maxDamage = 8;
+
+        enemyDamage = Random.Range(minDamage, maxDamage);
+        attackName = "Jaw Binding";
+        NamePrint();
+    }
+
+    void LockEmUp()
+    {
+        GameManager.isYellow = true;
+        int confusionChance;
+        maxChance = 60;
+        confusionChance = Random.Range(0, 100);
+        if (confusionChance <= maxChance)
+        {
+            BattleSystem.confusionChance = true;
+        }
+        minDamage = 3;
+        maxDamage = 8;
+
+        enemyDamage = Random.Range(minDamage, maxDamage);
+        attackName = "Head Butt";
+        NamePrint();
+    }
+
+    void StunningStrike()
+    {
+        GameManager.isYellow = true;
+
+        int stunnedChance;
+        maxChance = 60;
+        stunnedChance = Random.Range(0, 100);
+        if (stunnedChance <= maxChance)
+        {
+            BattleSystem.stunnedChance = true;
+        }
+        minDamage = 25;
+        maxDamage = 40;
+
+        enemyDamage = Random.Range(minDamage, maxDamage);
+        attackName = "Stunning Strike";
+    }
+
+    void Psycosis()
+    {
+        GameManager.isYellow = true;
+        BattleSystem.attackAll = true;
+
+        minDamage = 45;
+        maxDamage = 50;
+
+        enemyDamage = Random.Range(minDamage, maxDamage);
+        attackName = "Psycosis";
+    }
+
+    void PsychoBlast()
+    {
+        GameManager.isYellow = true;
+        BattleSystem.attackAll = true;
+
+        minDamage = 45;
+        maxDamage = 50;
+
+        enemyDamage = Random.Range(minDamage, maxDamage);
+        attackName = "Psycho Blast";
+    }
+
     #endregion
 
     IEnumerator ClearText()
