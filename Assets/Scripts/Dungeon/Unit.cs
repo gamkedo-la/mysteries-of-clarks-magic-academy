@@ -4316,7 +4316,7 @@ public class Unit : MonoBehaviour
         maxDamage = 40;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
-        attackName = "Needle Bolt";
+        attackName = "Shaken Barrier";
     }
 
     void WinterAir()
