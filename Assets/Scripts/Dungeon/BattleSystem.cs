@@ -1122,7 +1122,7 @@ public class BattleSystem : MonoBehaviour
         }
         else
         {
-            int Rand = Random.Range(1, 2);
+            int Rand = Random.Range(0, 2);
             if (Rand == 0)
             {
                 if (GameManager.GracieMayAvailable)
