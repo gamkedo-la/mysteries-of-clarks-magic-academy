@@ -4136,34 +4136,41 @@ public class BattleSystem : MonoBehaviour
             }
             else
             {
-                GameManager.SullivanMagic -= Sullivan.SullivanSpell3MagicConsumed;
-                SullivanMagic.value = GameManager.SullivanMagic;
-                SullivanAnim.Play("Armature|Attack");
-                yield return new WaitForSeconds(2f);
-
-                int chanceToInstaKill = Random.Range(0, 100);
-
-                GameManager.isRed = true;
-                if (!Boss && (chanceToInstaKill + GameManager.SullivanLevel + GameManager.SullivanTrans) > 65)
+                if (!Boss)
                 {
-                    float SullivanSpell3ModifiedDamage = enemyUnit[enemyUnitSelected].currentHP;
-                    isDead = enemyUnit[enemyUnitSelected].SullivanExiling(SullivanSpell3ModifiedDamage * AttackModifier + GameManager.SullivanTrans);
-                    EnemyAnim();
+                    GameManager.SullivanMagic -= Sullivan.SullivanSpell3MagicConsumed;
+                    SullivanMagic.value = GameManager.SullivanMagic;
+                    SullivanAnim.Play("Armature|Attack");
+                    yield return new WaitForSeconds(2f);
+
+                    int chanceToInstaKill = Random.Range(0, 100);
+
+                    GameManager.isRed = true;
+                    if (!Boss && (chanceToInstaKill + GameManager.SullivanLevel + GameManager.SullivanTrans) > 70)
+                    {
+                        float SullivanSpell3ModifiedDamage = enemyUnit[enemyUnitSelected].currentHP;
+                        isDead = enemyUnit[enemyUnitSelected].SullivanExiling(SullivanSpell3ModifiedDamage * AttackModifier + GameManager.SullivanTrans);
+                        EnemyAnim();
+                    }
+                    else
+                    {
+                        float SullivanSpell3ModifiedDamage = 0;
+                        isDead = enemyUnit[enemyUnitSelected].SullivanExiling(SullivanSpell3ModifiedDamage * AttackModifier + GameManager.SullivanTrans);
+                        dialogueText.text = "Miss!";
+                    }
+
+                    TurnOffAttackBools();
+                    yield return new WaitForSeconds(2f);
+
+                    //This checks to see if the Enemy is Dead or has HP remaining
+                    if (isDead)
+                    {
+                        RemoveCurrentEnemy();
+                    }
                 }
                 else
                 {
-                    float SullivanSpell3ModifiedDamage = 0;
-                    isDead = enemyUnit[enemyUnitSelected].SullivanExiling(SullivanSpell3ModifiedDamage * AttackModifier + GameManager.SullivanTrans);
-                    dialogueText.text = "Miss!";
-                }
-                
-                TurnOffAttackBools();
-                yield return new WaitForSeconds(2f);
-
-                //This checks to see if the Enemy is Dead or has HP remaining
-                if (isDead)
-                {
-                    RemoveCurrentEnemy();
+                    dialogueText.text = "... the target is immune to banishment!";
                 }
                 NextTurn();
             }
@@ -4379,19 +4386,22 @@ public class BattleSystem : MonoBehaviour
 
                     GameManager.SullivanHealth = currentEnemyHP;
                     enemyUnit[enemyUnitSelected].currentHP = currentSullivanHP;
+                    UpdateLifeUI();
+
+
+                    EnemyAnim();
+                    TurnOffAttackBools();
+                    yield return new WaitForSeconds(2f);
+
+                    //This checks to see if the Enemy is Dead or has HP remaining
+                    if (isDead)
+                    {
+                        RemoveCurrentEnemy();
+                    }
                 }
                 else
                 {
                     dialogueText.text = "... The target appears immune to the transfer.";
-                }
-                EnemyAnim();
-                TurnOffAttackBools();
-                yield return new WaitForSeconds(2f);
-
-                //This checks to see if the Enemy is Dead or has HP remaining
-                if (isDead)
-                {
-                    RemoveCurrentEnemy();
                 }
                 NextTurn();
             }
@@ -9095,6 +9105,7 @@ public class BattleSystem : MonoBehaviour
     {
         if (state == BattleState.SULLIVANTURN)
         {
+           
             if (Sullivan.SullivanSpell3MagicConsumed <= GameManager.SullivanMagic)
             {
                 sullivanExiling = true;
@@ -9108,6 +9119,7 @@ public class BattleSystem : MonoBehaviour
             }
             else
                 dialogueText.text = "Not enough energy!";
+            
         }
     }
 

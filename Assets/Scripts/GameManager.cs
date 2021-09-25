@@ -222,15 +222,15 @@ public class GameManager : MonoBehaviour
        // JameelInParty = true;
        // RhysInParty = true;
        // SkyeInParty = true;
-        HarperInParty = true;
+        SullivanInParty = true;
         PartyCount++;
        // PartyCount++;
        // PartyCount++;
       //  RhysAvailable = true;
        // SkyeAvailable = true;
        // JameelAvailable = true;
-        HarperAvailable = true;
-      //  SullivanAvailable = false;
+       // HarperAvailable = true;
+        SullivanAvailable = true;
        //GracieMayAvailable = true;
 
         if (PartyCount > 4)
@@ -283,7 +283,7 @@ public class GameManager : MonoBehaviour
         SkyeHealth = 48;
         JameelHealth = 92;
         HarperHealth = 245;
-        SullivanHealth = 250;
+        SullivanHealth = 40; //250
 
         //    MCMaxHealth = 19;
         MCMaxHealth = 200;
