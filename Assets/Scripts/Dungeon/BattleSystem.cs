@@ -2899,32 +2899,32 @@ public class BattleSystem : MonoBehaviour
             JameelAnim.Play("Armature|Attack");
             yield return new WaitForSeconds(2f);
 
-            if (playerTurnOrder[playerUnitSelected - 1].ToString() == "Rhys")
+            if (playerTurnOrder[playerUnitSelected].ToString() == "Rhys")
             {
                 GameManager.RhysHealth += GameManager.RhysMaxHealth * .2f;
             }
 
-            if (playerTurnOrder[playerUnitSelected - 1].ToString() == "Skye")
+            if (playerTurnOrder[playerUnitSelected].ToString() == "Skye")
             {
                 GameManager.SkyeHealth += GameManager.SkyeMaxHealth * .2f;
             }
 
-            if (playerTurnOrder[playerUnitSelected - 1].ToString() == "Harper")
+            if (playerTurnOrder[playerUnitSelected].ToString() == "Harper")
             {
                 GameManager.HarperHealth += GameManager.HarperMaxHealth * .2f;
             }
 
-            if (playerTurnOrder[playerUnitSelected - 1].ToString() == "Sullivan")
+            if (playerTurnOrder[playerUnitSelected].ToString() == "Sullivan")
             {
                 GameManager.SullivanHealth += GameManager.SullivanMaxHealth * .2f;
             }
 
-            if (playerTurnOrder[playerUnitSelected - 1].ToString() == "Jameel")
+            if (playerTurnOrder[playerUnitSelected].ToString() == "Jameel")
             {
                 GameManager.JameelHealth += GameManager.JameelMaxHealth * .2f;
             }
 
-            if (playerTurnOrder[playerUnitSelected - 1].ToString() == "MC")
+            if (playerTurnOrder[playerUnitSelected].ToString() == "MC")
             {
                 GameManager.MCHealth += GameManager.MCMaxHealth * .2f;
 
@@ -2941,32 +2941,32 @@ public class BattleSystem : MonoBehaviour
             JameelAnim.Play("Armature|Attack");
             yield return new WaitForSeconds(2f);
 
-            if (playerTurnOrder[playerUnitSelected - 1].ToString() == "Rhys")
+            if (playerTurnOrder[playerUnitSelected ].ToString() == "Rhys")
             {
                 GameManager.RhysHealth += GameManager.RhysMaxHealth * .6f;
             }
 
-            if (playerTurnOrder[playerUnitSelected - 1].ToString() == "Skye")
+            if (playerTurnOrder[playerUnitSelected ].ToString() == "Skye")
             {
                 GameManager.SkyeHealth += GameManager.SkyeMaxHealth * .6f;
             }
 
-            if (playerTurnOrder[playerUnitSelected - 1].ToString() == "Harper")
+            if (playerTurnOrder[playerUnitSelected ].ToString() == "Harper")
             {
                 GameManager.HarperHealth += GameManager.HarperMaxHealth * .6f;
             }
 
-            if (playerTurnOrder[playerUnitSelected - 1].ToString() == "Sullivan")
+            if (playerTurnOrder[playerUnitSelected ].ToString() == "Sullivan")
             {
                 GameManager.SullivanHealth += GameManager.SullivanMaxHealth * .6f;
             }
 
-            if (playerTurnOrder[playerUnitSelected - 1].ToString() == "Jameel")
+            if (playerTurnOrder[playerUnitSelected ].ToString() == "Jameel")
             {
                 GameManager.JameelHealth += GameManager.JameelMaxHealth * .6f;
             }
 
-            if (playerTurnOrder[playerUnitSelected - 1].ToString() == "MC")
+            if (playerTurnOrder[playerUnitSelected ].ToString() == "MC")
             {
                 GameManager.MCHealth += GameManager.MCMaxHealth * .6f;
 
@@ -3257,37 +3257,37 @@ public class BattleSystem : MonoBehaviour
             JameelAnim.Play("Armature|Attack");
             yield return new WaitForSeconds(2f);
 
-            if (playerTurnOrder[playerUnitSelected - 1].ToString() == "Rhys")
+            if (playerTurnOrder[playerUnitSelected].ToString() == "Rhys")
             {
                 DefenseRhys = .5f;
                 DefenseRhysTurn = 3;
             }
 
-            if (playerTurnOrder[playerUnitSelected - 1].ToString() == "Skye")
+            if (playerTurnOrder[playerUnitSelected].ToString() == "Skye")
             {
                 DefenseSkye = .5f;
                 DefenseSkyeTurn = 3;
             }
 
-            if (playerTurnOrder[playerUnitSelected - 1].ToString() == "Harper")
+            if (playerTurnOrder[playerUnitSelected].ToString() == "Harper")
             {
                 DefenseHarper = .5f;
                 DefenseHarperTurn = 3;
             }
 
-            if (playerTurnOrder[playerUnitSelected - 1].ToString() == "Sullivan")
+            if (playerTurnOrder[playerUnitSelected].ToString() == "Sullivan")
             {
                 DefenseSullivan = .5f;
                 DefenseSullivanTurn = 3;
             }
 
-            if (playerTurnOrder[playerUnitSelected - 1].ToString() == "Jameel")
+            if (playerTurnOrder[playerUnitSelected].ToString() == "Jameel")
             {
                 DefenseJameel = .5f;
                 DefenseJameelTurn = 3;
             }
 
-            if (playerTurnOrder[playerUnitSelected - 1].ToString() == "MC")
+            if (playerTurnOrder[playerUnitSelected].ToString() == "MC")
             {
                 DefenseMC = .5f;
                 DefenseMCTurn = 3;
