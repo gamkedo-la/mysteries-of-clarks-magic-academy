@@ -345,8 +345,8 @@ public class BattleSystem : MonoBehaviour
     public bool MCStunned, RhysStunned, JameelStunned, HarperStunned, SkyeStunned, SullivanStunned;
     public static bool stunnedChance;
 
-    public GameObject FatherTime1LossTurnFatherTime2On;
-    public GameObject FirstBattleStations, SecondBattleStations;
+    public string LoadSecondStage;
+    public bool amFirstStage;
     private void Start()
     {
        // GameManager.isBigBoss = true;
@@ -9409,6 +9409,12 @@ public class BattleSystem : MonoBehaviour
     }
     #endregion
 
+    IEnumerator LoadingIntoNextScene()
+    {
+        yield return new WaitForSeconds(4f);
+        SceneManager.LoadScene(LoadSecondStage);
+    }
+
     #region End of Battle States
     void EndBattle()
     {
@@ -9494,19 +9500,14 @@ public class BattleSystem : MonoBehaviour
             dialogueText.text = "You won the Battle!";
             if (Dungeon6 && GameManager.isBigBoss)
             {
-                if (FatherTime1LossTurnFatherTime2On == null)
+                if (!amFirstStage)
                 {
                     SceneManager.LoadScene("RescueRoom");
                     GameManager.isBigBoss = false;
                 }
                 else
                 {
-
-                    SecondBattleStations.SetActive(true);
-                    FatherTime1LossTurnFatherTime2On.SetActive(true);
-                    FirstBattleStations.SetActive(false);
-                    EndingMenu.SetActive(false);
-                    this.gameObject.SetActive(false);
+                    StartCoroutine(LoadingIntoNextScene()); 
                 }
             }
             else
