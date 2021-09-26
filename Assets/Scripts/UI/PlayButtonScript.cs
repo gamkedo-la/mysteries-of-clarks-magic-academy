@@ -17,6 +17,6 @@ public class PlayButtonScript : MonoBehaviour
 
     public void Credits()
     {
-        //SceneManager.LoadScene("Test");
+        SceneManager.LoadScene("EndCredits");
     }
 }

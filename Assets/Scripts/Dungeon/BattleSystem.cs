@@ -3113,12 +3113,12 @@ public class BattleSystem : MonoBehaviour
             JameelAnim.Play("Armature|Attack");
             yield return new WaitForSeconds(2f);
             JameelMagic.value = GameManager.JameelMagic;
-            GameManager.JameelMagic -= Jameel.JameelSpell9MagicConsumed;
+            GameManager.JameelMagic -= Jameel.JameelSpell10MagicConsumed;
             GameManager.isPhysical = true;
 
             for (int i = 0; i < enemyUnit.Count; i++)
             {
-                isDead = enemyUnit[i].JameelBombardaMaxima(Jameel.JameelSpell9Damage * AttackModifier + GameManager.MCDodge);
+                isDead = enemyUnit[i].JameelBombardaMaxima(Jameel.JameelSpell10Damage * AttackModifier + GameManager.MCDodge);
 
                 if (!isDead)
                 {
@@ -3142,7 +3142,7 @@ public class BattleSystem : MonoBehaviour
 
         if (jameelRepellere)
         {
-            GameManager.JameelMagic -= Jameel.JameelSpell10MagicConsumed;
+            GameManager.JameelMagic -= Jameel.JameelSpell11MagicConsumed;
             JameelMagic.value = GameManager.JameelMagic;
             JameelAnim.Play("Armature|Attack");
             yield return new WaitForSeconds(2f);
@@ -8911,7 +8911,7 @@ public class BattleSystem : MonoBehaviour
                 SkyeSpells.SetActive(false);
                 SkyeMenu.SetActive(false);
 
-                GameManager.SkyeMagic -= Skye.SkyeSpell5MagicConsumed;
+                GameManager.SkyeMagic -= Skye.SkyeSpell7MagicConsumed;
                 SkyeMagic.value = GameManager.SkyeMagic;
                 dialogueText.text = "Skye heals everyone a moderate amount!";
                 SkyeAnim.Play("Armature|Attack");
