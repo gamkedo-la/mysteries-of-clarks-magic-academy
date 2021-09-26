@@ -1099,25 +1099,7 @@ public class BattleSystem : MonoBehaviour
     #endregion
     public void AdvanceTurn()
     {
-        backButtonItem.SetActive(false);
-        MCMenu.SetActive(false);
-        MCSpells.SetActive(false);
-        ItemMenu.transform.localPosition = new Vector3(233, -900, 0);
-
-        MCHealth.value = GameManager.MCHealth;
-        RhysHealth.value = GameManager.RhysHealth;
-        JameelHealth.value = GameManager.JameelHealth;
-        HarperHealth.value = GameManager.HarperHealth;
-        SkyeHealth.value = GameManager.SkyeHealth;
-        SullivanHealth.value = GameManager.SullivanHealth;
-
-        MCMagic.value = GameManager.MCMagic;
-        RhysMagic.value = GameManager.RhysMagic;
-        JameelMagic.value = GameManager.JameelMagic;
-        HarperMagic.value = GameManager.HarperMagic;
-        SkyeMagic.value = GameManager.SkyeMagic;
-        SullivanMagic.value = GameManager.SullivanMagic;
-
+        UpdateLifeUI();
         NextTurn();
     }
 
@@ -1357,8 +1339,8 @@ public class BattleSystem : MonoBehaviour
     {
         if (state == BattleState.MCTURN)
         {
-            GameManager.MCMagic += 5;
-            GameManager.MCHealth += 5;
+            GameManager.MCMagic += Mathf.RoundToInt(GameManager.MCMaxMagic * .03f);
+            GameManager.MCHealth += Mathf.RoundToInt(GameManager.MCMaxMagic * .03f);
 
             if (GameManager.MCMagic >= GameManager.MCMaxMagic)
             {
@@ -1372,8 +1354,8 @@ public class BattleSystem : MonoBehaviour
 
         if (state == BattleState.RHYSTURN)
         {
-            GameManager.RhysMagic += 5;
-            GameManager.RhysHealth += 5;
+            GameManager.RhysMagic += Mathf.RoundToInt(GameManager.RhysMaxMagic * .03f);
+            GameManager.RhysHealth += Mathf.RoundToInt(GameManager.RhysMaxMagic * .03f);
 
             if (GameManager.RhysMagic >= GameManager.RhysMaxMagic)
             {
@@ -1387,8 +1369,8 @@ public class BattleSystem : MonoBehaviour
 
         if (state == BattleState.JAMEELTURN)
         {
-            GameManager.JameelMagic += 5;
-            GameManager.JameelHealth += 5;
+            GameManager.JameelMagic += Mathf.RoundToInt(GameManager.JameelMaxMagic * .03f);
+            GameManager.JameelHealth += Mathf.RoundToInt(GameManager.JameelMaxMagic * .03f);
 
             if (GameManager.JameelMagic >= GameManager.JameelMaxMagic)
             {
@@ -1402,8 +1384,8 @@ public class BattleSystem : MonoBehaviour
 
         if (state == BattleState.HARPERTURN)
         {
-            GameManager.HarperMagic += 5;
-            GameManager.HarperHealth += 5;
+            GameManager.HarperMagic += Mathf.RoundToInt(GameManager.HarperMaxMagic * .03f);
+            GameManager.HarperHealth += Mathf.RoundToInt(GameManager.HarperMaxMagic * .03f);
 
             if (GameManager.HarperMagic >= GameManager.HarperMaxMagic)
             {
@@ -1417,8 +1399,8 @@ public class BattleSystem : MonoBehaviour
 
         if (state == BattleState.SKYETURN)
         {
-            GameManager.SkyeMagic += 5;
-            GameManager.SkyeHealth += 5;
+            GameManager.SkyeMagic += Mathf.RoundToInt(GameManager.SkyeMaxMagic * .03f);
+            GameManager.SkyeHealth += Mathf.RoundToInt(GameManager.SkyeMaxMagic * .03f);
 
             if (GameManager.SkyeMagic >= GameManager.SkyeMaxMagic)
             {
@@ -1432,8 +1414,8 @@ public class BattleSystem : MonoBehaviour
 
         if (state == BattleState.SULLIVANTURN)
         {
-            GameManager.SullivanMagic += 5;
-            GameManager.SullivanHealth += 5;
+            GameManager.SullivanMagic += Mathf.RoundToInt(GameManager.SullivanMaxMagic * .03f);
+            GameManager.SullivanHealth += Mathf.RoundToInt(GameManager.SullivanMaxHealth * .03f);
 
             if (GameManager.SullivanMagic >= GameManager.SullivanMaxMagic)
             {
