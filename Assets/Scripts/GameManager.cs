@@ -164,30 +164,30 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         //Testing
-        MCFirstName = "Kari";
+      /*  MCFirstName = "Kari";
         MCLastName = "Ford";
         SkyeSaved = true;
-
+      */
         // Testing Date
 
-         dayOfWeek = 1;
+      /*   dayOfWeek = 1;
          month = 5;
          day = 30;
          timeOfDay = 4;
-
+      */
 
         player = GameObject.FindGameObjectWithTag("Player");
 
         //Start game here
-        Money = 100;
+        Money = 20;
 
         //Game start is at - month 4 day 17 time of day 4
-        /*
+        
         dayOfWeek = 0;
         month = 4;
         day =17;
         timeOfDay = 4;
-        */
+        
 
         directionalLight = GameObject.Find("Sun");
 
@@ -219,20 +219,20 @@ public class GameManager : MonoBehaviour
 
         //MC is always in the party
         PartyCount++;
-        JameelInParty = true;
+       // JameelInParty = true;
        //  RhysInParty = true;
        //  SkyeInParty = true;
-        HarperInParty = true;
-        SullivanInParty = true;
-        PartyCount++;
-        PartyCount++;
-        PartyCount++;
+      //  HarperInParty = true;
+       // SullivanInParty = true;
+       // PartyCount++;
+      //  PartyCount++;
+      //  PartyCount++;
         RhysAvailable = true;
-        SkyeAvailable = true;
-        JameelAvailable = true;
-        HarperAvailable = true;
-        SullivanAvailable = true;
-        GracieMayAvailable = true;
+      //  SkyeAvailable = true;
+      //  JameelAvailable = true;
+      //  HarperAvailable = true;
+       // SullivanAvailable = true;
+       // GracieMayAvailable = true;
 
         if (PartyCount > 4)
         {
@@ -278,14 +278,14 @@ public class GameManager : MonoBehaviour
         HarperTargetExp = 15407;
         SullivanTargetExp = 143492;
         //
-        MCHealth = 200; //19
+        MCHealth = 19; 
         RhysHealth = 21;
         SkyeHealth = 48;
         JameelHealth = 92;
         HarperHealth = 245;
         SullivanHealth = 250;
 
-        MCMaxHealth = 200;//19
+        MCMaxHealth = 19;
         RhysMaxHealth = 21;
         SkyeMaxHealth = 48;
         JameelMaxHealth = 92;

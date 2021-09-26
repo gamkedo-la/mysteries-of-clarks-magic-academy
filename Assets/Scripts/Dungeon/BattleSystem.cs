@@ -425,7 +425,6 @@ public class BattleSystem : MonoBehaviour
             GameManager.SullivanHealth = 1;
         }
 
-        GameManager.isBigBoss = true;
         if (GameManager.isMiniBoss || GameManager.isBigBoss)
         {
             Boss = true;
