@@ -21,6 +21,8 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector3 heightOffset = new Vector3(0, 0.9f, 0);
 
+    public bool isDungeon;
+
     [SerializeField] GameObject NameSettingCanvas;
 
     private void Start()
@@ -31,6 +33,16 @@ public class PlayerMovement : MonoBehaviour
             this.gameObject.transform.rotation = GameManager.playerRotation;
             this.gameObject.transform.position = GameManager.playerSpawn;
         }
+        if (isDungeon)
+        {
+            StartCoroutine(HeightAdj());
+        }
+    }
+
+    IEnumerator HeightAdj()
+    {
+        yield return new WaitForSeconds(.5f);
+        this.gameObject.transform.position += new Vector3(0, 1.5f, 0);
     }
 
     private void Update()
