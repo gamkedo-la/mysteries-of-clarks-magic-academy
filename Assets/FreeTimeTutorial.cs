@@ -17,8 +17,26 @@ public class FreeTimeTutorial : MonoBehaviour
     
     public GameObject FirstScreen, SecondScreen, ThirdScreen;
 
+    public bool SecondTutorial;
+    public bool DungeonTutorial;
+    public bool BattleTutorial;
+
     public void Start()
     {
+        if (GameManager.secondFloorTutorial && SecondTutorial)
+        {
+            this.gameObject.SetActive(false);
+        }
+
+        if (GameManager.dungeonTutorial && DungeonTutorial)
+        {
+            this.gameObject.SetActive(false);
+        }
+
+        if (GameManager.battleTutorial && BattleTutorial)
+        {
+            this.gameObject.SetActive(false);
+        }
         // assign custom texts *if* we have set them
         if (TXT1!="") FirstScreen.transform.Find("TXT").GetComponent<Text>().text = TXT1;
         if (Title!="") FirstScreen.transform.Find("Title").GetComponent<Text>().text = Title;
@@ -27,7 +45,19 @@ public class FreeTimeTutorial : MonoBehaviour
         if (TXT3!="") ThirdScreen.transform.Find("TXT").GetComponent<Text>().text = TXT3;
         if (Title!="") ThirdScreen.transform.Find("Title").GetComponent<Text>().text = Title;
 
-        if (!GameManager.hasSeenTutorial)
+        if (!GameManager.secondFloorTutorial && SecondTutorial)
+        {
+            Debug.Log("Showing tutorial screen 1");
+            FirstScreen.SetActive(true);
+        }
+
+        if (!GameManager.dungeonTutorial && DungeonTutorial)
+        {
+            Debug.Log("Showing tutorial screen 1");
+            FirstScreen.SetActive(true);
+        }
+
+        if (!GameManager.battleTutorial && BattleTutorial)
         {
             Debug.Log("Showing tutorial screen 1");
             FirstScreen.SetActive(true);
@@ -42,7 +72,20 @@ public class FreeTimeTutorial : MonoBehaviour
         }
         else {
             Debug.Log("Tutorial complete.");
-            GameManager.hasSeenTutorial = true;
+            if (!GameManager.secondFloorTutorial && SecondTutorial)
+            {
+                GameManager.secondFloorTutorial = true;
+            }
+
+            if (!GameManager.dungeonTutorial && DungeonTutorial)
+            {
+                GameManager.dungeonTutorial = true;
+            }
+
+            if (!GameManager.battleTutorial && BattleTutorial)
+            {
+                GameManager.battleTutorial = true;
+            }
         }
 
         FirstScreen.SetActive(false);
@@ -56,7 +99,20 @@ public class FreeTimeTutorial : MonoBehaviour
         }
         else {
             Debug.Log("Tutorial complete.");
-            GameManager.hasSeenTutorial = true;
+            if (!GameManager.secondFloorTutorial && SecondTutorial)
+            {
+                GameManager.secondFloorTutorial = true;
+            }
+
+            if (!GameManager.dungeonTutorial && DungeonTutorial)
+            {
+                GameManager.dungeonTutorial = true;
+            }
+
+            if (!GameManager.battleTutorial && BattleTutorial)
+            {
+                GameManager.battleTutorial = true;
+            }
         }
         SecondScreen.SetActive(false);
     }
@@ -64,7 +120,20 @@ public class FreeTimeTutorial : MonoBehaviour
     public void Third()
     {
         Debug.Log("Tutorial complete.");
-        GameManager.hasSeenTutorial = true;
+        if (!GameManager.secondFloorTutorial && SecondTutorial)
+        {
+            GameManager.secondFloorTutorial = true;
+        }
+
+        if (!GameManager.dungeonTutorial && DungeonTutorial)
+        {
+            GameManager.dungeonTutorial = true;
+        }
+
+        if (!GameManager.battleTutorial && BattleTutorial)
+        {
+            GameManager.battleTutorial = true;
+        }
         ThirdScreen.SetActive(false);
     }
 }

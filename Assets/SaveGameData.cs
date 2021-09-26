@@ -54,7 +54,10 @@ public class SaveGameData
     //Save Dungeon Progress
     public bool SkyeSaved, JameelSaved, GracieMaySaved, HarperSaved, SullivanSaved, AtornSaved;
 
-    public bool hasSeenTutorial;
+    //Tutorial Menus
+    public bool secondFloorTutorial;
+    public bool dungeonTutorial;
+    public bool battleTutorial;
 
     //Grimorium
     public bool Bigfoot, Chessie, Chupacabra, Jackalope, JerseyDevil, LovelandFrog, Menehune, Mothman, Passagoula, Pukwudgie, SalemWitches, Squonk, TakuHe, Thunderbird, VanMeterMonster, Wendigo;
@@ -254,7 +257,9 @@ public class SaveGameData
         PukwudgieSeen = GameManager.PukwudgieSeen;
         ThunderbirdSeen = GameManager.ThunderbirdSeen;
 
-        hasSeenTutorial = GameManager.hasSeenTutorial;
+        secondFloorTutorial = GameManager.secondFloorTutorial;
+        dungeonTutorial = GameManager.dungeonTutorial;
+        battleTutorial = GameManager.battleTutorial;
 
         floorCountName = SceneManager.GetActiveScene().buildIndex;
     }

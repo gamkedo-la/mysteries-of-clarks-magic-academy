@@ -120,7 +120,9 @@ public class GameManager : MonoBehaviour
     public Text notificationText;
 
     //Tutorial Menus
-    public static bool hasSeenTutorial;
+    public static bool secondFloorTutorial;
+    public static bool dungeonTutorial;
+    public static bool battleTutorial;
 
     GameObject player;
 
@@ -1682,8 +1684,9 @@ public class GameManager : MonoBehaviour
         PukwudgieSeen = data.PukwudgieSeen;
         ThunderbirdSeen = data.ThunderbirdSeen;
 
-
-        hasSeenTutorial = data.hasSeenTutorial;
+        secondFloorTutorial = data.secondFloorTutorial;
+        dungeonTutorial = data.dungeonTutorial;
+        battleTutorial = data.battleTutorial;
 
         int floorCountName = data.floorCountName;
 
@@ -1885,7 +1888,9 @@ public class GameManager : MonoBehaviour
         AtornSaved = data.AtornSaved;
 
 
-        hasSeenTutorial = data.hasSeenTutorial;
+        secondFloorTutorial = data.secondFloorTutorial;
+        dungeonTutorial = data.dungeonTutorial;
+        battleTutorial = data.battleTutorial;
 
         playerSpawn = new Vector3(-21.18f, 31.78f, -70.54f);
         playerRotation = new Quaternion(0, 0, 0, 0);

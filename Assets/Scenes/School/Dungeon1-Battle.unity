@@ -29736,6 +29736,8 @@ MonoBehaviour:
   HarperStunned: 0
   SkyeStunned: 0
   SullivanStunned: 0
+  LoadSecondStage: 
+  amFirstStage: 0
 --- !u!4 &551696706
 Transform:
   m_ObjectHideFlags: 0
@@ -42698,25 +42700,66 @@ PrefabInstance:
     - target: {fileID: 9184963941812476083, guid: 4a9dbbe28d3e37d47985a61084248847,
         type: 3}
       propertyPath: TXT1
-      value: Since this is the first time you have entered a battle, here's how to
-        defeat your opponents!
+      value: 'On your journey to save your friends, you will run across creatures
+        from various portals.
+
+
+        You must use the spells that you have learned
+        in class to fight these creatures.
+
+
+        Those spells level up the more
+        powerful of a witch that you become. '
       objectReference: {fileID: 0}
     - target: {fileID: 9184963941812476083, guid: 4a9dbbe28d3e37d47985a61084248847,
         type: 3}
       propertyPath: TXT2
-      value: Hmm.. this text resizes to fit and if short results is huge fonts. Although,
-        I do love big fonts so maybe that's okay!
+      value: 'There are several kinds of spells. Some require health to use, while
+        others use magic.
+
+
+        Physical - red
+
+        Transfiguration - grey
+
+        Charms
+        - blue
+
+        Defense against Dark Arts - yellow
+
+        Potions - green
+
+
+        You''ll
+        find party members and creatures have strengths and weaknesses with certain
+        subjects.'
       objectReference: {fileID: 0}
     - target: {fileID: 9184963941812476083, guid: 4a9dbbe28d3e37d47985a61084248847,
         type: 3}
       propertyPath: TXT3
-      value: P.S. Any tutorial text left blank is skipped. You don't have to use
-        3 pages.
+      value: 'Don''t forget your other resources -
+
+
+        Using items
+
+        Throwing
+        rocks
+
+        or if the situation calls for it - Running
+
+
+        Best
+        of luck!'
       objectReference: {fileID: 0}
     - target: {fileID: 9184963941812476083, guid: 4a9dbbe28d3e37d47985a61084248847,
         type: 3}
       propertyPath: Title
-      value: Welcome to your First Battle!
+      value: Battle Tutorial
+      objectReference: {fileID: 0}
+    - target: {fileID: 9184963941812476083, guid: 4a9dbbe28d3e37d47985a61084248847,
+        type: 3}
+      propertyPath: BattleTutorial
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9184963941812476084, guid: 4a9dbbe28d3e37d47985a61084248847,
         type: 3}
@@ -42726,7 +42769,7 @@ PrefabInstance:
     - target: {fileID: 9184963941812476084, guid: 4a9dbbe28d3e37d47985a61084248847,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9184963942714091878, guid: 4a9dbbe28d3e37d47985a61084248847,
         type: 3}

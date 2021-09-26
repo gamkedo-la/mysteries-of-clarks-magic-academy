@@ -439,6 +439,11 @@ public class BattleSystem : MonoBehaviour
             enemyStartCount = 1;
         }
 
+        else if (!GameManager.battleTutorial)
+        {
+            enemyStartCount = 1;
+        }
+
         else
         {
             //Adjust this later - instead of percent chance, build on it for GameManager.CurrentFloor;
