@@ -344,6 +344,9 @@ public class BattleSystem : MonoBehaviour
 
     public bool MCStunned, RhysStunned, JameelStunned, HarperStunned, SkyeStunned, SullivanStunned;
     public static bool stunnedChance;
+
+    public GameObject FatherTime1LossTurnFatherTime2On;
+    public GameObject FirstBattleStations, SecondBattleStations;
     private void Start()
     {
        // GameManager.isBigBoss = true;
@@ -422,6 +425,7 @@ public class BattleSystem : MonoBehaviour
             GameManager.SullivanHealth = 1;
         }
 
+        GameManager.isBigBoss = true;
         if (GameManager.isMiniBoss || GameManager.isBigBoss)
         {
             Boss = true;
@@ -9488,7 +9492,28 @@ public class BattleSystem : MonoBehaviour
             }
 
             dialogueText.text = "You won the Battle!";
-            EndingMenu.SetActive(true);
+            if (Dungeon6 && GameManager.isBigBoss)
+            {
+                if (FatherTime1LossTurnFatherTime2On == null)
+                {
+                    SceneManager.LoadScene("RescueRoom");
+                    GameManager.isBigBoss = false;
+                }
+                else
+                {
+
+                    SecondBattleStations.SetActive(true);
+                    FatherTime1LossTurnFatherTime2On.SetActive(true);
+                    FirstBattleStations.SetActive(false);
+                    EndingMenu.SetActive(false);
+                    this.gameObject.SetActive(false);
+                }
+            }
+            else
+            {
+                EndingMenu.SetActive(true);
+            }
+
             MCSpells.SetActive(false);
             MCMenu.SetActive(false);
 
