@@ -405,16 +405,16 @@ public class GameManager : MonoBehaviour
     {
        // SkyeSaved = true;
 
-        /*if (SceneManager.GetActiveScene().buildIndex == 0)
+        if (SceneManager.GetActiveScene().buildIndex == 0)
         {
-            canvasForDateGA.SetActive(false);
+            canvasForDateGA.GetComponent<Canvas>().enabled = false;
         }
 
         else
         {
-            canvasForDateGA.SetActive(true);
+            canvasForDateGA.GetComponent<Canvas>().enabled = true;
         }
-        */
+        
         //Turn off when done testing
    /*     if (Input.GetKeyDown(KeyCode.C))
         {
