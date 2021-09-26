@@ -173,7 +173,7 @@ public class GameManager : MonoBehaviour
          dayOfWeek = 1;
          month = 5;
          day = 30;
-         timeOfDay = 0;
+         timeOfDay = 4;
 
 
         player = GameObject.FindGameObjectWithTag("Player");
@@ -219,20 +219,20 @@ public class GameManager : MonoBehaviour
 
         //MC is always in the party
         PartyCount++;
-        // JameelInParty = true;
-        //  RhysInParty = true;
-        // SkyeInParty = true;
+        JameelInParty = true;
+       //  RhysInParty = true;
+       //  SkyeInParty = true;
         HarperInParty = true;
         SullivanInParty = true;
         PartyCount++;
         PartyCount++;
-       // PartyCount++;
- //       RhysAvailable = true;
-       // SkyeAvailable = true;
-       // JameelAvailable = true;
+        PartyCount++;
+        RhysAvailable = true;
+        SkyeAvailable = true;
+        JameelAvailable = true;
         HarperAvailable = true;
         SullivanAvailable = true;
-       //GracieMayAvailable = true;
+        GracieMayAvailable = true;
 
         if (PartyCount > 4)
         {
