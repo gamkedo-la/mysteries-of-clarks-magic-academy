@@ -6463,11 +6463,11 @@ public class BattleSystem : MonoBehaviour
                             }
                             */
                         }
-                        GameManager.isRed = false;
-                        GameManager.isBlue = false;
-                        GameManager.isGreen = false;
-                        GameManager.isYellow = false;
-                        GameManager.isPhysical = false;
+                        GameManager.isRed = false; //trans
+                        GameManager.isBlue = false; //charms
+                        GameManager.isGreen = false; //potions
+                        GameManager.isYellow = false; //dada
+                        GameManager.isPhysical = false; //phys
                     }
                     NextTurn();
                     UpdateLifeUI();

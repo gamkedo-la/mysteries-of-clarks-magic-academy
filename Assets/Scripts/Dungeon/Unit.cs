@@ -4018,8 +4018,8 @@ public class Unit : MonoBehaviour
     {
         GameManager.isPhysical = true;
 
-        minDamage = 3;
-        maxDamage = 8;
+        minDamage = 2;
+        maxDamage = 7;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Soft Punch";
@@ -4030,7 +4030,7 @@ public class Unit : MonoBehaviour
     {
         GameManager.isPhysical = true;
         minDamage = 10;
-        maxDamage = 20;
+        maxDamage = 25;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Hefty Hook";
@@ -4039,8 +4039,8 @@ public class Unit : MonoBehaviour
     void HeavyAssault()
     {
         GameManager.isPhysical = true;
-        minDamage = 25;
-        maxDamage = 40;
+        minDamage = 35;
+        maxDamage = 60;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Heavy Assault";
@@ -4049,8 +4049,8 @@ public class Unit : MonoBehaviour
     void GodsHand()
     {
         GameManager.isPhysical = true;
-        minDamage = 60;
-        maxDamage = 85;
+        minDamage = 90;
+        maxDamage = 130;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "God's Hand";
@@ -4060,8 +4060,8 @@ public class Unit : MonoBehaviour
     {
         GameManager.isPhysical = true;
         BattleSystem.secondaryAttack = true;
-        minDamage = 10;
-        maxDamage = 20;
+        minDamage = 15;
+        maxDamage = 22;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Follow Through";
@@ -4071,7 +4071,7 @@ public class Unit : MonoBehaviour
     {
         GameManager.isPhysical = true;
         BattleSystem.secondaryAttack = true;
-        minDamage = 3;
+        minDamage = 2;
         maxDamage = 7;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
@@ -4083,8 +4083,8 @@ public class Unit : MonoBehaviour
     {
         GameManager.isPhysical = true;
         BattleSystem.secondaryAttack = true;
-        minDamage = 15;
-        maxDamage = 25;
+        minDamage = 35;
+        maxDamage = 40;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Heavy Pounding";
@@ -4106,7 +4106,7 @@ public class Unit : MonoBehaviour
         }
         
         minDamage = 10;
-        maxDamage = 15;
+        maxDamage = 20;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
 
@@ -4162,8 +4162,8 @@ public class Unit : MonoBehaviour
             BattleSystem.confusionChance = true;
         }
 
-        minDamage = 25;
-        maxDamage = 40;
+        minDamage = 35;
+        maxDamage = 50;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Skull Cracker";
@@ -4174,8 +4174,8 @@ public class Unit : MonoBehaviour
         GameManager.isPhysical = true;
         BattleSystem.attackAll = true;
 
-        minDamage = 30;
-        maxDamage = 40;
+        minDamage = 50;
+        maxDamage = 60;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Colossal Slam";
@@ -4186,7 +4186,7 @@ public class Unit : MonoBehaviour
         GameManager.isPhysical = true;
         BattleSystem.attackAll = true;
 
-        minDamage = 15;
+        minDamage = 20;
         maxDamage = 25;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
@@ -4223,8 +4223,8 @@ public class Unit : MonoBehaviour
     void ExorcismAmbush()
     {
         GameManager.isRed = true;
-        minDamage = 5;
-        maxDamage = 15;
+        minDamage = 3;
+        maxDamage = 10;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Exorcism Ambush";
@@ -4244,8 +4244,8 @@ public class Unit : MonoBehaviour
     void DemonicDecree()
     {
         GameManager.isRed = true;
-        minDamage = 30;
-        maxDamage = 45;
+        minDamage = 50;
+        maxDamage = 60;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Decmonic Decree";
@@ -4257,7 +4257,7 @@ public class Unit : MonoBehaviour
         BattleSystem.attackAll = true;
 
         minDamage = 5;
-        maxDamage = 15;
+        maxDamage = 10;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Cannon of Aura";
@@ -4322,8 +4322,8 @@ public class Unit : MonoBehaviour
     void WinterAir()
     {
         GameManager.isBlue = true;
-        minDamage = 5;
-        maxDamage = 10;
+        minDamage = 3;
+        maxDamage = 8;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Winter Air";
@@ -4332,8 +4332,8 @@ public class Unit : MonoBehaviour
     void ArcticBlast()
     {
         GameManager.isBlue = true;
-        minDamage = 15;
-        maxDamage = 25;
+        minDamage = 20;
+        maxDamage = 28;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Arctic Blast";
@@ -4342,8 +4342,8 @@ public class Unit : MonoBehaviour
     void VacuumSeal()
     {
         GameManager.isBlue = true;
-        minDamage = 18;
-        maxDamage = 23;
+        minDamage = 22;
+        maxDamage = 30;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Vacummn Seal";
@@ -4352,8 +4352,8 @@ public class Unit : MonoBehaviour
     void Fireball()
     {
         GameManager.isBlue = true;
-        minDamage = 35;
-        maxDamage = 60;
+        minDamage = 70;
+        maxDamage = 90;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Fireball";
@@ -4364,8 +4364,8 @@ public class Unit : MonoBehaviour
         GameManager.isBlue = true;
         BattleSystem.attackAll = true;
 
-        minDamage = 5;
-        maxDamage = 15;
+        minDamage = 6;
+        maxDamage = 10;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Bonfire";
@@ -4377,8 +4377,8 @@ public class Unit : MonoBehaviour
         GameManager.isBlue = true;
         BattleSystem.attackAll = true;
 
-        minDamage = 7;
-        maxDamage = 14;
+        minDamage = 8;
+        maxDamage = 10;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Lightning Raid";
@@ -4389,8 +4389,8 @@ public class Unit : MonoBehaviour
         GameManager.isBlue = true;
         BattleSystem.attackAll = true;
 
-        minDamage = 3;
-        maxDamage = 12;
+        minDamage = 4;
+        maxDamage = 10;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Nature's Fury";
@@ -4402,8 +4402,8 @@ public class Unit : MonoBehaviour
         GameManager.isBlue = true;
         BattleSystem.attackAll = true;
 
-        minDamage = 15;
-        maxDamage = 20;
+        minDamage = 10;
+        maxDamage = 30;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Tornado";
@@ -4414,8 +4414,8 @@ public class Unit : MonoBehaviour
         GameManager.isBlue = true;
         BattleSystem.attackAll = true;
 
-        minDamage = 10;
-        maxDamage = 14;
+        minDamage = 15;
+        maxDamage = 25;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Thunderstorm";
@@ -4426,8 +4426,8 @@ public class Unit : MonoBehaviour
         GameManager.isBlue = true;
         BattleSystem.attackAll = true;
 
-        minDamage = 14;
-        maxDamage = 18;
+        minDamage = 20;
+        maxDamage = 30;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Blizzard";
@@ -4438,8 +4438,8 @@ public class Unit : MonoBehaviour
         GameManager.isBlue = true;
         BattleSystem.attackAll = true;
 
-        minDamage = 20;
-        maxDamage = 40;
+        minDamage = 30;
+        maxDamage = 45;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Wall of Flame";
@@ -4450,8 +4450,8 @@ public class Unit : MonoBehaviour
         GameManager.isBlue = true;
         BattleSystem.attackAll = true;
 
-        minDamage = 20;
-        maxDamage = 30;
+        minDamage = 45;
+        maxDamage = 60;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Hell Freezing Over";
@@ -4462,7 +4462,7 @@ public class Unit : MonoBehaviour
         GameManager.isBlue = true;
         BattleSystem.attackAll = true;
 
-        minDamage = 45;
+        minDamage = 35;
         maxDamage = 50;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
@@ -4513,8 +4513,8 @@ public class Unit : MonoBehaviour
     {
         GameManager.isYellow = true;
 
-        minDamage = 3;
-        maxDamage = 8;
+        minDamage = 20;
+        maxDamage = 30;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Divine Judgement";
@@ -4525,8 +4525,8 @@ public class Unit : MonoBehaviour
     {
         GameManager.isYellow = true;
         BattleSystem.secondaryAttack = true;
-        minDamage = 3;
-        maxDamage = 7;
+        minDamage = 25;
+        maxDamage = 30;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Divine Arrows";
@@ -4537,8 +4537,8 @@ public class Unit : MonoBehaviour
     {
         GameManager.isYellow = true;
 
-        minDamage = 3;
-        maxDamage = 8;
+        minDamage = 120;
+        maxDamage = 140;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Hades' Door";
@@ -4567,7 +4567,7 @@ public class Unit : MonoBehaviour
         {
             BattleSystem.confusionChance = true;
         }
-        minDamage = 3;
+        minDamage = 6;
         maxDamage = 8;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
@@ -4586,8 +4586,8 @@ public class Unit : MonoBehaviour
         {
             BattleSystem.stunnedChance = true;
         }
-        minDamage = 25;
-        maxDamage = 40;
+        minDamage = 4;
+        maxDamage = 9;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Stunning Strike";
@@ -4598,8 +4598,8 @@ public class Unit : MonoBehaviour
         GameManager.isYellow = true;
         BattleSystem.attackAll = true;
 
-        minDamage = 45;
-        maxDamage = 50;
+        minDamage = 50;
+        maxDamage = 60;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Psycosis";
@@ -4610,8 +4610,8 @@ public class Unit : MonoBehaviour
         GameManager.isYellow = true;
         BattleSystem.attackAll = true;
 
-        minDamage = 45;
-        maxDamage = 50;
+        minDamage = 75;
+        maxDamage = 100;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Psycho Blast";
@@ -4621,8 +4621,8 @@ public class Unit : MonoBehaviour
     {
         GameManager.isGreen = true;
 
-        minDamage = 3;
-        maxDamage = 8;
+        minDamage = 20;
+        maxDamage = 30;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Atomic Flare";
@@ -4634,8 +4634,8 @@ public class Unit : MonoBehaviour
         GameManager.isGreen = true;
         BattleSystem.attackAll = true;
 
-        minDamage = 45;
-        maxDamage = 50;
+        minDamage = 4;
+        maxDamage = 7;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Poison Mist";
@@ -4646,8 +4646,8 @@ public class Unit : MonoBehaviour
         GameManager.isGreen = true;
         BattleSystem.attackAll = true;
 
-        minDamage = 45;
-        maxDamage = 50;
+        minDamage = 15;
+        maxDamage = 25;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Poison Cloud";
@@ -4659,7 +4659,7 @@ public class Unit : MonoBehaviour
         BattleSystem.attackAll = true;
 
         minDamage = 45;
-        maxDamage = 50;
+        maxDamage = 55;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Cosmic Flare";
@@ -4670,8 +4670,8 @@ public class Unit : MonoBehaviour
         GameManager.isGreen = true;
         BattleSystem.attackAll = true;
 
-        minDamage = 45;
-        maxDamage = 50;
+        minDamage = 100;
+        maxDamage = 130;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Cosmic Intervention";
@@ -4706,8 +4706,8 @@ public class Unit : MonoBehaviour
         {
             BattleSystem.stunnedChance = true;
         }
-        minDamage = 10;
-        maxDamage = 20;
+        minDamage = 3;
+        maxDamage = 7;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Dormina";
@@ -4724,8 +4724,8 @@ public class Unit : MonoBehaviour
         {
             BattleSystem.stunnedChance = true;
         }
-        minDamage = 5;
-        maxDamage = 10;
+        minDamage = 3;
+        maxDamage = 7;
 
         enemyDamage = Random.Range(minDamage, maxDamage);
         attackName = "Brain Jack";
