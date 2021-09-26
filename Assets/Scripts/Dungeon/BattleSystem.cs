@@ -600,6 +600,12 @@ public class BattleSystem : MonoBehaviour
             Harper = playerGO4.GetComponent<Unit>();
             HarperAnim = playerGO4.GetComponentInChildren<Animator>();
         }
+        if (GameManager.PartyCount == 4 && (GameManager.RhysInParty || GameManager.JameelInParty) && GameManager.HarperInParty && GameManager.SullivanInParty)
+        {
+            playerGO3 = Instantiate(HarperPrefab, ThirdBattleStation);
+            Harper = playerGO3.GetComponent<Unit>();
+            HarperAnim = playerGO3.GetComponentInChildren<Animator>();
+        }
         if (GameManager.PartyCount == 4 && GameManager.SkyeInParty && GameManager.SullivanInParty)
         {
             playerGO3 = Instantiate(SkyePrefab, ThirdBattleStation);
