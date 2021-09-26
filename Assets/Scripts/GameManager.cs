@@ -221,14 +221,14 @@ public class GameManager : MonoBehaviour
         PartyCount++;
        // JameelInParty = true;
        //  RhysInParty = true;
-       //  SkyeInParty = true;
+         SkyeInParty = true;
       //  HarperInParty = true;
        // SullivanInParty = true;
-       // PartyCount++;
+        PartyCount++;
       //  PartyCount++;
       //  PartyCount++;
         RhysAvailable = true;
-      //  SkyeAvailable = true;
+        SkyeAvailable = true;
       //  JameelAvailable = true;
       //  HarperAvailable = true;
        // SullivanAvailable = true;
@@ -294,7 +294,7 @@ public class GameManager : MonoBehaviour
 
         MCMagic = 21;
         RhysMagic = 18;
-        SkyeMagic = 62;
+        SkyeMagic = 0;
         JameelMagic = 118;
         HarperMagic = 155;
         SullivanMagic = 250;
