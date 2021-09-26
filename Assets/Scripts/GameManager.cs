@@ -221,14 +221,14 @@ public class GameManager : MonoBehaviour
         PartyCount++;
        // JameelInParty = true;
        //  RhysInParty = true;
-         SkyeInParty = true;
+       //  SkyeInParty = true;
       //  HarperInParty = true;
        // SullivanInParty = true;
-        PartyCount++;
+       // PartyCount++;
       //  PartyCount++;
       //  PartyCount++;
         RhysAvailable = true;
-        SkyeAvailable = true;
+       // SkyeAvailable = true;
       //  JameelAvailable = true;
       //  HarperAvailable = true;
        // SullivanAvailable = true;
@@ -294,7 +294,7 @@ public class GameManager : MonoBehaviour
 
         MCMagic = 21;
         RhysMagic = 18;
-        SkyeMagic = 0;
+        SkyeMagic = 62;
         JameelMagic = 118;
         HarperMagic = 155;
         SullivanMagic = 250;
@@ -414,7 +414,7 @@ public class GameManager : MonoBehaviour
         }
 
         //Turn off when done testing
-        if (Input.GetKeyDown(KeyCode.C))
+   /*     if (Input.GetKeyDown(KeyCode.C))
         {
             SceneManager.LoadScene("ClassroomDialogueTest");
         }
@@ -423,7 +423,7 @@ public class GameManager : MonoBehaviour
         {
             ProgressDay();
         }
-
+   */
         if (timeOfDay == 0)
         {
             RenderSettings.skybox = skyBox[0];

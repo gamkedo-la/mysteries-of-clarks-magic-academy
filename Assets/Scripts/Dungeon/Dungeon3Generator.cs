@@ -59,7 +59,7 @@ public class Dungeon3Generator : MonoBehaviour {
 	}
 
 	void Update() {
-		if (Input.GetKey(KeyCode.P)) {
+		/*if (Input.GetKey(KeyCode.P)) {
 			AdvanceFloor();
 		}
 		if (Input.GetKey(KeyCode.O)) {
@@ -72,7 +72,7 @@ public class Dungeon3Generator : MonoBehaviour {
 			GameManager.currentFloor--;
 			if (GameManager.currentFloor < 0) GameManager.currentFloor = 0;
 			AdvanceFloor();
-		}
+		}*/
 	}
 
 	void Start() {

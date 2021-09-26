@@ -37,7 +37,7 @@ public class Dungeon4Generator : MonoBehaviour {
 	}
 
 	void Update() {
-		if (Input.GetKey(KeyCode.P)) {
+		/*if (Input.GetKey(KeyCode.P)) {
 			AdvanceFloor();
 		}
 		if (Input.GetKey(KeyCode.O)) {
@@ -50,7 +50,7 @@ public class Dungeon4Generator : MonoBehaviour {
 			GameManager.currentFloor--;
 			if (GameManager.currentFloor < 0) GameManager.currentFloor = 0;
 			AdvanceFloor();
-		}
+		}*/
 	}
 
 	void Start() {
