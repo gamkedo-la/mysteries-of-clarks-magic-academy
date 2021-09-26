@@ -9,14 +9,8 @@ public class PressEnterReturn : MonoBehaviour
     public float countdown = 100f;
     private void Update()
     {
-        if (!hasTurnedOff)
-        {
-            GameObject gameManager = GameObject.Find("GameManager");
-            gameManager.SetActive(false);
-            hasTurnedOff = true;
-        }
-
         countdown -= Time.deltaTime;
+
         if (countdown <= 0)
         {
             SceneManager.LoadScene("Title");
@@ -26,5 +20,13 @@ public class PressEnterReturn : MonoBehaviour
         {
             SceneManager.LoadScene("Title");
         }
+
+        if (!hasTurnedOff)
+        {
+            GameObject gameManager = GameObject.Find("GameManager");
+            gameManager.SetActive(false);
+            hasTurnedOff = true;
+        }
+
     }
 }
