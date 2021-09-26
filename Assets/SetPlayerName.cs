@@ -9,12 +9,14 @@ public class SetPlayerName : MonoBehaviour
     public InputField first, last;
     [SerializeField] Text playersSavedNameTextComponent;
     [SerializeField] GameObject welcomeTextCanvas;
+    public GameObject Advance;
 
     public void SaveName()
     {
         playersSavedNameTextComponent.text = "Your saved name is: " + first.text + " " + last.text;
         GameManager.MCFirstName = first.text;
         GameManager.MCLastName = last.text;
+        Advance.GetComponent<Button>().interactable = true;
     }
 
     public void Continue()

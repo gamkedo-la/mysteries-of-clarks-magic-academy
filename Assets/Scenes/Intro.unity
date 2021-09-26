@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44338638, g: 0.49265873, b: 0.57229304, a: 1}
+  m_IndirectSpecularColor: {r: 0.44338697, g: 0.49265927, b: 0.57229424, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -16117,6 +16117,7 @@ MonoBehaviour:
   last: {fileID: 113526182}
   playersSavedNameTextComponent: {fileID: 0}
   welcomeTextCanvas: {fileID: 0}
+  Advance: {fileID: 0}
 --- !u!65 &1142597036
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16245,6 +16246,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1771164845539718946, guid: ca588341c6a70234484b3b33a73d5e2c,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -5.5999756
+      objectReference: {fileID: 0}
     - target: {fileID: 1771164845644271283, guid: ca588341c6a70234484b3b33a73d5e2c,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -16339,6 +16345,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1771164847240579453, guid: ca588341c6a70234484b3b33a73d5e2c,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 10.439819
       objectReference: {fileID: 0}
     - target: {fileID: 3125214113706419461, guid: ca588341c6a70234484b3b33a73d5e2c,
         type: 3}
@@ -18545,6 +18556,7 @@ MonoBehaviour:
   last: {fileID: 113526182}
   playersSavedNameTextComponent: {fileID: 647399449}
   welcomeTextCanvas: {fileID: 348892292}
+  Advance: {fileID: 1715902206}
 --- !u!1001 &1340048029
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21713,6 +21725,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerName: {fileID: 1568207192}
+  justFirstName: 0
 --- !u!114 &1568207191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21815,6 +21828,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 1509161322}
+  lockXZ: 1
+  invertY: 1
 --- !u!212 &1573344617
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -24268,7 +24283,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1715902209}
   m_OnClick:
     m_PersistentCalls:
