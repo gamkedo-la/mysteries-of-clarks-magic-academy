@@ -44,7 +44,13 @@ public class PauseMenu : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape)){
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            Time.timeScale = 1;
+            MenuPanel.SetActive(false);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape)){
             TogglePause();
             FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/UIButtonClick");
         }
