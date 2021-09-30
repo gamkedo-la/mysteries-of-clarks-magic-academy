@@ -23,16 +23,47 @@ public class StoreManager2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.P)){
-            ToggleStore();
-        }
-        if(Input.GetKeyDown(KeyCode.O)){
+        //    if(Input.GetKeyDown(KeyCode.P)){
+        //       ToggleStore();
+        //  }
+
+
+        if (GameManager.month == 4 && (GameManager.day >= 17 && GameManager.day <= 25))
+        {
             SwitchStore(0);
         }
-        if(Input.GetKeyDown(KeyCode.L)){
+
+        else if (GameManager.month == 4 && (GameManager.day >= 26 && GameManager.day <= 30))
+        {
             SwitchStore(1);
         }
-        if(Input.GetKeyUp(KeyCode.Mouse0)){
+
+        else if (GameManager.month == 5 && (GameManager.day >= 1 && GameManager.day <= 2))
+        {
+            SwitchStore(2);
+        }
+
+        else if (GameManager.month == 5 && (GameManager.day >= 2 && GameManager.day <= 9))
+        {
+            SwitchStore(3);
+        }
+
+        else if (GameManager.month == 5 && (GameManager.day >= 10 && GameManager.day <= 16))
+        {
+            SwitchStore(4);
+        }
+
+        else if (GameManager.month == 5 && (GameManager.day >= 17 && GameManager.day <= 28))
+        {
+            SwitchStore(5);
+        }
+
+        else if (GameManager.month == 5 && (GameManager.day >= 29 && GameManager.day <= 31))
+        {
+            SwitchStore(6);
+        }
+
+        if (Input.GetKeyUp(KeyCode.Mouse0)){
             buyingItem = false;
         }
     }
