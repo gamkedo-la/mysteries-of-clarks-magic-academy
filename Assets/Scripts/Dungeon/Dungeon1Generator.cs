@@ -36,6 +36,7 @@ public class Dungeon1Generator : MonoBehaviour {
 	public int maxLengthOfHall = 4;
 
 	public float oddsOfEnemyPerRoom = 0.5f;
+	public int itterationsOfEnemyPerRoom = 3;
 
 	public GameObject enemy;
 	public GameObject treasure;
@@ -129,7 +130,7 @@ public class Dungeon1Generator : MonoBehaviour {
 		//Generate map
 		int numberOfRooms = 1;
 		int newIndex = 0;
-		while (numberOfRooms <= currentLevel + 3) {
+		while (numberOfRooms <= currentLevel + 4) {
 			newIndex = Random.Range(0, roomsVec2.Count);
 			int newDir = Random.Range(0, 4);
 			float newRoomType = Random.Range(0f, 1f);
@@ -415,6 +416,7 @@ public class Dungeon1Generator : MonoBehaviour {
 		thePortal.transform.position = new Vector3(portalRoom.x, 0f, portalRoom.y) * gridScale;
 		thePortal.transform.Rotate(0f, Random.Range(0f, 360f), 0f);
 		thePortal.transform.parent = transform;
+		roomsForSpawning.Remove(portalRoom);
 
 		//Spawn Treasure
 		newIndex = Random.Range(0, roomsForSpawning.Count);
@@ -430,11 +432,13 @@ public class Dungeon1Generator : MonoBehaviour {
 		theTreasure.transform.parent = transform;
 
 		//Spawn Enemies
-		foreach (Vector2Int thisRoom in roomsForSpawning) {
-			if (Random.Range(0f, 1f) < oddsOfEnemyPerRoom) {
-				Vector3 offset = new Vector3(0, 1.25f, 0);
-				GameObject enemySpawn = Instantiate(enemy, new Vector3(thisRoom.x, 0f, thisRoom.y) * gridScale + offset, Quaternion.identity);
-				enemySpawn.transform.parent = transform;
+		for (int i = 0; i < itterationsOfEnemyPerRoom; i++) {
+			foreach (Vector2Int thisRoom in roomsForSpawning) {
+				if (Random.Range(0f, 1f) < oddsOfEnemyPerRoom) {
+					Vector3 offset = new Vector3(0, 1.25f, 0);
+					GameObject enemySpawn = Instantiate(enemy, new Vector3(thisRoom.x, 0f, thisRoom.y) * gridScale + offset, Quaternion.identity);
+					enemySpawn.transform.parent = transform;
+				}
 			}
 		}
 

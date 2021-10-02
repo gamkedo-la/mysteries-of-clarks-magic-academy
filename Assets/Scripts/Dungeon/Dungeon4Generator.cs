@@ -21,6 +21,7 @@ public class Dungeon4Generator : MonoBehaviour {
 	public FourSidedTileGenerator floorTemplate;
 
 	public float oddsOfEnemyPerRoom = 0.5f;
+	public int itterationsOfEnemyPerRoom = 3;
 
 	public GameObject enemy;
 	public GameObject treasure;
@@ -218,13 +219,15 @@ public class Dungeon4Generator : MonoBehaviour {
 		}
 
 		//Spawn Enemies
-		foreach (Vector2Int thisRoom in roomsVec2) {
-			if (thisRoom == Vector2Int.zero || thisRoom == farthestRoom) continue;
+		for (int i = 0; i < itterationsOfEnemyPerRoom; i++) {
+			foreach (Vector2Int thisRoom in roomsVec2) {
+				if (thisRoom == Vector2Int.zero || thisRoom == farthestRoom) continue;
 
-			if (Random.Range(0f, 1f) < oddsOfEnemyPerRoom) {
-				Vector3 offset = new Vector3(0, 1.25f, 0);
-				GameObject enemySpawn = Instantiate(enemy, new Vector3(thisRoom.x, 0f, thisRoom.y) * gridScale + offset, Quaternion.identity);
-				enemySpawn.transform.parent = transform;
+				if (Random.Range(0f, 1f) < oddsOfEnemyPerRoom) {
+					Vector3 offset = new Vector3(0, 1.25f, 0);
+					GameObject enemySpawn = Instantiate(enemy, new Vector3(thisRoom.x, 0f, thisRoom.y) * gridScale + offset, Quaternion.identity);
+					enemySpawn.transform.parent = transform;
+				}
 			}
 		}
 
